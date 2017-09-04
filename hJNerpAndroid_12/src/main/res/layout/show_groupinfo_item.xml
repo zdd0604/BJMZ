@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <com.hjnerp.widget.BubbleImageView
+        android:id="@+id/photo_showgroup"
+        android:layout_width="@dimen/abc_dropdownitem_icon_width"
+        android:layout_height="@dimen/abc_dropdownitem_icon_width"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:adjustViewBounds="true"
+        android:gravity="center"
+        android:src="@drawable/v5_0_1_profile_headphoto"
+        app:bubble_angle="19dp"
+        app:bubble_arrowHeight="0dp"
+        app:bubble_arrowLocation="right"
+        app:bubble_arrowOffset="0dp"
+        app:bubble_arrowTop="0dp"
+        app:bubble_arrowWidth="0dp" />
+
+    <TextView
+        android:id="@+id/name_showgroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="8dp"
+        android:text="李响"
+        android:textColor="@color/name_text_color"
+        android:textSize="16sp" />
+
+</LinearLayout>

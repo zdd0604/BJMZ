@@ -1,0 +1,19 @@
+<HJModel start = "101" type = "query" id = "998" billnotype = "new">
+
+ <HJView id = "101" name = "防窜货"  returnenable="true"    >
+        
+   <HJQrcode  id="10101" name = "防窜货" datasource = "ctlm1020"  nextview = "102"> 
+
+   </HJQrcode>
+
+  </HJView>
+
+
+
+ <HJView id = "102" name = "产品信息"  returnenable="true"    >
+        
+   <HJTextView id = "002001" name = "产品代码"   editable ="false"  required ="false" visible ="false" width ="0.8" valuetype="string" format="@@@@@@" singleline = "true" fontsize = "medium" alignment="left"  field = "id_terminal" datasource="transfer_ds" ></HJTextView>
+        <HJTextView id = "002002" name = "产品名称"   editable ="false"  required ="false" visible ="false" width ="0.8" valuetype="string" format="@@@@@@" singleline = "true" fontsize = "medium"  alignment="left" field = "name_terminal" datasource="transfer_ds" > </HJTextView> 
+  </HJView> 
+
+</HJModel>

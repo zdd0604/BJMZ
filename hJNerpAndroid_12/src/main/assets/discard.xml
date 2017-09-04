@@ -1,0 +1,412 @@
+﻿<?xml version="1.0"?>
+<HJModel id="001" start="001" type="opr">
+    <!---->
+    <HJView name="终端拜访" id="001" presave="true" returnenable="true">
+        <!-- 1-只从网络;2-从网络>>1345;3-从1345;4-从1345>>从网络 -->
+        <HJList name="路线" style="plain" datasource="ctlm4101" editable="true" fontsize="medium"
+            id="001002" layouttype="adaptive"
+            onclick="local checked = hju_getjsonvalues(sender.values,'checked'); if checked == 'Y' then hjc_setmakeText('001','已拜访，不能再拜访.'); else hjc_setnextview('001','001002',sender.row,'002',sender.billno,sender.nodeid); end"
+            upload="true" visible="true" visibledisclosure="false">
+            <!-- 添加固定的终端信息   -->
+            <HJListColumn name="终端名称" bold="true" dbfield="var_data2" editable="true"
+                field="name_terminal" fontsize="medium" id="001002001" singleline="false"
+                visible="true" visiblename="true" width="1" />
+            <HJListColumn name="地址" bold="false" dbfield="var_data3" editable="true"
+                field="var_addr" fontsize="medium" id="001002002" singleline="false" visible="true"
+                visiblename="false" width="1" />
+            <HJListCheck dbfield="var_data1" field="checked" id="001002004" />
+        </HJList>
+        <HJViewMenu name="菜单" editable="true" id="001005" visible="true">
+            <HJMenuButton name="计划外线路" editable="true" fontsize="medium" id="001005001"
+                onclick=" hjds_search('001','ctlm4101','1=1')" visible="true"></HJMenuButton>
+            <HJMenuButton name="数据上传" editable="true" fontsize="medium" id="001005002"
+                onclick="hjc_controlupload('001','001002')" visible="true"></HJMenuButton>
+            <HJMenuButton name="判断标准" editable="true" fontsize="medium" id="001005003"
+                onclick="hjc_setnextview('001','001005',sender.row,'900',sender.billno,sender.nodeid);"
+                visible="true"></HJMenuButton>
+        </HJViewMenu>
+    </HJView>
+    <!---->
+    <HJView name="终端信息" id="002"
+        onload="local zddm = hju_getjsonvalues(sender.values,'id_terminal'); local zdmc = hju_getjsonvalues(sender.values,'name_terminal'); local zdlx = hju_getjsonvalues(sender.values,'name_tertype'); local zdlxr = hju_getjsonvalues(sender.values,'var_ownername'); local zdlxfs = hju_getjsonvalues(sender.values,'var_tel'); local zddz = hju_getjsonvalues(sender.values,'var_addr'); local xsfs = hju_getjsonvalues(sender.values,'name_spestype'); local jxs = hju_getjsonvalues(sender.values,'name_corr'); local xykz = hju_getjsonvalues(sender.values,'date_conbegin'); local xyjs = hju_getjsonvalues(sender.values,'date_conend'); local hstr = hju_getjsonvalues(sender.values,'var_input'); local bfpc = hju_getjsonvalues(sender.values,'var_bfpc'); local ybfcs = hju_getjsonvalues(sender.values,'var_bfcs'); local review = hju_getjsonvalues(sender.values,'var_review'); hjc_setvalue('002','002001',zddm); hjc_setvalue('002','002002',zdmc); hjc_setvalue('002','002003',zdlx); hjc_setvalue('002','002004',zdlxr); hjc_setvalue('002','002005',zdlxfs); hjc_setvalue('002','002006',zddz); hjc_setvalue('002','002010',xsfs); hjc_setvalue('002','002015',jxs); hjc_setvalue('002','002025',xykz); hjc_setvalue('002','002030',xyjs); hjc_setvalue('002','002035',hstr); hjc_setvalue('002','002040',bfpc); hjc_setvalue('002','002045',ybfcs); hjc_setvalue('002','002050',review);"
+        presave="true" returnenable="true">
+        <HJTextView name="终端代码" alignment="left" editable="false" fontsize="medium" format="@@@@@@"
+            id="002001" required="false" singleline="true" valuetype="string" visible="true"
+            width="0.5"></HJTextView>
+        <HJTextView name="终端名称" alignment="left" editable="false" fontsize="medium" format="@@@@@@"
+            id="002002" required="false" singleline="true" valuetype="string" visible="true"
+            width="0.5"></HJTextView>
+        <HJTextView name="渠道分类" alignment="left" editable="false" fontsize="medium" format="@@@@@@"
+            id="002003" required="false" singleline="true" valuetype="string" visible="true"
+            width="0.5"></HJTextView>
+        <HJTextView name="店主" alignment="left" editable="false" fontsize="medium" format="@@@@@@"
+            id="002004" required="false" singleline="true" valuetype="string" visible="true"
+            width="0.5"></HJTextView>
+        <HJTextView name="联系电话" alignment="left" editable="false" fontsize="medium" format="@@@@@@"
+            id="002005" required="false" singleline="true" valuetype="string" visible="true"
+            width="0.5"></HJTextView>
+        <HJTextView name="地址" alignment="left" editable="false" fontsize="medium" format="@@@@@@"
+            id="002006" required="false" singleline="true" valuetype="string" visible="true"
+            width="0.5"></HJTextView>
+        <HJTextView name="销售类型" alignment="left" editable="false" fontsize="medium" format="@@@@@@"
+            id="002010" required="false" singleline="true" valuetype="string" visible="true"
+            width="0.5"></HJTextView>
+        <HJTextView name="经销商" alignment="left" editable="false" fontsize="medium" format="@@@@@@"
+            id="002015" required="false" singleline="true" valuetype="string" visible="true"
+            width="0.5"></HJTextView>
+        <HJTextView name="合同开始时间" alignment="left" editable="false" fontsize="medium"
+            format="@@@@@@" id="002025" required="false" singleline="true" valuetype="string"
+            visible="true" width="0.5"></HJTextView>
+        <HJTextView name="合同结束时间" alignment="left" editable="false" fontsize="medium"
+            format="@@@@@@" id="002030" required="false" singleline="true" valuetype="string"
+            visible="true" width="0.5"></HJTextView>
+        <HJTextView name="黄河投入" alignment="left" editable="false" fontsize="medium" format="@@@@@@"
+            id="002035" required="false" singleline="false" valuetype="string" visible="true"
+            width="0.5"></HJTextView>
+        <HJTextView name="拜访频次" alignment="left" editable="false" fontsize="medium" format="@@@@@@"
+            id="002040" required="false" singleline="true" valuetype="string" visible="true"
+            width="0.5"></HJTextView>
+        <HJTextView name="已完成次数" alignment="left" editable="false" fontsize="medium" format="@@@@@@"
+            id="002045" required="false" singleline="true" valuetype="string" visible="true"
+            width="0.5"></HJTextView>
+        <HJTextView name="上次拜访回顾" alignment="left" editable="false" fontsize="medium"
+            format="@@@@@@" id="002050" required="false" singleline="false" valuetype="string"
+            visible="true" width="0.5"></HJTextView>
+        <HJLine name="" height="10" id="0040019" />
+        <HJTextView name="进店时间" alignment="left" editable="false" fontsize="medium" format="@@@@@@"
+            id="002055" required="true" singleline="true" valuetype="string" visible="true"
+            width="0.5"></HJTextView>
+        <HJLocation name="定位" alignment="left" editable="true" fontsize="medium" format="@@@@@@"
+            id="002060" required="true" singleline="false" valuetype="string"
+            visible="false"></HJLocation>
+        <HJPhotoView name="进店拍照" alignment="left" editable="true" fontsize="medium" format="@@@@@@"
+            id="002065" required="false" singleline="false" valuetype="string"
+            visible="false"></HJPhotoView>
+        <HJToolBar name="工具栏" id="002300">
+            <HJButton name="异常" alignment="center" editable="true" fontsize="medium" id="002300001"
+                onclick="local time = os.date('%Y-%m-%d %H:%M:%S', os.time()); hjc_setvalue('002','002055',time); hjv_savedata('002'); hjb_setddiscard('002', '002060','002065' ,'009' ) ;"
+                visible="true"></HJButton>
+            <HJButton name="拜访" alignment="center" editable="true" fontsize="medium" id="002300002"
+                onclick="local time = os.date('%Y-%m-%d %H:%M:%S', os.time());
+			local d_time = hjc_getvalue('002','002055');
+			if d_time == '' or  d_time == nil then
+		    	hjc_setvalue('002','002055',time);
+			end
+			hjv_savedata('002'); hjb_setddiscard('002', '002060','002065' ,'003' ) ;"
+                visible="true"></HJButton>
+        </HJToolBar>
+    </HJView>
+    <!-- 品项组合-->
+    <HJView name="品项组合" dataset="pxbpctlm1020:'1=1';pxjpctlm1020:'1=1'" datasetmode="local" id="003"
+        presave="true" returnenable="false">
+        <HJLine name="" height="10" id="0030019" />
+        <HJLabel name="陈列占比" alignment="left" editable="false" fontsize="medium" format="@@@@@@"
+            id="0030011" required="false" singleline="false" valuetype="string" visible="true"
+            width="1"></HJLabel>
+
+        <HJTextView name="黄河排面" alignment="left" editable="true" fontsize="medium" format="#####"
+            id="003000" required="false" singleline="true" valuetype="decimal" visible="true"
+            width="0.5"></HJTextView>
+        <HJTextView name="总排面" alignment="left" editable="true" fontsize="medium" format="#####"
+            id="003002" required="false" singleline="true" valuetype="decimal" visible="true"
+            width="0.5"></HJTextView>
+
+        <HJLine name="" height="10" id="0030119" />
+        <HJGrid name="产品信息" style="plain" datasource="pxbpctlm1020" fontsize="medium" id="003001"
+            layouttype="adaptive" locking="1" visible="true">
+            <HJGridColumn name="产品名称" bold="false" dbfield="var_data1" editable="true"
+                field="var_name" fontsize="medium" id="003001001" singleline="false"
+                textcolor="#000000" visible="true" width="0.5" />
+            <HJGridColumn name="数量" alignment="right" bold="false" dbfield="var_data2"
+                editable="true" field="dec_qty" fontsize="medium" format="####" id="003001020"
+                singleline="true" textcolor="#000000" valuetype="decimal" visible="true"
+                width="0.21" />
+            <HJGridColumn name="月销量" alignment="right" bold="false" dbfield="var_data4"
+                editable="true" field="dec_mqty" fontsize="medium" format="####" id="003001021"
+                singleline="false" textcolor="#000000" valuetype="decimal" visible="true"
+                width="0.289" />
+            <HJGridColumn name="产品代码" alignment="center" bold="false" dbfield="var_data3"
+                editable="false" field="id_item" fontsize="medium" format="@@@" id="003001025"
+                singleline="true" textcolor="#000000" valuetype="string" visible="true"
+                width="0.01" />
+            <HJTitle name="本品品项组合" bold="true" fontsize="medium" id="003001100"
+                textcolor="#000000" />
+        </HJGrid>
+        <HJLine name="" height="5" id="0030088" />
+        <HJGrid name="产品信息" style="plain" datasource="pxjpctlm1020" fontsize="medium" id="003010"
+            layouttype="adaptive" locking="1" visible="true">
+            <HJGridColumn name="产品名称" bold="false" dbfield="var_data1" editable="true"
+                field="name_item" fontsize="medium" id="003010001" singleline="false"
+                textcolor="#000000" visible="true" width="0.6" />
+            <HJGridColumn name="数量" alignment="right" bold="false" dbfield="var_data2"
+                editable="true" field="dec_qty" fontsize="medium" format="####" id="003010005"
+                singleline="false" textcolor="#000000" valuetype="decimal" visible="true"
+                width="0.3" />
+            <HJGridColumn name="" alignment="center" bold="false" dbfield="var_data3"
+                editable="false" field="id_item" fontsize="medium" format="@@@" id="003010010"
+                singleline="false" textcolor="#000000" valuetype="string" visible="true"
+                width="0.0" />
+            <HJTitle name="竞品品项组合" bold="true" fontsize="medium" id="003010100"
+                textcolor="#000000" />
+        </HJGrid>
+        <HJToolBar name="工具栏" id="003300">
+            <HJButton name="本品" alignment="center" editable="true" fontsize="medium" id="003300001"
+                onclick=" hjds_search('003','pxbpctlm1020','1=1') ;" visible="true"></HJButton>
+            <HJButton name="竞品" alignment="center" editable="true" fontsize="medium" id="003300002"
+                onclick=" hjds_search('003','pxjpctlm1020','1=1') ;" visible="true"></HJButton>
+        </HJToolBar>
+        <HJViewMenu name="菜单" editable="true" id="003017" visible="true">
+            <HJMenuButton name="下一步" editable="true" fontsize="medium" id="003017001"
+                onclick="local savedate = hjv_savedata('003'); if savedate == '1' then hjc_setnextview('003','003017',sender.row,'004',sender.billno,sender.nodeid) end"
+                visible="true"></HJMenuButton>
+        </HJViewMenu>
+    </HJView>
+    <!---->
+    <HJView name="驱动力" id="004" presave="true" returnenable="true">
+        <HJLine name="" height="10" id="0040010" />
+        <!-- 陈列占比与位置   004001-->
+        <!-- 陈列位置   004010 -->
+
+        <HJLine name="" height="10" id="0040019" />
+        <HJRadioButton name="陈列位置" alignment="left" editable="true" fontsize="medium" id="004001"
+            required="false" valuetype="string" visible="true">0
+            <HJRadioButtonOption name="达标" id="004001001">Y</HJRadioButtonOption>
+            <HJRadioButtonOption name="不达标" id="004001002">N</HJRadioButtonOption>
+        </HJRadioButton>
+        <!-- 陈列位置   004010 -->
+        <HJRadioButton name="黄河冷饮设备" alignment="left" editable="true" fontsize="medium" id="004005"
+            required="false" valuetype="string" visible="true">0
+            <HJRadioButtonOption name="达标" id="004005001">Y</HJRadioButtonOption>
+            <HJRadioButtonOption name="不达标" id="004005002">N</HJRadioButtonOption>
+            <HJRadioButtonOption name="不适用" id="004005003">S</HJRadioButtonOption>
+        </HJRadioButton>
+        <HJPhotoView name="陈列位置拍照" alignment="left" editable="true" fontsize="medium"
+            format="@@@@@@" id="004010" required="false" singleline="false" valuetype="string"
+            visible="true"></HJPhotoView>
+        <HJLine name="" height="10" id="0040088" />
+
+
+        <HJRadioButton name="价格展示" alignment="left" editable="true" fontsize="medium" id="004015"
+            required="false" valuetype="string" visible="true">0
+            <HJRadioButtonOption name="达标" id="004015001">Y</HJRadioButtonOption>
+            <HJRadioButtonOption name="不达标" id="004015002">N</HJRadioButtonOption>
+        </HJRadioButton>
+        <HJPhotoView name="价格展示拍照" alignment="left" editable="true" fontsize="medium"
+            format="@@@@@@" id="004020" required="false" singleline="false" valuetype="string"
+            visible="true"></HJPhotoView>
+        <HJLine name="" height="10" id="00400881" />
+
+
+        <!-- 饮用期小于3个月   004010 -->
+        <HJRadioButton name="饮用期小于3个月" alignment="left" editable="true" fontsize="medium"
+            id="004025" required="false" valuetype="string" visible="true">0
+            <HJRadioButtonOption name="达标" id="004025001">Y</HJRadioButtonOption>
+            <HJRadioButtonOption name="不达标" id="004025002">N</HJRadioButtonOption>
+        </HJRadioButton>
+        <!-- 先进先出   004010 -->
+        <HJRadioButton name="先进先出" alignment="left" editable="true" fontsize="medium" id="004030"
+            required="false" valuetype="string" visible="true">0
+            <HJRadioButtonOption name="达标" id="004030001">Y</HJRadioButtonOption>
+            <HJRadioButtonOption name="不达标" id="004030002">N</HJRadioButtonOption>
+        </HJRadioButton>
+        <!-- 产品干净整洁   004010 -->
+        <HJRadioButton name="产品干净整洁" alignment="left" editable="true" fontsize="medium" id="004035"
+            required="false" valuetype="string" visible="true">0
+            <HJRadioButtonOption name="达标" id="004035001">Y</HJRadioButtonOption>
+            <HJRadioButtonOption name="不达标" id="004035002">N</HJRadioButtonOption>
+        </HJRadioButton>
+        <HJPhotoView name="产品新鲜与整洁拍照" alignment="left" editable="true" fontsize="medium"
+            format="@@@@@@" id="004040" required="false" singleline="false" valuetype="string"
+            visible="true"></HJPhotoView>
+        <HJLine name="" height="10" id="00400882" />
+        <!-- 品牌生动化展示   004030 -->
+        <!-- 产品干净整洁   004010 -->
+        <HJRadioButton name="POP齐全无破损" alignment="left" editable="true" fontsize="medium"
+            id="004045" required="false" valuetype="string" visible="true">0
+            <HJRadioButtonOption name="达标" id="004045001">Y</HJRadioButtonOption>
+            <HJRadioButtonOption name="不达标" id="004045002">N</HJRadioButtonOption>
+        </HJRadioButton>
+        <!-- 产品干净整洁   004010 -->
+        <HJRadioButton name="对应在销产品" alignment="left" editable="true" fontsize="medium" id="004050"
+            required="false" valuetype="string" visible="true">0
+            <HJRadioButtonOption name="达标" id="004050001">Y</HJRadioButtonOption>
+            <HJRadioButtonOption name="不达标" id="004050002">N</HJRadioButtonOption>
+        </HJRadioButton>
+        <!-- 产品干净整洁   004010 -->
+        <HJRadioButton name="清洁完好无过期" alignment="left" editable="true" fontsize="medium" id="004055"
+            required="false" valuetype="string" visible="true">0
+            <HJRadioButtonOption name="达标" id="004055001">Y</HJRadioButtonOption>
+            <HJRadioButtonOption name="不达标" id="004055002">N</HJRadioButtonOption>
+        </HJRadioButton>
+        <HJPhotoView name="品牌生动化展示" alignment="left" editable="true" fontsize="medium"
+            format="@@@@@@" id="004060" required="false" singleline="false" valuetype="string"
+            visible="true"></HJPhotoView>
+        <HJLine name="" height="10" id="00400885" />
+
+        <!-- 安全库存管理   004040 -->
+        <HJRadioButton name="是否符合1.5倍安全库存" alignment="left" editable="true" fontsize="medium"
+            id="004065" required="false" valuetype="string" visible="true">0
+            <HJRadioButtonOption name="是" id="004065001">Y</HJRadioButtonOption>
+            <HJRadioButtonOption name="否" id="004065002">N</HJRadioButtonOption>
+        </HJRadioButton>
+        <HJPhotoView name="安全库存管理" alignment="left" editable="true" fontsize="medium"
+            format="@@@@@@" id="004070" required="false" singleline="false" valuetype="string"
+            visible="true"></HJPhotoView>
+        <HJLine name="" height="5" id="00400886" />
+        <!-- 促销政策执行   004050 -->
+        <HJGrid name="促销政策执行" style="plain" fontsize="medium" id="004080" layouttype="adaptive"
+            locking="1" visible="true">
+            <!-- 添加固定的终端信息   -->
+            <HJGridColumn name="项目" bold="false" dbfield="var_data1" editable="false"
+                field="name_item" fontsize="medium" id="0040500001" singleline="false"
+                textcolor="#000000" visible="true" width="0.6" />
+            <HJGridColumn name="是否" bold="false" columntype="checkbox" dbfield="var_data2"
+                editable="true" field="yesno" fontsize="medium" id="004050002" singleline="false"
+                textcolor="#000000" visible="true" width="0.4" />
+            <HJTitle name="促销政策执行" bold="true" fontsize="medium" id="004050100"
+                textcolor="#000000" />[{"name_item":"陈列","yesno":"N"},
+            {"name_item":"买赠","yesno":"N"}, {"name_item":"渠道搭赠","yesno":"N"},
+            {"name_item":"抽奖","yesno":"N"}, {"name_item":"试饮","yesno":"N"},
+            {"name_item":"捆绑赠品","yesno":"N"}, {"name_item":"其它","yesno":"N"}]
+        </HJGrid>
+        <HJViewMenu name="菜单" editable="true" id="004900" visible="true">
+            <HJMenuButton name="下一步" editable="true" fontsize="medium" id="004900001"
+                onclick=" local savedate = hjv_savedata('004'); if savedate == '1' then hjc_setnextview('004','004900',sender.row,'005',sender.billno,sender.nodeid) end"
+                visible="true"></HJMenuButton>
+        </HJViewMenu>
+    </HJView>
+    <HJView name="订单" dataset="jxsctlm1020:'1=1'" datasetmode="local" id="005" presave="true"
+        returnenable="true">
+        <HJGrid name="订单信息" style="plain" datasource="jxsctlm1020" fontsize="medium" id="005100"
+            layouttype="adaptive" locking="1" visible="true">
+            <!-- 添加固定的终端信息   -->
+            <HJGridColumn name="产品名称" bold="false" dbfield="var_data1" editable="true"
+                field="var_name" fontsize="medium" id="005100002" singleline="false"
+                textcolor="#000000" visible="true" width="0.6" />
+            <HJGridColumn name="数量" bold="false" dbfield="var_data2" editable="true" field="dec_qty"
+                fontsize="medium" format="####" id="005100004" singleline="true" textcolor="#000000"
+                valuetype="decimal" visible="true" width="0.3" />
+            <HJGridColumn name="" bold="false" dbfield="var_data4" editable="false" field="id_item"
+                fontsize="medium" id="005100010" singleline="true" textcolor="#000000"
+                visible="true" width="0.5" />
+        </HJGrid>
+        <HJViewMenu name="菜单" editable="true" id="005017" visible="true">
+            <HJButton name="下一步" alignment="center" editable="true" fontsize="medium" id="005017001"
+                onclick="hjv_savedata('005');hjc_setnextview('005','005017',sender.row,'007',sender.billno,sender.nodeid);"
+                visible="true"></HJButton>
+        </HJViewMenu>
+        <HJToolBar name="工具栏" id="006900">
+            <HJButton name="发送短信" alignment="center" editable="true" fontsize="medium"
+                id="006900001"
+                onclick=" local sms = hjc_getvalue('002','002002')..'订货产品与数量：'; for ii = 0,50 ,1 do local qty = hjc_getvalue('005','005100',string.format('%d', ii) ,'005100004') ; if (qty ~='0' and qty ~= nil and qty ~= '' ) then sms =sms.. hjc_getvalue('005','005100', string.format('%d', ii) ,'005100002') .. ' ' .. qty ..'件 '; end end hju_sendsms('005','',sms);"
+                visible="true"></HJButton>
+
+            <HJButton name="产品" alignment="center" editable="true" fontsize="medium" id="006900010"
+                onclick=" hjds_search('005','jxsctlm1020','1=1') ;" visible="true"></HJButton>
+
+
+        </HJToolBar>
+    </HJView>
+    <!--<HJView id="006" name="竞品信息" returnenable="true" presave="true">
+        <HJLine id="0061000" name="" height="5" />
+        <HJTextView id="006001" name="雪花啤酒促销政策" editable="true" required="false" visible="true" width="0.5" valuetype="string" format="@@@@@@" singleline="false" fontsize="medium" alignment="left"></HJTextView>
+        <HJPhotoView id="006005" name="雪花啤酒促销政策拍照" editable="true" required="false" visible="true" valuetype="string" format="@@@@@@" singleline="false" fontsize="medium" alignment="left"></HJPhotoView>
+        <HJLine id="0061002" name="" height="5" />
+        <HJTextView id="006010" name="青岛啤酒促销政策" editable="true" required="false" visible="true" width="0.5" valuetype="string" format="@@@@@@" singleline="false" fontsize="medium" alignment="left"></HJTextView>
+        <HJPhotoView id="006015" name="青岛啤酒促销政策拍照" editable="true" required="false" visible="true" valuetype="string" format="@@@@@@" singleline="false" fontsize="medium" alignment="left"></HJPhotoView>
+        <HJLine id="0061003" name="" height="5" />
+        <HJTextView id="006020" name="乐堡啤酒促销政策" editable="true" required="false" visible="true" width="0.5" valuetype="string" format="@@@@@@" singleline="false" fontsize="medium" alignment="left"></HJTextView>
+        <HJPhotoView id="006025" name="乐堡啤酒促销政策拍照" editable="true" required="false" visible="true" valuetype="string" format="@@@@@@" singleline="false" fontsize="medium" alignment="left"></HJPhotoView>
+        <HJLine id="0061004" name="" height="5" />
+        <HJTextView id="006030" name="哈尔滨啤酒促销政策" editable="true" required="false" visible="true" width="0.5" valuetype="string" format="@@@@@@" singleline="false" fontsize="medium" alignment="left"></HJTextView>
+        <HJPhotoView id="006035" name="哈尔滨啤酒促销政策拍照" editable="true" required="false" visible="true" valuetype="string" format="@@@@@@" singleline="false" fontsize="medium" alignment="left"></HJPhotoView>
+        <HJLine id="0061005" name="" height="5" />
+        <HJTextView id="006040" name="其它啤酒促销政策" editable="true" required="false" visible="true" width="0.5" valuetype="string" format="@@@@@@" singleline="false" fontsize="medium" alignment="left"></HJTextView>
+        <HJPhotoView id="006045" name="其它啤酒促销政策拍照" editable="true" required="false" visible="true" valuetype="string" format="@@@@@@" singleline="false" fontsize="medium" alignment="left"></HJPhotoView>
+          界面右上角菜单 或一个按钮  可以是保存、下一步、或其它命令， 按菜单定义来  
+        <HJViewMenu id="006900" name="菜单" editable="true" visible="true">
+            <HJButton id="006900001" name="下一步" editable="true" visible="true" fontsize="medium" alignment="center" onclick="hjv_savedata('006');hjc_setnextview('006','006900',sender.row,'007',sender.billno,sender.nodeid);"></HJButton>
+        </HJViewMenu>
+    </HJView>
+	-->
+    <HJView name="离店" id="007"
+        onload=" local jdsj = hjc_getvalue('002','002055'); hjc_setvalue('007','007005',jdsj); local zdmc = hjc_getvalue('002','002002'); hjc_setvalue('007','007001',zdmc); local time = os.date('%Y-%m-%d %H:%M:%S', os.time()); hjc_setvalue('007','007006',time); local h1,m1,s1 = string.match(jdsj,'(%d+):(%d+):(%d+)'); local h2,m2,s2 = string.match(time,'(%d+):(%d+):(%d+)'); local time1 = h1*3600 + m1 * 60 + s1; local time2 = h2 * 3600 + m2 * 60 + s2 ; hjc_setvalue('007','007007',string.format('%d', time2 - time1 )..'秒');"
+        presave="true" returnenable="false">
+        <!--两个时间相减不太会-->
+        <HJTextView name="终端名称" alignment="left" editable="false" fontsize="medium" id="007001"
+            required="false" singleline="true" valuetype="string" visible="true"
+            width="0.5"></HJTextView>
+        <HJTextView name="进店时间" alignment="left" editable="false" fontsize="medium" id="007005"
+            required="false" singleline="true" valuetype="string" visible="true"
+            width="0.5"></HJTextView>
+        <HJTextView name="离店时间" alignment="left" editable="false" fontsize="medium" id="007006"
+            required="false" singleline="true" valuetype="string" visible="true"
+            width="0.5"></HJTextView>
+        <HJTextView name="拜访时长" alignment="left" editable="false" fontsize="medium" id="007007"
+            required="false" singleline="true" valuetype="string" visible="true"
+            width="0.5"></HJTextView>
+        <HJTextView name="下次拜访提醒" alignment="left" editable="true" fontsize="medium" id="007002"
+            required="false" singleline="false" valuetype="string" visible="true"
+            width="0.5"></HJTextView>
+        <HJPhotoView name="离店拍照" alignment="left" editable="true" id="007011" required="true"
+            visible="true"></HJPhotoView>
+        <HJViewMenu name="菜单" editable="true" id="007009" visible="true">
+            <HJMenuButton name="数据上传" editable="true" fontsize="medium" id="007009002"
+                onclick=" local billno =sender.billno; local nodeid = hjv_getparentnode('002'); hjdb_updatevalue(billno,nodeid,'var_data1','Y'); local savedate = hjv_savedata('007'); if savedate == '1' then hjdb_nodeupload(billno); hjc_setbackview('001'); end"
+                visible="true"></HJMenuButton>
+        </HJViewMenu>
+    </HJView>
+    <HJView name="异常拜访" id="009"
+        onload=" local jdsj = hjc_getvalue('002','002055'); hjc_setvalue('009','009005',jdsj); local zdmc = hjc_getvalue('002','002002'); hjc_setvalue('009','009001',zdmc); local time = os.date('%Y-%m-%d %H:%M:%S', os.time()); hjc_setvalue('009','009006',time); local h1,m1,s1 = string.match(jdsj,'(%d+):(%d+):(%d+)'); local h2,m2,s2 = string.match(time,'(%d+):(%d+):(%d+)'); local time1 = h1*3600 + m1 * 60 + s1; local time2 = h2 * 3600 + m2 * 60 + s2 ; hjc_setvalue('009','009007',string.format('%d', time2 -time1 )..'秒');"
+        presave="true" returnenable="false">
+        <HJTextView name="终端名称" alignment="left" editable="false" fontsize="medium" format="@@@@@@"
+            id="009001" required="false" singleline="true" valuetype="string" visible="true"
+            width="0.5"></HJTextView>
+        <HJTextView name="进店时间" alignment="left" editable="false" fontsize="medium" format="@@@@@@"
+            id="009005" required="false" singleline="true" valuetype="string" visible="true"
+            width="0.5"></HJTextView>
+        <HJTextView name="离店时间" alignment="left" editable="false" fontsize="medium" format="@@@@@@"
+            id="009006" required="false" singleline="true" valuetype="string" visible="true"
+            width="0.5"></HJTextView>
+        <HJTextView name="拜访时长" alignment="left" editable="false" fontsize="medium" format="@@@@@@"
+            id="009007" required="false" singleline="true" valuetype="string" visible="true"
+            width="0.5"></HJTextView>
+        <HJTextView name="下次拜访提醒" alignment="left" editable="true" fontsize="medium" format="@@@@@@"
+            id="009002" required="false" singleline="false" valuetype="string" visible="true"
+            width="0.5"></HJTextView>
+        <HJRadioButton name="终端状态" alignment="left" editable="false" fontsize="medium" id="009009"
+            required="true" valuetype="string" visible="true">0
+            <HJRadioButtonOption name="关停" id="009009001">0</HJRadioButtonOption>
+            <HJRadioButtonOption name="转让" id="009009002">1</HJRadioButtonOption>
+            <HJRadioButtonOption name="歇业" id="009009003">2</HJRadioButtonOption>
+        </HJRadioButton>
+        <HJPhotoView name="离店拍照" alignment="left" editable="true" id="009011" required="true"
+            visible="true"></HJPhotoView>
+        <HJViewMenu name="菜单" editable="true" id="009009" visible="true">
+            <HJMenuButton name="数据上传" editable="true" fontsize="medium" id="009009002"
+                onclick=" local billno =sender.billno; local nodeid = hjv_getparentnode('002'); hjdb_updatevalue(billno,nodeid,'var_data1','Y'); local savedate = hjv_savedata('009'); if savedate == '1' then hjdb_nodeupload(billno); hjc_setbackview('001'); end"
+                visible="true"></HJMenuButton>
+        </HJViewMenu>
+    </HJView>
+
+
+    <HJView name="驱动力判断标准" id="900" onload="
+	  local bz = '  第一步：在进入售点以前有查看该售点之前的记录，并做相应准备才算合格。\n
+第二步：问好、招手、还是点头均可以，打招呼应该引起客户的注意才算合格。\n
+第三步：包含陈列点加货、先进先出、卫生清洁、价格展示和发掘新的陈列位置，全部做到为之合格。\n
+第四步：按照公司的生动化指引进行生动化，才算合格。\n
+第五步：库存记录完整、正确才算合格\n
+第六步：按照补货计划进行建议，客户接受后需确定送货时间，才算合格。\n
+第七步：回顾内容需和店内执行的工作相关，并约定下次拜访时间，感谢的话需要明确说出口，才算合格。\n
+第八步：相关的销售数据应该记录完整，才算合格。\n
+
+ 品项组合 \n    先准确划分终端的渠道类型，然后根据必备单品的指引完成品项组合（必备单品标准见附件）\n\n 陈列占比及位置\n  ①公平陈列份额：\n     a、可以根据库存判断单店市场份额的时候，陈列占比要大于或等于市场份额；\n     b、无法判断单店市场份额时，陈列占比要大于最大的竞品；\n  ②第一可见陈列位置：\n     a、与视线齐平的位置；\n     b、入口处、人流量较大的位置；	\n  ③陈列次序符合公司要求：陈列次序从上到下，从左到右，品项要从高档到低档进行陈列；\n  ④品牌、品项集中陈列：要求产品陈列时同一品牌、同一品项要集中陈列，并尽量做到提高陈列面；\n  ⑤割箱陈列：执行割箱陈列，扩大本品的整体陈列占比；	\n\n 价格展示\n  ①所有产品都要有价格展示：价格展示可以是我们的价格签，也可以是终端自己印制的酒水单；\n  ②价格展示要与产品一一对应；\n  ③当有促销时，要同时展示原价和现价，以体现促销力度；\n\n 新鲜整洁度\n  ①瓶标朝外面向消费者；\n  ②瓶身干净清爽；\n  ③符合先进先出原则：日期比较老的产品放在最容易出货的地方；\n\n 品牌生动化	\n  ①位置优选原则：把生动化物料张贴在最显眼的位置，起到宣传作用；\n  ②独特突出原则：张贴生动化物料时要防止被环境或其他物品掩盖；\n  ③及时更新原则：\n    a、出现破损、淡化等情况是要及时更换；\n    b、当生动化物料上宣传的活动结束或产品下线时，要及时更换；\n  ④陈列配套原则：\n    a、生动化物料的使用要与店内销售产品相配套；\n    b、在单店进行生动化维护时，也可做同一产品不同物料的配套使用；\n  ⑤资源善用原则： 在生动化物料的使用中，要节约物料，把合适的物料用在合适的地方，避免浪费；\n\n 1.5倍安全库存\n  ①所谓安全库存，是指2次送货间隔销量的1.5倍（2个收货期之间的天数）×平均日销量×1.5倍  如：某店3天送一次货，平均日销量为4件，目前现有库存为8件，那计算此店的安全库存为：3×4×1.5=18，再减去目前库存数8件，此次建议补货数为10件；\n  ②检查库存时还应注意观察记录哪些产品出货快，哪些产品出货慢；';
+      hjc_setvalue('900','900001',bz);
+	  " returnenable="true">
+        <HJTextLabel name="" alignment="left" editable="false" fontsize="medium" format="@@@@@@"
+            id="900001" required="false" singleline="false" valuetype="string" visible="true"
+            width="0.5">
+
+        </HJTextLabel>
+    </HJView>
+</HJModel>

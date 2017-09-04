@@ -1,0 +1,222 @@
+<HJModel start = "001" type = "opr" id = "999" billnotype = "new">
+    <!--type  query-删除通id的1347记录   opr-->
+    <!-- billnotype  new-每次/read-读        -->
+
+    <!---->
+    <HJView id = "001" name = "今日拜访"  returnenable="true" dataset="ctlm4101:'1=1'"  datasetmode="local"  > 
+        <!-- 1-只从网络;2-从网络>>1345;3-从1345;4-从1345>>从网络 -->
+        <HJList id = "001002" name = "路线" fontsize = "medium" editable ="true"
+               visible ="true" nextview ="002" viewparm = "id_trmar=001002.001002003;trmar_name=001002.001002001" datasource="ctlm4101" onclick = "" >
+               <!-- 添加固定的终端信息   -->
+           <HJListColumn id="001002001" name ="终端名称"  width ="1" editable ="true" visible ="true" singleline ="false" fontsize = "medium"  bold ="false" textcolor ="#000000" field = "name_terminal" visiblename="true" dbfield = "var_data2"/>
+           <HJListColumn id="001002002" name ="地址"  width ="1"   editable ="true" visible ="true" singleline ="false"  fontsize ="small" bold ="false" textcolor ="#000000" field = "addr" visiblename="false" dbfield = "var_data3"/>
+           <HJListColumn id="001002003" name ="终端代码"  width ="1" editable ="true" visible ="true" singleline ="false"  fontsize ="small" bold ="false" textcolor ="#000000" field = "id_terminal" visiblename="true" dbfield = "var_data4"/>
+           <HJListCheckFlag id="001002004" field = "checked" dbfield = "var_data1"/> 
+           
+             [
+          {
+          "name_terminal": "小吃店1",
+          "id_terminal": "001",
+          "addr": "中关村1",
+          "checked": "Y"  
+          },
+          {
+          "name_terminal": "小吃店2",
+          "id_terminal": "002",
+          "addr": "中关村2",
+          "checked": "N"
+          },
+          {
+          "name_terminal": "小吃店3",
+          "id_terminal": "003",
+          "addr": "中关村3",
+          "checked": "Y"
+          },
+          {
+          "name_terminal": "小吃店4",
+          "id_terminal": "004",
+          "addr": "中关村4",
+          "checked": "Y"
+          }
+          ]
+        </HJList>
+         
+        
+       <HJViewMenu id="001005" name="菜单"   editable ="true" visible ="true" > 
+        <HJButton id="001005001" name="计划外线路"  editable ="true"  visible ="true"  fontsize = "medium"   onclick="hjds_search('001','ctlm4101')"   > </HJButton>
+        <HJButton id="001005002" name="数据上传"  editable ="true"  visible ="true"  fontsize = "medium"     onclick="hjds_datauplod('001','001002')"   > </HJButton>
+      </HJViewMenu>
+    </HJView>
+    <!---->
+    <HJView id = "002" name = "终端信息"  returnenable="true" dataset="ctlm4101," condition="id_column=[id_trmar]"  datasetmode="local" >
+        <!--valuetype 类型  string     phoneNumber 电话号码      password 密码    integer 整形   decimal 小数   -->
+        <HJTextView id = "002001" name = "终端代码"   editable ="false"  required ="false" visible ="false" width ="0.8" valuetype="string" format="@@@@@@" singleline = "true" fontsize = "medium" alignment="right" lua = ""  >[id_trmar]</HJTextView>
+        <HJTextView id = "002002" name = "终端名称"   editable ="false"  required ="false" visible ="false" width ="0.8" valuetype="string" format="@@@@@@" singleline = "true" fontsize = "medium"  alignment="left" field = "name_terminal" datasource="ctlm4101"> </HJTextView>
+        <HJTextView id = "002003" name = "终端类型"   editable ="false"  required ="false" visible ="false" width ="0.8" valuetype="string" format="@@@@@@" singleline = "true" fontsize = "medium"  alignment="left" field = "id_tertype" datasource="ctlm4101"></HJTextView>
+        <HJTextView id = "002004" name = "联系人"     editable ="false"  required ="false" visible ="false" width ="0.8" valuetype="string" format="@@@@@@" singleline = "true" fontsize = "medium"  alignment="left" field = "var_contact" datasource="ctlm4101"></HJTextView>
+        <HJTextView id = "002004" name = "联系方式"   editable ="false"  required ="false" visible ="false" width ="0.8" valuetype="string" format="@@@@@@" singleline = "true" fontsize = "medium"  alignment="left" field = "var_tel" datasource="ctlm4101"></HJTextView>
+        <HJTextView id = "002005" name = "地址"       editable ="false"  required ="false" visible ="false" width ="0.8" valuetype="string" format="@@@@@@" singleline = "true" fontsize = "medium"  alignment="left" field = "var_addr" datasource="ctlm4101"></HJTextView>
+        <HJTextView id = "002006" name = "已拜访次数"   editable ="false"  required ="false" visible ="false" width ="0.8" valuetype="string" format="@@@@@@" singleline = "true" fontsize = "medium"  alignment="left" field = "id_terattr" datasource="ctlm4101"></HJTextView>
+        <HJTextView id = "002007" name = "上次拜访回顾"   editable ="false"  required ="false" visible ="false" width ="0.8" valuetype="string" format="@@@@@@" singleline = "true" fontsize = "medium"  alignment="left" field = "var_check"  datasource="ctlm4101"></HJTextView>
+        <HJTextView id = "002008" name = "进店时间"    editable ="false"  required ="true" visible ="false" width ="0.8" valuetype="string" format="@@@@@@" singleline = "true" fontsize = "medium"  alignment="left" > </HJTextView>  
+       
+        
+          <HJTextView id = "002065" name = "进店时间"    editable ="true"  required ="true" visible ="false" width ="0.7" valuetype="string" format="@@@@@@" singleline = "true" fontsize = "medium"  alignment="left" > </HJTextView>  
+       <HJTextView id = "002069" name = "进店时间phoneNumber"    editable ="true"  required ="true" visible ="false" width ="0.7" valuetype="phoneNumber" format="@@@@@@" singleline = "true" fontsize = "medium"  alignment="left" > </HJTextView>  
+       <HJTextView id = "002070" name = "进店时间password"    editable ="true"  required ="true" visible ="false" width ="0.7" valuetype="password" format="@@@@@@" singleline = "true" fontsize = "medium"  alignment="left" > </HJTextView>  
+       <HJTextView id = "002088" name = "进店时间integer"    editable ="true"  required ="true" visible ="false" width ="0.7" valuetype="integer" format="####" singleline = "true" fontsize = "medium"  alignment="left" > </HJTextView>  
+       <HJTextView id = "002090" name = "进店时间decimal"    editable ="true"  required ="true" visible ="false" width ="0.7" valuetype="decimal" format="####.00" singleline = "true" fontsize = "medium"  alignment="left" > </HJTextView>  
+       
+        <HJLocation id = "002009" name = "定位"  editable ="true"  required ="true" visible ="true" valuetype="string" format="@@@@@@" singleline = "false" fontsize = "medium"  alignment="left"   ></HJLocation>
+        <HJPhotoView id = "002010" name = "拍照"  editable ="true"  required ="false" visible ="true" valuetype="string" format="@@@@@@" singleline = "false" fontsize = "medium"  alignment="left"   ></HJPhotoView>
+
+      <HJToolBar id ="002011" name="工具栏"  >
+        <HJButton id="002011001" name="异常"  editable ="true"  visible ="true"  fontsize = "medium"  alignment="center" nextview="009"  > </HJButton> 
+        <HJButton id="002011003" name="拜访"  editable ="true"  visible ="true"  fontsize = "medium"  alignment="center" nextview="005" > </HJButton>
+      </HJToolBar>
+  </HJView>
+  
+    <!---->
+    <HJView id = "005" name = "生动化" returnenable="false"  >
+
+      <HJGrid id = "005001" name = "产品信息" fontsize = "medium"
+               visible ="true" locking ="1" datasource="ctlm1020">
+        <!-- 添加固定的终端信息   -->
+        <HJGridColumn id="005001001" name ="项目"  width ="0.3"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data2" field="name"    />
+        <HJGridColumn id="005001002" name ="是否有"  width ="0.2"  type="checkbox"  editable ="true" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data3" field="yesno"    />
+        <HJGridColumn id="005001003" name ="数量"  width ="0.25"   editable ="true"   visible ="true" valuetype="decimal" format="####.00"   singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data4" field="qty" alignment="right" />
+        <HJGridColumn id="005001004" name ="单位"  width ="0.25"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data5" field="unit" alignment="right"/>
+        <HJGridColumn id="005001005" name ="单位3"  width ="0.25"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data5" field="unit" alignment="right"/>
+        <HJGridColumn id="005001006" name ="单位3"  width ="0.25"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data5" field="unit" alignment="right"/>
+  
+        [
+        {
+        "name": "货架",
+        "yesno": "N",
+        "qty": "0",
+        "unit": "瓶"
+        },
+        {
+        "name": "货架",
+        "yesno": "N",
+        "qty": "0",
+        "unit": "件"
+        },
+        {
+        "name": "冰酒",
+        "yesno": "N",
+        "qty": "0",
+        "unit": "瓶"
+        },
+        {
+        "name": "POP",
+        "yesno": "N",
+        "qty": "0",
+        "unit": "张"
+        }
+        ]
+      </HJGrid>
+      
+      <HJRadioButton id = "005016" name = "签到卡"  editable ="true"  required ="true" visible ="false" fontsize = "medium"  alignment="left" >
+        <HJRadioButtonOption id = "005016001" name = "有" >01</HJRadioButtonOption>
+        <HJRadioButtonOption id = "005016002" name = "无" >02</HJRadioButtonOption>
+        01
+      </HJRadioButton>
+      <!-- 界面右上角菜单 或一个按钮  可以是保存、下一步、或其它命令， 按菜单定义来   -->
+      <HJViewMenu id="005017" name="菜单" editable ="true" visible ="true" >
+        <HJButton id="005017001" name="下一步"  editable ="true"  visible ="true"  fontsize = "medium"  alignment="center"  nextview="006"  > </HJButton>
+        <HJButton id="005017002" name="下一1步"  editable ="true"  visible ="true"  fontsize = "medium"  alignment="center"  nextview="006"  > </HJButton>
+        <HJButton id="005017003" name="下一2步"  editable ="true"  visible ="true"  fontsize = "medium"  alignment="center"  nextview="006"  > </HJButton>
+      </HJViewMenu>
+    </HJView>
+    <HJView id = "006" name = "产品信息"  returnenable="false" >
+      <HJRadioButton id = "006001" name = "吧台/货架/摆台是否达标"  editable ="true" visible ="true"  fontsize ="medium" bold ="false" textcolor ="#000000">
+        <HJRadioButtonOption id = "006001001" name = "有">N</HJRadioButtonOption>
+        <HJRadioButtonOption id = "006001002" name = "无">Y</HJRadioButtonOption>
+      </HJRadioButton>
+      <HJCheckBox id = "006009" name = "堆头位置"  editable ="true" visible ="true"  fontsize ="medium" bold ="false" textcolor ="#000000">
+            <HJCheckBoxOption id = "006009001" name = "门内两侧或正对门口">01</HJCheckBoxOption>
+            <HJCheckBoxOption id = "006009002" name = "门外">02</HJCheckBoxOption>
+            <HJCheckBoxOption id = "006009003" name = "收银台/吧台">03</HJCheckBoxOption>
+            <HJCheckBoxOption id = "006009004" name = "立柱旁/货架前端">04</HJCheckBoxOption>
+            <HJCheckBoxOption id = "006009005" name = "橱窗外可见">05</HJCheckBoxOption>
+			01,02
+        </HJCheckBox>
+      <HJGrid id = "006002" name = "产品信息" fontsize = "medium"
+               visible ="true"	    nextview ="002"  locking ="2" datasource="ctlm1020" >
+        <!-- 添加固定的终端信息   -->
+        <HJGridColumn id="006002001" name ="产品代码"  width ="0.4"   editable ="true" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data2" field="id"/>
+        <HJGridColumn id="006002002" name ="产品名称"  width ="0.5"   editable ="true" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data3" field="name"    />
+        <HJGridColumn id="006002003" name ="库存"  width ="0.3"   editable ="true" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data4" field="qty"  />
+        <HJGridColumn id="006002004" name ="月销量"  width ="0.3"   editable ="true" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data5" field="saqty" />
+        <HJGridColumn id="006002005" name ="酒龄"  width ="0.3"   editable ="true" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data6" field="age" />
+
+        [
+        {
+        "id": "001",
+        "name": "清爽8",
+        "qty": "0",
+        "saqty": "1",
+        "age": "3"
+        },
+        {
+        "id": "001",
+        "name": "清爽8",
+        "qty": "0",
+        "saqty": "1",
+        "age": "3"
+        },
+        {
+        "id": "001",
+        "name": "清爽8",
+        "qty": "0",
+        "saqty": "1",
+        "age": "3"
+        }
+        ]
+      </HJGrid>
+      <HJViewMenu id="006005" name="菜单"   editable ="true" visible ="true" >
+        <HJButton id="006005001" name="下一步"  editable ="true"  visible ="true"  fontsize = "medium"  alignment="center"  nextview="007"  > </HJButton>
+        <HJButton id="006005002" name="下一1步"  editable ="true"  visible ="true"  fontsize = "medium"  alignment="center"  nextview="007"  > </HJButton>
+        <HJButton id="006005003" name="下一2步"  editable ="true"  visible ="true"  fontsize = "medium"  alignment="center"  nextview="007"  > </HJButton>
+      </HJViewMenu>
+      
+    </HJView>
+  
+    <HJView id="007" name="离店"  returnenable="false"  >
+      <HJTextView id = "007001" name = "终端名称"   editable ="false"  required ="false" visible ="true" width ="0.7" valuetype="string" format="@@@@@@" singleline = "false" fontsize = "medium"  alignment="left"    >成都小吃店</HJTextView>
+      <HJTextView id = "007002" name = "下次拜访提醒"   editable ="false"  required ="false" visible ="true" width ="0.7" valuetype="string" format="@@@@@@" singleline = "false" fontsize = "medium"  alignment="left"   >成都小吃店</HJTextView>
+
+      <HJTextView id = "007005" name = "进店时间"  editable ="false"  required ="false" visible ="true" width ="0.7" valuetype="string" format="@@@@@@" singleline = "false" fontsize = "medium"  alignment="left"  ></HJTextView>
+      <HJTextView id = "007006" name = "离店时间"  editable ="false"  required ="false" visible ="true" width ="0.7" valuetype="string" format="@@@@@@" singleline = "false" fontsize = "medium"  alignment="left"  ></HJTextView>
+      <HJTextView id = "007007" name = "拜访时长"  editable ="false"  required ="false" visible ="true" width ="0.7" valuetype="string" format="@@@@@@" singleline = "false" fontsize = "medium"  alignment="left"  ></HJTextView>
+
+      <HJToolBar id ="007009" name="工具栏"  > 
+        <HJButton id="007009001" name="照片"  editable ="true"  visible ="false"  fontsize = "medium"  alignment="center"  nextview="001"> </HJButton>
+        <HJButton id="007009002" name="数据上传"  editable ="true"  visible ="false"  fontsize = "medium"  alignment="center" backview="001" > </HJButton>
+      </HJToolBar>
+      
+    </HJView>
+
+
+  <HJView id="009" name="异常拜访"  returnenable="true" >
+    <HJTextView id = "009001" name = "终端名称"   editable ="false"  required ="false" visible ="true" width ="0.7" valuetype="string" format="@@@@@@" singleline = "false" fontsize = "medium"  alignment="left"   >成都小吃店</HJTextView>
+    <HJTextView id = "009002" name = "下次拜访提醒"   editable ="false"  required ="false" visible ="true" width ="0.7" valuetype="string" format="@@@@@@" singleline = "false" fontsize = "medium"  alignment="left"   ></HJTextView>
+
+    <HJTextView id = "009005" name = "进店时间"  editable ="false"  required ="false" visible ="true" width ="0.7" valuetype="string" format="@@@@@@" singleline = "false" fontsize = "medium"  alignment="left"   ></HJTextView>
+    <HJTextView id = "009006" name = "离店时间"  editable ="false"  required ="false" visible ="true" width ="0.7" valuetype="string" format="@@@@@@" singleline = "false" fontsize = "medium"  alignment="left"  ></HJTextView>
+    <HJTextView id = "009007" name = "拜访时长"  editable ="false"  required ="false" visible ="true" width ="0.7" valuetype="string" format="@@@@@@" singleline = "false" fontsize = "medium"  alignment="left"   ></HJTextView>
+
+    <HJRadioButton id = "009009" name = "终端状态" editable ="false"  required ="false" visible ="true" valuetype="string" fontsize = "medium"  alignment="left" >0
+      <HJRadioButtonOption id = "009009001" name = "关停">0</HJRadioButtonOption>
+      <HJRadioButtonOption id = "009009002" name = "转让">1</HJRadioButtonOption>
+      <HJRadioButtonOption id = "009009003" name = "歇业">2</HJRadioButtonOption>
+    </HJRadioButton>
+    
+    <HJToolBar id ="009011" name="工具栏"  >
+      <HJButton id="009011001" name="照片"  editable ="true"  visible ="false"  fontsize = "medium"  alignment="center"  backview="001"> </HJButton>
+      <HJButton id="009011002" name="数据上传"  editable ="true"  visible ="false"  fontsize = "medium"  alignment="center"  backview="001" > </HJButton>
+    </HJToolBar>
+  </HJView>
+  
+</HJModel>

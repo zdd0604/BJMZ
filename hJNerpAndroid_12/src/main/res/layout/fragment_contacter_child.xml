@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" 
+    android:background="@drawable/app_out_btn_style"
+    android:descendantFocusability="blocksDescendants" >
+    
+    <!-- LinerLayout有比较奇怪的性质：当布局中的控件可以超出布局规定的大小 ,所以这里一行的行宽改成由内部的几个控件
+    控制，而LinerLayout的layout_height改成wrap_content ..  -->
+
+    <com.hjnerp.widget.BubbleImageView
+        android:id="@+id/fc_ct_photo"
+        android:layout_width="@dimen/abc_dropdownitem_icon_width"
+        android:layout_height="@dimen/abc_dropdownitem_icon_width"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:adjustViewBounds="true"
+        android:gravity="center"
+        android:src="@drawable/v5_0_1_profile_headphoto"
+        app:bubble_angle="19dp"
+        app:bubble_arrowHeight="0dp"
+        app:bubble_arrowLocation="right"
+        app:bubble_arrowOffset="0dp"
+        app:bubble_arrowTop="0dp"
+        app:bubble_arrowWidth="0dp" />
+
+
+    <com.hjnerp.widget.BubbleImageView
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_below="@id/ct_photo"
+        android:paddingLeft="5dp"
+        android:paddingRight="0dp"/>
+
+    <TextView
+        android:id="@+id/fc_ct_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/fc_ct_photo"
+        android:maxLength="7"
+        android:padding="5dip"
+        android:text="李响"
+        android:textSize="16sp"
+       />
+
+</RelativeLayout>

@@ -1,0 +1,146 @@
+<HJModel start = "001" type = "qwer">
+    <!---->
+    <HJView id = "001" name = "今日拜访" >
+        <HJList id = "001002" name = "路线" fontsize = "medium" width ="100" height ="100" editable ="true" 
+               visible ="true" nextview ="002" datasource="ctlm1020">
+               <!-- 添加固定的终端信息   -->
+           <HJListColumn id="001002001" name ="终端名称"  width ="100"   editable ="true" visible ="true" singleline ="false" fontsize = "medium"  bold ="false" textcolor ="#023000" field = "name" />
+           <HJListColumn id="001002002" name ="地址"  width ="100"   editable ="true" visible ="true" singleline ="false"  fontsize ="small" bold ="false" textcolor ="#000023" field="addr"  />
+          <HJListColumn id="001002003" name ="终端代码"  width ="100"   editable ="true" visible ="false" singleline ="false"  fontsize ="small" bold ="false" textcolor ="#043260" field="id" />
+          
+            [
+            {
+            "name": "小吃店",
+            "id": "001",
+            "addr": "中关村"
+            },
+            {
+            "name": "小吃店1",
+            "id": "002",
+            "addr": "中关村1"
+            },
+            {
+            "name": "小吃店2",
+            "id": "003",
+            "addr": "中关村2"
+            }
+            ]
+         
+        </HJList>
+    </HJView>
+    <!---->
+    <HJView id = "002" name = "路线">
+        <HJList id = "002001" name = "路线详情" fontsize = "medium">
+          
+        </HJList>
+    </HJView>
+    <!---->
+    <HJView id = "003" name = "进店">
+        <!--<textboxList id = "003001" name = "终端信息"></textboxList>-->
+        <HJLabel id = "003002" name = "拜访回顾" singleline = "false" fontsize = "medium"></HJLabel>
+        <HJLocation id = "003003" name = "定位">ggggg</HJLocation>
+        <HJTextView id = "003004" name = "进店时间" singleline = "false" fontsize = "medium" editable = "true"></HJTextView>
+        <HJRadioButton id = "003005" name = "终端状态" >
+            <HJRadioButtonOption id = "003005001" name = "正常"></HJRadioButtonOption>
+            <HJRadioButtonOption id = "003005002" name = "关停"></HJRadioButtonOption>
+            <HJRadioButtonOption id = "003005003" name = "转让"></HJRadioButtonOption>
+            <HJRadioButtonOption id = "003005004" name = "歇业"></HJRadioButtonOption>
+        </HJRadioButton>
+        <HJButton id = "003007" name = "终端信息修改" nextview = "004"></HJButton>
+        <HJPhotoView id = "003008" name = "拍照"></HJPhotoView>
+    </HJView>
+    <!---->
+    <HJView id = "004" name = "终端信息修改">
+        <HJTextView id = "004001" name = "终端编号" editable = "true" ></HJTextView>
+        <HJTextView id = "004002" name = "终端名称" editable = "true" ></HJTextView>
+        <HJTextView id = "004003" name = "终端类型" editable = "true" ></HJTextView>
+        <HJTextView id = "004004" name = "地址" editable = "true" ></HJTextView>
+        <HJTextView id = "004005" name = "手机号码" editable = "true" ></HJTextView>
+        <HJTextView id = "004006" name = "拜访类型" editable = "true" ></HJTextView>
+        <HJTextView id = "004007" name = "终端投入" editable = "true" ></HJTextView>
+        <HJLabel id = "004008" name = "说明" singleline = "false"></HJLabel>
+    </HJView>
+    <!---->
+    <HJView id = "005" name = "陈列展示">
+        <HJLabel id = "005001" name = "堆头陈列">堆头陈列</HJLabel>
+        <HJTextView id = "005002" name = "本品数量" editable = "true"></HJTextView>
+        <HJTextView id = "005002" name = "本品数量" editable = "true"></HJTextView>
+        <HJLabel id = "005004" name = "堆头位置">堆头位置</HJLabel>
+        <HJCheckBox id = "005005" name = "堆头位置">
+            <HJCheckBoxOption id = "005005001" name = "门内两侧或正对门口"></HJCheckBoxOption>
+            <HJCheckBoxOption id = "005005001" name = "门外"></HJCheckBoxOption>
+            <HJCheckBoxOption id = "005005001" name = "收银台/吧台"></HJCheckBoxOption>
+            <HJCheckBoxOption id = "005005001" name = "立柱旁/货架前端"></HJCheckBoxOption>
+            <HJCheckBoxOption id = "005005001" name = "橱窗外可见"></HJCheckBoxOption>
+        </HJCheckBox>
+        <HJRadioButton id = "005010" name = "堆头位置陈列是否达标">
+            <HJRadioButtonOption id = "005010001" name = "达标"></HJRadioButtonOption>
+            <HJRadioButtonOption id = "005010002" name = "不达标"></HJRadioButtonOption>
+        </HJRadioButton>
+        <HJLabel id = "005011" name = "说明">说明</HJLabel>
+        <HJLabel id = "005012" name = "吧台/货架/摆台陈列"></HJLabel>
+        <HJTextView id = "005013" name = "本品数量" editable = "true"></HJTextView>
+        <HJTextView id = "005014" name = "竟品数量" editable = "true"></HJTextView>
+        <HJRadioButton id = "005015" name = "吧台/货架/摆台位置">
+            <HJRadioButtonOption id = "005015001" name = "视平线"></HJRadioButtonOption>
+            <HJRadioButtonOption id = "005015002" name = "非视平线"></HJRadioButtonOption>
+        </HJRadioButton>
+        <HJRadioButton id = "005016" name = "吧台/货架/摆台是否达标">
+            <HJRadioButtonOption id = "005016001" name = "达标"></HJRadioButtonOption>
+            <HJRadioButtonOption id = "005016002" name = "不达标"></HJRadioButtonOption>
+        </HJRadioButton>
+        <HJLabel id = "005017" name = "说明">说明</HJLabel>
+        <HJLabel id = "005018" name = "展示柜陈列"></HJLabel>
+        <HJCheckBox id = "005019" name = "是否有展柜">
+            <HJRadioButtonOption id = "005019001" name = "有展柜"></HJRadioButtonOption>
+        </HJCheckBox>
+        <HJRadioButton id = "005020" name = "是否达标">
+            <HJRadioButtonOption id = "005020001" name = "达标"></HJRadioButtonOption>
+            <HJRadioButtonOption id = "005020002" name = "不达标"></HJRadioButtonOption>
+        </HJRadioButton>
+        <HJLabel id = "005021" name = "说明" singleline = "ture"></HJLabel>
+        <HJPhotoView id = "005022" name = "拍照"></HJPhotoView>
+    </HJView>
+    <!---->
+    <HJView id = "006" name = "生动化"></HJView>
+    <HJView id="007" name="离店"> 
+      
+    </HJView>
+  
+    
+    <HJView id="008" name="表格"> 
+       <HJGrid id = "008001" name = "产品信息" fontsize = "medium"    
+               visible ="true" nextview ="002"  locking = "2" datasource="ctlm1020">
+               <!-- 添加固定的终端信息   -->
+           <HJGridColumn id="008001001" name ="产品代码"  width ="40"   editable ="true" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  field="id"    />
+           <HJGridColumn id="008001002" name ="产品名称"  width ="50"   editable ="true" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  field="name"    />
+           <HJGridColumn id="008001003" name ="库存"  width ="30"   editable ="true" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" field="qty"  />
+           <HJGridColumn id="008001004" name ="月销量"  width ="30"   editable ="true" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" field="saqty" />
+           <HJGridColumn id="008001005" name ="酒龄"  width ="30"   editable ="true" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" field="age" />
+           
+           [
+           {
+           "id": "001",
+           "name": "清爽8",
+           "qty": "0",
+           "saqty": "1",
+           "age": "3"
+           },
+           {
+           "id": "001",
+           "name": "清爽8",
+           "qty": "0",
+           "saqty": "1",
+           "age": "3"
+           },
+           {
+           "id": "001",
+           "name": "清爽8",
+           "qty": "0",
+           "saqty": "1",
+           "age": "3"
+           }
+           ]
+        </HJGrid>
+    </HJView>
+</HJModel>

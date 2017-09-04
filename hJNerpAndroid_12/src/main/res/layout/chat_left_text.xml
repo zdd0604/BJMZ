@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rlayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/activity_background"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:orientation="vertical" >
+    <TextView
+        android:id="@+id/chat_sendtime_lefttext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:padding="3dp" 
+        android:visibility="gone" 
+        android:background="@drawable/sns_shoot_add_bg_pressed" 
+        android:textColor="@color/white"
+        android:textSize="13sp" />
+
+    <RelativeLayout
+        android:id="@+id/chat_left_item_lefttext"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/chat_sendtime_lefttext" 
+        android:layout_marginTop="10dp"
+        android:focusable="false">
+
+        <ImageView
+            android:id="@+id/chat_left_item_headphoto_lefttext"
+            android:layout_width="@dimen/abc_square_image_size38"
+            android:layout_height="@dimen/abc_square_image_size38" 
+            android:layout_alignParentTop="true"
+            android:src="@drawable/v5_0_1_profile_headphoto"
+            android:clickable="true"
+            android:scaleType="fitXY" />
+
+        <TextView  android:id="@+id/chat_Left_item_text_name"
+           android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/chat_left_item_headphoto_lefttext" 
+            android:layout_alignParentTop="true" 
+            android:focusable="false" 
+            android:layout_marginLeft="10dp"  
+            android:text="sd"
+            android:textColor="@color/chat_item_head"
+            android:textSize="13sp" 
+            />
+        
+        <TextView
+            android:id="@+id/chat_left_item_content_lefttext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" 
+            android:layout_toRightOf="@id/chat_left_item_headphoto_lefttext"
+            android:layout_below="@+id/chat_Left_item_text_name" 
+            android:background="@drawable/chat_from_bg"
+            android:layout_marginLeft="5dip"
+            android:text="" />
+            
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <SurfaceView
+            android:id="@+id/qrcodesurface_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <com.hjnerp.widget.HJQrcodeView
+            android:id="@+id/hjqrcodefinder_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+        
+        
+          <TextView
+            android:id="@+id/alert_content_full"  
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center" 
+            android:layout_gravity="center" 
+            android:layout_centerVertical="true" 
+            android:textColor="@color/white" />
+        <TextView
+        
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"  
+            android:layout_marginTop="100dp"
+            android:textSize="16dp"
+            android:layout_below ="@+id/alert_content_full"  
+            android:text="将二维码对准扫描框,即可自动扫描"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/capture_flashin"
+            android:layout_width="match_parent"
+             android:background="@drawable/button"
+            android:layout_height="40dip"
+            android:layout_alignParentBottom="true" 
+            android:layout_marginBottom="20dip" 
+            android:layout_marginRight="20dip" 
+            android:layout_marginLeft="20dip" 
+            android:text="开启闪光灯" 
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+        
+ 
+        
+    </RelativeLayout>
+
+</FrameLayout>

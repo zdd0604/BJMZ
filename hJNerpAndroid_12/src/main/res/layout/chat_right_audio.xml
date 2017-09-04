@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rlayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/activity_background"
+    android:orientation="vertical"
+  android:paddingLeft="10dp"
+    android:paddingRight="10dp">
+
+    <TextView
+        android:id="@+id/chat_sendtime_righttext_rightaudio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/sns_shoot_add_bg_pressed"
+        android:padding="3dp"
+        android:textColor="@color/white"
+        android:textSize="13sp" />
+
+    <RelativeLayout
+        android:id="@+id/chat_right_item_rightaudio"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/chat_sendtime_righttext_rightaudio"
+        android:layout_marginTop="10dp" >
+
+        <ImageView
+            android:id="@+id/chat_right_item_headphoto_rightaudio"
+            android:layout_width="@dimen/abc_square_image_size38"
+            android:layout_height="@dimen/abc_square_image_size38"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:contentDescription="我的说明"
+            android:focusable="false"
+            android:scaleType="fitXY"
+            android:src="@drawable/v5_0_1_profile_headphoto" />
+
+        
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_toLeftOf="@id/chat_right_item_headphoto_rightaudio" 
+            android:gravity="center"
+            android:orientation="horizontal" >
+             
+              <TextView
+                android:id="@+id/tv_right_voice_long"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="5dp" 
+                android:gravity="center"
+                android:textColor="#818181" 
+                android:textSize="15sp" />
+
+              <ImageView
+                android:id="@+id/chat_right_item_pic_sendfail_rightaudio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="15dp" 
+                android:src="@drawable/sendpic_fail_resend" />
+            
+            <LinearLayout
+                android:id="@+id/layout_right_voice"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/chat_to_bg"
+                android:gravity="center"
+                android:orientation="horizontal" >
+
+                <ProgressBar
+                    android:id="@+id/chat_right_item_pb_rightaudio"
+                    style="?android:attr/progressBarStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="10dp" />
+
+                <ImageView
+                    android:id="@+id/chat_right_item_pic_rightaudio"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="15dp"
+                    android:src="@drawable/chatto_voice_playing" />
+            </LinearLayout>
+
+          
+        </LinearLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

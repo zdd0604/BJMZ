@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:HJNerpAndroid="http://schemas.android.com/apk/res-auto" >
+    <!--  <item
+        android:id="@+id/menu_query"
+        android:icon="@drawable/abs__ic_search"
+        android:title="search"
+        android:titleCondensed="查找"
+        HJNerpAndroid:showAsAction="always">
+    </item>
+     -->
+    <item
+        android:id="@+id/menu_add"
+        android:icon="@drawable/actionbar_add_icon"
+        android:titleCondensed="新建"
+        HJNerpAndroid:showAsAction="always">
+    </item>
+   <!--   <item
+        android:id="@+id/menu_set"
+        android:icon="@drawable/actionbar_more_icon"
+        android:titleCondensed="设置"
+        HJNerpAndroid:showAsAction="always">
+    </item>
+  -->
+</menu>

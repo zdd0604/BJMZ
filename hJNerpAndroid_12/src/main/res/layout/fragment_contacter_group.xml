@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/ll_group"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/activity_child_item_bkg"
+    android:orientation="horizontal"
+    android:paddingLeft="5dip"
+    android:paddingRight="0dp">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true">
+
+        <!--<ImageView-->
+        <!--android:id="@+id/groupImage"-->
+        <!--android:layout_width="@dimen/abc_square_image_size38"-->
+        <!--android:layout_height="@dimen/abc_square_image_size38"-->
+        <!--android:layout_gravity="center"-->
+        <!--android:layout_marginTop="5dp"-->
+        <!--android:layout_marginBottom="5dp"-->
+        <!--/>-->
+        <com.hjnerp.widget.BubbleImageView
+            android:id="@+id/groupImage"
+            android:layout_width="@dimen/abc_square_image_size38"
+            android:layout_height="@dimen/abc_square_image_size38"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:adjustViewBounds="true"
+            android:gravity="center"
+            android:src="@drawable/v5_0_1_profile_headphoto"
+            app:bubble_angle="19dp"
+            app:bubble_arrowHeight="0dp"
+            app:bubble_arrowLocation="right"
+            app:bubble_arrowOffset="0dp"
+            app:bubble_arrowTop="0dp"
+            app:bubble_arrowWidth="0dp" />
+
+        <TextView
+            android:id="@+id/tv_newcontact_paopao"
+            android:layout_width="16dip"
+            android:layout_height="16dip"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@id/groupImage"
+            android:background="@drawable/tab_newmsg_text"
+            android:gravity="center"
+            android:text="10"
+            android:textColor="@color/white"
+            android:textSize="12sp" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/groupName"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="1dp"
+        android:layout_marginTop="6dp"
+        android:gravity="center_vertical"
+        android:padding="5dip"
+        android:text="groupName"
+        android:textSize="16sp" />
+
+</LinearLayout>

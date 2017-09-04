@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+<ImageView 
+	    android:layout_width="fill_parent"
+	    android:layout_height="10dp"
+	    android:background="@color/business_bkg_grey"/>
+    <TextView
+        android:id="@+id/hj_horizontalbarchar_title"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:textAppearance="@android:style/TextAppearance.Medium"
+        android:visibility="invisible" />
+
+    <RelativeLayout
+        android:id="@+id/hj_horbar_relative"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/HorizontalbarLableX"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="10dp">
+        </TextView>
+
+        <TextView
+            android:id="@+id/HorizontalbarlabelY"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp" >
+        </TextView>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/hj_horzontal_bar_chart"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+    </LinearLayout>
+	<ImageView 
+	    android:layout_width="fill_parent"
+	    android:layout_height="10dp"
+	    android:background="@color/white"/>
+	<ImageView 
+	    android:layout_width="fill_parent"
+	    android:layout_height="10dp"
+	    android:background="@color/business_bkg_grey"/>
+</LinearLayout>

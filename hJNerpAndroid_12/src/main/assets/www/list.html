@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+  <head>  
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>My App</title> 
+    <link rel="stylesheet" href="Framework7/css/framework7.min.css"> 
+    <link rel="stylesheet" href="Framework7/css/my-app.css">
+  </head>
+  <body  class="theme-white"> 
+    <div class="statusbar-overlay"></div> 
+ 
+   <div class="views">
+      <div class="view view-main">
+          <div class="navbar bg-lightblue color-white border-lightblue" >
+              <div class="navbar-inner">
+                <div class="left"><a href="#" class="link">
+					<i class="icon icon-back"></i>
+					<span>返回</span>
+				</a></div>
+                <div class="center">费用报销单</div>
+                <div class="right"><a href="#" data-popover=".popover-links" class="link open-popover"><i class="icon icon-bars"></i></a></div>
+              </div>
+            </div>
+        <div class="pages navbar-through">
+
+          <div data-page="home" class="page"> 
+
+            <div class="page-content">
+              <div class="list-block">
+				<form id="my-form" class="list-block">
+                <ul>
+                  <li>
+                    <div class="item-content"> 
+                      <div class="item-inner"> 
+                        <div class="item-title label">报销单号</div>
+                        <div class="item-input">
+                          <input type="text" name= "free_no" placeholder="报销单号" readonly="true" > 
+                        </div>
+                      </div>
+                    </div>
+                  </li> 
+                  <li>
+                    <div class="item-content"> 
+                      <div class="item-inner"> 
+                        <div class="item-title label">申请日期<font color='red'>*</font></div>
+                        <div class="item-input" >
+                          <input type="date"   name= "free_date" disabled >
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                 
+			  <li>
+				  <!-- Additional "smart-select" class -->
+				  <a href="#" class="item-link smart-select"  style=" text-align:left">
+					<!-- select -->
+					<select name="free_item" disabled >
+>
+					  <option value="apple" selected>车费</option>
+					  <option value="pineapple">出差费</option> 
+					</select>
+					<div class="item-content" >
+					  <div class="item-inner"  > 
+						<div class="item-title">费用项目<font color='red'>*</font></div> 
+					  </div>
+					</div>
+				  </a>
+				</li>
+
+                  <li class="align-top">
+                    <div class="item-content"> 
+                      <div class="item-inner"> 
+                        <div class="item-title label">摘要<font color='red'>*</font></div>
+                        <div class="item-input">
+                          <textarea name= "free_remark" disabled ="true"  placeholder="摘要"></textarea>
+                        </div>
+                      </div>
+                    </div>
+                  </li> 
+
+                     <li>
+                    <div class="item-content"> 
+                      <div class="item-inner"> 
+                        <div class="item-title label">报销金额<font color='red'>*</font></div>
+                        <div class="item-input">
+                          <input type="number" name= "free_amt"   placeholder="报销金额"  disabled>
+                        </div>
+                      </div>
+                    </div>
+                  </li> 
+
+                  <li>
+                    <div class="item-content"> 
+                      <div class="item-inner"> 
+                        <div class="item-title label">附件张数 </div>
+                        <div class="item-input">
+                          <input type="number" name= "free_count"  placeholder="附件张数"  disabled >
+                        </div>
+                      </div>
+                    </div>
+                  </li> 
+ 
+
+                </ul>
+				</form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <style>
+      .popover {
+        width:200px;
+      }
+      
+    </style>
+
+  <div class="popover popover-links">
+       <div class="popover-angle"></div> 
+       <div class="popover-inner">
+        <div class="list-block">
+
+        <ul>
+          <li><a onclick="onAdd();" class="list-button item-link">新增</a></li>
+          <li><a onclick="onSave();" class="list-button item-link">提交</a></li>
+        </ul>
+      </div>
+      </div>
+  </div>
+
+
+    <script type="text/javascript" src="Framework7/js/framework7.min.js"></script>
+
+<script type="text/javascript" >  
+    var myApp = new Framework7({
+        animateNavBackIcon:true
+      }); 
+      var mainView = myApp.addView('.view-main', {
+        dynamicNavbar: true,
+      });
+      var $$ = Dom7;
+
+	function onAdd()
+	{
+		//关闭弹出窗口
+		myApp.closeModal(".popover-links") ;
+
+		var formData = {
+			'free_no': '2015010100101' ,
+			'free_date':' ',
+            'free_remark':' ',
+			'free_item':' ',
+			'free_amt':' ',
+			'free_count':' '
+
+		}
+
+       myApp.formFromJSON('#my-form',formData);
+	  var aaa = document.getElementsByName( "free_date")   ;
+		for (var i = 0; i < aaa.length; i++) {
+		aaa[i].disabled=false;
+		} 
+		aaa = document.getElementsByName( "free_item")   ;
+		for (var i = 0; i < aaa.length; i++) {
+		aaa[i].disabled=false;
+		}
+		aaa = document.getElementsByName( "free_remark")   ;
+		for (var i = 0; i < aaa.length; i++) {
+		aaa[i].disabled=false;
+		}
+		aaa = document.getElementsByName( "free_amt")   ;
+		for (var i = 0; i < aaa.length; i++) {
+		aaa[i].disabled=false;
+		}
+		aaa = document.getElementsByName( "free_count")   ;
+		for (var i = 0; i < aaa.length; i++) {
+		aaa[i].disabled=false;
+		}
+      
+	}
+
+	function onSave()
+	{
+		myApp.closeModal(".popover-links") ;
+		  var formData = myApp.formToJSON('#my-form'); 
+		  var o = JSON.parse(JSON.stringify(formData)); 
+        myApp.showPreloader('加载中');
+          if (o.free_date == "")
+          {
+			   myApp.hidePreloader( );
+			    myApp.alert('申请日期不能为空！', '费用报销单');
+			    return false;
+          }
+		   if (o.free_item == "")
+          {
+			   myApp.hidePreloader( );
+			    myApp.alert('费用类型不能为空！', '费用报销单');
+			    return false;
+          }
+		   if (o.free_remark == "")
+          {
+			   myApp.hidePreloader( );
+			    myApp.alert('摘要不能为空！', '费用报销单');
+			    return false;
+          }
+		   if (o.free_amt == "")
+          {
+			   myApp.hidePreloader( );
+			    myApp.alert('报销金额不能为空！', '费用报销单');
+			    return false;
+          } 
+        
+		   //调用系统的上传？
+
+	}
+	function onPrevious()
+	{
+		myApp.closeModal(".popover-links") ;
+	}
+	function onLater()
+	{
+		myApp.closeModal(".popover-links") ;
+	}
+
+   //读取本地数据
+
+
+   // 从网络上读取数据
+    
+	</script>
+  </body>
+</html>
+ 

@@ -1,0 +1,70 @@
+apply plugin: 'com.android.application'
+def supportVersion = "25.0.0"
+
+android {
+    compileSdkVersion 24
+    buildToolsVersion '25.0.0'
+
+
+    defaultConfig {
+        applicationId "com.hjnerpandroid"
+        minSdkVersion 16
+        targetSdkVersion 24
+        versionCode 69
+        versionName "3.2.69"
+        ndk {
+            moduleName "luajava"
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+    }
+    useLibrary 'org.apache.http.legacy'
+    lintOptions {
+
+        checkReleaseBuilds false
+        abortOnError false
+        disable "ResourceType"
+    }
+    repositories {
+        maven {
+            url "https://jitpack.io"
+        }
+    }
+
+}
+
+dependencies {
+    compile files('libs/achartengine-1.1.0.jar')
+    compile files('libs/core.jar')
+    compile files('libs/ht380a.jar')
+    compile files('libs/zbar.jar')
+    compile files('libs/httpmime-4.2.6.jar')
+    compile files('libs/nineoldandroids-2.4.0.jar')
+    compile files('libs/testinagent.jar')
+    compile files('libs/voaacencoder.jar')
+    compile files('libs/universal-image-loader-1.9.3.jar')
+    compile files('libs/BaiduLBS_Android.jar')
+    compile files('libs/XPermissions.jar')
+    compile project(':librarys')
+    compile 'com.lovedise:permissiongen:0.0.6'
+    compile 'com.miguelcatalan:materialsearchview:1.4.0'
+    compile 'com.android.support:appcompat-v7:' + supportVersion
+    compile 'com.android.support:recyclerview-v7:' + supportVersion
+    compile 'com.android.support:support-v4:' + supportVersion
+    compile 'com.github.bumptech.glide:glide:3.6.1'
+    compile 'com.lzy.net:okgo:2.1.4'
+    compile 'com.github.RmondJone:LockTableView:1.0.3'
+    compile 'com.google.code.gson:gson:2.8.0'
+    compile 'com.android.support.constraint:constraint-layout:1.0.0-beta3'
+    debugCompile 'com.amitshekhar.android:debug-db:1.0.1'
+    compile 'com.facebook.stetho:stetho:1.5.0'
+    compile 'com.baoyz.actionsheet:library:1.1.7'
+    compile 'com.jakewharton:butterknife:8.8.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.0'
+    compile 'com.github.open-android:RoundedImageView:v1.0.0'
+}

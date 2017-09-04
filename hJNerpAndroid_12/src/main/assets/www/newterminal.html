@@ -1,0 +1,390 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>  
+  <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>newterminal</title> 
+    <link rel="stylesheet" href="Framework7/css/framework7.css"> 
+    <link rel="stylesheet" href="Framework7/css/my-app.css">
+    <script type="text/javascript" src="Framework7/js/hj-app.js"></script>
+  </head>
+  <body > 
+    <div class="statusbar-overlay"></div> 
+ 
+   <div class="views">
+      <div class="view view-main">
+          <div class="navbar  no-border  color-white  theme-white" >
+              <div class="navbar-inner">
+                <div class="left"><a onclick = "hjbusiness.onhjbackmain(function(result){},function(error){});" class="link">
+					<i class="icon icon-back"></i>
+					<span>返回</span>
+				</a></div>
+                <div class="center">新增终端</div>
+                <div class="right"><a href="#" data-popover=".popover-links" class="link open-popover"><i class="icon icon-bars"></i></a></div>
+              </div>
+            </div>
+        <div class="pages navbar-through">
+
+          <div data-page="home" class="page"> 
+
+            <div class="page-content">
+              <div class="list-block">
+				<form id="my-form" class="list-block">
+                <ul>
+                  <li>
+                    <div class="item-content"> 
+                      <div class="item-inner"> 
+                        <div class="item-title label">终端代码</div>
+                        <div class="item-input">
+                          <input type="text" name= "id_terminal" placeholder="终端代码" readonly="true" > </input>
+                        </div>
+                      </div>
+                    </div>
+                  </li>  
+                  <li>
+                    <div class="item-content"> 
+                      <div class="item-inner"> 
+                        <div class="item-title label">终端名称</div>
+                        <div class="item-input">
+                          <input type="text" name= "name_terminal" placeholder="终端名称" readonly="true" > </input>
+                        </div>
+                      </div>
+                    </div>
+                  </li>  
+                   <li>
+					  <!-- Additional "smart-select" class -->
+					  <a href="#" class="item-link smart-select"   data-back-on-select="true">
+						<!-- select -->
+						<select name="id_tertype"  > 
+						  <option value="C1" selected>餐饮</option>
+						  <option value="E1">二批</option> 
+						  <option value="L1">零售</option> 
+						  <option value="Y1">夜场</option> 
+						  <option value="YPS">一批商</option> 
+						</select>
+						<div class="item-content" >
+						  <div class="item-inner"  > 
+							<div class="item-title">终端类型<font color="red">*</font></div> 
+						  </div>
+						</div>
+					  </a>
+					</li>
+
+                     <li>
+					  <!-- Additional "smart-select" class -->
+					  <a href="#" class="item-link smart-select"  data-back-on-select="true">
+						<!-- select -->
+						<select name="id_terlvl"  > 
+						  <option value="1" selected>正常</option>
+						  <option value="2">临时关闭</option> 
+						  <option value="3">正式关闭</option>  
+						</select>
+						<div class="item-content" >
+						  <div class="item-inner"  > 
+							<div class="item-title">终端级别<font color="red">*</font></div> 
+						  </div>
+						</div>
+					  </a>
+					</li>
+
+					 <li>
+					  <!-- Additional "smart-select" class -->
+					  <a href="#" class="item-link smart-select"  data-back-on-select="true">
+						<!-- select -->
+						<select name="id_tersts"  > 
+						  <option value="1" selected>正常</option>
+						  <option value="2">临时关闭</option> 
+						  <option value="3">正式关闭</option>  
+						</select>
+						<div class="item-content" >
+						  <div class="item-inner"  > 
+							<div class="item-title">经营状况<font color="red">*</font></div> 
+						  </div>
+						</div>
+					  </a>
+					</li>
+
+                     <li>
+					  <!-- Additional "smart-select" class -->
+					  <a href="#" class="item-link smart-select"  data-back-on-select="true">
+						<!-- select -->
+						<select name="id_dept"  > 
+						  <option value="1" selected>正常</option>
+						  <option value="2">临时关闭</option> 
+						  <option value="3">正式关闭</option>  
+						</select>
+						<div class="item-content" >
+						  <div class="item-inner"  > 
+							<div class="item-title">对应办事处<font color="red">*</font></div> 
+						  </div>
+						</div>
+					  </a>
+					</li>
+
+					<li>
+					  <!-- Additional "smart-select" class -->
+					  <a href="#" class="item-link smart-select"  data-back-on-select="true">
+						<!-- select -->
+						<select name="id_zone"  > 
+						  <option value="1" selected>正常</option>
+						  <option value="2">临时关闭</option> 
+						  <option value="3">正式关闭</option>  
+						</select>
+						<div class="item-content" >
+						  <div class="item-inner"  > 
+							<div class="item-title">终端区域<font color="red">*</font></div> 
+						  </div>
+						</div>
+					  </a>
+					</li>
+
+                     <li>
+					  <!-- Additional "smart-select" class -->
+					  <a href="#" class="item-link smart-select"  data-back-on-select="true">
+						<!-- select -->
+						<select name="id_salesman"  > 
+						  <option value="1" selected>正常</option>
+						  <option value="2">临时关闭</option> 
+						  <option value="3">正式关闭</option>  
+						</select>
+						<div class="item-content" >
+						  <div class="item-inner"  > 
+							<div class="item-title">担当业务员<font color="red">*</font></div> 
+						  </div>
+						</div>
+					  </a>
+					</li>
+
+					 <li>
+					  <!-- Additional "smart-select" class -->
+					  <a href="#" class="item-link smart-select"  data-back-on-select="true">
+						<!-- select -->
+						<select name="id_corr"  > 
+						  <option value="1" selected>正常</option>
+						  <option value="2">临时关闭</option> 
+						  <option value="3">正式关闭</option>  
+						</select>
+						<div class="item-content" >
+						  <div class="item-inner"  > 
+							<div class="item-title">担当经销商<font color="red">*</font></div> 
+						  </div>
+						</div>
+					  </a>
+					</li>
+
+                    <li>
+                    <div class="item-content"> 
+                      <div class="item-inner"> 
+                        <div class="item-title label">店主姓名</div>
+                        <div class="item-input">
+                          <input type="text" name= "name_terminal" placeholder="店主姓名" readonly="true" ></input> 
+                        </div>
+                      </div>
+                    </div>
+                  </li>  
+
+				   <li>
+                    <div class="item-content"> 
+                      <div class="item-inner"> 
+                        <div class="item-title label">联系地址</div>
+                        <div class="item-input">
+                          <input type="text" name= "var_addr" placeholder="联系地址" readonly="true" > </input>
+                        </div>
+                      </div>
+                    </div>
+                  </li>  
+
+                  <li>
+                    <div class="item-content"> 
+                      <div class="item-inner"> 
+                        <div class="item-title label">联系电话</div>
+                        <div class="item-input">
+                          <input type="text" name= "var_tel" placeholder="联系电话" readonly="true" > </input>
+                        </div>
+                      </div>
+                    </div>
+                  </li>  
+
+                   <li>
+                    <div class="item-content"> 
+                      <div class="item-inner"> 
+                        <div class="item-title label">联系人</div>
+                        <div class="item-input">
+                          <input type="text" name= "var_contact" placeholder="联系人" readonly="true" > </input>
+                        </div>
+                      </div>
+                    </div>
+                  </li>  
+
+                  
+
+                     
+                       <li>
+                    <div class="item-content"> 
+                      <div class="item-inner"> 
+                        <div class="item-title label">位置</div>
+                        <div class="item-input">
+                          <input type="text" name= "var_addloc" placeholder="位置" readonly="true" > </input>
+                        </div>
+                      </div>
+                    </div>
+                  </li>  
+                  
+                   <li>
+                    <div class="item-content"> 
+                      <div class="item-inner"> 
+                        <img id="imgp"></img>
+                      </div>
+                    </div>
+                  </li>  
+                  
+                </ul>
+				</form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <style>
+      .popover {
+        width:200px;
+      }
+      
+    </style>
+
+  <div class="popover popover-links theme-white">
+       <div class="popover-angle"></div> 
+       <div class="popover-inner">
+        <div class="list-block">
+
+        <ul>
+          <li><a onclick="onAdd();" class="list-button item-link">新增</a></li>
+          <li><a onclick="onSave();" class="list-button item-link">提交</a></li>
+		  <li><a onclick="locate();" class="list-button item-link">定位</a></li>
+		  <li><a onclick="onhjcapture();" class="list-button item-link">拍照</a></li>
+		  <li><a onclick="imgalbum();" class="list-button item-link">相册</a></li>
+		  <li><a onclick="imgfilepath('123.jpg');" class="list-button item-link">本地</a></li>
+		  <li><a onclick="onhjreadctlm1347();" class="list-button item-link">查询</a></li>
+        </ul>
+      </div>
+      </div>
+  </div>
+
+
+ <script type="text/javascript" src="Framework7/js/framework7.js"></script> 
+ <script type="text/javascript" src="Framework7/js/cordova.js"></script>
+<script type="text/javascript" src="Framework7/js/hjbusiness.js"></script>
+<script type="text/javascript" >  
+    var myApp = new Framework7({
+        animateNavBackIcon:true,
+		fastClicks:true,
+		router:true,
+		 pushState: true,
+      }); 
+      var mainView = myApp.addView(".view-main", {
+        dynamicNavbar: true,
+      });
+      var $$ = Dom7;
+
+	function onAdd()
+	{
+		 
+		myApp.closeModal(".popover-links") ;
+
+		var formData = {
+			"id_terminal": "2015010100101" ,
+			"name_terminal":"你好"
+		}
+
+       myApp.formFromJSON("#my-form",formData);
+	  
+      
+	}
+
+	function onSave()
+	{
+		 
+
+	}
+	 
+	 function locate()
+	 {
+		  myApp.showPreloader("加载中");
+          myApp.closeModal(".popover-links") ;
+    	  hjbusiness.getLocation( 
+               function(result) { 
+              alert(result);
+			   var aaa = document.getElementsByName( "var_addloc")   ;
+				 for (var i = 0; i < aaa.length; i++) {
+				   aaa[i].value = result;
+				} 
+             myApp.hidePreloader();
+                 }, function(error) {
+            myApp.hidePreloader();
+                alert("获取位置失败: " + error);
+            });
+	 }
+	 
+	 //拍照
+	 function onhjcapture()
+	 {
+          myApp.closeModal(".popover-links") ;
+    	  hjbusiness.onhjcapture( 
+               function(result) { 
+              alert(result);
+         //生成图片标签对象
+         showpic(result);
+                 }, function(error) {
+            myApp.hidePreloader();
+                alert("拍照失败: " + error);
+            });
+	 }
+	 
+	 function showpic(imgUrl){
+	 var oImg=document.getElementById("imgp");
+         oImg.src=imgUrl;
+	 }
+ 
+     //获取本地图片地址
+	 function imgfilepath(path)
+	 {
+          myApp.closeModal(".popover-links") ;
+    	  hjbusiness.imgfilepath( 
+               function(result) { 
+              alert(result);
+                 }, function(error) {
+                alert("失败: " + error);
+            },path);
+	 }
+	 
+	 //获取本地图片地址
+	 function onhjreadctlm1347()
+	 {
+          myApp.closeModal(".popover-links") ;
+    	  hjbusiness.onhjreadctlm1347( 
+               function(result) { 
+              alert(result);
+                 }, function(error) {
+                alert("失败: " + error);
+            },"1=1");
+	 }
+	 
+	 //获取相册图片地址
+	 function imgalbum()
+	 {
+          myApp.closeModal(".popover-links") ;
+    	  hjbusiness.imgalbum( 
+               function(result) { 
+              alert(result);
+                 }, function(error) {
+                alert("失败: " + error);
+            });
+	 }
+	 
+	</script>
+  </body>
+</html>
+ 

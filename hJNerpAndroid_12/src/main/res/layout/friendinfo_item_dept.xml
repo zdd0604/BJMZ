@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/ll_item"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:gravity="center_vertical"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/ll_content_dept"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+
+        <RelativeLayout
+            android:id="@+id/member_item_content_dept"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp">
+
+            <com.hjnerp.widget.BubbleImageView
+                android:id="@+id/member_item_photo_iv_dept"
+                android:layout_width="@dimen/abc_square_image_size38"
+                android:layout_height="@dimen/abc_square_image_size38"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="5dp"
+                android:adjustViewBounds="true"
+                android:gravity="center"
+                android:scaleType="fitCenter"
+                android:src="@drawable/v5_0_1_profile_headphoto"
+                app:bubble_angle="19dp"
+                app:bubble_arrowHeight="0dp"
+                app:bubble_arrowLocation="right"
+                app:bubble_arrowOffset="0dp"
+                app:bubble_arrowTop="0dp"
+                app:bubble_arrowWidth="0dp" />
+
+            <TextView
+                android:id="@+id/member_item_title_tv_dept"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="8dip"
+                android:layout_toRightOf="@id/member_item_photo_iv_dept"
+                android:gravity="center_vertical"
+                android:text="和佳"
+                android:textColor="#454545"
+                android:textSize="16sp" />
+
+            <ImageView
+                android:id="@+id/member_select_iv_dept"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dip"
+                android:src="@drawable/member_normal" />
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>

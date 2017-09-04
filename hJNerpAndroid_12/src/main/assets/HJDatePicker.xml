@@ -1,0 +1,18 @@
+<HJModel start = "102" type = "query" id = "400"   > 
+  
+  <HJView id = "102" name = "产品信息"  returnenable="true"  dataset = "producttracking:'id_column=\'C211542129\''  "   presave="false"  datasetmode="net-local" > 
+  
+ <!--> date datetime <!-->
+   <HJDatePicker id = "002088" name = "出库日期"   editable ="false" 
+   required ="false" visible ="true" width ="0.6" valuetype="date"
+    singleline = "true" fontsize = "medium"
+   alignment="left" field = "date_out" datasource="producttracking" > </HJDatePicker> 
+  
+  
+   <HJComboBox id = "0020066" name = "产品名称"   editable ="false" 
+   required ="false" visible ="true" width ="0.6" valuetype="string" 
+   format="@@@@@@" singleline = "true" fontsize = "medium" 
+   alignment="left" field = "name_terminal" datasource="producttracking" > </HJComboBox> 
+   
+  </HJView>  
+</HJModel>

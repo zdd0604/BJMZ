@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="5dp"
+    android:paddingLeft="5dp"
+    android:paddingRight="5dp"
+    android:paddingTop="5dp" 
+      android:background="@color/white">
+
+    <TextView
+        android:id="@+id/hj_radiobutton_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:text="选项" />
+
+    <RadioGroup
+        android:id="@+id/hj_radiobutton_content"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/hj_radiobutton_title"
+        android:layout_marginLeft="0dp"
+        android:orientation="vertical" >
+    </RadioGroup>
+
+</RelativeLayout>

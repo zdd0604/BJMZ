@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/space_location"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/business_child_item_bkg"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size_20">
+
+        <!--<ImageView-->
+        <!--android:id="@+id/imagegrid"-->
+        <!--android:layout_width="88px"-->
+        <!--android:layout_height="88px"-->
+        <!--android:layout_centerInParent="true"-->
+        <!--android:background="#00000000"-->
+        <!--android:src="@drawable/recommend_from_qrcode" />-->
+
+        <com.itheima.roundedimageview.RoundedImageView
+            android:id="@+id/imagegrid"
+            android:layout_width="@dimen/size_35"
+            android:layout_height="@dimen/size_35"
+            android:layout_centerInParent="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/recommend_from_qrcode"
+            app:riv_border_color="#333333"
+            app:riv_corner_radius="9dip"
+            app:riv_oval="false" />
+
+        <View
+            android:id="@+id/tv_paopao_businessmenuitemgrid"
+            android:layout_width="12dip"
+            android:layout_height="12dip"
+            android:layout_toRightOf="@id/imagegrid"
+            android:background="@drawable/tab_newmsg_text"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="10dip"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+
+    <TextView
+        android:id="@+id/tv_menutitlegrid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/size_20"
+        android:layout_marginTop="@dimen/size_10"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:maxEms="6"
+        android:maxLines="2"
+        android:text="类型1"
+        android:textColor="#696969"
+        android:textSize="14sp" />
+
+
+</LinearLayout>

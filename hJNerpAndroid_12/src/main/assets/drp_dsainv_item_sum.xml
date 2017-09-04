@@ -1,0 +1,158 @@
+<HJModel start = "001" type = "query" id = "009"  >
+
+ <HJView id = "001" name = "营销系统"  returnenable="true"     presave="false"  >
+ 
+  <HJList id = "001025" name = "DRP报表" fontsize = "medium" editable ="true"  visible ="true"  visibledisclosure = "true"  onclick = "  
+      			local row = sender.row
+			   local jsonvalues  = sender.values
+			   local jsonval=  hju_getjsonvalues(  jsonvalues,'id' ) 
+			   if  jsonval == '001' then 
+			      hjc_setnextview('001','001025', sender.row,'101',sender.billno,sender.nodeid)
+			   elseif  jsonval == '002' then  
+			     hjc_setnextview('001','001025', sender.row,'201',sender.billno,sender.nodeid) 
+			   end
+			 "
+  style = "plain"  layouttype = "fullscreen"> 
+               <!-- 添加固定的终端信息   -->
+           <HJListColumn id="001025001" name =""  width ="1" editable ="true" visible ="true" singleline ="false" fontsize = "medium" bold ="false" textcolor ="#000000" field = "content" visiblename="true" dbfield = "var_data1"/>
+           <HJListColumn id="001025002" name =""  width ="1" editable ="true" visible ="false" singleline ="false" fontsize = "medium" bold ="false" textcolor ="#000000" field = "id" visiblename="true" dbfield = "var_data2"/> 
+		   [{"id":"001","content":"产品销售发票汇总"},{"id":"002","content":"库存总帐"}]
+  </HJList>   
+ </HJView>
+
+
+
+<!--
+   第一层
+   -->
+ <HJView id = "101" name = "产品销售发票汇总"  presave="false" returnenable="true"
+ dataset="ctlm1018:'1=1'" 
+ datasetmode="net-local"  onload = "
+  local time = os.date('%Y-%m-%d', os.time()); 
+		 hjc_setvalue('101','101020',time); 
+		  hjc_setvalue('101','101025',time); 
+		 "  >
+ 
+ <HJComboBox id = "101001" name = "开票公司"   editable ="false" 
+   required ="false" visible ="true" width ="0.6" valuetype="string" 
+   format="@@@@@@" singleline = "true" fontsize = "medium" 
+   alignment="left" field = "name_company"  datasource="ctlm1018" > </HJComboBox> 
+   
+ <HJTextView id = "101005" name = "产品名称"   editable ="false" 
+   required ="false" visible ="true" width ="0.6" valuetype="string" 
+   format="@@@@@@" singleline = "true" fontsize = "medium" 
+   alignment="left"  > </HJTextView> 
+ 
+   <HJDatePicker id = "101020" name = "开始日期"   editable ="false" 
+   required ="false" visible ="true" width ="0.6" valuetype="date"
+    singleline = "true" fontsize = "medium"
+   alignment="left"   > </HJDatePicker>
+   
+    <HJDatePicker id = "101025" name = "结束日期"   editable ="false" 
+   required ="false" visible ="true" width ="0.6" valuetype="date"
+    singleline = "true" fontsize = "medium"
+   alignment="left"  > </HJDatePicker>
+   
+    <HJToolBar id ="101100" name="工具栏"  >
+        <HJButton id="101100001" name="查询"  editable ="true"  visible ="true"  fontsize = "medium"  alignment="center"  
+		onclick="  hjc_setnextview('101','101100',sender.row,'102',sender.billno,sender.nodeid);  "   > 
+		</HJButton>  
+    </HJToolBar>   
+ </HJView>
+
+
+ <HJView id = "102" name = "产品销售收入汇总"  returnenable="true" presave="false" datasetmode="net-local" onload="
+ local kpgs   =  hjc_getvalue('101','101001');
+ local cp   =  hjc_getvalue('101','101005');
+ local sj1   =  hjc_getvalue('101','101020');
+ local sj2   =  hjc_getvalue('101','101025');
+ local condition = 'id_column\=\''..kpgs..','..cp..','..sj1..','..sj2..'\'';
+ hjdts_additem('102','dsainv_item_sum',condition);"  
+ >
+ 
+  <HJGrid id = "102001" name = "产品销售收入汇总" fontsize = "medium"  locking ="1" visible ="true"	height="0.3"  datasource="dsainv_item_sum"     style = "plain"  layouttype = "fullscreen" >
+             
+        <!-- 添加固定的终端信息   -->
+        <HJGridColumn id="102001001" name ="品种"  width ="0.4"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data1" field="name_item"/>
+        <HJGridColumn id="102001005" name ="数量"  width ="0.25"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data2" field="dec_qty"    alignment="right"  valuetype="decimal" format="######"   />
+        <HJGridColumn id="102001010" name ="千升"  width ="0.25"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data3" field="dec_kl"  alignment="right"  valuetype="decimal" format="######.00" />
+        <HJGridColumn id="102001015" name ="发票总额"  width ="0.25"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data4" field="dec_fpze"  alignment="right"  valuetype="decimal" format="######.00" />
+        <HJGridColumn id="102001020" name ="净金额"  width ="0.25"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data5" field="dec_jje"  alignment="right"  valuetype="decimal" format="######.00" />
+        <HJGridColumn id="102001025" name ="税额"  width ="0.25"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data6" field="dec_se"  alignment="right"  valuetype="decimal" format="######.00" />
+        <HJGridColumn id="102001030" name ="货款"  width ="0.25"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data7" field="dec_hk"  alignment="right"  valuetype="decimal" format="######.00" />
+        <HJGridColumn id="102001035" name ="押金"  width ="0.25"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data8" field="dec_yj"  alignment="right"  valuetype="decimal" format="######.00" />
+        <HJGridColumn id="102001040" name ="保证金"  width ="0.25"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data9" field="dec_yf"  alignment="right"  valuetype="decimal" format="######.00" />
+        <HJGridColumn id="102001045" name ="运费"  width ="0.25"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data10" field="dec_ztyf"  alignment="right"  valuetype="decimal" format="######.00" />
+        <HJGridColumn id="102001050" name ="自提运费"  width ="0.25"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data11" field="dec_zk"  alignment="right"  valuetype="decimal" format="######.00" />
+        <HJGridColumn id="102001055" name ="折让"  width ="0.25"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data12" field="dec_bzj"  alignment="right"  valuetype="decimal" format="######.00" />
+        <HJGridColumn id="102001060" name ="应收总金额"  width ="0.25"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data13" field="dec_ramt"  alignment="right"  valuetype="decimal" format="######.00" />
+     
+	   </HJGrid> 
+ </HJView>
+
+ 
+ 
+  <HJView id = "201" name = "库存总帐"  presave="false" returnenable="true"
+ dataset="ctlm1018:'1=1'" 
+ datasetmode="net-local"  onload = "
+  local time = os.date('%Y-%m-%d', os.time()); 
+		 hjc_setvalue('201','201020',time); 
+		  hjc_setvalue('201','201025',time); 
+		 "  >
+ 
+ <HJComboBox id = "201001" name = "公司"   editable ="false" 
+   required ="false" visible ="true" width ="0.6" valuetype="string" 
+   format="@@@@@@" singleline = "true" fontsize = "medium" 
+   alignment="left" field = "name_company"  datasource="ctlm1018" > </HJComboBox> 
+   
+ <HJTextView id = "201005" name = "产品名称"   editable ="false" 
+   required ="false" visible ="true" width ="0.6" valuetype="string" 
+   format="@@@@@@" singleline = "true" fontsize = "medium" 
+   alignment="left"  > </HJTextView> 
+ 
+   <HJDatePicker id = "201020" name = "开始日期"   editable ="false" 
+   required ="false" visible ="true" width ="0.6" valuetype="date"
+    singleline = "true" fontsize = "medium"
+   alignment="left"   > </HJDatePicker>
+   
+    <HJDatePicker id = "201025" name = "结束日期"   editable ="false" 
+   required ="false" visible ="true" width ="0.6" valuetype="date"
+    singleline = "true" fontsize = "medium"
+   alignment="left"  > </HJDatePicker>
+   
+    <HJToolBar id ="201100" name="工具栏"  >
+        <HJButton id="201100001" name="查询"  editable ="true"  visible ="true"  fontsize = "medium"  alignment="center"  
+		onclick="  hjc_setnextview('201','201100',sender.row,'202',sender.billno,sender.nodeid);  "   > 
+		</HJButton>  
+    </HJToolBar>   
+ </HJView>
+
+ 
+  <HJView id = "202" name = "库存总帐"  returnenable="true" presave="false" datasetmode="net-local" onload="
+ local kpgs   =  hjc_getvalue('201','201001');
+ local cp   =  hjc_getvalue('201','201005');
+ local sj1   =  hjc_getvalue('201','201020');
+ local sj2   =  hjc_getvalue('201','201025');
+ local condition = 'id_column\=\''..kpgs..','..cp..','..sj1..','..sj2..'\'';
+ hjdts_additem('202','acinv07_query',condition);"  
+ >
+ 
+  <HJGrid id = "202001" name = "库存总帐" fontsize = "medium"  locking ="1" visible ="true"	height="0.3"  datasource="acinv07_query"     style = "plain"  layouttype = "fullscreen" >
+             
+          <!-- 添加固定的终端信息   -->
+        <HJGridColumn id="202001001" name ="品种"  width ="0.4"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data1" field="name_item"/>
+        <HJGridColumn id="202001005" name ="奖项"  width ="0.25"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data2" field="id_saptype"      />
+        <HJGridColumn id="202001010" name ="期初"  width ="0.25"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data3" field="begin_qty"  alignment="right"  valuetype="decimal" format="######.00" />
+        <HJGridColumn id="202001015" name ="入库"  width ="0.25"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data4" field="in_qty"  alignment="right"  valuetype="decimal" format="######.00" />
+        <HJGridColumn id="202001020" name ="移入"  width ="0.25"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data5" field="yr_qty"  alignment="right"  valuetype="decimal" format="######.00" />
+        <HJGridColumn id="202001025" name ="出库"  width ="0.25"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data6" field="out_qty"  alignment="right"  valuetype="decimal" format="######.00" />
+        <HJGridColumn id="202001030" name ="移出"  width ="0.25"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data7" field="yc_qty"  alignment="right"  valuetype="decimal" format="######.00" />
+        <HJGridColumn id="202001035" name ="损耗"  width ="0.25"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data8" field="sh_qty"  alignment="right"  valuetype="decimal" format="######.00" />
+        <HJGridColumn id="202001040" name ="盘点"  width ="0.25"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data9" field="pd_qty"  alignment="right"  valuetype="decimal" format="######.00" />
+        <HJGridColumn id="202001045" name ="结存"  width ="0.25"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data10" field="end_qty"  alignment="right"  valuetype="decimal" format="######.00" />
+        <HJGridColumn id="202001050" name ="结存千升"  width ="0.25"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data11" field="end_kl"  alignment="right"  valuetype="decimal" format="######.00" />
+         
+	   </HJGrid> 
+ </HJView>
+ 
+</HJModel>

@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+<html class="android android-4 android-4-4">
+  <head>  
+  <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>费用报销单</title> 
+    <link rel="stylesheet" href="Framework7/css/framework7.css"> 
+    <link rel="stylesheet" href="Framework7/css/my-app.css"> 
+ 
+  </head>
+  <body > 
+    <div class="statusbar-overlay"></div>  
+   <div class="views">
+      <div class="view view-main">
+          <div class="navbar  no-border  color-white  theme-white" >
+              <div class="navbar-inner">
+                <div class="left"><a href="#" class="link">
+					<i class="icon icon-back"></i>
+					<span>返回</span>
+				</a></div>
+                <div class="center">费用报销单</div>
+                <div class="right"> <a href="#"  class="link-save" > 提交</a></div>
+              </div>
+			   
+
+            </div>
+        <div class="pages navbar-through">
+
+          <div data-page="home" class="page"> 
+
+            <div class="page-content">
+              <div class="list-block">
+				<form id="my-form" class="list-block">
+                <ul>
+                  <li>
+                    <div class="item-content"> 
+                      <div class="item-inner"> 
+                        <div class="item-title label">二维码</div>
+                        <div class="item-input">
+                          <input type="text" name= "dfeeoth_no" placeholder="报销单号"   > 
+                        </div>
+                      </div>
+                    </div>
+                  </li>  
+                </ul>
+				</form>
+              </div> 
+				 <p> <a href=""  > &nbsp;</a> </p>
+               <p> <a href=""  > &nbsp;</a> </p>
+				<p> <a href=""  > &nbsp;</a> </p> 
+				<p> <a href=""  > &nbsp;</a> </p>
+               <p> <a href=""  > &nbsp;</a> </p>
+				<p> <a href=""  > &nbsp;</a> </p> 
+				<p> <a href=""  > &nbsp;</a> </p>
+               <p> <a href=""  > &nbsp;</a> </p>
+				<p> <a href=""  > &nbsp;</a> </p> 
+            </div>
+          </div>
+
+		   <div data-page="addfee" class="page cached"> 
+				<div class="page-content">
+				<div class="list-block"> 
+			    </div> 
+			    </div>
+		    </div> 
+        </div>
+      </div>
+    </div>
+    <style>
+      .popover {
+        width:200px;
+      }
+      
+    </style>
+
+ 
+<script type="text/javascript" src="Framework7/js/framework7.js"></script>
+ <script type="text/javascript" src="Framework7/js/hj-app.js"></script>
+ <script type="text/javascript" src="Framework7/js/framework7.js"></script>
+ <script type="text/javascript" src="Framework7/js/cordova.js"></script> 
+ <script src="Framework7/js/hjbusiness.js" type="text/javascript"></script>
+
+
+<script type="text/javascript" >  
+     var myApp = new Framework7({
+        animateNavBackIcon:true,
+		fastClicks:true,
+		router:true,
+		 pushState: true,
+      }); 
+      var mainView = myApp.addView('.view-main', {
+        dynamicNavbar: true, 
+       domCache: true   
+      });
+      var $$ = Dom7;  
+       
+ 
+        hjbusiness.onf4scancode( ); 
+
+function f4qrcode(str){
+           var formData = myApp.formToJSON('#my-form'); 
+		   formData.dfeeoth_no = str;
+		   myApp.formFromJSON('#my-form',formData);
+}
+      function trim(str){  
+　　     return str.replace(/(^\s*)|(\s*$)/g, "");
+　　 }
+
+	</script>
+  </body>
+</html>
+ 

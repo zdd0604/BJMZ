@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:HJNerpAndroid="http://schemas.android.com/apk/res-auto" >
+    
+    <item
+        android:id="@+id/menu_chat"
+        android:icon="@drawable/app_panel_friend_icon_white"
+        android:title="search"
+        android:titleCondensed="查找"
+        HJNerpAndroid:showAsAction="always">
+    </item>
+
+
+</menu>

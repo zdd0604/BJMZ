@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" 
+     android:background="@color/white">
+
+    <LinearLayout
+        android:id="@+id/hj_grid_title_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone" >
+
+        <TextView
+            android:id="@+id/hj_grid_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:text="TextView"
+            android:visibility="gone" />
+    </LinearLayout>
+<!-- 表头 -->
+    <LinearLayout
+        android:id="@+id/all_table_head"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="0dp"
+        android:background="@color/hjgridheader"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:id="@+id/first_row_colum"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:orientation="horizontal" />
+
+        <!-- 表头可以滑动的项目 -->
+
+        <com.hjnerp.widget.HJGridScrollView
+            android:id="@+id/grid_scroll"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:scrollbars="none" >
+
+            <LinearLayout
+                android:id="@+id/grid_title"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:minHeight="40dp"
+                android:orientation="horizontal" >
+            </LinearLayout>
+        </com.hjnerp.widget.HJGridScrollView>
+    </LinearLayout>
+<!-- 表格主体 -->
+    <com.hjnerp.widget.HJGridListView
+        android:id="@+id/scroll_list"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:divider="@drawable/reader_item_divider"
+        android:dividerHeight="1px"
+        android:fadingEdge="none"
+        android:footerDividersEnabled="true" >
+    </com.hjnerp.widget.HJGridListView>
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="0.5dp"
+        android:background="@drawable/reader_item_divider" />
+    <!-- 底部 -->
+
+    <LinearLayout
+        android:id="@+id/all_table_bottom"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="0dp"
+        android:background="@color/hjgridheader"
+        android:orientation="horizontal"
+        android:visibility="gone" >
+
+        <LinearLayout
+            android:id="@+id/bottom_fixed_colum"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:orientation="horizontal" />
+
+        <!-- 表头可以滑动的项目 -->
+
+        <com.hjnerp.widget.HJGridScrollView
+            android:id="@+id/grid_bottom_scroll"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:scrollbars="none" >
+
+            <LinearLayout
+                android:id="@+id/bottom_row_colum"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:minHeight="40dp"
+                android:orientation="horizontal" >
+            </LinearLayout>
+        </com.hjnerp.widget.HJGridScrollView>
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/grid_bottom_line"
+        android:layout_width="fill_parent"
+        android:layout_height="0.5dp"
+        android:background="@drawable/reader_item_divider"
+        android:visibility="gone" />
+
+</LinearLayout>

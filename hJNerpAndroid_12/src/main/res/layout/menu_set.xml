@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/pop_layout"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentRight="true"
+    android:layout_alignParentTop="true"
+    android:background="@color/actionbar_bkg_black"
+    android:gravity="center_horizontal"
+    android:orientation="vertical" >
+    
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="@color/black" />
+    <LinearLayout
+        android:id="@+id/linear_myinfo"
+        android:layout_width="fill_parent"
+        android:layout_height="55dp"
+        android:background="@drawable/actionbar_submenu_bkg"
+        android:orientation="horizontal"
+        android:padding="8dp" >
+
+        <ImageView
+            android:id="@+id/myphoto"
+            android:layout_width="@dimen/abc_square_image_size38"
+            android:layout_height="@dimen/abc_square_image_size38"
+            android:src="@drawable/v5_0_1_profile_headphoto" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left|center_horizontal"
+            android:orientation="vertical"
+            android:layout_marginLeft="5dp">
+
+            <TextView
+                android:id="@+id/username"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="怎么又是你"
+                android:textColor="@color/white"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/userid"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="xiaoxiu439594"
+                android:textColor="#45c01a"
+                android:textSize="12dp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="0.2dp"
+        android:background="@color/black" />
+
+    <LinearLayout
+        android:id="@+id/linear_setpwd"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/abc_action_bar_sublist_item_small_height"
+        android:orientation="horizontal"
+        android:background="@drawable/actionbar_submenu_bkg"
+        android:padding="8dp" >
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/app_panel_setting_icon"
+            android:visibility="invisible" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="10dp"
+            android:gravity="center"
+            android:text="修改密码"
+            android:textColor="@color/white"
+            android:textSize="15dip" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="0.2dp"
+        android:background="@color/black" />
+
+    <LinearLayout
+        android:id="@+id/linear_about"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/abc_action_bar_sublist_item_small_height"
+        android:background="@drawable/actionbar_submenu_bkg"
+        android:orientation="horizontal"
+        android:padding="8dp" >
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/app_panel_setting_icon"
+            android:visibility="invisible" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="10dp"
+            android:gravity="center"
+            android:text="关于和佳ERP"
+            android:textColor="@color/white"
+            android:textSize="15dip" />
+    </LinearLayout>
+    
+     <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="0.2dp"
+        android:background="@color/black" />
+
+    <LinearLayout
+        android:id="@+id/linear_set"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/abc_action_bar_sublist_item_small_height"
+        android:background="@drawable/actionbar_submenu_bkg"
+        android:orientation="horizontal"
+        android:padding="8dp" >
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:visibility="invisible"
+            android:src="@drawable/app_panel_setting_icon" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="10dp"
+            android:gravity="center"
+            android:text="设置"
+            android:textColor="@color/white"
+            android:textSize="15dip" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="0.2dp"
+        android:background="@color/black" />
+
+    <LinearLayout
+        android:id="@+id/linear_logout"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/abc_action_bar_sublist_item_small_height"
+        android:background="@drawable/actionbar_submenu_bkg"
+        android:orientation="horizontal"
+        android:padding="8dp" >
+
+        <ImageView          
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/app_panel_friendcard_icon" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="10dp"
+            android:gravity="center"
+            android:text="退出当前账号"
+            android:textColor="@color/white"
+            android:textSize="15dip" />
+    </LinearLayout>
+
+</LinearLayout>

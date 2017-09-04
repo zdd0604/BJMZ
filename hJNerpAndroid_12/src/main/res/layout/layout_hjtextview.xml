@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="5dp"
+    android:paddingLeft="5dp"
+    android:paddingRight="5dp"
+    android:paddingTop="5dp" 
+    android:background="@color/white">
+
+    <TextView
+        android:id="@+id/hjtv_et_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:singleLine="true"
+        android:text="hhhhhh" />
+
+    <EditText
+        android:id="@+id/hjtv_et_content"
+        style="@style/EditText"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/hjtv_et_title"
+        android:scrollHorizontally="false"
+        android:inputType="textMultiLine"
+        android:singleLine="false" >
+
+    </EditText>
+
+</RelativeLayout>

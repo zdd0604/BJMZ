@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/ll_bill_detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingBottom="20dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp">
+
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+
+            <com.hjnerp.widget.BubbleImageView
+                android:id="@+id/approval_photo_iv"
+                android:layout_width="@dimen/abc_square_image_size38"
+                android:layout_height="@dimen/abc_square_image_size38"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:adjustViewBounds="true"
+                android:gravity="center"
+                android:scaleType="fitCenter"
+                android:src="@drawable/v5_0_1_profile_headphoto"
+                app:bubble_angle="19dp"
+                app:bubble_arrowHeight="0dp"
+                app:bubble_arrowLocation="right"
+                app:bubble_arrowOffset="0dp"
+                app:bubble_arrowTop="0dp"
+                app:bubble_arrowWidth="0dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/approval_photo_iv"
+                android:orientation="vertical"
+                android:paddingLeft="0dip">
+
+                <TextView
+                    android:id="@+id/approval_title_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:padding="2dip"
+                    android:singleLine="true"
+                    android:text="请假申请单"
+                    android:textColor="@color/name_text_color"
+                    android:textSize="@dimen/larger_textsize" />
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/approval_name_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:padding="2dip"
+                        android:singleLine="true"
+                        android:text="李玟"
+                        android:textColor="@color/gray"
+                        android:textSize="@dimen/normal_textsize" />
+
+                    <TextView
+                        android:id="@+id/approval_time_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:gravity="center_horizontal"
+                        android:singleLine="true"
+                        android:text="2014-05-20 18:05"
+                        android:textColor="@color/gray"
+                        android:textSize="@dimen/small_textsize" />
+                </RelativeLayout>
+            </LinearLayout>
+        </RelativeLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="0dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/reader_item_divider" />
+
+        <LinearLayout
+            android:id="@+id/ll_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:orientation="vertical" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/button_relative"
+            android:visibility="gone">
+
+            <Button
+                android:id="@+id/save_button"
+                android:layout_width="50dp"
+                android:layout_height="32dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginBottom="9dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="9dp"
+                android:background="@drawable/chat_send_btn"
+                android:text="保存"
+                android:textColor="@color/white" />
+        </RelativeLayout>
+
+
+        <HorizontalScrollView
+            android:id="@+id/hs"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp" />
+
+        <HorizontalScrollView
+            android:id="@+id/hs2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp" />
+
+        <HorizontalScrollView
+            android:id="@+id/hs3"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp" />
+
+        <LinearLayout
+            android:id="@+id/ll_attach_approval"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:orientation="vertical" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/rl_approval"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffff"
+        android:gravity="center_vertical"
+        android:paddingRight="20dp">
+
+        <LinearLayout
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <com.hjnerp.widget.BubbleImageView
+                android:id="@+id/iv_workdetail_photo"
+                android:layout_width="@dimen/abc_square_image_size38"
+                android:layout_height="@dimen/abc_square_image_size38"
+                android:layout_marginBottom="5dp"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:src="@drawable/v5_0_1_profile_headphoto"
+                app:bubble_angle="19dp"
+                app:bubble_arrowHeight="0dp"
+                app:bubble_arrowLocation="right"
+                app:bubble_arrowOffset="0dp"
+                app:bubble_arrowTop="0dp"
+                app:bubble_arrowWidth="0dp" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/iv_workdetail_photo">
+
+                <TextView
+                    android:id="@+id/tv_workdetail_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:gravity="center_horizontal"
+                    android:padding="2dip"
+                    android:singleLine="true"
+                    android:text="李玟"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tv_workdetail_division"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/tv_workdetail_name"
+                    android:gravity="center_horizontal"
+                    android:padding="2dip"
+                    android:singleLine="true"
+                    android:text="-"
+                    android:textSize="15dip"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_workdetail_result"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:layout_toRightOf="@+id/tv_workdetail_division"
+                    android:gravity="center_horizontal"
+                    android:padding="2dip"
+                    android:singleLine="true"
+                    android:text="同意"
+                    android:textSize="14sp" />
+
+
+                <!--<TextView-->
+                <!--android:id="@+id/tv_workdetail_time"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_alignBaseline="@+id/tv_workdetail_result"-->
+                <!--android:layout_alignBottom="@+id/tv_workdetail_result"-->
+                <!--android:layout_alignParentRight="true"-->
+                <!--android:gravity="center_horizontal"-->
+                <!--android:singleLine="true"-->
+                <!--android:text="2014-05-20"-->
+                <!--android:textSize="12sp" />-->
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <View
+                    android:id="@+id/worrk_view1"
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="#A6A6A6" />
+            </LinearLayout>
+
+
+            <ImageView
+                android:id="@+id/tv_workdetail_ok"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:src="@drawable/workflow_access" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <View
+                    android:id="@+id/worrk_view2"
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="#A6A6A6" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/relative"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_workdetail_ok"
+            android:layout_toRightOf="@+id/tv_workdetail_ok"
+            android:padding="10dp">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="审批时间"
+                        android:textColor="#949494"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/tv_workdetail_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="25dp"
+                        android:layout_marginTop="5dp"
+                        android:text="2014-05-20"
+                        android:textColor="@color/black"
+                        android:textSize="12dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="审批意见"
+                        android:textColor="#949494"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/tv_workdetail_content"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/iv_workdetail_photo"
+                        android:layout_marginLeft="25dp"
+                        android:layout_marginTop="5dp"
+                        android:ellipsize="none"
+                        android:gravity="center_horizontal"
+                        android:maxLines="100"
+                        android:scrollHorizontally="false"
+                        android:text="好"
+                        android:textColor="@color/black" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
+
+
+</LinearLayout>

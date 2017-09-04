@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" 
+    xmlns:app="http://schemas.android.com/apk/res-auto" 
+    android:id="@+id/rlayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/activity_background"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:orientation="vertical" >
+    <TextView
+        android:id="@+id/chat_sendtime_leftpic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:padding="3dp" 
+        android:background="@drawable/sns_shoot_add_bg_pressed" 
+        android:textColor="@color/white"
+        android:visibility="gone" 
+        android:textSize="13sp" />
+    <RelativeLayout
+        android:id="@+id/chat_left_item_leftpic"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/chat_sendtime_leftpic" 
+        android:layout_marginTop="10dp" >
+
+        <ImageView
+            android:id="@+id/chat_left_item_headphoto_leftpic"
+            android:layout_width="@dimen/abc_square_image_size38"
+            android:layout_height="@dimen/abc_square_image_size38"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:src="@drawable/v5_0_1_profile_headphoto"
+            android:clickable="true"
+            android:scaleType="fitXY"
+            android:contentDescription="说明" />
+
+          <TextView  android:id="@+id/chat_Left_item_pic_name"
+           android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/chat_left_item_headphoto_leftpic" 
+            android:layout_alignParentTop="true" 
+            android:focusable="false" 
+            android:layout_marginLeft="10dp"  
+            android:text="sd"
+            android:textColor="@color/chat_item_head"
+            android:textSize="13sp" 
+            />
+          
+        <RelativeLayout
+            android:id="@+id/chat_layout_left_pic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_toRightOf="@id/chat_left_item_headphoto_leftpic" 
+            android:layout_below="@+id/chat_Left_item_pic_name"  
+            android:gravity="center"
+            android:orientation="horizontal" >     
+        <com.hjnerp.widget.BubbleImageView
+            android:id="@+id/chat_left_item_pic_leftpic"
+         	android:layout_width="wrap_content"
+            android:layout_height="150dp"  
+            android:scaleType="fitXY"
+            android:src="@drawable/voicesearch_btnbg_pressed" 
+            android:adjustViewBounds="true"
+            android:maxHeight="200dp"
+            android:maxWidth="250dp"
+            android:minWidth="200dp"
+            android:layout_marginLeft="8dp"  
+            android:visibility="visible"
+            app:bubble_angle="5dp"
+            app:bubble_arrowHeight="10dp"
+            app:bubble_arrowLocation="left"
+            app:bubble_arrowOffset="-5dp"
+            app:bubble_arrowTop="20dp"
+            app:bubble_arrowWidth="5dp"
+            android:padding="0dp"/>
+          <ProgressBar
+                android:id="@+id/chat_left_item_pb_rightpic"
+                style="?android:attr/progressBarStyleSmall"
+                android:layout_width="30dp"
+                android:layout_height="30dp" 
+                android:layout_centerInParent = "true" 
+                android:visibility="visible" 
+                 />
+        </RelativeLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

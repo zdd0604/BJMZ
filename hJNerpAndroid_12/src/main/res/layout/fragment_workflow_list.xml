@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/business_bkg_grey"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <!-- android:background="@drawable/workflowlist_item" -->
+
+    <LinearLayout
+        android:id="@+id/workflow_bg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginTop="1dp"
+        android:background="@drawable/workflowlist_item"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingBottom="10dp"
+        android:paddingEnd="14dp"
+        android:paddingLeft="8dp"
+        android:paddingRight="14dp"
+        android:paddingStart="8dp"
+        android:paddingTop="16dp">
+
+
+        <com.hjnerp.widget.BubbleImageView
+            android:id="@+id/workflow_photo_iv"
+            android:layout_width="@dimen/abc_square_image_size38"
+            android:layout_height="@dimen/abc_square_image_size38"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
+            android:adjustViewBounds="true"
+            android:gravity="center"
+            android:src="@drawable/v5_0_1_profile_headphoto"
+            app:bubble_angle="19dp"
+            app:bubble_arrowHeight="0dp"
+            app:bubble_arrowLocation="right"
+            app:bubble_arrowOffset="0dp"
+            app:bubble_arrowTop="0dp"
+            app:bubble_arrowWidth="0dp" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="8"
+            android:orientation="vertical"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/workflow_name_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="李玟"
+                    android:textColor="@color/name_text_color"
+                    android:textSize="@dimen/larger_textsize"
+                    android:textStyle="bold" />
+
+                <!--<TextView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="的"-->
+                    <!--android:textColor="@color/name_text_color"-->
+                    <!--android:textSize="@dimen/larger_textsize"-->
+                    <!--android:textStyle="bold" />-->
+
+                <!--<TextView-->
+                    <!--android:id="@+id/workflow_title_tv"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:ellipsize="end"-->
+                    <!--android:maxEms="6"-->
+                    <!--android:maxLines="1"-->
+                    <!--android:text="请假申请单"-->
+                    <!--android:textColor="@color/name_text_color"-->
+                    <!--android:textSize="@dimen/larger_textsize"-->
+                    <!--android:textStyle="bold" />-->
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/workflow_content_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="10dp"
+                android:scrollHorizontally="false"
+                android:text="部        门:城关一区   \n终端名称:    "
+                android:textColor="@color/name_text_color"
+                android:textSize="@dimen/normal_textsize" />
+
+            <LinearLayout
+                android:id="@+id/ll_attach"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:orientation="horizontal" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="3"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/workflow_time_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_gravity="right"
+                android:maxLines="1"
+                android:text="2014-05-20 18:05"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/small_textsize" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="right">
+
+                <ImageView
+                    android:id="@+id/iv_attach_adapter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/hj_attach_icon_normal" />
+
+                <TextView
+                    android:id="@+id/workflow_type_tv"
+                    android:layout_width="20dip"
+                    android:layout_height="20dip"
+                    android:background="@drawable/work_type_text_bkg"
+                    android:gravity="center"
+                    android:text="阅"
+                    android:textColor="@color/white"
+                    android:textSize="12sp" />
+
+                <Button
+                    android:id="@+id/work_button_agree"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/business_child_item_bkg"
+                    android:focusable="false"
+                    android:text="同意"
+                    android:maxLines="1"
+                    android:textColor="@color/actionbar_bg_color"/>
+                <!--<LinearLayout-->
+                <!--android:id="@+id/work_gree_layout"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:layout_marginLeft="10dp"-->
+                <!--android:layout_marginStart="10dp"-->
+                <!--android:background="@drawable/workflowlist_item"-->
+                <!--android:orientation="horizontal">-->
+
+                <!--<view-->
+                <!--android:layout_width="1dp"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:background="#333333" />-->
+
+                <!--<ImageView-->
+                <!--android:id="@+id/work_content"-->
+                <!--android:layout_width="16dp"-->
+                <!--android:layout_height="16dp"-->
+                <!--android:layout_marginLeft="10dp"-->
+                <!--android:layout_marginStart="10dp"-->
+                <!--android:layout_marginTop="9dp"-->
+                <!--android:scaleType="fitXY"-->
+                <!--android:src="@drawable/work_content" />-->
+
+                <!--<TextView-->
+                <!--android:id="@+id/agree"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginLeft="5dp"-->
+                <!--android:layout_marginStart="5dp"-->
+                <!--android:layout_marginTop="5dp"-->
+                <!--android:text="@string/agree"-->
+                <!--android:textColor="@color/actionbar_bg_color"-->
+                <!--android:textSize="16sp" />-->
+                <!--</LinearLayout>-->
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,51 @@
+﻿<HJModel start = "001" type = "opr" id = "210"  > 
+      <!---->
+    <HJView id = "001" name = "我的绩效"  returnenable="true"  presave="false"  dataset="user:'1=1';fiscal:'1=1'"  datasetmode="net-local"
+	>
+ 
+		<!-- 1-只从网络;2-从网络>>1345;3-从1345;4-从1345>>从网络 -->
+		 <HJComboBox id = "001001" name = "人员"   editable ="false" 
+		   required ="false" visible ="true" width ="0.6" valuetype="string" 
+		   format="@@@@@@" singleline = "true" fontsize = "medium" 
+		   alignment="left" field = "name_user"  datasource="sauser" > 
+		 </HJComboBox>
+
+		<HJComboBox id = "001002" name = "年月"   editable ="false"
+	  required ="false" visible ="true" width ="0.6" valuetype="string"
+	  format="@@@@@@" singleline = "true" fontsize = "medium"
+	  alignment="left" field = "fiacal"  datasource="fiacal" >
+		</HJComboBox>
+
+		<HJToolBar id ="001100" name="工具栏"  >
+        <HJButton id="001100001" name="查询"  editable ="true"  visible ="true"  fontsize = "medium"  alignment="center"  
+		onclick="  hjc_setnextview('001','001100',sender.row,'002',sender.billno,sender.nodeid);  "   > 
+		</HJButton>  
+      </HJToolBar> 
+	
+
+    </HJView>
+	
+	
+	
+     
+    <HJView id = "002" name = "我的绩效"  returnenable="true"  presave="false"  dataset="kpi:'name_column=\''..hjc_getvalue('001','001001')..hjc_getvalue('001','001002') ..'\''"  datasetmode="net-local"
+	> 
+        <!-- 1-只从网络;2-从网络>>1345;3-从1345;4-从1345>>从网络 -->
+		
+       <HJGrid id = "002002" name = "我的绩效" fontsize = "medium"
+               visible ="true"	   locking ="1"    style = "plain"  layouttype = "fullscreen"  datasource="cdiscard"  >
+        <!-- 添加固定的终端信息   -->
+		<HJGridColumn id="002002000" name ="年月"    width ="0.3"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data1" field="fiscal"    />
+	    <HJGridColumn id="002002001" name ="人员"    width ="0.3"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data2" field="name_user"    />
+        <HJGridColumn id="002002002" name ="状态"  width ="0.4"   editable ="false" visible ="true" singleline ="false"   fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data3" field="flag_sts"    />
+		<HJGridColumn id="002002003" name ="考核项目"    width ="0.3"   editable ="false" visible ="true" singleline ="false"   fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data4" field="name_kpid" />
+        <HJGridColumn id="002002004" name ="权重"  width ="0.4"   editable ="false" visible ="true" singleline ="false"    fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data5" field="dec_scale" />
+        <HJGridColumn id="002002015" name ="得分"    width ="0.4"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data6" field="dec_score" />
+        <HJGridColumn id="002002016" name ="考核办法"    width ="0.4"   editable ="false" visible ="true" singleline ="false"    fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data7" field="var_check" />
+       
+      
+      </HJGrid>
+    </HJView>
+ 
+ 
+</HJModel>

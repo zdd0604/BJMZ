@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+	<ImageView 
+	    android:layout_width="fill_parent"
+	    android:layout_height="10dp"
+	    android:background="@color/business_bkg_grey"/>
+    <TextView
+        android:id="@+id/hj_linechar_title"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:visibility="invisible"
+        android:textAppearance="@android:style/TextAppearance.Medium" />
+
+    <RelativeLayout
+        android:id="@+id/hj_relative_linechart"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/labelX"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="10dp"
+            android:visibility="invisible" >
+        </TextView>
+
+        <TextView
+            android:id="@+id/labelY"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp">
+        </TextView>
+    </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/frame_linechart"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp" >
+
+        <LinearLayout
+            android:id="@+id/hj_line_chart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+        </LinearLayout>
+
+        <com.hjnerp.widget.LineView
+            android:id="@+id/line"
+            android:layout_width="5dp"
+            android:layout_height="match_parent"
+            android:background="#66CCFF" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:id ="@+id/aaa"
+        android:layout_marginLeft="35px"
+        android:layout_height="wrap_content" >
+
+        <!-- 横线 -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_gravity="center_vertical"
+          
+            android:background="@color/business_bkg_grey" />
+        <!-- 实心圆 -->
+
+        <com.hjnerp.widget.CircleImageView
+            android:id="@+id/hj_line_circle"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/hj_linechart_circle" />
+    </FrameLayout>
+    <ImageView 
+	    android:layout_width="fill_parent"
+	    android:layout_height="10dp"
+	    android:background="@color/white"/>
+	<ImageView 
+	    android:layout_width="fill_parent"
+	    android:layout_height="10dp"
+	    android:background="@color/business_bkg_grey"/>
+</LinearLayout>

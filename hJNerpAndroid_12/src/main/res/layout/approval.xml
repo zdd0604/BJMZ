@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+
+    <!--  com.hjnerp.widget.PullRefreshListView
+        android:id="@+id/plv_approval"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_alignParentLeft="true"
+        android:layout_weight="1"
+        android:divider="@drawable/reader_item_divider"
+        android:dividerHeight="1px"
+        android:footerDividersEnabled="true"
+        android:scrollbarStyle="outsideOverlay" -->
+    <com.handmark.pulltorefresh.library.PullToRefreshListView
+        android:id="@+id/plv_approval"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_alignParentLeft="true"
+        android:layout_weight="1"
+        android:divider="@drawable/reader_item_divider"
+        android:dividerHeight="1px"
+        android:footerDividersEnabled="true"
+        android:scrollbarStyle="outsideOverlay" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:height="0.2dp"
+            android:background="@drawable/reader_item_divider"
+            android:paddingBottom="10dp"
+            android:paddingTop="5dp" />
+
+        <RelativeLayout
+            android:id="@+id/approval_approval"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp">
+
+            <Button
+                android:id="@+id/btn_disagree"
+                android:layout_width="wrap_content"
+                android:layout_height="32.0dip"
+                android:layout_marginRight="10dp"
+                android:layout_toLeftOf="@+id/btn_agree"
+                android:background="@drawable/chat_send_btn"
+                android:gravity="center"
+                android:minWidth="@dimen/ChattingFootSendMinWidth"
+                android:text="驳回"
+                android:textColor="@color/white"
+                android:textSize="14.0dip" />
+
+            <Button
+                android:id="@+id/btn_agree"
+                android:layout_width="wrap_content"
+                android:layout_height="32.0dip"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/chat_send_btn"
+                android:gravity="center"
+                android:minWidth="@dimen/ChattingFootSendMinWidth"
+                android:text="同意"
+                android:textColor="@color/white"
+                android:textSize="14.0dip" />
+
+            <EditText
+                android:id="@+id/et_approval_context"
+                android:layout_width="fill_parent"
+                android:layout_height="30dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:text="同意"
+                android:layout_marginRight="10dp"
+                android:layout_toLeftOf="@id/btn_disagree"
+                android:background="@drawable/edittext_bg_selector"
+                android:singleLine="true"
+                android:textSize="18sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/approval_withdraw"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:visibility="visible">
+
+            <Button
+                android:id="@+id/btn_withdraw"
+                android:layout_width="wrap_content"
+                android:layout_height="32.0dip"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/chat_send_btn"
+                android:gravity="center"
+                android:minWidth="@dimen/ChattingFootSendMinWidth"
+                android:text="收回"
+                android:textColor="@color/white"
+                android:textSize="14.0dip" />
+
+            <EditText
+                android:id="@+id/et_withdraw_context"
+                android:layout_width="fill_parent"
+                android:layout_height="30dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_toLeftOf="@id/btn_withdraw"
+                android:background="@drawable/edittext_bg_selector"
+                android:singleLine="true"
+                android:textSize="18sp" />
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>

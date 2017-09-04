@@ -1,0 +1,762 @@
+﻿<!DOCTYPE html>
+<html class="android android-4 android-4-4">
+  <head>  
+  <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>销售订单</title> 
+    <link rel="stylesheet" href="Framework7/css/framework7.css"> 
+    <link rel="stylesheet" href="Framework7/css/my-app.css"> 
+ 
+  </head>
+  <body  onload="onLoad()> 
+    <div class="statusbar-overlay"></div>  
+   <div class="views">
+      <div class="view view-main">
+           <div class="navbar no-border  color-white  theme-white" >
+              <div data-page="home" class="navbar-inner">
+                <div class="left"><a onclick="hjbusiness.onhjbackmain(function(result){},function(error){});" class="link">
+					<i class="icon icon-back"></i>
+					<span>返回</span>
+				</a></div>
+                <div class="center">销售订单</div>
+                <div class="right"><a href="#dsaord"  class="link-save" > 新增</a></div>
+              </div> 
+			  <div data-page="dsaord" class="navbar-inner cached">
+				<div class="left sliding"><a href="#" class="back link"> <i class="icon icon-back"></i><span>返回</span></a></div>
+				<div class="center sliding">销售订单</div>
+				  <div class="right">  <a  class="link-saord">上传</a> </div>
+			  </div> 
+               <div data-page="addcorr" class="navbar-inner cached">
+				<div class="left sliding"><a href="#" class="back link"> <i class="icon icon-back"></i><span>返回</span></a></div>
+				<div class="center sliding">客户</div>
+				  <div class="right">  <a  class="link-corr">确定</a> </div>
+			  </div>    
+			
+			   <div data-page="saordtype" class="navbar-inner cached">
+				<div class="left sliding"><a href="#" class="back link"> <i class="icon icon-back"></i><span>返回</span></a></div>
+				<div class="center sliding">订单类型</div>
+				  <div class="right">  <a  class="link-ordtype">确定</a> </div>
+			  </div>  
+ 
+
+			   <div data-page="additem" class="navbar-inner cached">
+				<div class="left sliding"><a href="#" class="back link"> <i class="icon icon-back"></i><span>返回</span></a></div>
+				<div class="center sliding">产品信息</div>
+				  <div class="right">  <a  class="link-additem">确定</a> </div>
+			  </div> 
+
+			  <div data-page="querysaord" class="navbar-inner cached">
+				<div class="left sliding"><a href="#" class="back link"> <i class="icon icon-back"></i><span>返回</span></a></div>
+				<div class="center sliding">订单信息</div>
+				  
+			  </div> 
+
+            </div>
+          <div class="pages navbar-through"> 
+          <div data-page="home" class="page">  
+
+           <div class="page-content infinite-scroll">
+					<div class="content-block">
+						<p class="buttons-row  theme-blue ">
+							<a href="#" class="ac-1 button">修改</a> <a href="#"
+								class="ac-2 button active">未审核</a> <a href="#"
+								class="ac-3 button">审核</a>
+						</p>
+					</div>
+					<div class="list-block  media-list no-border">
+						<ul>
+						</ul>
+					</div>
+
+
+
+				</div>
+          </div> 
+		   <div data-page="querysaord" class="page cached"> 
+				<div class="searchbar-overlay"></div> 
+                  <div class="page-content"> 
+			      </div>   
+		    </div> 
+
+            <div data-page="addcorr" class="page cached">
+        <form class="searchbar searchbar-init"  id="findcorr-form"   onSubmit="return findcorr_submit()">
+					<div class="searchbar-input">
+						<input type="search" class="search_input" name= "search_input" placeholder="搜索">
+						<a href="#" class="searchbar-clear"></a>
+					</div>
+					<a href="#" class="searchbar-cancel">取消</a>
+				</form> 
+				<div class="searchbar-overlay"></div> 
+                  <div class="page-content"> 
+			      </div>   
+		    </div> 
+             <div data-page="additem" class="page cached">
+        <form class="searchbar searchbar-init"  id="finditem-form"   onSubmit="return finditem_submit()">
+					<div class="searchbar-input">
+						<input type="search" class="search_input" name= "search_input" placeholder="搜索">
+						<a href="#" class="searchbar-clear"></a>
+					</div>
+					<a href="#" class="searchbar-cancel">取消</a>
+				</form> 
+				<div class="searchbar-overlay"></div> 
+                  <div class="page-content">
+				  
+			    </div>  
+		    </div> 
+		    
+		    <div data-page="saorddept" class="page cached">
+                 
+				<div class="searchbar-overlay"></div> 
+                  <div class="page-content">
+				   <div class="list-block"> 
+			       </div> 
+			    </div>  
+		    </div> 
+
+		    
+		    
+            <div data-page="saordtype" class="page cached">
+                 
+				<div class="searchbar-overlay"></div> 
+                  <div class="page-content">
+				   <div class="list-block"> 
+			       </div> 
+			    </div>  
+		    </div> 
+
+		    <div data-page="dsaord" class="page cached"> 
+				<div class="searchbar-overlay"></div> 
+                  <div class="page-content">
+
+				   <div class="list-block">
+					<form id="my-form" class="list-block">
+					<ul>  
+					<li>
+                    <div class="item-content"> 
+                      <div class="item-inner"> 
+                        <div class="item-title label">订单日期<font color="red">*</font></div>
+                        <div class="item-input">
+						<input type="text" name= "date_ord"   disabled > </input> 
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+
+						<li>
+							<div class="item-content">
+								<div class="item-inner">
+								<div class="item-title label">
+									交货日期<font color="red">*</font>
+								</div>
+								<div class="item-input">
+									<input type="date" placeholder="交货日期"
+											name= "date_demand"  id="date_demand">
+								</div>
+							</div>
+							</div>
+						</li>
+						
+				  <li><a href="#saordtype" class="item-link"> 
+                    <div class="item-content"> 
+                      <div class="item-inner"> 
+                        <div class="item-title label">订单类型<font color="red">*</font></div>
+                        <div class="item-input"> 
+                          <input type="hidden" name= "id_ordtype"  disabled value = ""   > </input>
+						  <input type="text" name= "name_ordtype"  disabled value = ""   > </input>
+                        </div>
+                      </div>
+                    </div></a>
+                  </li> 
+                  
+ 
+                  
+				  <li> <a href="#addcorr" class="item-link"> 
+                    <div class="item-content"> 
+                      <div class="item-inner"> 
+                        <div class="item-title label">客户<font color="red">*</font></div>
+                        <div class="item-input">
+						 <input type="hidden" name= "id_corr"    > </input>
+						 <input type="hidden" name= "id_dept"    > </input>
+                          <input type="text" name= "name_corr"  > </input>
+                        </div>
+                      </div>
+                    </div></a>
+                  </li> 
+              
+                  
+                    <li>
+                    <div class="item-content"> 
+                      <div class="item-inner"> 
+                        <div class="item-title label">送货地址<font color="red">*</font></div>
+                        <div class="item-input"> 
+                          <textarea  name= "var_addr" readonly='true'  > </textarea>
+                        </div>
+                      </div>
+                    </div>
+                    </li> 
+                    
+                                        <li>
+                    <div class="item-content"> 
+                      <div class="item-inner"> 
+                        <div class="item-title label">收货客户<font color="red" >*</font></div>
+                        <div class="item-input"> 
+                          <textarea  name= "name_terminal"  readonly='true'  > </textarea>
+                        </div>
+                      </div>
+                    </div>
+                    </li> 
+                    
+					<li>
+                    <div class="item-content"> 
+                      <div class="item-inner"> 
+                        <div class="item-title label">录入人<font color="red">*</font></div>
+                        <div class="item-input">
+						 <input type="hidden"   name= "id_user" > </input> 
+							 <input type="hidden"   name= "id_com"  > </input>  
+						     <input type="text"   name= "name_user"  disabled > </input>   
+                        </div>
+                      </div>
+                    </div>
+                  </li> 
+
+					</ul>
+					</form>
+				  </div>
+				   <div class="content-block-title">产品信息</div>
+                   <div class="list-block dsaorditem">
+				   <ul  class="list-item" >   
+				   </ul>
+				   </div>
+				   <p></p>
+				     <div class="content-block"> 
+					<p class="buttons-row">
+					  <a href="#additem" class="button  button-fill   color-red">添加产品</a>
+					  <a onclick= "delete_item()" class="link-deleteitem button button-fill color-green"> 删除产品  </a> 
+					</p> </div>
+			    </div>  
+		    </div>  
+        </div>
+      </div>
+    </div> 
+<style>
+.infinite-scroll-preloader {
+	margin-top: -20px;
+	margin-bottom: 10px;
+	text-align: center;
+}
+
+.infinite-scroll-preloader .preloader {
+	width: 34px;
+	height: 34px;
+}
+</style>
+ <script type="text/javascript" src="Framework7/js/framework7.js"></script>
+ <script type="text/javascript" src="Framework7/js/hj-app.js"></script> 
+ <script type="text/javascript" src="Framework7/js/cordova.js"></script> 
+<script src="Framework7/js/hjbusiness.js" type="text/javascript"></script>
+<script>
+	var myApp = new Framework7({
+	animateNavBackIcon:true,
+	fastClicks:true,
+	router:true,
+	pushState: true,
+	});
+	var mainView = myApp.addView('.view-main', {
+	dynamicNavbar: true,
+	domCache: true
+	});
+	var $$ = Dom7;
+	var lastdata ='1900-01-01'
+	var loading = false;
+	var lastIndex =0;
+	var maxItems = 60;
+	var itemsPerLoad = 20;
+	var saordtype ="S";
+	var billno = '';
+	var saordwhere = "flag_sts='S'"
+
+
+
+	$$('.infinite-scroll').on('infinite', function () {
+
+	if (loading) return;
+	loading = true;
+	setTimeout(function () {
+	loading = false;
+	loaddata();
+	}, 2000);
+	});
+	$$('.ac-1').on('click', function () {
+	saordtype = "L";
+	lastdata = '1900-01-01';
+	$$('.ac-1').removeClass( 'active');
+	$$('.ac-2').removeClass('active');
+	$$('.ac-3').removeClass('active');
+	$$('.ac-1').addClass( 'active');
+	$$(mainView.activePage.container).find('.list-block ul').remove();
+	$$(mainView.activePage.container).find('.list-block').append("<ul>  </ul>");   
+		  loaddata();
+      });
+      $$('.ac-2').on('click', function () {
+    	   saordtype = "S";
+		    lastdata = '1900-01-01';
+		    $$('.ac-1').removeClass('active');
+	    	$$('.ac-2').removeClass('active');
+	    	$$('.ac-3').removeClass('active'); 
+	    	$$('.ac-2').addClass('active');
+			  $$(mainView.activePage.container).find('.list-block ul').remove(); 
+			 $$(mainView.activePage.container).find('.list-block').append("<ul>  </ul>");   
+	    	  loaddata();
+      });
+      $$('.ac-3').on('click', function () {
+            saordtype = "Y";
+		    lastdata = '1900-01-01';
+		    $$('.ac-1').removeClass('active');
+	    	$$('.ac-2').removeClass('active');
+	    	$$('.ac-3').removeClass('active'); 
+	    	$$('.ac-3').addClass('active');
+		    $$(mainView.activePage.container).find('.list-block ul').remove(); 
+			$$(mainView.activePage.container).find('.list-block').append("<ul>  </ul>");
+
+	loaddata();
+	});
+
+	function delete_item(){
+
+	var checkbox = document.getElementsByName("my-checkbox");
+	for (var i=checkbox.length -1;i >=0 ;i--)
+	{
+	if ( checkbox[i].checked)
+	{
+	$$('.list-item').find("li")[i].remove() ;
+	}
+	}
+
+
+	}
+	$$('.link-ordtype').on('click',function () {
+	
+	var corrData = myApp.formToJSON('#my-ordtype');
+	var id_values = corrData.ordtype.split(",");;
+	var id_corr = id_values[0];
+	var name_corr = id_values[1];
+	var formData = myApp.formToJSON('#my-form');
+	formData.id_ordtype = id_corr;
+	formData.name_ordtype  = name_corr;
+	
+	
+	
+	myApp.formFromJSON('#my-form',formData);
+	mainView.router.back();
+	});
+	$$('.link-saord').on('click', function () {
+	myApp.showPreloader('加载中');
+	var formData = myApp.formToJSON('#my-form');
+
+	if (formData.id_ordtype == ""|| typeof(formData.id_ordtype) == "undefined")
+	{
+	myApp.hidePreloader( );
+	myApp.alert('订单类型不能为空', '销售订单');
+	return false;
+	}
+	if (trim(formData.id_corr) == ""|| typeof(formData.id_corr) == "undefined")
+	{
+	myApp.hidePreloader( );
+	myApp.alert('客户不能为空！', '销售订单');
+	return false;
+	}
+	if (trim(formData.date_demand) == ""|| typeof(formData.date_demand) == "undefined")
+	{
+	myApp.hidePreloader( );
+	myApp.alert('交货日期不能为空！', '销售订单');
+	return false;
+	}
+	if (trim(formData.var_addr) == "" || typeof(formData.var_addr) == "undefined")
+	{
+	myApp.hidePreloader( );
+	myApp.alert('送货地址不能为空！', '销售订单');
+	return false;
+	}
+	
+	var  dec_qtyv;
+	var dec_codev;
+	var codevalue;
+	var var_item = "";
+	var fist=0;
+	var dec_qty = document.getElementsByName("dec_qtys");
+	var  dec_valid = document.getElementsByName("date_valids");
+	var  dec_code= document.getElementsByName("itemcode")
+	;
+	if (dec_qty.length <=0 )
+		  {
+			  myApp.hidePreloader( );
+			  myApp.alert('请输入产品信息', '销售订单');
+			  return ;
+		  }
+		   var jss='{"tableid":"dsaord","opr":"SS","no": "","userid":"'+formData.id_user+'","comid":"'+formData.id_com+'","data":[';
+
+		    for (var i=0;i<dec_qty.length;i++)
+             {
+			     dec_qtyv =  dec_qty[i].value;
+
+				 dec_codev=  dec_code[i].value;
+				 if (dec_qtyv != null &&  trim(dec_qtyv) != "" && typeof(dec_qtyv) != "undefined")
+				{
+				if ( fist ==0 )
+				{
+				jss += '{"table": "dsaord_03", "where": "", "data": [';
+
+				}else{
+				jss += ',{"table": "dsaord_03", "where": "", "data": [';
+				}
+				fist =fist +1 ;
+				codevalue = dec_codev.split("`");
+				jss += '{"column":"id_corr","value":"'+formData.id_corr+'","datatype":"varchar"},' ;
+				jss += '{"column":"id_ordtype","value":"'+formData.id_ordtype+'","datatype":"varchar"},' 
+				jss += '{"column":"name_terminal","value":"'+formData.name_terminal+'","datatype":"varchar"},' ;;
+				jss += '{"column":"var_addr","value":"'+formData.var_addr+'","datatype":"varchar"},' ;
+				jss += '{"column":"id_item","value":"'+codevalue[0]+'","datatype":"varchar"},' ;
+				jss += '{"column":"id_uom","value":"'+codevalue[1]+'","datatype":"varchar"},' ;
+				jss += '{"column":"date_demand","value":"'+formData.date_demand+'","datatype":"varchar"},' ;
+				jss += '{"column":"id_dept","value":"'+formData.id_dept+'","datatype":"varchar"},' ;
+				jss += '{"column":"id_prodarea","value":"'+codevalue[2]+'","datatype":"varchar"},' ;
+				jss += '{"column":"dec_qty","value":"'+dec_qtyv+'","datatype":"varchar"},' ;
+
+				jss += '{"column":"flag_sts","value":"L","datatype":"varchar"},' ;
+				jss += '{"column":"id_flow","value":"FBsa","datatype":"varchar"},' ;
+				jss += '{"column":"line_no","value":"'+fist.toString()+'","datatype":"int"}' ;
+				jss += ']  } ';
+				}
+				}
+
+				jss += ' ] }';
+				hjbusiness.onhjupload(
+				function(result) {
+				myApp.hidePreloader( );
+				myApp.alert(result, '销售订单');
+				var formDatas = myApp.formToJSON('#my-form');
+				formDatas.id_corr = '';
+				formDatas.name_corr = ' ';
+				formDatas.var_addr=' ';
+				formDatas.name_terminal=' ';
+				myApp.formFromJSON('#my-form',formDatas);
+				$$('.list-item').find("li").remove() ;
+
+				}, function(error) {
+				myApp.hidePreloader( );
+				myApp.alert(error, '销售订单');
+				},jss,"");
+
+				});
+				$$('.link-additem').on('click',function () {
+				var listHTML = '';
+				var  dec_qtyv;
+
+				var jsondata  ;
+				var dec_qty = document.getElementsByName("dec_qty");
+				var  dec_valid = document.getElementsByName("date_valid");
+				for (var i=0;i<dec_qty.length;i++)
+             {
+				  dec_qtyv =  dec_qty[i].value;
+
+				  if (dec_qtyv != null &&  trim(dec_qtyv) != "" && typeof(dec_qtyv) != "undefined")  
+                 {
+				  jsondata = JSON.parse(localStorage.getItem("item" ))[i] ;
+                  listHTML +=     '<li>    <label class="label-checkbox  item-content">'; 
+                  listHTML +=     '<input type="checkbox" name="my-checkbox" >'; 
+                  listHTML +=     '<div class="item-media">'; 
+                  listHTML +=     '  <i class="icon icon-form-checkbox"></i>'; 
+                  listHTML +=     ' </div>';  
+                  
+				 listHTML += ' <div class="item-inner"> '; 
+				 listHTML += ' <div ><table  > <tr >';
+				 listHTML += '  <td  colspan="2" >  <span style="font-weight: bold;font-size: 18px;" >'+jsondata.name_item +'</span></td>';
+         listHTML += ' </tr><tr >'; 
+				 listHTML += '  <td  colspan="2" >单位 :'+jsondata.name_uom+'</td>';
+         listHTML += ' </tr><tr >'; 
+				 listHTML += '  <td  colspan="2" >  规格 :'+ jsondata.var_spec +'</td>';  
+				 listHTML += ' </tr><tr >'; 
+				 listHTML += '  <td  colspan="2" >产地 :'+jsondata.name_prodarea+'</td>';
+         listHTML += ' </tr> <tr >';
+         listHTML += ' </tr><tr >';
+         listHTML += '  <td  >  数量 :&nbsp;</td>';
+         listHTML += '  <td  ><input type="number"   name= "dec_qtys"  style="border-width: 1px;border-style: solid; border-color: #666666; background-color: #ffffff;width:120px;height:30px;text-align:center;" value = "'+dec_qtyv+'"> </input></td>';
+         listHTML += ' </tr><tr >';
+				 listHTML += '<td  > <input type="hidden"    name="itemcode" value = "'+jsondata.id_item+'`'+jsondata.id_uom+'`'+ jsondata.id_prodarea+'`' +'" > </input> </td>';
+				listHTML += ' </tr>';
+         listHTML += ' </tr>';
+         listHTML += ' </table></div>'; 
+					listHTML += ' </div> ';
+					listHTML += '</label> ';
+					listHTML += '</li> ';
+				  }
+
+				  }
+				  $$('.list-item').append(listHTML);
+				  $$(mainView.activePage.container).find('.list-block').remove();
+				  mainView.router.back();
+
+				  });
+				  $$('.link-corr').on('click',function () {
+				  var corrData = myApp.formToJSON('#my-findcorr');
+				  var id_values = corrData.corr.split(",");;
+				  var id_corr = id_values[0];
+				  var name_corr = id_values[1];
+				  var var_addr = id_values[2];
+				  var id_dept = id_values[3];
+				  var name_terminal = id_values[4];
+				  var formData = myApp.formToJSON('#my-form');
+				  formData.id_corr = id_corr;
+				  formData.name_corr = name_corr;
+				  formData.id_dept = id_dept;
+				  formData.var_addr = var_addr;
+				  formData.name_terminal = name_terminal;
+				  myApp.formFromJSON('#my-form',formData);
+				  mainView.router.back();
+				  });
+
+
+
+				  $$(document).on('pageInit', function (e) {
+				  var page = e.detail.page;
+				  if (page.name === 'dsaord') {
+				  hjbusiness.hjloaddata(
+				  function(result) {
+				  var locData =JSON.parse(result);
+				  if (locData.length >0){
+				  var formData = myApp.formToJSON('#my-form');
+				  formData.id_user = locData[0].id_user;
+				  formData.name_user = locData[0].name_user;
+				  formData.id_com = locData[0].id_com;
+				  formData.date_ord = getdate();
+				  myApp.formFromJSON('#my-form',formData);
+				  }
+				  }, function(error) {
+
+				  },"user","1=1","local");
+				  }
+				  if (page.name === 'saordtype') 
+				  {
+
+				  hjbusiness.hjloaddata(
+				  function(result) 
+				  {
+				  var locData =JSON.parse(result);
+				  var listHTML = ' <form id="my-ordtype" class="list-block"> <ul >  '; 
+					  
+						 for(var i=0;i<locData.length;i++)
+						 	{
+						  listHTML +=     '<li> <label class="item-content">';
+						  listHTML += ' <input type="radio" name="ordtype"  value="'+locData[i].id_ordtype+','+locData[i].name_ordtype+'">';
+						  listHTML += ' <div class="item-inner"> ';
+						  listHTML += '  <div class="item-title">'+locData[i].name_ordtype+'</div> ';
+						  listHTML += ' </div> ';
+						  listHTML += '</label> ';
+						  listHTML += '</li> ';
+						 }
+						  listHTML += ' </ul></form>'; 
+						$$(page.container).find('.list-block').append(listHTML);
+					 }, function(error) {},"saordtype","1=1","local"); 
+        }
+        
+
+
+
+
+
+
+     });
+       function loaddata(){ 
+           if ( saordtype =="S")
+           {
+			   saordwhere = " var_image = 'S' and name_column >='"+lastdata+"'";
+           }
+		   if ( saordtype =="Y")
+           {
+			   saordwhere = " var_image = 'Y' and name_column >='"+lastdata+"'";
+           }
+		    if ( saordtype =="L")
+           {
+			   saordwhere = " var_image = 'L' and name_column >='"+lastdata+"'";
+           }
+          
+    	   $$('.infinite-scroll-preloader').show();
+		   hjbusiness.hjloaddata(function(result){
+	            localStorage.setItem("dsaord_list", result );
+                var locData =JSON.parse(result);     
+               var html = '';
+			   for(var i=0;i<locData.length;i++){
+			   html += '<li > <a  id= "'  +  locData[i].dsaord_no + '"  onclick="show_list(this);"   class="item-link"> <div class="item-content" > <div class="item-inner"> ';
+        	   html += '  <div class="item-title-row"> ';
+               html += '   <div class="item-title"> '  +  locData[i].name_corr + '</div> ';
+               html += '    <div class="item-after" >'  +  locData[i].date_opr + '</div> ';
+               html += '  </div> ';  
+			   html += '<div class="item-subtitle"> 订单编号：'  +  locData[i].dsaord_no + '</div>';  
+			   html += '</div></div></a></li>'; 
+                lastdata =  locData[i].date_opr ;
+				}
+			  $$(mainView.activePage.container).find('.list-block ul').append(html);  
+			  $$('.infinite-scroll-preloader').hide();
+          },function(error){
+			$$('.infinite-scroll-preloader').hide();	
+		 },"dsaord_list",saordwhere,"net-local");  
+　　   }
+       function findcorr_submit( ){  
+		   
+		$$(mainView.activePage.container).find('.search_input').blur();
+		   myApp.showPreloader('加载中'); 
+		  var formData = myApp.formToJSON('#findcorr-form');  
+		  var o = JSON.parse(JSON.stringify(formData)); 
+		  if (o.search_input == "")
+          {
+			    myApp.hidePreloader( );
+			    myApp.alert('搜索内容不能为空！', '销售订单');
+			    return false;
+          }
+		 
+			hjbusiness.hjloaddata(function(result){
+				  myApp.hidePreloader( );
+				  
+				localStorage.setItem("me", result );
+                var locData =JSON.parse(result);    
+                var listHTML = '<div class="list-block media-list"> <form id="my-findcorr" class="list-block"> <ul >  '; 
+				 for(var i=0;i<locData.length;i++){
+                    listHTML +=     '<li>  <label class="item-content">'; 
+    			    listHTML += ' <input type="radio" name="corr" value="'+locData[i].id_corr+','+locData[i].name_corr+','+locData[i].var_addr+','+locData[i].id_dept+','+locData[i].name_terminal+',">'; 
+    				listHTML += '<div class="item-inner"> ';
+					listHTML += '   <div class="item-title-row"> ';
+					listHTML += '	  <div class="item-title">'+locData[i].name_corr+'</div> ';
+					listHTML += '  </div>';
+					listHTML += '  <div class="item-subtitle">送货地址:'+locData[i].var_addr+'</div>  ';
+					listHTML += '  <div class="item-subtitle" style="word-break:break-all; word-wrap:break-word">收货客户:'+locData[i].name_terminal+'</div>  ';
+                    listHTML += ' <div> ';
+    				listHTML += '</label></li> '; 
+    			 } 
+    			  listHTML += ' </ul></form></div> '; 
+				   $$(mainView.activePage.container).find('.list-block').remove();
+                 $$(mainView.activePage.container).find('.page-content').prepend(listHTML);  
+			
+			},function(error){ 
+			     myApp.hidePreloader( );
+				 myApp.alert(error, '销售订单'); 
+			},"ctlm1002_addr","var_value like '%"+o.search_input+"%'","net-local"); 
+			
+} 
+	   function finditem_submit( ){  
+　　        
+		$$(mainView.activePage.container).find('.search_input').blur();
+		   myApp.showPreloader('加载中'); 
+		  var formData = myApp.formToJSON('#finditem-form');  
+		  var o = JSON.parse(JSON.stringify(formData)); 
+		  if (o.search_input == "")
+          {
+			    myApp.hidePreloader( );
+			    myApp.alert('搜索内容不能为空！', '销售订单');
+			    return false;
+          }
+		 
+			hjbusiness.hjloaddata(function(result){
+				  myApp.hidePreloader( );
+				  
+				localStorage.setItem("item", result );
+                var locData =JSON.parse(result);    
+                var listHTML = '<div class="list-block media-list"><form id="my-finditem" class="list-block"> <ul >  '; 
+				 for(var i=0;i<locData.length;i++){
+                   listHTML +=     '<li>    <label class=" item-content">';   
+						listHTML += ' <div class="item-inner"> '; 
+						listHTML += ' <div ><table  > <tr >';
+					  listHTML += '  <td  colspan="2" >  <span style="font-weight: bold;font-size: 18px;" >'+locData[i].name_item +'</span></td>';  
+            listHTML += ' </tr><tr >'; 
+            listHTML += '  <td  colspan="2" >  单位 :'+locData[i].name_uom +'</td>';
+            listHTML += ' </tr><tr >'; 
+						listHTML += '  <td  colspan="2" >  规格 :'+ locData[i].var_spec +'</td>';
+						listHTML += ' </tr><tr >'; 
+						listHTML += '  <td  colspan="2" >  产地 :'+locData[i].name_prodarea +'</td>';
+            listHTML += ' </tr> <tr >';
+						 listHTML += '  <td  >  数量 :</td>';
+                        listHTML += '  <td  ><input type="number"   name= "dec_qty" style="border-width: 1px;border-style: solid; border-color: #666666; background-color: #ffffff;width:120px;height:30px;text-align:center;"> </input></td>';
+                        listHTML += ' </tr> <tr >';
+                        
+
+
+                       
+                        listHTML += ' </tr>';
+            listHTML += ' </table></div>'; 
+						listHTML += ' </div> ';
+						listHTML += '</label> ';
+						listHTML += '</li> ';
+    			 } 
+    			  listHTML += ' </ul></form></div> ';
+					$$(mainView.activePage.container).find('.list-block').remove();
+					$$(mainView.activePage.container).find('.page-content').prepend(listHTML);
+					},function(error){
+					myApp.hidePreloader( );
+					myApp.alert(error, '查找产品');
+					},"ctlm1020","var_value like '%"+o.search_input+"%'","net-local");
+
+					　　   }
+
+					function show_list( obj )
+					{
+					billno = obj.id;
+					var listHTML = '';
+					mainView.router.loadPage("#v_dsaord");
+					hjbusiness.hjloaddata(function(result){
+					myApp.hidePreloader( );
+					localStorage.setItem("item", result );
+					var locData =JSON.parse(result);
+					myApp.alert("不能再编辑", '销售订单');
+					
+
+
+						},function(error){
+						myApp.hidePreloader( );
+						myApp.alert(error, '销售订单');
+						},"dsaord","id_column = '"+billno+"'","net-local");
+
+
+						}
+						function trim(str){
+						　　           return str.replace(/(^\s*)|(\s*$)/g, "");
+						　　   }
+						function getdate() {
+						var myDate = new Date();
+						var year = myDate.getFullYear();
+						var month = myDate.getMonth() + 1;
+						var day = myDate.getDate();
+						var hh = myDate.getHours();
+						var mm = myDate.getMinutes();
+						var clock = year + "-";
+
+						if(month < 10)
+				clock += "0"; 
+			clock += month + "-"; 
+			if(day < 10)
+				clock += "0"; 
+			clock += day ; 
+			 
+			return(clock);  
+		   }
+ function onLoad() {
+	 document.addEventListener("deviceready", onDeviceReady, false);
+	 }
+	 function onDeviceReady() {
+	 document.addEventListener("backbutton", onBackKeyDown, false);    }
+	 function onBackKeyDown() {
+	 var titlename = mainView.activePage.name;
+	 var noback = titlename.substring(0,6);
+	 if(noback=="noback"){
+	 return;
+	 }else if(mainView.activePage.name=="home"){
+	   mainView.router.back();
+	 }else{
+
+	   mainView.router.back();
+	 }
+	 }
+	 loaddata();
+    </script>
+</body>
+</html>

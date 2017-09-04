@@ -1,0 +1,1052 @@
+﻿<HJModel start = "001" type = "query" id = "999" billnotype = "new">
+    <!--type  query-删除通id的1347记录   opr-->
+    <!-- billnotype  new-每次/read-读        -->
+    
+    <!---->
+    <!--  增加视图 dataset   datasetemode    datasourcemode 这删除  -->
+    <HJView id = "001" name = "领导驾驶仓"  returnenable="true" dataset="tk:'1=1';thj:'1=1';jm:'1=1';jt:'1=1';dlm:'1=1'"  datasetmode="net-local"   >
+        
+		<HJLine id="0010088" name="" height="10" backgroundcolor="#ebebeb"/> 
+	       
+           <!-- 1-只从网络;2-从网络>>1345;3-从1345;4-从1345>>从网络 --> 
+		   <!--  这些属性只有grid和list 有   style    plain/sleek  样式 	普通的/圆滑的  layouttype fullscreen/specify/specify
+全屏/自适应/指定    -->
+        <HJList id = "001005" name = "铁矿事业部" fontsize = "medium" editable ="true"
+               visible ="true"   datasource="tk" visibledisclosure = "true" onclick="if   hjc_getvalue('001','001005','0','001002002') ==  '001'  then   hjc_setnextview('001','001005','010')  elseif   hjc_getvalue('001','001005','0','001002002')   == '002' then 
+    hjc_setnextview('001','001005','011') elseif hjc_getvalue('001','001005','0','001002002')  == '003' then 
+    hjc_setnextview('001','001005','012')  elseif hjc_getvalue('001','001005','0','001002002')  == '004' then 
+    hjc_setnextview('001','001005','013')  elseif hjc_getvalue('001','001005','0','001002002')  == '005' then 
+    hjc_setnextview('001','001005','014')   elseif hjc_getvalue('001','001005','0','001002002')  == '999' then 
+	hjc_setnextview('001','001005','016')   end"  style = "plain"  layouttype = "specify"  > 
+               <!-- 添加固定的终端信息   -->
+           <HJListColumn id="001002001" name =""  width ="1" editable ="true" visible ="true" singleline ="false" fontsize = "medium" bold ="false" textcolor ="#000000" field = "content" visiblename="true" dbfield = "var_data1"/>
+           <HJListColumn id="001002002" name =""  width ="1" editable ="true" visible ="false" singleline ="false" fontsize = "medium" bold ="false" textcolor ="#000000" field = "id" visiblename="true" dbfield = "var_data2"/>  
+		   <HJTitle  id="001002004" name = "铁矿事业部"   fontsize = "medium" bold ="true"  textcolor ="#000000"    /> 
+         </HJList> 
+		 
+		  <HJLine id="0010088" name="" height="10" backgroundcolor="#ebebeb"/> 
+		  
+		 <HJList id = "001010" name = "铁合金事业部" fontsize = "medium" editable ="true"  visible ="true"   datasource="thj" visibledisclosure = "true"  style = "plain"  layouttype = "specify" onclick="if   hjc_getvalue('001','001010','0','001010002') ==  '001'  then   hjc_setnextview('001','001010','050')  elseif   hjc_getvalue('001','001010','0','001010002')   == '002' then 
+    hjc_setnextview('001','001010','051') elseif hjc_getvalue('001','001010','0','001010002')  == '003' then 
+    hjc_setnextview('001','001010','052')  elseif hjc_getvalue('001','001010','0','001010002')  == '004' then 
+    hjc_setnextview('001','001010','053')  elseif hjc_getvalue('001','001010','0','001010002')  == '005' then 
+    hjc_setnextview('001','001010','054')   end" > 
+               <!-- 添加固定的终端信息   -->
+           <HJListColumn id="0010102001" name =""  width ="1" editable ="true" visible ="true" singleline ="false" fontsize = "medium" bold ="false" textcolor ="#000000" field = "content" visiblename="true" dbfield = "var_data1"/>
+           <HJListColumn id="001010002" name =""  width ="1" editable ="true" visible ="false" singleline ="false" fontsize = "medium" bold ="false" textcolor ="#000000" field = "id" visiblename="true" dbfield = "var_data2"/> 
+		   <HJTitle  id="001010004" name = "铁合金事业部"   fontsize = "medium" bold ="true"  textcolor ="#000000"    />
+         </HJList>  
+		 
+		 <HJLine id="0010088" name="" height="10" backgroundcolor="#ebebeb"/> 
+		  <HJList id = "001015" name = "焦煤事业部" fontsize = "medium" editable ="true"  visible ="true"   datasource="jm" visibledisclosure = "true"  style = "plain"  layouttype = "specify" onclick="if   hjc_getvalue('001','001015','0','001015002') ==  '001'  then   hjc_setnextview('001','001015','040')  elseif   hjc_getvalue('001','001015','0','001015002')   == '002' then 
+    hjc_setnextview('001','001015','041') elseif hjc_getvalue('001','001015','0','001015002')  == '003' then 
+    hjc_setnextview('001','001015','042')  elseif hjc_getvalue('001','001015','0','001015002')  == '004' then 
+    hjc_setnextview('001','001015','043')  elseif hjc_getvalue('001','001015','0','001015002')  == '005' then 
+    hjc_setnextview('001','001015','044')   end" > 
+               <!-- 添加固定的终端信息   -->
+           <HJListColumn id="001015001" name =""  width ="1" editable ="true" visible ="true" singleline ="false" fontsize = "medium" bold ="false" textcolor ="#000000" field = "content" visiblename="true" dbfield = "var_data1"/>
+           <HJListColumn id="001015002" name =""  width ="1" editable ="true" visible ="false" singleline ="false" fontsize = "medium" bold ="false" textcolor ="#000000" field = "id" visiblename="true" dbfield = "var_data2"/> 
+		   <HJTitle  id="001015004" name = "焦煤事业部"   fontsize = "medium" bold ="true"  textcolor ="#000000"    />
+         </HJList>  
+		
+		
+		<HJLine id="0010088" name="" height="10" backgroundcolor="#ebebeb"/> 
+		  <HJList id = "001020" name = "焦炭事业部" fontsize = "medium" editable ="true"  visible ="true"   datasource="jt" visibledisclosure = "true"   style = "plain"  layouttype = "specify" onclick="if   hjc_getvalue('001','001020','0','001020002') ==  '001'  then   hjc_setnextview('001','001020','030')  elseif   hjc_getvalue('001','001020','0','001020002')   == '002' then 
+    hjc_setnextview('001','001020','031') elseif hjc_getvalue('001','001020','0','001020002')  == '003' then 
+    hjc_setnextview('001','001020','032')  elseif hjc_getvalue('001','001020','0','001020002')  == '004' then 
+    hjc_setnextview('001','001020','033')  elseif hjc_getvalue('001','001020','0','001020002')  == '005' then 
+    hjc_setnextview('001','001020','034')   end" > 
+               <!-- 添加固定的终端信息   -->
+           <HJListColumn id="001020001" name =""  width ="1" editable ="true" visible ="true" singleline ="false" fontsize = "medium" bold ="false" textcolor ="#000000" field = "content" visiblename="true" dbfield = "var_data1"/>
+           <HJListColumn id="001020002" name =""  width ="1" editable ="true" visible ="false" singleline ="false" fontsize = "medium" bold ="false" textcolor ="#000000" field = "id" visiblename="true" dbfield = "var_data2"/> 
+		   <HJTitle  id="001020004" name = "焦炭事业部"   fontsize = "medium" bold ="true"  textcolor ="#000000"    />
+         </HJList>  
+		
+		
+		<HJLine id="0010088" name="" height="10" backgroundcolor="#ebebeb"/> 
+		  <HJList id = "001025" name = "动力煤事业部" fontsize = "medium" editable ="true"  visible ="true"   datasource="dlm" visibledisclosure = "true" onclick="if   hjc_getvalue('001','001025','0','001025002') ==  '001'  then   hjc_setnextview('001','001025','020')  elseif   hjc_getvalue('001','001025','0','001025002')   == '002' then 
+    hjc_setnextview('001','001025','021') elseif hjc_getvalue('001','001025','0','001025002')  == '003' then 
+    hjc_setnextview('001','001025','022')  elseif hjc_getvalue('001','001025','0','001025002')  == '004' then 
+    hjc_setnextview('001','001025','023')  elseif hjc_getvalue('001','001025','0','001025002')  == '005' then 
+    hjc_setnextview('001','001025','024')   elseif hjc_getvalue('001','001025','0','001025002')  == '999' then 
+	hjc_setnextview('001','001025','026')   end"   style = "plain"  layouttype = "specify"> 
+               <!-- 添加固定的终端信息   -->
+           <HJListColumn id="001025001" name =""  width ="1" editable ="true" visible ="true" singleline ="false" fontsize = "medium" bold ="false" textcolor ="#000000" field = "content" visiblename="true" dbfield = "var_data1"/>
+           <HJListColumn id="001025002" name =""  width ="1" editable ="true" visible ="false" singleline ="false" fontsize = "medium" bold ="false" textcolor ="#000000" field = "id" visiblename="true" dbfield = "var_data2"/> 
+		   <HJTitle  id="001025004" name = "动力煤事业部"   fontsize = "medium" bold ="true"  textcolor ="#000000"    />
+         </HJList>    
+    </HJView>
+     
+	 
+	  <!--  铁矿事业部>销售报 销量（按客户）表  -->
+	 
+	   <HJView id = "010" name = "铁矿事业部>销售报表"  returnenable="true"  dataset="tkxscpxlwgrid:'1=1';tkxscpxlmgrid:'1=1';tkxscpxlsgrid:'1=1';tkxscpxlygrid:'1=1'"  datasetmode="net-local">
+	 
+        <HJSegmentControl id = "010016" name = ""  editable ="true"  required ="true" visible ="true" fontsize = "medium"  alignment="left" backgroundcolor = "#0000ff" >
+        <HJSegmentControlOption id = "005016001" name = "周"  fontsize = "medium" onclick = "hjc_datarefresh('010','010010','tkxscpxlwgrid')">01</HJSegmentControlOption>
+        <HJSegmentControlOption id = "005016002" name = "月"  fontsize = "medium" onclick = "hjc_datarefresh('010','010010','tkxscpxlmgrid')">02</HJSegmentControlOption>
+        <HJSegmentControlOption id = "005016003" name = "季"  fontsize = "medium" onclick = "hjc_datarefresh('010','010010','tkxscpxlsgrid')">03</HJSegmentControlOption> 
+        <HJSegmentControlOption id = "005016004" name = "年"  fontsize = "medium" onclick = "hjc_datarefresh('010','010010','tkxscpxlygrid')">04</HJSegmentControlOption> 
+        01
+      </HJSegmentControl>
+      
+    <!--  <HJLineChart id = "001002" name = "折线图" colors = "#026ce3; #ff9400; #ff2845; #85d8e1; #e000fc; #acfd00; #ffe000; #f69db0" chartfield = "id" valuefield = "qty" xaxisname = "日期" yaxisname = "销量" xaxisfield = "name" yaxismaxvalue = "1000" yaxisminvalue = "0" yaxistick = "200" visiblelegend = "true" sortfield = "sort" datasource  = "tkxskhwchat"></HJLineChart>
+          --> 
+       <HJGrid id = "010010" name = "销量报表" fontsize = "medium"  visible ="true"	height="0.3"  datasource="tkxscpxlwgrid"    locking ="2"   style = "plain"  layouttype = "specify" >
+             
+        <!-- 添加固定的终端信息   -->
+        <HJGridColumn id="010010001" name ="产品"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data2" field="name_item"/>
+        <HJGridColumn id="010010002" name ="船名"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data3" field="name_vessel"     />
+        <HJGridColumn id="010010003" name ="合同数量"  width ="0.3"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data4" field="dec_qty"  />
+        <HJGridColumn id="010010004" name ="合同金额"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data5" field="dec_amt" />
+        <HJGridColumn id="010010005" name ="收款金额"  width ="0.3"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data6" field="dec_rcvamt" alignment="right" sumenable ="true" valuetype="decimal" format  ="###.00"/>
+	    <HJTitle  id="001025004" name = "产品销售"   fontsize = "medium" bold ="true"  textcolor ="#000000"    />
+	   </HJGrid> 
+	   
+	   <HJViewMenu id="010015" name="菜单"   editable ="true" visible ="true" > 
+        <HJMenuButton id="010015001" name="按客户"  editable ="true"  visible ="true"  newview  = "010001" fontsize = "medium"   > </HJMenuButton> 
+      </HJViewMenu> 
+	 </HJView>
+      
+	  
+	  
+	 <HJView id = "010001" name = "铁矿事业部>销售报表"  returnenable="true"  dataset="tkxshtwgrid:'1=1';tkxshtmgrid:'1=1';tkxshtsgrid:'1=1';tkxshtygrid:'1=1'"  datasetmode="1">
+	 
+        <HJSegmentControl id = "010001001" name = ""  editable ="true"  required ="true" visible ="true" fontsize = "medium"  alignment="left" backgroundcolor = "#0000ff" >
+        <HJSegmentControlOption id = "010001001001" name = "周"  fontsize = "medium" onclick = "hjc_datarefresh('010001','010001010','tkxshtwgrid')">01</HJSegmentControlOption>
+        <HJSegmentControlOption id = "010001001002" name = "月"  fontsize = "medium" onclick = "hjc_datarefresh('010001','010001010','tkxshtmgrid')">02</HJSegmentControlOption>
+        <HJSegmentControlOption id = "010001001003" name = "季"  fontsize = "medium" onclick = "hjc_datarefresh('010001','010001010','tkxshtsgrid')">03</HJSegmentControlOption> 
+        <HJSegmentControlOption id = "010001001004" name = "年"  fontsize = "medium" onclick = "hjc_datarefresh('010001','010001010','tkxshtygrid')">04</HJSegmentControlOption> 
+        01
+      </HJSegmentControl>
+      
+     <!-- <HJLineChart id = "010001002" name = "折线图" colors = "#026ce3; #ff9400; #ff2845; #85d8e1; #e000fc; #acfd00; #ffe000; #f69db0" chartfield = "id" valuefield = "qty" xaxisname = "日期" yaxisname = "销量" xaxisfield = "name" yaxismaxvalue = "1000" yaxisminvalue = "0" yaxistick = "200" visiblelegend = "true" sortfield = "sort" datasource  = "tkxshtwchat"></HJLineChart>
+         -->
+       <HJGrid id = "010001010" name = "销量报表" fontsize = "medium"  visible ="true"	height="0.3"  datasource="tkxshtwgrid"    locking ="2"   style = "plain"  layouttype = "specify" >
+             
+        <!-- 添加固定的终端信息   -->
+        <HJGridColumn id="010001010001" name ="客户"  width ="0.3"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data2" field="name_corr"/>
+        <HJGridColumn id="010001010002" name ="合同数量"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data3" field="dec_qty"    />
+        <HJGridColumn id="010001010003" name ="合同金额"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data4" field="dec_amt"  />
+        <HJGridColumn id="010001010004" name ="出库数量"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data5" field="dec_outqty" />
+        <HJGridColumn id="010001010005" name ="收款金额"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data6" field="dec_rcvamt" sumenable ="true"  />
+		
+         <HJTitle  id="010001010004" name = "销量（客户）"   fontsize = "medium" bold ="true"  textcolor ="#000000"    />
+	   </HJGrid> 
+	 
+	 </HJView>
+	 
+	 
+	 
+	 <!-- 铁矿事业部>库存报表 -->
+	 
+	    <HJView id = "011" name = "铁矿事业部>库存报表"  returnenable="true"  dataset="tkkckcwgrid:'1=1';tkkckcmgrid:'1=1';tkkckcsgrid:'1=1';tkkckcygrid:'1=1'"  datasetmode="net-local">
+	 
+        <HJSegmentControl id = "011016" name = ""  editable ="true"  required ="true" visible ="true" fontsize = "medium"  alignment="left" backgroundcolor = "#0000ff" >
+        <HJSegmentControlOption id = "011016001" name = "周"  fontsize = "medium" onclick = "hjc_datarefresh('011','011010','tkkckcwgrid')">01</HJSegmentControlOption>
+        <HJSegmentControlOption id = "011016002" name = "月"  fontsize = "medium" onclick = "hjc_datarefresh('011','011010','tkkckcmgrid')">02</HJSegmentControlOption>
+        <HJSegmentControlOption id = "011016003" name = "季"  fontsize = "medium" onclick = "hjc_datarefresh('011','011010','tkkckcsgrid')">03</HJSegmentControlOption> 
+        <HJSegmentControlOption id = "011016004" name = "年"  fontsize = "medium" onclick = "hjc_datarefresh('011','011010','tkkckcygrid')">04</HJSegmentControlOption> 
+        01
+      </HJSegmentControl>
+      
+      <!--  <HJLineChart id = "011002" name = "折线图" colors = "#026ce3; #ff9400; #ff2845; #85d8e1; #e000fc; #acfd00; #ffe000; #f69db0" chartfield = "id" valuefield = "qty" xaxisname = "日期" yaxisname = "销量" xaxisfield = "name" yaxismaxvalue = "1000" yaxisminvalue = "0" yaxistick = "200" visiblelegend = "true" sortfield = "sort" datasource  = "tkxskhwchat"></HJLineChart>
+        --> 
+       <HJGrid id = "011010" name = "库存报表" fontsize = "medium"  visible ="true"	height="0.3"  datasource="tkkckcwgrid"    locking ="2"   style = "plain"  layouttype = "specify" >
+             
+        <!-- 添加固定的终端信息   -->
+        <HJGridColumn id="011010001" name ="港口"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data2" field="name_port"/>
+        <HJGridColumn id="011010002" name ="船名"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data3" field="name_vessel"    />
+        <HJGridColumn id="011010003" name ="库存数"  width ="0.3"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data4" field="dec_qty"    />
+        <HJGridColumn id="011010004" name ="仓库"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data5" field="name_wh" />
+        <HJGridColumn id="011010005" name ="库存天数"  width ="0.3"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data6" field="dec_whday"  />
+		
+         <HJTitle  id="011010006" name = "库存统计"   fontsize = "medium" bold ="true"  textcolor ="#000000"    />
+	   </HJGrid>  
+	   
+	 </HJView>
+	  
+	  <!-- 铁矿事业部>应收报表 -->
+	 
+	    <HJView id = "012" name = "铁矿事业部>应收报表"  returnenable="true"  dataset="tkysyswgrid:'1=1';tkysysmgrid:'1=1';tkysyssgrid:'1=1';tkysysygrid:'1=1'"  datasetmode="net-local">
+	 
+        <HJSegmentControl id = "011016" name = ""  editable ="true"  required ="true" visible ="true" fontsize = "medium"  alignment="left" backgroundcolor = "#0000ff" >
+        <HJSegmentControlOption id = "011016001" name = "周"  fontsize = "medium" onclick = "hjc_datarefresh('012','011010','tkysyswgrid')">01</HJSegmentControlOption>
+        <HJSegmentControlOption id = "011016002" name = "月"  fontsize = "medium" onclick = "hjc_datarefresh('012','011010','tkysysmgrid')">02</HJSegmentControlOption>
+        <HJSegmentControlOption id = "011016003" name = "季"  fontsize = "medium" onclick = "hjc_datarefresh('012','011010','tkysyssgrid')">03</HJSegmentControlOption> 
+        <HJSegmentControlOption id = "011016004" name = "年"  fontsize = "medium" onclick = "hjc_datarefresh('012','011010','tkysysygrid')">04</HJSegmentControlOption> 
+        01
+      </HJSegmentControl>
+      
+   <!--    <HJLineChart id = "011002" name = "折线图" colors = "#026ce3; #ff9400; #ff2845; #85d8e1; #e000fc; #acfd00; #ffe000; #f69db0" chartfield = "id" valuefield = "qty" xaxisname = "日期" yaxisname = "销量" xaxisfield = "name" yaxismaxvalue = "1000" yaxisminvalue = "0" yaxistick = "200" visiblelegend = "true" sortfield = "sort" datasource  = "tkxskhwchat"></HJLineChart>
+      -->    
+       <HJGrid id = "011010" name = "应收" fontsize = "medium"  visible ="true"	height="0.3"  datasource="tkysyswgrid"    locking ="2"   style = "plain"  layouttype = "specify" >
+             
+        <!-- 添加固定的终端信息   -->
+        <HJGridColumn id="011010001" name ="客户"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data2" field="name_corr"/>
+        <HJGridColumn id="011010002" name ="合同量"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data3" field="dec_qty"    />
+        <HJGridColumn id="011010003" name ="合同金额"  width ="0.3"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data4" field="dec_amt"  />
+        <HJGridColumn id="011010004" name ="收款金额"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data5" field="dec_rcvamt" />
+        <HJGridColumn id="011010005" name ="应收金额"  width ="0.3"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data6" field="dec_orderamt" sumenable ="true"  />
+		
+         <HJTitle  id="011010006" name = "应收"   fontsize = "medium" bold ="true"  textcolor ="#000000"    />
+	   </HJGrid>  
+	   
+	 </HJView>
+	 
+	 
+	  <!-- 铁矿事业部>收款报表 -->
+	 
+	    <HJView id = "013" name = "铁矿事业部>收款报表"  returnenable="true"  dataset="tkskkhjscwwgrid:'1=1';tkskkhjscwmgrid:'1=1';tkskkhjscwsgrid:'1=1';tkskkhjscwygrid:'1=1'"  datasetmode="net-local">
+	 
+        <HJSegmentControl id = "011016" name = ""  editable ="true"  required ="true" visible ="true" fontsize = "medium"  alignment="left" backgroundcolor = "#0000ff" >
+        <HJSegmentControlOption id = "011016001" name = "周"  fontsize = "medium" onclick = "hjc_datarefresh('013','011010','tkskkhjscwwgrid')">01</HJSegmentControlOption>
+        <HJSegmentControlOption id = "011016002" name = "月"  fontsize = "medium" onclick = "hjc_datarefresh('013','011010','tkskkhjscwmgrid')">02</HJSegmentControlOption>
+        <HJSegmentControlOption id = "011016003" name = "季"  fontsize = "medium" onclick = "hjc_datarefresh('013','011010','tkskkhjscwsgrid')">03</HJSegmentControlOption> 
+        <HJSegmentControlOption id = "011016004" name = "年"  fontsize = "medium" onclick = "hjc_datarefresh('013','011010','tkskkhjscwygrid')">04</HJSegmentControlOption> 
+        01
+      </HJSegmentControl>
+      
+    <!--   <HJLineChart id = "011002" name = "折线图" colors = "#026ce3; #ff9400; #ff2845; #85d8e1; #e000fc; #acfd00; #ffe000; #f69db0" chartfield = "id" valuefield = "qty" xaxisname = "日期" yaxisname = "销量" xaxisfield = "name" yaxismaxvalue = "1000" yaxisminvalue = "0" yaxistick = "200" visiblelegend = "true" sortfield = "sort" datasource  = "tkxskhwchat"></HJLineChart>
+      -->   
+       <HJGrid id = "011010" name = "收款报表" fontsize = "medium"  visible ="true"	height="0.3"  datasource="tkskkhjscwwgrid"    locking ="2"   style = "plain"  layouttype = "specify" >
+             
+        <!-- 添加固定的终端信息   -->
+        <HJGridColumn id="011010001" name ="客户"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data2" field="name_corr"/>
+        <HJGridColumn id="011010002" name ="已收款"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data3" field="dec_rcvamt"    />
+        <HJGridColumn id="011010003" name ="未收款"  width ="0.3"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data4" field="dec_norcvamt"  />
+        <HJGridColumn id="011010004" name ="已开票"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data5" field="dec_invamt" />
+        <HJGridColumn id="011010005" name ="未开票"  width ="0.3"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data6" field="dec_noinvamt" sumenable ="true"  />
+		
+         <HJTitle  id="011010006" name = "收款"   fontsize = "medium" bold ="true"  textcolor ="#000000"    />
+	   </HJGrid>  
+	   
+	 </HJView>
+	 
+	 <!-- 铁矿事业部>在途报表 -->
+	 
+	    <HJView id = "014" name = "铁矿事业部>在途报表"  returnenable="true"  dataset="tkztydcwgrid:'1=1';tkztydcmgrid:'1=1';tkztydcsgrid:'1=1';tkztydcygrid:'1=1'"  datasetmode="net-local">
+	 
+        <HJSegmentControl id = "011016" name = ""  editable ="true"  required ="true" visible ="true" fontsize = "medium"  alignment="left" backgroundcolor = "#0000ff" >
+        <HJSegmentControlOption id = "011016001" name = "周"  fontsize = "medium" onclick = "hjc_datarefresh('014','011010','tkztydcwgrid')">01</HJSegmentControlOption>
+        <HJSegmentControlOption id = "011016002" name = "月"  fontsize = "medium" onclick = "hjc_datarefresh('014','011010','tkztydcmgrid')">02</HJSegmentControlOption>
+        <HJSegmentControlOption id = "011016003" name = "季"  fontsize = "medium" onclick = "hjc_datarefresh('014','011010','tkztydcsgrid')">03</HJSegmentControlOption> 
+        <HJSegmentControlOption id = "011016004" name = "年"  fontsize = "medium" onclick = "hjc_datarefresh('014','011010','tkztydcygrid')">04</HJSegmentControlOption> 
+        01
+      </HJSegmentControl>
+      
+     <!--   <HJLineChart id = "011002" name = "折线图" colors = "#026ce3; #ff9400; #ff2845; #85d8e1; #e000fc; #acfd00; #ffe000; #f69db0" chartfield = "id" valuefield = "qty" xaxisname = "日期" yaxisname = "销量" xaxisfield = "name" yaxismaxvalue = "1000" yaxisminvalue = "0" yaxistick = "200" visiblelegend = "true" sortfield = "sort" datasource  = "tkxskhwchat"></HJLineChart>
+         -->
+       <HJGrid id = "011010" name = "销量报表" fontsize = "medium"  visible ="true"	height="0.3"  datasource="tkztydcwgrid"    locking ="2"   style = "plain"  layouttype = "specify" >
+             
+        <!-- 添加固定的终端信息   -->
+        <HJGridColumn id="011010001" name ="港口"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data2" field="name_port"/>
+        <HJGridColumn id="011010002" name ="船名"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data3" field="name_vessel"    />
+        <HJGridColumn id="011010003" name ="名"  width ="0.3"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data4" field="name_itemen"  />
+        <HJGridColumn id="011010004" name ="数量"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data5" field="dec_qty" />
+        <HJGridColumn id="011010005" name ="船期"  width ="0.3"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data6" field="var_date"   />
+		
+         <HJTitle  id="011010006" name = "预计船期统"   fontsize = "medium" bold ="true"  textcolor ="#000000"    />
+	   </HJGrid>  
+	   
+	 </HJView> 
+	 
+	 
+	  <!-- 铁矿事业部>未开票报表 -->
+	 
+	    <HJView id = "015" name = "铁矿事业部>未开票报表"  returnenable="true"  dataset="tkwkpwgrid:'1=1';tkwkpmgrid:'1=1';tkwkpsgrid:'1=1';tkwkpygrid:'1=1';tkwkpwchat:'1=1';tkwkpmchat:'1=1';tkwkpschat:'1=1';tkwkpychat:'1=1'"  datasetmode="net-local">
+	 
+        <HJSegmentControl id = "011016" name = ""  editable ="true"  required ="true" visible ="true" fontsize = "medium"  alignment="left" backgroundcolor = "#0000ff" >
+        <HJSegmentControlOption id = "011016001" name = "周"  fontsize = "medium" onclick = "hjc_datarefresh('010','010010','tkwkpwgrid')">01</HJSegmentControlOption>
+        <HJSegmentControlOption id = "011016002" name = "月"  fontsize = "medium" onclick = "hjc_datarefresh('010','010010','tkwkpmgrid')">02</HJSegmentControlOption>
+        <HJSegmentControlOption id = "011016003" name = "季"  fontsize = "medium" onclick = "hjc_datarefresh('010','010010','tkwkpsgrid')">03</HJSegmentControlOption> 
+        <HJSegmentControlOption id = "011016004" name = "年"  fontsize = "medium" onclick = "hjc_datarefresh('010','010010','tkwkpwchat')">04</HJSegmentControlOption> 
+        01
+      </HJSegmentControl>
+      
+      <HJLineChart id = "011002" name = "折线图" colors = "#026ce3; #ff9400; #ff2845; #85d8e1; #e000fc; #acfd00; #ffe000; #f69db0" chartfield = "id" valuefield = "qty" xaxisname = "日期" yaxisname = "销量" xaxisfield = "name" yaxismaxvalue = "1000" yaxisminvalue = "0" yaxistick = "200" visiblelegend = "true" sortfield = "sort" datasource  = "tkwkpwchat"></HJLineChart>
+         
+       <HJGrid id = "011010" name = "销量报表" fontsize = "medium"  visible ="true"	height="0.3"  datasource="tkwkpwgrid"    locking ="2"   style = "plain"  layouttype = "specify" >
+             
+        <!-- 添加固定的终端信息   -->
+        <HJGridColumn id="011010001" name ="进口合同号"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data2" field="name_vessel"/>
+        <HJGridColumn id="011010002" name ="供应商"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data3" field="dec_shippickqty"    />
+        <HJGridColumn id="011010003" name ="合同单价"  width ="0.3"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data4" field="name_corr"  />
+        <HJGridColumn id="011010004" name ="合同数量"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data5" field="name_item" />
+        <HJGridColumn id="011010005" name ="合同金额"  width ="0.3"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data6" field="dec_qty" sumenable ="true"  />
+		
+         <HJTitle  id="011010006" name = "未开票"   fontsize = "medium" bold ="true"  textcolor ="#000000"    />
+	   </HJGrid>  
+	   
+	 </HJView>
+	 
+	 
+	 
+	 
+	  <HJView id = "016" name = "铁矿事业部>其它报表"  returnenable="true"  dataset="tkqtggkkcqggrid:'1=1'"  datasetmode="net-local">
+	 
+      
+     <!--   <HJLineChart id = "011002" name = "折线图" colors = "#026ce3; #ff9400; #ff2845; #85d8e1; #e000fc; #acfd00; #ffe000; #f69db0" chartfield = "id" valuefield = "qty" xaxisname = "日期" yaxisname = "销量" xaxisfield = "name" yaxismaxvalue = "1000" yaxisminvalue = "0" yaxistick = "200" visiblelegend = "true" sortfield = "sort" datasource  = "tkxskhwchat"></HJLineChart>
+         -->
+       <HJGrid id = "011010" name = "其它报表" fontsize = "medium"  visible ="true"	height="0.3"  datasource="tkqtggkkcqggrid"    locking ="2"   style = "plain"  layouttype = "specify" >
+             
+        <!-- 添加固定的终端信息   -->
+        <HJGridColumn id="011010001" name ="港口"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data2" field="name_port"/>
+        <HJGridColumn id="011010002" name ="仓库"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data3" field="name_wh"    />
+        <HJGridColumn id="011010003" name ="产品名称"  width ="0.3"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data4" field="name_item"  />
+        <HJGridColumn id="011010004" name ="品质说明"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data5" field="var_quality" />
+        <HJGridColumn id="011010005" name ="结存量"  width ="0.3"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data6" field="dec_shippickqty" sumenable ="true"  />
+		<HJTitle  id="011010006" name = "各港口库存情况"   fontsize = "medium" bold ="true"  textcolor ="#000000"    />
+	   </HJGrid>  
+	      <HJViewMenu id="010015" name="菜单"   editable ="true" visible ="true" > 
+        <HJMenuButton id="010015001" name="按客户"  editable ="true"  visible ="true"  newview  = "016001" fontsize = "medium"   > </HJMenuButton> 
+      </HJViewMenu> 
+	 </HJView> 
+	 
+	   <HJView id = "016001" name = "铁矿事业部>其它报表"  returnenable="true"  dataset="tkqthwgzylmgrid:'1=1'"  datasetmode="net-local">
+ 
+      
+     <!--   <HJLineChart id = "011002" name = "折线图" colors = "#026ce3; #ff9400; #ff2845; #85d8e1; #e000fc; #acfd00; #ffe000; #f69db0" chartfield = "id" valuefield = "qty" xaxisname = "日期" yaxisname = "销量" xaxisfield = "name" yaxismaxvalue = "1000" yaxisminvalue = "0" yaxistick = "200" visiblelegend = "true" sortfield = "sort" datasource  = "tkxskhwchat"></HJLineChart>
+         -->
+       <HJGrid id = "011010" name = "其它报表" fontsize = "medium"  visible ="true"	height="0.3"  datasource="tkqthwgzylmgrid"    locking ="2"   style = "plain"  layouttype = "specify" >
+             
+        <!-- 添加固定的终端信息   -->
+        <HJGridColumn id="011010001" name ="船名"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data2" field="name_vessel"/>
+        <HJGridColumn id="011010002" name ="产品"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data3" field="name_item"    />
+        <HJGridColumn id="011010003" name ="数量"  width ="0.3"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data4" field="dec_qty"  />
+        <HJGridColumn id="011010004" name ="港口"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data5" field="name_port" />
+        <HJGridColumn id="011010005" name ="销售合同数量"  width ="0.3"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data6" field="dec_saqty" sumenable ="true"  />
+		<HJTitle  id="011010006" name = "货物跟踪一览表"   fontsize = "medium" bold ="true"  textcolor ="#000000"    />
+	   </HJGrid>  
+	   
+	 </HJView> 
+	 
+	   
+	   <!-- 动力煤 -->
+	   
+	    
+	   <HJView id = "020" name = "动力煤事业部>销售报表"  returnenable="true"  dataset="dlmxscpxlwgrid:'1=1';dlmxscpxlmgrid:'1=1';dlmxscpxlsgrid:'1=1';dlmxscpxlygrid:'1=1'"  datasetmode="net-local">
+	 
+        <HJSegmentControl id = "010016" name = ""  editable ="true"  required ="true" visible ="true" fontsize = "medium"  alignment="left" backgroundcolor = "#0000ff" >
+        <HJSegmentControlOption id = "005016001" name = "周"  fontsize = "medium" onclick = "hjc_datarefresh('020','010010','dlmxscpxlwgrid')">01</HJSegmentControlOption>
+        <HJSegmentControlOption id = "005016002" name = "月"  fontsize = "medium" onclick = "hjc_datarefresh('020','010010','dlmxscpxlmgrid')">02</HJSegmentControlOption>
+        <HJSegmentControlOption id = "005016003" name = "季"  fontsize = "medium" onclick = "hjc_datarefresh('020','010010','dlmxscpxlsgrid')">03</HJSegmentControlOption> 
+        <HJSegmentControlOption id = "005016004" name = "年"  fontsize = "medium" onclick = "hjc_datarefresh('020','010010','dlmxscpxlygrid')">04</HJSegmentControlOption> 
+        01
+      </HJSegmentControl>
+      
+    <!--  <HJLineChart id = "001002" name = "折线图" colors = "#026ce3; #ff9400; #ff2845; #85d8e1; #e000fc; #acfd00; #ffe000; #f69db0" chartfield = "id" valuefield = "qty" xaxisname = "日期" yaxisname = "销量" xaxisfield = "name" yaxismaxvalue = "1000" yaxisminvalue = "0" yaxistick = "200" visiblelegend = "true" sortfield = "sort" datasource  = "tkxskhwchat"></HJLineChart>
+          --> 
+       <HJGrid id = "010010" name = "销量报表" fontsize = "medium"  visible ="true"	height="0.3"  datasource="dlmxscpxlwgrid"    locking ="2"   style = "plain"  layouttype = "specify" >
+             
+        <!-- 添加固定的终端信息   -->
+        <HJGridColumn id="010010001" name ="产品"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data2" field="name_item"/>
+        <HJGridColumn id="010010002" name ="船名"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data3" field="name_vessel"     />
+        <HJGridColumn id="010010003" name ="合同数量"  width ="0.3"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data4" field="dec_qty"  />
+        <HJGridColumn id="010010004" name ="合同金额"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data5" field="dec_amt" />
+        <HJGridColumn id="010010005" name ="收款金额"  width ="0.3"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data6" field="dec_rcvamt" alignment="right" sumenable ="true" valuetype="decimal" format  ="###.00"/>
+	    <HJTitle  id="001025004" name = "产品销售"   fontsize = "medium" bold ="true"  textcolor ="#000000"    />
+	   </HJGrid> 
+	   
+	   <HJViewMenu id="010015" name="菜单"   editable ="true" visible ="true" > 
+        <HJMenuButton id="010015001" name="按客户"  editable ="true"  visible ="true"  newview  = "020001" fontsize = "medium"   > </HJMenuButton> 
+      </HJViewMenu> 
+	 </HJView>
+      
+	  
+	  
+	 <HJView id = "020001" name = "动力煤事业部>销售报表"  returnenable="true"  dataset="dlmxshtwgrid:'1=1';dlmxshtmgrid:'1=1';dlmxshtsgrid:'1=1';dlmxshtygrid:'1=1'"  datasetmode="1">
+	 
+        <HJSegmentControl id = "010001001" name = ""  editable ="true"  required ="true" visible ="true" fontsize = "medium"  alignment="left" backgroundcolor = "#0000ff" >
+        <HJSegmentControlOption id = "010001001001" name = "周"  fontsize = "medium" onclick = "hjc_datarefresh('020001','010001010','dlmxshtwgrid')">01</HJSegmentControlOption>
+        <HJSegmentControlOption id = "010001001002" name = "月"  fontsize = "medium" onclick = "hjc_datarefresh('020001','010001010','dlmxshtmgrid')">02</HJSegmentControlOption>
+        <HJSegmentControlOption id = "010001001003" name = "季"  fontsize = "medium" onclick = "hjc_datarefresh('020001','010001010','dlmxshtsgrid')">03</HJSegmentControlOption> 
+        <HJSegmentControlOption id = "010001001004" name = "年"  fontsize = "medium" onclick = "hjc_datarefresh('020001','010001010','dlmxshtygrid')">04</HJSegmentControlOption> 
+        01
+      </HJSegmentControl>
+      
+     <!-- <HJLineChart id = "010001002" name = "折线图" colors = "#026ce3; #ff9400; #ff2845; #85d8e1; #e000fc; #acfd00; #ffe000; #f69db0" chartfield = "id" valuefield = "qty" xaxisname = "日期" yaxisname = "销量" xaxisfield = "name" yaxismaxvalue = "1000" yaxisminvalue = "0" yaxistick = "200" visiblelegend = "true" sortfield = "sort" datasource  = "tkxshtwchat"></HJLineChart>
+         -->
+       <HJGrid id = "010001010" name = "销量报表" fontsize = "medium"  visible ="true"	height="0.3"  datasource="dlmxshtwgrid"    locking ="2"   style = "plain"  layouttype = "specify" >
+             
+        <!-- 添加固定的终端信息   -->
+        <HJGridColumn id="010001010001" name ="客户"  width ="0.3"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data2" field="name_corr"/>
+        <HJGridColumn id="010001010002" name ="合同数量"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data3" field="dec_qty"    />
+        <HJGridColumn id="010001010003" name ="合同金额"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data4" field="dec_amt"  />
+        <HJGridColumn id="010001010004" name ="出库数量"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data5" field="dec_outqty" />
+        <HJGridColumn id="010001010005" name ="收款金额"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data6" field="dec_rcvamt" sumenable ="true"  />
+		
+         <HJTitle  id="010001010004" name = "销量（客户）"   fontsize = "medium" bold ="true"  textcolor ="#000000"    />
+	   </HJGrid> 
+	 
+	 </HJView>
+	 
+	 
+	  <HJView id = "021" name = "动力煤事业部>库存报表"  returnenable="true"  dataset="tkkckcwgrid:'1=1';tkkckcmgrid:'1=1';tkkckcsgrid:'1=1';tkkckcygrid:'1=1'"  datasetmode="net-local">
+	 
+        <HJSegmentControl id = "011016" name = ""  editable ="true"  required ="true" visible ="true" fontsize = "medium"  alignment="left" backgroundcolor = "#0000ff" >
+        <HJSegmentControlOption id = "011016001" name = "周"  fontsize = "medium" onclick = "hjc_datarefresh('011','011010','tkkckcwgrid')">01</HJSegmentControlOption>
+        <HJSegmentControlOption id = "011016002" name = "月"  fontsize = "medium" onclick = "hjc_datarefresh('011','011010','tkkckcmgrid')">02</HJSegmentControlOption>
+        <HJSegmentControlOption id = "011016003" name = "季"  fontsize = "medium" onclick = "hjc_datarefresh('011','011010','tkkckcsgrid')">03</HJSegmentControlOption> 
+        <HJSegmentControlOption id = "011016004" name = "年"  fontsize = "medium" onclick = "hjc_datarefresh('011','011010','tkkckcygrid')">04</HJSegmentControlOption> 
+        01
+      </HJSegmentControl>
+      
+      <!--  <HJLineChart id = "011002" name = "折线图" colors = "#026ce3; #ff9400; #ff2845; #85d8e1; #e000fc; #acfd00; #ffe000; #f69db0" chartfield = "id" valuefield = "qty" xaxisname = "日期" yaxisname = "销量" xaxisfield = "name" yaxismaxvalue = "1000" yaxisminvalue = "0" yaxistick = "200" visiblelegend = "true" sortfield = "sort" datasource  = "tkxskhwchat"></HJLineChart>
+        --> 
+       <HJGrid id = "011010" name = "库存报表" fontsize = "medium"  visible ="true"	height="0.3"  datasource="tkkckcwgrid"    locking ="2"   style = "plain"  layouttype = "specify" >
+             
+        <!-- 添加固定的终端信息   -->
+        <HJGridColumn id="011010001" name ="港口"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data2" field="name_port"/>
+        <HJGridColumn id="011010002" name ="船名"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data3" field="name_vessel"    />
+        <HJGridColumn id="011010003" name ="库存数"  width ="0.3"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data4" field="dec_qty"    />
+        <HJGridColumn id="011010004" name ="仓库"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data5" field="name_wh" />
+        <HJGridColumn id="011010005" name ="库存天数"  width ="0.3"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data6" field="dec_whday"  />
+		
+         <HJTitle  id="011010006" name = "库存统计"   fontsize = "medium" bold ="true"  textcolor ="#000000"    />
+	   </HJGrid>  
+	   
+	 </HJView>
+	  
+	  <!-- 应收报表 -->
+	 
+	    <HJView id = "022" name = "动力煤事业部>应收报表"  returnenable="true"  dataset="dlmysyswgrid:'1=1';dlmysysmgrid:'1=1';dlmysyssgrid:'1=1';dlmysysygrid:'1=1'"  datasetmode="net-local">
+	 
+        <HJSegmentControl id = "011016" name = ""  editable ="true"  required ="true" visible ="true" fontsize = "medium"  alignment="left" backgroundcolor = "#0000ff" >
+        <HJSegmentControlOption id = "011016001" name = "周"  fontsize = "medium" onclick = "hjc_datarefresh('022','011010','dlmysyswgrid')">01</HJSegmentControlOption>
+        <HJSegmentControlOption id = "011016002" name = "月"  fontsize = "medium" onclick = "hjc_datarefresh('022','011010','dlmysysmgrid')">02</HJSegmentControlOption>
+        <HJSegmentControlOption id = "011016003" name = "季"  fontsize = "medium" onclick = "hjc_datarefresh('022','011010','dlmysyssgrid')">03</HJSegmentControlOption> 
+        <HJSegmentControlOption id = "011016004" name = "年"  fontsize = "medium" onclick = "hjc_datarefresh('022','011010','dlmysysygrid')">04</HJSegmentControlOption> 
+        01
+      </HJSegmentControl>
+      
+   <!--    <HJLineChart id = "011002" name = "折线图" colors = "#026ce3; #ff9400; #ff2845; #85d8e1; #e000fc; #acfd00; #ffe000; #f69db0" chartfield = "id" valuefield = "qty" xaxisname = "日期" yaxisname = "销量" xaxisfield = "name" yaxismaxvalue = "1000" yaxisminvalue = "0" yaxistick = "200" visiblelegend = "true" sortfield = "sort" datasource  = "tkxskhwchat"></HJLineChart>
+      -->    
+       <HJGrid id = "011010" name = "应收" fontsize = "medium"  visible ="true"	height="0.3"  datasource="dlmysyswgrid"    locking ="2"   style = "plain"  layouttype = "specify" >
+             
+        <!-- 添加固定的终端信息   -->
+        <HJGridColumn id="011010001" name ="客户"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data2" field="name_corr"/>
+        <HJGridColumn id="011010002" name ="合同量"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data3" field="dec_qty"    />
+        <HJGridColumn id="011010003" name ="合同金额"  width ="0.3"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data4" field="dec_amt"  />
+        <HJGridColumn id="011010004" name ="收款金额"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data5" field="dec_rcvamt" />
+        <HJGridColumn id="011010005" name ="应收金额"  width ="0.3"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data6" field="dec_orderamt" sumenable ="true"  />
+		
+         <HJTitle  id="011010006" name = "应收"   fontsize = "medium" bold ="true"  textcolor ="#000000"    />
+	   </HJGrid>  
+	   
+	 </HJView>
+	 
+	 
+	  <!-- >收款报表 -->
+	 
+	    <HJView id = "023" name = "动力煤事业部>收款报表"  returnenable="true"  dataset="dlmskkhjscwwgrid:'1=1';dlmskkhjscwmgrid:'1=1';dlmskkhjscwsgrid:'1=1';dlmskkhjscwygrid:'1=1'"  datasetmode="net-local">
+	 
+        <HJSegmentControl id = "011016" name = ""  editable ="true"  required ="true" visible ="true" fontsize = "medium"  alignment="left" backgroundcolor = "#0000ff" >
+        <HJSegmentControlOption id = "011016001" name = "周"  fontsize = "medium" onclick = "hjc_datarefresh('023','011010','dlmskkhjscwwgrid')">01</HJSegmentControlOption>
+        <HJSegmentControlOption id = "011016002" name = "月"  fontsize = "medium" onclick = "hjc_datarefresh('023','011010','dlmskkhjscwmgrid')">02</HJSegmentControlOption>
+        <HJSegmentControlOption id = "011016003" name = "季"  fontsize = "medium" onclick = "hjc_datarefresh('023','011010','dlmskkhjscwsgrid')">03</HJSegmentControlOption> 
+        <HJSegmentControlOption id = "011016004" name = "年"  fontsize = "medium" onclick = "hjc_datarefresh('023','011010','dlmskkhjscwygrid')">04</HJSegmentControlOption> 
+        01
+      </HJSegmentControl>
+      
+    <!--   <HJLineChart id = "011002" name = "折线图" colors = "#026ce3; #ff9400; #ff2845; #85d8e1; #e000fc; #acfd00; #ffe000; #f69db0" chartfield = "id" valuefield = "qty" xaxisname = "日期" yaxisname = "销量" xaxisfield = "name" yaxismaxvalue = "1000" yaxisminvalue = "0" yaxistick = "200" visiblelegend = "true" sortfield = "sort" datasource  = "tkxskhwchat"></HJLineChart>
+      -->   
+       <HJGrid id = "011010" name = "收款报表" fontsize = "medium"  visible ="true"	height="0.3"  datasource="dlmskkhjscwwgrid"    locking ="2"   style = "plain"  layouttype = "specify" >
+             
+        <!-- 添加固定的终端信息   -->
+        <HJGridColumn id="011010001" name ="客户"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data2" field="name_corr"/>
+        <HJGridColumn id="011010002" name ="已收款"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data3" field="dec_rcvamt"    />
+        <HJGridColumn id="011010003" name ="未收款"  width ="0.3"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data4" field="dec_norcvamt"  />
+        <HJGridColumn id="011010004" name ="已开票"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data5" field="dec_invamt" />
+        <HJGridColumn id="011010005" name ="未开票"  width ="0.3"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data6" field="dec_noinvamt" sumenable ="true"  />
+		
+         <HJTitle  id="011010006" name = "收款"   fontsize = "medium" bold ="true"  textcolor ="#000000"    />
+	   </HJGrid>  
+	   
+	 </HJView>
+	 
+	 <!-- 铁矿事业部>在途报表 -->
+	 
+	    <HJView id = "024" name = "动力煤事业部>在途报表"  returnenable="true"  dataset="dlmztydcwgrid:'1=1';dlmztydcmgrid:'1=1';dlmztydcsgrid:'1=1';dlmztydcygrid:'1=1'"  datasetmode="net-local">
+	 
+        <HJSegmentControl id = "011016" name = ""  editable ="true"  required ="true" visible ="true" fontsize = "medium"  alignment="left" backgroundcolor = "#0000ff" >
+        <HJSegmentControlOption id = "011016001" name = "周"  fontsize = "medium" onclick = "hjc_datarefresh('024','011010','dlmztydcwgrid')">01</HJSegmentControlOption>
+        <HJSegmentControlOption id = "011016002" name = "月"  fontsize = "medium" onclick = "hjc_datarefresh('024','011010','dlmztydcmgrid')">02</HJSegmentControlOption>
+        <HJSegmentControlOption id = "011016003" name = "季"  fontsize = "medium" onclick = "hjc_datarefresh('024','011010','dlmztydcsgrid')">03</HJSegmentControlOption> 
+        <HJSegmentControlOption id = "011016004" name = "年"  fontsize = "medium" onclick = "hjc_datarefresh('024','011010','dlmztydcygrid')">04</HJSegmentControlOption> 
+        01
+      </HJSegmentControl>
+      
+     <!--   <HJLineChart id = "011002" name = "折线图" colors = "#026ce3; #ff9400; #ff2845; #85d8e1; #e000fc; #acfd00; #ffe000; #f69db0" chartfield = "id" valuefield = "qty" xaxisname = "日期" yaxisname = "销量" xaxisfield = "name" yaxismaxvalue = "1000" yaxisminvalue = "0" yaxistick = "200" visiblelegend = "true" sortfield = "sort" datasource  = "tkxskhwchat"></HJLineChart>
+         -->
+       <HJGrid id = "011010" name = "销量报表" fontsize = "medium"  visible ="true"	height="0.3"  datasource="dlmztydcwgrid"    locking ="2"   style = "plain"  layouttype = "specify" >
+             
+        <!-- 添加固定的终端信息   -->
+        <HJGridColumn id="011010001" name ="港口"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data2" field="name_port"/>
+        <HJGridColumn id="011010002" name ="船名"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data3" field="name_vessel"    />
+        <HJGridColumn id="011010003" name ="名"  width ="0.3"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data4" field="name_itemen"  />
+        <HJGridColumn id="011010004" name ="数量"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data5" field="dec_qty" />
+        <HJGridColumn id="011010005" name ="船期"  width ="0.3"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data6" field="var_date"   />
+		
+         <HJTitle  id="011010006" name = "预计船期统"   fontsize = "medium" bold ="true"  textcolor ="#000000"    />
+	   </HJGrid>  
+	   
+	 </HJView> 
+	 
+	 
+	 <!-- 其它-->
+	   <HJView id = "026" name = "动力煤事业部>其它报表"  returnenable="true"  dataset="dlmqtggkkcqggrid:'1=1'"  datasetmode="net-local">
+	 
+      
+     <!--   <HJLineChart id = "011002" name = "折线图" colors = "#026ce3; #ff9400; #ff2845; #85d8e1; #e000fc; #acfd00; #ffe000; #f69db0" chartfield = "id" valuefield = "qty" xaxisname = "日期" yaxisname = "销量" xaxisfield = "name" yaxismaxvalue = "1000" yaxisminvalue = "0" yaxistick = "200" visiblelegend = "true" sortfield = "sort" datasource  = "tkxskhwchat"></HJLineChart>
+         -->
+       <HJGrid id = "011010" name = "其它报表" fontsize = "medium"  visible ="true"	height="0.3"  datasource="dlmqtggkkcqggrid"    locking ="2"   style = "plain"  layouttype = "specify" >
+             
+        <!-- 添加固定的终端信息   -->
+        <HJGridColumn id="011010001" name ="港口"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data2" field="name_port"/>
+        <HJGridColumn id="011010002" name ="仓库"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data3" field="name_wh"    />
+        <HJGridColumn id="011010003" name ="产品名称"  width ="0.3"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data4" field="name_item"  />
+        <HJGridColumn id="011010004" name ="品质说明"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data5" field="var_quality" />
+        <HJGridColumn id="011010005" name ="结存量"  width ="0.3"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data6" field="dec_shippickqty" sumenable ="true"  />
+		<HJTitle  id="011010006" name = "各港口库存情况"   fontsize = "medium" bold ="true"  textcolor ="#000000"    />
+	   </HJGrid>  
+	   
+	    <HJViewMenu id="010015" name="菜单"   editable ="true" visible ="true" > 
+        <HJMenuButton id="010015001" name="按客户"  editable ="true"  visible ="true"  newview  = "026001" fontsize = "medium"   > </HJMenuButton> 
+      </HJViewMenu> 
+	 </HJView> 
+	 
+	   <HJView id = "026001" name = "动力煤事业部>其它报表"  returnenable="true"  dataset="tkqthwgzylmgrid:'1=1'"  datasetmode="net-local">
+ 
+      
+     <!--   <HJLineChart id = "011002" name = "折线图" colors = "#026ce3; #ff9400; #ff2845; #85d8e1; #e000fc; #acfd00; #ffe000; #f69db0" chartfield = "id" valuefield = "qty" xaxisname = "日期" yaxisname = "销量" xaxisfield = "name" yaxismaxvalue = "1000" yaxisminvalue = "0" yaxistick = "200" visiblelegend = "true" sortfield = "sort" datasource  = "tkxskhwchat"></HJLineChart>
+         -->
+       <HJGrid id = "011010" name = "其它报表" fontsize = "medium"  visible ="true"	height="0.3"  datasource="tkqthwgzylmgrid"    locking ="2"   style = "plain"  layouttype = "specify" >
+             
+        <!-- 添加固定的终端信息   -->
+        <HJGridColumn id="011010001" name ="船名"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data2" field="name_vessel"/>
+        <HJGridColumn id="011010002" name ="产品"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data3" field="name_item"    />
+        <HJGridColumn id="011010003" name ="数量"  width ="0.3"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data4" field="dec_qty"  />
+        <HJGridColumn id="011010004" name ="港口"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data5" field="name_port" />
+        <HJGridColumn id="011010005" name ="销售合同数量"  width ="0.3"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data6" field="dec_saqty" sumenable ="true"  />
+		<HJTitle  id="011010006" name = "货物跟踪一览表"   fontsize = "medium" bold ="true"  textcolor ="#000000"    />
+	   </HJGrid>  
+	   
+	 </HJView> 
+	 
+	 
+	 <!-- 焦炭-->
+	 
+	    
+	   <HJView id = "030" name = "焦炭事业部>销售报表"  returnenable="true"  dataset="dlmxscpxlwgrid:'1=1';dlmxscpxlmgrid:'1=1';dlmxscpxlsgrid:'1=1';dlmxscpxlygrid:'1=1'"  datasetmode="net-local">
+	 
+        <HJSegmentControl id = "010016" name = ""  editable ="true"  required ="true" visible ="true" fontsize = "medium"  alignment="left" backgroundcolor = "#0000ff" >
+        <HJSegmentControlOption id = "005016001" name = "周"  fontsize = "medium" onclick = "hjc_datarefresh('020','010010','dlmxscpxlwgrid')">01</HJSegmentControlOption>
+        <HJSegmentControlOption id = "005016002" name = "月"  fontsize = "medium" onclick = "hjc_datarefresh('020','010010','dlmxscpxlmgrid')">02</HJSegmentControlOption>
+        <HJSegmentControlOption id = "005016003" name = "季"  fontsize = "medium" onclick = "hjc_datarefresh('020','010010','dlmxscpxlsgrid')">03</HJSegmentControlOption> 
+        <HJSegmentControlOption id = "005016004" name = "年"  fontsize = "medium" onclick = "hjc_datarefresh('020','010010','dlmxscpxlygrid')">04</HJSegmentControlOption> 
+        01
+      </HJSegmentControl>
+      
+    <!--  <HJLineChart id = "001002" name = "折线图" colors = "#026ce3; #ff9400; #ff2845; #85d8e1; #e000fc; #acfd00; #ffe000; #f69db0" chartfield = "id" valuefield = "qty" xaxisname = "日期" yaxisname = "销量" xaxisfield = "name" yaxismaxvalue = "1000" yaxisminvalue = "0" yaxistick = "200" visiblelegend = "true" sortfield = "sort" datasource  = "tkxskhwchat"></HJLineChart>
+          --> 
+       <HJGrid id = "030010" name = "焦炭事业部>销量报表" fontsize = "medium"  visible ="true"	height="0.3"  datasource="dlmxscpxlwgrid"    locking ="2"   style = "plain"  layouttype = "specify" >
+             
+        <!-- 添加固定的终端信息   -->
+        <HJGridColumn id="010010001" name ="产品"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data2" field="name_item"/>
+        <HJGridColumn id="010010002" name ="船名"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data3" field="name_vessel"     />
+        <HJGridColumn id="010010003" name ="合同数量"  width ="0.3"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data4" field="dec_qty"  />
+        <HJGridColumn id="010010004" name ="合同金额"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data5" field="dec_amt" />
+        <HJGridColumn id="010010005" name ="收款金额"  width ="0.3"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data6" field="dec_rcvamt" alignment="right" sumenable ="true" valuetype="decimal" format  ="###.00"/>
+	    <HJTitle  id="001025004" name = "产品销售"   fontsize = "medium" bold ="true"  textcolor ="#000000"    />
+	   </HJGrid> 
+	   
+	   <HJViewMenu id="010015" name="菜单"   editable ="true" visible ="true" > 
+        <HJMenuButton id="010015001" name="按客户"  editable ="true"  visible ="true"  newview  = "020001" fontsize = "medium"   > </HJMenuButton> 
+      </HJViewMenu> 
+	 </HJView>
+      
+	  
+	  
+	 <HJView id = "030001" name = "焦炭事业部>销售报表"  returnenable="true"  dataset="dlmxshtwgrid:'1=1';dlmxshtmgrid:'1=1';dlmxshtsgrid:'1=1';dlmxshtygrid:'1=1'"  datasetmode="1">
+	 
+        <HJSegmentControl id = "010001001" name = ""  editable ="true"  required ="true" visible ="true" fontsize = "medium"  alignment="left" backgroundcolor = "#0000ff" >
+        <HJSegmentControlOption id = "010001001001" name = "周"  fontsize = "medium" onclick = "hjc_datarefresh('020001','010001010','dlmxshtwgrid')">01</HJSegmentControlOption>
+        <HJSegmentControlOption id = "010001001002" name = "月"  fontsize = "medium" onclick = "hjc_datarefresh('020001','010001010','dlmxshtmgrid')">02</HJSegmentControlOption>
+        <HJSegmentControlOption id = "010001001003" name = "季"  fontsize = "medium" onclick = "hjc_datarefresh('020001','010001010','dlmxshtsgrid')">03</HJSegmentControlOption> 
+        <HJSegmentControlOption id = "010001001004" name = "年"  fontsize = "medium" onclick = "hjc_datarefresh('020001','010001010','dlmxshtygrid')">04</HJSegmentControlOption> 
+        01
+      </HJSegmentControl>
+      
+     <!-- <HJLineChart id = "010001002" name = "折线图" colors = "#026ce3; #ff9400; #ff2845; #85d8e1; #e000fc; #acfd00; #ffe000; #f69db0" chartfield = "id" valuefield = "qty" xaxisname = "日期" yaxisname = "销量" xaxisfield = "name" yaxismaxvalue = "1000" yaxisminvalue = "0" yaxistick = "200" visiblelegend = "true" sortfield = "sort" datasource  = "tkxshtwchat"></HJLineChart>
+         -->
+       <HJGrid id = "010001010" name = "销量报表" fontsize = "medium"  visible ="true"	height="0.3"  datasource="dlmxshtwgrid"    locking ="2"   style = "plain"  layouttype = "specify" >
+             
+        <!-- 添加固定的终端信息   -->
+        <HJGridColumn id="010001010001" name ="客户"  width ="0.3"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data2" field="name_corr"/>
+        <HJGridColumn id="010001010002" name ="合同数量"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data3" field="dec_qty"    />
+        <HJGridColumn id="010001010003" name ="合同金额"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data4" field="dec_amt"  />
+        <HJGridColumn id="010001010004" name ="出库数量"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data5" field="dec_outqty" />
+        <HJGridColumn id="010001010005" name ="收款金额"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data6" field="dec_rcvamt" sumenable ="true"  />
+		
+         <HJTitle  id="010001010004" name = "销量（客户）"   fontsize = "medium" bold ="true"  textcolor ="#000000"    />
+	   </HJGrid> 
+	 
+	 </HJView>
+	 
+	   <HJView id = "031" name = "焦炭事业部>库存报表"  returnenable="true"  dataset="tkkckcwgrid:'1=1';tkkckcmgrid:'1=1';tkkckcsgrid:'1=1';tkkckcygrid:'1=1'"  datasetmode="net-local">
+	 
+        <HJSegmentControl id = "011016" name = ""  editable ="true"  required ="true" visible ="true" fontsize = "medium"  alignment="left" backgroundcolor = "#0000ff" >
+        <HJSegmentControlOption id = "011016001" name = "周"  fontsize = "medium" onclick = "hjc_datarefresh('011','011010','tkkckcwgrid')">01</HJSegmentControlOption>
+        <HJSegmentControlOption id = "011016002" name = "月"  fontsize = "medium" onclick = "hjc_datarefresh('011','011010','tkkckcmgrid')">02</HJSegmentControlOption>
+        <HJSegmentControlOption id = "011016003" name = "季"  fontsize = "medium" onclick = "hjc_datarefresh('011','011010','tkkckcsgrid')">03</HJSegmentControlOption> 
+        <HJSegmentControlOption id = "011016004" name = "年"  fontsize = "medium" onclick = "hjc_datarefresh('011','011010','tkkckcygrid')">04</HJSegmentControlOption> 
+        01
+      </HJSegmentControl>
+      
+      <!--  <HJLineChart id = "011002" name = "折线图" colors = "#026ce3; #ff9400; #ff2845; #85d8e1; #e000fc; #acfd00; #ffe000; #f69db0" chartfield = "id" valuefield = "qty" xaxisname = "日期" yaxisname = "销量" xaxisfield = "name" yaxismaxvalue = "1000" yaxisminvalue = "0" yaxistick = "200" visiblelegend = "true" sortfield = "sort" datasource  = "tkxskhwchat"></HJLineChart>
+        --> 
+       <HJGrid id = "011010" name = "库存报表" fontsize = "medium"  visible ="true"	height="0.3"  datasource="tkkckcwgrid"    locking ="2"   style = "plain"  layouttype = "specify" >
+             
+        <!-- 添加固定的终端信息   -->
+        <HJGridColumn id="011010001" name ="港口"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data2" field="name_port"/>
+        <HJGridColumn id="011010002" name ="船名"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data3" field="name_vessel"    />
+        <HJGridColumn id="011010003" name ="库存数"  width ="0.3"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data4" field="dec_qty"    />
+        <HJGridColumn id="011010004" name ="仓库"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data5" field="name_wh" />
+        <HJGridColumn id="011010005" name ="库存天数"  width ="0.3"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data6" field="dec_whday"  />
+		
+         <HJTitle  id="011010006" name = "库存统计"   fontsize = "medium" bold ="true"  textcolor ="#000000"    />
+	   </HJGrid>  
+	   
+	 </HJView>
+	 
+	  
+	  <!-- 应收报表 -->
+	 
+	    <HJView id = "032" name = "焦炭事业部>应收报表"  returnenable="true"  dataset="dlmysyswgrid:'1=1';dlmysysmgrid:'1=1';dlmysyssgrid:'1=1';dlmysysygrid:'1=1'"  datasetmode="net-local">
+	 
+        <HJSegmentControl id = "011016" name = ""  editable ="true"  required ="true" visible ="true" fontsize = "medium"  alignment="left" backgroundcolor = "#0000ff" >
+        <HJSegmentControlOption id = "011016001" name = "周"  fontsize = "medium" onclick = "hjc_datarefresh('022','011010','dlmysyswgrid')">01</HJSegmentControlOption>
+        <HJSegmentControlOption id = "011016002" name = "月"  fontsize = "medium" onclick = "hjc_datarefresh('022','011010','dlmysysmgrid')">02</HJSegmentControlOption>
+        <HJSegmentControlOption id = "011016003" name = "季"  fontsize = "medium" onclick = "hjc_datarefresh('022','011010','dlmysyssgrid')">03</HJSegmentControlOption> 
+        <HJSegmentControlOption id = "011016004" name = "年"  fontsize = "medium" onclick = "hjc_datarefresh('022','011010','dlmysysygrid')">04</HJSegmentControlOption> 
+        01
+      </HJSegmentControl>
+      
+   <!--    <HJLineChart id = "011002" name = "折线图" colors = "#026ce3; #ff9400; #ff2845; #85d8e1; #e000fc; #acfd00; #ffe000; #f69db0" chartfield = "id" valuefield = "qty" xaxisname = "日期" yaxisname = "销量" xaxisfield = "name" yaxismaxvalue = "1000" yaxisminvalue = "0" yaxistick = "200" visiblelegend = "true" sortfield = "sort" datasource  = "tkxskhwchat"></HJLineChart>
+      -->    
+       <HJGrid id = "011010" name = "应收" fontsize = "medium"  visible ="true"	height="0.3"  datasource="dlmysyswgrid"    locking ="2"   style = "plain"  layouttype = "specify" >
+             
+        <!-- 添加固定的终端信息   -->
+        <HJGridColumn id="011010001" name ="客户"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data2" field="name_corr"/>
+        <HJGridColumn id="011010002" name ="合同量"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data3" field="dec_qty"    />
+        <HJGridColumn id="011010003" name ="合同金额"  width ="0.3"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data4" field="dec_amt"  />
+        <HJGridColumn id="011010004" name ="收款金额"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data5" field="dec_rcvamt" />
+        <HJGridColumn id="011010005" name ="应收金额"  width ="0.3"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data6" field="dec_orderamt" sumenable ="true"  />
+		
+         <HJTitle  id="011010006" name = "应收"   fontsize = "medium" bold ="true"  textcolor ="#000000"    />
+	   </HJGrid>  
+	   
+	 </HJView>
+	 
+	 
+	  <!-- >收款报表 -->
+	 
+	    <HJView id = "033" name = "焦炭事业部>收款报表"  returnenable="true"  dataset="dlmskkhjscwwgrid:'1=1';dlmskkhjscwmgrid:'1=1';dlmskkhjscwsgrid:'1=1';dlmskkhjscwygrid:'1=1'"  datasetmode="net-local">
+	 
+        <HJSegmentControl id = "011016" name = ""  editable ="true"  required ="true" visible ="true" fontsize = "medium"  alignment="left" backgroundcolor = "#0000ff" >
+        <HJSegmentControlOption id = "011016001" name = "周"  fontsize = "medium" onclick = "hjc_datarefresh('023','011010','dlmskkhjscwwgrid')">01</HJSegmentControlOption>
+        <HJSegmentControlOption id = "011016002" name = "月"  fontsize = "medium" onclick = "hjc_datarefresh('023','011010','dlmskkhjscwmgrid')">02</HJSegmentControlOption>
+        <HJSegmentControlOption id = "011016003" name = "季"  fontsize = "medium" onclick = "hjc_datarefresh('023','011010','dlmskkhjscwsgrid')">03</HJSegmentControlOption> 
+        <HJSegmentControlOption id = "011016004" name = "年"  fontsize = "medium" onclick = "hjc_datarefresh('023','011010','dlmskkhjscwygrid')">04</HJSegmentControlOption> 
+        01
+      </HJSegmentControl>
+      
+    <!--   <HJLineChart id = "011002" name = "折线图" colors = "#026ce3; #ff9400; #ff2845; #85d8e1; #e000fc; #acfd00; #ffe000; #f69db0" chartfield = "id" valuefield = "qty" xaxisname = "日期" yaxisname = "销量" xaxisfield = "name" yaxismaxvalue = "1000" yaxisminvalue = "0" yaxistick = "200" visiblelegend = "true" sortfield = "sort" datasource  = "tkxskhwchat"></HJLineChart>
+      -->   
+       <HJGrid id = "011010" name = "收款报表" fontsize = "medium"  visible ="true"	height="0.3"  datasource="dlmskkhjscwwgrid"    locking ="2"   style = "plain"  layouttype = "specify" >
+             
+        <!-- 添加固定的终端信息   -->
+        <HJGridColumn id="011010001" name ="客户"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data2" field="name_corr"/>
+        <HJGridColumn id="011010002" name ="已收款"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data3" field="dec_rcvamt"    />
+        <HJGridColumn id="011010003" name ="未收款"  width ="0.3"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data4" field="dec_norcvamt"  />
+        <HJGridColumn id="011010004" name ="已开票"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data5" field="dec_invamt" />
+        <HJGridColumn id="011010005" name ="未开票"  width ="0.3"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data6" field="dec_noinvamt" sumenable ="true"  />
+		
+         <HJTitle  id="011010006" name = "收款"   fontsize = "medium" bold ="true"  textcolor ="#000000"    />
+	   </HJGrid>  
+	   
+	 </HJView>
+	 
+	 <!-- 铁矿事业部>在途报表 -->
+	 
+	    <HJView id = "034" name = "焦炭事业部>在途报表"  returnenable="true"  dataset="dlmztydcwgrid:'1=1';dlmztydcmgrid:'1=1';dlmztydcsgrid:'1=1';dlmztydcygrid:'1=1'"  datasetmode="net-local">
+	 
+        <HJSegmentControl id = "011016" name = ""  editable ="true"  required ="true" visible ="true" fontsize = "medium"  alignment="left" backgroundcolor = "#0000ff" >
+        <HJSegmentControlOption id = "011016001" name = "周"  fontsize = "medium" onclick = "hjc_datarefresh('024','011010','dlmztydcwgrid')">01</HJSegmentControlOption>
+        <HJSegmentControlOption id = "011016002" name = "月"  fontsize = "medium" onclick = "hjc_datarefresh('024','011010','dlmztydcmgrid')">02</HJSegmentControlOption>
+        <HJSegmentControlOption id = "011016003" name = "季"  fontsize = "medium" onclick = "hjc_datarefresh('024','011010','dlmztydcsgrid')">03</HJSegmentControlOption> 
+        <HJSegmentControlOption id = "011016004" name = "年"  fontsize = "medium" onclick = "hjc_datarefresh('024','011010','dlmztydcygrid')">04</HJSegmentControlOption> 
+        01
+      </HJSegmentControl>
+      
+     <!--   <HJLineChart id = "011002" name = "折线图" colors = "#026ce3; #ff9400; #ff2845; #85d8e1; #e000fc; #acfd00; #ffe000; #f69db0" chartfield = "id" valuefield = "qty" xaxisname = "日期" yaxisname = "销量" xaxisfield = "name" yaxismaxvalue = "1000" yaxisminvalue = "0" yaxistick = "200" visiblelegend = "true" sortfield = "sort" datasource  = "tkxskhwchat"></HJLineChart>
+         -->
+       <HJGrid id = "011010" name = "销量报表" fontsize = "medium"  visible ="true"	height="0.3"  datasource="dlmztydcwgrid"    locking ="2"   style = "plain"  layouttype = "specify" >
+             
+        <!-- 添加固定的终端信息   -->
+        <HJGridColumn id="011010001" name ="港口"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data2" field="name_port"/>
+        <HJGridColumn id="011010002" name ="船名"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data3" field="name_vessel"    />
+        <HJGridColumn id="011010003" name ="名"  width ="0.3"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data4" field="name_itemen"  />
+        <HJGridColumn id="011010004" name ="数量"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data5" field="dec_qty" />
+        <HJGridColumn id="011010005" name ="船期"  width ="0.3"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data6" field="var_date"   />
+		
+         <HJTitle  id="011010006" name = "预计船期统"   fontsize = "medium" bold ="true"  textcolor ="#000000"    />
+	   </HJGrid>  
+	   
+	 </HJView> 
+	 
+	 
+	 
+	 <!-- 焦煤-->
+	 
+	     
+	   <HJView id = "040" name = "焦煤事业部>销售报表"  returnenable="true"  dataset="dlmxscpxlwgrid:'1=1';dlmxscpxlmgrid:'1=1';dlmxscpxlsgrid:'1=1';dlmxscpxlygrid:'1=1'"  datasetmode="net-local">
+	 
+        <HJSegmentControl id = "010016" name = ""  editable ="true"  required ="true" visible ="true" fontsize = "medium"  alignment="left" backgroundcolor = "#0000ff" >
+        <HJSegmentControlOption id = "005016001" name = "周"  fontsize = "medium" onclick = "hjc_datarefresh('020','010010','dlmxscpxlwgrid')">01</HJSegmentControlOption>
+        <HJSegmentControlOption id = "005016002" name = "月"  fontsize = "medium" onclick = "hjc_datarefresh('020','010010','dlmxscpxlmgrid')">02</HJSegmentControlOption>
+        <HJSegmentControlOption id = "005016003" name = "季"  fontsize = "medium" onclick = "hjc_datarefresh('020','010010','dlmxscpxlsgrid')">03</HJSegmentControlOption> 
+        <HJSegmentControlOption id = "005016004" name = "年"  fontsize = "medium" onclick = "hjc_datarefresh('020','010010','dlmxscpxlygrid')">04</HJSegmentControlOption> 
+        01
+      </HJSegmentControl>
+      
+    <!--  <HJLineChart id = "001002" name = "折线图" colors = "#026ce3; #ff9400; #ff2845; #85d8e1; #e000fc; #acfd00; #ffe000; #f69db0" chartfield = "id" valuefield = "qty" xaxisname = "日期" yaxisname = "销量" xaxisfield = "name" yaxismaxvalue = "1000" yaxisminvalue = "0" yaxistick = "200" visiblelegend = "true" sortfield = "sort" datasource  = "tkxskhwchat"></HJLineChart>
+          --> 
+       <HJGrid id = "040010" name = "焦煤事业部>销量报表" fontsize = "medium"  visible ="true"	height="0.3"  datasource="dlmxscpxlwgrid"    locking ="2"   style = "plain"  layouttype = "specify" >
+             
+        <!-- 添加固定的终端信息   -->
+        <HJGridColumn id="010010001" name ="产品"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data2" field="name_item"/>
+        <HJGridColumn id="010010002" name ="船名"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data3" field="name_vessel"     />
+        <HJGridColumn id="010010003" name ="合同数量"  width ="0.3"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data4" field="dec_qty"  />
+        <HJGridColumn id="010010004" name ="合同金额"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data5" field="dec_amt" />
+        <HJGridColumn id="010010005" name ="收款金额"  width ="0.3"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data6" field="dec_rcvamt" alignment="right" sumenable ="true" valuetype="decimal" format  ="###.00"/>
+	    <HJTitle  id="001025004" name = "产品销售"   fontsize = "medium" bold ="true"  textcolor ="#000000"    />
+	   </HJGrid> 
+	   
+	   <HJViewMenu id="010015" name="菜单"   editable ="true" visible ="true" > 
+        <HJMenuButton id="010015001" name="按客户"  editable ="true"  visible ="true"  newview  = "020001" fontsize = "medium"   > </HJMenuButton> 
+      </HJViewMenu> 
+	 </HJView>
+      
+	  
+	  
+	 <HJView id = "040001" name = "焦煤事业部>销售报表"  returnenable="true"  dataset="dlmxshtwgrid:'1=1';dlmxshtmgrid:'1=1';dlmxshtsgrid:'1=1';dlmxshtygrid:'1=1'"  datasetmode="1">
+	 
+        <HJSegmentControl id = "010001001" name = ""  editable ="true"  required ="true" visible ="true" fontsize = "medium"  alignment="left" backgroundcolor = "#0000ff" >
+        <HJSegmentControlOption id = "010001001001" name = "周"  fontsize = "medium" onclick = "hjc_datarefresh('020001','010001010','dlmxshtwgrid')">01</HJSegmentControlOption>
+        <HJSegmentControlOption id = "010001001002" name = "月"  fontsize = "medium" onclick = "hjc_datarefresh('020001','010001010','dlmxshtmgrid')">02</HJSegmentControlOption>
+        <HJSegmentControlOption id = "010001001003" name = "季"  fontsize = "medium" onclick = "hjc_datarefresh('020001','010001010','dlmxshtsgrid')">03</HJSegmentControlOption> 
+        <HJSegmentControlOption id = "010001001004" name = "年"  fontsize = "medium" onclick = "hjc_datarefresh('020001','010001010','dlmxshtygrid')">04</HJSegmentControlOption> 
+        01
+      </HJSegmentControl>
+      
+     <!-- <HJLineChart id = "010001002" name = "折线图" colors = "#026ce3; #ff9400; #ff2845; #85d8e1; #e000fc; #acfd00; #ffe000; #f69db0" chartfield = "id" valuefield = "qty" xaxisname = "日期" yaxisname = "销量" xaxisfield = "name" yaxismaxvalue = "1000" yaxisminvalue = "0" yaxistick = "200" visiblelegend = "true" sortfield = "sort" datasource  = "tkxshtwchat"></HJLineChart>
+         -->
+       <HJGrid id = "010001010" name = "销量报表" fontsize = "medium"  visible ="true"	height="0.3"  datasource="dlmxshtwgrid"    locking ="2"   style = "plain"  layouttype = "specify" >
+             
+        <!-- 添加固定的终端信息   -->
+        <HJGridColumn id="010001010001" name ="客户"  width ="0.3"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data2" field="name_corr"/>
+        <HJGridColumn id="010001010002" name ="合同数量"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data3" field="dec_qty"    />
+        <HJGridColumn id="010001010003" name ="合同金额"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data4" field="dec_amt"  />
+        <HJGridColumn id="010001010004" name ="出库数量"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data5" field="dec_outqty" />
+        <HJGridColumn id="010001010005" name ="收款金额"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data6" field="dec_rcvamt" sumenable ="true"  />
+		
+         <HJTitle  id="010001010004" name = "销量（客户）"   fontsize = "medium" bold ="true"  textcolor ="#000000"    />
+	   </HJGrid> 
+	 
+	 </HJView>
+	 
+	 
+	  <HJView id = "041" name = "焦煤事业部>库存报表"  returnenable="true"  dataset="tkkckcwgrid:'1=1';tkkckcmgrid:'1=1';tkkckcsgrid:'1=1';tkkckcygrid:'1=1'"  datasetmode="net-local">
+	 
+        <HJSegmentControl id = "011016" name = ""  editable ="true"  required ="true" visible ="true" fontsize = "medium"  alignment="left" backgroundcolor = "#0000ff" >
+        <HJSegmentControlOption id = "011016001" name = "周"  fontsize = "medium" onclick = "hjc_datarefresh('011','011010','tkkckcwgrid')">01</HJSegmentControlOption>
+        <HJSegmentControlOption id = "011016002" name = "月"  fontsize = "medium" onclick = "hjc_datarefresh('011','011010','tkkckcmgrid')">02</HJSegmentControlOption>
+        <HJSegmentControlOption id = "011016003" name = "季"  fontsize = "medium" onclick = "hjc_datarefresh('011','011010','tkkckcsgrid')">03</HJSegmentControlOption> 
+        <HJSegmentControlOption id = "011016004" name = "年"  fontsize = "medium" onclick = "hjc_datarefresh('011','011010','tkkckcygrid')">04</HJSegmentControlOption> 
+        01
+      </HJSegmentControl>
+      
+      <!--  <HJLineChart id = "011002" name = "折线图" colors = "#026ce3; #ff9400; #ff2845; #85d8e1; #e000fc; #acfd00; #ffe000; #f69db0" chartfield = "id" valuefield = "qty" xaxisname = "日期" yaxisname = "销量" xaxisfield = "name" yaxismaxvalue = "1000" yaxisminvalue = "0" yaxistick = "200" visiblelegend = "true" sortfield = "sort" datasource  = "tkxskhwchat"></HJLineChart>
+        --> 
+       <HJGrid id = "011010" name = "库存报表" fontsize = "medium"  visible ="true"	height="0.3"  datasource="tkkckcwgrid"    locking ="2"   style = "plain"  layouttype = "specify" >
+             
+        <!-- 添加固定的终端信息   -->
+        <HJGridColumn id="011010001" name ="港口"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data2" field="name_port"/>
+        <HJGridColumn id="011010002" name ="船名"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data3" field="name_vessel"    />
+        <HJGridColumn id="011010003" name ="库存数"  width ="0.3"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data4" field="dec_qty"    />
+        <HJGridColumn id="011010004" name ="仓库"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data5" field="name_wh" />
+        <HJGridColumn id="011010005" name ="库存天数"  width ="0.3"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data6" field="dec_whday"  />
+		
+         <HJTitle  id="011010006" name = "库存统计"   fontsize = "medium" bold ="true"  textcolor ="#000000"    />
+	   </HJGrid>  
+	   
+	 </HJView>
+	 
+	  
+	  <!-- 应收报表 -->
+	 
+	    <HJView id = "042" name = "焦煤事业部>应收报表"  returnenable="true"  dataset="dlmysyswgrid:'1=1';dlmysysmgrid:'1=1';dlmysyssgrid:'1=1';dlmysysygrid:'1=1'"  datasetmode="net-local">
+	 
+        <HJSegmentControl id = "011016" name = ""  editable ="true"  required ="true" visible ="true" fontsize = "medium"  alignment="left" backgroundcolor = "#0000ff" >
+        <HJSegmentControlOption id = "011016001" name = "周"  fontsize = "medium" onclick = "hjc_datarefresh('022','011010','dlmysyswgrid')">01</HJSegmentControlOption>
+        <HJSegmentControlOption id = "011016002" name = "月"  fontsize = "medium" onclick = "hjc_datarefresh('022','011010','dlmysysmgrid')">02</HJSegmentControlOption>
+        <HJSegmentControlOption id = "011016003" name = "季"  fontsize = "medium" onclick = "hjc_datarefresh('022','011010','dlmysyssgrid')">03</HJSegmentControlOption> 
+        <HJSegmentControlOption id = "011016004" name = "年"  fontsize = "medium" onclick = "hjc_datarefresh('022','011010','dlmysysygrid')">04</HJSegmentControlOption> 
+        01
+      </HJSegmentControl>
+      
+   <!--    <HJLineChart id = "011002" name = "折线图" colors = "#026ce3; #ff9400; #ff2845; #85d8e1; #e000fc; #acfd00; #ffe000; #f69db0" chartfield = "id" valuefield = "qty" xaxisname = "日期" yaxisname = "销量" xaxisfield = "name" yaxismaxvalue = "1000" yaxisminvalue = "0" yaxistick = "200" visiblelegend = "true" sortfield = "sort" datasource  = "tkxskhwchat"></HJLineChart>
+      -->    
+       <HJGrid id = "011010" name = "应收" fontsize = "medium"  visible ="true"	height="0.3"  datasource="dlmysyswgrid"    locking ="2"   style = "plain"  layouttype = "specify" >
+             
+        <!-- 添加固定的终端信息   -->
+        <HJGridColumn id="011010001" name ="客户"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data2" field="name_corr"/>
+        <HJGridColumn id="011010002" name ="合同量"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data3" field="dec_qty"    />
+        <HJGridColumn id="011010003" name ="合同金额"  width ="0.3"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data4" field="dec_amt"  />
+        <HJGridColumn id="011010004" name ="收款金额"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data5" field="dec_rcvamt" />
+        <HJGridColumn id="011010005" name ="应收金额"  width ="0.3"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data6" field="dec_orderamt" sumenable ="true"  />
+		
+         <HJTitle  id="011010006" name = "应收"   fontsize = "medium" bold ="true"  textcolor ="#000000"    />
+	   </HJGrid>  
+	   
+	 </HJView>
+	 
+	 
+	  <!-- >收款报表 -->
+	 
+	    <HJView id = "043" name = "焦煤事业部>收款报表"  returnenable="true"  dataset="dlmskkhjscwwgrid:'1=1';dlmskkhjscwmgrid:'1=1';dlmskkhjscwsgrid:'1=1';dlmskkhjscwygrid:'1=1'"  datasetmode="net-local">
+	 
+        <HJSegmentControl id = "011016" name = ""  editable ="true"  required ="true" visible ="true" fontsize = "medium"  alignment="left" backgroundcolor = "#0000ff" >
+        <HJSegmentControlOption id = "011016001" name = "周"  fontsize = "medium" onclick = "hjc_datarefresh('023','011010','dlmskkhjscwwgrid')">01</HJSegmentControlOption>
+        <HJSegmentControlOption id = "011016002" name = "月"  fontsize = "medium" onclick = "hjc_datarefresh('023','011010','dlmskkhjscwmgrid')">02</HJSegmentControlOption>
+        <HJSegmentControlOption id = "011016003" name = "季"  fontsize = "medium" onclick = "hjc_datarefresh('023','011010','dlmskkhjscwsgrid')">03</HJSegmentControlOption> 
+        <HJSegmentControlOption id = "011016004" name = "年"  fontsize = "medium" onclick = "hjc_datarefresh('023','011010','dlmskkhjscwygrid')">04</HJSegmentControlOption> 
+        01
+      </HJSegmentControl>
+      
+    <!--   <HJLineChart id = "011002" name = "折线图" colors = "#026ce3; #ff9400; #ff2845; #85d8e1; #e000fc; #acfd00; #ffe000; #f69db0" chartfield = "id" valuefield = "qty" xaxisname = "日期" yaxisname = "销量" xaxisfield = "name" yaxismaxvalue = "1000" yaxisminvalue = "0" yaxistick = "200" visiblelegend = "true" sortfield = "sort" datasource  = "tkxskhwchat"></HJLineChart>
+      -->   
+       <HJGrid id = "011010" name = "收款报表" fontsize = "medium"  visible ="true"	height="0.3"  datasource="dlmskkhjscwwgrid"    locking ="2"   style = "plain"  layouttype = "specify" >
+             
+        <!-- 添加固定的终端信息   -->
+        <HJGridColumn id="011010001" name ="客户"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data2" field="name_corr"/>
+        <HJGridColumn id="011010002" name ="已收款"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data3" field="dec_rcvamt"    />
+        <HJGridColumn id="011010003" name ="未收款"  width ="0.3"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data4" field="dec_norcvamt"  />
+        <HJGridColumn id="011010004" name ="已开票"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data5" field="dec_invamt" />
+        <HJGridColumn id="011010005" name ="未开票"  width ="0.3"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data6" field="dec_noinvamt" sumenable ="true"  />
+		
+         <HJTitle  id="011010006" name = "收款"   fontsize = "medium" bold ="true"  textcolor ="#000000"    />
+	   </HJGrid>  
+	   
+	 </HJView>
+	 
+	 <!-- 铁矿事业部>在途报表 -->
+	 
+	    <HJView id = "044" name = "焦煤事业部>在途报表"  returnenable="true"  dataset="dlmztydcwgrid:'1=1';dlmztydcmgrid:'1=1';dlmztydcsgrid:'1=1';dlmztydcygrid:'1=1'"  datasetmode="net-local">
+	 
+        <HJSegmentControl id = "011016" name = ""  editable ="true"  required ="true" visible ="true" fontsize = "medium"  alignment="left" backgroundcolor = "#0000ff" >
+        <HJSegmentControlOption id = "011016001" name = "周"  fontsize = "medium" onclick = "hjc_datarefresh('024','011010','dlmztydcwgrid')">01</HJSegmentControlOption>
+        <HJSegmentControlOption id = "011016002" name = "月"  fontsize = "medium" onclick = "hjc_datarefresh('024','011010','dlmztydcmgrid')">02</HJSegmentControlOption>
+        <HJSegmentControlOption id = "011016003" name = "季"  fontsize = "medium" onclick = "hjc_datarefresh('024','011010','dlmztydcsgrid')">03</HJSegmentControlOption> 
+        <HJSegmentControlOption id = "011016004" name = "年"  fontsize = "medium" onclick = "hjc_datarefresh('024','011010','dlmztydcygrid')">04</HJSegmentControlOption> 
+        01
+      </HJSegmentControl>
+      
+     <!--   <HJLineChart id = "011002" name = "折线图" colors = "#026ce3; #ff9400; #ff2845; #85d8e1; #e000fc; #acfd00; #ffe000; #f69db0" chartfield = "id" valuefield = "qty" xaxisname = "日期" yaxisname = "销量" xaxisfield = "name" yaxismaxvalue = "1000" yaxisminvalue = "0" yaxistick = "200" visiblelegend = "true" sortfield = "sort" datasource  = "tkxskhwchat"></HJLineChart>
+         -->
+       <HJGrid id = "011010" name = "销量报表" fontsize = "medium"  visible ="true"	height="0.3"  datasource="dlmztydcwgrid"    locking ="2"   style = "plain"  layouttype = "specify" >
+             
+        <!-- 添加固定的终端信息   -->
+        <HJGridColumn id="011010001" name ="港口"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data2" field="name_port"/>
+        <HJGridColumn id="011010002" name ="船名"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data3" field="name_vessel"    />
+        <HJGridColumn id="011010003" name ="名"  width ="0.3"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data4" field="name_itemen"  />
+        <HJGridColumn id="011010004" name ="数量"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data5" field="dec_qty" />
+        <HJGridColumn id="011010005" name ="船期"  width ="0.3"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data6" field="var_date"   />
+		
+         <HJTitle  id="011010006" name = "预计船期统"   fontsize = "medium" bold ="true"  textcolor ="#000000"    />
+	   </HJGrid>  
+	   
+	 </HJView> 
+	 <!-- 铁合金-->
+	 
+	 <HJView id = "050" name = "铁合金事业部>销售报表"  returnenable="true"  dataset="thjxscpxlwgrid:'1=1';thjxscpxlmgrid:'1=1';thjxscpxlsgrid:'1=1';thjxscpxlygrid:'1=1'"  datasetmode="net-local">
+	 
+        <HJSegmentControl id = "010016" name = ""  editable ="true"  required ="true" visible ="true" fontsize = "medium"  alignment="left" backgroundcolor = "#0000ff" >
+        <HJSegmentControlOption id = "005016001" name = "周"  fontsize = "medium" onclick = "hjc_datarefresh('050','040010','thjxscpxlwgrid')">01</HJSegmentControlOption>
+        <HJSegmentControlOption id = "005016002" name = "月"  fontsize = "medium" onclick = "hjc_datarefresh('050','040010','thjxscpxlmgrid')">02</HJSegmentControlOption>
+        <HJSegmentControlOption id = "005016003" name = "季"  fontsize = "medium" onclick = "hjc_datarefresh('050','040010','thjxscpxlsgrid')">03</HJSegmentControlOption> 
+        <HJSegmentControlOption id = "005016004" name = "年"  fontsize = "medium" onclick = "hjc_datarefresh('050','040010','thjxscpxlygrid')">04</HJSegmentControlOption> 
+        01
+      </HJSegmentControl>
+      
+    <!--  <HJLineChart id = "001002" name = "折线图" colors = "#026ce3; #ff9400; #ff2845; #85d8e1; #e000fc; #acfd00; #ffe000; #f69db0" chartfield = "id" valuefield = "qty" xaxisname = "日期" yaxisname = "销量" xaxisfield = "name" yaxismaxvalue = "1000" yaxisminvalue = "0" yaxistick = "200" visiblelegend = "true" sortfield = "sort" datasource  = "tkxskhwchat"></HJLineChart>
+          --> 
+       <HJGrid id = "040010" name = "铁合金事业部>销量报表" fontsize = "medium"  visible ="true"	height="0.3"  datasource="thjxscpxlwgrid"    locking ="2"   style = "plain"  layouttype = "specify" >
+             
+        <!-- 添加固定的终端信息   -->
+        <HJGridColumn id="010010001" name ="产品"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data2" field="name_item"/>
+        <HJGridColumn id="010010002" name ="船名"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data3" field="name_vessel"     />
+        <HJGridColumn id="010010003" name ="合同数量"  width ="0.3"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data4" field="dec_qty"  />
+        <HJGridColumn id="010010004" name ="合同金额"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data5" field="dec_amt" />
+        <HJGridColumn id="010010005" name ="收款金额"  width ="0.3"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data6" field="dec_rcvamt" alignment="right" sumenable ="true" valuetype="decimal" format  ="###.00"/>
+	    <HJTitle  id="001025004" name = "产品销售"   fontsize = "medium" bold ="true"  textcolor ="#000000"    />
+	   </HJGrid> 
+	   
+	   <HJViewMenu id="010015" name="菜单"   editable ="true" visible ="true" > 
+        <HJMenuButton id="010015001" name="按客户"  editable ="true"  visible ="true"  newview  = "020001" fontsize = "medium"   > </HJMenuButton> 
+      </HJViewMenu> 
+	 </HJView>
+      
+	  
+	  
+	 <HJView id = "050001" name = "铁合金事业部>销售报表"  returnenable="true"  dataset="thjxshtwgrid:'1=1';thjxshtmgrid:'1=1';thjxshtsgrid:'1=1';thjxshtygrid:'1=1'"  datasetmode="1">
+	 
+        <HJSegmentControl id = "010001001" name = ""  editable ="true"  required ="true" visible ="true" fontsize = "medium"  alignment="left" backgroundcolor = "#0000ff" >
+        <HJSegmentControlOption id = "010001001001" name = "周"  fontsize = "medium" onclick = "hjc_datarefresh('050001','010001010','thjxshtwgrid')">01</HJSegmentControlOption>
+        <HJSegmentControlOption id = "010001001002" name = "月"  fontsize = "medium" onclick = "hjc_datarefresh('050001','010001010','thjxshtmgrid')">02</HJSegmentControlOption>
+        <HJSegmentControlOption id = "010001001003" name = "季"  fontsize = "medium" onclick = "hjc_datarefresh('050001','010001010','thjxshtsgrid')">03</HJSegmentControlOption> 
+        <HJSegmentControlOption id = "010001001004" name = "年"  fontsize = "medium" onclick = "hjc_datarefresh('050001','010001010','thjxshtygrid')">04</HJSegmentControlOption> 
+        01
+      </HJSegmentControl>
+      
+     <!-- <HJLineChart id = "010001002" name = "折线图" colors = "#026ce3; #ff9400; #ff2845; #85d8e1; #e000fc; #acfd00; #ffe000; #f69db0" chartfield = "id" valuefield = "qty" xaxisname = "日期" yaxisname = "销量" xaxisfield = "name" yaxismaxvalue = "1000" yaxisminvalue = "0" yaxistick = "200" visiblelegend = "true" sortfield = "sort" datasource  = "tkxshtwchat"></HJLineChart>
+         -->
+       <HJGrid id = "010001010" name = "销量报表" fontsize = "medium"  visible ="true"	height="0.3"  datasource="thjxshtwgrid"    locking ="2"   style = "plain"  layouttype = "specify" >
+             
+        <!-- 添加固定的终端信息   -->
+        <HJGridColumn id="010001010001" name ="客户"  width ="0.3"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data2" field="name_corr"/>
+        <HJGridColumn id="010001010002" name ="合同数量"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data3" field="dec_qty"    />
+        <HJGridColumn id="010001010003" name ="合同金额"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data4" field="dec_amt"  />
+        <HJGridColumn id="010001010004" name ="出库数量"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data5" field="dec_outqty" />
+        <HJGridColumn id="010001010005" name ="收款金额"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data6" field="dec_rcvamt" sumenable ="true"  />
+		
+         <HJTitle  id="010001010004" name = "销量（客户）"   fontsize = "medium" bold ="true"  textcolor ="#000000"    />
+	   </HJGrid> 
+	 
+	 </HJView>
+	 
+	 
+	  <HJView id = "051" name = "铁合金事业部>库存报表"  returnenable="true"  dataset="thjkckcwgrid:'1=1';thjkckcmgrid:'1=1';thjkckcsgrid:'1=1';thjkckcygrid:'1=1'"  datasetmode="net-local">
+	 
+        <HJSegmentControl id = "011016" name = ""  editable ="true"  required ="true" visible ="true" fontsize = "medium"  alignment="left" backgroundcolor = "#0000ff" >
+        <HJSegmentControlOption id = "011016001" name = "周"  fontsize = "medium" onclick = "hjc_datarefresh('051','011010','thjkckcwgrid')">01</HJSegmentControlOption>
+        <HJSegmentControlOption id = "011016002" name = "月"  fontsize = "medium" onclick = "hjc_datarefresh('051','011010','thjkckcmgrid')">02</HJSegmentControlOption>
+        <HJSegmentControlOption id = "011016003" name = "季"  fontsize = "medium" onclick = "hjc_datarefresh('051','011010','thjkckcsgrid')">03</HJSegmentControlOption> 
+        <HJSegmentControlOption id = "011016004" name = "年"  fontsize = "medium" onclick = "hjc_datarefresh('051','011010','thjkckcygrid')">04</HJSegmentControlOption> 
+        01
+      </HJSegmentControl>
+      
+      <!--  <HJLineChart id = "011002" name = "折线图" colors = "#026ce3; #ff9400; #ff2845; #85d8e1; #e000fc; #acfd00; #ffe000; #f69db0" chartfield = "id" valuefield = "qty" xaxisname = "日期" yaxisname = "销量" xaxisfield = "name" yaxismaxvalue = "1000" yaxisminvalue = "0" yaxistick = "200" visiblelegend = "true" sortfield = "sort" datasource  = "tkxskhwchat"></HJLineChart>
+        --> 
+       <HJGrid id = "011010" name = "库存报表" fontsize = "medium"  visible ="true"	height="0.3"  datasource="thjkckcwgrid"    locking ="2"   style = "plain"  layouttype = "specify" >
+             
+        <!-- 添加固定的终端信息   -->
+        <HJGridColumn id="011010001" name ="港口"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data2" field="name_port"/>
+        <HJGridColumn id="011010002" name ="船名"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data3" field="name_vessel"    />
+        <HJGridColumn id="011010003" name ="库存数"  width ="0.3"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data4" field="dec_qty"    />
+        <HJGridColumn id="011010004" name ="仓库"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data5" field="name_wh" />
+        <HJGridColumn id="011010005" name ="库存天数"  width ="0.3"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data6" field="dec_whday"  />
+		
+         <HJTitle  id="011010006" name = "库存统计"   fontsize = "medium" bold ="true"  textcolor ="#000000"    />
+	   </HJGrid>  
+	   
+	 </HJView>
+	  
+	  <!-- 应收报表 -->
+	 
+	    <HJView id = "052" name = "铁合金事业部>应收报表"  returnenable="true"  dataset="thjysyswgrid:'1=1';thjysysmgrid:'1=1';thjysyssgrid:'1=1';thjysysygrid:'1=1'"  datasetmode="net-local">
+	 
+        <HJSegmentControl id = "011016" name = ""  editable ="true"  required ="true" visible ="true" fontsize = "medium"  alignment="left" backgroundcolor = "#0000ff" >
+        <HJSegmentControlOption id = "011016001" name = "周"  fontsize = "medium" onclick = "hjc_datarefresh('052','011010','thjysyswgrid')">01</HJSegmentControlOption>
+        <HJSegmentControlOption id = "011016002" name = "月"  fontsize = "medium" onclick = "hjc_datarefresh('052','011010','thjysysmgrid')">02</HJSegmentControlOption>
+        <HJSegmentControlOption id = "011016003" name = "季"  fontsize = "medium" onclick = "hjc_datarefresh('052','011010','thjysyssgrid')">03</HJSegmentControlOption> 
+        <HJSegmentControlOption id = "011016004" name = "年"  fontsize = "medium" onclick = "hjc_datarefresh('052','011010','thjysysygrid')">04</HJSegmentControlOption> 
+        01
+      </HJSegmentControl>
+      
+   <!--    <HJLineChart id = "011002" name = "折线图" colors = "#026ce3; #ff9400; #ff2845; #85d8e1; #e000fc; #acfd00; #ffe000; #f69db0" chartfield = "id" valuefield = "qty" xaxisname = "日期" yaxisname = "销量" xaxisfield = "name" yaxismaxvalue = "1000" yaxisminvalue = "0" yaxistick = "200" visiblelegend = "true" sortfield = "sort" datasource  = "tkxskhwchat"></HJLineChart>
+      -->    
+       <HJGrid id = "011010" name = "应收" fontsize = "medium"  visible ="true"	height="0.3"  datasource="thjysyswgrid"    locking ="2"   style = "plain"  layouttype = "specify" >
+             
+        <!-- 添加固定的终端信息   -->
+        <HJGridColumn id="011010001" name ="客户"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data2" field="name_corr"/>
+        <HJGridColumn id="011010002" name ="合同量"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data3" field="dec_qty"    />
+        <HJGridColumn id="011010003" name ="合同金额"  width ="0.3"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data4" field="dec_amt"  />
+        <HJGridColumn id="011010004" name ="收款金额"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data5" field="dec_rcvamt" />
+        <HJGridColumn id="011010005" name ="应收金额"  width ="0.3"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data6" field="dec_orderamt" sumenable ="true"  />
+		
+         <HJTitle  id="011010006" name = "应收"   fontsize = "medium" bold ="true"  textcolor ="#000000"    />
+	   </HJGrid>  
+	   
+	 </HJView>
+	 
+	 
+	  <!-- >收款报表 -->
+	 
+	    <HJView id = "053" name = "铁合金事业部>收款报表"  returnenable="true"  dataset="thjskkhjscwwgrid:'1=1';thjskkhjscwmgrid:'1=1';thjskkhjscwsgrid:'1=1';thjskkhjscwygrid:'1=1'"  datasetmode="net-local">
+	 
+        <HJSegmentControl id = "011016" name = ""  editable ="true"  required ="true" visible ="true" fontsize = "medium"  alignment="left" backgroundcolor = "#0000ff" >
+        <HJSegmentControlOption id = "011016001" name = "周"  fontsize = "medium" onclick = "hjc_datarefresh('053','011010','thjskkhjscwwgrid')">01</HJSegmentControlOption>
+        <HJSegmentControlOption id = "011016002" name = "月"  fontsize = "medium" onclick = "hjc_datarefresh('053','011010','thjskkhjscwmgrid')">02</HJSegmentControlOption>
+        <HJSegmentControlOption id = "011016003" name = "季"  fontsize = "medium" onclick = "hjc_datarefresh('053','011010','thjskkhjscwsgrid')">03</HJSegmentControlOption> 
+        <HJSegmentControlOption id = "011016004" name = "年"  fontsize = "medium" onclick = "hjc_datarefresh('053','011010','thjskkhjscwygrid')">04</HJSegmentControlOption> 
+        01
+      </HJSegmentControl>
+      
+    <!--   <HJLineChart id = "011002" name = "折线图" colors = "#026ce3; #ff9400; #ff2845; #85d8e1; #e000fc; #acfd00; #ffe000; #f69db0" chartfield = "id" valuefield = "qty" xaxisname = "日期" yaxisname = "销量" xaxisfield = "name" yaxismaxvalue = "1000" yaxisminvalue = "0" yaxistick = "200" visiblelegend = "true" sortfield = "sort" datasource  = "tkxskhwchat"></HJLineChart>
+      -->   
+       <HJGrid id = "011010" name = "收款报表" fontsize = "medium"  visible ="true"	height="0.3"  datasource="thjskkhjscwwgrid"    locking ="2"   style = "plain"  layouttype = "specify" >
+             
+        <!-- 添加固定的终端信息   -->
+        <HJGridColumn id="011010001" name ="客户"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data2" field="name_corr"/>
+        <HJGridColumn id="011010002" name ="已收款"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data3" field="dec_rcvamt"    />
+        <HJGridColumn id="011010003" name ="未收款"  width ="0.3"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data4" field="dec_norcvamt"  />
+        <HJGridColumn id="011010004" name ="已开票"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data5" field="dec_invamt" />
+        <HJGridColumn id="011010005" name ="未开票"  width ="0.3"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data6" field="dec_noinvamt" sumenable ="true"  />
+		
+         <HJTitle  id="011010006" name = "收款"   fontsize = "medium" bold ="true"  textcolor ="#000000"    />
+	   </HJGrid>  
+	   
+	 </HJView>
+	 
+	 <!-- 铁矿事业部>在途报表 -->
+	 
+	    <HJView id = "054" name = "铁合金事业部>在途报表"  returnenable="true"  dataset="thjztydcwgrid:'1=1';thjztydcmgrid:'1=1';thjztydcsgrid:'1=1';thjztydcygrid:'1=1'"  datasetmode="net-local">
+	 
+        <HJSegmentControl id = "011016" name = ""  editable ="true"  required ="true" visible ="true" fontsize = "medium"  alignment="left" backgroundcolor = "#0000ff" >
+        <HJSegmentControlOption id = "011016001" name = "周"  fontsize = "medium" onclick = "hjc_datarefresh('054','011010','thjztydcwgrid')">01</HJSegmentControlOption>
+        <HJSegmentControlOption id = "011016002" name = "月"  fontsize = "medium" onclick = "hjc_datarefresh('054','011010','thjztydcmgrid')">02</HJSegmentControlOption>
+        <HJSegmentControlOption id = "011016003" name = "季"  fontsize = "medium" onclick = "hjc_datarefresh('054','011010','thjztydcsgrid')">03</HJSegmentControlOption> 
+        <HJSegmentControlOption id = "011016004" name = "年"  fontsize = "medium" onclick = "hjc_datarefresh('054','011010','thjztydcygrid')">04</HJSegmentControlOption> 
+        01
+      </HJSegmentControl>
+      
+     <!--   <HJLineChart id = "011002" name = "折线图" colors = "#026ce3; #ff9400; #ff2845; #85d8e1; #e000fc; #acfd00; #ffe000; #f69db0" chartfield = "id" valuefield = "qty" xaxisname = "日期" yaxisname = "销量" xaxisfield = "name" yaxismaxvalue = "1000" yaxisminvalue = "0" yaxistick = "200" visiblelegend = "true" sortfield = "sort" datasource  = "tkxskhwchat"></HJLineChart>
+         -->
+       <HJGrid id = "011010" name = "销量报表" fontsize = "medium"  visible ="true"	height="0.3"  datasource="thjztydcwgrid"    locking ="2"   style = "plain"  layouttype = "specify" >
+             
+        <!-- 添加固定的终端信息   -->
+        <HJGridColumn id="011010001" name ="港口"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data2" field="name_port"/>
+        <HJGridColumn id="011010002" name ="船名"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data3" field="name_vessel"    />
+        <HJGridColumn id="011010003" name ="名"  width ="0.3"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data4" field="name_itemen"  />
+        <HJGridColumn id="011010004" name ="数量"  width ="0.2"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data5" field="dec_qty" />
+        <HJGridColumn id="011010005" name ="船期"  width ="0.3"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data6" field="var_date"   />
+		
+         <HJTitle  id="011010006" name = "预计船期统"   fontsize = "medium" bold ="true"  textcolor ="#000000"    />
+	   </HJGrid>  
+	   
+	 </HJView> 
+	 
+</HJModel>

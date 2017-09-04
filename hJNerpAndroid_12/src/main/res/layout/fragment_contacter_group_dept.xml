@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/ll_group_dept"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/contact_bkg_white"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingLeft="5dip"
+    android:paddingRight="0dp">
+
+    <com.hjnerp.widget.BubbleImageView
+        android:id="@+id/groupImage_dept"
+        android:layout_width="@dimen/abc_square_image_size38"
+        android:layout_height="@dimen/abc_square_image_size38"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="5dp"
+        android:adjustViewBounds="true"
+        android:src="@drawable/default_chatroom"
+        android:gravity="center"
+        android:scaleType="fitCenter"
+        app:bubble_angle="19dp"
+        app:bubble_arrowHeight="0dp"
+        app:bubble_arrowLocation="right"
+        app:bubble_arrowOffset="0dp"
+        app:bubble_arrowTop="0dp"
+        app:bubble_arrowWidth="0dp" />
+
+    <TextView
+        android:id="@+id/groupName_dept"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:text="groupName"
+        android:textSize="16sp" />
+
+</LinearLayout>

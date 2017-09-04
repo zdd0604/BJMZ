@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rl"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <com.hjnerp.widget.BubbleImageView
+        android:id="@+id/iv_pic"
+        android:layout_width="@dimen/abc_square_image_size38"
+        android:layout_height="@dimen/abc_square_image_size38"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:adjustViewBounds="true"
+        android:gravity="center"
+        android:scaleType="fitCenter"
+        android:src="@drawable/v5_0_1_profile_headphoto"
+        app:bubble_angle="19dp"
+        app:bubble_arrowHeight="0dp"
+        app:bubble_arrowLocation="right"
+        app:bubble_arrowOffset="0dp"
+        app:bubble_arrowTop="0dp"
+        app:bubble_arrowWidth="0dp" />
+
+</RelativeLayout>

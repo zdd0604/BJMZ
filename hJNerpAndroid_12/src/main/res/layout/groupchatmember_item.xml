@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="80dp"
+    android:layout_height="100dp" >
+
+    <ImageView
+        android:id="@+id/photo"
+        android:layout_width="@dimen/abc_square_image_size45"
+        android:layout_height="@dimen/abc_square_image_size45"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/v5_0_1_profile_headphoto" />
+
+    <TextView
+        android:id="@+id/delete_tv"
+        android:layout_width="20dip"
+        android:layout_height="20dip"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="5dip"
+        android:background="@drawable/appitem_del_btn_normal"
+        android:gravity="center"
+        android:text=""
+        android:textColor="@color/white"
+        android:textSize="12dip" />
+
+    <TextView
+        android:id="@+id/nickname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/photo"
+        android:layout_centerHorizontal="true"
+        android:singleLine="true"
+        android:text="name"
+        android:textColor="#484646"
+        android:textSize="14sp" />
+
+</RelativeLayout>

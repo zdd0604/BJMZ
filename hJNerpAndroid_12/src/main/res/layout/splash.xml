@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"  
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/splash_linearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="80dip"
+        android:layout_alignParentBottom="true"
+        android:gravity="center" 
+        android:orientation="vertical" >
+
+        <ImageView
+            android:id="@+id/splash_imageView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" 
+            android:background="@drawable/biao" />
+
+        <TextView
+            android:id="@+id/splash_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@+id/splash_imageView2"
+            android:layout_below="@+id/splash_imageView2"
+            android:text="做中国最好的ERP"
+            android:textColor="@color/slategrey" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/splash_imageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/splash_linearLayout1"
+        android:layout_centerHorizontal="true"
+        android:adjustViewBounds="false"
+        android:scaleType="centerCrop" />
+
+</RelativeLayout>

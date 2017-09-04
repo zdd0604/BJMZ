@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:descendantFocusability="blocksDescendants" >
+    
+    <!-- LinerLayout有比较奇怪的性质：当布局中的控件可以超出布局规定的大小 ,所以这里一行的行宽改成由内部的几个控件
+    控制，而LinerLayout的layout_height改成wrap_content ..  -->
+    
+    
+    <ImageView
+        android:id="@+id/ct_photo"
+        android:layout_height="@dimen/abc_square_image_size38"
+        android:layout_width="@dimen/abc_square_image_size38"
+        android:layout_margin="5dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/v5_0_1_profile_headphoto"/>
+    
+
+    <ImageView 
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_below="@id/ct_photo"
+        android:paddingLeft="5dp"
+        android:paddingRight="0dp"/>
+
+    <TextView
+        android:id="@+id/ct_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/ct_photo"
+        android:maxLength="7"
+        android:padding="5dip"
+        android:text="李响"
+        android:textSize="16sp"
+       />
+
+</RelativeLayout>

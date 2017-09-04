@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rlayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/activity_background"
+    android:orientation="vertical" 
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp" >
+
+    <TextView
+        android:id="@+id/chat_sendtime_righttext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/sns_shoot_add_bg_pressed"
+        android:padding="3dp"
+        android:visibility="gone" 
+        android:textColor="@color/white"
+        android:textSize="13sp" />
+
+    <RelativeLayout
+        android:id="@+id/chat_right_item_righttext"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/chat_sendtime_righttext"
+        android:layout_marginTop="10dp" 
+        android:focusable="false" >
+
+        <ImageView
+            android:id="@+id/chat_right_item_headphoto_righttext"
+            android:layout_width="@dimen/abc_square_image_size38"
+            android:layout_height="@dimen/abc_square_image_size38"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/v5_0_1_profile_headphoto" />
+
+      
+
+        <TextView
+            android:id="@+id/chat_right_item_content_righttext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" 
+            android:layout_marginRight="5dp"
+            android:layout_toLeftOf="@id/chat_right_item_headphoto_righttext"
+            android:background="@drawable/chat_to_bg"
+            android:text="" />
+
+        <ImageView
+            android:id="@+id/chat_right_item_text_sendfail_righttext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" 
+            android:layout_centerHorizontal="true"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            android:layout_toLeftOf="@id/chat_right_item_content_righttext"
+            android:src="@drawable/sendpic_fail_resend" />
+
+        <ProgressBar
+            android:id="@+id/chat_right_item_pb_righttext"
+            style="?android:attr/progressBarStyleSmall"
+            android:layout_width="25dp"
+            android:layout_height="25dp" 
+            android:layout_centerHorizontal="true"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            android:layout_toLeftOf="@id/chat_right_item_content_righttext" />
+    </RelativeLayout>
+
+</RelativeLayout>

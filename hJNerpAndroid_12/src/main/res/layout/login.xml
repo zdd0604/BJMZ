@@ -1,0 +1,151 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FEFEFE"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+
+    <!--<TextView-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="@dimen/abc_action_bar_default_height"-->
+    <!--android:layout_centerInParent="true"-->
+    <!--android:gravity="center"-->
+    <!--android:text="@string/login_btn"-->
+    <!--android:textColor="@color/white"-->
+    <!--android:background="@color/actionbar_bg_color"-->
+    <!--android:textSize="@dimen/abc_action_bar_title_text_size" />-->
+
+    <com.hjnerp.widget.BubbleImageView
+        android:id="@+id/myphoto"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_centerVertical="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="40dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
+        android:src="@drawable/hejiaicon3"
+        android:visibility="visible"
+        app:bubble_angle="30dp"
+        app:bubble_arrowHeight="0dp"
+        app:bubble_arrowLocation="right"
+        app:bubble_arrowOffset="0dp"
+        app:bubble_arrowTop="0dp"
+        app:bubble_arrowWidth="0dp" />
+    <!--android:src="@drawable/mzlogo72"-->
+
+    <com.hjnerp.widget.SelectText
+        android:id="@+id/ui_company_input"
+        android:layout_width="fill_parent"
+        android:layout_height="45dip"
+        android:layout_marginLeft="20dip"
+        android:layout_marginRight="20dip"
+        android:layout_marginTop="30dip"
+        android:background="@null"
+        android:digits="@string/available_chars"
+        android:drawableLeft="@drawable/enterprise_cornor_icon_for_session_fragment"
+        android:drawablePadding="10dp"
+        android:drawableRight="@drawable/select_text_drawable_right_selector"
+        android:hint="请选择公司名称"
+        android:inputType="none"
+        android:maxLength="16"
+        android:maxLines="1"
+        android:paddingBottom="6.0dip"
+        android:paddingTop="6.0dip"
+        android:textColor="#ffc8c9c7"
+        android:textSize="18.0sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="23dip"
+        android:layout_marginRight="23dip"
+        android:layout_marginTop="@dimen/GCSmallPadding"
+        android:background="#E5E5E5" />
+
+    <!-- android:digits="@string/available_chars" android:inputType="text" -->
+
+    <EditText
+        android:id="@+id/ui_username_input"
+        android:layout_width="fill_parent"
+        android:layout_height="45dip"
+        android:layout_marginLeft="20dip"
+        android:layout_marginRight="20dip"
+        android:layout_marginTop="10dip"
+        android:background="@null"
+        android:drawableLeft="@drawable/creat_username_slt"
+        android:drawablePadding="10dp"
+        android:hint="请输入用户名或手机号"
+        android:maxLength="16"
+        android:maxLines="1"
+        android:paddingBottom="6.0dip"
+        android:paddingTop="6.0dip"
+        android:textColor="#ffc8c9c7"
+        android:textSize="18.0sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="23dip"
+        android:layout_marginRight="23dip"
+        android:layout_marginTop="@dimen/GCSmallPadding"
+        android:background="#E5E5E5" />
+
+    <EditText
+        android:id="@+id/ui_password_input"
+        android:layout_width="fill_parent"
+        android:layout_height="45dip"
+        android:layout_marginLeft="20dip"
+        android:layout_marginRight="20dip"
+        android:layout_marginTop="10dip"
+        android:background="@null"
+        android:digits="@string/available_chars"
+        android:drawableLeft="@drawable/icon_register_password"
+        android:drawablePadding="5dp"
+        android:hint="请输入密码"
+        android:maxLength="16"
+        android:maxLines="1"
+        android:paddingBottom="6.0dip"
+        android:paddingTop="6.0dip"
+        android:password="true"
+        android:textColor="#ffc8c9c7"
+        android:textSize="18.0sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="23dip"
+        android:layout_marginRight="23dip"
+        android:layout_marginTop="@dimen/GCSmallPadding"
+        android:background="#E5E5E5" />
+
+    <Button
+        android:id="@+id/ui_login_btn"
+        android:layout_width="fill_parent"
+        android:layout_height="45dip"
+        android:layout_marginLeft="20dip"
+        android:layout_marginRight="20dip"
+        android:layout_marginTop="15dip"
+        android:background="@drawable/login_btn_style"
+        android:enabled="false"
+        android:text="@string/login_btn"
+        android:textColor="@color/white"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/ui_register_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+
+        android:gravity="center"
+        android:text="企业注册"
+        android:textColor="#5DBCFF"
+        android:textSize="16sp" />
+
+</LinearLayout>

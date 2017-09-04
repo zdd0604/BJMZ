@@ -1,0 +1,78 @@
+<HJModel id="010" start="001" type="opr">
+    <!---->
+    <HJView name="考勤定位" id="001" onload="
+		   hjc_setvalue('001','001001','011040');
+		   hjc_setvalue('001','001002','yesiyin');
+		   " presave="true" returnenable="true">
+
+        <!--  -->
+        <!--这块的值先填固定值     如需动态  local ygdm = hju_getjsonvalues(sender.values,'id_clerk')  json的值是1347表中的-->
+        <HJTextView name="员工代码" alignment="left" editable="false" fontsize="medium" format="@@@@@@"
+            id="001001" required="false" singleline="true" valuetype="string" visible="true"
+            width="0.75">
+
+        </HJTextView>
+
+        <HJTextView name="员工" alignment="left" editable="false" fontsize="medium" format="@@@@@@"
+            id="001002" required="false" singleline="true" valuetype="string" visible="true"
+            width="0.75">
+
+        </HJTextView>
+
+
+        <HJLine name="" height="10" id="0040019" />
+        <HJTextView name="上班时间" alignment="left" editable="false" fontsize="medium" format="@@@@@@"
+            id="001055" required="true" singleline="true" valuetype="string" visible="true"
+            width="0.5">
+
+        </HJTextView>
+
+        <HJTextView name="下班时间" alignment="left" editable="false" fontsize="medium" format="@@@@@@"
+            id="001056" required="true" singleline="true" valuetype="string" visible="true"
+            width="0.5">
+
+        </HJTextView>
+
+        <!-- <HJLocation id = "002060" name = "定位"  editable ="true"  required ="true" visible ="false" valuetype="string" format="@@@@@@" singleline =
+"false" fontsize = "medium"  alignment="left"   ></HJLocation>
+        <HJPhotoView id = "002065" name = "进店拍照"  editable ="true"  required ="false" visible ="false" valuetype="string" format="@@@@@@" singleline = 
+"false" fontsize = "medium"  alignment="left"   ></HJPhotoView> -->
+
+        <HJToolBar name="工具栏" id="001300">
+            <HJButton name="上班" alignment="center" editable="true" fontsize="medium" id="001300001"
+                onclick="
+		 local d_time = hjc_getvalue('001','002055');
+		 local time = os.date('%Y-%m-%d %H:%M:%S', os.time());
+		 if d_time <> '' or  d_time <> nil then
+				hjc_setmakeText('002055','您已打卡！');
+				else
+		 hjc_setvalue('001','002055',time);
+		 end
+			" visible="true"></HJButton>
+            <HJButton name="下班" alignment="center" editable="true" fontsize="medium" id="001300002"
+                onclick="
+				 local d_time = hjc_getvalue('001','002055');
+				  local time = os.date('%Y-%m-%d %H:%M:%S', os.time());
+				if d_time == '' or  d_time == nil then
+				hjc_setmakeText('002055','上班时间为空，考勤为异常！');
+				 else
+				 hjc_setvalue('001','002056',time);
+			  end
+		  " visible="true"></HJButton>
+        </HJToolBar>
+
+
+        <HJViewMenu name="菜单" editable="true" id="0014009" visible="true">
+            <HJMenuButton name="数据上传" editable="true" fontsize="medium" id="0015001" onclick="
+                local billno =sender.billno;
+                local nodeid = hjv_getparentnode('001');
+                hjdb_updatevalue(billno,nodeid,'var_data1','Y');
+				local savedate  = hjv_savedata('001');
+				if savedate == '1' then
+                   hjdb_nodeupload(billno);
+                   hjc_setbackview('001');
+			   end " visible="true"></HJMenuButton>
+        </HJViewMenu>
+    </HJView>
+
+</HJModel>

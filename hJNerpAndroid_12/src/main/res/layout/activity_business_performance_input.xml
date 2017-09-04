@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_business_performance_input"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.hjnerp.business.activity.BusinessPerformanceInput">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/abc_action_bar_default_height"
+            android:background="#f7f7f7"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:id="@+id/input_actionbar_back"
+                android:layout_width="60dip"
+                android:layout_height="fill_parent"
+                android:background="@drawable/activity_child_item_bkg"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="@dimen/abc_dropdownitem_icon_width"
+                    android:layout_height="@dimen/abc_dropdownitem_icon_width"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerInParent="true"
+                    android:layout_centerVertical="true"
+                    android:adjustViewBounds="true"
+                    android:focusable="false"
+                    android:gravity="center"
+                    android:paddingBottom="@dimen/abc_action_bar_icon_vertical_padding"
+                    android:paddingLeft="@dimen/abc_action_bar_icon_vertical_padding"
+                    android:paddingRight="@dimen/abc_action_bar_icon_vertical_padding"
+                    android:paddingTop="@dimen/abc_action_bar_icon_vertical_padding"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/actionbar_home_indicator_blue"
+
+                    />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tv_actionbar_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="3dp"
+                android:layout_toRightOf="@+id/input_actionbar_back"
+                android:text="绩效计划录入"
+                android:textColor="#303030"
+                android:textSize="@dimen/abc_action_bar_title_text_size" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/input_performanc_save_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="32.0dip"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/chat_send_btn"
+                    android:gravity="center"
+                    android:minWidth="@dimen/ChattingFootSendMinWidth"
+                    android:text="保存"
+                    android:textColor="@color/white"
+                    android:textSize="14.0dip"
+                    android:visibility="gone" />
+
+                <Button
+                    android:id="@+id/input_submit_performance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="32.0dip"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="5dp"
+                    android:background="@drawable/chat_send_btn"
+                    android:gravity="center"
+                    android:minWidth="@dimen/ChattingFootSendMinWidth"
+                    android:text="送审"
+                    android:textColor="@color/white"
+                    android:textSize="14.0dip" />
+
+            </LinearLayout>
+        </RelativeLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:background="#EFEFF4"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/title_blue_bg"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/title_id_clerk"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="被评人"
+                            android:textColor="@color/title_color" />
+
+                        <TextView
+                            android:id="@+id/input_id_clerk"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="张某某"
+                            android:textColor="@color/black" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/layout_conclude_time"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="计划签订日期"
+                            android:textColor="#27a4e3" />
+
+                        <com.hjnerp.widget.ClearEditText
+                            android:id="@+id/input_conclude_time"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@null"
+                            android:focusable="false"
+                            android:gravity="center"
+                            android:hint="请选择日期"
+                            android:textColor="@color/black"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+
+
+                    <TextView
+                        android:id="@+id/name_kpiperiod_tx"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="考评周期"
+                        android:textColor="@color/black"
+                        android:visibility="gone" />
+
+                    <LinearLayout
+                        android:id="@+id/layout_dec_smark"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        android:visibility="gone">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="总分：" />
+
+                        <TextView
+                            android:id="@+id/dec_smark_tx"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textColor="@color/black" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layout_var_reject"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/kpi_bg"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="驳回意见"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/input_var_reject"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:textColor="@color/black" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/kpi_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="25dp"
+                        android:layout_gravity="center"
+                        android:layout_margin="5dp"
+                        android:background="@drawable/title_blue_bg"
+                        android:gravity="center"
+                        android:text="  关键绩效指标(KPI)  "
+                        android:textColor="#157fc6"
+                        android:textSize="17sp" />
+
+                    <LinearLayout
+                        android:id="@+id/kpiview"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical" />
+
+                    <TextView
+                        android:id="@+id/btn_add_kpiview"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:background="@drawable/gs_bg"
+                        android:gravity="center"
+                        android:text="+添加绩效详情"
+                        android:textColor="#fff" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="60dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/gs_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="25dp"
+                        android:layout_gravity="center"
+                        android:layout_margin="5dp"
+                        android:background="@drawable/title_blue_bg"
+                        android:gravity="center"
+                        android:text="  工作目标(GS)  "
+                        android:textColor="#157fc6"
+                        android:textSize="17sp" />
+
+                    <LinearLayout
+                        android:id="@+id/gsview"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical" />
+
+                    <TextView
+                        android:id="@+id/btn_add_gsview"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:background="@drawable/gs_bg"
+                        android:gravity="center"
+                        android:text="+添加目标详情"
+                        android:textColor="#ffff" />
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_reject"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:background="@drawable/title_blue_bg"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/input_approval_approval"
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp">
+
+            <Button
+                android:id="@+id/input_performanc_save"
+                android:layout_width="wrap_content"
+                android:layout_height="32.0dip"
+                android:layout_marginRight="10dp"
+                android:layout_toLeftOf="@+id/input_btn_disagree"
+                android:background="@drawable/chat_send_btn"
+                android:gravity="center"
+                android:minWidth="@dimen/ChattingFootSendMinWidth"
+                android:text="保存"
+                android:textColor="@color/white"
+                android:textSize="14.0dip" />
+
+            <Button
+                android:id="@+id/input_btn_disagree"
+                android:layout_width="wrap_content"
+                android:layout_height="32.0dip"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/chat_send_btn"
+                android:gravity="center"
+                android:minWidth="@dimen/ChattingFootSendMinWidth"
+                android:text="驳回"
+                android:textColor="@color/white"
+                android:textSize="14.0dip" />
+
+            <EditText
+                android:id="@+id/input_approval_context"
+                android:layout_width="fill_parent"
+                android:layout_height="30dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_toLeftOf="@id/input_performanc_save"
+                android:background="@drawable/edittext_bg_selector"
+                android:singleLine="true"
+                android:textSize="18sp" />
+        </RelativeLayout>
+    </LinearLayout>
+</RelativeLayout>

@@ -1,0 +1,158 @@
+<HJModel start = "001" type = "query" id = "009" billnotype = "new">
+
+ <HJView id = "001" name = "动力煤事业部"  returnenable="true" dataset="dlm:'1=1'"  datasetmode="net-local"   >
+ 
+  <HJList id = "001025" name = "动力煤事业部" fontsize = "medium" editable ="true"  visible ="true"   datasource="dlm" visibledisclosure = "true"  onclick = "  local row = sender.row
+			   local jsonvalues  = sender.values
+			   local jsonval=  hju_getjsonvalues(  jsonvalues,'id' ) 
+			   if  jsonval == '001' then 
+			   hjc_setnextview('001','001005', sender.row,'010')
+			   else 
+			    hjc_setnextview('001','001005', sender.row,'010')
+			   end "
+  style = "plain"  layouttype = "fullscreen"> 
+               <!-- 添加固定的终端信息   -->
+           <HJListColumn id="001025001" name =""  width ="1" editable ="true" visible ="true" singleline ="false" fontsize = "medium" bold ="false" textcolor ="#000000" field = "content" visiblename="true" dbfield = "var_data1"/>
+           <HJListColumn id="001025002" name =""  width ="1" editable ="true" visible ="false" singleline ="false" fontsize = "medium" bold ="false" textcolor ="#000000" field = "id" visiblename="true" dbfield = "var_data2"/> 
+  </HJList>   
+ </HJView>
+ 
+ 
+   <HJView id = "010" name = "动力煤>已销量"  returnenable="true"  dataset="v_merp_yxlcm'1=1';v_merp_yxlkh:'1=1'"  datasetmode="net-local">
+	 
+	  <HJGrid id = "010010" name = "已销量" fontsize = "medium"  visible ="true"	height="0.3"  datasource="v_merp_yxlcm"     style = "plain"  layouttype = "fullscreen" >
+             
+        <!-- 添加固定的终端信息   -->
+        <HJGridColumn id="010010001" name ="船名"  width ="0.4"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data2" field="name_item"/>
+        <HJGridColumn id="010010002" name ="提单数"  width ="0.3"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data3" field="dec_shippickqty"    alignment="right"  valuetype="decimal" format="######"   />
+        <HJGridColumn id="010010003" name ="结算数"  width ="0.3"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data4" field="dec_setqty"  alignment="right"  valuetype="decimal" format="######.00" />
+        <HJTitle  id="010010020" name = "船名"   fontsize = "medium" bold ="true"  textcolor ="#000000"    />
+	   </HJGrid>
+	   <HJGrid id = "010011" name = "已销量" fontsize = "medium"  visible ="false"	height="0.3"  datasource="v_merp_yxlkh"       style = "plain"  layouttype = "fullscreen" >
+             
+        <!-- 添加固定的终端信息   -->
+        <HJGridColumn id="010011001" name ="采购方"  width ="0.3"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data2" field="name_corr"/>
+        <HJGridColumn id="010011002" name ="结算数"  width ="0.3"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data3" field="dec_setqty"     alignment="right"  valuetype="decimal" format="######"  />
+        <HJGridColumn id="010011003" name ="结算金额"  width ="0.3"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data4" field="dec_qty"  alignment="right"  valuetype="decimal" format="######.00" />
+        <HJTitle  id="010011020" name = "客户"   fontsize = "medium" bold ="true"  textcolor ="#000000"    />
+	   </HJGrid>
+	   
+	    <HJViewMenu id="010015" name="菜单"   editable ="true" visible ="true" > 
+        <HJMenuButton id="010015001" name="船名"  editable ="true"  visible ="true"  fontsize = "medium" onclick = "hjc_visible('010', '010010','1')
+		hjc_visible('010', '010011','0')
+"  > </HJMenuButton> 
+        <HJMenuButton id="010015004" name="客户"  editable ="true"  visible ="true"  fontsize = "medium" onclick = "hjc_visible('010', '010010','0')
+		hjc_visible('010', '010011','1')
+"  > </HJMenuButton> 
+      
+	  </HJViewMenu> 
+	  
+   </HJView>
+   
+    <HJView id = "020" name = "动力煤>到船提单"  returnenable="true"  dataset="v_merp_dctdcm:'1=1';v_merp_dctdcm:'1=1'"  datasetmode="net-local">
+	 
+	  <HJGrid id = "020010" name = "已销量" fontsize = "medium"  visible ="true"	height="0.3"  datasource="v_merp_dctdcm"     style = "plain"  layouttype = "fullscreen" >
+             
+        <!-- 添加固定的终端信息   -->
+        <HJGridColumn id="020010001" name ="船名"  width ="0.4"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data2" field="name_vessel"/>
+        <HJGridColumn id="020010002" name ="卸货港"  width ="0.3"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data3" field="name_port"      />
+        <HJGridColumn id="020010003" name ="提单数"  width ="0.3"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data4" field="dec_shippickqty"  alignment="right"  valuetype="decimal" format="######" />
+        <HJTitle  id="020010010" name = "船名"   fontsize = "medium" bold ="true"  textcolor ="#000000"    />
+	   </HJGrid>
+	   <HJGrid id = "010011" name = "已销量" fontsize = "medium"  visible ="false"	height="0.3"  datasource="v_merp_dctdcm"       style = "plain"  layouttype = "fullscreen" >
+             
+        <!-- 添加固定的终端信息   -->
+        <HJGridColumn id="010011001" name ="卸货港"  width ="0.3"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data2" field="name_port"/>
+        <HJGridColumn id="010011002" name ="船名"  width ="0.3"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data3" field="name_vessel"     alignment="right"  valuetype="decimal" format="######.00"  />
+        <HJGridColumn id="010011003" name ="提单数"  width ="0.3"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data4" field="dec_shippickqty"  alignment="right"  valuetype="decimal" format="######.00" />
+        <HJTitle  id="010011010" name = "港口"   fontsize = "medium" bold ="true"  textcolor ="#000000"    />
+	   </HJGrid>
+	   
+	    <HJViewMenu id="010015" name="菜单"   editable ="true" visible ="true" > 
+        <HJMenuButton id="010015001" name="船名"  editable ="true"  visible ="true"  fontsize = "medium" onclick = ""  > </HJMenuButton> 
+        <HJMenuButton id="010015001" name="港口"  editable ="true"  visible ="true"  fontsize = "medium" onclick = ""  > </HJMenuButton> 
+      
+	  </HJViewMenu> 
+	  
+   </HJView>
+   
+    <HJView id = "030" name = "动力煤>实际到船量"  returnenable="true"  dataset="v_merp_dcsjcm:'1=1'"  datasetmode="net-local">
+	 
+	  <HJGrid id = "030010" name = "已销量" fontsize = "medium"  visible ="true"	height="0.3"  datasource="v_merp_dcsjcm"     style = "plain"  layouttype = "fullscreen" >
+             
+        <!-- 添加固定的终端信息   -->
+        <HJGridColumn id="030010001" name ="船名"  width ="0.4"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data2" field="name_vessel"/>
+        <HJGridColumn id="030010002" name ="卸货港"  width ="0.3"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data3" field="name_port"      />
+        <HJGridColumn id="030010003" name ="水尺"  width ="0.3"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data4" field="dec_watergauge"  alignment="right"  valuetype="decimal" format="######.00" />
+       </HJGrid>  
+   </HJView>
+   
+    <HJView id = "040" name = "动力煤>亏账卡数"  returnenable="true"  dataset="v_merp_kzkscm:'1=1'"  datasetmode="net-local">
+	 
+	  <HJGrid id = "040010" name = "已销量" fontsize = "medium"  visible ="true"	height="0.3"  datasource="v_merp_kzkscm"     style = "plain"  layouttype = "fullscreen" >
+             
+        <!-- 添加固定的终端信息   -->
+        <HJGridColumn id="040010001" name ="船名"  width ="0.4"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data2" field="name_vessel"/>
+        <HJGridColumn id="040010002" name ="港口"  width ="0.3"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data3" field="name_port"      />
+        <HJGridColumn id="040010003" name ="亏卡"  width ="0.3"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data4" field="dec_downvalue"  alignment="right"  valuetype="decimal" format="######.00" />
+       </HJGrid> 
+   </HJView>
+   
+    <HJView id = "050" name = "动力煤>亏账吨数"  returnenable="true"  dataset="v_merp_kzdscm:'1=1'"  datasetmode="net-local">
+	 
+	  <HJGrid id = "050010" name = "已销量" fontsize = "medium"  visible ="true"	height="0.3"  datasource="v_merp_kzdscm"     style = "plain"  layouttype = "fullscreen" >
+         <!-- 添加固定的终端信息   -->
+        <HJGridColumn id="050010001" name ="船名"  width ="0.5"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data2" field="name_vessel"/>
+        <HJGridColumn id="050010002" name ="亏涨吨数"  width ="0.5"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data3" field="dec_downqty"    alignment="right"  valuetype="decimal" format="######.00"   />
+     </HJGrid>  
+   </HJView>
+   
+   <HJView id = "060" name = "动力煤>在途量"  returnenable="true"  dataset="v_merp_ztlcm:'1=1';v_merp_ztlgk:'1=1'"  datasetmode="net-local">
+	 
+	  <HJGrid id = "060010" name = "船名" fontsize = "medium"  visible ="true"	height="0.3"  datasource="v_merp_ztlcm"     style = "plain"  layouttype = "fullscreen" >
+         <!-- 添加固定的终端信息   -->
+        <HJGridColumn id="060010001" name ="船名"  width ="0.5"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data2" field="name_vessel"/>
+        <HJGridColumn id="060010002" name ="离港日期"  width ="0.5"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data3" field="date_departure"     />
+        <HJGridColumn id="060010010" name ="在途数量"  width ="0.5"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data4" field="dec_ztqty"    alignment="right"  valuetype="decimal" format="######.00"   />
+       <HJTitle  id="060010020" name = "客户"   fontsize = "medium" bold ="true"  textcolor ="#000000"    />
+	 
+     </HJGrid>  
+	 <HJGrid id = "060011" name = "港口" fontsize = "medium"  visible ="true"	height="0.3"  datasource="v_merp_ztlgk"     style = "plain"  layouttype = "fullscreen" >
+         <!-- 添加固定的终端信息   -->
+        <HJGridColumn id="060011001" name ="港口 " width ="0.5"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data2" field="name_port"/>
+        <HJGridColumn id="060011002" name ="船名"  width ="0.5"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data3" field="name_vessel"     />
+       <HJGridColumn id="060011010" name ="在途数量"  width ="0.5"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data3" field="dec_ztqty"    alignment="right"  valuetype="decimal" format="######.00"   />
+        <HJTitle  id="060011020" name = "客户"   fontsize = "medium" bold ="true"  textcolor ="#000000"    />
+	 
+	  </HJGrid>  
+	 
+	   <HJViewMenu id="060020" name="菜单"   editable ="true" visible ="true" > 
+        <HJMenuButton id="060020001" name="船名"  editable ="true"  visible ="true"  fontsize = "medium" onclick = ""  > </HJMenuButton> 
+        <HJMenuButton id="060020005" name="港口"  editable ="true"  visible ="true"  fontsize = "medium" onclick = ""  > </HJMenuButton> 
+      
+	  </HJViewMenu> 
+	  
+   </HJView>
+   
+   <HJView id = "070" name = "动力煤>采购未销售"  returnenable="true"  dataset="v_merp_cgwxs:'1=1'"  datasetmode="net-local">
+	 
+	  <HJGrid id = "070010" name = "已销量" fontsize = "medium"  visible ="true"	height="0.3"  datasource="v_merp_cgwxs"     style = "plain"  layouttype = "fullscreen" >
+         <!-- 添加固定的终端信息   -->
+        <HJGridColumn id="070010001" name ="产品"  width ="0.5"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data1" field="name_item"/>
+        <HJGridColumn id="070010005" name ="采购量"  width ="0.5"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data2" field="dec_purqty"    alignment="right"  valuetype="decimal" format="######.00"   />
+        <HJGridColumn id="070010010" name ="未销售量"  width ="0.5"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data3" field="dec_nosaqty"    alignment="right"  valuetype="decimal" format="######.00"   />
+    
+	 </HJGrid>  
+   </HJView>
+   
+   <HJView id = "080" name = "动力煤>应收账款"  returnenable="true"  dataset="v_merp_yszkkh:'1=1'"  datasetmode="net-local">
+	 
+	  <HJGrid id = "080010" name = "应收账款" fontsize = "medium"  visible ="true"	height="0.3"  datasource="v_merp_yszkkh"     style = "plain"  layouttype = "fullscreen" >
+         <!-- 添加固定的终端信息   -->
+        <HJGridColumn id="080010001" name ="客户"  width ="0.4"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data1" field="v_corr"/>
+        <HJGridColumn id="080010005" name ="应收账款"  width ="0.3"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data2" field="dec_ys"  alignment="right"  valuetype="decimal" format="######.00" />
+        <HJGridColumn id="080010010" name ="已收账款"  width ="0.3"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data3" field="dec_ys1"    alignment="right"  valuetype="decimal" format="######.00"   />
+     </HJGrid>  
+   </HJView>
+   
+</HJModel>

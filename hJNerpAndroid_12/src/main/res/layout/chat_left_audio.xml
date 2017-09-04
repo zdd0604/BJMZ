@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rlayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/activity_background"
+    android:orientation="vertical"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp" >
+
+    <TextView
+        android:id="@+id/chat_sendtime_leftaudio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/sns_shoot_add_bg_pressed"
+        android:padding="3dp"
+        android:visibility="gone" 
+        android:textColor="@color/white"
+        android:textSize="13sp" />
+
+    <RelativeLayout
+        android:id="@+id/chat_left_item_leftaudio"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/chat_sendtime_leftaudio"
+        android:layout_marginTop="10dp" >
+
+        <ImageView
+            android:id="@+id/chat_left_item_headphoto_leftaudio"
+            android:layout_width="@dimen/abc_square_image_size38"
+            android:layout_height="@dimen/abc_square_image_size38"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:clickable="true"
+            android:contentDescription="说明"
+            android:scaleType="fitXY"
+            android:src="@drawable/v5_0_1_profile_headphoto" />
+
+        <TextView
+            android:id="@+id/chat_Left_item_audio_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/chat_left_item_headphoto_leftaudio"
+            android:focusable="false"
+            android:text="sd"
+            android:textColor="@color/chat_item_head"
+            android:textSize="13sp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/chat_Left_item_audio_name"
+            android:layout_gravity="center_vertical"
+            android:layout_toRightOf="@id/chat_left_item_headphoto_leftaudio"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <LinearLayout
+                android:id="@+id/layout_left_voice"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/chat_from_bg"
+                android:gravity="center"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    android:id="@+id/chat_left_item_audio_leftaudio"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="15dp"
+                    android:src="@drawable/chatfrom_voice_playing" />
+
+                <ProgressBar
+                    android:id="@+id/chat_left_item_pb_leftaudio"
+                    style="?android:attr/progressBarStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="5dp" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/chat_left_item_pic_sendfail_leftaudio"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@+id/tv_left_voice_long"
+                android:src="@drawable/to_read_tips_onbackbtn"
+                android:visibility="visible" />
+
+            <TextView
+                android:id="@+id/tv_left_voice_long"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@id/layout_left_voice"
+                android:gravity="center"
+                android:text="dsds"
+                android:textColor="#818181"
+                android:textSize="15sp" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

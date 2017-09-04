@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="@drawable/title_blue_bg">
+
+        <TextView
+            android:id="@+id/title_one"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="10dp"
+            android:text="发空间上的快捷方式的杰弗里斯地方就是地方就是大家法律手段解放路圣诞节"
+            android:textColor="#2b83ff"
+            android:textSize="16sp" />
+
+        <View
+            android:id="@+id/view_br"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/title_one"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:background="#cfcdcd" />
+
+        <TextView
+            android:id="@+id/title_two"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/view_br"
+            android:layout_margin="10dp"
+            android:text="发生的纠纷技术的行风建设的很符合东方航空撒行风建设到付款时代科技法律手段街坊邻居圣诞节法律手段减肥可是大将风度开朗大方"
+            android:textColor="#2b83ff"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/content_hj"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/title_two"
+            android:layout_alignStart="@+id/title_two"
+            android:layout_below="@id/title_two"
+            android:layout_centerVertical="true"
+            android:text="发生的纠纷技术的行风建设的很符合东方航空撒行风你就发撒发生的都会发生电话费哈谁的客户发顺丰空间啊是废话会发生的几号放假卡萨帝很疯狂就是大会发生的火箭发射放假啊是放假啊圣诞节粉红色复合接口撒电话分机看撒回复健康大沙发世界的看法士大夫哈市大家回复撒电话分机啊圣诞狂欢发生的废话撒大家房间卡死的很费劲啊谁的客户发送啊的看法会撒娇的废话撒阶段开发和数据库废话久爱时空回复睡觉啊快回复睡觉啊快回复飒飒东风赛都覅啊圣诞节佛撒地方绝对死哦覅是的飞机送的jfsalkjfdklasjf98sdufwieo放假啊速度快jfi9wei9fjewfjdskfjsadfw9ej额kfjsadfjw8附件二卡就是都放假8e9fjejfsdojfwei9f8建设到付款时代科技法律手段街坊邻居圣诞节法律手段减肥可是大将风度开朗大方"
+            android:textColor="@color/black" />
+
+    </RelativeLayout>
+</RelativeLayout>

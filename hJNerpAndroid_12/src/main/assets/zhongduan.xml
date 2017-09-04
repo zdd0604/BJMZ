@@ -1,0 +1,20 @@
+<HJModel start = "002" type = "opr" id = "802" billnotype = "new" > 
+    <!---->
+    <HJView id = "002" name = "终端信息"  returnenable="true"  presave="true"  dataset="ctlm4101:'1=1'" datasetmode="net-local"  > 
+	  <HJTextView id = "002001" name = "终端名称"   editable ="true"  required ="true" visible ="true" width ="0.6"
+	  valuetype="string" format="@@@@@@" singleline = "true" fontsize = "medium" alignment="left" 
+	   ></HJTextView>
+      <HJComboBox id = "002002" name = "终端类型"   editable ="true"  required ="true" visible ="true" width ="0.6"
+	  fontsize = "medium" alignment="left" field = "id_terminal" datasource="ctlm4101"  onclick=""
+	   ></HJComboBox>
+	
+	  <HJTextView id = "002003" name = "联系人"   editable ="true"  required ="true" visible ="true" width ="0.6"
+	  valuetype="string" format="@@@@@@" singleline = "true" fontsize = "medium" alignment="left" 
+	   ></HJTextView>
+	   
+	   <HJTextView id = "002004" name = "地址"   editable ="true"  required ="true" visible ="true" width ="0.6"
+	  valuetype="string" format="@@@@@@" singleline = "true" fontsize = "medium" alignment="left" 
+	   ></HJTextView>
+	   
+	</HJView>
+</HJModel>

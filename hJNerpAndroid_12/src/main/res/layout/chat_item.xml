@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rlayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/activity_background"
+    android:padding="6dp"
+    android:orientation="vertical" >
+ 
+    <TextView
+        android:id="@+id/chat_sendtime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:padding="3dp"
+        android:text="昨天 下午14:89"
+        android:textColor="@color/black"
+        android:textSize="13sp" />
+    <TextView
+        android:id="@+id/chat_sendtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:padding="3dp"
+        android:text="群已解散"
+        android:textColor="@color/black"
+        android:textSize="13sp" />
+
+	<RelativeLayout
+	    android:id="@+id/chat_item"
+	    android:layout_below="@+id/chat_sendtime"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content">
+    <RelativeLayout
+        android:id="@+id/chat_left_item"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="58dp"
+        android:layout_marginTop="5dp" >
+
+        <ImageView
+            android:id="@+id/chat_left_item_headphoto"
+            android:layout_width="@dimen/abc_square_image_size38"
+            android:layout_height="@dimen/abc_square_image_size38"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:src="@drawable/v5_0_1_profile_headphoto"
+            android:clickable="true"
+            android:contentDescription="说明" />
+
+        <TextView
+            android:id="@+id/chat_left_item_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp"
+            android:layout_toRightOf="@id/chat_left_item_headphoto"
+            android:background="@drawable/chat_from_bg"
+            android:text="" />
+            
+        <ImageView 
+            android:id="@+id/chat_left_item_pic"
+         	android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:maxWidth="350dp"
+            android:maxHeight="350dp"
+            
+            android:scaleType="fitStart"
+            
+            
+            android:layout_marginLeft="6dp"
+            android:layout_toRightOf="@id/chat_left_item_headphoto"
+            android:visibility="gone"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/chat_right_item"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="58dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp" >
+
+        <ImageView
+            android:id="@+id/chat_right_item_headphoto"
+            android:layout_width="@dimen/abc_square_image_size38"
+            android:layout_height="@dimen/abc_square_image_size38"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:src="@drawable/v5_0_1_profile_headphoto"
+            android:contentDescription="我的说明"
+            android:focusable="false" />
+
+        <TextView
+            android:id="@+id/chat_right_item_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="6dp"
+            android:layout_toLeftOf="@id/chat_right_item_headphoto"
+            android:background="@drawable/chat_to_bg"
+            android:text="" />
+		<ImageView 
+		    android:id="@+id/chat_right_item_pic_sendfail"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+			android:layout_toLeftOf="@+id/chat_right_item_pic"
+		    android:src="@drawable/sendpic_fail_resend"
+		    android:visibility="gone"/>
+        <ImageView
+            android:id="@+id/chat_right_item_pic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:maxWidth="350dp"
+            android:maxHeight="350dp"
+            android:scaleType="fitStart"
+            android:layout_marginRight="6dp"
+            android:layout_toLeftOf="@id/chat_right_item_headphoto"
+            android:visibility="visible"/>
+    </RelativeLayout>
+</RelativeLayout>
+</RelativeLayout>

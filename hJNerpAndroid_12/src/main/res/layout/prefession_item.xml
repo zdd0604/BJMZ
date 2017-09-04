@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" 
+    android:layout_width="80dp" 
+    android:layout_height="80dp"
+    android:gravity="center"> 
+    <ImageView  
+        android:layout_width="60dp" 
+        android:id="@+id/ItemImage" 
+        android:layout_height="60dp" 
+        android:layout_centerHorizontal="true"
+        android:contentDescription="@string/desc"/> 
+    <TextView  
+        android:id="@+id/sure_delete"  
+        android:layout_width="30dp"  
+        android:gravity="center"
+        android:layout_height="30dp"  
+        android:layout_alignParentRight="true"  
+        android:layout_alignParentTop="true"  
+        android:background="@drawable/delete"  
+        android:visibility="gone"
+        /> 
+    <TextView   
+        android:layout_width="match_parent" 
+        android:layout_height="wrap_content" 
+        android:layout_below="@id/ItemImage" 
+        android:id="@+id/ItemText" 
+        android:textColor="@color/q_black"
+        android:textStyle="bold"
+        android:textSize="12sp"
+        android:gravity="center"
+        /> 
+</RelativeLayout> 
+

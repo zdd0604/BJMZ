@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#FFFFFF"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/actionbar_content_rl"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/abc_action_bar_default_height"
+        android:background="#f7f7f7"
+        android:orientation="horizontal" >
+
+        <RelativeLayout
+            android:id="@+id/actionbar_back_rl"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:background="@drawable/activity_child_item_bkg"
+            android:orientation="horizontal" >
+
+            <ImageButton
+                android:id="@+id/actionbar_back_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/actionbar_home_indicator_blue"
+                android:background="#00000000" />
+
+            <ImageButton
+                android:id="@+id/actionbar_back_iv2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="2dp"
+                android:layout_toRightOf="@+id/actionbar_back_iv"
+                android:src="@drawable/com_logo"
+                android:background="#00000000" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="6dp"
+                android:layout_toRightOf="@+id/actionbar_back_iv2"
+                android:hint="发起群聊"
+                android:textColor="#303030"
+                android:textSize="18sp" />
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/actionbar_countmember_iv"
+            android:layout_width="90dp"
+            android:layout_height="35dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="10dip"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/login_btn_style"
+            android:enabled="false"
+            android:gravity="center"
+            android:text="确定"
+            android:textSize="15sp" />
+    </RelativeLayout>
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_weight="5" >
+
+        <ListView
+            android:id="@+id/myfriends_lv"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:divider="@color/white"
+            android:dividerHeight="1dip" />
+
+        <TextView
+            android:id="@+id/myfriends_dialog_tv"
+            android:layout_width="80.0dip"
+            android:layout_height="80.0dip"
+            android:layout_gravity="center"
+            android:background="#a39d9d"
+            android:gravity="center"
+            android:textColor="#ffffffff"
+            android:textSize="30.0dip"
+            android:visibility="invisible" />
+
+        <com.hjnerp.widget.SideBar
+            android:id="@+id/myfriends_slidebar"
+            android:layout_width="30.0dip"
+            android:layout_height="fill_parent"
+            android:layout_gravity="right|center" />
+    </FrameLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:background="#f0e3e3e3" />
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dip"
+        android:layout_marginRight="15dip"
+        android:layout_marginTop="15dp" >
+
+        <com.hjnerp.widget.HorizontalListView
+            android:id="@+id/horizontallistview1"
+            android:layout_width="fill_parent"
+            android:layout_height="70dp" />
+    </RelativeLayout>
+
+</LinearLayout>

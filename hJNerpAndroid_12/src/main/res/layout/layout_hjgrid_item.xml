@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/row_list"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:minHeight="30dp"
+    android:orientation="horizontal" >
+
+    <LinearLayout
+        android:id="@+id/item_title"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:orientation="horizontal" />
+
+    <!-- 水平可以滑动的布局 -->
+
+    <com.hjnerp.widget.HJGridScrollView
+        android:id="@+id/grid_scroll_item"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginRight="5dp"
+        android:scrollbars="none" >
+
+        <LinearLayout
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+            android:id="@+id/item_content"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="horizontal" >
+        </LinearLayout>
+    </com.hjnerp.widget.HJGridScrollView>
+
+</LinearLayout>

@@ -1,0 +1,260 @@
+<HJModel start = "001" type = "opr" id = "801" billnotype = "new">
+    <!--type  query-删除通id的1347记录   opr-->
+    <!-- billnotype  new-每次/read-读        -->
+
+    <!---->
+    <HJView id = "001" name = "今日拜访"  returnenable="true"  presave="false"> 
+        <!-- 1-只从网络;2-从网络>>1345;3-从1345;4-从1345>>从网络 -->
+        <HJList id = "001002" name = "路线" fontsize = "medium" editable ="true"
+               visible ="true" nextview ="002"   visibledisclosure = "true"  style = "plain"  layouttype = "adaptive"  datasource="ctlm4101" >
+               <!-- 添加固定的终端信息   -->
+           <HJListColumn id="001002001" name ="终端名称"  width ="1" editable ="true" visible ="true" singleline ="false" fontsize = "medium"  bold ="true" field = "name_terminal" visiblename="true" dbfield = "var_data2"/>
+           <HJListColumn id="001002002" name ="地址"  width ="1"   editable ="true" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" field = "var_addr" visiblename="false" dbfield = "var_data3"/>
+           <HJListCheck id="001002004" field = "checked" dbfield = "var_data1"/> 
+		   <HJTitle  id="001002005" name = "今日路线"   fontsize = "medium" bold ="true"  textcolor ="#000000"    />  
+        [{"id_terminal":"HA01126","name_terminal":"王六","var_addr":" ","id_tertype":"零售","var_contact":" ","var_tel":" ","bfcs":"3","scbfhg":"无问题","var_rlati":"","checked":"N"},{"id_terminal":"HA01135","name_terminal":"涂寨联合体","var_addr":"涂寨","id_tertype":"一批商","var_contact":" ","var_tel":" ","bfcs":"3","scbfhg":"无问题","var_rlati":"","checked":"N"}]
+        
+        </HJList> 
+       <HJViewMenu id="001005" name="菜单"   editable ="true" visible ="true" > 
+        <HJMenuButton id="001005001" name="计划外线路"  editable ="true"  visible ="true"  fontsize = "medium"   onclick="hjds_search('001','ctlm4101')"   > </HJMenuButton>
+        <HJMenuButton id="001005002" name="数据上传"  editable ="true"  visible ="true"  fontsize = "medium"     onclick="hjc_controluplod('001','001002')"   > </HJMenuButton>
+      </HJViewMenu>
+    </HJView>
+    
+    
+    <!---->
+    <HJView id = "002" name = "终端信息"  returnenable="true"  >
+        <!--valuetype 类型  string     phoneNumber 电话号码      password 密码    integer 整形   decimal 小数   -->
+ 
+        <HJTextView id = "002001" name = "终端代码"   editable ="false"  required ="false" visible ="false" width ="0.6" valuetype="string" format="@@@@@@" singleline = "true" fontsize = "medium" alignment="left"  field = "id_terminal" datasource="transfer_ds" ></HJTextView>
+        <HJTextView id = "002002" name = "终端名称"   editable ="false"  required ="false" visible ="false" width ="0.6" valuetype="string" format="@@@@@@" singleline = "true" fontsize = "medium"  alignment="left" field = "name_terminal" datasource="transfer_ds" > </HJTextView>
+        <HJTextView id = "002003" name = "终端类型"   editable ="false"  required ="false" visible ="false" width ="0.6" valuetype="string" format="@@@@@@" singleline = "true" fontsize = "medium"  alignment="left" field = "id_tertype" datasource="transfer_ds"></HJTextView>
+        <HJTextView id = "002004" name = "联系人"     editable ="false"  required ="false" visible ="false" width ="0.6" valuetype="string" format="@@@@@@" singleline = "true" fontsize = "medium"  alignment="left" field = "var_contact" datasource="transfer_ds"></HJTextView>
+        <HJTextView id = "002004" name = "联系方式"   editable ="false"  required ="false" visible ="false" width ="0.6" valuetype="string" format="@@@@@@" singleline = "true" fontsize = "medium"  alignment="left" field = "var_tel" datasource="transfer_ds"></HJTextView>
+        <HJTextView id = "002005" name = "地址"       editable ="false"  required ="false" visible ="false" width ="0.6" valuetype="string" format="@@@@@@" singleline = "true" fontsize = "medium"  alignment="left" field = "var_addr" datasource="transfer_ds"></HJTextView>
+        <HJTextView id = "002006" name = "已拜访次数"   editable ="false"  required ="false" visible ="false" width ="0.6" valuetype="string" format="@@@@@@" singleline = "true" fontsize = "medium"  alignment="left" field = "bfcs" datasource="transfer_ds"></HJTextView>
+        <HJTextView id = "002007" name = "上次拜访回顾"   editable ="false"  required ="false" visible ="false" width ="0.6" valuetype="string" format="@@@@@@" singleline = "true" fontsize = "medium"  alignment="left" field = "scbfhg"  datasource="transfer_ds"></HJTextView>
+  
+        <HJTextView id = "002008" name = "坐标"    editable ="false"  required ="false" visible ="false" width ="0.6" valuetype="string" format="@@@@@@" singleline = "true" fontsize = "medium"  alignment="left"  field = "var_rlati"  datasource="transfer_ds" > </HJTextView>  
+   
+        <HJTextView id = "002009" name = "进店时间"    editable ="false"  required ="true" visible ="false" width ="0.6" valuetype="string" format="@@@@@@" singleline = "true" fontsize = "medium"  alignment="left" > </HJTextView>  
+    
+        <HJLocation id = "002010" name = "定位"  editable ="true"  required ="true" visible ="true" valuetype="string" format="@@@@@@" singleline = "false" fontsize = "medium"  alignment="left"   ></HJLocation>
+        <HJPhotoView id = "002011" name = "进店拍照"  editable ="true"  required ="false" visible ="true" valuetype="string" format="@@@@@@" singleline = "false" fontsize = "medium"  alignment="left"   ></HJPhotoView>
+
+      <HJToolBar id ="002015" name="工具栏"  >
+        <HJButton id="002011001" name="异常"  editable ="true"  visible ="true"  fontsize = "medium"  alignment="center"   onclick="
+            local dt2 =hjc_getdatetime();
+            hjc_setvalue('002','002009',dt2);  
+            hjb_setddiscard('002','002010','002011','', 5,'009')"   > </HJButton> 
+        <HJButton id="002011003" name="拜访"  editable ="true"  visible ="true"  fontsize = "medium"  alignment="center"  onclick="
+            local dt2 =hjc_getdatetime();
+            hjc_setvalue('002','002009',dt2);
+            hjb_setddiscard('002','002010','002011','', 5,'004');"> </HJButton>
+      </HJToolBar> 
+  </HJView>
+  
+    <!---->
+    <HJView id = "004" name = "生动化" returnenable="false"  presave="true" >
+        
+     <HJLine id="0040019" name="" height="10" backgroundcolor="#3eb135"/> 
+      <HJGrid id = "004001" name = "产品信息" fontsize = "medium"
+               visible ="true" locking ="1"  style = "plain"  layouttype = "adaptive" >
+        <!-- 添加固定的终端信息   -->
+        <HJGridColumn id="004001001" name ="项目"  width ="0.4"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data2" field="name_item"    />
+        <HJGridColumn id="004001002" name ="是否有"  width ="0.2"  columntype="checkbox"  editable ="true" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data3" field="yesno"    />
+        <HJGridColumn id="004001003" name ="数量"  width ="0.2"   editable ="true"   visible ="true" valuetype="decimal" format="####"   singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data4" field="dec_qty" alignment="right" />
+        <HJGridColumn id="004001004" name ="单位"  width ="0.2"   editable ="false"   visible ="true"  valuetype="string" format="@@@"    singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data5" field="unit" alignment="center" />
+       <HJTitle  id="004025004" name = "生动化"   fontsize = "medium" bold ="true"  textcolor ="#000000"    />
+	
+         [{"name_item":"货架","yesno":"N","dec_qty":"","unit":"瓶"},
+         {"name_item":"堆头","yesno":"N","dec_qty":"","unit":"件"},
+         {"name_item":"冰酒","yesno":"N","dec_qty":"","unit":"瓶"},
+         {"name_item":"POP","yesno":"N","dec_qty":"","unit":"张"},
+         {"name_item":"签到卡","yesno":"N","dec_qty":"","unit":"张"}]
+      </HJGrid>
+       
+       <HJLine id="0040088" name="" height="5" backgroundcolor="#3eb135"/> 
+       <HJPhotoView id = "004011" name = "签到卡拍照"  editable ="true"  required ="false" visible ="true" valuetype="string" format="@@@@@@" singleline = "false" fontsize = "medium"  alignment="left"   ></HJPhotoView>
+      
+      <!-- 界面右上角菜单 或一个按钮  可以是保存、下一步、或其它命令， 按菜单定义来   -->
+      <HJViewMenu id="004017" name="菜单" editable ="true" visible ="true" >
+        <HJButton id="004017001" name="下一步"  editable ="true"  visible ="true"  fontsize = "medium"  alignment="center"  nextview="005"  > </HJButton> 
+         
+      </HJViewMenu>
+    </HJView>
+	 
+  
+     <HJView id="005" name="竞品信息"  returnenable="false"   >
+         <HJLine id="0040019" name="" height="10" backgroundcolor="#3eb135"/> 
+          <HJGrid id = "005101" name = "订单信息" fontsize = "medium"
+               visible ="true"	    nextview ="002"  locking ="2"    style = "plain"  layouttype = "adaptive" >
+        <!-- 添加固定的终端信息   -->
+         <HJGridColumn id="005001002" name ="产品代码"  width ="0.2"   editable ="true" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data3" field="id_item"    />
+         <HJGridColumn id="005001002" name ="产品名称"  width ="0.3"   editable ="true" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data3" field="name_item"    />
+        <HJGridColumn id="005001004" name ="数量"  width ="0.2"   editable ="true" visible ="true" singleline ="false"  valuetype="decimal" format="####"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data5" field="saqty" />
+          <HJGridColumn id="005001005" name ="进货价"  width ="0.2"   editable ="true" visible ="true" singleline ="false"  valuetype="decimal" format="####.00"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data6" field="qty" />
+       <HJGridColumn id="005001006" name ="零售价"  width ="0.2"   editable ="true" visible ="true" singleline ="false"  valuetype="decimal" format="####.00"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data7" field="qty" />
+       
+         <HJTitle  id="0050201004" name = "数量"   fontsize = "medium" bold ="true"  textcolor ="#000000"    />
+        [{"id_item":"030759007","name_item":"595mL7度惠泉精品","qty":"","saqty":"","age":""},
+         {"id_item":"030759008","name_item":"595mL7度惠泉精制","qty":"","saqty":"","age":""},
+         {"id_item":"030759051","name_item":"590ML7°惠泉精品FD","qty":"","saqty":"","age":""},
+         {"id_item":"030759071","name_item":"595ML7°惠泉国宴FZ","qty":"","saqty":"","age":""},
+         {"id_item":"030762001","name_item":"620mL7度惠泉精品","qty":"","saqty":"","age":""},
+         {"id_item":"030833007","name_item":"330mL8度惠泉一麦纯生","qty":"","saqty":"","age":""},
+         {"id_item":"030833090","name_item":"330mL8度惠泉鲜一麦","qty":"","saqty":"","age":""},
+         {"id_item":"030833101","name_item":"330mL8度惠泉精品易","qty":"","saqty":"","age":""},
+         {"id_item":"030833102","name_item":"330mL8度惠泉吉品麦易","qty":"","saqty":"","age":""},
+         {"id_item":"030833103","name_item":"330mL8度惠泉经典国宴易","qty":"","saqty":"","age":""}]
+      </HJGrid>
+      <HJLine id="0040019" name="" height="10" backgroundcolor="#3eb135"/> 
+            <HJGrid id = "005102" name = "订单信息" fontsize = "medium"
+               visible ="true"	    nextview ="002"  locking ="2"    style = "plain"  layouttype = "adaptive" >
+        <!-- 添加固定的终端信息   -->
+         <HJGridColumn id="005002002" name ="产品代码"  width ="0.2"   editable ="true" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data3" field="id_item"    />
+         <HJGridColumn id="005002002" name ="产品名称"  width ="0.3"   editable ="true" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data3" field="name_item"    />
+        <HJGridColumn id="005002004" name ="数量"  width ="0.2"   editable ="true" visible ="true" singleline ="false"  valuetype="decimal" format="####"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data5" field="saqty" />
+          <HJGridColumn id="005002005" name ="进货价"  width ="0.2"   editable ="true" visible ="true" singleline ="false"  valuetype="decimal" format="####.00"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data6" field="qty" />
+       <HJGridColumn id="005002006" name ="零售价"  width ="0.2"   editable ="true" visible ="true" singleline ="false"  valuetype="decimal" format="####.00"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data7" field="qty" />
+      
+        <HJTitle  id="005020004" name = "雪津"   fontsize = "medium" bold ="true"  textcolor ="#000000"    />
+        [{"id_item":"030759007","name_item":"595mL7度惠泉精品","qty":"","saqty":"","age":""},
+         {"id_item":"030759008","name_item":"595mL7度惠泉精制","qty":"","saqty":"","age":""},
+         {"id_item":"030759051","name_item":"590ML7°惠泉精品FD","qty":"","saqty":"","age":""},
+         {"id_item":"030759071","name_item":"595ML7°惠泉国宴FZ","qty":"","saqty":"","age":""},
+         {"id_item":"030762001","name_item":"620mL7度惠泉精品","qty":"","saqty":"","age":""},
+         {"id_item":"030833007","name_item":"330mL8度惠泉一麦纯生","qty":"","saqty":"","age":""},
+         {"id_item":"030833090","name_item":"330mL8度惠泉鲜一麦","qty":"","saqty":"","age":""},
+         {"id_item":"030833101","name_item":"330mL8度惠泉精品易","qty":"","saqty":"","age":""},
+         {"id_item":"030833102","name_item":"330mL8度惠泉吉品麦易","qty":"","saqty":"","age":""},
+         {"id_item":"030833103","name_item":"330mL8度惠泉经典国宴易","qty":"","saqty":"","age":""}]
+      </HJGrid>
+      <HJLine id="0040019" name="" height="10" backgroundcolor="#3eb135"/> 
+               <HJGrid id = "005105" name = "订单信息" fontsize = "medium"
+               visible ="true"	    nextview ="002"  locking ="2"    style = "plain"  layouttype = "adaptive" >
+        <!-- 添加固定的终端信息   -->
+         <HJGridColumn id="005105002" name ="产品代码"  width ="0.2"   editable ="true" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data3" field="id_item"    />
+         <HJGridColumn id="005105002" name ="产品名称"  width ="0.3"   editable ="true" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data3" field="name_item"    />
+        <HJGridColumn id="005105004" name ="数量"  width ="0.2"   editable ="true" visible ="true" singleline ="false"  valuetype="decimal" format="####"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data5" field="saqty" />
+         <HJGridColumn id="005105005" name ="进货价"  width ="0.2"   editable ="true" visible ="true" singleline ="false"  valuetype="decimal" format="####.00"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data6" field="qty" />
+       <HJGridColumn id="005105006" name ="零售价"  width ="0.2"   editable ="true" visible ="true" singleline ="false"  valuetype="decimal" format="####.00"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data7" field="qty" />
+      
+        <HJTitle  id="0051050004" name = "其它"   fontsize = "medium" bold ="true"  textcolor ="#000000"    />
+        [{"id_item":"030759007","name_item":"595mL7度惠泉精品","qty":"","saqty":"","age":""},
+         {"id_item":"030759008","name_item":"595mL7度惠泉精制","qty":"","saqty":"","age":""},
+         {"id_item":"030759051","name_item":"590ML7°惠泉精品FD","qty":"","saqty":"","age":""},
+         {"id_item":"030759071","name_item":"595ML7°惠泉国宴FZ","qty":"","saqty":"","age":""},
+         {"id_item":"030762001","name_item":"620mL7度惠泉精品","qty":"","saqty":"","age":""},
+         {"id_item":"030833007","name_item":"330mL8度惠泉一麦纯生","qty":"","saqty":"","age":""},
+         {"id_item":"030833090","name_item":"330mL8度惠泉鲜一麦","qty":"","saqty":"","age":""},
+         {"id_item":"030833101","name_item":"330mL8度惠泉精品易","qty":"","saqty":"","age":""},
+         {"id_item":"030833102","name_item":"330mL8度惠泉吉品麦易","qty":"","saqty":"","age":""},
+         {"id_item":"030833103","name_item":"330mL8度惠泉经典国宴易","qty":"","saqty":"","age":""}]
+      </HJGrid>
+          <!-- 界面右上角菜单 或一个按钮  可以是保存、下一步、或其它命令， 按菜单定义来   -->
+      <HJViewMenu id="005017" name="菜单" editable ="true" visible ="true" >
+        <HJButton id="005017001" name="下一步"  editable ="true"  visible ="true"  fontsize = "medium"  alignment="center"  nextview="006"  > </HJButton> 
+         
+      </HJViewMenu>
+     </HJView>
+     
+     <HJView id="006" name="订单"  returnenable="false"   >
+       <HJGrid id = "006100" name = "订单信息" fontsize = "medium"
+               visible ="true"	    nextview ="002"  locking ="1"    style = "plain"  layouttype = "adaptive" >
+        <!-- 添加固定的终端信息   -->
+         <HJGridColumn id="006002002" name ="产品代码"  width ="0.3"   editable ="true" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data3" field="id_item"    />
+         <HJGridColumn id="006002002" name ="产品名称"  width ="0.4"   editable ="true" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data3" field="name_item"    />
+        <HJGridColumn id="006002004" name ="数量"  width ="0.3"   editable ="true" visible ="true" singleline ="false"  valuetype="decimal" format="####"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data5" field="saqty" />
+         <HJTitle  id="006020004" name = "订单产品"   fontsize = "medium" bold ="true"  textcolor ="#000000"    />
+        [{"id_item":"030759007","name_item":"595mL7度惠泉精品","qty":"","saqty":"","age":""},
+         {"id_item":"030759008","name_item":"595mL7度惠泉精制","qty":"","saqty":"","age":""},
+         {"id_item":"030759051","name_item":"590ML7°惠泉精品FD","qty":"","saqty":"","age":""},
+         {"id_item":"030759071","name_item":"595ML7°惠泉国宴FZ","qty":"","saqty":"","age":""},
+         {"id_item":"030762001","name_item":"620mL7度惠泉精品","qty":"","saqty":"","age":""},
+         {"id_item":"030833007","name_item":"330mL8度惠泉一麦纯生","qty":"","saqty":"","age":""},
+         {"id_item":"030833090","name_item":"330mL8度惠泉鲜一麦","qty":"","saqty":"","age":""},
+         {"id_item":"030833101","name_item":"330mL8度惠泉精品易","qty":"","saqty":"","age":""},
+         {"id_item":"030833102","name_item":"330mL8度惠泉吉品麦易","qty":"","saqty":"","age":""},
+         {"id_item":"030833103","name_item":"330mL8度惠泉经典国宴易","qty":"","saqty":"","age":""}]
+      </HJGrid>
+      
+       <HJViewMenu id="006017" name="菜单" editable ="true" visible ="true" >
+        <HJButton id="006017001" name="下一步"  editable ="true"  visible ="true"  fontsize = "medium"  alignment="center"  nextview="007"  > </HJButton> 
+       </HJViewMenu>
+     </HJView>
+     
+    <HJView id="007" name="离店"  returnenable="false"  onload= " 
+        local billno  = hjc_getbillno();
+        local ParentNode = hjc_getparentnode();
+        local pParentNode = hjc_getpparentnode(billno,ParentNode);
+            local ppParentNode = hjc_getpparentnode(billno,pParentNode); 
+            local pppParentNode = hjc_getpparentnode(billno,ppParentNode); 
+         local ppppParentNode = hjc_getpparentnode(billno,pppParentNode);
+        local name = hjdb_getvalue(billno,ppppParentNode,'002002','var_data1');
+        hjc_setvalue('007','007001',name);
+        local dt =   hjdb_getvalue(billno,ppppParentNode,'002009','var_data1');
+        hjc_setvalue('007','007005',dt);
+        local dt2 =hjc_getdatetime();
+        hjc_setvalue('007','007006',dt2);
+        local sub = hjc_datediff(dt,dt2) ;
+        hjc_setvalue('007','007007',sub);
+         " > 
+      <HJTextView id = "007001" name = "终端名称"   editable ="false"  required ="false" visible ="true" width ="0.8" valuetype="string"   singleline = "true" fontsize = "medium"  alignment="left"    >成都小吃店</HJTextView>
+         
+      <HJTextView id = "007005" name = "进店时间"  editable ="false"  required ="false" visible ="true" width ="0.8" valuetype="string" singleline = "true" fontsize = "medium"  alignment="left"  ></HJTextView>
+      <HJTextView id = "007006" name = "离店时间"  editable ="false"  required ="false" visible ="true" width ="0.8" valuetype="string"   singleline = "true" fontsize = "medium"  alignment="left"  ></HJTextView>
+      <HJTextView id = "007007" name = "拜访时长"  editable ="false"  required ="false" visible ="true" width ="0.8" valuetype="string"  singleline = "true" fontsize = "medium"  alignment="left"  ></HJTextView>
+      <HJTextView id = "007002" name = "下次拜访提醒"   editable ="true"  required ="false" visible ="true" width ="0.8" valuetype="string"   singleline = "false" fontsize = "medium"  alignment="left"   >成都小吃店</HJTextView>
+     
+      <HJLine id="0050088" name="" height="10" backgroundcolor="#3eb135"/> 
+    
+         
+     <HJPhotoView id = "007011" name = "离店拍照"  editable ="true"  
+         required ="true" visible ="true"     alignment="left"   ></HJPhotoView>
+      
+      <HJToolBar id ="007009" name="工具栏"  > 
+        <HJButton id="007009001" name="照片"  editable ="true"  visible ="false"  fontsize = "medium"  alignment="center"  
+           onclick = "
+           local billno  = hjc_getbillno();
+            local ParentNode = hjc_getparentnode();
+           hjc_browsephoto(billno,ParentNode);
+            "  > </HJButton>
+        <HJButton id="007009002" name="数据上传"  editable ="true"  visible ="false"  fontsize = "medium"  alignment="center" backview="001"
+            onclick = "
+            local billno  = hjc_getbillno();
+            local ParentNode = hjc_getparentnode();
+            local pParentNode = hjc_getpparentnode(billno,ParentNode);
+            local ppParentNode = hjc_getpparentnode(billno,pParentNode); 
+            local pppParentNode = hjc_getpparentnode(billno,ppParentNode); 
+            local ppppParentNode = hjc_getpparentnode(billno,pppParentNode); 
+            hjdb_setvalue(billno,ppppParentNode,'var_data1','Y');
+            hjdb_nodeuplod(billno,ParentNode);
+            
+            " > </HJButton>
+      </HJToolBar>
+      
+    </HJView>
+
+
+  <HJView id="009" name="异常拜访"  returnenable="true" >
+    <HJTextView id = "009001" name = "终端名称"   editable ="false"  required ="false" visible ="true" width ="0.7" valuetype="string" format="@@@@@@" singleline = "false" fontsize = "medium"  alignment="left"   >成都小吃店</HJTextView>
+    <HJTextView id = "009002" name = "下次拜访提醒"   editable ="false"  required ="false" visible ="true" width ="0.7" valuetype="string" format="@@@@@@" singleline = "false" fontsize = "medium"  alignment="left"   ></HJTextView>
+
+    <HJTextView id = "009005" name = "进店时间"  editable ="false"  required ="false" visible ="true" width ="0.7" valuetype="string" format="@@@@@@" singleline = "false" fontsize = "medium"  alignment="left"   ></HJTextView>
+    <HJTextView id = "009006" name = "离店时间"  editable ="false"  required ="false" visible ="true" width ="0.7" valuetype="string" format="@@@@@@" singleline = "false" fontsize = "medium"  alignment="left"  ></HJTextView>
+    <HJTextView id = "009007" name = "拜访时长"  editable ="false"  required ="false" visible ="true" width ="0.7" valuetype="string" format="@@@@@@" singleline = "false" fontsize = "medium"  alignment="left"   ></HJTextView>
+
+    <HJRadioButton id = "009009" name = "终端状态" editable ="false"  required ="false" visible ="true" valuetype="string" fontsize = "medium"  alignment="left" >0
+      <HJRadioButtonOption id = "009009001" name = "关停">0</HJRadioButtonOption>
+      <HJRadioButtonOption id = "009009002" name = "转让">1</HJRadioButtonOption>
+      <HJRadioButtonOption id = "009009003" name = "歇业">2</HJRadioButtonOption>
+    </HJRadioButton>
+    
+    <HJToolBar id ="009011" name="工具栏"  > 
+      <HJButton id="009011002" name="数据上传"  editable ="true"  visible ="false"  fontsize = "medium"  alignment="center"  backview="001" > </HJButton>
+    </HJToolBar>
+    
+  </HJView>
+  
+</HJModel>

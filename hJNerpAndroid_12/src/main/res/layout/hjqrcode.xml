@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+        <SurfaceView
+            android:id="@+id/hjqred_preview_view"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center" />
+
+        <com.hjnerp.qrcode.view.ViewfinderView
+            android:id="@+id/hjqred_viewfinder_view"
+            android:layout_width="800dp"
+            android:layout_height="800dp" 
+            android:background="#00000000"/> 
+            <TextView 
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="hhhhhhhhhhhhhh"/>
+        
+    </RelativeLayout>
+
+</FrameLayout>

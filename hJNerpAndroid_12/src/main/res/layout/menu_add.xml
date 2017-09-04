@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/pop_addwindow"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentRight="true"
+    android:layout_alignParentTop="true"
+    android:background="@color/actionbar_bkg_black"
+    android:gravity="center_horizontal"
+    android:orientation="vertical" >
+<TextView
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="@color/black" />
+    <LinearLayout
+        android:id="@+id/linear_chat"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/abc_action_bar_sublist_item_normal_height"       
+        android:background="@drawable/actionbar_submenu_bkg"
+        android:orientation="horizontal"
+        android:padding="8dp" >
+
+        <ImageView
+            android:layout_width="33dp"
+            android:layout_height="33dp"
+            android:src="@drawable/nearbygroup_icon" />
+
+        <TextView
+            android:id="@+id/text_groupchat"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="10dp"
+            android:gravity="center"
+            android:text="发起群聊"
+            android:textColor="@color/white"
+            android:textSize="@dimen/abc_action_bar_subtitle_text_size" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="0.2dp"
+        android:background="@color/black" />
+
+    <LinearLayout
+        android:id="@+id/linear_addfriend"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/abc_action_bar_sublist_item_normal_height"
+        android:background="@drawable/actionbar_submenu_bkg"
+        android:orientation="horizontal"
+        android:padding="8dp" >
+
+        <ImageView
+            android:layout_width="33dp"
+            android:layout_height="33dp"
+            android:src="@drawable/ofm_add_icon"/>
+
+        <TextView
+            android:id="@+id/text_addfriend"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="10dp"
+            android:gravity="center"
+            android:text="添加朋友"
+            android:textColor="@color/white"
+            android:textSize="@dimen/abc_action_bar_subtitle_text_size" />
+    </LinearLayout>
+
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="0.2dp"
+        android:background="@color/black" />
+
+</LinearLayout>

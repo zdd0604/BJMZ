@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/workflowlist_item"
+    android:orientation="horizontal" >
+
+    <RelativeLayout
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp" >
+
+        <com.hjnerp.widget.BubbleImageView
+            android:id="@+id/photo"
+            android:layout_width="@dimen/abc_square_image_size45"
+            android:layout_height="@dimen/abc_square_image_size45"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="6dip"
+            android:scaleType="fitXY"
+            android:src="@drawable/v5_0_1_profile_headphoto"
+            android:adjustViewBounds="true"
+            android:gravity="center"
+            app:bubble_angle="22.5dp"
+            app:bubble_arrowHeight="0dp"
+            app:bubble_arrowLocation="right"
+            app:bubble_arrowOffset="0dp"
+            app:bubble_arrowTop="0dp"
+            app:bubble_arrowWidth="0dp"/>
+
+        <TextView
+            android:id="@+id/paopao"
+            android:layout_width="16dip"
+            android:layout_height="16dip"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="1dip"
+            android:background="@drawable/list_remind_text"
+            android:gravity="center"
+            android:text="0"
+            android:textColor="@color/white"
+            android:textSize="12dip" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="8dip"
+        android:layout_marginTop="8dip"
+        android:orientation="vertical" >
+
+        <!-- android:background="@drawable/sc_messagebtn" -->
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dip"
+            android:layout_marginTop="6dip" >
+
+            <TextView
+                android:id="@+id/new_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginRight="8dp"
+                android:text="2012-05-14 12:10"
+                android:textColor="@color/time_text_color" />
+
+            <TextView
+                android:id="@+id/new_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:text="李响"
+                android:textColor="@color/name_text_color"
+                android:textSize="16sp" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/new_content"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dip"
+            android:layout_marginLeft="5dip"
+            android:layout_marginTop="5dip"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:text="123"
+            android:textColor="@color/msgcontent_text_color"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ebebeb"
+    android:orientation="vertical"
+     android:focusable="true"
+      android:focusableInTouchMode="true" >
+
+  <include
+     android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      layout="@layout/layout_hjviewmenu"
+       />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="30dp"
+        android:background="#ffffff"
+        android:orientation="horizontal" >
+
+        <EditText
+            android:id="@+id/add_route_id"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="20dp"  
+            android:background="@drawable/edittext_bg_selector"
+            android:drawableLeft="@drawable/actionbar_search_icon"
+            android:imeOptions="actionSearch"
+            android:hint="请输入查询条件，可以用;来区分条件。"
+            android:singleLine="true" >
+        </EditText>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/add_route_location"
+        android:layout_width="fill_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/add_route_background"
+        android:clickable="true"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/sns_shoot_location_pressed" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp" >
+
+            <TextView
+                android:id="@+id/add_route_location_flag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="定位"
+                android:textAppearance="@android:style/TextAppearance.Medium" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/add_route_location_flag"
+                android:text="定位获取终端信息"
+                android:textAppearance="@android:style/TextAppearance.Small"
+                android:textColor="#e1e1e1" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="0.5dp"
+        android:background="#ebebeb" />
+
+    <LinearLayout
+        android:id="@+id/add_route_scanner"
+        android:layout_width="fill_parent"
+        android:layout_height="60dp"
+        android:background="@drawable/add_route_background"
+        android:clickable="true"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/recommend_from_qrcode" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp" >
+
+            <TextView
+                android:id="@+id/add_route_scanner_flag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="扫一扫"
+                android:textAppearance="@android:style/TextAppearance.Medium" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/add_route_scanner_flag"
+                android:text="扫描二维码、条码"
+                android:textAppearance="@android:style/TextAppearance.Small"
+                android:textColor="#e1e1e1" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="0.5dp"
+        android:background="#ebebeb" />
+
+</LinearLayout>

@@ -1,0 +1,123 @@
+﻿<HJModel start = "001" type = "query" id = "999" billnotype = "new">
+    <!--type  query-删除通id的1347记录   opr-->
+    <!-- billnotype  new-每次/read-读        -->
+    
+    <!---->
+    <!--  增加视图 dataset   datasetemode    datasourcemode 这删除  -->
+    <HJView id = "001" name = "铁矿事业部"  returnenable="true" dataset="tk:'1=1'"  datasetmode="net-local"   >
+        
+		 
+	       
+           <!-- 1-只从网络;2-从网络>>1345;3-从1345;4-从1345>>从网络 --> 
+		   <!--  这些属性只有grid和list 有   style    plain/sleek  样式 	普通的/圆滑的  layouttype fullscreen/specify/specify
+全屏/自适应/指定    -->
+
+          <!-- 取json的lua函数应该属于 工具类的吧!  取名用这个，可以自己修改一下 hju_getjsonvalues
+              参数1 json  
+			  参数2 取json的值   
+              返回：json 中id的值			  
+		  -->
+        <HJList id = "001005" name = "铁矿事业部" fontsize = "medium" editable ="true"
+               visible ="true"   datasource="tk"
+			   visibledisclosure = "true" onclick=" 
+			   local row = sender.row
+			   local jsonvalues  = sender.values
+			   local jsonval=  hju_getjsonvalues(jsonvalues,'id')
+			   if  jsonval == '001' then 
+			   hjc_setnextview('001','001005', sender.row,'010')
+			   else 
+			    hjc_setnextview('001','001005', sender.row,'010')
+			   end "  style = "plain"  layouttype = "fullscreen"  > 
+               <!-- 添加固定的终端信息   -->
+           <HJListColumn id="001002001" name =""  width ="1" editable ="true" visible ="true" singleline ="false" fontsize = "medium" bold ="false" textcolor ="#000000" field = "content" visiblename="true" dbfield = "var_data1"/>
+           <HJListColumn id="001002002" name =""  width ="1" editable ="true" visible ="false" singleline ="false" fontsize = "medium" bold ="false" textcolor ="#000000" field = "id" visiblename="true" dbfield = "var_data2"/>  
+		   
+         </HJList>  
+    </HJView>
+      
+	  <!--  铁矿事业部>销售报 销量（按客户）表  -->
+	 
+     <!--  dataset="tkxscpxlygrid:1=1-->
+	   <HJView id = "010" name = "铁矿事业部>销售报表"  returnenable="true" datasetmode="net-local" onload = "dts_additem('010', 'tkxscpxlygrid', '1=1')">
+	 
+       <HJGrid id = "010010" name = "船名" fontsize = "medium"  visible ="true" datasource="tkxscpxlygrid" locking = "2" height ="1" style = "plain"  layouttype = "fullscreen"  onclick = "hjc_setnextview('010', '010010', sender.row, '015')">
+             
+        <!-- 添加固定的终端信息   -->
+        <HJGridColumn id="010010002" name ="船名"  width ="0.3"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data3" field="name_vessel"     />
+        <HJGridColumn id="010010003" name ="产品"  width ="0.3"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data4" field="dec_qty"  alignment="right"  valuetype="decimal" format="######.00" />
+        <HJGridColumn id="010010004" name ="已销量"  width ="0.4"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data5" field="dec_amt"  alignment="right"  valuetype="decimal" format="######.00"/>
+        
+	   </HJGrid> 
+	   
+	   <HJGrid id = "010011" name = "港口" fontsize = "medium"  visible ="false" datasource="tkxscpxlygrid"  height ="1" style = "plain"  layouttype = "fullscreen" >
+             
+        <!-- 添加固定的终端信息   -->
+        <HJGridColumn id="010011002" name ="港口"  width ="0.3"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data3" field="name_vessel"     />
+        <HJGridColumn id="010011003" name ="产品"  width ="0.3"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data4" field="dec_qty"  alignment="right"  valuetype="decimal" format="######.00" />
+        <HJGridColumn id="010011004" name ="已销量"  width ="0.4"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data5" field="dec_amt"  alignment="right"  valuetype="decimal" format="######.00"/>
+        
+	   </HJGrid> 
+	   
+	   <HJGrid id = "010012" name = "产品" fontsize = "medium"  visible ="false" datasource="tkxscpxlygrid"  height ="1" style = "plain"  layouttype = "fullscreen" >
+             
+        <!-- 添加固定的终端信息   -->
+        <HJGridColumn id="010012002" name ="产品"  width ="0.3"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data3" field="name_vessel"     />
+        <HJGridColumn id="010012003" name ="港口"  width ="0.3"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data4" field="dec_qty"  alignment="right"  valuetype="decimal" format="######.00" />
+        <HJGridColumn id="010012004" name ="已销量"  width ="0.4"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data5" field="dec_amt"  alignment="right"  valuetype="decimal" format="######.00"/>
+        
+	   </HJGrid> 
+	   
+	   <HJGrid id = "010013" name = "客户" fontsize = "medium"  visible ="false" datasource="tkxscpxlygrid"   height ="1"   style = "plain"  layouttype = "fullscreen" >
+             
+        <!-- 添加固定的终端信息   -->
+        <HJGridColumn id="010013002" name ="客户"  width ="0.3"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data3" field="name_vessel"     />
+        <HJGridColumn id="010013003" name ="产品"  width ="0.3"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data4" field="dec_qty"  alignment="right"  valuetype="decimal" format="######.00" />
+        <HJGridColumn id="010013004" name ="已销量"  width ="0.4"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data5" field="dec_amt"  alignment="right"  valuetype="decimal" format="######.00"/>
+        
+	   </HJGrid> 
+	   
+	   <HJViewMenu id="010015" name="菜单"   editable ="true" visible ="true" > 
+        <HJMenuButton id="010015001" name="船名"  editable ="true"  visible ="true" onclick=" 
+		hjc_visible('010', '010011','0')
+		hjc_visible('010', '010012','0')
+		hjc_visible('010', '010013','0')
+		hjc_visible('010', '010010','1')
+		"  fontsize = "medium"   > </HJMenuButton> 
+        <HJMenuButton id="010015002" name="港口"  editable ="true"  visible ="true"  onclick=" 
+		hjc_visible('010', '010010','0')
+		hjc_visible('010', '010012','0')
+		hjc_visible('010', '010013','0')
+		hjc_visible('010', '010011','1')
+		"  fontsize = "medium"   > </HJMenuButton> 
+        <HJMenuButton id="010015003" name="产品"  editable ="true"  visible ="true"  onclick=" 
+		hjc_visible('010', '010010','0')
+		hjc_visible('010', '010011','0')
+		hjc_visible('010', '010013','0')
+		hjc_visible('010', '010012','1')
+		"  fontsize = "medium"   > </HJMenuButton> 
+       <HJMenuButton id="010015004" name="客户"  editable ="true"   visible ="true"  onclick=" 
+		hjc_visible('010', '010011','0')
+		hjc_visible('010', '010012','0')
+		hjc_visible('010', '010010','0')
+		hjc_visible('010', '010013','1')
+		"   fontsize = "medium"   > </HJMenuButton> 
+     
+	  </HJViewMenu> 
+	 </HJView>
+      
+	 <HJView id = "015" name = "铁矿事业部>船名"  returnenable="true" datasetmode="net-local" onload = "">
+	  <HJTextView id = "002001" name = "船名"   editable ="false"  required ="false" visible ="true" width ="0.8" valuetype="string" format="@@@@@@" singleline = "true" fontsize = "medium" alignment="left"  field = "id_terminal" datasource="transfer_ds" ></HJTextView>
+	 
+	  <HJGrid id = "015013" name = "船名" fontsize = "medium"  visible ="true" datasource="transfer_ds"   height ="1" style = "plain"  layouttype = "specify" >
+             
+        <!-- 添加固定的终端信息   -->
+        <HJGridColumn id="010013002" name ="合同号"  width ="0.3"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data3" field="name_vessel"     />
+        <HJGridColumn id="010013003" name ="客户"  width ="0.3"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data4" field="dec_qty"  alignment="right"  valuetype="decimal" format="######.00" />
+        <HJGridColumn id="010013004" name ="合同数量"  width ="0.4"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data5" field="dec_amt"  alignment="right"  valuetype="decimal" format="######.00"/>
+        
+	   </HJGrid> 
+     </HJView>	 
+	 
+	   
+	 
+</HJModel>

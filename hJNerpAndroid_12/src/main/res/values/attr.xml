@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="ChangeColorIconView">
+        <attr name="eapicon" format="reference" />
+        <attr name="eapiconselect" format="reference" />
+        <attr name="eapcolor" format="color" />
+        <attr name="eaptext" format="string" />
+        <attr name="eaptext_size" format="dimension" />
+    </declare-styleable>
+   
+
+</resources>

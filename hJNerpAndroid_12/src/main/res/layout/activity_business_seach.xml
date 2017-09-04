@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activity_business_seach"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.hjnerp.widget.ClearEditText
+        android:id="@+id/project_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="请搜索关键字" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/project_recy"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/project_search" />
+
+    <LinearLayout
+        android:id="@+id/secah_error"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/bujige" />
+
+        <TextView
+            android:id="@+id/text_corr"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:text="找不到相关的项目"
+            android:textSize="16sp" />
+    </LinearLayout>
+</RelativeLayout>

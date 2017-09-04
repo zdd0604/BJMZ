@@ -1,0 +1,82 @@
+﻿<?xml version="1.0"?>
+<HJModel start="001" type="opr" id="006">
+	<HJView id="001" name="促销活动" returnenable="true" presave="true">
+		<!-- 1-只从网络;2-从网络>>1345;3-从1345;4-从1345>>从网络 -->
+		<HJList id="001002" name="促销活动" fontsize="medium" editable="true" visible="true" style="plain" layouttype="adaptive" datasource="dfeeactpol" onclick="local checked = hju_getjsonvalues(sender.values,'checked'); if checked == 'Y' then hjc_setmakeText('001','已上传，不能再操作.'); else hjc_setnextview('001','001002',sender.row,'002',sender.billno,sender.nodeid); end" upload="true" visibledisclosure="false">
+			<!-- 添加固定的终端信息   -->
+			<HJListColumn id="001002001" name="活动时间" width="1" editable="true" visible="true" singleline="false" fontsize="medium" bold="true" field="date_opr" visiblename="true" dbfield="var_data2" />
+			<HJListColumn id="001002002" name="说明" width="1" editable="true" visible="true" singleline="false" fontsize="medium" bold="false" field="name_pol" visiblename="false" dbfield="var_data3" />
+			<HJListCheck id="001002004" field="checked" dbfield="var_data1" />
+		</HJList>
+		
+		<HJViewMenu id="001005" name="菜单" editable="true" visible="true">
+			<!--<HJMenuButton id="001005001" name="新增活动" editable="true" visible="true" fontsize="medium" onclick=" local time = os.date('%Y-%m-%d %H:%M:%S', os.time()); hjc_setvalue('001','001002001',time); hjc_setvalue('001','001002002','促销活动')"></HJMenuButton>-->
+			<HJMenuButton id="001005001" name="新增活动" editable="true" visible="true" fontsize="medium" onclick="local billno = hju_getuuid();
+		hjc_additem('001','001002',billno,billno,'{\'name_pol\':\'\',\'checked\':\'N\',\'date_opr\':\'1900-01-01\' }');
+		"></HJMenuButton>
+			<HJMenuButton id="001005002" name="数据上传" editable="true" visible="true" fontsize="medium" onclick="hjc_controlupload('001','001002')"></HJMenuButton>
+		</HJViewMenu>
+	</HJView>
+	<HJView id="002" name="活动检查" returnenable="true" presave="true" onload="local date_opr = hju_getjsonvalues(sender.values,'date_opr');
+			hjc_setvalue('002','002001',date_opr);
+			 local billno =sender.billno; 
+			 hjc_setvalue('002','002035',sender.values);
+			;" >
+		<HJTextView id="002001" name="活动时间" editable="false" required="false" visible="true" width="0.7" valuetype="string" format="@@@@@@" singleline="true" fontsize="medium" alignment="left"></HJTextView>
+		<HJTextView id="002002" name="活动名称" editable="true" required="true" visible="true" width="0.5" valuetype="string" format="@@@@@@" singleline="false" fontsize="medium" alignment="left"></HJTextView>
+		<HJTextView id="002035" name="活动描述" editable="true" required="true" visible="true" width="0.5" valuetype="string" format="@@@@@@" singleline="false" fontsize="medium" alignment="left"></HJTextView>
+		<HJLine id="0040019" name="" height="10" />
+		<HJTextView id="002055" name="定位时间" editable="false" required="true" visible="true" width="0.7" valuetype="string" format="@@@@@@" singleline="true" fontsize="medium" alignment="left"></HJTextView>
+		<HJLocation id="002060" name="地址定位" editable="false" required="true" visible="false" valuetype="string" format="@@@@@@" singleline="false" fontsize="medium" alignment="left"></HJLocation>
+		<HJPhotoView id="002075" name="活动前拍照" editable="true" required="true" visible="true" valuetype="string" format="@@@@@@" singleline="false" fontsize="medium" alignment="left"></HJPhotoView>
+		<HJPhotoView id="002085" name="活动中拍照" editable="true" required="true" visible="true" valuetype="string" format="@@@@@@" singleline="false" fontsize="medium" alignment="left"></HJPhotoView>
+		<HJPhotoView id="002095" name="活动后拍照" editable="true" required="true" visible="true" valuetype="string" format="@@@@@@" singleline="false" fontsize="medium" alignment="left"></HJPhotoView>
+
+		<HJPhotoView id="002065" name="进店拍照" editable="true" required="false" visible="false" valuetype="string" format="@@@@@@" singleline="false" fontsize="medium" alignment="left"></HJPhotoView>
+
+		<HJLine id="0020007" name="" height="10" />
+		<HJGrid id = "002110" name = "促销终端" fontsize = "medium"
+	                  visible ="true" locking ="1"  style = "plain"  layouttype = "adaptive" delrow="true" datasource="ctlm4101"  >
+			<HJGridColumn id="002110001" name ="终端名称"  width ="0.65"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data2" field="name_terminal"    />
+			<HJGridColumn id="002110005" name ="终端代码"  width ="0.35"   editable ="false"   visible ="true"  valuetype="string"  format="@@@"    singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data1" field="id_terminal" alignment="center" />
+			<HJTitle  id="002110000" name = "促销终端"   fontsize = "medium" bold ="true"  textcolor ="#000000"    />
+		</HJGrid>
+		<HJLine id="0020008" name="" height="10" />
+		<HJGrid id = "002120" name = "促销经销商" fontsize = "medium"
+	                  visible ="true" locking ="1"  style = "plain"  layouttype = "adaptive" delrow="true" datasource="ctlm1002"  >
+			<HJGridColumn id="002120001" name ="经销商名称"  width ="0.65"   editable ="false" visible ="true" singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000"  dbfield = "var_data2" field="name_corr"    />
+			<HJGridColumn id="002120005" name ="经销商代码"  width ="0.35"   editable ="false"   visible ="true"  valuetype="string"  format="@@@"    singleline ="false"  fontsize ="medium" bold ="false" textcolor ="#000000" dbfield = "var_data1" field="id_corr" alignment="center" />
+			<HJTitle  id="002120000" name = "促销经销商"   fontsize = "medium" bold ="true"  textcolor ="#000000"    />
+		</HJGrid>
+
+		<HJToolBar id ="002011" name="工具栏"  >
+			<HJButton id="002011001" name="促销终端"  editable ="true"  visible ="true"  fontsize = "medium"  alignment="center"   onclick="
+		  hjds_search('002','ctlm4101','1=1') ; 
+           "   > </HJButton>
+			<HJButton id="002011002" name="促销经销商"  editable ="true"  visible ="true"  fontsize = "medium"  alignment="center"   onclick="
+		  hjds_search('002','ctlm1002','1=1') ; 
+		  
+           "   > </HJButton>
+			<HJButton id="002300002" name="地址定位" editable="true" visible="true" fontsize="medium" alignment="center" onclick="local time = os.date('%Y-%m-%d %H:%M:%S', os.time()); hjc_setvalue('002','002055',time); hjv_savedata('002'); hjb_setddiscard('002', '002060','002065') ;"></HJButton>
+		</HJToolBar>
+		
+		
+ 
+
+		<HJViewMenu id="002009" name="菜单" editable="true" visible="true">
+			<HJMenuButton id="002009002" name="数据上传" editable="true" visible="true" fontsize="medium" onclick=" 
+						  local billno =sender.billno; 
+						  local nodeid = hjv_getparentnode('002'); 
+						  hjdb_updatevalue(billno,nodeid,'var_data1','Y'); 
+						  local savedate = hjv_savedata('002'); 
+						  if savedate == '1' then hjdb_nodeupload(billno); 
+						  hjc_setbackview('001'); end"></HJMenuButton>
+		</HJViewMenu>
+
+	</HJView>
+
+
+
+
+
+</HJModel>

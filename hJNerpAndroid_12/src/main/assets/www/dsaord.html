@@ -1,0 +1,442 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>订单</title>
+    <link rel="stylesheet" href="Framework7/css/framework7.css">
+    <link rel="stylesheet" href="Framework7/css/my-app.css">
+    <link rel="stylesheet" href="Framework7/jqwidgets/styles/jqx.base.css" type="text/css"/>
+
+    <script type="text/javascript" src="Framework7/scripts/jquery-1.11.1.min.js"></script>
+
+    <script type="text/javascript" src="Framework7/js/framework7.js"></script>
+    <script type="text/javascript" src="Framework7/js/cordova.js"></script>
+    <script type="text/javascript" src="Framework7/js/hj-app.js"></script>
+    <script src="hjbusiness.js" type="text/javascript"></script>
+    <script type="text/javascript">
+    var myApp = new Framework7({
+        animateNavBackIcon:true,
+		fastClicks:true,
+		router:true,
+		 pushState: false,
+      }); 
+      var mainView = myApp.addView('.view-main', {
+        dynamicNavbar: true,
+    // Enable Dom Cache so we can use all inline pages
+       domCache: true  
+
+      });
+      var $$ = Dom7;
+
+
+		function onLoad() {          
+    document.addEventListener("deviceready", onDeviceReady, false);      
+}      
+ 
+function onDeviceReady() {        // Register the event listener          
+    document.addEventListener("backbutton", onBackKeyDown, false);    }      
+      
+    function onBackKeyDown() { //监听返回键
+    var titlename = mainView.activePage.name;
+    var noback = titlename.substring(0,6);
+    if(noback=="noback"){
+    	return;
+    }else if(mainView.activePage.name=="home"){
+navigator.app.exitApp();
+  
+    }else{
+    
+  mainView.router.back();
+    	} 
+}
+
+    function check_submit( )
+	{
+		   myApp.showPreloader('加载中'); 
+		  var formData = myApp.formToJSON('#myadditem-form');  
+		  var o = JSON.parse(JSON.stringify(formData)); 
+		  if (o.search_input == "")
+          {
+			   myApp.hidePreloader( );
+			    myApp.alert('搜索内容不能为空！', '订单');
+			    return false;
+          }
+			//搜索调用本地函数
+			hjbusiness.hjloaddata(function(result){
+				//成功
+				myApp.hidePreloader( );
+				var sourceadd =
+			{
+				datatype: "json",
+				datafields: [
+					{ name: 'id_item' },
+					{ name: 'name_item' },
+					{ name: 'var_spec'  },
+					{ name: 'id_uom'    },
+					{ name: 'dec_qty' },
+					{ name: 'var_paddr' },
+					{ name: 'var_pcom' },
+					{ name: 'date_quality' },
+					{ name: 'var_approval' },
+					{ name: 'var_requirements' }
+				],
+				localdata: result
+			};
+			var dataAdapteradd = new $.jqx.dataAdapter(sourceadd);
+
+             $("#griditem").jqxGrid({ source: dataAdapteradd });
+           
+			
+			},function(error){
+					//失败
+				 myApp.alert(error, '订单');
+				  myApp.hidePreloader( );
+			},"ctlm1020","1=1","net-local"); 
+			
+	}
+
+	function getselectvalues()
+	{
+	  var rowindexes = $('#griditem').jqxGrid('getselectedrowindexes');
+	     var rows = new Array();
+          for (var i = 0; i < rowindexes.length; i++) { 
+             var datarow = $('#griditem').jqxGrid('getrowdata',  rowindexes[i]); 
+              rows.push(datarow); 
+		  }
+		  $("#grid").jqxGrid('addrow', null, rows);
+        myApp.mainView.router.back();
+	}
+    function loadsuccess( result )
+	{
+          myApp.alert(result, '订单成功');
+
+	}
+    function loadfail( error )
+	{
+        myApp.alert(error, '订单失败');
+	}
+	function onAdd()
+	{
+		//关闭弹出窗口
+		myApp.closeModal(".popover-links") ;
+
+		var formData = {
+			'dsaord_no': '2015010100101' ,
+			'date_ord':' ',
+            'id_corr':' ',
+			'id_satype':' ', 
+			'var_addr':' ' 
+		}
+
+       myApp.formFromJSON('#my-form',formData);
+	  var aaa = document.getElementsByName( "dsaord_no")   ;
+		for (var i = 0; i < aaa.length; i++) {
+		aaa[i].disabled=false;
+		} 
+		aaa = document.getElementsByName( "date_ord")   ;
+		for (var i = 0; i < aaa.length; i++) {
+		aaa[i].disabled=false;
+		}
+		aaa = document.getElementsByName( "id_corr")   ;
+		for (var i = 0; i < aaa.length; i++) {
+		aaa[i].disabled=false;
+		}
+		aaa = document.getElementsByName( "id_satype")   ;
+		for (var i = 0; i < aaa.length; i++) {
+		aaa[i].disabled=false;
+		}
+		aaa = document.getElementsByName( "var_addr")   ;
+		for (var i = 0; i < aaa.length; i++) {
+		aaa[i].disabled=false;
+		}
+      
+	}
+
+	function onSave()
+	{
+		myApp.closeModal(".popover-links") ;
+		  var formData = myApp.formToJSON('#my-form'); 
+		  var o = JSON.parse(JSON.stringify(formData)); 
+        myApp.showPreloader('加载中');
+          if (o.free_date == "")
+          {
+			   myApp.hidePreloader( );
+			    myApp.alert('申请日期不能为空！', '费用报销单');
+			    return false;
+          }
+		   if (o.free_item == "")
+          {
+			   myApp.hidePreloader( );
+			    myApp.alert('费用类型不能为空！', '费用报销单');
+			    return false;
+          }
+		   if (o.free_remark == "")
+          {
+			   myApp.hidePreloader( );
+			    myApp.alert('摘要不能为空！', '费用报销单');
+			    return false;
+          }
+		   if (o.free_amt == "")
+          {
+			   myApp.hidePreloader( );
+			    myApp.alert('报销金额不能为空！', '费用报销单');
+			    return false;
+          } 
+        
+		   //调用系统的上传？
+			var rowindexes =   $('#grid').jqxGrid('getrows');
+		 
+	     var rows = new Array();
+		
+          for (var i = 0; i < rowindexes.length; i++) { 
+                var datarow = $('#grid').jqxGrid('getrowdata',  i); 
+			     var ctlm1347 = new Object() ; 
+			    datarow.dsaord_no = o.dsaord_no;
+				datarow.date_ord = o.date_ord;
+				datarow.id_satype = o.id_satype;
+				datarow.id_corr = o.id_corr;
+				datarow.var_addr = o.var_addr; 
+				
+				ctlm1347.var_billno=  o.dsaord_no;
+				ctlm1347.id_node=  o.dsaord_no;
+				ctlm1347.name_node=  o.dsaord_no;
+                ctlm1347.flag_upload="";
+				ctlm1347.var_json=JSON.stringify(datarow);
+				ctlm1347.int_line=i;
+
+               rows.push(ctlm1347); 
+		  }
+		 
+		  //调用保存函数
+		  hjbusiness.onhjsavectlm1347(
+    
+        function(result) {
+         myApp.hidePreloader( );
+        alert(result);
+    }, function(error) {
+     myApp.hidePreloader( );
+        alert("保存失败: " + error);
+    }, rows);
+	}
+	 
+
+   //读取本地数据
+
+
+   // 从网络上读取数据
+    
+
+
+
+
+    </script>
+</head>
+<body onload="onLoad()">
+<div class="statusbar-overlay"></div>
+<div class="views">
+    <div class="view view-main">
+        <div class="navbar no-border  color-white  theme-white">
+            <div class="navbar-inner">
+                <div class="left"><a
+                        onclick="hjbusiness.onhjbackmain(function(result){},function(error){});"
+                        class="link">
+                    <i class="icon icon-back"></i>
+                    <span>返回</span>
+                </a></div>
+                <div class="center">销售订单</div>
+                <div class="right"><a href="#" data-popover=".popover-links"
+                                      class="link open-popover"><i class="icon icon-bars"></i></a>
+                </div>
+            </div>
+
+            <!-- Navbar inner for Form page-->
+            <div data-page="additem" class="navbar-inner cached">
+                <div class="left sliding"><a href="#" class="back link"> <i
+                        class="icon icon-back"></i><span>返回</span></a></div>
+                <div class="center sliding">产品产品</div>
+                <div class="right"><a onclick="getselectvalues()" class="link">确定</a></div>
+            </div>
+
+
+        </div>
+        <div class="pages navbar-through">
+
+            <div data-page="home" class="page">
+
+                <div class="page-content">
+                    <div class="list-block">
+                        <form id="my-form" class="list-block">
+                            <ul>
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title label">订单编号</div>
+                                            <div class="item-input">
+                                                <input type="text" name="dsaord_no"
+                                                       placeholder="订单编号" readonly="true"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title label">订单日期<font
+                                                    color='red'>*</font></div>
+                                            <div class="item-input">
+                                                <input type="date" name="date_ord" disabled>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <!-- Additional "smart-select" class -->
+                                    <a href="#" class="item-link smart-select "
+                                       data-back-on-select="true">
+                                        <!-- select -->
+                                        <select name="id_satype" disabled>
+                                            <option value="1" selected>普通订单</option>
+                                            <option value="2">政策订单</option>
+                                            <option value="3">赠送订单</option>
+                                        </select>
+                                        <div class="item-content">
+                                            <div class="item-inner">
+                                                <div class="item-title label">订单类型<font color='red'>*</font>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li>
+
+                                    <div class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title label">客户</div>
+                                            <div class="item-input">
+                                                <input type="text" name="id_corr" placeholder="客户"
+                                                       disabled>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title label">送货地址</div>
+                                            <div class="item-input">
+                                                <input type="text" name="var_addr"
+                                                       placeholder="送货地址" disabled>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </form>
+                    </div>
+                    <div class="content-block-title">商品信息</div>
+                    <div id='grid'>
+                    </div>
+                    <div class="content-block">
+                        <div class="row">
+                            <div class="col-50"><a href="#additem"
+                                                   class="button  button-fill color-green">增加产品</a>
+                            </div>
+                            <div class="col-50"><a href="#" class="button  button-fill color-red">删除产品</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div data-page="additem" class="page cached">
+                <!-- Search bar -->
+                <form class="searchbar searchbar-init" id="myadditem-form"
+                      onSubmit="return check_submit()">
+                    <div class="searchbar-input">
+                        <table width="100%" height="100%">
+                            <tr>
+                                <td><input name="search_input" type="search" placeholder="搜索"></td>
+                                <td> 第三行</td>
+                            </tr>
+                        </table>
+                        <a href="#" class="searchbar-clear"></a>
+                    </div>
+                    <a href="#" class="searchbar-cancel">取消</a>
+                </form>
+
+                <!-- Search bar overlay-->
+                <div class="searchbar-overlay"></div>
+                <!-- Page content -->
+                <div class="page-content">
+                    <div class="list-block">
+                        <div id='griditem'></div>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div data-page="corr" class="page cached">
+                <!-- Search bar -->
+                <form class="searchbar searchbar-init" onSubmit="return check_submit( )">
+                    <div class="searchbar-input">
+                        <table width="100%" height="100%">
+                            <tr>
+                                <td><input type="search" placeholder="搜索"></td>
+                                <td> 第三行</td>
+                            </tr>
+                        </table>
+                        <a href="#" class="searchbar-clear"></a>
+                    </div>
+                    <a href="#" class="searchbar-cancel">取消</a>
+                </form>
+
+                <!-- Search bar overlay-->
+                <div class="searchbar-overlay"></div>
+                <!-- Page content -->
+                <div class="page-content">
+                    <div class="list-block">
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+</div>
+<style>
+      .popover {
+        width:200px;
+      }
+      
+
+
+</style>
+
+<div class="popover popover-links theme-white">
+    <div class="popover-angle"></div>
+    <div class="popover-inner">
+        <div class="list-block">
+
+            <ul>
+                <li><a onclick="onAdd();" class="list-button item-link">新增</a></li>
+                <li><a onclick="onSave();" class="list-button item-link">提交</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>
+ 

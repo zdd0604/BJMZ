@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white" >
+
+    <TextView
+        android:id="@+id/contact_item_username_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="21dip"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:ellipsize="end"
+        android:maxWidth="180dp"
+        android:singleLine="true"
+        android:text="name"
+        android:textColor="@color/name_text_color"
+        android:textSize="20sp"/>
+
+    <ImageView
+        android:id="@+id/contact_item_operation_add_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="6dp"
+        android:layout_marginTop="10dp"
+        android:layout_toLeftOf="@+id/contact_item_operation_tv"
+        android:background="@drawable/actionbar_add_icon"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/contact_item_operation_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="16dp"
+         android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="添加"
+        android:textColor="@color/green"
+        android:textSize="18.0dip" />
+
+</RelativeLayout>

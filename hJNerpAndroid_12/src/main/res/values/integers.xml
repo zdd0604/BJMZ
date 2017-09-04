@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="TextSizeSmall">12</integer>
+    <integer name="TextSizeMedium">16</integer>
+    <integer name="TextSizeLarge">22</integer>
+    <integer name="abc_action_bar_default_height">94</integer>
+</resources>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+     android:background="@color/white" >
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="48dp"
+        android:background="@drawable/tool_top_bg"
+        android:text="业务管理"/>
+    <GridView
+        android:id="@+id/prefession_main" 
+        android:layout_width="fill_parent" 
+        android:layout_height="fill_parent"
+        android:layout_marginTop="15dp"
+         android:layout_marginBottom="15dp"
+         android:paddingLeft="15dp"
+         android:paddingRight="15dp"
+        android:numColumns="3" 
+        android:horizontalSpacing="20dp" 
+        android:verticalSpacing="20dp" 
+        android:layout_gravity="center"
+        android:columnWidth="80dp" 
+        android:stretchMode="columnWidth"
+        android:gravity="center"
+        android:background="@color/white">
+    </GridView> 
+</LinearLayout>

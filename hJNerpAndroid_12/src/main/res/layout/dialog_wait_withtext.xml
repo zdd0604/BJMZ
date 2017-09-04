@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@android:color/transparent"
+    android:gravity="center"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/ly_waitdialog"
+        android:layout_width="240dp"
+        android:layout_height="80dp"
+        android:background="@drawable/waitdialog_bkg"
+        android:orientation="horizontal" >
+
+        <ProgressBar
+            android:id="@+id/progressBar_waitdialog"
+            style="?android:attr/progressBarStyleInverse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="15dp"
+            android:background="@android:color/transparent" />
+
+        <TextView
+            android:id="@+id/tv_waitdialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="15dp"
+            android:textColor="@color/black"
+            android:text="loading..."/>
+
+    </LinearLayout>
+</LinearLayout>

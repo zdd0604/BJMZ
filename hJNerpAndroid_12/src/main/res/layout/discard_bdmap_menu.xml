@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#99999999"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/lay_zdmc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:background="#00999999"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#00999999"
+            android:text="终端名称："
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/info_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#00999999"
+            android:singleLine="true"
+            android:textColor="#FFF5EB"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/bfzt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lay_zdmc"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:background="#00999999"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#00999999"
+            android:text="拜访状态："
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/info_checked"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#00999999"
+            android:text="未拜访"
+            android:textColor="#FF0000"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/biness_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/bfzt"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:background="#00999999"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#00999999"
+            android:text="拜访时间："
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/buiness_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#00999999"
+            android:text="0000-00-00 00:00:00"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/info_visit"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/biness_layout"
+        android:layout_marginBottom="5dp"
+        android:layout_marginRight="10dp"
+        android:background="@color/actionbar_bg_color"
+        android:text="拜访"
+        android:textColor="@color/white"
+        android:textSize="20sp" />
+
+</RelativeLayout>

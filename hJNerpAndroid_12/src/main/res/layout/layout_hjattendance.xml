@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" 
+     android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/hjatt_map"
+        android:layout_width="fill_parent"
+        android:layout_height="60dip" 
+        android:orientation="vertical" 
+        >
+    </RelativeLayout>
+
+    <RelativeLayout android:id="@+id/hj_signrange"   android:layout_width="fill_parent"
+        android:layout_height="50dip" 
+        android:layout_alignParentBottom="true" 
+        android:background="@color/whitesmoke"
+        android:orientation="horizontal"
+         >
+
+        <TextView
+            android:id="@+id/hj_signtext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" 
+            android:layout_centerVertical="true"
+            android:text="签到范围：" />
+
+        <TextView
+            android:id="@+id/hj_sign"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/hj_signimageview"
+            android:layout_toRightOf="@+id/hj_signtext" />
+
+        <ImageView
+            android:id="@+id/hj_signimageview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/common_right_arrow" />
+      
+    </RelativeLayout>
+
+</LinearLayout>

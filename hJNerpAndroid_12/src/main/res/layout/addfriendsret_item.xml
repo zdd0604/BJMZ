@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/chat_activity_bkg"
+       android:orientation="horizontal">
+  <RelativeLayout
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp" >
+
+        <ImageView
+            android:id="@+id/addfriendphoto"
+            android:layout_width="@dimen/abc_square_image_size45"
+            android:layout_height="@dimen/abc_square_image_size45"
+            android:layout_alignParentLeft="true"
+            android:layout_marginTop="6dip"
+            android:scaleType="fitCenter"
+            android:src="@drawable/v5_0_1_profile_headphoto" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_marginRight="8dip"
+        android:layout_marginTop="8dip"
+        android:orientation="vertical" >
+  
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dip"
+            android:layout_marginTop="6dip" >
+
+            <TextView
+                android:id="@+id/addfriend_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:text="李响"
+                android:textColor="@color/name_text_color"
+                android:textSize="16sp" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/addfriend_dept"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dip"
+            android:layout_marginLeft="5dip"
+            android:layout_marginTop="5dip"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:text="123"
+            android:textColor="@color/msgcontent_text_color"
+            android:textSize="12sp" />
+        
+    </LinearLayout>
+    
+            <Button
+            android:id="@+id/add_friend_btn"
+            android:layout_width="100dp"
+            android:layout_height="40dip"
+            android:layout_marginRight="8dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/login_btn_style"
+            android:enabled="true"
+            android:text="加为好友"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+      
+        
+</LinearLayout>

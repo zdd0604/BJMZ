@@ -1,0 +1,53 @@
+﻿<?xml version="1.0"?>
+<HJModel start="001" type="opr" id="005">
+    <!---->
+    <HJView id="001" name="二级订单" returnenable="true" presave="true">
+        <!-- 1-只从网络;2-从网络>>1345;3-从1345;4-从1345>>从网络 -->
+        <HJList id="001002" name="终端" fontsize="medium" editable="true" visible="true" style="plain" layouttype="adaptive" datasource="ctlm4101" onclick="  
+local checked = hju_getjsonvalues(sender.values,'checked'); if checked == 'Y' then hjc_setmakeText('001','已上传，不能再操作.'); else hjc_setnextview('001','001002',sender.row,'005',sender.billno,sender.nodeid); end  " upload="true" visibledisclosure="false">
+            <!-- 添加固定的终端信息   -->
+            <HJListColumn id="001002001" name="终端名称" width="1" editable="true" visible="true" singleline="false" fontsize="medium" bold="true" field="name_terminal" visiblename="true" dbfield="var_data2" />
+            <HJListColumn id="001002002" name="地址" width="1" editable="true" visible="true" singleline="false" fontsize="medium" bold="false" field="var_addr" visiblename="false" dbfield="var_data3" />
+            <HJListCheck id="001002004" field="checked" dbfield="var_data1" />
+        </HJList>
+        <HJViewMenu id="001005" name="菜单" editable="true" visible="true">
+            <HJMenuButton id="001005001" name="终端选择" editable="true" visible="true" fontsize="medium" onclick=" hjds_search('001','ctlm4101','1=1')"></HJMenuButton>
+			<HJMenuButton id="001005002" name="数据上传" editable="true" visible="true" fontsize="medium" onclick="hjc_controlupload('001','001002')"></HJMenuButton>
+         </HJViewMenu>
+    </HJView>
+
+
+   
+
+    <HJView id="005" name="二级订单" returnenable="true" presave="true" dataset="jxsctlm1020:'1=1'" datasetmode="local" onload="local zddm = hju_getjsonvalues(sender.values,'id_terminal'); local zdmc = hju_getjsonvalues(sender.values,'name_terminal'); hjc_setvalue('005','005001',zddm); hjc_setvalue('005','005002',zdmc);"
+			>
+			
+			<HJTextView id="005001" name="终端代码" editable="false" required="false" visible="true" width="0.5" valuetype="string" format="@@@@@@" singleline="true" fontsize="medium" alignment="left"></HJTextView>
+		<HJTextView id="005002" name="终端名称" editable="false" required="false" visible="true" width="0.5" valuetype="string" format="@@@@@@" singleline="true" fontsize="medium" alignment="left"></HJTextView>
+
+		<HJGrid id="005100" name="订单信息" fontsize="medium" visible="true" locking="1" style="plain" layouttype="adaptive" datasource="jxsctlm1020">
+            <!-- 添加固定的终端信息   -->
+            <HJGridColumn id="005100002" name="产品名称" width="0.6" editable="true" visible="true" singleline="false" fontsize="medium" bold="false" textcolor="#000000" dbfield="var_data1" field="var_name" />
+            <HJGridColumn id="005100004" name="数量" width="0.4" editable="true" visible="true" singleline="true" valuetype="decimal" format="####" fontsize="medium" bold="false" textcolor="#000000" dbfield="var_data2" field="dec_qty" />
+			<HJGridColumn id="005100005" name="" width="0.001" editable="false" visible="true" valuetype="string" format="@@@" singleline="true" fontsize="medium" bold="false" textcolor="#000000" dbfield="var_data4" field="id_item" alignment="center" />
+        </HJGrid>
+    
+	     <HJViewMenu id="005019" name="菜单" editable="true" visible="true">
+            <HJMenuButton id="005019002" name="数据上传" editable="true" visible="true" fontsize="medium" onclick=" 
+						  local billno =sender.billno;   
+						  local savedate = hjv_savedata('005'); 
+						  if savedate == '1' then hjdb_nodeupload(billno); 
+						  local nodeid = hjv_getparentnode('005');
+						  hjdb_updatevalue(billno,nodeid,'var_data1','Y');
+						  hjc_setbackview('001'); end"></HJMenuButton>
+        </HJViewMenu>
+
+        <HJToolBar id="006900" name="工具栏">
+			<HJButton id="006900010" name="产品" editable="true" visible="true" fontsize="medium" alignment="center" onclick=" hjds_search('005','jxsctlm1020','1=1') ;"></HJButton>
+            <HJButton id="006900001" name="发送短信" editable="true" visible="true" fontsize="medium" alignment="center" onclick=" local sms = hjc_getvalue('005','002002')..'订货产品与数量：'; for ii = 0,50 ,1 do local qty = hjc_getvalue('005','005100',string.format('%d', ii) ,'005100004') ; if (qty ~='0' and qty ~= nil and qty ~= '' ) then sms =sms.. hjc_getvalue('005','005100', string.format('%d', ii) ,'005100002') .. ' ' .. qty ..'件 '; end end hju_sendsms('005','',sms);"></HJButton>
+			
+	    </HJToolBar>
+    </HJView>
+
+
+</HJModel>

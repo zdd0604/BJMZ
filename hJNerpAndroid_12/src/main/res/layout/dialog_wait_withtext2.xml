@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@android:color/transparent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/ly_LinearLayoutText"
+        android:layout_width="240dp"
+        android:layout_height="80dp"
+        android:background="@drawable/waitdialog_bkg"
+        android:orientation="horizontal">
+
+        <ProgressBar
+            android:id="@+id/progressBar11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="15dp"
+            android:background="@android:color/transparent" />
+
+        <TextView
+            android:id="@+id/tv_waitdialog2_notice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="15dp"
+            android:text="正在上传..."
+            android:textColor="@color/black"
+            android:textSize="18.0dip" />
+
+
+    </LinearLayout>
+
+</LinearLayout>

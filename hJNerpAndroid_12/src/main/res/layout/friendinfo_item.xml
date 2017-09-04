@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_item"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:gravity="center_vertical"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/tv_search"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="10dip"
+        android:paddingLeft="15dip"
+        android:paddingTop="15dip"
+        android:text="选择一个群"
+        android:textColor="#ff000000"
+        android:textSize="@dimen/larger_textsize" />
+
+    <LinearLayout
+        android:id="@+id/ll_content"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:id="@+id/rl_title"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp" >
+
+            <TextView
+                android:id="@+id/member_itemt_catalog"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="5dip"
+                android:paddingLeft="15dip"
+                android:text="A"
+                android:textColor="#454545"
+                android:textSize="18sp" />
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="2dp"
+                android:layout_below="@+id/member_itemt_catalog"
+                android:layout_marginLeft="15dip"
+                android:layout_marginRight="30dip"
+                android:background="#ffe3e3e3" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/member_item_content"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp" >
+
+            <ImageView
+                android:id="@+id/member_item_photo_iv"
+                android:layout_width="@dimen/abc_square_image_size35"
+                android:layout_height="@dimen/abc_square_image_size35"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="24dip"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/v5_0_1_profile_headphoto" />
+
+            <TextView
+                android:id="@+id/member_item_title_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="30dip"
+                android:layout_toRightOf="@id/member_item_photo_iv"
+                android:gravity="center_vertical"
+                android:text="和佳"
+                android:textColor="#454545"
+                android:textSize="18sp" />
+
+            <ImageView
+                android:id="@+id/member_select_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="45dip"
+                android:src="@drawable/member_normal" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="15dip"
+            android:layout_marginRight="30dip"
+            android:background="#ffe3e3e3" />
+    </LinearLayout>
+
+</LinearLayout>

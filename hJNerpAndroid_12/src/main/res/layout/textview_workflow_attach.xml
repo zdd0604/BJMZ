@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/linear_attach"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/item_bg"
+    android:orientation="horizontal" >
+
+    <ImageView
+        android:id="@+id/iv_attach"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/hj_attach_icon_normal" />
+
+    <TextView
+        android:id="@+id/tv_attach"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="5dp"
+        android:ellipsize="none"
+        android:gravity="center_vertical"
+        android:maxLines="100"
+        android:text="附件"
+        android:textColor="@color/gray"
+        android:textSize="@dimen/normal_textsize" />
+
+</LinearLayout>

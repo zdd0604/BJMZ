@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.hjnerp.widget.ResizeRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/chatting_room_rt_relative_layout"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <!-- 底部按钮以及 编辑框 -->
+
+    <LinearLayout
+        android:id="@+id/chatting_ll_bottom"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:height="0.2dp"
+            android:background="@drawable/reader_item_divider"
+            android:paddingBottom="10dp"
+            android:paddingTop="5dp" />
+
+        <RelativeLayout
+            android:id="@+id/chatting_btns_bottom"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp">
+
+            <ImageButton
+                android:id="@+id/chatting_mode_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="8.0dp"
+                android:layout_marginRight="8.0dp"
+                android:background="@null"
+                android:contentDescription="@string/NA"
+                android:paddingBottom="@dimen/ChattingFootPaddingBottom"
+                android:src="@drawable/chatting_setmode_keyboard_btn" />
+
+            <RelativeLayout
+                android:id="@+id/chatting_right_btns"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true">
+
+                <ImageButton
+                    android:id="@+id/chatting_attach_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_gravity="center"
+                    android:background="@null"
+                    android:contentDescription="@string/NA"
+                    android:gravity="center"
+                    android:paddingLeft="6.0dp"
+                    android:paddingRight="5.5dp"
+                    android:src="@drawable/type_select_btn" />
+
+                <Button
+                    android:id="@+id/chatting_send_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="32dp"
+                    android:layout_centerInParent="true"
+                    android:layout_gravity="center"
+                    android:background="@drawable/chat_send_btn"
+                    android:gravity="center"
+                    android:minWidth="44dp"
+                    android:text="发送"
+                    android:textColor="#ffffff"
+                    android:textSize="14sp"
+                    android:visibility="gone" />
+
+            </RelativeLayout>
+
+            <EditText
+                android:id="@+id/chatting_sendmessage_et"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_toLeftOf="@id/chatting_right_btns"
+                android:layout_toRightOf="@id/chatting_mode_btn"
+                android:background="@drawable/edittext_bg_selector"
+                android:gravity="bottom"
+                android:maxHeight="100dp"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/chatting_voice_record_btn"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/ChattingFootVoiceHeight"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="@dimen/ChattingFootSmallerPadding"
+                android:layout_toLeftOf="@id/chatting_right_btns"
+                android:layout_toRightOf="@id/chatting_mode_btn"
+                android:background="@drawable/record_shape"
+                android:soundEffectsEnabled="true"
+                android:text="按住说话"
+                android:textColor="@color/footer_text_color"
+                android:textSize="16sp"
+                android:visibility="gone" />
+
+        </RelativeLayout>
+
+        <GridView
+            android:id="@+id/chatting_attach_extend"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:horizontalSpacing="10dp"
+            android:numColumns="4"
+            android:verticalSpacing="10dp"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+    <!-- 聊天内容 listview -->
+    <com.handmark.pulltorefresh.library.PullToRefreshListView
+        android:id="@+id/chatting_list_view"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@id/chatting_ll_bottom"
+        android:layout_weight="1"
+        android:background="@color/activity_background"
+        android:cacheColorHint="#00000000"
+        android:divider="@null"
+        android:dividerHeight="4dp"
+        android:fadingEdge="none"
+        android:fastScrollEnabled="false"
+        android:footerDividersEnabled="false"
+        android:headerDividersEnabled="false"
+        android:paddingBottom="10dp"
+        android:smoothScrollbar="true" />
+    <!--  com.hjnerp.widget.PullRefreshListView
+         android:id="@+id/chatting_list_view"
+         android:layout_width="fill_parent"
+         android:layout_height="fill_parent"
+         android:layout_above="@id/chatting_ll_bottom"
+         android:background="@color/activity_background"
+         android:cacheColorHint="#0000"
+         android:divider="@null"
+         android:dividerHeight="5dp"
+         android:paddingBottom="10dp"
+         android:scrollbarStyle="outsideOverlay"
+         android:transcriptMode="normal"-->
+    <LinearLayout
+        android:id="@+id/rcChat_popup"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center"
+        android:visibility="gone">
+
+        <include
+            layout="@layout/voice_rcd_hint_window"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" />
+    </LinearLayout>
+
+</com.hjnerp.widget.ResizeRelativeLayout>

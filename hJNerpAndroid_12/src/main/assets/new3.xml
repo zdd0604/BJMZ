@@ -1,0 +1,38 @@
+<HJModel start = "001" type = "opr" id = "200"  > 
+    <!--
+	
+	说明：HJTextLabel 要有以下两个属性  模板里没有列出来，你先把它按照  hjtextview里面的功能复制过来就行了
+	 datasource="ddiscard"
+	dbfield = "var_data4" field="name_terminal"
+	-->
+    <HJView id = "001" name = "今日拜访"  returnenable="true"   presave="true" > 
+	   <HJTextLabel id = "002001" name = ""   editable ="false"  required ="false" visible ="true" width ="1" singleline = "false" fontsize = "medium" alignment="left"  >
+	   最近由于工作原因，\n需要写一些文档，而文档中需要添加表格，由于内容是不固定的，\n所以表格的行数就不固定了，\n在word中添加又删除单个行来说有些麻烦。于是我就用markdown语法来做表格。
+虽然markdown语法太复杂的表格做不来，但是在工作中这种简单的来说还是足够了，\n首先，你得找一个markdown软件。我这里用了为知笔记，也可以用之前推荐给大家的马克飞象浏览器扩展，只要用着顺手就行了。
+
+	   </HJTextLabel>
+     
+	   <HJTextLabel id = "002001" name = ""   editable ="false"  required ="false" visible ="true" width ="1" singleline = "false" fontsize = "medium" alignment="left"  >表格的制作，其实看着麻烦，说起来十分简单，我这里就简要的介绍一下。如，我要做下面一个表格（抱歉这里不知道为什么不显示表格边框）：
+
+编号 说明 国外 \n
+
+1 上海 纽约 \n
+2 南京 伦敦 \n
+3 北京 旧金山 
+</HJTextLabel>
+        <HJTextLabel id = "002001" name = ""   editable ="false"  required ="false" visible ="true" width ="1" singleline = "false" fontsize = "medium" alignment="left"  >
+		如果在word中时你可能需要先知道有多少内容，需要几行几列然后才会添加，而如果内容有增加删减的话，可能会增加减少行数。而在markdown中就简单多了，只需要照下面的写法就可以生成表格了：
+
+|编号|说明|国外|
+ |—|—|—|
+ |1|上海|纽约|
+ |2|南京|伦敦|
+ |3|北京|旧金山|
+
+|即键盘上的竖线，第二行的内容其实是为了分开标题与内容。让标题更加突出。好了就这么简单。不过其中的合并单元格及控制表格宽度等还是没搞清楚，不知道有没有了解的呢。
+
+		</HJTextLabel>
+     
+	
+	</HJView>
+	</HJModel>
