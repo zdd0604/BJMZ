@@ -543,5 +543,5 @@
     <color name="item_halving_bg">#E5E5E5</color>
     <color name="item_textcolor">#27a4e3</color>
     <color name="dialog_bg_color">#9d16161b</color>
-    <color name="dialog_bg_color2">#cf000000</color>
+    <color name="dialog_bg_color2">#cc000000</color>
 </resources>
