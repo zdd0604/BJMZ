@@ -59,6 +59,7 @@ public class BusinessBillsAdapter extends BaseAdapter {
             viewHolder.bs_name_user = (TextView) convertView.findViewById(R.id.bs_name_user);
             viewHolder.bs_date_opr = (TextView) convertView.findViewById(R.id.bs_date_opr);
             viewHolder.rejust_type = (TextView) convertView.findViewById(R.id.rejust_type);
+            viewHolder.bills_item_view = (View) convertView.findViewById(R.id.businessbills_item_view);
             convertView.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
@@ -68,7 +69,14 @@ public class BusinessBillsAdapter extends BaseAdapter {
             viewHolder.bs_name_user.setText(info.getName_clerk());
         }else {
             viewHolder.bs_name_user.setText(info.getName_user());
+        }
 
+        //添加分割线的判断
+        if (datas.size()>0&&position==0)
+        {
+            viewHolder.bills_item_view.setVisibility(View.VISIBLE);
+        }else{
+            viewHolder.bills_item_view.setVisibility(View.GONE);
         }
 
         String time = info.getDate_opr().substring(0, 10);
@@ -100,5 +108,6 @@ public class BusinessBillsAdapter extends BaseAdapter {
         TextView bs_name_user;
         TextView bs_date_opr;
         TextView rejust_type;
+        View bills_item_view;
     }
 }

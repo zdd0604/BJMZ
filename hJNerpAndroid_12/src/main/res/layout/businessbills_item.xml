@@ -4,6 +4,12 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <View
+        android:id="@+id/businessbills_item_view"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_8"
+        android:background="@color/actionbar_title_bg1"
+        android:visibility="gone" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -59,9 +65,9 @@
             android:id="@+id/bs_date_opr"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="@dimen/size_15"
-            android:layout_alignParentRight="true"
             android:text="2016.10.12"
             android:textSize="@dimen/font_size_14" />
     </RelativeLayout>
