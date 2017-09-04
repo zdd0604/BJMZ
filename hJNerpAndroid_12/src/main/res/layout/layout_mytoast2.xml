@@ -10,17 +10,10 @@
         android:gravity="center"
         android:orientation="vertical"
         android:paddingBottom="@dimen/size_20"
-        android:paddingLeft="@dimen/size_45"
-        android:paddingRight="@dimen/size_45"
+        android:paddingLeft="@dimen/size_30"
+        android:paddingRight="@dimen/size_30"
         android:paddingTop="@dimen/size_20">
         <!--android:background="@drawable/toast_bg"-->
-        <ImageView
-            android:id="@+id/toast_image"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="2dp"
-            android:background="@drawable/uc_success" />
 
         <TextView
             android:id="@+id/toast_text"

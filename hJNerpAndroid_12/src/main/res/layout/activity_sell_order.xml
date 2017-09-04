@@ -112,6 +112,7 @@
                     android:layout_weight="3"
                     android:background="@null"
                     android:gravity="center_vertical"
+                    android:textColor="#CACACF"
                     android:textSize="@dimen/font_size_14" />
             </LinearLayout>
 
@@ -140,6 +141,7 @@
                     android:layout_weight="3"
                     android:background="@null"
                     android:gravity="center_vertical"
+                    android:textColor="#CACACF"
                     android:textSize="@dimen/font_size_14" />
             </LinearLayout>
 
@@ -169,6 +171,7 @@
                     android:background="@null"
                     android:focusable="false"
                     android:gravity="center_vertical"
+                    android:textColor="#CACACF"
                     android:textSize="@dimen/font_size_14" />
             </LinearLayout>
 
@@ -197,6 +200,7 @@
                     android:gravity="center_vertical"
                     android:hint="请选择发货日期"
                     android:textColor="@color/black"
+                    android:textColorHint="#cacacf"
                     android:textSize="@dimen/font_size_14" />
             </LinearLayout>
 
@@ -253,6 +257,7 @@
                     android:gravity="center_vertical"
                     android:hint="请选择所属终端"
                     android:textColor="@color/black"
+                    android:textColorHint="#cacacf"
                     android:textSize="@dimen/font_size_14" />
 
             </LinearLayout>
@@ -280,6 +285,7 @@
                     android:layout_marginRight="@dimen/size_10"
                     android:layout_weight="3"
                     android:gravity="center_vertical"
+                    android:textColor="#CACACF"
                     android:textSize="@dimen/font_size_14" />
             </LinearLayout>
 
@@ -306,6 +312,7 @@
                     android:layout_marginRight="@dimen/size_10"
                     android:layout_weight="3"
                     android:gravity="center_vertical"
+                    android:textColor="#CACACF"
                     android:textSize="@dimen/font_size_14" />
             </LinearLayout>
 
@@ -335,6 +342,7 @@
                     android:gravity="center_vertical"
                     android:hint="请选择送货地址"
                     android:textColor="@color/black"
+                    android:textColorHint="#cacacf"
                     android:textSize="@dimen/font_size_14" />
             </LinearLayout>
 
@@ -445,6 +453,7 @@
                     android:drawableRight="@drawable/icon_right_orientation"
                     android:gravity="center_vertical"
                     android:hint="请选择发票地址"
+                    android:textColorHint="#cacacf"
                     android:textSize="@dimen/font_size_14" />
             </LinearLayout>
 
@@ -476,6 +485,7 @@
                     android:hint="备注"
                     android:minLines="2"
                     android:textColor="@color/black"
+                    android:textColorHint="#cacacf"
                     android:textSize="@dimen/font_size_14" />
             </LinearLayout>
 
@@ -493,6 +503,7 @@
                 android:layout_marginBottom="30dp"
                 android:layout_marginTop="1dp"
                 android:background="#ffffff"
+                android:focusableInTouchMode="true"
                 android:gravity="center"
                 android:orientation="horizontal">
 

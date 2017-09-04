@@ -10,8 +10,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -69,11 +67,11 @@ public class TravelActivityNew extends ActionBarWidgetActivity implements View.O
     private String table_no = "";
     private String column_name = "";
 
-//    @BindView(R.id.action_left_img)
+    //    @BindView(R.id.action_left_img)
 //    ImageView actionLeftImg;
     @BindView(R.id.action_left_tv)
     TextView actionLeftTv;
-//    @BindView(R.id.action_back_layout)
+    //    @BindView(R.id.action_back_layout)
 //    LinearLayout actionBackLayout;
     @BindView(R.id.action_center_tv)
     TextView actionCenterTv;
@@ -135,16 +133,23 @@ public class TravelActivityNew extends ActionBarWidgetActivity implements View.O
         activity_travel_new = (RelativeLayout) findViewById(R.id.activity_travel_new);
         switch (id_menu) {
             case "002035":
-                getSupportActionBar().setTitle("出差/外出单");
+//                getSupportActionBar().setTitle("出差/外出单");
+                actionCenterTv.setText("出差/外出单");
                 break;
             case "002040":
-                getSupportActionBar().setTitle("休假申请单");
+//                getSupportActionBar().setTitle("休假申请单");
+                actionCenterTv.setText("休假申请单");
+
                 break;
             case "002090":
-                getSupportActionBar().setTitle("加班申请单");
+//                getSupportActionBar().setTitle("加班申请单");
+                actionCenterTv.setText("加班申请单");
+
                 break;
             case "002095":
-                getSupportActionBar().setTitle("考勤异常申诉");
+//                getSupportActionBar().setTitle("考勤异常申诉");
+                actionCenterTv.setText("考勤异常申诉");
+
                 break;
             case "002020":
                 actionCenterTv.setText(getString(R.string.action_center_content_sellList));

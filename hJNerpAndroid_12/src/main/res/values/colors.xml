@@ -531,6 +531,7 @@
     <color name="menu_item_divider_color">#d6d2d3</color>
     <color name="menu_item_text_color">#FFFF4081</color>
     <color name="title_color">#7F7F7F</color>
+    <color name="title_hint">#CACACF</color>
     <!-- actionbar -->
     <color name="actionbar_title_tcolor">#35ACFF</color>
     <color name="actionbar_title_bg">#F5F5F5</color>
@@ -542,4 +543,5 @@
     <color name="item_halving_bg">#E5E5E5</color>
     <color name="item_textcolor">#27a4e3</color>
     <color name="dialog_bg_color">#9d16161b</color>
+    <color name="dialog_bg_color2">#cf000000</color>
 </resources>

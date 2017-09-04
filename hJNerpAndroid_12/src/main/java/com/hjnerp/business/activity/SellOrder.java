@@ -252,7 +252,7 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
                 } else {
                     sell_order_addess_send.setClickable(false);
                     sell_order_addess_send.setText(sell_order_address.getText());
-                    sell_order_addess_send.setTextColor(mContext.getResources().getColor(android.R.color.tab_indicator_text));
+                    sell_order_addess_send.setTextColor(mContext.getResources().getColor(R.color.title_hint));
 
 //                    if (dsaordbaseJsons_new != null && dsaordbaseJsons_new.size() > 0) {
 //                        sell_order_addess_send.setSelection(sell_order_address.getSelectedItemPosition());
@@ -476,21 +476,21 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
         name_terminal = sell_order_terminal.getText().toString().trim();
         if (TextUtils.isEmpty(name_terminal)) {
 //            Toast.makeText(this, "请先选择所属终端", Toast.LENGTH_SHORT).show();
-            new MyToast2(SellOrder.this, "请先选择所属终端！");
+            new MyToast2(SellOrder.this, "请先选择所属终端!");
 
             return;
         }
         name_corr = sell_order_send.getText().toString().trim();
         if (TextUtils.isEmpty(name_corr)) {
 //            Toast.makeText(this, "客户名不能为空", Toast.LENGTH_SHORT).show();
-            new MyToast2(SellOrder.this, "客户名不能为空！");
+            new MyToast2(SellOrder.this, "客户名不能为空!");
 
             return;
         }
         String time_p = sell_order_ticket_time.getText().toString().trim();
         if (TextUtils.isEmpty(time_p)) {
 //            Toast.makeText(this, "请先选择指定发货日期", Toast.LENGTH_SHORT).show();
-            new MyToast2(SellOrder.this, "请先选择发货日期！");
+            new MyToast2(SellOrder.this, "请先选择发货日期!");
 
             return;
         }
@@ -500,14 +500,14 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
         String address = sell_order_address.getText().toString().trim();
         if (TextUtils.isEmpty(address)) {
 //            Toast.makeText(this, "请先选择送货地址", Toast.LENGTH_SHORT).show();
-            new MyToast2(SellOrder.this, "请先选择送货地址！");
+            new MyToast2(SellOrder.this, "请先选择送货地址!");
 
             return;
         }
         String var_invaddr = sell_order_addess_send.getText().toString().trim();
         if (TextUtils.isEmpty(var_invaddr)) {
 //            Toast.makeText(this, "请先选择发票邮寄地址", Toast.LENGTH_SHORT).show();
-            new MyToast2(SellOrder.this, "请先选择发票地址！");
+            new MyToast2(SellOrder.this, "请先选择发票地址!");
 
             return;
         }
@@ -594,12 +594,12 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
                 String item = sellDetails.get(i).getName_item();
                 if (TextUtils.isEmpty(item)) {
 //                    Toast.makeText(this, "请选择产品", Toast.LENGTH_SHORT).show();
-                    new MyToast2(SellOrder.this, "明细(" + (i + 1) + ")请选择产品！");
+                    new MyToast2(SellOrder.this, "明细(" + (i + 1) + ")请选择产品!");
                     return;
                 }
                 if (sellDetails.get(i).getOrder_num() == 0) {
 //                    Toast.makeText(this, "请选择产品", Toast.LENGTH_SHORT).show();
-                    new MyToast2(SellOrder.this, "明细(" + (i + 1) + ")数量不能为0！");
+                    new MyToast2(SellOrder.this, "明细(" + (i + 1) + ")数量不能为0!");
                     return;
                 }
                 stringBuffer.append("{\"column\":\"id_tax\",\"value\":\"" + sellDetails.get(i).getId_tax() + "\",\"datatype\":\"varchar\"}, ");
@@ -648,17 +648,26 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
                     @Override
                     public void onSuccess(businessFlag businessFlag, Call call, Response response) {
                         String content = businessFlag.getMessage();
+                        String flag = businessFlag.getFlag();
                         if (dealtype.equals(Constant.SAVE_DEALTYPE)) {
                             Constant.billsNo = businessFlag.getNo();
 //                            ToastUtil.ShowShort(getApplicationContext(), content);
-                            new MyToast(SellOrder.this, content);
+                            if (flag.equalsIgnoreCase("Y")){
+                                new MyToast(SellOrder.this, "成功!");
+                            }else {
+                                new MyToast2(SellOrder.this, "失败!");
+                            }
                             var_title_code.setText(Constant.billsNo);
                             Constant.JUDGE_TYPE = false;
                             countDetail = sellDetails.size();
                         } else {
                             Constant.billsNo = businessFlag.getNo();
 //                            ToastUtil.ShowShort(getApplicationContext(), content);
-                            new MyToast(SellOrder.this, content);
+                            if (flag.equalsIgnoreCase("Y")){
+                                new MyToast(SellOrder.this, "成功!");
+                            }else {
+                                new MyToast2(SellOrder.this, "失败!");
+                            }
                             setResult(22);
                             finish();
                         }
@@ -672,11 +681,11 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
                         super.onError(call, response, e);
                         if (e instanceof OkGoException) {
 //                            ToastUtil.ShowShort(getApplicationContext(), "网络错误");
-                            new MyToast2(SellOrder.this, "网络错误！");
+                            new MyToast2(SellOrder.this, "网络错误!");
                         } else {
                             if (TextUtils.isEmpty(e.getMessage())) {
 //                                ToastUtil.ShowShort(getApplicationContext(), "提交失败");
-                                new MyToast2(SellOrder.this, "提交失败！");
+                                new MyToast2(SellOrder.this, "提交失败!");
 
                             } else {
 //                                ToastUtil.ShowShort(getApplicationContext(), e.getMessage());
@@ -698,7 +707,7 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
 //            ToastUtil.ShowShort(this, "请先选择所属终端");
 //            return;
 //        }
-        actionRightTv.requestFocusFromTouch();
+        add_sell_order_detail.requestFocusFromTouch();
         for (int i = 0; i < sellDetails.size(); i++) {
             sellDetails.get(i).setOrder_price(sellDetails.get(i).getPer_price()
                     * sellDetails.get(i).getOrder_num());
