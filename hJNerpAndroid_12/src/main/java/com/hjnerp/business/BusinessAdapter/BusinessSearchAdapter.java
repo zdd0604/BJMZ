@@ -81,13 +81,14 @@ public class BusinessSearchAdapter extends RecyclerView.Adapter<BusinessSearchAd
                 holder.text_id_item.setTextColor(Color.parseColor("#000000"));
                 holder.item_overclient.setText(list.get(position).getName_terminal());
                 holder.item_id_item.setText(list.get(position).getId_wproj());
-                holder.item_chkparm.setText(list.get(position).getVar_chkparm());
+                String chkparm = list.get(position).getVar_chkparm().trim();
+                holder.item_chkparm.setText(chkparm.replaceAll("\r|\n*",""));
                 break;
         }
 
         holder.item_peoject.setText(list.get(position).getName_wproj());
         holder.item_client.setText(list.get(position).getName_corr());
-        holder.item_line_id.setText(String.valueOf((position + 1)));
+//        holder.item_line_id.setText(String.valueOf((position + 1)));
         // 如果设置了回调，则设置点击事件
         if (mOnItemClickLitener != null) {
             holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -116,7 +117,7 @@ public class BusinessSearchAdapter extends RecyclerView.Adapter<BusinessSearchAd
 
         TextView item_peoject;
         TextView item_client;
-        TextView item_line_id;
+//        TextView item_line_id;
         TextView pro_text;
         TextView text_address;
         TextView text_overclient;
@@ -136,7 +137,7 @@ public class BusinessSearchAdapter extends RecyclerView.Adapter<BusinessSearchAd
             pro_text = (TextView) itemView.findViewById(R.id.pro_text);
             text_address = (TextView) itemView.findViewById(R.id.text_address);
             item_client = (TextView) itemView.findViewById(R.id.item_client);
-            item_line_id = (TextView) itemView.findViewById(R.id.item_line_id);
+//            item_line_id = (TextView) itemView.findViewById(R.id.item_line_id);
             text_id_item = (TextView) itemView.findViewById(R.id.text_id_item);
             item_id_item = (TextView) itemView.findViewById(R.id.item_id_item);
             text_chkparm = (TextView) itemView.findViewById(R.id.text_chkparm);
