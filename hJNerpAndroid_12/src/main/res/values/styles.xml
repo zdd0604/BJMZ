@@ -256,9 +256,7 @@
         <item name="android:textSize">@dimen/font_size_17</item>
         <item name="android:text">@string/action_right_right1_title</item>
     </style>
-    <!-- actionbar 分割线 android:layout_width="match_parent"
-        android:layout_height="@dimen/size_1"
-        android:background="@color/actionbar_view_bg2"-->
+    <!-- actionbar 分割线  -->
     <style name="Item_TextView_ActionBarViewDividerStyle">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/size_1</item>

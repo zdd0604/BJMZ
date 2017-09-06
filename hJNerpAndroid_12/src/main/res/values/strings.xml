@@ -130,4 +130,7 @@
     <string name="work_Tile_MyContent">内容</string>
     <string name="work_Hint_MyContent">请填写内容</string>
 
+
+    <!-- 考勤 -->
+    <string name="buess_Title_CenterTitle">考勤</string>
 </resources>

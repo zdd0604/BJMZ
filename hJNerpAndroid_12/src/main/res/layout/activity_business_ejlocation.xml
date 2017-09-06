@@ -6,13 +6,17 @@
     android:layout_height="match_parent"
     tools:context="com.hjnerp.business.activity.BusinessEJLocation">
 
+    <include
+        android:id="@+id/action_location_bar"
+        layout="@layout/actionbar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:background="#EFEFF4"
+        android:layout_below="@id/action_location_bar"
+        android:background="@color/actionbar_title_bg"
         android:scrollbars="none">
 
         <LinearLayout

@@ -27,6 +27,8 @@ import butterknife.ButterKnife;
 public class ActionBarWidgetActivity extends AppCompatActivity implements
         IActivitySupport {
     protected Context mContext;
+    //弹框
+    protected WaitDialogRectangle waitDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,8 +40,8 @@ public class ActionBarWidgetActivity extends AppCompatActivity implements
      */
     private void initView() {
         mContext = this;
+        waitDialog = new WaitDialogRectangle(mContext);
     }
-
 
 
     /**

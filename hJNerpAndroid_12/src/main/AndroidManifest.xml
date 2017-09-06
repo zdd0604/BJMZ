@@ -322,11 +322,19 @@
             android:name="com.hjnerp.business.activity.BusinessPerformanceAudit"
             android:theme="@style/Theme.HjNoActionBar"
             android:windowSoftInputMode="stateHidden|adjustResize" />
+
+        <!-- 考勤打卡 -->
         <activity
             android:name="com.hjnerp.business.activity.BusinessEJLocation"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.HjNoActionBar"
             android:windowSoftInputMode="stateHidden|adjustResize" />
+
+        <!-- 工作日志 -->
         <activity
             android:name="com.hjnerp.business.activity.BusinessDgtdrechtml"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.HjNoActionBar"
             android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
             android:name="com.hjnerp.business.activity.BusinessSearch"
@@ -350,18 +358,19 @@
         </provider>
 
         <activity android:name="com.hjnerp.activity.HJCallPhoneActivity" />
-        <activity android:name="com.hjnerp.business.activity.TravelActivityNew"
-            android:theme="@style/Theme.HjNoActionBar"
+        <activity
+            android:name="com.hjnerp.business.activity.TravelActivityNew"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustResize"  />
+            android:theme="@style/Theme.HjNoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
             android:name="com.hjnerp.business.activity.OrderFinding"
             android:theme="@style/Theme.HjNoActionBar"
             android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
             android:name="com.hjnerp.business.activity.SellOrder"
-            android:theme="@style/Theme.HjNoActionBar"
             android:screenOrientation="portrait"
+            android:theme="@style/Theme.HjNoActionBar"
             android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity android:name="com.hjnerp.business.activity.OrderEdit"></activity>
     </application>
