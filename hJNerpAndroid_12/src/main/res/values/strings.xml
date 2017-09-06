@@ -144,4 +144,10 @@
 
     <!-- 考勤 -->
     <string name="buess_Title_CenterTitle">考勤</string>
+
+    <!-- dialog提示语 -->
+    <string name="dialog_Message_saveData">正在保存数据</string>
+    <string name="dialog_Message_submitData">正在提交数据</string>
+    <string name="dialog_Message_upLoadData">正在加载数据</string>
+    <string name="dialog_Message_selectData">正在查询数据</string>
 </resources>
