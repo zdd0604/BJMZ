@@ -395,8 +395,6 @@ public class BusinessDgtdrechtml extends ActionBarWidgetActivity implements View
         Constant.travel = false;
     }
 
-
-
     private void removeData() {
         waitDialog.dismiss();
         log_date_task.setText("");
