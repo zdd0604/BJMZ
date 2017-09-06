@@ -201,12 +201,15 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:background">@color/actionbar_title_bg</item>
+        <item name="android:orientation">vertical</item>
     </style>
     <!-- 水平布局 高度40 -->
     <style name="Item_LinearLayout_HorizontalStyle">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/size_40</item>
-        <item name="android:background">@color/black</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:orientation">horizontal</item>
     </style>
     <!-- actionbar的相对布局 -->
     <style name="Item_RelativeLayout_ActionBarStyle">
@@ -261,5 +264,26 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/size_1</item>
         <item name="android:background">@color/actionbar_viewDivider_bg</item>
+    </style>
+    <!-- 工作日志左侧标题  -->
+    <style name="Item_LinearLayout_TVLeftTieleStyle">
+        <item name="android:layout_width">@dimen/size_0</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:textSize">@dimen/font_size_16</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_marginLeft">@dimen/size_10</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+    <!-- 工作日志右侧输入框标题 -->
+    <style name="Item_LinearLayout_EdRightContentStyle">
+        <item name="android:layout_width">@dimen/size_0</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:textSize">@dimen/font_size_16</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:background">@null</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_marginRight">@dimen/size_10</item>
+        <item name="android:layout_weight">3</item>
     </style>
 </resources>

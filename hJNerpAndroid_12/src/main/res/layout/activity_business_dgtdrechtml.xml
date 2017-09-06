@@ -11,296 +11,138 @@
         android:layout_height="wrap_content" />
 
     <ScrollView
-        android:layout_below="@id/action_dgtdre_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#EFEFF4"
+        android:layout_below="@id/action_dgtdre_layout"
+        android:background="@color/actionbar_title_bg"
         android:scrollbars="none">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+        <LinearLayout style="@style/Item_LinearLayout_VerticalStyle">
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="44dp"
-                android:layout_marginTop="10dp"
-                android:background="@color/white"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
+                style="@style/Item_LinearLayout_HorizontalStyle"
+                android:layout_marginTop="10dp">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:text="任务时间"
-                    android:textColor="@color/black"
-                    android:textSize="16dp" />
+                    style="@style/Item_LinearLayout_TVLeftTieleStyle"
+                    android:text="@string/work_Tile_TaskTime" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginRight="10dp"
-                    android:text="*"
-                    android:textColor="@color/red" />
 
                 <com.hjnerp.widget.ClearEditText
                     android:id="@+id/log_date_task"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@null"
+                    style="@style/Item_LinearLayout_EdRightContentStyle"
                     android:focusable="false"
-                    android:gravity="center"
-                    android:hint="请选择日期" />
+                    android:hint="@string/work_Hint_TaskTime" />
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="44dp"
-                android:layout_marginTop="1dp"
-                android:background="@color/white"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
+                style="@style/Item_LinearLayout_HorizontalStyle"
+                android:layout_marginTop="@dimen/size_1">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:text="工作地点"
-                    android:textColor="@color/black"
-                    android:textSize="16dp" />
+                    style="@style/Item_LinearLayout_TVLeftTieleStyle"
+                    android:text="@string/work_Tile_WkAddress" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginRight="10dp"
-                    android:text="*"
-                    android:textColor="@color/red" />
 
                 <EditText
                     android:id="@+id/log_flag_wadd"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@null"
+                    style="@style/Item_LinearLayout_EdRightContentStyle"
                     android:focusable="false"
-                    android:gravity="center"
-                    android:hint="点击选择" />
+                    android:hint="@string/work_Hint_WkAddress" />
 
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="44dp"
-                android:layout_marginTop="10dp"
-                android:background="@color/white"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
+                style="@style/Item_LinearLayout_HorizontalStyle"
+                android:layout_marginTop="10dp">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:layout_marginLeft="10dp"
-                    android:gravity="center_vertical"
-                    android:text="工作类型"
-                    android:textColor="@color/black"
-                    android:textSize="16dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginRight="10dp"
-                    android:gravity="center_vertical"
-                    android:text="*"
-                    android:textColor="@color/red" />
+                    style="@style/Item_LinearLayout_TVLeftTieleStyle"
+                    android:text="@string/work_Tile_WkType" />
 
                 <EditText
                     android:id="@+id/log_id_wtype"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@null"
+                    style="@style/Item_LinearLayout_EdRightContentStyle"
                     android:focusable="false"
-                    android:gravity="center"
-                    android:hint="点击选择" />
+                    android:hint="@string/work_Hint_WkType" />
 
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="44dp"
-                android:layout_marginTop="1dp"
-                android:background="@color/white"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
+                style="@style/Item_LinearLayout_HorizontalStyle"
+                android:layout_marginTop="@dimen/size_1">
 
                 <TextView
                     android:id="@+id/pro_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:text="客户名称"
-                    android:textColor="@color/black"
-                    android:textSize="16dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginRight="10dp"
-                    android:text="*"
-                    android:textColor="@color/red" />
+                    style="@style/Item_LinearLayout_TVLeftTieleStyle"
+                    android:text="@string/work_Tile_PjName" />
 
                 <EditText
                     android:id="@+id/log_id_wproj"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_weight="1"
-                    android:background="@null"
+                    style="@style/Item_LinearLayout_EdRightContentStyle"
                     android:focusable="false"
-                    android:gravity="center"
-                    android:hint="点击选择客户"
-                    android:textColor="@color/black"
-                    android:textSize="16dp" />
+                    android:hint="@string/work_Hint_PjName" />
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="44dp"
-                android:layout_marginTop="1dp"
-                android:background="@color/white"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
+                style="@style/Item_LinearLayout_HorizontalStyle"
+                android:layout_marginTop="@dimen/size_1">
 
                 <TextView
                     android:id="@+id/textView7"
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:layout_marginLeft="10dp"
-                    android:gravity="center_vertical"
-                    android:text="地      址"
-                    android:textColor="@color/black"
-                    android:textSize="18dp" />
+                    style="@style/Item_LinearLayout_TVLeftTieleStyle"
+                    android:text="@string/work_Tile_Address" />
 
                 <com.hjnerp.widget.ClearEditText
                     android:id="@+id/log_id_corr"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_weight="1"
-                    android:background="@null"
-                    android:focusable="false"
-                    android:gravity="center"
-                    android:textSize="16dp" />
+                    style="@style/Item_LinearLayout_EdRightContentStyle"
+                    android:focusable="false" />
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="44dp"
-                android:layout_marginTop="10dp"
-                android:background="@color/white"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
+                style="@style/Item_LinearLayout_HorizontalStyle"
+                android:layout_marginTop="10dp">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:text="工         时"
-                    android:textColor="@color/black"
-                    android:textSize="16dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginRight="10dp"
-                    android:text="*"
-                    android:textColor="@color/red" />
+                    style="@style/Item_LinearLayout_TVLeftTieleStyle"
+                    android:text="@string/work_Tile_WkTime" />
 
                 <com.hjnerp.widget.ClearEditText
                     android:id="@+id/log_dec_wtime"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@null"
-                    android:gravity="center"
-                    android:inputType="numberDecimal"
-                    android:textSize="16dp" />
+                    style="@style/Item_LinearLayout_EdRightContentStyle"
+                    android:inputType="numberDecimal" />
 
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="44dp"
-                android:layout_marginTop="1dp"
-                android:background="@color/white"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
+                style="@style/Item_LinearLayout_HorizontalStyle"
+                android:layout_marginTop="@dimen/size_1">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:text="主         题"
-                    android:textColor="@color/black"
-                    android:textSize="16dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginRight="10dp"
-                    android:text="*"
-                    android:textColor="@color/red" />
+                    style="@style/Item_LinearLayout_TVLeftTieleStyle"
+                    android:text="@string/work_Tile_MyTheme" />
 
                 <com.hjnerp.widget.ClearEditText
                     android:id="@+id/log_var_wtitle"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@null"
-                    android:gravity="center"
-                    android:textSize="16dp" />
+                    style="@style/Item_LinearLayout_EdRightContentStyle" />
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="110dp"
-                android:layout_marginTop="1dp"
-                android:background="@color/white"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
+                style="@style/Item_LinearLayout_HorizontalStyle"
+                android:layout_height="@dimen/size_110"
+                android:layout_marginTop="@dimen/size_1">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:text="内         容"
-                    android:textColor="@color/black"
-                    android:textSize="16dp" />
+                    style="@style/Item_LinearLayout_TVLeftTieleStyle"
+                    android:text="@string/work_Tile_MyContent" />
 
                 <com.hjnerp.widget.ClearEditText
                     android:id="@+id/log_var_remark"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_weight="1"
-                    android:background="@null"
-                    android:gravity="center"
-                    android:hint="点击填写内容"
-                    android:textSize="16dp" />
+                    style="@style/Item_LinearLayout_EdRightContentStyle"
+                    android:hint="@string/work_Hint_MyContent" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
-
 
     <Button
         android:id="@+id/dgtdrechtml_submit"

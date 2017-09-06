@@ -116,6 +116,7 @@
     <string name="sellorder_add_sllInfo">增加订单明细</string>
 
     <!-- 工作日志 -->
+    <string name="work_Tile_Activity">工作日志</string>
     <string name="work_Tile_TaskTime">任务时间</string>
     <string name="work_Hint_TaskTime">请选择任务时间</string>
     <string name="work_Tile_WkAddress">工作地点</string>
@@ -128,7 +129,7 @@
     <string name="work_Tile_WkTime">工时</string>
     <string name="work_Tile_MyTheme">主题</string>
     <string name="work_Tile_MyContent">内容</string>
-    <string name="work_Hint_MyContent">请填写内容</string>
+    <string name="work_Hint_MyContent">请填写工作内容</string>
 
 
     <!-- 考勤 -->

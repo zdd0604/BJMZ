@@ -234,7 +234,7 @@
     <dimen name="bak_chat_intro_text_spacing">0.0dip</dimen>
 
 
-
+    <dimen name="size_0">0dp</dimen>
     <dimen name="size_1">1dp</dimen>
     <dimen name="size_2">2dp</dimen>
     <dimen name="size_3">3dp</dimen>
