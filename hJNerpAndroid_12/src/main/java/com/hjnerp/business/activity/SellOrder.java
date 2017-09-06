@@ -130,6 +130,9 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
     TextView actionRightTv1;
     @BindView(R.id.add_sell_order_detail)
     LinearLayout add_sell_order_detail;
+    private String old_var_invaddr;
+    private String old_var_tel;
+    private String old_var_contact;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -296,12 +299,15 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
 //            sell_order_addess_send.setAdapter(adapter);
             sell_order_address.setText(performanceDatas.getMain().getVar_addr());
             sell_order_addess_send.setText(performanceDatas.getMain().getVar_invaddr());
+            old_var_invaddr = performanceDatas.getMain().getVar_invaddr();
             var_rcvcorr = performanceDatas.getMain().getVar_rcvcorr();
             id_terminal = performanceDatas.getMain().getId_terminal();
             name_terminal = performanceDatas.getMain().getName_terminal();
             dec_acclimit = performanceDatas.getMain().getDec_acclimit();
             var_tel = performanceDatas.getMain().getVar_tel();
+            old_var_tel = performanceDatas.getMain().getVar_tel();
             var_contact = performanceDatas.getMain().getVar_contact();
+            old_var_contact = performanceDatas.getMain().getVar_contact();
 //            id_seller = performanceDatas.getMain().getId_seller();
             id_corr = performanceDatas.getMain().getId_corr();
             name_corr = performanceDatas.getMain().getName_corr();
@@ -368,6 +374,7 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
         id_terminal_for_item = "";
         Constant.id_terminal_for_address = "";
         sellDetails.clear();
+        setResult(33);
     }
 
     @Override
@@ -414,6 +421,13 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
                 startActivityForResult(intent1, 66);
                 break;
             case R.id.sell_order_address:
+                name_terminal = sell_order_terminal.getText().toString().trim();
+                if (TextUtils.isEmpty(name_terminal)) {
+//            Toast.makeText(this, "请先选择所属终端", Toast.LENGTH_SHORT).show();
+                    new MyToast2(SellOrder.this, "请先选择所属终端!");
+
+                    return;
+                }
                 Intent intent2 = new Intent(this, BusinessSearch.class);
                 Constant.project_type = 3;
                 Constant.travel = true;
@@ -522,6 +536,7 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
             }
 
         StringBuffer stringBuffer = new StringBuffer();
+        companyID = "CM1101-0002";
         stringBuffer.append("{\"tableid\":\"dsaord\",\"opr\":\"SS\",\"no\":\"" + Constant.billsNo + "\",\"userid\":\"" + userID + "\",\"comid\":\"" + companyID + "\",");
         stringBuffer.append("\"menuid\":\"002020\",\"dealtype\":\"" + save + "\",\"data\":[");
         int gap = 0;
@@ -542,7 +557,7 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
             if (!Constant.JUDGE_TYPE) {
                 if (i >= countDetail) {
                     stringBuffer.append("{\"table\": \"dsaord_03\",\"oprdetail\":\"N\",\"where\":\" \",\"data\":[");
-
+                    stringBuffer.append("{\"column\":\"date_opr\",\"value\":\"" + a + "\",\"datatype\":\"datetime\"}, ");
                 } else if (i >= countDetail + gap) {
                     stringBuffer.append("{\"table\": \"dsaord_03\",\"oprdetail\":\"D\",\"where\":\" \",\"data\":[");
 
@@ -555,12 +570,18 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
 
             }
             stringBuffer.append("{\"column\":\"flag_sts\",\"value\":\"L\",\"datatype\":\"varchar\"},");
+            stringBuffer.append("{\"column\":\"flag_prerec\",\"value\":\"N\",\"datatype\":\"varchar\"},");
+            stringBuffer.append("{\"column\":\"flag_temp\",\"value\":\"N\",\"datatype\":\"varchar\"},");
+            stringBuffer.append("{\"column\":\"id_channel\",\"value\":\"10\",\"datatype\":\"varchar\"},");
+            stringBuffer.append("{\"column\":\"id_delivery\",\"value\":\"101\",\"datatype\":\"varchar\"},");
+            stringBuffer.append("{\"column\":\"dec_srate\",\"value\":\"1\",\"datatype\":\"varchar\"},");
+            stringBuffer.append("{\"column\":\"id_saprt\",\"value\":\"P01\",\"datatype\":\"varchar\"},");
             stringBuffer.append("{\"column\":\"id_recorder\",\"value\":\"" + userID + "\",\"datatype\":\"varchar\"},");
             stringBuffer.append("{\"column\":\"id_dept\",\"value\":\"" + id_dept + "\",\"datatype\":\"varchar\"},");
-            stringBuffer.append("{\"column\":\"date_opr\",\"value\":\"" + a + "\",\"datatype\":\"datetime\"}, ");
+
             stringBuffer.append("{\"column\":\"date_sign\",\"value\":\"" + b + "\",\"datatype\":\"datetime\"}, ");
             stringBuffer.append("{\"column\":\"flag_psts\",\"value\":\"\",\"datatype\":\"varchar\"},");
-            stringBuffer.append("{\"column\":\"id_table\",\"value\":\"dsapick\",\"datatype\":\"varchar\"},");
+            stringBuffer.append("{\"column\":\"id_table\",\"value\":\"\",\"datatype\":\"varchar\"},");
             stringBuffer.append("{\"column\":\"id_flow\",\"value\":\"FBsa\",\"datatype\":\"varchar\"},");
             stringBuffer.append("{\"column\":\"line_no\",\"value\":\"" + (i + 1) + "\",\"datatype\":\"int\"}, ");
             stringBuffer.append("{\"column\":\"id_ordsource\",\"value\":\"001\",\"datatype\":\"varchar\"}, ");
@@ -571,9 +592,9 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
             stringBuffer.append("{\"column\":\"id_seller\",\"value\":\"" + userID + "\",\"datatype\":\"varchar\"}, ");
             stringBuffer.append("{\"column\":\"dec_acaramt\",\"value\":\"" + sell_over_money.getText().toString().replaceAll(",", "") + "\",\"datatype\":\"double\"}, ");
             stringBuffer.append("{\"column\":\"dec_acclimit\",\"value\":\"" + dec_acclimit.replaceAll(",", "") + "\",\"datatype\":\"double\"}, ");
-            stringBuffer.append("{\"column\":\"var_invcontact\",\"value\":\"" + var_contact + "\",\"datatype\":\"varchar\"}, ");
+//            stringBuffer.append("{\"column\":\"var_invcontact\",\"value\":\"" + var_contact + "\",\"datatype\":\"varchar\"}, ");
             stringBuffer.append("{\"column\":\"var_tel\",\"value\":\"" + var_tel + "\",\"datatype\":\"varchar\"}, ");
-            stringBuffer.append("{\"column\":\"var_invtel\",\"value\":\"" + var_tel + "\",\"datatype\":\"varchar\"}, ");
+//            stringBuffer.append("{\"column\":\"var_invtel\",\"value\":\"" + var_tel + "\",\"datatype\":\"varchar\"}, ");
             stringBuffer.append("{\"column\":\"id_terminal\",\"value\":\"" + id_terminal + "\",\"datatype\":\"varchar\"}, ");
             stringBuffer.append("{\"column\":\"name_terminal\",\"value\":\"" + name_terminal + "\",\"datatype\":\"varchar\"}, ");
             stringBuffer.append("{\"column\":\"id_ordtype\",\"value\":\"" + orderType_id.get(sell_order_type.getSelectedItemPosition()) + "\",\"datatype\":\"varchar\"}, ");
@@ -613,14 +634,32 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
                 stringBuffer.append("{\"column\":\"dec_oriamt\",\"value\":\"" + String.valueOf(sellDetails.get(i).getOrder_price()) + "\",\"datatype\":\"double\"}, ");
 
             }
+            //票货同行单拿出来
+            if (sell_order_space.getSelectedItemPosition() == 0) {//选择是
+                stringBuffer.append("{\"column\":\"flag_itemwith\",\"value\":\"Y\",\"datatype\":\"char\"}, ");
+                stringBuffer.append("{\"column\":\"var_invaddr\",\"value\":\"" + old_var_invaddr + "\",\"datatype\":\"varchar\"}, ");
+                stringBuffer.append("{\"column\":\"var_invtel\",\"value\":\"" + old_var_tel + "\",\"datatype\":\"varchar\"}, ");
+                stringBuffer.append("{\"column\":\"var_invcontact\",\"value\":\"" + old_var_contact + "\",\"datatype\":\"varchar\"}, ");
+//                stringBuffer.append("{\"column\":\"id_invexpress\",\"value\":\"" + old_var_contact + "\",\"datatype\":\"varchar\"}, ");
+
+            } else {//选择否
+                stringBuffer.append("{\"column\":\"flag_itemwith\",\"value\":\"N\",\"datatype\":\"char\"}, ");
+                stringBuffer.append("{\"column\":\"var_invaddr\",\"value\":\"" + var_invaddr + "\",\"datatype\":\"varchar\"}, ");
+                stringBuffer.append("{\"column\":\"var_invtel\",\"value\":\"" + var_tel + "\",\"datatype\":\"varchar\"}, ");
+                stringBuffer.append("{\"column\":\"var_invcontact\",\"value\":\"" + var_contact + "\",\"datatype\":\"varchar\"}, ");
+                stringBuffer.append("{\"column\":\"id_invexpress\",\"value\":\"" + orderExpress_id.get(sell_order_express.getSelectedItemPosition()) + "\",\"datatype\":\"varchar\"}, ");
+//                stringBuffer.append("{\"column\":\"var_invaddr\",\"value\":\"" + old_var_invaddr + "\",\"datatype\":\"varchar\"}, ");
+//                stringBuffer.append("{\"column\":\"var_invtel\",\"value\":\"" + old_var_tel + "\",\"datatype\":\"varchar\"}, ");
+//                stringBuffer.append("{\"column\":\"var_invcontact\",\"value\":\"" + old_var_contact + "\",\"datatype\":\"varchar\"}, ");
+
+            }
             stringBuffer.append("{\"column\":\"dec_orisamt\",\"value\":\"" + String.valueOf(allprice) + "\",\"datatype\":\"double\"}, ");
             stringBuffer.append("{\"column\":\"var_rcvcorr\",\"value\":\"" + var_rcvcorr + "\",\"datatype\":\"varchar\"}, ");
             stringBuffer.append("{\"column\":\"var_addr\",\"value\":\"" + address + "\",\"datatype\":\"varchar\"}, ");
             stringBuffer.append("{\"column\":\"id_express\",\"value\":\"" + orderExpress_id.get(sell_order_express.getSelectedItemPosition()) + "\",\"datatype\":\"varchar\"}, ");
-            stringBuffer.append("{\"column\":\"var_invaddr\",\"value\":\"" + var_invaddr + "\",\"datatype\":\"varchar\"}, ");
+//            stringBuffer.append("{\"column\":\"var_invaddr\",\"value\":\"" + var_invaddr + "\",\"datatype\":\"varchar\"}, ");
             stringBuffer.append("{\"column\":\"date_planinv\",\"value\":\"" + time + "\",\"datatype\":\"datetime\"}, ");
-            stringBuffer.append("{\"column\":\"date_demand\",\"value\":\"" + time_p + "\",\"datatype\":\"datetime\"}, ");
-            stringBuffer.append("{\"column\":\"flag_itemwith\",\"value\":\"" + (sell_order_space.getSelectedItemPosition() == 1 ? "N" : "Y") + "\",\"datatype\":\"varchar\"}]}");
+            stringBuffer.append("{\"column\":\"date_demand\",\"value\":\"" + time_p + "\",\"datatype\":\"datetime\"}]}");
             if (i != cycleTime - 1) {
                 stringBuffer.append(",");
             }
@@ -652,9 +691,10 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
                         if (dealtype.equals(Constant.SAVE_DEALTYPE)) {
                             Constant.billsNo = businessFlag.getNo();
 //                            ToastUtil.ShowShort(getApplicationContext(), content);
-                            if (flag.equalsIgnoreCase("Y")){
+                            if (flag.equalsIgnoreCase("Y")) {
                                 new MyToast(SellOrder.this, "成功!");
-                            }else {
+                                setResult(33);
+                            } else {
                                 new MyToast2(SellOrder.this, "失败!");
                             }
                             var_title_code.setText(Constant.billsNo);
@@ -663,13 +703,15 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
                         } else {
                             Constant.billsNo = businessFlag.getNo();
 //                            ToastUtil.ShowShort(getApplicationContext(), content);
-                            if (flag.equalsIgnoreCase("Y")){
+                            if (flag.equalsIgnoreCase("Y")) {
                                 new MyToast(SellOrder.this, "成功!");
-                            }else {
+                                setResult(22);
+                                finish();
+                            } else {
                                 new MyToast2(SellOrder.this, "失败!");
                             }
-                            setResult(22);
-                            finish();
+//                            setResult(22);
+//                            finish();
                         }
                         if (waitDialogRectangle != null && waitDialogRectangle.isShowing()) {
                             waitDialogRectangle.dismiss();
