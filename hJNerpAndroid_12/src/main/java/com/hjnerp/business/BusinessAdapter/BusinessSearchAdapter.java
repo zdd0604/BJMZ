@@ -47,21 +47,20 @@ public class BusinessSearchAdapter extends RecyclerView.Adapter<BusinessSearchAd
             case 0:
                 break;
             case 1:
-                holder.pro_text.setText("终端");
-                holder.text_address.setText("客户");
+                holder.pro_text.setText(mContext.getString(R.string.sellOrder_Tile_Terminal));
+                holder.text_address.setText(mContext.getString(R.string.sellOrder_Tile_Client));
                 holder.item_client.setTextColor(Color.parseColor("#888888"));
                 holder.pro_text.setTextColor(Color.parseColor("#000000"));
                 break;
             case 2:
-                holder.pro_text.setText("客户");
-                holder.text_address.setText("地址");
+                holder.pro_text.setText(mContext.getString(R.string.sellOrder_Tile_Client));
+                holder.text_address.setText(mContext.getString(R.string.sellOrder_Tile_Address));
                 holder.item_client.setTextColor(Color.parseColor("#888888"));
                 holder.pro_text.setTextColor(Color.parseColor("#000000"));
-
                 break;
             case 3:
-                holder.pro_text.setText("地   址");
-                holder.text_address.setText("联系人");
+                holder.pro_text.setText(mContext.getString(R.string.sellOrder_Tile_Address));
+                holder.text_address.setText(mContext.getString(R.string.sellOrder_Tile_Relation));
                 holder.pro_text.setTextColor(Color.parseColor("#000000"));
                 holder.pro_text.setTextColor(Color.parseColor("#000000"));
                 break;
@@ -69,11 +68,11 @@ public class BusinessSearchAdapter extends RecyclerView.Adapter<BusinessSearchAd
                 holder.linearlayout_overclient.setVisibility(View.VISIBLE);
                 holder.linear_layout_id.setVisibility(View.VISIBLE);
                 holder.linear_layout_chkparm.setVisibility(View.VISIBLE);
-                holder.pro_text.setText("产品");
-                holder.text_address.setText("规格");
-                holder.text_overclient.setText("型号");
-                holder.text_id_item.setText("代码");
-                holder.text_chkparm.setText("性能");
+                holder.pro_text.setText(mContext.getString(R.string.sellOrder_Tile_Product));
+                holder.text_address.setText(mContext.getString(R.string.sellOrder_Tile_Specification));
+                holder.text_overclient.setText(mContext.getString(R.string.sellOrder_Tile_Type));
+                holder.text_id_item.setText(mContext.getString(R.string.sellOrder_Tile_Code));
+                holder.text_chkparm.setText(mContext.getString(R.string.sellOrder_Tile_Performance));
                 holder.item_client.setTextColor(Color.parseColor("#888888"));
                 holder.item_overclient.setTextColor(Color.parseColor("#888888"));
                 holder.item_chkparm.setTextColor(Color.parseColor("#888888"));

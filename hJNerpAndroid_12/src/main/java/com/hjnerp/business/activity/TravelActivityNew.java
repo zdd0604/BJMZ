@@ -152,7 +152,7 @@ public class TravelActivityNew extends ActionBarWidgetActivity implements View.O
 
                 break;
             case "002020":
-                actionCenterTv.setText(getString(R.string.action_center_content_sellList));
+                actionCenterTv.setText(getString(R.string.sellOrder_Tile_Activity));
                 break;
         }
         users = new ArrayList<>();

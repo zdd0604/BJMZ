@@ -517,7 +517,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/size_5"
                     android:gravity="center"
-                    android:text="@string/sellorder_add_sllInfo"
+                    android:text="@string/sellOrder_Tile_TvTitle"
                     android:textColor="#27a4e3"
                     android:textSize="16sp" />
             </LinearLayout>

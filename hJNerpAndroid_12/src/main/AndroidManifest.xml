@@ -336,8 +336,12 @@
             android:screenOrientation="portrait"
             android:theme="@style/Theme.HjNoActionBar"
             android:windowSoftInputMode="stateHidden|adjustResize" />
+
+        <!-- 搜索共用类 -->
         <activity
             android:name="com.hjnerp.business.activity.BusinessSearch"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.HjNoActionBar"
             android:windowSoftInputMode="stateHidden|adjustResize" />
 
         <service

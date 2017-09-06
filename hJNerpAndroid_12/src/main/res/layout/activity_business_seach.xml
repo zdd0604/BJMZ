@@ -3,19 +3,27 @@
     android:id="@+id/activity_business_seach"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/actionbar_title_bg"
     android:orientation="vertical">
+
+    <include
+        android:id="@+id/actionbar_search"
+        layout="@layout/actionbar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
     <com.hjnerp.widget.ClearEditText
         android:id="@+id/project_search"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/Item_EditeText_SearchEdStyle"
+        android:layout_below="@id/actionbar_search"
         android:hint="请搜索关键字" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/project_recy"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/project_search" />
+        android:layout_below="@id/project_search"
+        android:background="@color/white" />
 
     <LinearLayout
         android:id="@+id/secah_error"

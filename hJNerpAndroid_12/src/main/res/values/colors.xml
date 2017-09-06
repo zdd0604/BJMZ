@@ -545,4 +545,7 @@
     <!-- actionbar -->
     <color name="actionbar_title_bg">#F5F5F5</color>
     <color name="actionbar_viewDivider_bg">#d7d7d7</color>
+
+    <!-- search item的title -->
+    <color name="item_search_tvTitleColor">#7C7C7C</color>
 </resources>

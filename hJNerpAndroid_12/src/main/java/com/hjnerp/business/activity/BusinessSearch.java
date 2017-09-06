@@ -1,6 +1,5 @@
 package com.hjnerp.business.activity;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -18,7 +17,7 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 import com.hjnerp.business.BusinessAdapter.BusinessSearchAdapter;
 import com.hjnerp.business.BusinessQueryDao.BusinessQueryDao;
-import com.hjnerp.common.ActivitySupport;
+import com.hjnerp.common.ActionBarWidgetActivity;
 import com.hjnerp.common.Constant;
 import com.hjnerp.dao.QiXinBaseDao;
 import com.hjnerp.model.Ctlm7502Json;
@@ -51,6 +50,9 @@ import java.util.regex.Pattern;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 import static com.hjnerp.common.Constant.dsaordbaseJsons_new;
 import static com.hjnerp.common.Constant.id_terminal_for_address;
 import static com.hjnerp.common.Constant.id_terminal_for_item;
@@ -58,20 +60,35 @@ import static com.hjnerp.common.Constant.sellDetails;
 import static com.hjnerp.common.Constant.sellDetailsPosition;
 import static com.hjnerp.common.Constant.user_myid;
 
-public class BusinessSearch extends ActivitySupport implements View.OnClickListener {
-    private ClearEditText project_search;
-    private RecyclerView project_recy;
-    private CharSequence temp;//监听前的文本
-    private BusinessSearchAdapter adapter;
-    private Context mContext;
-    private LinearLayout secah_error;
+public class BusinessSearch extends ActionBarWidgetActivity implements View.OnClickListener {
+    @BindView(R.id.action_center_tv)
+    TextView actionCenterTv;
+    @BindView(R.id.action_right_tv)
+    TextView actionRightTv;
+    @BindView(R.id.action_right_tv1)
+    TextView actionRightTv1;
+    @BindView(R.id.action_left_tv)
+    TextView actionLeftTv;
+    @BindView(R.id.project_search)
+    ClearEditText project_search;
+    @BindView(R.id.project_recy)
+    RecyclerView project_recy;
+    @BindView(R.id.secah_error)
+    LinearLayout secah_error;
+    @BindView(R.id.text_corr)
+    TextView text_corr;
+    @BindView(R.id.activity_business_seach)
+    RelativeLayout activity_business_seach;
+
+    CharSequence temp;//监听前的文本
+    BusinessSearchAdapter adapter;
     private HttpClientManager.HttpResponseHandler responseHandler = new NsyncDataHandler();
     public static final String JSON_VALUE = "values";
     public static final Pattern p = Pattern.compile("\\s*|\t|\r|\n");
     private List<Ctlm7502Json> travelDatas = new ArrayList<>();
     private WaitDialogRectangle waitDialog;
     private List<DsaordbaseJson> dsaordbaseJsons = new ArrayList<>();
-    private TextView text_corr;
+
     private List<String> terminal_ids = new ArrayList<>();
     private List<String> address_ids = new ArrayList<>();
     private List<String> address_names = new ArrayList<>();
@@ -80,43 +97,76 @@ public class BusinessSearch extends ActivitySupport implements View.OnClickListe
     private List<String> overclient_names = new ArrayList<>();
     private List<String> dec_acaramt = new ArrayList<>();
     private List<String> var_chkparm = new ArrayList<>();
-    private RelativeLayout activity_business_seach;
+
+    Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            String content = (String) msg.obj;
+            switch (msg.what) {
+                case 0:
+                    getWProject(content, 0);
+                    break;
+                case 1:
+                    getWProject(content, 1);
+                    break;
+                case 2:
+//                    ToastUtil.ShowShort(getApplicationContext(), "结果为空");
+                    project_recy.setVisibility(View.GONE);
+                    secah_error.setVisibility(View.VISIBLE);
+                    switch (Constant.project_type) {
+                        case 0://项目搜索（工作日志，出差外出）
+                            text_corr.setText("找不到相关项目");
+                            break;
+                        case 1://终端搜索
+                            text_corr.setText("找不到相关客户");
+                            break;
+                        case 2://客户搜索
+                            text_corr.setText("找不到相关客户");
+                            break;
+                        case 3://地址搜索
+                            text_corr.setText("找不到相关地址");
+                            break;
+                        case 4://产品搜索
+                            text_corr.setText("找不到相关产品");
+                            break;
+                    }
+
+                    break;
+            }
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mActionBar = getSupportActionBar();
         setContentView(R.layout.activity_business_seach);
-        mActionBar.setDisplayHomeAsUpEnabled(true);
-        switch (Constant.project_type) {
-            case 0://项目搜索（工作日志，出差外出）
-                mActionBar.setTitle("项目搜索");
-                break;
-            case 1://终端搜索
-                mActionBar.setTitle("终端搜索");
-                break;
-            case 2://客户搜索
-                mActionBar.setTitle("客户搜索");
-                break;
-            case 3://地址搜索
-                mActionBar.setTitle("地址搜索");
-                break;
-            case 4://产品搜索
-                mActionBar.setTitle("产品搜索");
-                break;
-        }
-
-        mContext = this;
+        ButterKnife.bind(this);
         initView();
     }
 
     private void initView() {
-        project_search = (ClearEditText) findViewById(R.id.project_search);
-        project_search.addTextChangedListener(textWatcher);
-        project_recy = (RecyclerView) findViewById(R.id.project_recy);
-        text_corr = (TextView) findViewById(R.id.text_corr);
+        switch (Constant.project_type) {
+            case 0://项目搜索（工作日志，出差外出）
+                actionCenterTv.setText("项目搜索");
+                break;
+            case 1://终端搜索
+                actionCenterTv.setText("终端搜索");
+                break;
+            case 2://客户搜索
+                actionCenterTv.setText("客户搜索");
+                break;
+            case 3://地址搜索
+                actionCenterTv.setText("地址搜索");
+                break;
+            case 4://产品搜索
+                actionCenterTv.setText("产品搜索");
+                break;
+        }
         project_recy.setLayoutManager(new LinearLayoutManager(this));
-        secah_error = (LinearLayout) findViewById(R.id.secah_error);
+        project_search.addTextChangedListener(textWatcher);
+        actionLeftTv.setOnClickListener(this);
+        actionRightTv.setVisibility(View.GONE);
 //        if (Constant.project_type == 3) {//保存好的地址里拿出来
 //            if (orderAddress != null && orderAddress.size() > 0) {
 //                for (int i1 = 0; i1 < orderAddress.size(); i1++) {
@@ -133,17 +183,12 @@ public class BusinessSearch extends ActivitySupport implements View.OnClickListe
         if (Constant.travel) {//是不是出差外出
             if (travelDatas.size() > 0) {
                 setHandlerMsg(1, project_search.getText().toString());
-
             } else {
                 readFrom7502();
             }
-
         } else {
             setHandlerMsg(0, project_search.getText().toString());
-
         }
-
-
     }
 
     private void readFrom7502() {
@@ -157,7 +202,6 @@ public class BusinessSearch extends ActivitySupport implements View.OnClickListe
                     param.addKeyValue(Constant.BM_ACTION_TYPE, "MobileSyncDataDownload")
                             .addKeyValue("id_table", StringUtils.join("ctlm7502_corr"))
                             .addKeyValue("condition", "1=1");
-
                     break;
                 case 1:
                 case 2:
@@ -215,7 +259,6 @@ public class BusinessSearch extends ActivitySupport implements View.OnClickListe
 
 
     TextWatcher textWatcher = new TextWatcher() {
-
         @Override
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {
             temp = s;
@@ -223,7 +266,6 @@ public class BusinessSearch extends ActivitySupport implements View.OnClickListe
 
         @Override
         public void onTextChanged(CharSequence s, int start, int before, int count) {
-
         }
 
         @Override
@@ -236,47 +278,6 @@ public class BusinessSearch extends ActivitySupport implements View.OnClickListe
                 }
             } else {
                 setHandlerMsg(0, s.toString());
-            }
-
-        }
-    };
-
-    Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            String content = (String) msg.obj;
-            switch (msg.what) {
-                case 0:
-                    getWProject(content, 0);
-                    break;
-                case 1:
-                    getWProject(content, 1);
-
-                    break;
-                case 2:
-//                    ToastUtil.ShowShort(getApplicationContext(), "结果为空");
-                    project_recy.setVisibility(View.GONE);
-                    secah_error.setVisibility(View.VISIBLE);
-                    switch (Constant.project_type) {
-                        case 0://项目搜索（工作日志，出差外出）
-                            text_corr.setText("找不到相关项目");
-                            break;
-                        case 1://终端搜索
-                            text_corr.setText("找不到相关客户");
-                            break;
-                        case 2://客户搜索
-                            text_corr.setText("找不到相关客户");
-                            break;
-                        case 3://地址搜索
-                            text_corr.setText("找不到相关地址");
-                            break;
-                        case 4://产品搜索
-                            text_corr.setText("找不到相关产品");
-                            break;
-                    }
-
-                    break;
             }
         }
     };
@@ -400,7 +401,6 @@ public class BusinessSearch extends ActivitySupport implements View.OnClickListe
 
         @Override
         public void onException(Exception e) {
-
         }
 
         @Override
@@ -627,6 +627,10 @@ public class BusinessSearch extends ActivitySupport implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-
+        switch (v.getId()) {
+            case R.id.action_left_tv:
+                finish();
+                break;
+        }
     }
 }

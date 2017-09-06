@@ -187,6 +187,14 @@
         <item name="android:textColor">#f00</item>
     </style>
 
+
+    <!-- 垂直布局 宽度与父控件一样高度自适应 -->
+    <style name="Item_LinearLayout_VerticalDefaultStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:background">@color/white</item>
+    </style>
     <!-- 垂直布局 高宽全屏 -->
     <style name="Item_LinearLayout_VerticalStyle">
         <item name="android:layout_width">match_parent</item>
@@ -286,5 +294,53 @@
         <item name="android:gravity">center</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:background">@drawable/button_normal_bg</item>
+    </style>
+
+    <!-- 搜索的EditText -->
+    <style name="Item_EditeText_SearchEdStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/size_35</item>
+        <item name="android:layout_margin">@dimen/size_5</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:background">@drawable/search_ed_bg</item>
+        <item name="android:drawableLeft">@drawable/icon_edit_search</item>
+        <item name="android:drawablePadding">@dimen/size_10</item>
+        <item name="android:paddingLeft">@dimen/size_10</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <!-- 搜索的Item 标题 -->
+    <style name="Item_Search_TvTitleStyle">
+        <item name="android:layout_width">@dimen/size_0</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">@dimen/size_10</item>
+        <item name="android:layout_marginTop">@dimen/size_2</item>
+        <item name="android:layout_marginBottom">@dimen/size_2</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textColor">@color/item_search_tvTitleColor</item>
+        <item name="android:textSize">@dimen/font_size_15</item>
+    </style>
+
+    <!-- 搜索的Item 内容-->
+    <style name="Item_Search_TvContentStyle">
+        <item name="android:layout_width">@dimen/size_0</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginRight">@dimen/size_10</item>
+        <item name="android:layout_marginTop">@dimen/size_2</item>
+        <item name="android:layout_marginBottom">@dimen/size_2</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_weight">6</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">@dimen/font_size_15</item>
+    </style>
+
+    <!-- 搜索的Item LinearLayoutHorizontal 水平布局 -->
+    <style name="Item_Search_LinearLayoutHorizontalStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/size_1</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:orientation">horizontal</item>
     </style>
 </resources>

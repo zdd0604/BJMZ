@@ -116,12 +116,8 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
     private int countDetail;
     private Spinner sell_order_express;
 
-    //    @BindView(R.id.action_left_img)
-//    ImageView actionLeftImg;
     @BindView(R.id.action_left_tv)
     TextView actionLeftTv;
-    //    @BindView(R.id.action_back_layout)
-//    LinearLayout actionBackLayout;
     @BindView(R.id.action_center_tv)
     TextView actionCenterTv;
     @BindView(R.id.action_right_tv)
@@ -144,7 +140,7 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
     }
 
     private void initView() {
-        actionCenterTv.setText(getString(R.string.action_center_content_sellTitle));
+        actionCenterTv.setText(getString(R.string.sellOrder_Tile_NewActivity));
         actionRightTv.setText(getString(R.string.action_right_content_send));
         actionRightTv1.setText(getString(R.string.action_right_content_save));
         actionRightTv1.setVisibility(View.VISIBLE);
