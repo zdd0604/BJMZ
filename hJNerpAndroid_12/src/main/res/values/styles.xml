@@ -188,7 +188,6 @@
     </style>
 
 
-
     <style name="menu_item_text_style">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">45dp</item>
@@ -197,4 +196,72 @@
         <item name="android:background">@drawable/menu_item_selector</item>
     </style>
 
+    <!-- 垂直布局 高宽全屏 -->
+    <style name="Item_LinearLayout_VerticalStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@color/actionbar_title_bg</item>
+    </style>
+    <!-- 水平布局 高度40 -->
+    <style name="Item_LinearLayout_HorizontalStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/size_40</item>
+        <item name="android:background">@color/black</item>
+    </style>
+    <!-- actionbar的相对布局 -->
+    <style name="Item_RelativeLayout_ActionBarStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/size_44</item>
+        <item name="android:background">@color/actionbar_title_bg</item>
+    </style>
+    <!-- actionbar的相对布局左边标题-->
+    <style name="Item_TextView_ActionBarLeftStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:drawableLeft">@drawable/icon_action_back_img</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/actionbar_title_tcolor</item>
+        <item name="android:textSize">@dimen/font_size_17</item>
+        <item name="android:drawablePadding">@dimen/size_.5</item>
+        <item name="android:text">@string/action_left_content_back</item>
+    </style>
+    <!-- actionbar的相对布局大标题-->
+    <style name="Item_TextView_ActionBarCenterStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">@dimen/font_size_18</item>
+        <item name="android:text">@string/action_right_content_title</item>
+    </style>
+    <!-- actionbar的相对布局右标题  -->
+    <style name="Item_TextView_ActionBarRightStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:textColor">@color/actionbar_title_tcolor</item>
+        <item name="android:layout_marginRight">@dimen/size_10</item>
+        <item name="android:textSize">@dimen/font_size_17</item>
+        <item name="android:text">@string/action_right_right_title</item>
+    </style>
+    <!-- actionbar的相对布局右标题 -->
+    <style name="Item_TextView_ActionBarRight1Style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:textColor">@color/actionbar_title_tcolor</item>
+        <item name="android:layout_marginRight">@dimen/size_10</item>
+        <item name="android:textSize">@dimen/font_size_17</item>
+        <item name="android:text">@string/action_right_right1_title</item>
+    </style>
+    <!-- actionbar 分割线 android:layout_width="match_parent"
+        android:layout_height="@dimen/size_1"
+        android:background="@color/actionbar_view_bg2"-->
+    <style name="Item_TextView_ActionBarViewDividerStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/size_1</item>
+        <item name="android:background">@color/actionbar_viewDivider_bg</item>
+    </style>
 </resources>

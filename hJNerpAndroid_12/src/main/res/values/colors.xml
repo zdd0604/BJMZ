@@ -112,7 +112,6 @@
     <color name="blanchedalmond">#FFEBCD</color>
     <!-- 白杏色 -->
 
-    <color name="mistyrose">#FFE4E1</color>
     <!-- 浅玫瑰色 -->
 
     <color name="text_color">#717171</color>
@@ -532,16 +531,19 @@
     <color name="menu_item_text_color">#FFFF4081</color>
     <color name="title_color">#7F7F7F</color>
     <color name="title_hint">#CACACF</color>
-    <!-- actionbar -->
+
     <color name="actionbar_title_tcolor">#35ACFF</color>
-    <color name="actionbar_title_bg">#F5F5F5</color>
     <color name="actionbar_title_bg1">#F6F6F6</color>
     <color name="actionbar_bg">#E4E4E4</color>
     <color name="actionbar_view_bg">#C3C3C3</color>
-    <color name="actionbar_view_bg2">#d7d7d7</color>
+
     <color name="item_bg_title">#F8F8F8</color>
     <color name="item_halving_bg">#E5E5E5</color>
     <color name="item_textcolor">#27a4e3</color>
     <color name="dialog_bg_color">#9d16161b</color>
     <color name="dialog_bg_color2">#cc000000</color>
+
+    <!-- actionbar -->
+    <color name="actionbar_title_bg">#F5F5F5</color>
+    <color name="actionbar_viewDivider_bg">#d7d7d7</color>
 </resources>

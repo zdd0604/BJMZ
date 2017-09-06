@@ -4,73 +4,40 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/size_44"
-        android:background="@color/actionbar_title_bg">
+    <RelativeLayout style="@style/Item_RelativeLayout_ActionBarStyle">
 
         <!--<LinearLayout-->
-            <!--android:id="@+id/action_back_layout"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:layout_centerVertical="true"-->
-            <!--android:gravity="center"-->
-            <!--android:orientation="horizontal">-->
+        <!--android:id="@+id/action_back_layout"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_centerVertical="true"-->
+        <!--android:gravity="center"-->
+        <!--android:orientation="horizontal">-->
 
-            <!--<ImageView-->
-                <!--android:id="@+id/action_left_img"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:src="@drawable/icon_action_back_img" />-->
+        <!--<ImageView-->
+        <!--android:id="@+id/action_left_img"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:src="@drawable/icon_action_back_img" />-->
 
-            <TextView
-                android:id="@+id/action_left_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:drawableLeft="@drawable/icon_action_back_img"
-                android:drawablePadding="@dimen/size_.5"
-                android:gravity="center"
-                android:text="返回"
-                android:textColor="@color/actionbar_title_tcolor"
-                android:textSize="@dimen/font_size_17" />
-        <!--</LinearLayout>-->
+        <TextView
+            android:id="@+id/action_left_tv"
+            style="@style/Item_TextView_ActionBarLeftStyle" />
 
         <TextView
             android:id="@+id/action_center_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:text="大标题"
-            android:textColor="@color/black"
-            android:textSize="@dimen/font_size_18" />
+            style="@style/Item_TextView_ActionBarCenterStyle" />
 
         <TextView
             android:id="@+id/action_right_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="@dimen/size_10"
-            android:text="右标题"
-            android:textColor="@color/actionbar_title_tcolor"
-            android:textSize="@dimen/font_size_17" />
+            style="@style/Item_TextView_ActionBarRightStyle" />
 
         <TextView
             android:id="@+id/action_right_tv1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="@dimen/size_10"
+            style="@style/Item_TextView_ActionBarRight1Style"
             android:layout_toLeftOf="@id/action_right_tv"
-            android:text="右标题"
-            android:textColor="@color/actionbar_title_tcolor"
-            android:textSize="@dimen/font_size_17"
             android:visibility="gone" />
     </RelativeLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/size_1"
-        android:background="@color/actionbar_view_bg2" />
+    <View style="@style/Item_TextView_ActionBarViewDividerStyle" />
 </LinearLayout>
