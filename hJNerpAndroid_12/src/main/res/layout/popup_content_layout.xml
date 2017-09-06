@@ -5,8 +5,8 @@
 
     <ListView
         android:id="@+id/dgtdrech_list"
-        android:layout_width="200dp"
+        android:layout_width="@dimen/size_200"
         android:layout_height="wrap_content"
         android:divider="@null"
-        android:background="@color/actionbar_bkg_stacked"/>
+        android:background="@color/white"/>
 </LinearLayout>

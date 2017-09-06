@@ -336,11 +336,11 @@ public class BusinessDgtdrechtml extends ActionBarWidgetActivity implements View
                 ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, true);
         // 如果不设置PopupWindow的背景，有些版本就会出现一个问题：无论是点击外部区域还是Back键都无法dismiss弹框
         mPopupWindow.setBackgroundDrawable(new ColorDrawable());
-        // 设置好参数之后再show
-        // popupWindow.showAsDropDown(mButton2);  // 默认在mButton2的左下角显示
         contentView.measure(View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED);
-        int xOffset = anchorView.getWidth() / 2 - contentView.getMeasuredWidth() / 2;
-        mPopupWindow.showAsDropDown(anchorView, xOffset, 0);    // 在mButton2的中间显示
+//        int xOffset = anchorView.getWidth() / 2 - contentView.getMeasuredWidth() / 2;
+//        mPopupWindow.showAsDropDown(anchorView, xOffset, 0);    //
+        // 设置好参数之后再show
+        mPopupWindow.showAsDropDown(anchorView);  // 默认在mButton2的左下角显示
     }
 
     private View getPopupWindowContentView(final List<String> content, final String btnType) {
