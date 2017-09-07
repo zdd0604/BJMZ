@@ -1,4 +1,4 @@
-package com.hjnerp.business.activity;
+package com.hjnerp.model;
 
 /**
  * Created by zy on 2017/6/12.

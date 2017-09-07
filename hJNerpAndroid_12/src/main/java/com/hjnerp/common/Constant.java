@@ -3,7 +3,7 @@ package com.hjnerp.common;
 import android.os.Environment;
 
 import com.hjnerp.business.activity.DsaordbaseJson;
-import com.hjnerp.business.activity.SellOrderModel;
+import com.hjnerp.model.SellOrderModel;
 import com.hjnerp.model.Ctlm1345;
 import com.hjnerp.model.Ctlm7161;
 import com.hjnerp.model.DdisplocatBean;

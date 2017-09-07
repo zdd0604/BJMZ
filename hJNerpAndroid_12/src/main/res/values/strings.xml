@@ -150,4 +150,8 @@
     <string name="dialog_Message_submitData">正在提交数据</string>
     <string name="dialog_Message_upLoadData">正在加载数据</string>
     <string name="dialog_Message_selectData">正在查询数据</string>
+
+    <!-- dialog提示语 -->
+    <string name="orderFinding_Title_TlActivity">订单查询</string>
+    <string name="orderFinding_Title_RightTvSearch">查询</string>
 </resources>

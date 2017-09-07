@@ -583,47 +583,7 @@ public class BusinessSearch extends ActionBarWidgetActivity implements View.OnCl
 //        } else {
 //            readFrom7502();
 //        }
-
-
     }
-
-
-    private String processBusinessCompress(String fileName) {
-        // TODO Auto-generated method stub
-        ZipInputStream zis = null;
-        try {
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            byte[] data = new byte[1024];
-            File f = new File(getExternalCacheDir(), fileName);
-            FileInputStream fis = new FileInputStream(f);
-            zis = new ZipInputStream(fis);
-            ZipEntry zip = zis.getNextEntry();
-            int len = 0;
-            while ((len = zis.read(data)) != -1) {
-                baos.write(data, 0, len);
-            }
-            String json = new String(baos.toByteArray(), HTTP.UTF_8);
-            return json;
-
-        } catch (FileNotFoundException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } finally {
-            try {
-                if (zis != null) {
-                    zis.close();
-                }
-            } catch (IOException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-        }
-        return null;
-    }
-
 
     @Override
     public void onClick(View v) {

@@ -367,6 +367,7 @@
             android:screenOrientation="portrait"
             android:theme="@style/Theme.HjNoActionBar"
             android:windowSoftInputMode="stateHidden|adjustResize" />
+        <!-- 订单搜索 -->
         <activity
             android:name="com.hjnerp.business.activity.OrderFinding"
             android:theme="@style/Theme.HjNoActionBar"

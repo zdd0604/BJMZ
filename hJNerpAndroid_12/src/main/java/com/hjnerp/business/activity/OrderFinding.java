@@ -5,18 +5,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.DatePicker;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
+import com.hjnerp.common.ActionBarWidgetActivity;
 import com.hjnerp.common.Constant;
 import com.hjnerp.dao.BusinessBaseDao;
 import com.hjnerp.dao.QiXinBaseDao;
@@ -26,18 +24,14 @@ import com.hjnerp.net.HttpClientBuilder;
 import com.hjnerp.net.HttpClientManager;
 import com.hjnerp.util.ToastUtil;
 import com.hjnerp.util.myscom.StringUtils;
-import com.hjnerp.widget.WaitDialogRectangle;
 import com.hjnerpandroid.R;
 
 import org.apache.http.HttpResponse;
-import org.apache.http.protocol.HTTP;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -53,52 +47,66 @@ import java.util.List;
 import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipInputStream;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 import static android.jiebao.utils.Tools.getToday;
 import static com.hjnerp.common.Constant.dsaordbaseJsons_new;
 import static com.hjnerp.common.Constant.user_myid;
 
-public class OrderFinding extends AppCompatActivity implements View.OnClickListener {
-
-    private ImageView back_img;
-    private TextView title_checked;
-    private TextView object_name;
-    private Spinner object_person;
-    private LinearLayout linear_list;
+public class OrderFinding extends ActionBarWidgetActivity implements View.OnClickListener {
     private List<Ctlm1345> myauthuser = new ArrayList<>();
     private List<String> users_id = new ArrayList<String>();
     private List<String> users_name = new ArrayList<String>();
     private List<DsaordbaseJson> dsaordbaseJsons = new ArrayList<DsaordbaseJson>();
     private ArrayAdapter<String> adapter;
-    private Button finding;
-    private WaitDialogRectangle waitDialog;
     private HttpClientManager.HttpResponseHandler responseHandler = new NsyncDataHandler();
     public static final String JSON_VALUE = "values";
     public static final Pattern p = Pattern.compile("\\s*|\t|\r|\n");
     private ArrayList<ArrayList<String>> mTableDatas;
-    private LockTableView mLockTableView;
+
     private String tab_name;
-    private TextView table_begin_time;
-    private LinearLayout table_date_from;
-    private TextView table_end_time;
-    private LinearLayout table_date_to;
     private Calendar c = Calendar.getInstance();
     private String pattern = "MM-dd-yyyy";
     private SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.CHINA);
     private SimpleDateFormat dateFormat = new SimpleDateFormat(pattern, Locale.CHINA);
     private SimpleDateFormat dateFormat2 = new SimpleDateFormat("yyyy.MM.dd", Locale.CHINA);
-    private TextView all_price_textview;
-    private LinearLayout all_price_layout;
     private double allPrice = 0.0;//总价
+    private LockTableView mLockTableView;
+
+    @BindView(R.id.action_left_tv)
+    TextView actionLeftTv;
+    @BindView(R.id.action_center_tv)
+    TextView actionCenterTv;
+    @BindView(R.id.action_right_tv)
+    TextView actionRightTv;
+    @BindView(R.id.action_right_tv1)
+    TextView actionRightTv1;
+
+    @BindView(R.id.object_name)
+    TextView object_name;
+    @BindView(R.id.object_person)
+    Spinner object_person;
+    @BindView(R.id.linear_list)
+    LinearLayout linear_list;
+    @BindView(R.id.table_begin_time)
+    TextView table_begin_time;
+    @BindView(R.id.table_date_from)
+    LinearLayout table_date_from;
+    @BindView(R.id.table_end_time)
+    TextView table_end_time;
+    @BindView(R.id.table_date_to)
+    LinearLayout table_date_to;
+    @BindView(R.id.all_price_textview)
+    TextView all_price_textview;
+    @BindView(R.id.all_price_layout)
+    LinearLayout all_price_layout;
 
     //网络查询表格的方法，将来可以考虑写成公用的方法
     private class NsyncDataHandler extends HttpClientManager.HttpResponseHandler {
-
         @Override
         public void onException(Exception e) {
-
         }
 
         @Override
@@ -124,9 +132,7 @@ public class OrderFinding extends AppCompatActivity implements View.OnClickListe
 //                    Log.d("value", value);
                     processJsonValue(value);
                 } else {
-
                 }
-
             } catch (IllegalStateException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
@@ -145,87 +151,47 @@ public class OrderFinding extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    //解压缩下载的zip包
-    private String processBusinessCompress(String fileName) {
-        // TODO Auto-generated method stub
-        ZipInputStream zis = null;
-        try {
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            byte[] data = new byte[1024];
-            File f = new File(getExternalCacheDir(), fileName);
-            FileInputStream fis = new FileInputStream(f);
-            zis = new ZipInputStream(fis);
-            ZipEntry zip = zis.getNextEntry();
-            int len = 0;
-            while ((len = zis.read(data)) != -1) {
-                baos.write(data, 0, len);
-            }
-            String json = new String(baos.toByteArray(), HTTP.UTF_8);
-            return json;
-
-        } catch (FileNotFoundException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } finally {
-            try {
-                if (zis != null) {
-                    zis.close();
-                }
-            } catch (IOException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-        }
-        return null;
-    }
-
-    //数据的整理，解析（每个单子都不一样）
-    public void processJsonValue(String value) throws JSONException, ParseException {
-        // TODO Auto-generated method stub
-        value = value.trim();
-        if (value.equalsIgnoreCase("[]") || value.equalsIgnoreCase(null)) {
-            waitDialog.dismiss();
-            mHandler.sendEmptyMessage(2);
-
-            return;
-        }
-        JSONArray jsonArray = new JSONArray(value);
-
-        dsaordbaseJsons.clear();
-        for (int i = 0; i < jsonArray.length(); i++) {
-            String temp = jsonArray.getString(i);
-            Matcher m = p.matcher(temp);
-            String subValue = temp.substring(temp.indexOf("{"),
-                    temp.indexOf("}") + 1);
-            Gson gson = new Gson();
-//            com.hjnerp.util.Log.d(subValue);
-            DsaordbaseJson dsaordbaseJson = gson.fromJson(subValue, DsaordbaseJson.class);
-
-            dsaordbaseJsons.add(dsaordbaseJson);
-        }
-        mHandler.sendEmptyMessage(3);
-
-    }
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_finding);
+        ButterKnife.bind(this);
         initView();
         initData();
-
     }
+
+
+    //加载页面
+    private void initView() {
+        actionRightTv.setText(getString(R.string.orderFinding_Title_RightTvSearch));
+        table_begin_time.setOnClickListener(this);
+        table_end_time.setText(getToday());
+        table_end_time.setOnClickListener(this);
+        object_name.setOnClickListener(this);
+        actionRightTv.setOnClickListener(this);
+        actionLeftTv.setOnClickListener(this);
+        //此段代码为开始时间提前一个月
+        try {
+            Calendar cal = Calendar.getInstance();
+            Date date = format.parse(getToday());
+            cal.setTime(date);
+            cal.add(Calendar.DATE, -30);//为了和ios一致，改为减30天
+//            cal.add(Calendar.MONTH, -1);
+            Date fDate = cal.getTime();
+            table_begin_time.setText(format.format(fDate));
+        } catch (ParseException e) {
+            e.printStackTrace();
+            table_begin_time.setText(getToday());
+        }
+    }
+
 
     //加载数据，必要的页面数据
     private void initData() {
         //不同表格的不同数据
         switch (Constant.tab_type) {
             case 0:
-                title_checked.setText("订单查询");
+                actionCenterTv.setText("订单查询");
                 tab_name = "dsaordquery";
                 table_date_from.setVisibility(View.VISIBLE);
                 table_date_to.setVisibility(View.VISIBLE);
@@ -233,19 +199,19 @@ public class OrderFinding extends AppCompatActivity implements View.OnClickListe
                 table_begin_time.setText(getToday());
                 break;
             case 1:
-                title_checked.setText("应收账龄");
+                actionCenterTv.setText("应收账龄");
                 tab_name = "accountage";
                 table_date_from.setVisibility(View.GONE);
                 table_date_to.setVisibility(View.GONE);
                 break;
             case 2:
-                title_checked.setText("日志查询");
+                actionCenterTv.setText("日志查询");
                 tab_name = "dgtdrec";
                 table_date_from.setVisibility(View.VISIBLE);
                 table_date_to.setVisibility(View.VISIBLE);
                 break;
             case 3:
-                title_checked.setText("订单明细");
+                actionCenterTv.setText("订单明细");
                 tab_name = "dsaordquery";
                 table_date_from.setVisibility(View.VISIBLE);
                 table_date_to.setVisibility(View.VISIBLE);
@@ -253,7 +219,7 @@ public class OrderFinding extends AppCompatActivity implements View.OnClickListe
                 table_begin_time.setText(getToday());
                 break;
             case 4:
-                title_checked.setText("客户应收");
+                actionCenterTv.setText("客户应收");
                 tab_name = "accountage2";
                 table_date_from.setVisibility(View.GONE);
                 table_date_to.setVisibility(View.GONE);
@@ -289,49 +255,41 @@ public class OrderFinding extends AppCompatActivity implements View.OnClickListe
         adapter = new ArrayAdapter<String>(this, R.layout.spinner_item, users_name);
         adapter.setDropDownViewResource(R.layout.spinner_item_hint);
         object_person.setAdapter(adapter);
-
-
     }
 
-    //加载页面
-    private void initView() {
-        back_img = (ImageView) findViewById(R.id.back_img);
-        back_img.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
-        title_checked = (TextView) findViewById(R.id.title_checked);
-        object_name = (TextView) findViewById(R.id.object_name);
-        object_name.setOnClickListener(this);
-        object_person = (Spinner) findViewById(R.id.object_person);
-        linear_list = (LinearLayout) findViewById(R.id.linear_list);
-        finding = (Button) findViewById(R.id.finding);
-        finding.setOnClickListener(this);
-        table_begin_time = (TextView) findViewById(R.id.table_begin_time);
-        //此段代码为开始时间提前一个月
-        try {
-            Calendar cal = Calendar.getInstance();
-            Date date = format.parse(getToday());
-            cal.setTime(date);
-            cal.add(Calendar.DATE, -30);//为了和ios一致，改为减30天
-//            cal.add(Calendar.MONTH, -1);
-            Date fDate = cal.getTime();
-            table_begin_time.setText(format.format(fDate));
-        } catch (ParseException e) {
-            e.printStackTrace();
-            table_begin_time.setText(getToday());
+    //页面关闭时，数据清零
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        user_myid = "";
+        Constant.project_type = 0;
+        Constant.travel = false;
+        if (dsaordbaseJsons_new != null && dsaordbaseJsons_new.size() > 0) {
+            dsaordbaseJsons_new.clear();
         }
+    }
 
-        table_begin_time.setOnClickListener(this);
-        table_date_from = (LinearLayout) findViewById(R.id.table_date_from);
-        table_end_time = (TextView) findViewById(R.id.table_end_time);
-        table_end_time.setText(getToday());
-        table_end_time.setOnClickListener(this);
-        table_date_to = (LinearLayout) findViewById(R.id.table_date_to);
-        all_price_textview = (TextView) findViewById(R.id.all_price_textview);
-        all_price_layout = (LinearLayout) findViewById(R.id.all_price_layout);
+    //数据的整理，解析（每个单子都不一样）
+    public void processJsonValue(String value) throws JSONException, ParseException {
+        // TODO Auto-generated method stub
+        value = value.trim();
+        if (value.equalsIgnoreCase("[]") || value.equalsIgnoreCase(null)) {
+            waitDialog.dismiss();
+            mHandler.sendEmptyMessage(2);
+            return;
+        }
+        JSONArray jsonArray = new JSONArray(value);
+        dsaordbaseJsons.clear();
+        for (int i = 0; i < jsonArray.length(); i++) {
+            String temp = jsonArray.getString(i);
+            Matcher m = p.matcher(temp);
+            String subValue = temp.substring(temp.indexOf("{"), temp.indexOf("}") + 1);
+            Gson gson = new Gson();
+//            com.hjnerp.util.Log.d(subValue);
+            DsaordbaseJson dsaordbaseJson = gson.fromJson(subValue, DsaordbaseJson.class);
+            dsaordbaseJsons.add(dsaordbaseJson);
+        }
+        mHandler.sendEmptyMessage(3);
     }
 
     //提交查询数据
@@ -348,7 +306,6 @@ public class OrderFinding extends AppCompatActivity implements View.OnClickListe
         String time_begin = table_begin_time.getText().toString().isEmpty() ? "1800-00-00" : table_begin_time.getText().toString();
         String time_end = table_end_time.getText().toString().isEmpty() ? "2999-12-31" : table_end_time.getText().toString();
         // TODO validate success, do something
-        waitDialog = new WaitDialogRectangle(this);
         waitDialog.show();
         try {
             HttpClientBuilder.HttpClientParam param = HttpClientBuilder
@@ -388,24 +345,11 @@ public class OrderFinding extends AppCompatActivity implements View.OnClickListe
 
     }
 
-    //页面关闭时，数据清零
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        user_myid = "";
-        Constant.project_type = 0;
-        Constant.travel = false;
-        if (dsaordbaseJsons_new != null && dsaordbaseJsons_new.size() > 0) {
-            dsaordbaseJsons_new.clear();
-        }
-    }
-
     //点击事件
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.object_name:
-
                 Intent intent = new Intent(getApplicationContext(), BusinessSearch.class);
                 if (users_id.get(object_person.getSelectedItemPosition()).equalsIgnoreCase("")) {
                     String a = "";
@@ -420,7 +364,7 @@ public class OrderFinding extends AppCompatActivity implements View.OnClickListe
                 Constant.travel = true;
                 startActivityForResult(intent, 44);
                 break;
-            case R.id.finding:
+            case R.id.action_right_tv:
                 submit();
                 break;
             case R.id.table_begin_time:
@@ -428,6 +372,9 @@ public class OrderFinding extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.table_end_time:
                 showCalendar(table_end_time);
+                break;
+            case R.id.action_left_tv:
+                finish();
                 break;
 
         }

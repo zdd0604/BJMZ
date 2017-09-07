@@ -6,9 +6,7 @@
 
     <include
         android:id="@+id/travel_new_layout"
-        layout="@layout/actionbar_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        layout="@layout/actionbar_layout"/>
 
     <com.handmark.pulltorefresh.library.PullToRefreshListView
         android:id="@+id/refresh_travel_act"

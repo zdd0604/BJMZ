@@ -16,7 +16,7 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 import com.hjnerp.adapter.WZYBaseAdapter;
 import com.hjnerp.business.activity.BusinessSearch;
-import com.hjnerp.business.activity.SellOrderModel;
+import com.hjnerp.model.SellOrderModel;
 import com.hjnerp.common.Constant;
 import com.hjnerp.dao.BusinessBaseDao;
 import com.hjnerp.model.Ctlm1345;

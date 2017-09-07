@@ -29,6 +29,7 @@ import com.hjnerp.model.BusinessChange;
 import com.hjnerp.model.Ctlm1345;
 import com.hjnerp.model.Dsaordtype;
 import com.hjnerp.model.Ej1345;
+import com.hjnerp.model.SellOrderModel;
 import com.hjnerp.model.businessFlag;
 import com.hjnerp.util.ToastUtil;
 import com.hjnerp.widget.MyListView;

@@ -36,123 +36,59 @@
         android:layout_height="@dimen/size_1"
         android:background="@color/item_halving_bg" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="44dp"
-        android:background="#ffffff"
-        android:gravity="center">
+    <LinearLayout style="@style/Item_LinearLayout_HorizontalStyle">
 
         <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_weight="1"
-            android:text="销售类型"
-            android:textColor="#000000"
-            android:textSize="16sp" />
+            style="@style/Item_LinearLayout_TVLeftTieleStyle"
+            android:text="销售类型" />
 
         <com.hjnerp.widget.MySpinner
             android:id="@+id/sell_order_type"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginRight="@dimen/size_3"
-            android:layout_weight="3"
-            android:drawSelectorOnTop="false"
-            android:gravity="center_vertical"
-            android:textSize="14sp" />
+            style="@style/Item_LinearLayout_SpRightStyle"
+            android:drawSelectorOnTop="false" />
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="44dp"
-        android:layout_marginTop="1dp"
-        android:background="#ffffff"
-        android:gravity="center">
+    <LinearLayout style="@style/Item_LinearLayout_HorizontalStyle">
 
         <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_weight="1"
-            android:text="产品"
-            android:textColor="#000000"
-            android:textSize="16sp" />
+            style="@style/Item_LinearLayout_TVLeftTieleStyle"
+            android:text="产品" />
 
         <TextView
             android:id="@+id/sell_order_products"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginRight="@dimen/size_3"
-            android:layout_weight="3"
-            android:drawableRight="@drawable/icon_right_orientation"
-            android:gravity="center_vertical"
+            style="@style/Item_LinearLayout_TvRightTitleImgStyle"
             android:hint="请选择产品"
-            android:textColor="#000000"
-            android:textColorHint="#cacacf"
-            android:textSize="14sp" />
+            android:textColorHint="#cacacf" />
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="44dp"
-        android:layout_marginTop="1dp"
-        android:background="#ffffff"
-        android:gravity="center">
+    <LinearLayout style="@style/Item_LinearLayout_HorizontalStyle">
 
         <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_weight="1"
-            android:text="数量"
-            android:textColor="#000000"
-            android:textSize="16sp" />
+            style="@style/Item_LinearLayout_TVLeftTieleStyle"
+            android:text="数量" />
 
 
         <EditText
             android:id="@+id/sell_order_num"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginRight="@dimen/size_10"
+            style="@style/Item_LinearLayout_EdRightTitleStyle"
             android:layout_weight="3"
             android:background="@null"
             android:digits="1234567890."
-            android:gravity="center_vertical"
             android:hint="请填写数量"
             android:inputType="numberDecimal"
             android:maxLength="9"
-            android:textColor="#000000"
-            android:textColorHint="#cacacf"
-            android:textSize="14sp" />
+            android:textColorHint="#cacacf" />
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="44dp"
-        android:layout_marginTop="1dp"
-        android:background="#ffffff"
-        android:gravity="center">
+    <LinearLayout style="@style/Item_LinearLayout_HorizontalStyle">
 
         <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_weight="1"
-            android:text="金额"
-            android:textColor="#000000"
-            android:textSize="16sp" />
+            style="@style/Item_LinearLayout_TVLeftTieleStyle"
+            android:text="金额" />
 
         <TextView
             android:id="@+id/sell_order_type_sell"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginRight="@dimen/size_10"
-            android:layout_weight="3"
-            android:background="@null"
-            android:focusable="false"
-            android:gravity="center_vertical"
-            android:textColor="#cacacf"
-            android:textSize="14sp" />
+            style="@style/Item_LinearLayout_TvRightTitleStyle" />
     </LinearLayout>
 
 </LinearLayout>

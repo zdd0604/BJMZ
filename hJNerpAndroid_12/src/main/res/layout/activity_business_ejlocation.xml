@@ -8,9 +8,7 @@
 
     <include
         android:id="@+id/action_location_bar"
-        layout="@layout/actionbar_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        layout="@layout/actionbar_layout" />
 
     <ScrollView
         android:layout_width="match_parent"
