@@ -37,7 +37,8 @@ public class ActionBarWidgetActivity extends AppCompatActivity implements
     //弹框
     protected WaitDialogRectangle waitDialog;
     protected String JSON_VALUE = "values";
-    private Calendar calendar = Calendar.getInstance();
+    protected Calendar calendar = Calendar.getInstance();
+    protected WaitDialogRectangle waitDialogRectangle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +52,7 @@ public class ActionBarWidgetActivity extends AppCompatActivity implements
     private void initView() {
         mContext = this;
         waitDialog = new WaitDialogRectangle(mContext);
+        waitDialogRectangle = new WaitDialogRectangle(mContext);
     }
 
 

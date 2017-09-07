@@ -1,6 +1,5 @@
 package com.hjnerp.business.activity;
 
-import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -10,10 +9,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -35,7 +33,6 @@ import com.hjnerp.util.ToastUtil;
 import com.hjnerp.widget.MyListView;
 import com.hjnerp.widget.MyToast;
 import com.hjnerp.widget.MyToast2;
-import com.hjnerp.widget.WaitDialogRectangle;
 import com.hjnerpandroid.R;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.exception.OkGoException;
@@ -43,7 +40,6 @@ import com.lzy.okgo.exception.OkGoException;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 import butterknife.BindView;
@@ -66,23 +62,7 @@ import static com.hjnerpandroid.R.id.action_right_tv1;
 
 public class SellOrder extends ActionBarWidgetActivity implements View.OnClickListener,
         ActionSheet.ActionSheetListener {
-    private RelativeLayout sell_actionbar_back;
-    private TextView sell_tv_actionbar_title;
-    private TextView var_title_code;
-    private LinearLayout rejust_list;
-    private TextView sell_order_recorder;
-    private TextView sell_order_date_record;
-    private Spinner sell_order_type;
-    private TextView sell_order_terminal;
-    private TextView sell_order_send;
-    private Calendar c = Calendar.getInstance();
-    private TextView sell_order_address;
-    private Spinner sell_order_ticket_type;
-    private TextView sell_order_ticket_time;
-    private Spinner sell_order_space;
-    private TextView sell_order_addess_send;
-    private EditText sell_order_more;
-    private MyListView order_list_view;
+
     private List<String> orderType = new ArrayList<String>();
     private List<String> orderType_id = new ArrayList<String>();
     private List<String> orderTicketType = new ArrayList<String>();
@@ -112,14 +92,12 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
     private String dec_acclimit;
     private String a;
     private String b;
-    private WaitDialogRectangle waitDialogRectangle;
-    private TextView sell_over_money;
-
     private int no;
-    private WaitDialogRectangle waitDialog;
     private int countDetail;
-    private Spinner sell_order_express;
 
+    private String old_var_invaddr;
+    private String old_var_tel;
+    private String old_var_contact;
     @BindView(R.id.action_left_tv)
     TextView actionLeftTv;
     @BindView(R.id.action_center_tv)
@@ -130,9 +108,38 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
     TextView actionRightTv1;
     @BindView(R.id.add_sell_order_detail)
     LinearLayout add_sell_order_detail;
-    private String old_var_invaddr;
-    private String old_var_tel;
-    private String old_var_contact;
+    @BindView(R.id.var_title_code)
+    TextView var_title_code;
+    @BindView(R.id.sell_order_recorder)
+    TextView sell_order_recorder;
+    @BindView(R.id.sell_order_date_record)
+    TextView sell_order_date_record;
+    @BindView(R.id.sell_order_type_1)
+    Spinner sell_order_type;
+    @BindView(R.id.sell_order_terminal)
+    TextView sell_order_terminal;
+    @BindView(R.id.sell_order_send)
+    TextView sell_order_send;
+    @BindView(R.id.sell_order_address)
+    TextView sell_order_address;
+    @BindView(R.id.sell_order_ticket_type)
+    Spinner sell_order_ticket_type;
+    @BindView(R.id.sell_order_ticket_time)
+    TextView sell_order_ticket_time;
+    @BindView(R.id.sell_order_space)
+    Spinner sell_order_space;
+    @BindView(R.id.sell_order_addess_send)
+    TextView sell_order_addess_send;
+    @BindView(R.id.sell_order_more)
+    EditText sell_order_more;
+    @BindView(R.id.order_list_view)
+    MyListView order_list_view;
+    @BindView(R.id.sell_over_money)
+    TextView sell_over_money;
+    @BindView(R.id.sell_order_express)
+    Spinner sell_order_express;
+    @BindView(R.id.sellord_scroll)
+    ScrollView sellord_scroll;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -148,38 +155,22 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
         actionRightTv.setText(getString(R.string.action_right_content_send));
         actionRightTv1.setText(getString(R.string.action_right_content_save));
         actionRightTv1.setVisibility(View.VISIBLE);
+        sellDetails = new ArrayList<>();
+
+        sellOrderAdapter = new SellOrderAdapter(sellDetails, this, R.layout.item_sell_order, this);
+        order_list_view.setAdapter(sellOrderAdapter);
+
+        add_sell_order_detail.setOnClickListener(this);
         actionLeftTv.setOnClickListener(this);
         actionRightTv.setOnClickListener(this);
         actionRightTv1.setOnClickListener(this);
-
-        var_title_code = (TextView) findViewById(R.id.var_title_code);
-        sell_order_recorder = (TextView) findViewById(R.id.sell_order_recorder);
-        sell_order_date_record = (TextView) findViewById(R.id.sell_order_date_record);
-        sell_order_type = (Spinner) findViewById(R.id.sell_order_type_1);
-        sell_order_terminal = (TextView) findViewById(R.id.sell_order_terminal);
-        sell_order_terminal.setOnClickListener(this);
-        sell_order_send = (TextView) findViewById(R.id.sell_order_send);
-//        sell_order_num = (EditText) findViewById(sell_order_num);
-        sell_order_address = (TextView) findViewById(R.id.sell_order_address);
-        sell_order_address.setOnClickListener(this);
-        sell_order_ticket_type = (Spinner) findViewById(R.id.sell_order_ticket_type);
-        sell_order_ticket_time = (TextView) findViewById(R.id.sell_order_ticket_time);
-        sell_order_ticket_time.setOnClickListener(this);
-        sell_order_space = (Spinner) findViewById(R.id.sell_order_space);
-        sell_order_addess_send = (TextView) findViewById(R.id.sell_order_addess_send);
         sell_order_addess_send.setOnClickListener(this);
-        sell_order_more = (EditText) findViewById(R.id.sell_order_more);
-        order_list_view = (MyListView) findViewById(R.id.order_list_view);
-        sellDetails = new ArrayList<>();
-        sell_over_money = (TextView) findViewById(R.id.sell_over_money);
-        sellOrderAdapter = new SellOrderAdapter(sellDetails, this, R.layout.item_sell_order, this);
-        order_list_view.setAdapter(sellOrderAdapter);
-        add_sell_order_detail.setOnClickListener(this);
-        sell_order_express = (Spinner) findViewById(R.id.sell_order_express);
+        sell_order_ticket_time.setOnClickListener(this);
+        sell_order_terminal.setOnClickListener(this);
+        sell_order_address.setOnClickListener(this);
     }
 
     private void initData() {
-//        Constant.dsaordbaseJsons_new = new ArrayList<>();
         users = new ArrayList<>();
         users = BusinessBaseDao.getCTLM1345ByIdTable("user");
         sell = BusinessBaseDao.getCTLM1345ByIdTable("dsaordtype");
@@ -279,8 +270,8 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
             Constant.billsNo = "";
             SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS");
             SimpleDateFormat f2 = new SimpleDateFormat("yyyy-MM-dd");
-            a = f.format(c.getTime());
-            b = f2.format(c.getTime());
+            a = f.format(calendar.getTime());
+            b = f2.format(calendar.getTime());
             no = 0;
             SellOrderModel sellOrderModel = new SellOrderModel();
             sellOrderModel.setOrder_first(true);
@@ -755,7 +746,6 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
         if (waitDialogRectangle != null && waitDialogRectangle.isShowing()) {
             waitDialogRectangle.dismiss();
         }
-        waitDialogRectangle = new WaitDialogRectangle(this);
         waitDialogRectangle.setCanceledOnTouchOutside(false);
         waitDialogRectangle.show();
         waitDialogRectangle.setText("正在提交");
