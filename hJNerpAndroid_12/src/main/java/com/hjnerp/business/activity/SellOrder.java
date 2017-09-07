@@ -25,6 +25,7 @@ import com.hjnerp.common.ActionBarWidgetActivity;
 import com.hjnerp.common.Constant;
 import com.hjnerp.common.EapApplication;
 import com.hjnerp.dao.BusinessBaseDao;
+import com.hjnerp.model.BusinessChange;
 import com.hjnerp.model.Ctlm1345;
 import com.hjnerp.model.Dsaordtype;
 import com.hjnerp.model.Ej1345;
@@ -102,7 +103,9 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
     private String id_terminal;
     private String name_terminal;
     private String var_tel;
+    private String var_inv_tel;
     private String var_contact;
+    private String var_inv_contact;
     private String name_corr;
     private String id_corr;
     private String dec_acclimit;
@@ -301,9 +304,11 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
             name_terminal = performanceDatas.getMain().getName_terminal();
             dec_acclimit = performanceDatas.getMain().getDec_acclimit();
             var_tel = performanceDatas.getMain().getVar_tel();
-            old_var_tel = performanceDatas.getMain().getVar_tel();
+            old_var_tel = performanceDatas.getMain().getVar_invtel();
+            var_inv_tel = performanceDatas.getMain().getVar_invtel();
+            var_inv_contact = performanceDatas.getMain().getVar_invcontact();
             var_contact = performanceDatas.getMain().getVar_contact();
-            old_var_contact = performanceDatas.getMain().getVar_contact();
+            old_var_contact = performanceDatas.getMain().getVar_invcontact();
 //            id_seller = performanceDatas.getMain().getId_seller();
             id_corr = performanceDatas.getMain().getId_corr();
             name_corr = performanceDatas.getMain().getName_corr();
@@ -532,39 +537,84 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
             }
 
         StringBuffer stringBuffer = new StringBuffer();
-        companyID = "CM1101-0002";
+        StringBuffer stringBuffer2 = new StringBuffer();
+//        companyID = "CM1101-0002";
         stringBuffer.append("{\"tableid\":\"dsaord\",\"opr\":\"SS\",\"no\":\"" + Constant.billsNo + "\",\"userid\":\"" + userID + "\",\"comid\":\"" + companyID + "\",");
         stringBuffer.append("\"menuid\":\"002020\",\"dealtype\":\"" + save + "\",\"data\":[");
+        //{"table_name":"dsaord_03","table_no":"SO201708000295","table_no_name":"dsaord_no","values":[{"dealtype":"U","line_no":"1","name_corr":"123456"},{"dealtype":"N","line_no":"2","name_corr":"123456"},{"dealtype":"N","line_no":"4","name_corr":"123456"},{"dealtype":"N","line_no":"3","name_corr":"123456"}]}
+//        stringBuffer2.append("")
         int gap = 0;
         int cycleTime = 0;
         if (Constant.JUDGE_TYPE) {
             gap = 0;
-            cycleTime = sellDetails.size();
+            cycleTime = sellDetails.size();//总单据行数
 
         } else {
-            gap = sellDetails.size() - countDetail;
+            gap = sellDetails.size() - countDetail;//新增加的单据行数
             if (gap >= 0) {
                 cycleTime = sellDetails.size();
             } else {
                 cycleTime = countDetail;
             }
         }
+        BusinessChange businessChange = new BusinessChange();
+        businessChange.setTable_name("dsaord_03");
+        businessChange.setTable_no_name("dsaord_no");
+        businessChange.setTable_no(Constant.billsNo);
+        List<BusinessChange.ValuesBean> valuesBeen = new ArrayList<>();
+
         for (int i = 0; i < cycleTime; i++) {
+            BusinessChange.ValuesBean valuesBean = new BusinessChange.ValuesBean();
             if (!Constant.JUDGE_TYPE) {
+                valuesBean.setId_com(companyID);
                 if (i >= countDetail) {
+                    valuesBean.setDealtype("N");
+                    valuesBean.setDate_opr(a);
                     stringBuffer.append("{\"table\": \"dsaord_03\",\"oprdetail\":\"N\",\"where\":\" \",\"data\":[");
                     stringBuffer.append("{\"column\":\"date_opr\",\"value\":\"" + a + "\",\"datatype\":\"datetime\"}, ");
                 } else if (i >= countDetail + gap) {
+                    valuesBean.setDealtype("D");
                     stringBuffer.append("{\"table\": \"dsaord_03\",\"oprdetail\":\"D\",\"where\":\" \",\"data\":[");
 
                 } else {
+                    valuesBean.setDealtype("U");
                     stringBuffer.append("{\"table\": \"dsaord_03\",\"oprdetail\":\"U\",\"where\":\" \",\"data\":[");
 
                 }
+
+//                continue;
             } else {
                 stringBuffer.append("{\"table\": \"dsaord_03\",\"oprdetail\":\"N\",\"where\":\" \",\"data\":[");
 
             }
+            valuesBean.setFlag_sts("L");
+            valuesBean.setFlag_prerec("N");
+            valuesBean.setFlag_temp("N");
+            valuesBean.setId_channel("10");
+            valuesBean.setId_delivery("101");
+            valuesBean.setDec_srate("1");
+            valuesBean.setId_saprt("P01");
+            valuesBean.setId_recorder(userID);
+            valuesBean.setId_dept(id_dept);
+            valuesBean.setDate_sign(b);
+
+            valuesBean.setId_flow("FBsa");
+            valuesBean.setLine_no((String.valueOf(i + 1)));
+            valuesBean.setId_ordsource("001");
+            valuesBean.setId_curr("CNY");
+            valuesBean.setVar_contact(var_contact);
+            valuesBean.setId_corr(id_corr);
+            valuesBean.setName_corr(name_corr);
+            valuesBean.setId_seller(userID);
+            valuesBean.setDec_acaramt(sell_over_money.getText().toString().replaceAll(",", ""));
+            valuesBean.setDec_acclimit(dec_acclimit.replaceAll(",", ""));
+            valuesBean.setVar_tel(var_tel);
+            valuesBean.setId_terminal(id_terminal);
+            valuesBean.setName_terminal(name_terminal);
+            valuesBean.setId_ordtype(orderType_id.get(sell_order_type.getSelectedItemPosition()));
+            valuesBean.setId_invtype(orderTicketType_id.get(sell_order_ticket_type.getSelectedItemPosition()));
+            valuesBean.setVar_remark(more);
+
             stringBuffer.append("{\"column\":\"flag_sts\",\"value\":\"L\",\"datatype\":\"varchar\"},");
             stringBuffer.append("{\"column\":\"flag_prerec\",\"value\":\"N\",\"datatype\":\"varchar\"},");
             stringBuffer.append("{\"column\":\"flag_temp\",\"value\":\"N\",\"datatype\":\"varchar\"},");
@@ -597,6 +647,14 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
             stringBuffer.append("{\"column\":\"id_invtype\",\"value\":\"" + orderTicketType_id.get(sell_order_ticket_type.getSelectedItemPosition()) + "\",\"datatype\":\"varchar\"}, ");
             stringBuffer.append("{\"column\":\"var_remark\",\"value\":\"" + more + "\",\"datatype\":\"varchar\"}, ");
             if (!Constant.JUDGE_TYPE && (i >= countDetail + gap)) {
+                valuesBean.setId_satype(sellDetails.get(0).getId_sell());
+                valuesBean.setId_item(sellDetails.get(0).getId_item());
+                valuesBean.setName_item(sellDetails.get(0).getName_item());
+                valuesBean.setId_uom(sellDetails.get(0).getId_uom());
+                valuesBean.setDec_qty(String.valueOf(sellDetails.get(0).getOrder_num()));
+                valuesBean.setDec_oriprice(String.valueOf(sellDetails.get(0).getPer_price()));
+                valuesBean.setDec_oriamt(String.valueOf(sellDetails.get(0).getOrder_price()));
+                valuesBean.setId_tax(sellDetails.get(0).getId_tax());
                 stringBuffer.append("{\"column\":\"id_satype\",\"value\":\"" + sellDetails.get(0).getId_sell() + "\",\"datatype\":\"varchar\"}, ");
                 stringBuffer.append("{\"column\":\"id_item\",\"value\":\"" + sellDetails.get(0).getId_item() + "\",\"datatype\":\"varchar\"}, ");
                 stringBuffer.append("{\"column\":\"name_item\",\"value\":\"" + sellDetails.get(0).getName_item() + "\",\"datatype\":\"varchar\"}, ");
@@ -619,6 +677,14 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
                     new MyToast2(SellOrder.this, "明细(" + (i + 1) + ")数量不能为0!");
                     return;
                 }
+                valuesBean.setId_satype(sellDetails.get(i).getId_sell());
+                valuesBean.setId_item(sellDetails.get(i).getId_item());
+                valuesBean.setName_item(sellDetails.get(i).getName_item());
+                valuesBean.setId_uom(sellDetails.get(i).getId_uom());
+                valuesBean.setDec_qty(String.valueOf(sellDetails.get(i).getOrder_num()));
+                valuesBean.setDec_oriprice(String.valueOf(sellDetails.get(i).getPer_price()));
+                valuesBean.setDec_oriamt(String.valueOf(sellDetails.get(i).getOrder_price()));
+                valuesBean.setId_tax(sellDetails.get(i).getId_tax());
                 stringBuffer.append("{\"column\":\"id_tax\",\"value\":\"" + sellDetails.get(i).getId_tax() + "\",\"datatype\":\"varchar\"}, ");
                 stringBuffer.append("{\"column\":\"id_satype\",\"value\":\"" + sellDetails.get(i).getId_sell() + "\",\"datatype\":\"varchar\"}, ");
                 stringBuffer.append("{\"column\":\"id_item\",\"value\":\"" + sellDetails.get(i).getId_item() + "\",\"datatype\":\"varchar\"}, ");
@@ -632,23 +698,39 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
             }
             //票货同行单拿出来
             if (sell_order_space.getSelectedItemPosition() == 0) {//选择是
+                valuesBean.setFlag_itemwith("Y");
+                valuesBean.setVar_invaddr(var_invaddr);
+                valuesBean.setVar_invtel(var_tel);
+                valuesBean.setVar_invcontact(var_contact);
+                valuesBean.setId_invexpress(orderExpress_id.get(sell_order_express.getSelectedItemPosition()));
                 stringBuffer.append("{\"column\":\"flag_itemwith\",\"value\":\"Y\",\"datatype\":\"char\"}, ");
-                stringBuffer.append("{\"column\":\"var_invaddr\",\"value\":\"" + old_var_invaddr + "\",\"datatype\":\"varchar\"}, ");
-                stringBuffer.append("{\"column\":\"var_invtel\",\"value\":\"" + old_var_tel + "\",\"datatype\":\"varchar\"}, ");
-                stringBuffer.append("{\"column\":\"var_invcontact\",\"value\":\"" + old_var_contact + "\",\"datatype\":\"varchar\"}, ");
-//                stringBuffer.append("{\"column\":\"id_invexpress\",\"value\":\"" + old_var_contact + "\",\"datatype\":\"varchar\"}, ");
-
-            } else {//选择否
-                stringBuffer.append("{\"column\":\"flag_itemwith\",\"value\":\"N\",\"datatype\":\"char\"}, ");
                 stringBuffer.append("{\"column\":\"var_invaddr\",\"value\":\"" + var_invaddr + "\",\"datatype\":\"varchar\"}, ");
                 stringBuffer.append("{\"column\":\"var_invtel\",\"value\":\"" + var_tel + "\",\"datatype\":\"varchar\"}, ");
                 stringBuffer.append("{\"column\":\"var_invcontact\",\"value\":\"" + var_contact + "\",\"datatype\":\"varchar\"}, ");
+                stringBuffer.append("{\"column\":\"id_invexpress\",\"value\":\"" + orderExpress_id.get(sell_order_express.getSelectedItemPosition()) + "\",\"datatype\":\"varchar\"}, ");
+
+            } else {//选择否
+                valuesBean.setFlag_itemwith("N");
+                valuesBean.setVar_invaddr(var_invaddr);
+                valuesBean.setVar_invtel(var_inv_tel);
+                valuesBean.setVar_invcontact(var_inv_contact);
+                valuesBean.setId_invexpress(orderExpress_id.get(sell_order_express.getSelectedItemPosition()));
+                stringBuffer.append("{\"column\":\"flag_itemwith\",\"value\":\"N\",\"datatype\":\"char\"}, ");
+                stringBuffer.append("{\"column\":\"var_invaddr\",\"value\":\"" + var_invaddr + "\",\"datatype\":\"varchar\"}, ");
+                stringBuffer.append("{\"column\":\"var_invtel\",\"value\":\"" + var_inv_tel + "\",\"datatype\":\"varchar\"}, ");
+                stringBuffer.append("{\"column\":\"var_invcontact\",\"value\":\"" + var_inv_contact + "\",\"datatype\":\"varchar\"}, ");
                 stringBuffer.append("{\"column\":\"id_invexpress\",\"value\":\"" + orderExpress_id.get(sell_order_express.getSelectedItemPosition()) + "\",\"datatype\":\"varchar\"}, ");
 //                stringBuffer.append("{\"column\":\"var_invaddr\",\"value\":\"" + old_var_invaddr + "\",\"datatype\":\"varchar\"}, ");
 //                stringBuffer.append("{\"column\":\"var_invtel\",\"value\":\"" + old_var_tel + "\",\"datatype\":\"varchar\"}, ");
 //                stringBuffer.append("{\"column\":\"var_invcontact\",\"value\":\"" + old_var_contact + "\",\"datatype\":\"varchar\"}, ");
 
             }
+            valuesBean.setDec_orisamt(String.valueOf(allprice));
+            valuesBean.setVar_rcvcorr(var_rcvcorr);
+            valuesBean.setVar_addr(address);
+            valuesBean.setId_express(orderExpress_id.get(sell_order_express.getSelectedItemPosition()));
+            valuesBean.setDate_planinv(time);
+            valuesBean.setDate_demand(time_p);
             stringBuffer.append("{\"column\":\"dec_orisamt\",\"value\":\"" + String.valueOf(allprice) + "\",\"datatype\":\"double\"}, ");
             stringBuffer.append("{\"column\":\"var_rcvcorr\",\"value\":\"" + var_rcvcorr + "\",\"datatype\":\"varchar\"}, ");
             stringBuffer.append("{\"column\":\"var_addr\",\"value\":\"" + address + "\",\"datatype\":\"varchar\"}, ");
@@ -659,15 +741,16 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
             if (i != cycleTime - 1) {
                 stringBuffer.append(",");
             }
-
+            valuesBeen.add(valuesBean);
         }
+        businessChange.setValues(valuesBeen);
         stringBuffer.append("]}");
         String str = stringBuffer.toString();
         Log.e("str1", str);
-        getBusinessList(str, save);
+        getBusinessList(str, save, new Gson().toJson(businessChange));
     }
 
-    private void getBusinessList(String datas, final String dealtype) {
+    private void getBusinessList(String datas, final String dealtype, String businessJson) {
         if (waitDialogRectangle != null && waitDialogRectangle.isShowing()) {
             waitDialogRectangle.dismiss();
         }
@@ -675,10 +758,22 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
         waitDialogRectangle.setCanceledOnTouchOutside(false);
         waitDialogRectangle.show();
         waitDialogRectangle.setText("正在提交");
-//        OkGo.post("http://172.16.12.243:8085/hjmerp/servlet/DataUpdateServlet")
-        OkGo.post(EapApplication.URL_SERVER_HOST_HTTP + "/servlet/DataUpdateServlet")
-                .isMultipart(true)
-                .params("datas", datas)
+        boolean isMultipart;//是否使用新接口
+        String url_serv;
+        String datas_add;
+        if ((!Constant.JUDGE_TYPE) && dealtype.equals(Constant.SAVE_DEALTYPE)) {
+            isMultipart = false;
+            url_serv = "/servlet/BusinessMobileSqlUpdate";
+            datas_add = businessJson;
+        } else {
+            isMultipart = true;
+            url_serv = "/servlet/DataUpdateServlet";
+            datas_add = datas;
+        }
+
+        OkGo.post(EapApplication.URL_SERVER_HOST_HTTP + url_serv)
+                .isMultipart(isMultipart)
+                .params("datas", datas_add)
                 .execute(new BFlagCallBack<businessFlag>() {
                     @Override
                     public void onSuccess(businessFlag businessFlag, Call call, Response response) {
@@ -828,6 +923,8 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
                     break;
                 case 3:
                     sell_order_addess_send.setText(item_peoject);
+                    var_inv_tel = id_wproj;
+                    var_inv_contact = item_client;
                     break;
 
             }
