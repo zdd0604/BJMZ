@@ -161,6 +161,8 @@ public class PerformanceDatas implements Serializable {
         private String var_addr;
         private String var_invaddr;
         private String var_tel;
+        private String var_invtel;
+        private String var_invcontact;
         private String var_contact;
         private String id_tax;
         private String id_seller;
@@ -168,6 +170,22 @@ public class PerformanceDatas implements Serializable {
         private String id_express;
         private String dec_acaramt;
         private String dec_acclimit;
+
+        public String getVar_invtel() {
+            return var_invtel;
+        }
+
+        public void setVar_invtel(String var_invtel) {
+            this.var_invtel = var_invtel;
+        }
+
+        public String getVar_invcontact() {
+            return var_invcontact;
+        }
+
+        public void setVar_invcontact(String var_invcontact) {
+            this.var_invcontact = var_invcontact;
+        }
 
         public String getDec_acclimit() {
             return dec_acclimit;
