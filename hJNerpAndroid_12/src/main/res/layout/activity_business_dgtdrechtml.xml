@@ -26,10 +26,9 @@
                     android:text="@string/work_Tile_TaskTime" />
 
 
-                <com.hjnerp.widget.ClearEditText
+                <TextView
                     android:id="@+id/log_date_task"
                     style="@style/Item_LinearLayout_EdRightTitleStyle"
-                    android:focusable="false"
                     android:hint="@string/work_Hint_TaskTime" />
             </LinearLayout>
 
@@ -42,10 +41,9 @@
                     android:text="@string/work_Tile_WkAddress" />
 
 
-                <EditText
+                <TextView
                     android:id="@+id/log_flag_wadd"
-                    style="@style/Item_LinearLayout_EdRightTitleStyle"
-                    android:focusable="false"
+                    style="@style/Item_LinearLayout_TvRightTitleImgDownStyle"
                     android:hint="@string/work_Hint_WkAddress" />
 
             </LinearLayout>
@@ -58,10 +56,9 @@
                     style="@style/Item_LinearLayout_TVLeftTieleStyle"
                     android:text="@string/work_Tile_WkType" />
 
-                <EditText
+                <TextView
                     android:id="@+id/log_id_wtype"
-                    style="@style/Item_LinearLayout_EdRightTitleStyle"
-                    android:focusable="false"
+                    style="@style/Item_LinearLayout_TvRightTitleImgDownStyle"
                     android:hint="@string/work_Hint_WkType" />
 
             </LinearLayout>
@@ -77,7 +74,7 @@
 
                 <EditText
                     android:id="@+id/log_id_wproj"
-                    style="@style/Item_LinearLayout_EdRightTitleStyle"
+                    style="@style/Item_LinearLayout_TvRightTitleImgStyle"
                     android:focusable="false"
                     android:hint="@string/work_Hint_PjName" />
             </LinearLayout>

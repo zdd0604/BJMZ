@@ -1,6 +1,5 @@
 package com.hjnerp.business.activity;
 
-import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -11,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.PopupWindow;
@@ -55,7 +53,7 @@ public class BusinessDgtdrechtml extends ActionBarWidgetActivity implements View
     @BindView(R.id.action_left_tv)
     TextView actionLeftTv;
     @BindView(R.id.log_date_task)
-    ClearEditText log_date_task;
+    TextView log_date_task;
     @BindView(R.id.log_id_wproj)
     EditText log_id_wproj;
     @BindView(R.id.log_dec_wtime)
@@ -67,9 +65,9 @@ public class BusinessDgtdrechtml extends ActionBarWidgetActivity implements View
     @BindView(R.id.log_var_remark)
     ClearEditText log_var_remark;
     @BindView(R.id.log_flag_wadd)
-    EditText log_flag_wadd;
+    TextView log_flag_wadd;
     @BindView(R.id.log_id_wtype)
-    EditText log_id_wtype;
+    TextView log_id_wtype;
     @BindView(R.id.dgtdrechtml_submit)
     Button dgtdrechtml_submit;
     @BindView(R.id.pro_text)
@@ -94,6 +92,18 @@ public class BusinessDgtdrechtml extends ActionBarWidgetActivity implements View
     private List<String> idWTypeList = new ArrayList<>();
     private List<String> nameWTypeList = new ArrayList<>();
 
+    Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            switch (msg.what) {
+                case Constant.HANDLERTYPE_0:
+                    log_id_wproj.setText(Constant.item_peoject);
+                    log_id_corr.setText(Constant.item_client);
+                    break;
+            }
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -262,7 +272,7 @@ public class BusinessDgtdrechtml extends ActionBarWidgetActivity implements View
 
         } else {
             ToastUtil.ShowLong(mContext, "请先选择工作类型");
-            removeData();
+//            removeData();
         }
     }
 
@@ -271,50 +281,6 @@ public class BusinessDgtdrechtml extends ActionBarWidgetActivity implements View
         Constant.travel = true;
         startActivityForResult(intent, 11);
     }
-
-    /**
-     * 显示日历
-     *
-     * @param travel_time_end
-     */
-    private void showCalendar(final ClearEditText travel_time_end) {
-        new DatePickerDialog(this,
-                new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker view, int year,
-                                          int monthOfYear, int dayOfMonth) {
-                        int month = monthOfYear + 1;
-                        if (month < 10 && dayOfMonth < 10) {
-                            travel_time_end.setText(year + "-0" + month
-                                    + "-0" + dayOfMonth);
-                        } else if (month < 10 && dayOfMonth >= 10) {
-                            travel_time_end.setText(year + "-0" + month
-                                    + "-" + dayOfMonth);
-                        } else if (month >= 10 && dayOfMonth < 10) {
-                            travel_time_end.setText(year + "-" + month
-                                    + "-0" + dayOfMonth);
-                        } else {
-                            travel_time_end.setText(year + "-" + month
-                                    + "-" + dayOfMonth);
-                        }
-                    }
-                }
-                , calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar
-                .get(Calendar.DAY_OF_MONTH)).show();
-    }
-
-    Handler handler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            switch (msg.what) {
-                case 0:
-                    log_id_wproj.setText(Constant.item_peoject);
-                    log_id_corr.setText(Constant.item_client);
-                    break;
-            }
-        }
-    };
 
 
     @Override
@@ -326,7 +292,7 @@ public class BusinessDgtdrechtml extends ActionBarWidgetActivity implements View
          * 收到返回的值判断是否成功，如果同意就将数据移除刷新列表
          */
         if (requestCode == 11 && resultCode == 22) {
-            handler.sendEmptyMessage(0);
+            handler.sendEmptyMessage(Constant.HANDLERTYPE_0);
         }
     }
 

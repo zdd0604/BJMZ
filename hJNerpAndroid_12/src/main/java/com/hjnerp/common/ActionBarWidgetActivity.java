@@ -1,5 +1,6 @@
 package com.hjnerp.common;
 
+import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -8,33 +9,23 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
+import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hjnerp.model.LoginConfig;
-import com.hjnerp.net.HttpClientManager;
 import com.hjnerp.widget.WaitDialogRectangle;
-import com.hjnerpandroid.R;
 
-import org.apache.http.HttpResponse;
 import org.apache.http.protocol.HTTP;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.text.ParseException;
+import java.util.Calendar;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
 
 /**
  * Created by Admin on 2017/8/31.
@@ -46,6 +37,7 @@ public class ActionBarWidgetActivity extends AppCompatActivity implements
     //弹框
     protected WaitDialogRectangle waitDialog;
     protected String JSON_VALUE = "values";
+    private Calendar calendar = Calendar.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -268,5 +260,38 @@ public class ActionBarWidgetActivity extends AppCompatActivity implements
             }
         }
         return null;
+    }
+
+    /**
+     * 选择时间
+     *
+     * @param editText
+     */
+    public void showCalendar(final TextView editText) {
+        new DatePickerDialog(this,
+                new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year,
+                                          int monthOfYear, int dayOfMonth) {
+                        int month = monthOfYear + 1;
+                        if (month < 10 && dayOfMonth < 10) {
+                            editText.setText(year + "-0" + month
+                                    + "-0" + dayOfMonth);
+                        } else if (month < 10 && dayOfMonth >= 10) {
+                            editText.setText(year + "-0" + month
+                                    + "-" + dayOfMonth);
+                        } else if (month >= 10 && dayOfMonth < 10) {
+                            editText.setText(year + "-" + month
+                                    + "-0" + dayOfMonth);
+                        } else {
+                            editText.setText(year + "-" + month
+                                    + "-" + dayOfMonth);
+                        }
+                    }
+                },
+                calendar.get(Calendar.YEAR),
+                calendar.get(Calendar.MONTH),
+                calendar.get(Calendar.DAY_OF_MONTH)).show();
+        editText.setCompoundDrawables(null, null, null, null);
     }
 }

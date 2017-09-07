@@ -380,35 +380,6 @@ public class OrderFinding extends ActionBarWidgetActivity implements View.OnClic
         }
     }
 
-    //选择日期
-    private void showCalendar(final TextView editText) {
-//        c = Calendar.getInstance();
-        new DatePickerDialog(this,
-                new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker view, int year,
-                                          int monthOfYear, int dayOfMonth) {
-                        int month = monthOfYear + 1;
-                        if (month < 10 && dayOfMonth < 10) {
-                            editText.setText(year + "-0" + month
-                                    + "-0" + dayOfMonth);
-                        } else if (month < 10 && dayOfMonth >= 10) {
-                            editText.setText(year + "-0" + month
-                                    + "-" + dayOfMonth);
-                        } else if (month >= 10 && dayOfMonth < 10) {
-                            editText.setText(year + "-" + month
-                                    + "-0" + dayOfMonth);
-                        } else {
-                            editText.setText(year + "-" + month
-                                    + "-" + dayOfMonth);
-                        }
-
-                    }
-                }
-                , c.get(Calendar.YEAR), c.get(Calendar.MONTH), c
-                .get(Calendar.DAY_OF_MONTH)).show();
-    }
-
     //选择后的返回事件
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

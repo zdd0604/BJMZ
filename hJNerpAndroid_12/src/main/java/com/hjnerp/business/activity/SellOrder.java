@@ -856,36 +856,6 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
         sellOrderAdapter.notifyDataSetChanged();
     }
 
-    private void showCalendar(final TextView editText) {
-//        c = Calendar.getInstance();
-        new DatePickerDialog(this,
-                new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker view, int year,
-                                          int monthOfYear, int dayOfMonth) {
-                        int month = monthOfYear + 1;
-                        if (month < 10 && dayOfMonth < 10) {
-
-                            editText.setText(year + "-0" + month
-                                    + "-0" + dayOfMonth);
-                        } else if (month < 10 && dayOfMonth >= 10) {
-                            editText.setText(year + "-0" + month
-                                    + "-" + dayOfMonth);
-                        } else if (month >= 10 && dayOfMonth < 10) {
-                            editText.setText(year + "-" + month
-                                    + "-0" + dayOfMonth);
-                        } else {
-                            editText.setText(year + "-" + month
-                                    + "-" + dayOfMonth);
-                        }
-
-                    }
-                }
-                , c.get(Calendar.YEAR), c.get(Calendar.MONTH), c
-                .get(Calendar.DAY_OF_MONTH)).show();
-    }
-
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

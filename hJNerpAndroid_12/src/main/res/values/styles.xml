@@ -298,7 +298,7 @@
         <item name="android:layout_marginRight">@dimen/size_10</item>
         <item name="android:layout_weight">3</item>
     </style>
-    <!-- 右侧TextView跳转页面的图片框 -->
+    <!-- 右侧TextView跳转页面的图片框 向右的箭头-->
     <style name="Item_LinearLayout_TvRightTitleImgStyle">
         <item name="android:layout_width">@dimen/size_0</item>
         <item name="android:layout_height">match_parent</item>
@@ -306,6 +306,20 @@
         <item name="android:textColor">@color/black</item>
         <item name="android:background">@null</item>
         <item name="android:drawableRight">@drawable/icon_right_orientation</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_marginRight">@dimen/size_10</item>
+        <item name="android:layout_weight">3</item>
+    </style>
+
+    <!-- 右侧TextView跳转页面的图片框 向下的箭头 -->
+    <style name="Item_LinearLayout_TvRightTitleImgDownStyle">
+        <item name="android:layout_width">@dimen/size_0</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:textSize">@dimen/font_size_15</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:background">@null</item>
+        <item name="android:drawableRight">@drawable/icon_sp_down_bg</item>
+        <item name="android:paddingRight">@dimen/size_5</item>
         <item name="android:gravity">center_vertical</item>
         <item name="android:layout_marginRight">@dimen/size_10</item>
         <item name="android:layout_weight">3</item>

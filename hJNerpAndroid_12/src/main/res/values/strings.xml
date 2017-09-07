@@ -116,7 +116,7 @@
     <string name="work_Tile_TaskTime">任务时间</string>
     <string name="work_Hint_TaskTime">请选择任务时间</string>
     <string name="work_Tile_WkAddress">工作地点</string>
-    <string name="work_Hint_WkAddress">请选工作地点</string>
+    <string name="work_Hint_WkAddress">请选择工作地点</string>
     <string name="work_Tile_WkType">工作类型</string>
     <string name="work_Hint_WkType">请选择工作类型</string>
     <string name="work_Tile_PjName">客户名称</string>
