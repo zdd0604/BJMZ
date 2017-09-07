@@ -59,7 +59,7 @@ public class BusinessBillsAdapter extends BaseAdapter {
             viewHolder.bs_name_user = (TextView) convertView.findViewById(R.id.bs_name_user);
             viewHolder.bs_date_opr = (TextView) convertView.findViewById(R.id.bs_date_opr);
             viewHolder.rejust_type = (TextView) convertView.findViewById(R.id.rejust_type);
-            viewHolder.bills_item_view = (View) convertView.findViewById(R.id.businessbills_item_view);
+            viewHolder.bills_item_view =  convertView.findViewById(R.id.businessbills_item_view);
             convertView.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) convertView.getTag();

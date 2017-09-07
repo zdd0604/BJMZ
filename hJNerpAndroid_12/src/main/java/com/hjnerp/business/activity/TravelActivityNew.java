@@ -67,12 +67,8 @@ public class TravelActivityNew extends ActionBarWidgetActivity implements View.O
     private String table_no = "";
     private String column_name = "";
 
-    //    @BindView(R.id.action_left_img)
-//    ImageView actionLeftImg;
     @BindView(R.id.action_left_tv)
     TextView actionLeftTv;
-    //    @BindView(R.id.action_back_layout)
-//    LinearLayout actionBackLayout;
     @BindView(R.id.action_center_tv)
     TextView actionCenterTv;
     @BindView(R.id.action_right_tv)

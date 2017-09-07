@@ -17,7 +17,7 @@
         android:layout_below="@id/travel_new_layout"
         android:background="@color/actionbar_title_bg1"
         android:cacheColorHint="@color/actionbar_title_bg1"
-        android:divider="#19000000"
+        android:divider="@color/actionbar_title_bg"
         android:fadingEdge="none"
         android:fastScrollEnabled="false"
         android:footerDividersEnabled="false"
