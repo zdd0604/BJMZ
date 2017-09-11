@@ -7,6 +7,5 @@
         android:id="@+id/dgtdrech_list"
         android:layout_width="@dimen/size_200"
         android:layout_height="wrap_content"
-        android:divider="@null"
         android:background="@color/white"/>
 </LinearLayout>

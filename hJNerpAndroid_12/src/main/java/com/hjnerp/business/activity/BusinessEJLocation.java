@@ -167,7 +167,7 @@ public class BusinessEJLocation extends ActionBarWidgetActivity implements View.
                 case Constant.HANDLERTYPE_2:
                     //弹框信息
                     if (StringUtil.isStrTrue(msgContent))
-                        ToastUtil.ShowLong(mContext, msgContent);
+                        showFailToast(msgContent);
                     break;
             }
         }
@@ -371,7 +371,7 @@ public class BusinessEJLocation extends ActionBarWidgetActivity implements View.
                     startActivityForResult(intent, Activity.DEFAULT_KEYS_DIALER);
                 }
             } else {
-                ToastUtil.ShowLong(BusinessEJLocation.this, "文件夹创建失败");
+                showFailToast("文件夹创建失败");
             }
         } catch (Exception b) {
             Log.v("show", photoLocation + "相机输出出错" + photoName);

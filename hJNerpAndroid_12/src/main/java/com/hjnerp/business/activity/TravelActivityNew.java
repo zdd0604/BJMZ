@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -49,10 +50,8 @@ import okhttp3.Call;
 import okhttp3.Response;
 
 public class TravelActivityNew extends ActionBarWidgetActivity implements View.OnClickListener {
-    private WaitDialogRectangle waitDialog;
     private PullToRefreshListView refresh_travel_act;
     private Button add_travel_act;
-    private RelativeLayout activity_travel_new;
     private List<PerformanceDatas> datas = new ArrayList<>();
     private final int HTTP_SUCCESS = 0;//数据请求成功
     private final int HTTP_LOSER = 1;//数据请求成功
@@ -73,6 +72,8 @@ public class TravelActivityNew extends ActionBarWidgetActivity implements View.O
     TextView actionCenterTv;
     @BindView(R.id.action_right_tv)
     TextView actionRightTv;
+    @BindView(R.id.activity_travel_new)
+    RelativeLayout activity_travel_new;
 
     private Handler handler = new Handler() {
         @Override
@@ -84,7 +85,7 @@ public class TravelActivityNew extends ActionBarWidgetActivity implements View.O
                     break;
                 case 1:
                     String content = (String) msg.obj;
-                    ToastUtil.ShowLong(getApplicationContext(), content);
+                    showFailToast(content);
                     waitDialog.dismiss();
                     refresh_travel_act.onRefreshComplete();
                     break;
@@ -126,7 +127,7 @@ public class TravelActivityNew extends ActionBarWidgetActivity implements View.O
         actionLeftTv.setOnClickListener(this);
         refresh_travel_act = (PullToRefreshListView) findViewById(R.id.refresh_travel_act);
         add_travel_act = (Button) findViewById(R.id.add_travel_act);
-        activity_travel_new = (RelativeLayout) findViewById(R.id.activity_travel_new);
+
         switch (id_menu) {
             case "002035":
 //                getSupportActionBar().setTitle("出差/外出单");
@@ -164,7 +165,6 @@ public class TravelActivityNew extends ActionBarWidgetActivity implements View.O
         Ej1345 ej1345 = gson1.fromJson(userinfos, Ej1345.class);
         userID = ej1345.getId_user();
         add_travel_act.setOnClickListener(this);
-        waitDialog = new WaitDialogRectangle(this);
         waitDialog.show();
         refresh_travel_act.setMode(PullToRefreshBase.Mode.PULL_FROM_START);// 仅下拉刷新
         addListViewData();
@@ -332,17 +332,17 @@ public class TravelActivityNew extends ActionBarWidgetActivity implements View.O
                     @Override
                     public void onSuccess(String s, Call call, Response response) {
                         if (s.contains("单据删除成功")) {
-                            ToastUtil.ShowShort(getApplicationContext(), s);
+                            showFailToast(s);
                             handler.sendEmptyMessage(2);
                         } else {
-                            ToastUtil.ShowShort(getApplicationContext(), "删除单据失败");
+                            showFailToast("删除单据失败");
                         }
                     }
 
                     @Override
                     public void onError(Call call, Response response, Exception e) {
                         super.onError(call, response, e);
-                        ToastUtil.ShowShort(getApplicationContext(), "删除单据失败");
+                        showFailToast("删除单据失败");
                     }
                 });
     }

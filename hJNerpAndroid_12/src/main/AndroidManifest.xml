@@ -79,7 +79,7 @@
         -->
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
-            android:value="AjTHSXgKyfpfRzFDR14RUUmVyzCD2pZQ" />
+            android:value="HgmGYvmr4fsOmKKVzCNO2DuRYPEBrOSk" />
 
         <activity
             android:name="com.hjnerp.activity.LoginActivity"
