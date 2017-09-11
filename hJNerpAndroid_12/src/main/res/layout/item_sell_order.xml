@@ -88,7 +88,8 @@
 
         <TextView
             android:id="@+id/sell_order_type_sell"
-            style="@style/Item_LinearLayout_TvRightTitleStyle" />
+            style="@style/Item_LinearLayout_TvRightTitleStyle"
+            android:textColor="#CACACF" />
     </LinearLayout>
 
 </LinearLayout>

@@ -168,8 +168,17 @@ public class PerformanceDatas implements Serializable {
         private String id_seller;
         private String date_demand;
         private String id_express;
+        private String id_invexpress;
         private String dec_acaramt;
         private String dec_acclimit;
+
+        public String getId_invexpress() {
+            return id_invexpress;
+        }
+
+        public void setId_invexpress(String id_invexpress) {
+            this.id_invexpress = id_invexpress;
+        }
 
         public String getVar_invtel() {
             return var_invtel;

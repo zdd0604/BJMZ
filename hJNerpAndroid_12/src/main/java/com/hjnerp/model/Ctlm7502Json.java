@@ -15,6 +15,15 @@ public class Ctlm7502Json {
     private String name_terminal;
     private String dec_acaramt;
     private String var_chkparm;
+    private String dec_taxrate;
+
+    public String getDec_taxrate() {
+        return dec_taxrate;
+    }
+
+    public void setDec_taxrate(String dec_taxrate) {
+        this.dec_taxrate = dec_taxrate;
+    }
 
     public String getVar_chkparm() {
         return var_chkparm;

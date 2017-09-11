@@ -1,6 +1,5 @@
 package com.hjnerp.business.activity;
 
-import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -8,7 +7,7 @@ import android.os.Message;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -22,6 +21,7 @@ import com.hjnerp.model.Ctlm1345;
 import com.hjnerp.model.Dsaordtype;
 import com.hjnerp.net.HttpClientBuilder;
 import com.hjnerp.net.HttpClientManager;
+import com.hjnerp.util.Log;
 import com.hjnerp.util.ToastUtil;
 import com.hjnerp.util.myscom.StringUtils;
 import com.hjnerpandroid.R;
@@ -73,8 +73,11 @@ public class OrderFinding extends ActionBarWidgetActivity implements View.OnClic
     private SimpleDateFormat dateFormat = new SimpleDateFormat(pattern, Locale.CHINA);
     private SimpleDateFormat dateFormat2 = new SimpleDateFormat("yyyy.MM.dd", Locale.CHINA);
     private double allPrice = 0.0;//总价
-    private LockTableView mLockTableView;
-
+    private double firstPrice = 0.0;//总价
+    private double secondPrice = 0.0;//总价
+    private LockTableView2 mLockTableView;
+    private EditText all_goneprice_textview;
+    private LinearLayout all_goneprice_layout;
     @BindView(R.id.action_left_tv)
     TextView actionLeftTv;
     @BindView(R.id.action_center_tv)
@@ -102,11 +105,18 @@ public class OrderFinding extends ActionBarWidgetActivity implements View.OnClic
     TextView all_price_textview;
     @BindView(R.id.all_price_layout)
     LinearLayout all_price_layout;
+    private TextView first_price_textview;
+    private LinearLayout first_price_layout;
+    private TextView second_price_textview;
+    private LinearLayout second_price_layout;
+
 
     //网络查询表格的方法，将来可以考虑写成公用的方法
     private class NsyncDataHandler extends HttpClientManager.HttpResponseHandler {
+
         @Override
         public void onException(Exception e) {
+
         }
 
         @Override
@@ -119,20 +129,25 @@ public class OrderFinding extends ActionBarWidgetActivity implements View.OnClic
                 if (contentType.indexOf("application/octet-stream") != -1) {
                     String contentDiscreption = resp
                             .getHeaders("Content-Disposition")[0].getValue();
+                    Log.d("开始保存文件。。。");
                     String fileName = contentDiscreption
                             .substring(contentDiscreption.indexOf("=") + 1);
                     FileOutputStream fos = new FileOutputStream(new File(
                             getExternalCacheDir(), fileName));
                     resp.getEntity().writeTo(fos);
                     fos.close();
+                    Log.d("开始解压文件。。。");
                     String json = processBusinessCompress(fileName);
+                    Log.d("开始解析数据。。。");
                     JSONObject jsonObject = new JSONObject(json);
                     String value = jsonObject.getString(JSON_VALUE);
 
 //                    Log.d("value", value);
                     processJsonValue(value);
                 } else {
+
                 }
+
             } catch (IllegalStateException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
@@ -160,7 +175,6 @@ public class OrderFinding extends ActionBarWidgetActivity implements View.OnClic
         initData();
     }
 
-
     //加载页面
     private void initView() {
         actionRightTv.setText(getString(R.string.orderFinding_Title_RightTvSearch));
@@ -170,6 +184,16 @@ public class OrderFinding extends ActionBarWidgetActivity implements View.OnClic
         object_name.setOnClickListener(this);
         actionRightTv.setOnClickListener(this);
         actionLeftTv.setOnClickListener(this);
+        table_begin_time.setOnClickListener(this);
+        table_date_from = (LinearLayout) findViewById(R.id.table_date_from);
+        table_end_time = (TextView) findViewById(R.id.table_end_time);
+        table_end_time.setText(getToday());
+        table_end_time.setOnClickListener(this);
+        table_date_to = (LinearLayout) findViewById(R.id.table_date_to);
+        all_price_textview = (TextView) findViewById(R.id.all_price_textview);
+        all_price_layout = (LinearLayout) findViewById(R.id.all_price_layout);
+        all_goneprice_textview = (EditText) findViewById(R.id.all_goneprice_textview);
+        all_goneprice_layout = (LinearLayout) findViewById(R.id.all_goneprice_layout);
         //此段代码为开始时间提前一个月
         try {
             Calendar cal = Calendar.getInstance();
@@ -183,6 +207,10 @@ public class OrderFinding extends ActionBarWidgetActivity implements View.OnClic
             e.printStackTrace();
             table_begin_time.setText(getToday());
         }
+        first_price_textview = (TextView) findViewById(R.id.first_price_textview);
+        first_price_layout = (LinearLayout) findViewById(R.id.first_price_layout);
+        second_price_textview = (TextView) findViewById(R.id.second_price_textview);
+        second_price_layout = (LinearLayout) findViewById(R.id.second_price_layout);
     }
 
 
@@ -197,18 +225,22 @@ public class OrderFinding extends ActionBarWidgetActivity implements View.OnClic
                 table_date_to.setVisibility(View.VISIBLE);
                 all_price_layout.setVisibility(View.VISIBLE);
                 table_begin_time.setText(getToday());
+                all_goneprice_layout.setVisibility(View.GONE);
                 break;
             case 1:
                 actionCenterTv.setText("应收账龄");
                 tab_name = "accountage";
                 table_date_from.setVisibility(View.GONE);
                 table_date_to.setVisibility(View.GONE);
+                all_price_layout.setVisibility(View.VISIBLE);
+                all_goneprice_layout.setVisibility(View.GONE);
                 break;
             case 2:
                 actionCenterTv.setText("日志查询");
                 tab_name = "dgtdrec";
                 table_date_from.setVisibility(View.VISIBLE);
                 table_date_to.setVisibility(View.VISIBLE);
+                all_goneprice_layout.setVisibility(View.GONE);
                 break;
             case 3:
                 actionCenterTv.setText("订单明细");
@@ -217,12 +249,16 @@ public class OrderFinding extends ActionBarWidgetActivity implements View.OnClic
                 table_date_to.setVisibility(View.VISIBLE);
                 all_price_layout.setVisibility(View.VISIBLE);
                 table_begin_time.setText(getToday());
+                all_goneprice_layout.setVisibility(View.GONE);
                 break;
             case 4:
                 actionCenterTv.setText("客户应收");
                 tab_name = "accountage2";
                 table_date_from.setVisibility(View.GONE);
                 table_date_to.setVisibility(View.GONE);
+                all_goneprice_layout.setVisibility(View.VISIBLE);
+                first_price_layout.setVisibility(View.VISIBLE);
+                second_price_layout.setVisibility(View.VISIBLE);
                 break;
 
         }
@@ -280,6 +316,7 @@ public class OrderFinding extends ActionBarWidgetActivity implements View.OnClic
         }
         JSONArray jsonArray = new JSONArray(value);
         dsaordbaseJsons.clear();
+        Log.d("匹配保存数据。。。");
         for (int i = 0; i < jsonArray.length(); i++) {
             String temp = jsonArray.getString(i);
             Matcher m = p.matcher(temp);
@@ -290,6 +327,7 @@ public class OrderFinding extends ActionBarWidgetActivity implements View.OnClic
             dsaordbaseJsons.add(dsaordbaseJson);
         }
         mHandler.sendEmptyMessage(3);
+
     }
 
     //提交查询数据
@@ -302,12 +340,14 @@ public class OrderFinding extends ActionBarWidgetActivity implements View.OnClic
             id_terminal = dsaordbaseJsons_new.get(0).getName_corr();
 
         }
+        String all_goneprice = all_goneprice_textview.getText().toString().trim();
         String id_user = users_id.get(object_person.getSelectedItemPosition());
         String time_begin = table_begin_time.getText().toString().isEmpty() ? "1800-00-00" : table_begin_time.getText().toString();
         String time_end = table_end_time.getText().toString().isEmpty() ? "2999-12-31" : table_end_time.getText().toString();
         // TODO validate success, do something
         waitDialog.show();
         try {
+            Log.d("开始获取数据。。。");
             HttpClientBuilder.HttpClientParam param = HttpClientBuilder
                     .createParam(Constant.NBUSINESS_SERVICE_ADDRESS);
             String condition = "";
@@ -321,14 +361,18 @@ public class OrderFinding extends ActionBarWidgetActivity implements View.OnClic
 
                     }
                 }
-                if (Constant.tab_type == 0 || Constant.tab_type == 3) {
+                if (Constant.tab_type == 0 || Constant.tab_type == 3 || Constant.tab_type == 2) {
                     cons = cons + " and name_column>='" + time_begin + "' and name_column<='" + time_end + "'";
+                } else if (Constant.tab_type == 4) {
+                    cons = cons + " and name_column>" + all_goneprice + "";
                 }
                 condition = cons;
             } else {
                 condition = "1=1 and id_column='" + id_user + "' and var_value like '%" + id_terminal + "%'";
-                if (Constant.tab_type == 0 || Constant.tab_type == 3) {
+                if (Constant.tab_type == 0 || Constant.tab_type == 3 || Constant.tab_type == 2) {
                     condition = condition + " and name_column>='" + time_begin + "' and name_column<='" + time_end + "'";
+                } else if (Constant.tab_type == 4) {
+                    condition = condition + " and name_column>" + all_goneprice + "";
                 }
             }
             param.addKeyValue(Constant.BM_ACTION_TYPE, "MobileSyncDataDownload")
@@ -411,6 +455,7 @@ public class OrderFinding extends ActionBarWidgetActivity implements View.OnClic
                     mTableDatas = new ArrayList<>();
                     ArrayList<String> mfristData = new ArrayList<>();
                     //表头，不同表格不同表头
+                    Log.d("开始绘制表头。。。");
                     switch (Constant.tab_type) {
 
                         case 0:
@@ -472,7 +517,7 @@ public class OrderFinding extends ActionBarWidgetActivity implements View.OnClic
                             break;
                         case 4:
                             mfristData.add("客户名称");
-                            mfristData.add("客户代码");
+//                            mfristData.add("客户代码");
                             mfristData.add("业务员");
                             mfristData.add("180至365天");
                             mfristData.add("365天以上");
@@ -481,9 +526,13 @@ public class OrderFinding extends ActionBarWidgetActivity implements View.OnClic
                     }
 
                     mTableDatas.add(mfristData);
+                    Log.d("开始排列数据。。。");
                     Collections.sort(dsaordbaseJsons);
-
+                    ArrayList<String> contents = new ArrayList<String>();
                     allPrice = 0.0;
+                    firstPrice = 0.0;
+                    secondPrice = 0.0;
+                    Log.d("开始绘制表格。。。");
                     try {
                         for (int i = 0; i < dsaordbaseJsons.size(); i++) {
                             DsaordbaseJson dsaordbaseJson = dsaordbaseJsons.get(i);
@@ -496,25 +545,31 @@ public class OrderFinding extends ActionBarWidgetActivity implements View.OnClic
                                 case 0:
 //                                    long date_opr = dateFormat.parse(dsaordbaseJson.getDate_opr()).getTime();
 //                                    if (format.parse(time_begin).getTime() <= date_opr && date_opr <= format.parse(time_end).getTime()) {
-                                    mRowDatas.add(dsaordbaseJson.getName_corr());
-                                    mRowDatas.add(dsaordbaseJson.getName_terminal());
-                                    mRowDatas.add(dsaordbaseJson.getName_seller());
-                                    mRowDatas.add(format.format(new Date(dateFormat.parse(dsaordbaseJson.getDate_opr()).getTime())));
-                                    mRowDatas.add(dsaordbaseJson.getId_item());
-                                    mRowDatas.add(dsaordbaseJson.getName_item());
-                                    mRowDatas.add(dsaordbaseJson.getVar_ispec().trim());
-                                    mRowDatas.add(dsaordbaseJson.getVar_pattern().trim());
-                                    mRowDatas.add(dsaordbaseJson.getVar_chkparm().trim());
-                                    mRowDatas.add(formatNum.format(Double.valueOf(dsaordbaseJson.getDec_price())));
-                                    mRowDatas.add(formatNo.format(Double.valueOf(dsaordbaseJson.getDec_ordqty())));
-                                    double dec_amt = Double.valueOf(dsaordbaseJson.getDec_ordamt());
-                                    allPrice += dec_amt;
-                                    mRowDatas.add(formatNum.format(dec_amt));
-                                    mRowDatas.add(dsaordbaseJson.getVar_epsno().trim());
-                                    mRowDatas.add(dsaordbaseJson.getInv_epsno().trim());
-                                    mRowDatas.add(formatNum.format(Double.valueOf(TextUtils.isEmpty(dsaordbaseJson.getDec_setamt().trim()) ? "0.00" : dsaordbaseJson.getDec_setamt())));
-                                    mRowDatas.add(dsaordbaseJson.getDsaord_no());
-                                    mRowDatas.add(dsaordbaseJson.getLine_no());
+                                    if (!contents.contains(dsaordbaseJson.getDsaord_no() + dsaordbaseJson.getLine_no())) {
+                                        contents.add(dsaordbaseJson.getDsaord_no() + dsaordbaseJson.getLine_no());
+
+                                        mRowDatas.add(dsaordbaseJson.getName_corr());
+                                        mRowDatas.add(dsaordbaseJson.getName_terminal());
+                                        mRowDatas.add(dsaordbaseJson.getName_seller());
+                                        mRowDatas.add(dsaordbaseJson.getDate_opr());
+                                        mRowDatas.add(dsaordbaseJson.getId_item());
+                                        mRowDatas.add(dsaordbaseJson.getName_item());
+                                        mRowDatas.add(dsaordbaseJson.getVar_ispec().trim());
+                                        mRowDatas.add(dsaordbaseJson.getVar_pattern().trim());
+                                        mRowDatas.add(dsaordbaseJson.getVar_chkparm().trim());
+                                        mRowDatas.add(formatNum.format(Double.valueOf(dsaordbaseJson.getDec_price())));
+                                        mRowDatas.add(formatNo.format(Double.valueOf(dsaordbaseJson.getDec_ordqty())));
+                                        double dec_amt = Double.valueOf(dsaordbaseJson.getDec_ordamt());
+                                        allPrice += dec_amt;
+                                        mRowDatas.add(formatNum.format(dec_amt));
+                                        mRowDatas.add(dsaordbaseJson.getVar_epsno().trim());
+                                        mRowDatas.add(dsaordbaseJson.getInv_epsno().trim());
+                                        mRowDatas.add(formatNum.format(Double.valueOf(TextUtils.isEmpty(dsaordbaseJson.getDec_setamt().trim()) ? "0.00" : dsaordbaseJson.getDec_setamt())));
+                                        mRowDatas.add(dsaordbaseJson.getDsaord_no());
+                                        mRowDatas.add(dsaordbaseJson.getLine_no());
+                                        mTableDatas.add(mRowDatas);
+
+                                    }
 //                                    } else {
 //                                        continue;
 //                                    }
@@ -526,31 +581,36 @@ public class OrderFinding extends ActionBarWidgetActivity implements View.OnClic
 //                    long begin = dateFormat.parse(dsaordbaseJson.getDate_begin()).getTime();
 //                    long end = dateFormat.parse(dsaordbaseJson.getDate_end()).getTime();
 //                    if (format.parse(time_begin).getTime() <= begin && end <= format.parse(time_end).getTime()) {
-                                    mRowDatas.add(dsaordbaseJson.getName_corr());
-                                    mRowDatas.add(dsaordbaseJson.getName_seller());
-                                    mRowDatas.add(dsaordbaseJson.getName_area());
-                                    mRowDatas.add(dsaordbaseJson.getName_zone());
-                                    double _$130 = Double.valueOf(TextUtils.isEmpty(dsaordbaseJson.get_$130天().trim()) ? "0.00" : dsaordbaseJson.get_$130天());
-                                    double _$3060 = Double.valueOf(TextUtils.isEmpty(dsaordbaseJson.get_$3060天().trim()) ? "0.00" : dsaordbaseJson.get_$3060天());
-                                    double _$6090 = Double.valueOf(TextUtils.isEmpty(dsaordbaseJson.get_$6090天().trim()) ? "0.00" : dsaordbaseJson.get_$6090天());
-                                    double _$90180 = Double.valueOf(TextUtils.isEmpty(dsaordbaseJson.get_$90180天().trim()) ? "0.00" : dsaordbaseJson.get_$90180天());
-                                    double _$180270 = Double.valueOf(TextUtils.isEmpty(dsaordbaseJson.get_$180270天().trim()) ? "0.00" : dsaordbaseJson.get_$180270天());
-                                    double _$270365 = Double.valueOf(TextUtils.isEmpty(dsaordbaseJson.get_$270365天().trim()) ? "0.00" : dsaordbaseJson.get_$270365天());
-                                    double _$365730 = Double.valueOf(TextUtils.isEmpty(dsaordbaseJson.get_$365730天().trim()) ? "0.00" : dsaordbaseJson.get_$365730天());
-                                    double _$7301095 = Double.valueOf(TextUtils.isEmpty(dsaordbaseJson.get_$7301095天().trim()) ? "0.00" : dsaordbaseJson.get_$7301095天());
-                                    double _$1095up = Double.valueOf(TextUtils.isEmpty(dsaordbaseJson.get_$1095天以上().trim()) ? "0.00" : dsaordbaseJson.get_$1095天以上());
-                                    double all_acc = _$130 + _$3060 + _$6090 + _$90180 + _$180270 + _$270365 + _$365730 + _$7301095 + _$1095up;
-                                    mRowDatas.add(formatNum.format(_$130));
-                                    mRowDatas.add(formatNum.format(_$3060));
-                                    mRowDatas.add(formatNum.format(_$6090));
-                                    mRowDatas.add(formatNum.format(_$90180));
-                                    mRowDatas.add(formatNum.format(_$180270));
-                                    mRowDatas.add(formatNum.format(_$270365));
-                                    mRowDatas.add(formatNum.format(_$365730));
-                                    mRowDatas.add(formatNum.format(_$7301095));
-                                    mRowDatas.add(formatNum.format(_$1095up));
-                                    mRowDatas.add(formatNum.format(all_acc));
+                                    if (!contents.contains(dsaordbaseJson.getName_corr() + dsaordbaseJson.getName_seller() + dsaordbaseJson.getName_area() + dsaordbaseJson.getName_zone())) {
+                                        contents.add(dsaordbaseJson.getName_corr() + dsaordbaseJson.getName_seller() + dsaordbaseJson.getName_area() + dsaordbaseJson.getName_zone());
 
+                                        mRowDatas.add(dsaordbaseJson.getName_corr());
+                                        mRowDatas.add(dsaordbaseJson.getName_seller());
+                                        mRowDatas.add(dsaordbaseJson.getName_area());
+                                        mRowDatas.add(dsaordbaseJson.getName_zone());
+                                        double _$130 = Double.valueOf(TextUtils.isEmpty(dsaordbaseJson.get_$130天().trim()) ? "0.00" : dsaordbaseJson.get_$130天());
+                                        double _$3060 = Double.valueOf(TextUtils.isEmpty(dsaordbaseJson.get_$3060天().trim()) ? "0.00" : dsaordbaseJson.get_$3060天());
+                                        double _$6090 = Double.valueOf(TextUtils.isEmpty(dsaordbaseJson.get_$6090天().trim()) ? "0.00" : dsaordbaseJson.get_$6090天());
+                                        double _$90180 = Double.valueOf(TextUtils.isEmpty(dsaordbaseJson.get_$90180天().trim()) ? "0.00" : dsaordbaseJson.get_$90180天());
+                                        double _$180270 = Double.valueOf(TextUtils.isEmpty(dsaordbaseJson.get_$180270天().trim()) ? "0.00" : dsaordbaseJson.get_$180270天());
+                                        double _$270365 = Double.valueOf(TextUtils.isEmpty(dsaordbaseJson.get_$270365天().trim()) ? "0.00" : dsaordbaseJson.get_$270365天());
+                                        double _$365730 = Double.valueOf(TextUtils.isEmpty(dsaordbaseJson.get_$365730天().trim()) ? "0.00" : dsaordbaseJson.get_$365730天());
+                                        double _$7301095 = Double.valueOf(TextUtils.isEmpty(dsaordbaseJson.get_$7301095天().trim()) ? "0.00" : dsaordbaseJson.get_$7301095天());
+                                        double _$1095up = Double.valueOf(TextUtils.isEmpty(dsaordbaseJson.get_$1095天以上().trim()) ? "0.00" : dsaordbaseJson.get_$1095天以上());
+                                        double all_acc = _$130 + _$3060 + _$6090 + _$90180 + _$180270 + _$270365 + _$365730 + _$7301095 + _$1095up;
+                                        mRowDatas.add(formatNum.format(_$130));
+                                        mRowDatas.add(formatNum.format(_$3060));
+                                        mRowDatas.add(formatNum.format(_$6090));
+                                        mRowDatas.add(formatNum.format(_$90180));
+                                        mRowDatas.add(formatNum.format(_$180270));
+                                        mRowDatas.add(formatNum.format(_$270365));
+                                        mRowDatas.add(formatNum.format(_$365730));
+                                        mRowDatas.add(formatNum.format(_$7301095));
+                                        mRowDatas.add(formatNum.format(_$1095up));
+                                        mRowDatas.add(formatNum.format(all_acc));
+                                        allPrice += all_acc;
+                                        mTableDatas.add(mRowDatas);
+                                    }
 //                    mRowDatas.add(format.format(new Date(begin)));
 //                    mRowDatas.add(format.format(new Date(end)));
 //                    mRowDatas.add(dsaordbaseJson.getDec_samt());
@@ -559,27 +619,34 @@ public class OrderFinding extends ActionBarWidgetActivity implements View.OnClic
 //                    }
                                     break;
                                 case 2:
-                                    long date_task = dateFormat2.parse(dsaordbaseJson.getDate_task()).getTime();
-                                    if (format.parse(time_begin).getTime() <= date_task && date_task <= format.parse(time_end).getTime()) {
+//                                    long date_task = dateFormat2.parse(dsaordbaseJson.getDate_task()).getTime();
+//                                    if (format.parse(time_begin).getTime() <= date_task && date_task <= format.parse(time_end).getTime()) {
+                                    if (!contents.contains(dsaordbaseJson.getName_user() + dsaordbaseJson.getDate_task())) {
+                                        contents.add(dsaordbaseJson.getName_user() + dsaordbaseJson.getDate_task());
+
                                         mRowDatas.add(dsaordbaseJson.getName_dept());
                                         mRowDatas.add(dsaordbaseJson.getName_user());
-                                        mRowDatas.add(format.format(new Date(date_task)));
+                                        mRowDatas.add(dsaordbaseJson.getDate_task());
                                         mRowDatas.add(dsaordbaseJson.getName_type());
                                         mRowDatas.add(dsaordbaseJson.getName_wproj());
                                         mRowDatas.add(dsaordbaseJson.getVar_wtitle());
                                         mRowDatas.add(dsaordbaseJson.getVar_remark());
-                                    } else {
-                                        continue;
+                                        mTableDatas.add(mRowDatas);
                                     }
+//                                    } else {
+//                                        continue;
+//                                    }
 
                                     break;
                                 case 3:
-                                    long date_opr2 = dateFormat.parse(dsaordbaseJson.getDate_opr()).getTime();
-                                    if (format.parse(time_begin).getTime() <= date_opr2 && date_opr2 <= format.parse(time_end).getTime()) {
+//                                    long date_opr2 = dateFormat.parse(dsaordbaseJson.getDate_opr()).getTime();
+//                                    if (format.parse(time_begin).getTime() <= date_opr2 && date_opr2 <= format.parse(time_end).getTime()) {
+                                    if (!contents.contains(dsaordbaseJson.getDsaord_no() + dsaordbaseJson.getLine_no())) {
+                                        contents.add(dsaordbaseJson.getDsaord_no() + dsaordbaseJson.getLine_no());
                                         mRowDatas.add(dsaordbaseJson.getName_corr());
                                         mRowDatas.add(dsaordbaseJson.getName_terminal());
                                         mRowDatas.add(dsaordbaseJson.getName_seller());
-                                        mRowDatas.add(format.format(new Date(date_opr2)));
+                                        mRowDatas.add(dsaordbaseJson.getDate_opr());
                                         mRowDatas.add(dsaordbaseJson.getName_item());
                                         mRowDatas.add(dsaordbaseJson.getName_samth());
                                         mRowDatas.add(dsaordbaseJson.getVar_ispec().trim());
@@ -589,28 +656,38 @@ public class OrderFinding extends ActionBarWidgetActivity implements View.OnClic
                                         double dec_amt1 = Double.valueOf(dsaordbaseJson.getDec_ordamt());
                                         allPrice += dec_amt1;
                                         mRowDatas.add(formatNum.format(dec_amt1));
-                                    } else {
-                                        continue;
+                                        mTableDatas.add(mRowDatas);
                                     }
+//                                    } else {
+//                                        continue;
+//                                    }
                                     break;
                                 case 4:
-                                    mRowDatas.add(dsaordbaseJson.getName_corr());
-                                    mRowDatas.add(dsaordbaseJson.getId_corr());
-                                    mRowDatas.add(dsaordbaseJson.getName_seller());
-                                    double _$180365 = Double.valueOf(TextUtils.isEmpty(dsaordbaseJson.get_$180365天().trim()) ? "0.00" : dsaordbaseJson.get_$180365天());
-                                    double _$365up = Double.valueOf(TextUtils.isEmpty(dsaordbaseJson.get_$365天以上().trim()) ? "0.00" : dsaordbaseJson.get_$365天以上());
-                                    double all_acc2 = Double.valueOf(TextUtils.isEmpty(dsaordbaseJson.get_$总欠款额().trim()) ? "0.00" : dsaordbaseJson.get_$总欠款额());
-                                    mRowDatas.add(formatNum.format(_$180365));
-                                    mRowDatas.add(formatNum.format(_$365up));
-                                    mRowDatas.add(formatNum.format(all_acc2));
+
+                                    if (!contents.contains(dsaordbaseJson.getName_corr() + dsaordbaseJson.getName_seller() + dsaordbaseJson.get_$总欠款额().trim())) {
+                                        contents.add(dsaordbaseJson.getName_corr() + dsaordbaseJson.getName_seller() + dsaordbaseJson.get_$总欠款额().trim());
+
+                                        mRowDatas.add(dsaordbaseJson.getName_corr());
+//                                    mRowDatas.add(dsaordbaseJson.getId_corr());
+                                        mRowDatas.add(dsaordbaseJson.getName_seller());
+                                        double _$180365 = Double.valueOf(TextUtils.isEmpty(dsaordbaseJson.get_$180365天().trim()) ? "0.00" : dsaordbaseJson.get_$180365天());
+                                        double _$365up = Double.valueOf(TextUtils.isEmpty(dsaordbaseJson.get_$365天以上().trim()) ? "0.00" : dsaordbaseJson.get_$365天以上());
+                                        double all_acc2 = Double.valueOf(TextUtils.isEmpty(dsaordbaseJson.get_$总欠款额().trim()) ? "0.00" : dsaordbaseJson.get_$总欠款额());
+                                        mRowDatas.add(formatNum.format(_$180365));
+                                        mRowDatas.add(formatNum.format(_$365up));
+                                        mRowDatas.add(formatNum.format(all_acc2));
+                                        firstPrice += _$180365;
+                                        secondPrice += _$365up;
+                                        mTableDatas.add(mRowDatas);
+                                    }
                                     break;
                             }
 
-                            mTableDatas.add(mRowDatas);
+//                            mTableDatas.add(mRowDatas);
 
                         }
-                        //大数据测试
-
+                        //计算条目数
+//                        ToastUtil.ShowShort(getApplicationContext(), String.valueOf(mTableDatas.size() - 1));
                         if (mTableDatas.size() == 1) {//如果只有表头
                             mHandler.sendEmptyMessage(2);
 
@@ -620,7 +697,7 @@ public class OrderFinding extends ActionBarWidgetActivity implements View.OnClic
                         }
                         break;
 
-                    } catch (ParseException e) {
+                    } catch (Exception e) {
 
                     }
 
@@ -636,10 +713,13 @@ public class OrderFinding extends ActionBarWidgetActivity implements View.OnClic
 
     //获取表格
     private void getTab() {
+        Log.d("开始形成表格。。。");
         linear_list.removeAllViews();
         DecimalFormat formatNum = new DecimalFormat(",##0.00");
         all_price_textview.setText(formatNum.format(allPrice));
-        mLockTableView = new LockTableView(this, linear_list, mTableDatas);
+        first_price_textview.setText(formatNum.format(firstPrice));
+        second_price_textview.setText(formatNum.format(secondPrice));
+        mLockTableView = new LockTableView2(this, linear_list, mTableDatas);
         mLockTableView.setLockFristColumn(true) //是否锁定第一列
                 .setLockFristRow(true) //是否锁定第一行
                 .setMaxColumnWidth(100) //列最大宽度
@@ -653,6 +733,7 @@ public class OrderFinding extends ActionBarWidgetActivity implements View.OnClic
                 .setNullableString("--") //空值替换值
                 .show(); //显示表格,此方法必须调用
         waitDialog.dismiss();
+        Log.d("表格显示完毕。。。");
 //        ToastUtil.ShowShort(getApplicationContext(), dsaordbaseJsons.size() + "");
     }
 }

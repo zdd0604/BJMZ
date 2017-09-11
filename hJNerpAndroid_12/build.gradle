@@ -10,8 +10,8 @@ android {
         applicationId "com.hjnerpandroid"
         minSdkVersion 16
         targetSdkVersion 24
-        versionCode 69
-        versionName "3.2.69"
+        versionCode 70
+        versionName "3.2.70"
         ndk {
             moduleName "luajava"
         }
@@ -58,7 +58,7 @@ dependencies {
     compile 'com.android.support:support-v4:' + supportVersion
     compile 'com.github.bumptech.glide:glide:3.6.1'
     compile 'com.lzy.net:okgo:2.1.4'
-    compile 'com.github.RmondJone:LockTableView:1.0.3'
+    compile 'com.github.RmondJone:LockTableView:1.0.4'
     compile 'com.google.code.gson:gson:2.8.0'
     compile 'com.android.support.constraint:constraint-layout:1.0.0-beta3'
     debugCompile 'com.amitshekhar.android:debug-db:1.0.1'

@@ -31,14 +31,11 @@ import com.hjnerp.widget.WaitDialogRectangle;
 import com.hjnerpandroid.R;
 
 import org.apache.http.HttpResponse;
-import org.apache.http.protocol.HTTP;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -47,8 +44,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipInputStream;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -97,6 +92,7 @@ public class BusinessSearch extends ActionBarWidgetActivity implements View.OnCl
     private List<String> overclient_names = new ArrayList<>();
     private List<String> dec_acaramt = new ArrayList<>();
     private List<String> var_chkparm = new ArrayList<>();
+    private List<String> dec_taxrate = new ArrayList<>();
 
     Handler mHandler = new Handler() {
         @Override
@@ -312,6 +308,7 @@ public class BusinessSearch extends ActionBarWidgetActivity implements View.OnCl
                                         String id_terminal,
                                         String dec_acaramt,
                                         String var_chkparm,
+                                        String dec_taxrate,
                                         int position) {
                     Constant.item_peoject = item_peoject;
                     Constant.item_client = item_client;
@@ -350,6 +347,7 @@ public class BusinessSearch extends ActionBarWidgetActivity implements View.OnCl
                             sellDetails.get(sellDetailsPosition).setId_uom(id_corr);
                             sellDetails.get(sellDetailsPosition).setId_tax(dec_acaramt);
                             sellDetails.get(sellDetailsPosition).setVar_chkparm(var_chkparm);
+                            sellDetails.get(sellDetailsPosition).setDec_taxrate(dec_taxrate);
                             sellDetails.get(sellDetailsPosition).setPer_price(Double.valueOf(id_terminal));
                             break;
                     }
@@ -390,6 +388,8 @@ public class BusinessSearch extends ActionBarWidgetActivity implements View.OnCl
                     ejMyWProj1345.setId_wproj(travelDatas.get(i).getId_proj().trim());
                 if (travelDatas.get(i).getVar_chkparm() != null)
                     ejMyWProj1345.setVar_chkparm(travelDatas.get(i).getVar_chkparm().trim());
+                if (travelDatas.get(i).getDec_taxrate() != null)
+                    ejMyWProj1345.setDec_taxrate(travelDatas.get(i).getDec_taxrate().trim());
                 list.add(ejMyWProj1345);
             }
         }
@@ -529,12 +529,13 @@ public class BusinessSearch extends ActionBarWidgetActivity implements View.OnCl
                 break;
             case 3://查询地址+联系人+电话
                 for (int j = 0; j < dsaordbaseJsons.size(); j++) {
-                    if (!orderTerminal.contains(dsaordbaseJsons.get(j).getVar_conplace().trim() + dsaordbaseJsons.get(j).getVar_contact().trim())) {
-                        terminal_ids.add(dsaordbaseJsons.get(j).getVar_contact());//联系人
-                        address_ids.add(dsaordbaseJsons.get(j).getVar_tel());//电话
-                        address_names.add(dsaordbaseJsons.get(j).getVar_conplace());//地址
-                        orderTerminal.add(dsaordbaseJsons.get(j).getVar_conplace().trim() + dsaordbaseJsons.get(j).getVar_contact().trim());//过滤条件：地址+联系人
-                    }
+//                    if (!orderTerminal.contains(dsaordbaseJsons.get(j).getVar_conplace().trim() + dsaordbaseJsons.get(j).getVar_contact().trim())) {
+                    terminal_ids.add(dsaordbaseJsons.get(j).getVar_contact());//联系人
+                    address_ids.add(dsaordbaseJsons.get(j).getVar_tel());//电话
+                    address_names.add(dsaordbaseJsons.get(j).getVar_conplace());//地址
+                    orderTerminal.add(dsaordbaseJsons.get(j).getVar_rcvcorr());//收货单位
+//                        orderTerminal.add(dsaordbaseJsons.get(j).getVar_conplace().trim() + dsaordbaseJsons.get(j).getVar_contact().trim());//过滤条件：地址+联系人
+//                    }
 
                 }
                 travelDatas.clear();
@@ -543,7 +544,7 @@ public class BusinessSearch extends ActionBarWidgetActivity implements View.OnCl
                     ctlm7502Json.setName_proj(address_names.get(i1));//地址
                     ctlm7502Json.setId_proj(address_ids.get(i1));//电话
                     ctlm7502Json.setName_corr(terminal_ids.get(i1));//联系人
-                    ctlm7502Json.setId_corr("");//adapter限制，这个不传会崩溃
+                    ctlm7502Json.setId_corr(orderTerminal.get(i1));//收货单位
                     travelDatas.add(ctlm7502Json);
                 }
 
@@ -559,6 +560,7 @@ public class BusinessSearch extends ActionBarWidgetActivity implements View.OnCl
                         overclient_names.add(dsaordbaseJsons.get(j).getVar_pattern());
                         dec_acaramt.add(dsaordbaseJsons.get(j).getId_tax());//税种
                         var_chkparm.add(dsaordbaseJsons.get(j).getVar_chkparm());//
+                        dec_taxrate.add(dsaordbaseJsons.get(j).getDec_taxrate());//
                     }
 
                 }
@@ -573,6 +575,7 @@ public class BusinessSearch extends ActionBarWidgetActivity implements View.OnCl
                     ctlm7502Json.setName_terminal(overclient_names.get(i1));
                     ctlm7502Json.setDec_acaramt(dec_acaramt.get(i1));
                     ctlm7502Json.setVar_chkparm(var_chkparm.get(i1));
+                    ctlm7502Json.setDec_taxrate(dec_taxrate.get(i1));
                     travelDatas.add(ctlm7502Json);
                 }
                 break;

@@ -92,6 +92,15 @@ public class PerformanceBean implements Serializable {
     private String dec_oriamt;
     private String dec_price;
     private String id_tax;
+    private String dec_taxrate;
+
+    public String getDec_taxrate() {
+        return dec_taxrate;
+    }
+
+    public void setDec_taxrate(String dec_taxrate) {
+        this.dec_taxrate = dec_taxrate;
+    }
 
     public String getId_tax() {
         return id_tax;

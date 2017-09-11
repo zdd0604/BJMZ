@@ -187,8 +187,8 @@ public class RegisterActivity extends ActivitySupport {
      */
     private void getRegisterInfo(String eRegPhone, String eRegCode, String mobileInit) {
         Log.v("show", eRegPhone + "    " + eRegCode + "  " + mobileInit);
-//        OkGo.post("http://register.hejia.cn:8090/nerp/hjMobile")
-        OkGo.post("http://172.16.12.27:8090/nerp/hjMobile")
+        OkGo.post("http://register.hejia.cn:8090/nerp/hjMobile")
+//        OkGo.post("http://172.16.12.27:8090/nerp/hjMobile")
                 .params("phoneId", eRegPhone)
                 .params("valiadId", eRegCode)
                 .params("actionType", mobileInit)

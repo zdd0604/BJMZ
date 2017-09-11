@@ -10,7 +10,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="40dp"
         android:scaleType="fitCenter"
-        android:src="@drawable/enterprise_logo22" />
+        android:src="@drawable/mzlogo72" />
     <!--android:src="@drawable/mzlogo72" 美正项目-->
 
     <com.hjnerp.widget.ClearEditText

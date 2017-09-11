@@ -485,8 +485,8 @@ public class LoginActivity extends ActivitySupport {
 //        HttpClientManager.open();
 //        HttpClientManager.addTask(new RegisterResponseHandler(), request);
         OkGo.getInstance().setConnectTimeout(5000).setRetryCount(0);
-//        OkGo.post("http://register.hejia.cn:8090/nerp/hjMobile")
-        OkGo.post("http://172.16.12.27:8090/nerp/hjMobile")
+        OkGo.post("http://register.hejia.cn:8090/nerp/hjMobile")
+//        OkGo.post("http://172.16.12.27:8090/nerp/hjMobile")
                 .params("phoneId", sputil.getRegistId())
                 .params("valiadId", sputil.getRegistNub())
                 .params("actionType", "mobileInit")

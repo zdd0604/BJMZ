@@ -43,7 +43,7 @@ public class BusinessSearchAdapter extends RecyclerView.Adapter<BusinessSearchAd
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) {
-        switch (Constant.project_type){
+        switch (Constant.project_type) {
             case 0:
                 break;
             case 1:
@@ -59,10 +59,16 @@ public class BusinessSearchAdapter extends RecyclerView.Adapter<BusinessSearchAd
                 holder.pro_text.setTextColor(Color.parseColor("#000000"));
                 break;
             case 3:
+                holder.linearlayout_overclient.setVisibility(View.VISIBLE);
                 holder.pro_text.setText(mContext.getString(R.string.sellOrder_Tile_Address));
                 holder.text_address.setText(mContext.getString(R.string.sellOrder_Tile_Relation));
+                holder.text_overclient.setText(mContext.getString(R.string.sellOrder_Tile_rcvcorr));
+                holder.item_overclient.setText(list.get(position).getId_corr());
                 holder.pro_text.setTextColor(Color.parseColor("#000000"));
-                holder.pro_text.setTextColor(Color.parseColor("#000000"));
+                holder.text_address.setTextColor(Color.parseColor("#888888"));
+                holder.item_client.setTextColor(Color.parseColor("#888888"));
+                holder.text_overclient.setTextColor(Color.parseColor("#888888"));
+                holder.item_overclient.setTextColor(Color.parseColor("#888888"));
                 break;
             case 4:
                 holder.linearlayout_overclient.setVisibility(View.VISIBLE);
@@ -81,7 +87,7 @@ public class BusinessSearchAdapter extends RecyclerView.Adapter<BusinessSearchAd
                 holder.item_overclient.setText(list.get(position).getName_terminal());
                 holder.item_id_item.setText(list.get(position).getId_wproj());
                 String chkparm = list.get(position).getVar_chkparm().trim();
-                holder.item_chkparm.setText(chkparm.replaceAll("\r|\n*",""));
+                holder.item_chkparm.setText(chkparm.replaceAll("\r|\n*", ""));
                 break;
         }
 
@@ -101,6 +107,7 @@ public class BusinessSearchAdapter extends RecyclerView.Adapter<BusinessSearchAd
                             list.get(position).getId_terminal(),
                             list.get(position).getDec_acaramt(),
                             list.get(position).getVar_chkparm(),
+                            list.get(position).getDec_taxrate(),
                             position);
                 }
             });
@@ -116,7 +123,7 @@ public class BusinessSearchAdapter extends RecyclerView.Adapter<BusinessSearchAd
 
         TextView item_peoject;
         TextView item_client;
-//        TextView item_line_id;
+        //        TextView item_line_id;
         TextView pro_text;
         TextView text_address;
         TextView text_overclient;
@@ -158,6 +165,7 @@ public class BusinessSearchAdapter extends RecyclerView.Adapter<BusinessSearchAd
                          String id_terminal,
                          String dec_acaramt,
                          String var_chkparm,
+                         String dec_taxrate,
                          int position);
 
         void onItemLongClick(View view, int position);

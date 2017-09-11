@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -162,15 +163,35 @@ public class SellOrderAdapter extends WZYBaseAdapter<SellOrderModel> {
             finalSell_order_type.setEnabled(true);
         }
 //        sell_order_products.setAdapter(adapter2);
+
         sell_order_type.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (!TextUtils.isEmpty(sellOrderModel.getId_sell())) {
+//                    if ((sellTypes_id.get(position).equalsIgnoreCase("10") || sellTypes_id.get(position).equalsIgnoreCase("60")) && (!sellOrderModel.getId_sell().equalsIgnoreCase("10")) && (!sellOrderModel.getId_sell().equalsIgnoreCase("60"))) {
+//                        setEmpty();
+//                    } else if ((!(sellTypes_id.get(position).equalsIgnoreCase("10") || sellTypes_id.get(position).equalsIgnoreCase("60"))) && ((sellOrderModel.getId_sell().equalsIgnoreCase("10")) || (sellOrderModel.getId_sell().equalsIgnoreCase("60")))) {
+//                        setEmpty();
+//                    }
+                    if (!sellTypes_id.get(position).equalsIgnoreCase(sellOrderModel.getId_sell())){
+                        setEmpty();
+                    }
 
+                }
                 sellOrderModel.setOrder_type(position);
                 sellOrderModel.setId_sell(sellTypes_id.get(position));
                 if (!(sellTypes_id.get(position).equalsIgnoreCase("10") || sellTypes_id.get(position).equalsIgnoreCase("60"))) {
                     sellOrderModel.setPer_price(0.00);
                 }
+            }
+
+            private void setEmpty() {
+                sellOrderModel.setId_item("");
+                sellOrderModel.setName_item("");
+                sellOrderModel.setOrder_num(0);
+                sellOrderModel.setPer_price(0);
+                sellOrderModel.setOrder_price(0);
+                notifyDataSetChanged();
             }
 
             @Override

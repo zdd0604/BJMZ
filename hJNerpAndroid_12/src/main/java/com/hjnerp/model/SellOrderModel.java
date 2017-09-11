@@ -21,6 +21,15 @@ public class SellOrderModel {
     private String id_uom;//单位id
     private String id_tax;//增值税id
     private String var_chkparm;//性能参数
+    private String dec_taxrate;//税率
+
+    public String getDec_taxrate() {
+        return dec_taxrate;
+    }
+
+    public void setDec_taxrate(String dec_taxrate) {
+        this.dec_taxrate = dec_taxrate;
+    }
 
     public String getVar_chkparm() {
         return var_chkparm;

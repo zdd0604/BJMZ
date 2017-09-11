@@ -27,7 +27,7 @@
         android:layout_marginTop="40dp"
         android:adjustViewBounds="true"
         android:scaleType="fitCenter"
-        android:src="@drawable/hejiaicon3"
+        android:src="@drawable/mzlogo72"
         android:visibility="visible"
         app:bubble_angle="30dp"
         app:bubble_arrowHeight="0dp"

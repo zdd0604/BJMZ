@@ -33,6 +33,7 @@ import com.hjnerp.util.ToastUtil;
 import com.hjnerp.widget.MyListView;
 import com.hjnerp.widget.MyToast;
 import com.hjnerp.widget.MyToast2;
+import com.hjnerp.widget.WaitDialogRectangle;
 import com.hjnerpandroid.R;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.exception.OkGoException;
@@ -71,6 +72,8 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
     private List<String> orderExpress_id = new ArrayList<String>();
     private List<String> orderSpace = new ArrayList<String>();
     private ArrayAdapter<String> adapter;
+    private ArrayAdapter<String> adapter_express;
+    private ArrayAdapter<String> adapter_grey;
     private SellOrderAdapter sellOrderAdapter;
     private List<Ctlm1345> users;
     private List<Ctlm1345> sell = new ArrayList<>();
@@ -94,10 +97,6 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
     private String b;
     private int no;
     private int countDetail;
-
-    private String old_var_invaddr;
-    private String old_var_tel;
-    private String old_var_contact;
     @BindView(R.id.action_left_tv)
     TextView actionLeftTv;
     @BindView(R.id.action_center_tv)
@@ -108,6 +107,10 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
     TextView actionRightTv1;
     @BindView(R.id.add_sell_order_detail)
     LinearLayout add_sell_order_detail;
+    private String old_var_invaddr;
+    private String old_var_tel;
+    private String old_var_contact;
+    private Spinner sell_order_invexpress;
     @BindView(R.id.var_title_code)
     TextView var_title_code;
     @BindView(R.id.sell_order_recorder)
@@ -168,6 +171,21 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
         sell_order_ticket_time.setOnClickListener(this);
         sell_order_terminal.setOnClickListener(this);
         sell_order_address.setOnClickListener(this);
+        sell_order_ticket_type = (Spinner) findViewById(R.id.sell_order_ticket_type);
+        sell_order_ticket_time = (TextView) findViewById(R.id.sell_order_ticket_time);
+        sell_order_ticket_time.setOnClickListener(this);
+        sell_order_space = (Spinner) findViewById(R.id.sell_order_space);
+        sell_order_addess_send = (TextView) findViewById(R.id.sell_order_addess_send);
+        sell_order_addess_send.setOnClickListener(this);
+        sell_order_more = (EditText) findViewById(R.id.sell_order_more);
+        order_list_view = (MyListView) findViewById(R.id.order_list_view);
+        sellDetails = new ArrayList<>();
+        sell_over_money = (TextView) findViewById(R.id.sell_over_money);
+        sellOrderAdapter = new SellOrderAdapter(sellDetails, this, R.layout.item_sell_order, this);
+        order_list_view.setAdapter(sellOrderAdapter);
+        add_sell_order_detail.setOnClickListener(this);
+        sell_order_express = (Spinner) findViewById(R.id.sell_order_express);
+        sell_order_invexpress = (Spinner) findViewById(R.id.sell_order_invexpress);
     }
 
     private void initData() {
@@ -212,18 +230,24 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
             }
         });
         int selected_express_no = 0;
+        int selected_invexpress_no = 0;
         for (int i = 0; i < express.size(); i++) {
             Dsaordtype dsaordtype = gson1.fromJson(express.get(i).getVar_value(), Dsaordtype.class);
             orderExpress.add(dsaordtype.getName_express());
             orderExpress_id.add(dsaordtype.getId_express());
             if (orderExpress_id.get(i).equalsIgnoreCase("106")) {
                 selected_express_no = i;
+                selected_invexpress_no = i;
             }
         }
-        adapter = new ArrayAdapter<String>(this, R.layout.spinner_item, orderExpress);
-        adapter.setDropDownViewResource(R.layout.spinner_item_hint);
-        sell_order_express.setAdapter(adapter);
+        adapter_express = new ArrayAdapter<String>(this, R.layout.spinner_item, orderExpress);
+        adapter_grey = new ArrayAdapter<String>(this, R.layout.spinner_item_grey, orderExpress);
+        adapter_express.setDropDownViewResource(R.layout.spinner_item_hint);
+        adapter_grey.setDropDownViewResource(R.layout.spinner_item_hint);
+        sell_order_express.setAdapter(adapter_express);
+        sell_order_invexpress.setAdapter(adapter_express);
         sell_order_express.setSelection(selected_express_no);
+        sell_order_invexpress.setSelection(selected_invexpress_no);
         for (int i = 0; i < tax.size(); i++) {
             Dsaordtype dsaordtype = gson1.fromJson(tax.get(i).getVar_value(), Dsaordtype.class);
             orderTicketType.add(dsaordtype.getName_invtype());
@@ -237,28 +261,7 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
         adapter = new ArrayAdapter<String>(this, R.layout.spinner_item, orderSpace);
         adapter.setDropDownViewResource(R.layout.spinner_item_hint);
         sell_order_space.setAdapter(adapter);
-        sell_order_space.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (position == 1) {
-                    sell_order_addess_send.setClickable(true);
-                    sell_order_addess_send.setTextColor(mContext.getResources().getColor(R.color.black));
-                } else {
-                    sell_order_addess_send.setClickable(false);
-                    sell_order_addess_send.setText(sell_order_address.getText());
-                    sell_order_addess_send.setTextColor(mContext.getResources().getColor(R.color.title_hint));
 
-//                    if (dsaordbaseJsons_new != null && dsaordbaseJsons_new.size() > 0) {
-//                        sell_order_addess_send.setSelection(sell_order_address.getSelectedItemPosition());
-//                    }
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
         username = ej1345.getName_user();
         userID = ej1345.getId_user();
         companyID = ej1345.getId_com();
@@ -329,6 +332,11 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
                 if (performanceDatas.getMain().getId_express().equalsIgnoreCase(orderExpress_id.get(i))) {
                     sell_order_express.setSelection(i);
                 }
+                if (performanceDatas.getMain().getId_invexpress().equalsIgnoreCase(orderExpress_id.get(i))) {
+//                    new MyToast(this, orderExpress_id.get(i));
+                    selected_invexpress_no = i;
+                    sell_order_invexpress.setSelection(selected_invexpress_no);
+                }
             }
             if (performanceDatas.getMain().getFlag_itemwith().equalsIgnoreCase("Y")) {
                 sell_order_space.setSelection(0);
@@ -346,6 +354,7 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
                 sellOrderModel.setOrder_no(no);
                 sellOrderModel.setName_item(performanceDatas.getDetails().get(i).getName_item());
                 sellOrderModel.setId_tax(performanceDatas.getDetails().get(i).getId_tax());
+                sellOrderModel.setDec_taxrate(performanceDatas.getDetails().get(i).getDec_taxrate());
                 sellOrderModel.setOrder_num(Double.valueOf(performanceDatas.getDetails().get(i).getDec_qty()));
                 sellOrderModel.setOrder_price(Double.valueOf(performanceDatas.getDetails().get(i).getDec_oriamt()));
                 sellOrderModel.setPer_price(Double.valueOf(performanceDatas.getDetails().get(i).getDec_price()));
@@ -355,6 +364,34 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
                 no++;
             }
         }
+        final int finalSelected_invexpress_no = selected_invexpress_no;
+        sell_order_space.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (position == 1) {
+                    sell_order_addess_send.setClickable(true);
+                    sell_order_invexpress.setEnabled(true);
+                    sell_order_invexpress.setAdapter(adapter_express);
+                    sell_order_addess_send.setTextColor(mContext.getResources().getColor(R.color.black));
+                    sell_order_invexpress.setSelection(finalSelected_invexpress_no);
+                } else {
+                    sell_order_addess_send.setClickable(false);
+                    sell_order_invexpress.setAdapter(adapter_grey);
+                    sell_order_addess_send.setText(sell_order_address.getText());
+                    sell_order_addess_send.setTextColor(mContext.getResources().getColor(R.color.title_hint));
+                    sell_order_invexpress.setSelection(sell_order_express.getSelectedItemPosition());
+                    sell_order_invexpress.setEnabled(false);
+//                    if (dsaordbaseJsons_new != null && dsaordbaseJsons_new.size() > 0) {
+//                        sell_order_addess_send.setSelection(sell_order_address.getSelectedItemPosition());
+//                    }
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
         sellOrderAdapter.notifyDataSetChanged();
     }
 
@@ -594,6 +631,8 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
             valuesBean.setLine_no((String.valueOf(i + 1)));
             valuesBean.setId_ordsource("001");
             valuesBean.setId_curr("CNY");
+            //dec_exchangerate
+            valuesBean.setDec_exchangerate("1");
             valuesBean.setVar_contact(var_contact);
             valuesBean.setId_corr(id_corr);
             valuesBean.setName_corr(name_corr);
@@ -647,6 +686,7 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
                 valuesBean.setDec_oriprice(String.valueOf(sellDetails.get(0).getPer_price()));
                 valuesBean.setDec_oriamt(String.valueOf(sellDetails.get(0).getOrder_price()));
                 valuesBean.setId_tax(sellDetails.get(0).getId_tax());
+                valuesBean.setDec_taxrate(sellDetails.get(0).getDec_taxrate());
                 stringBuffer.append("{\"column\":\"id_satype\",\"value\":\"" + sellDetails.get(0).getId_sell() + "\",\"datatype\":\"varchar\"}, ");
                 stringBuffer.append("{\"column\":\"id_item\",\"value\":\"" + sellDetails.get(0).getId_item() + "\",\"datatype\":\"varchar\"}, ");
                 stringBuffer.append("{\"column\":\"name_item\",\"value\":\"" + sellDetails.get(0).getName_item() + "\",\"datatype\":\"varchar\"}, ");
@@ -674,9 +714,13 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
                 valuesBean.setName_item(sellDetails.get(i).getName_item());
                 valuesBean.setId_uom(sellDetails.get(i).getId_uom());
                 valuesBean.setDec_qty(String.valueOf(sellDetails.get(i).getOrder_num()));
+                valuesBean.setDec_ordqty(String.valueOf(sellDetails.get(i).getOrder_num()));
                 valuesBean.setDec_oriprice(String.valueOf(sellDetails.get(i).getPer_price()));
+                valuesBean.setDec_price(String.valueOf(sellDetails.get(i).getPer_price()));
                 valuesBean.setDec_oriamt(String.valueOf(sellDetails.get(i).getOrder_price()));
+                valuesBean.setDec_amt(String.valueOf(sellDetails.get(i).getOrder_price()));
                 valuesBean.setId_tax(sellDetails.get(i).getId_tax());
+                valuesBean.setDec_taxrate(sellDetails.get(i).getDec_taxrate());
                 stringBuffer.append("{\"column\":\"id_tax\",\"value\":\"" + sellDetails.get(i).getId_tax() + "\",\"datatype\":\"varchar\"}, ");
                 stringBuffer.append("{\"column\":\"id_satype\",\"value\":\"" + sellDetails.get(i).getId_sell() + "\",\"datatype\":\"varchar\"}, ");
                 stringBuffer.append("{\"column\":\"id_item\",\"value\":\"" + sellDetails.get(i).getId_item() + "\",\"datatype\":\"varchar\"}, ");
@@ -694,30 +738,31 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
                 valuesBean.setVar_invaddr(var_invaddr);
                 valuesBean.setVar_invtel(var_tel);
                 valuesBean.setVar_invcontact(var_contact);
-                valuesBean.setId_invexpress(orderExpress_id.get(sell_order_express.getSelectedItemPosition()));
+                valuesBean.setId_invexpress(orderExpress_id.get(sell_order_invexpress.getSelectedItemPosition()));
                 stringBuffer.append("{\"column\":\"flag_itemwith\",\"value\":\"Y\",\"datatype\":\"char\"}, ");
                 stringBuffer.append("{\"column\":\"var_invaddr\",\"value\":\"" + var_invaddr + "\",\"datatype\":\"varchar\"}, ");
                 stringBuffer.append("{\"column\":\"var_invtel\",\"value\":\"" + var_tel + "\",\"datatype\":\"varchar\"}, ");
                 stringBuffer.append("{\"column\":\"var_invcontact\",\"value\":\"" + var_contact + "\",\"datatype\":\"varchar\"}, ");
-                stringBuffer.append("{\"column\":\"id_invexpress\",\"value\":\"" + orderExpress_id.get(sell_order_express.getSelectedItemPosition()) + "\",\"datatype\":\"varchar\"}, ");
+                stringBuffer.append("{\"column\":\"id_invexpress\",\"value\":\"" + orderExpress_id.get(sell_order_invexpress.getSelectedItemPosition()) + "\",\"datatype\":\"varchar\"}, ");
 
             } else {//选择否
                 valuesBean.setFlag_itemwith("N");
                 valuesBean.setVar_invaddr(var_invaddr);
                 valuesBean.setVar_invtel(var_inv_tel);
                 valuesBean.setVar_invcontact(var_inv_contact);
-                valuesBean.setId_invexpress(orderExpress_id.get(sell_order_express.getSelectedItemPosition()));
+                valuesBean.setId_invexpress(orderExpress_id.get(sell_order_invexpress.getSelectedItemPosition()));
                 stringBuffer.append("{\"column\":\"flag_itemwith\",\"value\":\"N\",\"datatype\":\"char\"}, ");
                 stringBuffer.append("{\"column\":\"var_invaddr\",\"value\":\"" + var_invaddr + "\",\"datatype\":\"varchar\"}, ");
                 stringBuffer.append("{\"column\":\"var_invtel\",\"value\":\"" + var_inv_tel + "\",\"datatype\":\"varchar\"}, ");
                 stringBuffer.append("{\"column\":\"var_invcontact\",\"value\":\"" + var_inv_contact + "\",\"datatype\":\"varchar\"}, ");
-                stringBuffer.append("{\"column\":\"id_invexpress\",\"value\":\"" + orderExpress_id.get(sell_order_express.getSelectedItemPosition()) + "\",\"datatype\":\"varchar\"}, ");
+                stringBuffer.append("{\"column\":\"id_invexpress\",\"value\":\"" + orderExpress_id.get(sell_order_invexpress.getSelectedItemPosition()) + "\",\"datatype\":\"varchar\"}, ");
 //                stringBuffer.append("{\"column\":\"var_invaddr\",\"value\":\"" + old_var_invaddr + "\",\"datatype\":\"varchar\"}, ");
 //                stringBuffer.append("{\"column\":\"var_invtel\",\"value\":\"" + old_var_tel + "\",\"datatype\":\"varchar\"}, ");
 //                stringBuffer.append("{\"column\":\"var_invcontact\",\"value\":\"" + old_var_contact + "\",\"datatype\":\"varchar\"}, ");
 
             }
             valuesBean.setDec_orisamt(String.valueOf(allprice));
+            valuesBean.setDec_samt(String.valueOf(allprice));
             valuesBean.setVar_rcvcorr(var_rcvcorr);
             valuesBean.setVar_addr(address);
             valuesBean.setId_express(orderExpress_id.get(sell_order_express.getSelectedItemPosition()));
@@ -746,6 +791,7 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
         if (waitDialogRectangle != null && waitDialogRectangle.isShowing()) {
             waitDialogRectangle.dismiss();
         }
+        waitDialogRectangle = new WaitDialogRectangle(this);
         waitDialogRectangle.setCanceledOnTouchOutside(false);
         waitDialogRectangle.show();
         waitDialogRectangle.setText("正在提交");
@@ -878,6 +924,7 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
                     sell_order_address.setText(item_peoject);
                     var_tel = id_wproj;
                     var_contact = item_client;
+                    var_rcvcorr = Constant.id_corr;
                     if (sell_order_space.getSelectedItemPosition() == 0) {
                         sell_order_addess_send.setText(item_peoject);
                     }
@@ -898,7 +945,7 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
         DecimalFormat format = new DecimalFormat(",##0.00");
         sell_over_money.setText(format.format(Double.valueOf(dsaordbaseJsons_new.get(0).getDec_acaramt())));
         dec_acclimit = dsaordbaseJsons_new.get(0).getDec_acclimit();
-        var_rcvcorr = dsaordbaseJsons_new.get(0).getVar_rcvcorr();
+//        var_rcvcorr = dsaordbaseJsons_new.get(0).getVar_rcvcorr();
         id_terminal = dsaordbaseJsons_new.get(0).getId_terminal();
         id_corr = dsaordbaseJsons_new.get(0).getId_corr();
         id_terminal_for_item = id_corr;

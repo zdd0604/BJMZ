@@ -47,6 +47,7 @@
 
     <LinearLayout
         style="@style/Item_LinearLayout_HorizontalStyle"
+        android:layout_height="@dimen/size_30"
         android:layout_marginTop="@dimen/size_8">
 
         <TextView
@@ -58,7 +59,9 @@
             style="@style/Item_LinearLayout_SpRightStyle" />
     </LinearLayout>
 
-    <LinearLayout style="@style/Item_LinearLayout_HorizontalStyle">
+    <LinearLayout
+        style="@style/Item_LinearLayout_HorizontalStyle"
+        android:layout_height="@dimen/size_30">
 
         <TextView
             style="@style/Item_LinearLayout_TVLeftTieleStyle"
@@ -73,6 +76,7 @@
     <LinearLayout
         android:id="@+id/table_date_from"
         style="@style/Item_LinearLayout_HorizontalStyle"
+        android:layout_height="@dimen/size_30"
         android:visibility="gone">
 
         <TextView
@@ -88,6 +92,7 @@
     <LinearLayout
         android:id="@+id/table_date_to"
         style="@style/Item_LinearLayout_HorizontalStyle"
+        android:layout_height="@dimen/size_30"
         android:visibility="gone">
 
         <TextView
@@ -101,8 +106,28 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/all_goneprice_layout"
+        style="@style/Item_LinearLayout_HorizontalStyle"
+        android:layout_height="@dimen/size_30"
+        android:visibility="gone">
+
+        <TextView
+            style="@style/Item_LinearLayout_TVLeftTieleStyle"
+            android:text="总欠款(>)" />
+
+        <EditText
+            android:id="@+id/all_goneprice_textview"
+            style="@style/Item_LinearLayout_EdRightTitleStyle"
+            android:digits="1234567890."
+            android:inputType="numberDecimal"
+            android:maxLength="9"
+            android:text="1000" />
+    </LinearLayout>
+
+    <LinearLayout
         android:id="@+id/all_price_layout"
         style="@style/Item_LinearLayout_HorizontalStyle"
+        android:layout_height="@dimen/size_30"
         android:visibility="gone">
 
         <TextView
@@ -113,6 +138,39 @@
             android:id="@+id/all_price_textview"
             style="@style/Item_LinearLayout_TvRightTitleStyle" />
     </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/first_price_layout"
+        style="@style/Item_LinearLayout_HorizontalStyle"
+        android:layout_height="@dimen/size_30"
+        android:visibility="gone">
+
+        <TextView
+            style="@style/Item_LinearLayout_TVLeftTieleStyle"
+            android:layout_weight="3"
+            android:text="180天到365天应收总额" />
+
+        <TextView
+            android:id="@+id/first_price_textview"
+            style="@style/Item_LinearLayout_TvRightTitleStyle" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/second_price_layout"
+        style="@style/Item_LinearLayout_HorizontalStyle"
+        android:layout_height="@dimen/size_30"
+        android:visibility="gone">
+
+        <TextView
+            style="@style/Item_LinearLayout_TVLeftTieleStyle"
+            android:layout_weight="3"
+            android:text="365天及以上应收总额" />
+
+        <TextView
+            android:id="@+id/second_price_textview"
+            style="@style/Item_LinearLayout_TvRightTitleStyle" />
+    </LinearLayout>
+
 
     <LinearLayout
         android:id="@+id/linear_list"

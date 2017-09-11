@@ -134,6 +134,7 @@
     <string name="sellOrder_Tile_Code">代码</string>
     <string name="sellOrder_Tile_Product">产品</string>
     <string name="sellOrder_Tile_Type">型号</string>
+    <string name="sellOrder_Tile_rcvcorr">单位</string>
     <string name="sellOrder_Tile_Specification">规格</string>
     <string name="sellOrder_Tile_Performance">性能</string>
     <string name="sellOrder_Tile_Client">客户</string>
