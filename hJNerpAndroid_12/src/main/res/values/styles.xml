@@ -227,6 +227,7 @@
         <item name="android:textSize">@dimen/font_size_17</item>
         <item name="android:drawablePadding">@dimen/size_.5</item>
         <item name="android:text">@string/action_left_content_back</item>
+        <item name="android:layout_marginLeft">@dimen/size_5</item>
     </style>
     <!-- actionbar的相对布局大标题-->
     <style name="Item_TextView_ActionBarCenterStyle">

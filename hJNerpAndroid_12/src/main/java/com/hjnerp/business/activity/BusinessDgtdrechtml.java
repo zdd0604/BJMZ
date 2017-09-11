@@ -28,13 +28,11 @@ import com.hjnerp.model.EjWadd1345;
 import com.hjnerp.model.businessFlag;
 import com.hjnerp.util.Log;
 import com.hjnerp.util.StringUtil;
-import com.hjnerp.util.ToastUtil;
 import com.hjnerp.widget.ClearEditText;
 import com.hjnerpandroid.R;
 import com.lzy.okgo.OkGo;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 import butterknife.BindView;
@@ -74,8 +72,6 @@ public class BusinessDgtdrechtml extends ActionBarWidgetActivity implements View
     TextView pro_text;
     @BindView(R.id.textView7)
     TextView textView7;
-    //获取数据
-    private Calendar calendar = Calendar.getInstance();
     private List<EjWadd1345> ejWaddList;
     private List<EjWType1345> ejtpe1345List;
 
@@ -115,7 +111,8 @@ public class BusinessDgtdrechtml extends ActionBarWidgetActivity implements View
 
     private void initView() {
         actionCenterTv.setText(getString(R.string.work_Tile_Activity));
-        actionRightTv.setVisibility(View.GONE);
+        actionRightTv.setText(getString(R.string.action_right_content_commit));
+        actionRightTv.setOnClickListener(this);
         actionLeftTv.setOnClickListener(this);
         log_date_task.setOnClickListener(this);
         log_id_wproj.setOnClickListener(this);
@@ -164,9 +161,9 @@ public class BusinessDgtdrechtml extends ActionBarWidgetActivity implements View
             case R.id.log_id_wproj:
                 queryWorkType();
                 break;
-            case R.id.dgtdrechtml_submit:
-                submitData();
-                break;
+//            case R.id.dgtdrechtml_submit:
+//                submitData();
+//                break;
             case R.id.log_flag_wadd:
                 showPopupWindow(log_flag_wadd, nameSiteList, "site");
                 break;
@@ -175,6 +172,9 @@ public class BusinessDgtdrechtml extends ActionBarWidgetActivity implements View
                 break;
             case R.id.action_left_tv:
                 finish();
+                break;
+            case R.id.action_right_tv:
+                submitData();
                 break;
         }
     }
@@ -188,36 +188,36 @@ public class BusinessDgtdrechtml extends ActionBarWidgetActivity implements View
         var_remark = log_var_remark.getText().toString().trim();
 
         if (!StringUtil.isStrTrue(date_task)) {
-            ToastUtil.ShowLong(mContext, "任务时间不能为空");
+            showFailToast("任务时间不能为空");
+            waitDialog.dismiss();
+            return;
+        }
+        if (!StringUtil.isStrTrue(flag_wadd)) {
+            showFailToast("工作地点不能为空");
             waitDialog.dismiss();
             return;
         }
         if (!StringUtil.isStrTrue(id_wtype)) {
-            ToastUtil.ShowLong(mContext, "工作类型不能为空");
+            showFailToast("工作类型不能为空");
             waitDialog.dismiss();
             return;
         }
         if (!StringUtil.isStrTrue(Log_id_wproj)) {
-            ToastUtil.ShowLong(mContext, "工作项目不能为空");
+            showFailToast("工作项目不能为空");
             waitDialog.dismiss();
             return;
         }
         if (!StringUtil.isStrTrue(dec_wtime)) {
-            ToastUtil.ShowLong(mContext, "工时不能为空");
+            showFailToast("工时不能为空");
             waitDialog.dismiss();
             return;
         }
         if (!StringUtil.isStrTrue(var_wtitle)) {
-            ToastUtil.ShowLong(mContext, "主题不能为空");
+            showFailToast("主题不能为空");
             waitDialog.dismiss();
             return;
         }
 
-        if (!StringUtil.isStrTrue(flag_wadd)) {
-            ToastUtil.ShowLong(mContext, "工作地点不能为空");
-            waitDialog.dismiss();
-            return;
-        }
         if (id_wtype.equalsIgnoreCase("030")) {
             Constant.id_wproj = "0";
             Constant.item_peoject = log_id_wproj.getText().toString().trim();
@@ -249,14 +249,14 @@ public class BusinessDgtdrechtml extends ActionBarWidgetActivity implements View
                     @Override
                     public void onSuccess(businessFlag businessFlag, Call call, Response response) {
                         String content = businessFlag.getMessage();
-                        ToastUtil.ShowLong(mContext, "上传成功");
+                        showSuccessToast("上传成功");
                         removeData();
                     }
 
                     @Override
                     public void onError(Call call, Response response, Exception e) {
                         super.onError(call, response, e);
-                        ToastUtil.ShowLong(mContext, "上传失败");
+                        showFailToast("上传失败");
                         removeData();
                     }
                 });
@@ -271,7 +271,7 @@ public class BusinessDgtdrechtml extends ActionBarWidgetActivity implements View
             }
 
         } else {
-            ToastUtil.ShowLong(mContext, "请先选择工作类型");
+            showFailToast("请先选择工作类型");
 //            removeData();
         }
     }

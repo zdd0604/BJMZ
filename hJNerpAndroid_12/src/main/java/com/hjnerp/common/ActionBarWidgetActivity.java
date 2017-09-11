@@ -14,6 +14,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hjnerp.model.LoginConfig;
+import com.hjnerp.widget.MyToast;
+import com.hjnerp.widget.MyToast2;
 import com.hjnerp.widget.WaitDialogRectangle;
 
 import org.apache.http.protocol.HTTP;
@@ -94,6 +96,24 @@ public class ActionBarWidgetActivity extends AppCompatActivity implements
         Intent intent = new Intent(from, to);
         intent.putExtras(bundle);
         startActivity(intent);
+    }
+
+    /**
+     * 提交成功提示框
+     *
+     * @param content
+     */
+    public void showSuccessToast(String content) {
+        new MyToast(mContext, content);
+    }
+
+    /**
+     * 提交失败提示框
+     *
+     * @param content
+     */
+    public void showFailToast(String content) {
+        new MyToast2(mContext, content);
     }
 
     @Override

@@ -106,6 +106,7 @@
     <string name="action_right_content_save">保存</string>
     <string name="action_right_content_send">送审</string>
     <string name="action_right_content_add">新增</string>
+    <string name="action_right_content_commit">提交</string>
     <string name="action_right_content_title">大标题</string>
     <string name="action_right_right_title">右标题</string>
     <string name="action_right_right1_title">右标题1</string>

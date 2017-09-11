@@ -140,6 +140,7 @@
     </ScrollView>
 
     <Button
+        android:visibility="gone"
         android:id="@+id/dgtdrechtml_submit"
         android:layout_width="60dp"
         android:layout_height="60dp"

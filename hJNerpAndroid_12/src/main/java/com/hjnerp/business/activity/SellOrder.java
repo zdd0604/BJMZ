@@ -31,7 +31,6 @@ import com.hjnerp.model.SellOrderModel;
 import com.hjnerp.model.businessFlag;
 import com.hjnerp.util.ToastUtil;
 import com.hjnerp.widget.MyListView;
-import com.hjnerp.widget.MyToast;
 import com.hjnerp.widget.MyToast2;
 import com.hjnerp.widget.WaitDialogRectangle;
 import com.hjnerpandroid.R;
@@ -519,23 +518,18 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
     private void saveAndSend(String save) {
         name_terminal = sell_order_terminal.getText().toString().trim();
         if (TextUtils.isEmpty(name_terminal)) {
-//            Toast.makeText(this, "请先选择所属终端", Toast.LENGTH_SHORT).show();
-            new MyToast2(SellOrder.this, "请先选择所属终端!");
-
+//            new MyToast2(SellOrder.this, "请先选择所属终端!");
+            showFailToast("请先选择所属终端!");
             return;
         }
         name_corr = sell_order_send.getText().toString().trim();
         if (TextUtils.isEmpty(name_corr)) {
-//            Toast.makeText(this, "客户名不能为空", Toast.LENGTH_SHORT).show();
-            new MyToast2(SellOrder.this, "客户名不能为空!");
-
+            showFailToast("客户名不能为空!");
             return;
         }
         String time_p = sell_order_ticket_time.getText().toString().trim();
         if (TextUtils.isEmpty(time_p)) {
-//            Toast.makeText(this, "请先选择指定发货日期", Toast.LENGTH_SHORT).show();
-            new MyToast2(SellOrder.this, "请先选择发货日期!");
-
+            showFailToast("请先选择发货日期!");
             return;
         }
         //取消预计开票时间，设置为0000-00-00
@@ -543,16 +537,12 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
         String more = sell_order_more.getText().toString().trim();
         String address = sell_order_address.getText().toString().trim();
         if (TextUtils.isEmpty(address)) {
-//            Toast.makeText(this, "请先选择送货地址", Toast.LENGTH_SHORT).show();
-            new MyToast2(SellOrder.this, "请先选择送货地址!");
-
+            showFailToast("请先选择送货地址!");
             return;
         }
         String var_invaddr = sell_order_addess_send.getText().toString().trim();
         if (TextUtils.isEmpty(var_invaddr)) {
-//            Toast.makeText(this, "请先选择发票邮寄地址", Toast.LENGTH_SHORT).show();
-            new MyToast2(SellOrder.this, "请先选择发票地址!");
-
+            showFailToast("请先选择发票地址!");
             return;
         }
 //        if (TextUtils.isEmpty(dec_acclimit)) {
@@ -820,10 +810,10 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
                             Constant.billsNo = businessFlag.getNo();
 //                            ToastUtil.ShowShort(getApplicationContext(), content);
                             if (flag.equalsIgnoreCase("Y")) {
-                                new MyToast(SellOrder.this, "成功!");
+                                showSuccessToast("成功!");
                                 setResult(33);
                             } else {
-                                new MyToast2(SellOrder.this, "失败!");
+                                showFailToast("失败!");
                             }
                             var_title_code.setText(Constant.billsNo);
                             Constant.JUDGE_TYPE = false;
@@ -832,11 +822,11 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
                             Constant.billsNo = businessFlag.getNo();
 //                            ToastUtil.ShowShort(getApplicationContext(), content);
                             if (flag.equalsIgnoreCase("Y")) {
-                                new MyToast(SellOrder.this, "成功!");
+                                showSuccessToast("成功!");
                                 setResult(22);
                                 finish();
                             } else {
-                                new MyToast2(SellOrder.this, "失败!");
+                                showFailToast("失败!");
                             }
 //                            setResult(22);
 //                            finish();
@@ -851,15 +841,14 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
                         super.onError(call, response, e);
                         if (e instanceof OkGoException) {
 //                            ToastUtil.ShowShort(getApplicationContext(), "网络错误");
-                            new MyToast2(SellOrder.this, "网络错误!");
+                            showFailToast("网络错误!");
                         } else {
                             if (TextUtils.isEmpty(e.getMessage())) {
 //                                ToastUtil.ShowShort(getApplicationContext(), "提交失败");
-                                new MyToast2(SellOrder.this, "提交失败!");
-
+                                showFailToast("提交失败!");
                             } else {
 //                                ToastUtil.ShowShort(getApplicationContext(), e.getMessage());
-                                new MyToast2(SellOrder.this, e.getMessage());
+                                showFailToast(e.getMessage());
                             }
 
 
