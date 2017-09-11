@@ -55,13 +55,13 @@ import static android.jiebao.utils.Tools.getToday;
 import static com.hjnerp.common.Constant.dsaordbaseJsons_new;
 import static com.hjnerp.common.Constant.user_myid;
 
-public class OrderFinding extends ActionBarWidgetActivity implements View.OnClickListener {
+public class OrderFinding extends ActionBarWidgetActivity implements View.OnClickListener,
+        ActionBarWidgetActivity.NsyncDataConnector {
     private List<Ctlm1345> myauthuser = new ArrayList<>();
     private List<String> users_id = new ArrayList<String>();
     private List<String> users_name = new ArrayList<String>();
     private List<DsaordbaseJson> dsaordbaseJsons = new ArrayList<DsaordbaseJson>();
     private ArrayAdapter<String> adapter;
-    private HttpClientManager.HttpResponseHandler responseHandler = new NsyncDataHandler();
     public static final String JSON_VALUE = "values";
     public static final Pattern p = Pattern.compile("\\s*|\t|\r|\n");
     private ArrayList<ArrayList<String>> mTableDatas;
@@ -110,62 +110,6 @@ public class OrderFinding extends ActionBarWidgetActivity implements View.OnClic
     private TextView second_price_textview;
     private LinearLayout second_price_layout;
 
-
-    //网络查询表格的方法，将来可以考虑写成公用的方法
-    private class NsyncDataHandler extends HttpClientManager.HttpResponseHandler {
-
-        @Override
-        public void onException(Exception e) {
-
-        }
-
-        @Override
-        public void onResponse(HttpResponse resp) {
-            // TODO Auto-generated method stub
-            try {
-                String contentType = resp.getHeaders("Content-Type")[0]
-                        .getValue();
-                // if ("application/octet-stream".equals(contentType) ) {
-                if (contentType.indexOf("application/octet-stream") != -1) {
-                    String contentDiscreption = resp
-                            .getHeaders("Content-Disposition")[0].getValue();
-                    Log.d("开始保存文件。。。");
-                    String fileName = contentDiscreption
-                            .substring(contentDiscreption.indexOf("=") + 1);
-                    FileOutputStream fos = new FileOutputStream(new File(
-                            getExternalCacheDir(), fileName));
-                    resp.getEntity().writeTo(fos);
-                    fos.close();
-                    Log.d("开始解压文件。。。");
-                    String json = processBusinessCompress(fileName);
-                    Log.d("开始解析数据。。。");
-                    JSONObject jsonObject = new JSONObject(json);
-                    String value = jsonObject.getString(JSON_VALUE);
-
-//                    Log.d("value", value);
-                    processJsonValue(value);
-                } else {
-
-                }
-
-            } catch (IllegalStateException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            } catch (FileNotFoundException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            } catch (IOException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            } catch (JSONException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -185,6 +129,7 @@ public class OrderFinding extends ActionBarWidgetActivity implements View.OnClic
         actionRightTv.setOnClickListener(this);
         actionLeftTv.setOnClickListener(this);
         table_begin_time.setOnClickListener(this);
+        ActionBarWidgetActivity.setNsyncDataConnector(this);
         table_date_from = (LinearLayout) findViewById(R.id.table_date_from);
         table_end_time = (TextView) findViewById(R.id.table_end_time);
         table_end_time.setText(getToday());
@@ -305,30 +250,32 @@ public class OrderFinding extends ActionBarWidgetActivity implements View.OnClic
         }
     }
 
-    //数据的整理，解析（每个单子都不一样）
-    public void processJsonValue(String value) throws JSONException, ParseException {
-        // TODO Auto-generated method stub
-        value = value.trim();
-        if (value.equalsIgnoreCase("[]") || value.equalsIgnoreCase(null)) {
-            waitDialog.dismiss();
-            mHandler.sendEmptyMessage(2);
-            return;
-        }
-        JSONArray jsonArray = new JSONArray(value);
-        dsaordbaseJsons.clear();
-        Log.d("匹配保存数据。。。");
-        for (int i = 0; i < jsonArray.length(); i++) {
-            String temp = jsonArray.getString(i);
-            Matcher m = p.matcher(temp);
-            String subValue = temp.substring(temp.indexOf("{"), temp.indexOf("}") + 1);
-            Gson gson = new Gson();
+    @Override
+    public void processJsonValue(String value) {
+        try {
+            value = value.trim();
+            if (value.equalsIgnoreCase("[]") || value.equalsIgnoreCase(null)) {
+                waitDialog.dismiss();
+                mHandler.sendEmptyMessage(2);
+                return;
+            }
+            JSONArray jsonArray = new JSONArray(value);
+            dsaordbaseJsons.clear();
+            for (int i = 0; i < jsonArray.length(); i++) {
+                String temp = jsonArray.getString(i);
+                Matcher m = p.matcher(temp);
+                String subValue = temp.substring(temp.indexOf("{"), temp.indexOf("}") + 1);
+                Gson gson = new Gson();
 //            com.hjnerp.util.Log.d(subValue);
-            DsaordbaseJson dsaordbaseJson = gson.fromJson(subValue, DsaordbaseJson.class);
-            dsaordbaseJsons.add(dsaordbaseJson);
+                DsaordbaseJson dsaordbaseJson = gson.fromJson(subValue, DsaordbaseJson.class);
+                dsaordbaseJsons.add(dsaordbaseJson);
+            }
+            mHandler.sendEmptyMessage(3);
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
-        mHandler.sendEmptyMessage(3);
-
     }
+
 
     //提交查询数据
     private void submit() {
