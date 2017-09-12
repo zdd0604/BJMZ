@@ -44,7 +44,7 @@
 
         <com.hjnerp.widget.MySpinner
             android:id="@+id/sell_order_type"
-            style="@style/Item_LinearLayout_SpRightStyle"
+            style="@style/Item_LinearLayout_Spinner_RightStyle"
             android:drawSelectorOnTop="false" />
     </LinearLayout>
 
