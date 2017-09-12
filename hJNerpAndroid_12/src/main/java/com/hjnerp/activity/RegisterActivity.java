@@ -7,9 +7,11 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hjnerp.business.BusinessJsonCallBack.BRegisterCallBack;
+import com.hjnerp.common.ActionBarWidgetActivity;
 import com.hjnerp.common.ActivitySupport;
 import com.hjnerp.dao.OtherBaseDao;
 import com.hjnerp.model.BaseData;
@@ -24,34 +26,47 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import okhttp3.Call;
 import okhttp3.Response;
 
-public class RegisterActivity extends ActivitySupport {
-    ClearEditText mRegPhone;
-    ClearEditText mRegCode;
-    Button mRegBtn;
+public class RegisterActivity extends ActionBarWidgetActivity implements View.OnClickListener{
     Toast mToast;
-    protected WaitDialogRectangle waitDialogRectangle;
-
     Handler mHandler;
+    @BindView(R.id.action_left_tv)
+    TextView actionLeftTv;
+    @BindView(R.id.action_center_tv)
+    TextView actionCenterTv;
+    @BindView(R.id.action_right_tv)
+    TextView actionRightTv;
+    @BindView(R.id.action_right_tv1)
+    TextView actionRightTv1;
+
+    @BindView(R.id.ar_reg_phone)
+    ClearEditText mRegPhone;
+    @BindView(R.id.ar_reg_code)
+    ClearEditText mRegCode;
+    @BindView(R.id.ar_reg_btn)
+    Button mRegBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        mHandler = new Handler();
-        mRegPhone = (ClearEditText) findViewById(R.id.ar_reg_phone);
-        mRegCode = (ClearEditText) findViewById(R.id.ar_reg_code);
-        mRegBtn = (Button) findViewById(R.id.ar_reg_btn);
-        mRegBtn.setOnClickListener(new RegBtnClickListener());
-        waitDialogRectangle = new WaitDialogRectangle(context);
-        getSupportActionBar().setTitle("企业注册");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setIcon(R.drawable.actionbar_home_indicator_blue);
-        this.closeInput();
+        ButterKnife.bind(this);
+        initView();
     }
 
+    private void initView(){
+        actionCenterTv.setText(getString(R.string.register_Title_TvActivity));
+        actionLeftTv.setOnClickListener(this);
+        actionRightTv.setVisibility(View.GONE);
+        mHandler = new Handler();
+        mRegBtn.setOnClickListener(new RegBtnClickListener());
+
+        this.closeInput();
+    }
     void showToast(final String msg) {
         mHandler.post(new Runnable() {
             @Override
@@ -75,6 +90,15 @@ public class RegisterActivity extends ActivitySupport {
                 closeInput();
             }
         });
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.action_left_tv:
+                finish();
+                break;
+        }
     }
 
     class RegBtnClickListener implements View.OnClickListener {

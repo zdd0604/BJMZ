@@ -165,11 +165,13 @@
     <string name="setPWord_Title_PwordSee">密码可见：</string>
     <string name="setPWord_Title_PWordHintContent">注：可使用的特殊符号为  ^$._-@%!#$*\</string>
 
-
     <!-- 关于 -->
     <string name="about_Title_TvActivity">关于</string>
     <string name="about_Title_Hjsever">公司简介</string>
     <string name="about_Title_Hjpolicy">发展历程</string>
     <string name="about_Title_Hjcopyright">获得荣誉</string>
     <string name="about_Title_Hjinfor">联系我们</string>
+    <!-- 登陆注册 -->
+    <string name="register_Title_TvActivity">企业注册</string>
+>
 </resources>

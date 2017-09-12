@@ -4,6 +4,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <include layout="@layout/actionbar_layout" />
+
     <ImageView
         android:layout_width="80dp"
         android:layout_height="80dp"
@@ -15,67 +17,35 @@
 
     <com.hjnerp.widget.ClearEditText
         android:id="@+id/ar_reg_phone"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="40dp"
-        android:background="@null"
+        style="@style/Item_EditText_PwordStyle"
         android:drawableLeft="@drawable/creat_username_slt"
-        android:drawablePadding="10dp"
         android:hint="@string/ar_input_phone"
         android:inputType="phone"
         android:maxLength="11"
-        android:paddingBottom="8.0dip"
+        android:singleLine="true" />
 
-        android:singleLine="true"
-        android:textSize="18.0sp" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginLeft="23dip"
-        android:layout_marginRight="23dip"
-        android:layout_marginTop="@dimen/GCSmallPadding"
-        android:background="#E5E5E5" />
+    <View
+        style="@style/Item_TextView_ActionBarViewDividerStyle"
+        android:layout_marginLeft="@dimen/size_20"
+        android:layout_marginRight="@dimen/size_20" />
 
     <com.hjnerp.widget.ClearEditText
         android:id="@+id/ar_reg_code"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/ar_reg_phone"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="10dp"
-        android:background="@null"
+        style="@style/Item_EditText_PwordStyle"
         android:drawableLeft="@drawable/icon_register_password"
-        android:drawablePadding="5dp"
         android:hint="@string/ar_input_code"
-        android:inputType="textPassword"
-        android:paddingBottom="8.0dip"
-        android:singleLine="true"
-        android:textSize="18.0sp" />
+        android:singleLine="true" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginLeft="23dip"
-        android:layout_marginRight="23dip"
-        android:layout_marginTop="@dimen/GCSmallPadding"
-        android:background="#E5E5E5" />
+    <View
+        style="@style/Item_TextView_ActionBarViewDividerStyle"
+        android:layout_marginLeft="@dimen/size_20"
+        android:layout_marginRight="@dimen/size_20" />
 
     <Button
         android:id="@+id/ar_reg_btn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/ar_reg_code"
+        style="@style/Item_Button_BuleStyle"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/register_btn_style"
-        android:text="@string/ar_reg_btn"
-        android:textColor="@color/white"
-        android:textSize="20sp" />
+        android:text="@string/ar_reg_btn" />
 
 </LinearLayout>

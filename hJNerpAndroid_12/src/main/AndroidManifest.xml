@@ -357,7 +357,7 @@
             android:name="com.hjnerp.activity.RegisterActivity"
             android:exported="false"
             android:launchMode="standard"
-            android:theme="@style/registerTheme" />
+            android:theme="@style/Theme.HjNoActionBar"/>
         <!-- 通用设置 -->
         <activity
             android:name="com.hjnerp.activity.SetActivity"
