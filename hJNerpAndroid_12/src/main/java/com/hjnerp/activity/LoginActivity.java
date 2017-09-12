@@ -300,8 +300,7 @@ public class LoginActivity extends ActivitySupport {
                         null, null);
             }
 
-            if (companyname.length() > 0 && username.length() > 0
-                    && password.length() > 0) {
+            if (companyname.length() > 0 && username.length() > 0&& password.length() > 0) {
                 btn_login.setEnabled(true);
             } else {
                 btn_login.setEnabled(false);

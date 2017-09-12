@@ -3,7 +3,9 @@ package com.hjnerp.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -12,7 +14,6 @@ import android.widget.Toast;
 
 import com.hjnerp.business.BusinessJsonCallBack.BRegisterCallBack;
 import com.hjnerp.common.ActionBarWidgetActivity;
-import com.hjnerp.common.ActivitySupport;
 import com.hjnerp.dao.OtherBaseDao;
 import com.hjnerp.model.BaseData;
 import com.hjnerp.util.DateUtil;
@@ -31,7 +32,7 @@ import butterknife.ButterKnife;
 import okhttp3.Call;
 import okhttp3.Response;
 
-public class RegisterActivity extends ActionBarWidgetActivity implements View.OnClickListener{
+public class RegisterActivity extends ActionBarWidgetActivity implements View.OnClickListener {
     Toast mToast;
     Handler mHandler;
     @BindView(R.id.action_left_tv)
@@ -58,16 +59,41 @@ public class RegisterActivity extends ActionBarWidgetActivity implements View.On
         initView();
     }
 
-    private void initView(){
+    private void initView() {
         actionCenterTv.setText(getString(R.string.register_Title_TvActivity));
         actionLeftTv.setOnClickListener(this);
         actionRightTv.setVisibility(View.GONE);
+        mRegCode.addTextChangedListener(textWatcher);
+        mRegPhone.addTextChangedListener(textWatcher);
         mHandler = new Handler();
         mRegBtn.setOnClickListener(new RegBtnClickListener());
 
         this.closeInput();
     }
-    void showToast(final String msg) {
+
+    private TextWatcher textWatcher = new TextWatcher() {
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before,
+                                  int count) {
+            if (getEdVaule(mRegCode).length() > 0 && getEdVaule(mRegPhone).length() > 0) {
+                mRegBtn.setEnabled(true);
+            } else {
+                mRegBtn.setEnabled(false);
+            }
+        }
+
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count,
+                                      int after) {
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+        }
+    };
+
+    private void showToast(final String msg) {
         mHandler.post(new Runnable() {
             @Override
             public void run() {
@@ -82,7 +108,7 @@ public class RegisterActivity extends ActionBarWidgetActivity implements View.On
         });
     }
 
-    void showIMF() {
+    private void showIMF() {
         mHandler.post(new Runnable() {
             @Override
             public void run() {
@@ -94,14 +120,14 @@ public class RegisterActivity extends ActionBarWidgetActivity implements View.On
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.action_left_tv:
                 finish();
                 break;
         }
     }
 
-    class RegBtnClickListener implements View.OnClickListener {
+    public class RegBtnClickListener implements View.OnClickListener {
         @Override
         public void onClick(View v) {
             if (validateInternet()) {

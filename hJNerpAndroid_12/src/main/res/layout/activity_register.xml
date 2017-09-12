@@ -34,7 +34,7 @@
         style="@style/Item_EditText_PwordStyle"
         android:drawableLeft="@drawable/icon_register_password"
         android:hint="@string/ar_input_code"
-        android:singleLine="true" />
+        android:inputType="textPassword"/>
 
     <View
         style="@style/Item_TextView_ActionBarViewDividerStyle"

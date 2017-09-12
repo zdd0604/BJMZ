@@ -256,6 +256,28 @@ public class ActivitySupport extends ActionBarActivity implements
 
 
     /**
+     * 获取Editext内容
+     *
+     * @param editText
+     * @return
+     */
+    public static String getEdVaule(EditText editText) {
+        return editText.getText().toString().trim();
+    }
+
+    /**
+     * 获取Editext内容
+     *
+     * @param textView
+     * @return
+     */
+    public static String getTvVaule(TextView textView) {
+        return textView.getText().toString().trim();
+    }
+
+
+
+    /**
      * bundle
      *
      * @param from
