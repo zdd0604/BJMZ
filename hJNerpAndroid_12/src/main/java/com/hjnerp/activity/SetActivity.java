@@ -11,35 +11,36 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.hjnerp.business.Ctlm1345Update;
 import com.hjnerp.business.Ctlm1346Update;
 import com.hjnerp.business.Ctlm1347UpdateAgain;
-import com.hjnerp.common.ActivitySupport;
+import com.hjnerp.common.ActionBarWidgetActivity;
 import com.hjnerp.dao.BaseDao;
 import com.hjnerp.model.CommonSetInfo;
 import com.hjnerp.util.Command;
 import com.hjnerp.util.Command.OnResultListener;
 import com.hjnerp.util.ToastUtil;
 import com.hjnerp.util.VersionManager;
-import com.hjnerp.widget.WaitDialogRectangle;
 import com.hjnerpandroid.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class SetActivity extends ActivitySupport implements OnClickListener {
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
+public class SetActivity extends ActionBarWidgetActivity implements OnClickListener {
 
     protected static final String TAG = "SetActivity";
     //    private TextView tv_tologin_without_clean, tv_tologin_with_clean;
     private ArrayList<CommonSetInfo> commonSetInfoList = new ArrayList<CommonSetInfo>();
     private Thread mThread;
-
     private RelativeLayout dialog_cancel_rl, dialog_confirm_rl;
     private Dialog noticeDialog;
-    private WaitDialogRectangle waitDialog;
     private static String DOWNLOAD_XML_SUCCESS = "download_xml_success";
     private static String DOWNLOAD_XML_CONTAINS_ERROR = "download_xml_contains_error";
 
@@ -47,42 +48,49 @@ public class SetActivity extends ActivitySupport implements OnClickListener {
     private static String DOWNLOAD_CTLM1347_CONTAINS_ERROR = "download_1347_contains_error";
 
     private int withclean_counts, withoutclean_counts;
-    private RelativeLayout rel_wrapdata;
-    private RelativeLayout rel_wrapcache;
-    private RelativeLayout rel_versioncheck;
-    private RelativeLayout rel_updata;
-    private RelativeLayout rel_updatadate;
-    private RelativeLayout rel_updatabasedate;
-    private RelativeLayout rel_setpwd;
-    private RelativeLayout rel_hjabout;
+//    private Handler mHandler;
+//    private boolean mRunning = true;
+//    private int flag = 0;
 
-    private Button app_logout;
-
-
-    //	private Handler mHandler;
-//	private boolean mRunning = true;
-//	private int flag = 0;
-
+    @BindView(R.id.action_left_tv)
+    TextView actionLeftTv;
+    @BindView(R.id.action_center_tv)
+    TextView actionCenterTv;
+    @BindView(R.id.action_right_tv)
+    TextView actionRightTv;
+    @BindView(R.id.action_right_tv1)
+    TextView actionRightTv1;
+    @BindView(R.id.rel_wrapdata)
+    LinearLayout rel_wrapdata;
+    @BindView(R.id.rel_wrapcache)
+    LinearLayout rel_wrapcache;
+    @BindView(R.id.rel_versioncheck)
+    LinearLayout rel_versioncheck;
+    @BindView(R.id.rel_updata)
+    LinearLayout rel_updata;
+    @BindView(R.id.rel_updatadate)
+    LinearLayout rel_updatadate;
+    @BindView(R.id.rel_updatabasedate)
+    LinearLayout rel_updatabasedate;
+    @BindView(R.id.rel_setpwd)
+    LinearLayout rel_setpwd;
+    @BindView(R.id.rel_hjabout)
+    LinearLayout rel_hjabout;
+    @BindView(R.id.app_logout)
+    Button app_logout;
+    //    @BindView(R.id.tv_with_clean)
+//    TextView tv_tologin_with_clean;
+//    @BindView(R.id.tv_without_clean)
+//    TextView tv_tologin_without_clean;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mActionBar = getSupportActionBar();
         setContentView(R.layout.commonset);
-        mActionBar.setDisplayHomeAsUpEnabled(true);
-        mActionBar.setTitle("设置");
-//        tv_tologin_with_clean = (TextView) findViewById(R.id.tv_with_clean);
-//        tv_tologin_without_clean = (TextView) findViewById(R.id.tv_without_clean);
+        ButterKnife.bind(this);
 
-        rel_wrapdata = (RelativeLayout) findViewById(R.id.rel_wrapdata);
-        rel_wrapcache = (RelativeLayout) findViewById(R.id.rel_wrapcache);
-        rel_versioncheck = (RelativeLayout) findViewById(R.id.rel_versioncheck);
-        rel_updata = (RelativeLayout) findViewById(R.id.rel_updata);
-        rel_updatadate = (RelativeLayout) findViewById(R.id.rel_updatadate);
-        rel_updatabasedate = (RelativeLayout) findViewById(R.id.rel_updatabasedate);
-        rel_setpwd = (RelativeLayout) findViewById(R.id.rel_setpwd);
-        rel_hjabout = (RelativeLayout) findViewById(R.id.rel_hjabout);
-        app_logout = (Button) findViewById(R.id.app_logout);
-
+        actionRightTv.setVisibility(View.GONE);
+        actionLeftTv.setOnClickListener(this);
+        actionCenterTv.setText(getString(R.string.setting_Title_TlActivity));
         app_logout.setOnClickListener(this);
         rel_hjabout.setOnClickListener(this);
         rel_wrapdata.setOnClickListener(this);
@@ -92,8 +100,6 @@ public class SetActivity extends ActivitySupport implements OnClickListener {
         rel_updatadate.setOnClickListener(this);
         rel_updatabasedate.setOnClickListener(this);
         rel_setpwd.setOnClickListener(this);
-
-        waitDialog = new WaitDialogRectangle(context);
         waitDialog.setCanceledOnTouchOutside(false);
 
 //        tv_tologin_with_clean.setOnClickListener(this);
@@ -170,9 +176,9 @@ public class SetActivity extends ActivitySupport implements OnClickListener {
                 LogOut(SetActivity.this);
 //                onclickAppLogin.onclickOutLogin();
                 break;
-            default:
+            case R.id.action_left_tv:
+                finish();
                 break;
-
         }
     }
 

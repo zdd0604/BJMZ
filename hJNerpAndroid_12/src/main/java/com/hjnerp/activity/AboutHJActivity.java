@@ -1,63 +1,64 @@
 package com.hjnerp.activity;
 
-import android.Manifest;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.ActivityCompat;
 import android.view.View;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.hjnerp.common.ActivitySupport;
+import com.hjnerp.common.ActionBarWidgetActivity;
 import com.hjnerp.common.Constant;
 import com.hjnerp.model.HJAboutDate;
 import com.hjnerp.util.SharePreferenceUtil;
 import com.hjnerpandroid.R;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
-public class AboutHJActivity extends ActivitySupport implements View.OnClickListener {
+
+public class AboutHJActivity extends ActionBarWidgetActivity implements View.OnClickListener {
+    @BindView(R.id.action_left_tv)
+    TextView actionLeftTv;
+    @BindView(R.id.action_center_tv)
+    TextView actionCenterTv;
+    @BindView(R.id.action_right_tv)
+    TextView actionRightTv;
+    @BindView(R.id.action_right_tv1)
+    TextView actionRightTv1;
     //关于和佳
-    private RelativeLayout linear_information;
+    @BindView(R.id.linear_information)
+    TextView linear_information;
     //服务协议
-    private RelativeLayout linear_sever;
+    @BindView(R.id.linear_sever)
+    TextView linear_sever;
     //隐私政策
-    private RelativeLayout linear_policy;
+    @BindView(R.id.linear_policy)
+    TextView linear_policy;
     //版权信息
-    private RelativeLayout linear_copyright;
+    @BindView(R.id.linear_copyright)
+    TextView linear_copyright;
+    @BindView(R.id.tv_abouthj_system)
+    TextView txtViewOs;
+    @BindView(R.id.tv_abouthj_app)
+    TextView txtViewapp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mActionBar = getSupportActionBar();
-        mActionBar.setDisplayHomeAsUpEnabled(true);
-        mActionBar.setTitle("关于");
         setContentView(R.layout.about_hj);
-
+        ButterKnife.bind(this);
         initView();
-
     }
 
     private void initView() {
-
-        linear_information = (RelativeLayout) findViewById(R.id.linear_information);
+        actionCenterTv.setText(getString(R.string.about_Title_TvActivity));
+        actionRightTv.setVisibility(View.GONE);
         linear_information.setOnClickListener(this);
-
-        linear_sever = (RelativeLayout) findViewById(R.id.linear_sever);
+        actionLeftTv.setOnClickListener(this);
         linear_sever.setOnClickListener(this);
-
-        linear_policy = (RelativeLayout) findViewById(R.id.linear_policy);
         linear_policy.setOnClickListener(this);
-
-        linear_copyright = (RelativeLayout) findViewById(R.id.linear_copyright);
         linear_copyright.setOnClickListener(this);
 
-        TextView txtViewOs = (TextView) findViewById(R.id.tv_abouthj_system);
         txtViewOs.setText("系统版本：" + SharePreferenceUtil.getInstance(this.getContext()).getOsType());
-        TextView txtViewapp = (TextView) findViewById(R.id.tv_abouthj_app);
         txtViewapp.setText("和佳ERP版本：" + SharePreferenceUtil.getInstance(this.getContext()).getAppVersion());
     }
 
@@ -65,19 +66,22 @@ public class AboutHJActivity extends ActivitySupport implements View.OnClickList
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.linear_sever:
-                intentActivity(R.string.about_hjsever,HJAboutInfoActivity.class);
+                intentActivity(R.string.about_Title_Hjsever, HJAboutInfoActivity.class);
                 Constant.HJbean = HJAboutDate.getGSJJ();
                 break;
             case R.id.linear_policy:
-                intentActivity(R.string.about_hjpolicy,HJAboutInfoActivity.class);
+                intentActivity(R.string.about_Title_Hjpolicy, HJAboutInfoActivity.class);
                 Constant.HJbean = HJAboutDate.getFZLC();
                 break;
             case R.id.linear_copyright:
-                intentActivity(R.string.about_hjcopyright,HJAboutInfoActivity.class);
+                intentActivity(R.string.about_Title_Hjcopyright, HJAboutInfoActivity.class);
                 Constant.HJbean = HJAboutDate.getGSRY();
                 break;
             case R.id.linear_information:
-                intentActivity(R.string.about_hjinfor,HJCallPhoneActivity.class);
+                intentActivity(R.string.about_Title_Hjinfor, HJCallPhoneActivity.class);
+                break;
+            case R.id.action_left_tv:
+                finish();
                 break;
         }
     }
@@ -91,7 +95,7 @@ public class AboutHJActivity extends ActivitySupport implements View.OnClickList
 //		startActivity(intent);
 //	}
 
-    private void intentActivity(int title,Class c) {
+    private void intentActivity(int title, Class c) {
         Intent intent = new Intent(AboutHJActivity.this, c);
         Bundle bundle = new Bundle();
         bundle.putInt("title", title);

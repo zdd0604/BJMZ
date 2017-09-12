@@ -81,11 +81,7 @@
     <string name="commonset_setpwd">修改密码</string>
     <string name="viewpager_indicator">%1$d/%2$d</string>
 
-    <!-- 关于 -->
-    <string name="about_hjsever">公司简介</string>
-    <string name="about_hjpolicy">发展历程</string>
-    <string name="about_hjcopyright">获得荣誉</string>
-    <string name="about_hjinfor">联系我们</string>
+
 
     <string name="main_tab_im">消息</string>
     <string name="main_tab_contact">联系人</string>
@@ -156,4 +152,24 @@
     <!-- dialog提示语 -->
     <string name="orderFinding_Title_TlActivity">订单查询</string>
     <string name="orderFinding_Title_RightTvSearch">查询</string>
+
+    <!-- 设置界面 -->
+    <string name="setting_Title_TlActivity">设置</string>
+
+    <!-- 修改密码界面 -->
+    <string name="setPWord_Title_TlActivity">修改密码</string>
+    <string name="setPWord_Title_NowAccount">当前用户：</string>
+    <string name="setPWord_Title_OldPword">请输入旧密码</string>
+    <string name="setPWord_Title_Pword">请输入新密码</string>
+    <string name="setPWord_Title_AgainPword">请确认新密码</string>
+    <string name="setPWord_Title_PwordSee">密码可见：</string>
+    <string name="setPWord_Title_PWordHintContent">注：可使用的特殊符号为  ^$._-@%!#$*\</string>
+
+
+    <!-- 关于 -->
+    <string name="about_Title_TvActivity">关于</string>
+    <string name="about_Title_Hjsever">公司简介</string>
+    <string name="about_Title_Hjpolicy">发展历程</string>
+    <string name="about_Title_Hjcopyright">获得荣誉</string>
+    <string name="about_Title_Hjinfor">联系我们</string>
 </resources>

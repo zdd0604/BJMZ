@@ -237,7 +237,7 @@ public class OrderFinding extends ActionBarWidgetActivity implements View.OnClic
 
     //页面关闭时，数据清零
     @Override
-    protected void onDestroy() {
+    public void onDestroy() {
         super.onDestroy();
         user_myid = "";
         Constant.project_type = 0;

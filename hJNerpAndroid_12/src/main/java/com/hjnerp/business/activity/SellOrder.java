@@ -96,6 +96,10 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
     private String b;
     private int no;
     private int countDetail;
+    private String old_var_invaddr;
+    private String old_var_tel;
+    private String old_var_contact;
+    private Spinner sell_order_invexpress;
     @BindView(R.id.action_left_tv)
     TextView actionLeftTv;
     @BindView(R.id.action_center_tv)
@@ -106,10 +110,7 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
     TextView actionRightTv1;
     @BindView(R.id.add_sell_order_detail)
     LinearLayout add_sell_order_detail;
-    private String old_var_invaddr;
-    private String old_var_tel;
-    private String old_var_contact;
-    private Spinner sell_order_invexpress;
+
     @BindView(R.id.var_title_code)
     TextView var_title_code;
     @BindView(R.id.sell_order_recorder)
@@ -395,7 +396,7 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
     }
 
     @Override
-    protected void onDestroy() {
+    public void onDestroy() {
         super.onDestroy();
         project_type = 0;
         travel = false;

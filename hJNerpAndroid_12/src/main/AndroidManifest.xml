@@ -198,23 +198,7 @@
         <activity
             android:name="com.hjnerp.activity.contact.AllVerfifyFriendsActivity"
             android:launchMode="standard" />
-        <!-- 修改密码 -->
-        <activity
-            android:name="com.hjnerp.activity.SetPassWordActivity"
-            android:exported="false"
-            android:launchMode="standard"
-            android:theme="@style/registerTheme" />
-        <!-- 注册页面 -->
-        <activity
-            android:name="com.hjnerp.activity.RegisterActivity"
-            android:exported="false"
-            android:launchMode="standard"
-            android:theme="@style/registerTheme" />
-        <!-- 通用设置 -->
-        <activity
-            android:name="com.hjnerp.activity.SetActivity"
-            android:launchMode="standard"
-            android:theme="@style/registerTheme" />
+
 
         <!--
         二唯码扫描
@@ -247,10 +231,7 @@
         <activity
             android:name="com.hjnerp.activity.ExitAppActivity"
             android:launchMode="standard" />
-        <activity
-            android:name="com.hjnerp.activity.AboutHJActivity"
-            android:launchMode="standard"
-            android:theme="@style/registerTheme" />
+
 
         <service
             android:name="com.hjnerp.service.IMChatService"
@@ -349,7 +330,6 @@
             android:enabled="true"
             android:exported="true" />
 
-        <activity android:name="com.hjnerp.activity.HJAboutInfoActivity" />
 
         <provider
             android:name="android.support.v4.content.FileProvider"
@@ -370,6 +350,36 @@
         <!-- 订单搜索 -->
         <activity
             android:name="com.hjnerp.business.activity.OrderFinding"
+            android:theme="@style/Theme.HjNoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <!-- 注册页面 -->
+        <activity
+            android:name="com.hjnerp.activity.RegisterActivity"
+            android:exported="false"
+            android:launchMode="standard"
+            android:theme="@style/registerTheme" />
+        <!-- 通用设置 -->
+        <activity
+            android:name="com.hjnerp.activity.SetActivity"
+            android:launchMode="standard"
+            android:theme="@style/Theme.HjNoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <!-- 修改密码 -->
+        <activity
+            android:name="com.hjnerp.activity.SetPassWordActivity"
+            android:exported="false"
+            android:launchMode="standard"
+            android:theme="@style/Theme.HjNoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <!-- 关于和佳 -->
+        <activity
+            android:name="com.hjnerp.activity.AboutHJActivity"
+            android:launchMode="standard"
+            android:theme="@style/Theme.HjNoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <!-- 关于和佳 -->
+        <activity
+            android:name="com.hjnerp.activity.HJAboutInfoActivity"
             android:theme="@style/Theme.HjNoActionBar"
             android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity

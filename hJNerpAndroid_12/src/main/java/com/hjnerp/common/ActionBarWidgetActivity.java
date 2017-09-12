@@ -1,19 +1,14 @@
 package com.hjnerp.common;
 
 import android.app.DatePickerDialog;
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.hjnerp.model.LoginConfig;
 import com.hjnerp.net.HttpClientManager;
 import com.hjnerp.widget.MyToast;
 import com.hjnerp.widget.MyToast2;
@@ -38,8 +33,7 @@ import java.util.zip.ZipInputStream;
  * Created by Admin on 2017/8/31.
  */
 
-public class ActionBarWidgetActivity extends AppCompatActivity implements
-        IActivitySupport {
+public class ActionBarWidgetActivity extends ActivitySupport {
     protected Context mContext;
     //弹框
     protected WaitDialogRectangle waitDialog;
@@ -127,88 +121,6 @@ public class ActionBarWidgetActivity extends AppCompatActivity implements
         new MyToast2(mContext, content);
     }
 
-    @Override
-    public EapApplication getEapApplication() {
-        return null;
-    }
-
-    @Override
-    public void stopService() {
-
-    }
-
-    @Override
-    public void startService() {
-
-    }
-
-    @Override
-    public boolean validateInternet() {
-        return false;
-    }
-
-    @Override
-    public boolean hasInternetConnected() {
-        ConnectivityManager manager = (ConnectivityManager) mContext
-                .getSystemService(mContext.CONNECTIVITY_SERVICE);
-        if (manager != null) {
-            NetworkInfo network = manager.getActiveNetworkInfo();
-            if (network != null && network.isConnectedOrConnecting()) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    @Override
-    public void isExit() {
-
-    }
-
-    @Override
-    public boolean hasLocationGPS() {
-        return false;
-    }
-
-    @Override
-    public boolean hasLocationNetWork() {
-        return false;
-    }
-
-    @Override
-    public void checkMemoryCard() {
-
-    }
-
-    @Override
-    public ProgressDialog getProgressDialog() {
-        return null;
-    }
-
-    @Override
-    public WaitDialogRectangle getWaitDialogRectangle() {
-        return null;
-    }
-
-    @Override
-    public Context getContext() {
-        return null;
-    }
-
-    @Override
-    public void saveLoginConfig(LoginConfig loginConfig) {
-
-    }
-
-    @Override
-    public LoginConfig getLoginConfig() {
-        return null;
-    }
-
-    @Override
-    public void setNotiType(int iconId, String contentTitle, String contentText, Class activity, String from) {
-
-    }
 
     //网络获取的方法
     public class NsyncDataHandler extends HttpClientManager.HttpResponseHandler {
@@ -235,8 +147,7 @@ public class ActionBarWidgetActivity extends AppCompatActivity implements
                     JSONObject jsonObject = new JSONObject(json);
                     String value = jsonObject.getString(JSON_VALUE);
 
-                    if (nsyncDataConnector!=null)
-                    {
+                    if (nsyncDataConnector != null) {
                         nsyncDataConnector.processJsonValue(value);
                     }
                 } else {
@@ -323,7 +234,7 @@ public class ActionBarWidgetActivity extends AppCompatActivity implements
         editText.setCompoundDrawables(null, null, null, null);
     }
 
-    public interface NsyncDataConnector{
+    public interface NsyncDataConnector {
         void processJsonValue(String value);
     }
 }

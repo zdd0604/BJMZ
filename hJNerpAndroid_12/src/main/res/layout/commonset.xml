@@ -2,354 +2,146 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="#ffffffff"
     android:orientation="vertical">
+
+    <include layout="@layout/actionbar_layout" />
 
     <ScrollView
         android:layout_width="fill_parent"
         android:layout_height="0.0px"
         android:layout_weight="1.0"
-        android:background="#EFEFF4"
+        android:background="@color/actionbar_title_bg"
         android:scrollbarThumbVertical="@drawable/scrollbar_handle_vertical"
         android:scrollbars="none">
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#EFEFF4"
-            android:orientation="vertical">
+            style="@style/Item_LinearLayout_VerticalStyle"
+            android:layout_marginTop="@dimen/size_10">
 
-            <RelativeLayout
+            <LinearLayout
                 android:id="@+id/rel_wrapdata"
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/app_out_btn_style">
+                style="@style/Item_LinearLayout_HorizontalStyle">
 
                 <ImageView
                     android:id="@+id/icon_wrapdata"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginStart="16dp"
+                    style="@style/Item_LinearLayout_ImgRightTitleStyle"
                     android:background="@drawable/cspace_setting__suizhiji" />
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="10dp"
-                    android:layout_toRightOf="@id/icon_wrapdata"
-                    android:text="清除数据"
-                    android:textColor="@color/black"
-                    android:textSize="15sp" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginRight="13dp"
-                    android:src="@drawable/yp_webview_back_pressed" />
-            </RelativeLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginLeft="23dip"
-                    android:layout_marginRight="23dip"
-                    android:background="#E5E5E5" />
+                    style="@style/Item_LinearLayout_TvRightTitleImgStyle"
+                    android:text="清除数据" />
 
             </LinearLayout>
 
-            <RelativeLayout
+            <LinearLayout
                 android:id="@+id/rel_wrapcache"
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:background="@drawable/app_out_btn_style">
+                style="@style/Item_LinearLayout_HorizontalStyle">
 
                 <ImageView
                     android:id="@+id/icon_wrapcache"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="15dp"
+                    style="@style/Item_LinearLayout_ImgRightTitleStyle"
                     android:background="@drawable/cspace_setting_delete_default" />
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="10dp"
-                    android:layout_toRightOf="@id/icon_wrapcache"
-                    android:text="清除缓存"
-                    android:textColor="@color/black"
-                    android:textSize="15sp" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginRight="13dp"
-                    android:src="@drawable/yp_webview_back_pressed" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/rel_versioncheck"
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/app_out_btn_style">
-
-                <ImageView
-                    android:id="@+id/icon_versioncheck"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="15dp"
-                    android:background="@drawable/cspace_setting_download_app" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="10dp"
-                    android:layout_toRightOf="@id/icon_versioncheck"
-                    android:text="检查版本"
-                    android:textColor="@color/black"
-                    android:textSize="15sp" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginRight="13dp"
-
-                    android:src="@drawable/yp_webview_back_pressed" />
-            </RelativeLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginLeft="23dip"
-                    android:layout_marginRight="23dip"
-                    android:background="#E5E5E5" />
-
+                    style="@style/Item_LinearLayout_TvRightTitleImgStyle"
+                    android:text="清除缓存" />
             </LinearLayout>
 
-            <RelativeLayout
-                android:id="@+id/rel_updata"
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:background="@drawable/app_out_btn_style">
 
-                <ImageView
-                    android:id="@+id/icon_updata"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="15dp"
-                    android:background="@drawable/cspace_setting_saveintophone_default" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="10dp"
-                    android:layout_toRightOf="@id/icon_updata"
-                    android:text="更新应用"
-                    android:textColor="@color/black"
-                    android:textSize="15sp" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginRight="13dp"
-                    android:src="@drawable/yp_webview_back_pressed" />
-            </RelativeLayout>
-
-
-            <RelativeLayout
+            <LinearLayout
                 android:id="@+id/rel_updatadate"
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/app_out_btn_style">
+                style="@style/Item_LinearLayout_HorizontalStyle"
+                android:layout_marginTop="@dimen/size_15">
 
                 <ImageView
                     android:id="@+id/icon_updatadate"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="15dp"
+                    style="@style/Item_LinearLayout_ImgRightTitleStyle"
                     android:background="@drawable/cspace_setting_download_default" />
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginRight="13dp"
-                    android:src="@drawable/yp_webview_back_pressed" />
-
                 <TextView
-                    android:id="@+id/textView2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="11dp"
-                    android:layout_marginStart="11dp"
-                    android:layout_toEndOf="@+id/icon_updatadate"
-                    android:layout_toRightOf="@+id/icon_updatadate"
-                    android:text="应用数据下载"
-                    android:textColor="@color/black"
-                    android:textSize="15sp" />
-            </RelativeLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginLeft="23dip"
-                    android:layout_marginRight="23dip"
-                    android:background="#E5E5E5" />
-
+                    style="@style/Item_LinearLayout_TvRightTitleImgStyle"
+                    android:text="应用数据下载" />
             </LinearLayout>
 
-            <RelativeLayout
+            <LinearLayout
                 android:id="@+id/rel_updatabasedate"
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:background="@drawable/app_out_btn_style">
+                style="@style/Item_LinearLayout_HorizontalStyle">
 
                 <ImageView
                     android:id="@+id/icon_updatabasedate"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="15dp"
+                    style="@style/Item_LinearLayout_ImgRightTitleStyle"
                     android:background="@drawable/cspace_setting_down_data" />
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="10dp"
-                    android:layout_toRightOf="@id/icon_updatabasedate"
-                    android:text="基础数据下载"
-                    android:textColor="@color/black"
-                    android:textSize="15sp" />
+                    style="@style/Item_LinearLayout_TvRightTitleImgStyle"
+                    android:text="基础数据下载" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/rel_versioncheck"
+                style="@style/Item_LinearLayout_HorizontalStyle"
+                android:layout_marginTop="@dimen/size_15">
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginRight="13dp"
-                    android:src="@drawable/yp_webview_back_pressed" />
-            </RelativeLayout>
+                    android:id="@+id/icon_versioncheck"
+                    style="@style/Item_LinearLayout_ImgRightTitleStyle"
+                    android:background="@drawable/cspace_setting_download_app" />
 
-            <RelativeLayout
+                <TextView
+                    style="@style/Item_LinearLayout_TvRightTitleImgStyle"
+                    android:text="检查版本" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/rel_updata"
+                style="@style/Item_LinearLayout_HorizontalStyle">
+
+                <ImageView
+                    android:id="@+id/icon_updata"
+                    style="@style/Item_LinearLayout_ImgRightTitleStyle"
+                    android:background="@drawable/cspace_setting_saveintophone_default" />
+
+                <TextView
+                    style="@style/Item_LinearLayout_TvRightTitleImgStyle"
+                    android:text="更新应用" />
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:id="@+id/rel_setpwd"
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/app_out_btn_style">
+                style="@style/Item_LinearLayout_HorizontalStyle"
+                android:layout_marginTop="@dimen/size_15">
 
                 <ImageView
                     android:id="@+id/icon_setpwd"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="15dp"
+                    style="@style/Item_LinearLayout_ImgRightTitleStyle"
                     android:background="@drawable/cspace_setting__password" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginRight="13dp"
-                    android:src="@drawable/yp_webview_back_pressed" />
 
                 <TextView
                     android:id="@+id/textView8"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="9dp"
-                    android:layout_marginStart="9dp"
-                    android:layout_toEndOf="@+id/icon_setpwd"
-                    android:layout_toRightOf="@+id/icon_setpwd"
-                    android:text="修改密码"
-                    android:textColor="@color/black"
-                    android:textSize="15sp" />
-            </RelativeLayout>
+                    style="@style/Item_LinearLayout_TvRightTitleImgStyle"
+                    android:text="修改密码" />
+            </LinearLayout>
 
-            <RelativeLayout
+            <LinearLayout
                 android:id="@+id/rel_hjabout"
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/app_out_btn_style">
+                style="@style/Item_LinearLayout_HorizontalStyle"
+                android:layout_marginTop="@dimen/size_15">
 
                 <ImageView
                     android:id="@+id/icon_about_sett"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="16dp"
+                    style="@style/Item_LinearLayout_ImgRightTitleStyle"
                     android:background="@drawable/setting_about_icon" />
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="9dp"
-                    android:layout_marginStart="9dp"
-                    android:layout_toEndOf="@+id/icon_about_sett"
-                    android:layout_toRightOf="@+id/icon_about_sett"
-                    android:text="关于和佳"
-                    android:textColor="@color/black"
-                    android:textSize="15sp" />
-
-                <ImageView
-                    android:id="@+id/imageView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginRight="13dp"
-                    android:src="@drawable/yp_webview_back_pressed" />
-            </RelativeLayout>
+                    style="@style/Item_LinearLayout_TvRightTitleImgStyle"
+                    android:text="关于和佳" />
+            </LinearLayout>
 
             <Button
                 android:id="@+id/app_logout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/app_out_btn_style"
+                style="@style/Item_Setting_AppOutStyle"
                 android:text="退出登录" />
         </LinearLayout>
     </ScrollView>

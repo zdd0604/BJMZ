@@ -1,39 +1,57 @@
 package com.hjnerp.activity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.hjnerp.activity.adapter.HjABoutAdapter;
-import com.hjnerp.common.ActivitySupport;
+import com.hjnerp.common.ActionBarWidgetActivity;
 import com.hjnerp.common.Constant;
-import com.hjnerp.model.HJAboutBean;
 import com.hjnerpandroid.R;
 
-import java.util.List;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
-public class HJAboutInfoActivity extends ActivitySupport {
-    private ListView hj_about;
+public class HJAboutInfoActivity extends ActionBarWidgetActivity implements View.OnClickListener {
     private int title;
     private HjABoutAdapter hjABoutAdapter;
+    @BindView(R.id.action_left_tv)
+    TextView actionLeftTv;
+    @BindView(R.id.action_center_tv)
+    TextView actionCenterTv;
+    @BindView(R.id.action_right_tv)
+    TextView actionRightTv;
+    @BindView(R.id.action_right_tv1)
+    TextView actionRightTv1;
+    @BindView(R.id.hj_about)
+    ListView hj_about;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mActionBar = getSupportActionBar();
-        mActionBar.setDisplayHomeAsUpEnabled(true);
         setContentView(R.layout.activity_hj_about_info);
-
-        Bundle bundle = this.getIntent().getExtras();
-        title = bundle.getInt("title");
-        mActionBar.setTitle(title);
-
+        ButterKnife.bind(this);
         initView();
     }
 
     private void initView() {
-        hj_about = (ListView) findViewById(R.id.hj_about);
+        Bundle bundle = this.getIntent().getExtras();
+        title = bundle.getInt("title");
+        actionLeftTv.setOnClickListener(this);
+        actionRightTv.setVisibility(View.GONE);
+        actionCenterTv.setText(title);
         hjABoutAdapter = new HjABoutAdapter(HJAboutInfoActivity.this, Constant.HJbean);
         hjABoutAdapter.notifyDataSetChanged();
         hj_about.setAdapter(hjABoutAdapter);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.action_left_tv:
+                finish();
+                break;
+        }
     }
 }
