@@ -82,7 +82,8 @@ public class BusinessSearch extends ActionBarWidgetActivity implements View.OnCl
     public static final Pattern p = Pattern.compile("\\s*|\t|\r|\n");
     private List<Ctlm7502Json> travelDatas = new ArrayList<>();
     private WaitDialogRectangle waitDialog;
-    private List<DsaordbaseJson> dsaordbaseJsons = new ArrayList<>();
+    private List<DsaordbaseJson2> dsaordbaseJsons = new ArrayList<>();
+    private List<DsaordbaseJson3> dsaordbaseJsons3 = new ArrayList<>();
 
     private List<String> terminal_ids = new ArrayList<>();
     private List<String> address_ids = new ArrayList<>();
@@ -244,7 +245,7 @@ public class BusinessSearch extends ActionBarWidgetActivity implements View.OnCl
                     break;
             }
 
-
+            Log.d("seach", "开始提交数据");
             HttpClientManager.addTask(responseHandler, param.getHttpPost());
 
         } catch (UnsupportedEncodingException e) {
@@ -322,7 +323,7 @@ public class BusinessSearch extends ActionBarWidgetActivity implements View.OnCl
 
                             break;
                         case 1:
-                            dsaordbaseJsons_new = new ArrayList<DsaordbaseJson>();
+                            dsaordbaseJsons_new = new ArrayList<DsaordbaseJson2>();
                             for (int i = 0; i < dsaordbaseJsons.size(); i++) {
                                 if (dsaordbaseJsons.get(i).getId_terminal().equalsIgnoreCase(id_wproj) && dsaordbaseJsons.get(i).getId_corr().equalsIgnoreCase(id_corr)) {
                                     dsaordbaseJsons_new.add(dsaordbaseJsons.get(i));
@@ -331,7 +332,7 @@ public class BusinessSearch extends ActionBarWidgetActivity implements View.OnCl
                             }
                             break;
                         case 2:
-                            dsaordbaseJsons_new = new ArrayList<DsaordbaseJson>();
+                            dsaordbaseJsons_new = new ArrayList<DsaordbaseJson2>();
                             for (int i = 0; i < dsaordbaseJsons.size(); i++) {
                                 if (dsaordbaseJsons.get(i).getId_corr().equalsIgnoreCase(id_wproj)) {
                                     dsaordbaseJsons_new.add(dsaordbaseJsons.get(i));
@@ -407,6 +408,7 @@ public class BusinessSearch extends ActionBarWidgetActivity implements View.OnCl
         public void onResponse(HttpResponse resp) {
             // TODO Auto-generated method stub
             try {
+                Log.d("seach", "开始返回文件");
                 String contentType = resp.getHeaders("Content-Type")[0]
                         .getValue();
                 // if ("application/octet-stream".equals(contentType) ) {
@@ -419,11 +421,13 @@ public class BusinessSearch extends ActionBarWidgetActivity implements View.OnCl
                             getExternalCacheDir(), fileName));
                     resp.getEntity().writeTo(fos);
                     fos.close();
+                    Log.d("seach", "开始解压文件");
                     String json = processBusinessCompress(fileName);
+                    Log.d("seach", "开始解析文件");
                     JSONObject jsonObject = new JSONObject(json);
                     String value = jsonObject.getString(JSON_VALUE);
 
-                    Log.d("value", value);
+                    Log.d("value", "开始解析数据");
                     processJsonValue(value);
                 } else {
 
@@ -466,7 +470,7 @@ public class BusinessSearch extends ActionBarWidgetActivity implements View.OnCl
             Matcher m = p.matcher(temp);
             String subValue = temp.substring(temp.indexOf("{"),
                     temp.indexOf("}") + 1);
-            Log.i("subValue", subValue);
+//            Log.i("subValue", subValue);
             Gson gson = new Gson();
             switch (Constant.project_type) {
                 case 0://出差外出的数据解析
@@ -477,13 +481,17 @@ public class BusinessSearch extends ActionBarWidgetActivity implements View.OnCl
                 case 1:
                 case 2:
                 case 3:
-                case 4:
-                    DsaordbaseJson dsaordbaseJson = gson.fromJson(subValue, DsaordbaseJson.class);
+                    DsaordbaseJson2 dsaordbaseJson = gson.fromJson(subValue, DsaordbaseJson2.class);
                     dsaordbaseJsons.add(dsaordbaseJson);
+                    break;
+                case 4:
+                    DsaordbaseJson3 dsaordbaseJson3 = gson.fromJson(subValue, DsaordbaseJson3.class);
+                    dsaordbaseJsons3.add(dsaordbaseJson3);
                     break;
             }
 
         }
+        Log.d("seach", "开始逻辑判断");
         switch (Constant.project_type) {
             case 1://终端+客户查询，过滤相同终端与客户，过滤后的数据保存
                 for (int j = 0; j < dsaordbaseJsons.size(); j++) {
@@ -550,17 +558,17 @@ public class BusinessSearch extends ActionBarWidgetActivity implements View.OnCl
 
                 break;
             case 4://查询产品，过滤条件，产品id
-                for (int j = 0; j < dsaordbaseJsons.size(); j++) {
-                    if (!terminal_ids.contains(dsaordbaseJsons.get(j).getId_item())) {
-                        terminal_ids.add(dsaordbaseJsons.get(j).getId_item());//产品id
-                        address_ids.add(dsaordbaseJsons.get(j).getId_uom());//型号
-                        address_names.add(dsaordbaseJsons.get(j).getVar_spec());//
-                        orderTerminal.add(dsaordbaseJsons.get(j).getVar_desc());
-                        overclient_ids.add(dsaordbaseJsons.get(j).getDec_price());//单价
-                        overclient_names.add(dsaordbaseJsons.get(j).getVar_pattern());
-                        dec_acaramt.add(dsaordbaseJsons.get(j).getId_tax());//税种
-                        var_chkparm.add(dsaordbaseJsons.get(j).getVar_chkparm());//
-                        dec_taxrate.add(dsaordbaseJsons.get(j).getDec_taxrate());//
+                for (int j = 0; j < dsaordbaseJsons3.size(); j++) {
+                    if (!terminal_ids.contains(dsaordbaseJsons3.get(j).getId_item())) {
+                        terminal_ids.add(dsaordbaseJsons3.get(j).getId_item());//产品id
+                        address_ids.add(dsaordbaseJsons3.get(j).getId_uom());//型号
+                        address_names.add(dsaordbaseJsons3.get(j).getVar_spec());//
+                        orderTerminal.add(dsaordbaseJsons3.get(j).getVar_desc());
+                        overclient_ids.add(dsaordbaseJsons3.get(j).getDec_price());//单价
+                        overclient_names.add(dsaordbaseJsons3.get(j).getVar_pattern());
+                        dec_acaramt.add(dsaordbaseJsons3.get(j).getId_tax());//税种
+                        var_chkparm.add(dsaordbaseJsons3.get(j).getVar_chkparm());//
+                        dec_taxrate.add(dsaordbaseJsons3.get(j).getDec_taxrate());//
                     }
 
                 }

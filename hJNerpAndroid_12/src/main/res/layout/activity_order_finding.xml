@@ -47,7 +47,6 @@
 
     <LinearLayout
         style="@style/Item_LinearLayout_HorizontalStyle"
-        android:layout_height="@dimen/size_30"
         android:layout_marginTop="@dimen/size_8">
 
         <TextView
@@ -60,8 +59,7 @@
     </LinearLayout>
 
     <LinearLayout
-        style="@style/Item_LinearLayout_HorizontalStyle"
-        android:layout_height="@dimen/size_30">
+        style="@style/Item_LinearLayout_HorizontalStyle">
 
         <TextView
             style="@style/Item_LinearLayout_TVLeftTieleStyle"
@@ -76,7 +74,6 @@
     <LinearLayout
         android:id="@+id/table_date_from"
         style="@style/Item_LinearLayout_HorizontalStyle"
-        android:layout_height="@dimen/size_30"
         android:visibility="gone">
 
         <TextView
@@ -92,7 +89,6 @@
     <LinearLayout
         android:id="@+id/table_date_to"
         style="@style/Item_LinearLayout_HorizontalStyle"
-        android:layout_height="@dimen/size_30"
         android:visibility="gone">
 
         <TextView
@@ -108,7 +104,6 @@
     <LinearLayout
         android:id="@+id/all_goneprice_layout"
         style="@style/Item_LinearLayout_HorizontalStyle"
-        android:layout_height="@dimen/size_30"
         android:visibility="gone">
 
         <TextView
@@ -127,7 +122,6 @@
     <LinearLayout
         android:id="@+id/all_price_layout"
         style="@style/Item_LinearLayout_HorizontalStyle"
-        android:layout_height="@dimen/size_30"
         android:visibility="gone">
 
         <TextView
@@ -142,7 +136,6 @@
     <LinearLayout
         android:id="@+id/first_price_layout"
         style="@style/Item_LinearLayout_HorizontalStyle"
-        android:layout_height="@dimen/size_30"
         android:visibility="gone">
 
         <TextView
@@ -158,7 +151,6 @@
     <LinearLayout
         android:id="@+id/second_price_layout"
         style="@style/Item_LinearLayout_HorizontalStyle"
-        android:layout_height="@dimen/size_30"
         android:visibility="gone">
 
         <TextView
