@@ -548,4 +548,6 @@
 
     <!-- search item的title -->
     <color name="item_search_tvTitleColor">#7C7C7C</color>
+    <!--表格头背景色-->
+    <color name="item_table_title_color">#828299</color>
 </resources>

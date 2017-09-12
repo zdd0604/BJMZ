@@ -1,6 +1,7 @@
 package com.hjnerp.business.activity;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.support.v4.content.ContextCompat;
 import android.text.Layout.Alignment;
 import android.text.StaticLayout;
@@ -40,6 +41,7 @@ public class LockTableView2 {
     private int mFristRowBackGroudColor;
     private String mNullableString;
     private int mTextViewSize;
+    private int mHeadTextViewSize;
     private int mTableHeadTextColor;
     private int mTableContentTextColor;
     private LockTableView.OnTableViewListener mTableViewListener;
@@ -56,7 +58,7 @@ public class LockTableView2 {
     private CustomHorizontalScrollView mLockScrollView;
     private CustomHorizontalScrollView mUnLockScrollView;
     private ScrollView mTableScrollView;
-    private int margin_num = 25;
+    private int margin_num = 10;
 
     public LockTableView2(Context mContext, ViewGroup mContentView, ArrayList<ArrayList<String>> mTableDatas) {
         this.mContext = mContext;
@@ -242,7 +244,8 @@ public class LockTableView2 {
     private void creatHeadView() {
         if (this.isLockFristColumn) {
             this.mColumnTitleView.setTextColor(ContextCompat.getColor(this.mContext, this.mTableHeadTextColor));
-            this.mColumnTitleView.setTextSize(2, (float) this.mTextViewSize);
+            this.mColumnTitleView.setTextSize(2, (float) this.mHeadTextViewSize);
+            this.mColumnTitleView.setTypeface(null, Typeface.BOLD);
             this.mColumnTitleView.setText(this.mColumnTitle);
             LayoutParams layoutParams = (LayoutParams) this.mColumnTitleView.getLayoutParams();
             layoutParams.width = DisplayUtil.dip2px(this.mContext, (float) ((Integer) this.mColumnMaxWidths.get(0)).intValue());
@@ -552,11 +555,15 @@ public class LockTableView2 {
             TextView textView = new TextView(this.mContext);
             if (isFristRow) {
                 textView.setTextColor(ContextCompat.getColor(this.mContext, this.mTableHeadTextColor));
+                textView.setTextSize(2, (float) this.mHeadTextViewSize);
+                textView.setTypeface(null, Typeface.BOLD);
             } else {
                 textView.setTextColor(ContextCompat.getColor(this.mContext, this.mTableContentTextColor));
+                textView.setTextSize(2, (float) this.mTextViewSize);
+                textView.setTypeface(null, Typeface.NORMAL);
             }
 
-            textView.setTextSize(2, (float) this.mTextViewSize);
+
             textView.setGravity(17);
             textView.setText((CharSequence) datas.get(i));
             LayoutParams textViewParams = new LayoutParams(-2, -2);
@@ -624,6 +631,11 @@ public class LockTableView2 {
 
     public LockTableView2 setTableHeadTextColor(int mTableHeadTextColor) {
         this.mTableHeadTextColor = mTableHeadTextColor;
+        return this;
+    }
+
+    public LockTableView2 setTableHeadTextSize(int mHeadTextViewSize) {
+        this.mHeadTextViewSize = mHeadTextViewSize;
         return this;
     }
 

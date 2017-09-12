@@ -724,12 +724,13 @@ public class OrderFinding extends ActionBarWidgetActivity implements View.OnClic
                 .setLockFristRow(true) //是否锁定第一行
                 .setMaxColumnWidth(100) //列最大宽度
                 .setMinColumnWidth(10) //列最小宽度
-                .setMinRowHeight(10)//行最小高度
+                .setMinRowHeight(20)//行最小高度
                 .setMaxRowHeight(60)//行最大高度
                 .setTextViewSize(12) //单元格字体大小
-                .setFristRowBackGroudColor(R.color.beijin)//表头背景色
+                .setFristRowBackGroudColor(R.color.item_table_title_color)//表头背景色
                 .setTableHeadTextColor(R.color.white)//表头字体颜色
-                .setTableContentTextColor(R.color.text_color)//单元格字体颜色
+                .setTableHeadTextSize(13)
+                .setTableContentTextColor(R.color.black)//单元格字体颜色
                 .setNullableString("--") //空值替换值
                 .show(); //显示表格,此方法必须调用
         waitDialog.dismiss();

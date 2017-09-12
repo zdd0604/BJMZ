@@ -55,7 +55,7 @@
 
         <Spinner
             android:id="@+id/object_person"
-            style="@style/Item_LinearLayout_SpRightStyle" />
+            style="@style/Item_LinearLayout_Spinner_RightStyle" />
     </LinearLayout>
 
     <LinearLayout

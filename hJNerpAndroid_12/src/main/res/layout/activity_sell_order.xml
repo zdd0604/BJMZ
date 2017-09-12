@@ -144,7 +144,7 @@
 
                 <Spinner
                     android:id="@+id/sell_order_type_1"
-                    style="@style/Item_LinearLayout_SpRightStyle" />
+                    style="@style/Item_LinearLayout_Spinner_RightStyle" />
             </LinearLayout>
 
             <LinearLayout style="@style/Item_LinearLayout_HorizontalStyle">
@@ -206,8 +206,7 @@
 
                 <Spinner
                     android:id="@+id/sell_order_express"
-                    style="@style/Item_LinearLayout_SpRightStyle"
-                    android:drawSelectorOnTop="false" />
+                    style="@style/Item_LinearLayout_Spinner_RightStyle"/>
             </LinearLayout>
 
             <LinearLayout style="@style/Item_LinearLayout_HorizontalStyle">
@@ -218,8 +217,7 @@
 
                 <Spinner
                     android:id="@+id/sell_order_ticket_type"
-                    style="@style/Item_LinearLayout_SpRightStyle"
-                    android:drawSelectorOnTop="false" />
+                    style="@style/Item_LinearLayout_Spinner_RightStyle"/>
             </LinearLayout>
 
 
@@ -231,8 +229,7 @@
 
                 <Spinner
                     android:id="@+id/sell_order_space"
-                    style="@style/Item_LinearLayout_SpRightStyle"
-                    android:drawSelectorOnTop="false" />
+                    style="@style/Item_LinearLayout_Spinner_RightStyle" />
             </LinearLayout>
 
             <LinearLayout style="@style/Item_LinearLayout_HorizontalStyle">
@@ -248,31 +245,16 @@
                     android:textColorHint="#cacacf" />
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="44dp"
-                android:layout_marginTop="1dp"
-                android:background="#ffffff"
-                android:gravity="center">
+            <LinearLayout style="@style/Item_LinearLayout_HorizontalStyle">
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/size_10"
-                    android:layout_weight="1"
-                    android:text="发票快递"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/font_size_16" />
+
+            <TextView
+                style="@style/Item_LinearLayout_TVLeftTieleStyle"
+                    android:text="发票快递" />
 
                 <Spinner
                     android:id="@+id/sell_order_invexpress"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginRight="@dimen/size_3"
-                    android:layout_weight="3"
-                    android:drawSelectorOnTop="false"
-                    android:gravity="center_vertical"
-                    android:textSize="@dimen/font_size_14" />
+                    style="@style/Item_LinearLayout_Spinner_RightStyle"/>
             </LinearLayout>
 
             <LinearLayout
