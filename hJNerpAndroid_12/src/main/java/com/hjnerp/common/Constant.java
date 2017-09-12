@@ -2,8 +2,7 @@ package com.hjnerp.common;
 
 import android.os.Environment;
 
-import com.hjnerp.business.activity.DsaordbaseJson;
-import com.hjnerp.model.SellOrderModel;
+import com.hjnerp.business.activity.DsaordbaseJson2;
 import com.hjnerp.model.Ctlm1345;
 import com.hjnerp.model.Ctlm7161;
 import com.hjnerp.model.DdisplocatBean;
@@ -11,6 +10,7 @@ import com.hjnerp.model.Ej1345;
 import com.hjnerp.model.EjWadd1345;
 import com.hjnerp.model.HJAboutBean;
 import com.hjnerp.model.PerformanceDatas;
+import com.hjnerp.model.SellOrderModel;
 import com.hjnerp.model.UserInfo;
 
 import java.util.List;
@@ -369,7 +369,7 @@ public class Constant {
     public static boolean travel;
     public static int project_type = 0;
     public static String user_myid = "";
-    public static List<DsaordbaseJson> dsaordbaseJsons_new;
+    public static List<DsaordbaseJson2> dsaordbaseJsons_new;
     public static List<SellOrderModel> sellDetails;
     public static int sellDetailsPosition;
     public static String id_terminal_for_item;//靠这个查询产品

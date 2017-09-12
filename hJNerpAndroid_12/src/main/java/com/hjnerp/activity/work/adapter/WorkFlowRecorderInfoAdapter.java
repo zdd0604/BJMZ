@@ -57,7 +57,7 @@ import okhttp3.Call;
 import okhttp3.Response;
 
 public class WorkFlowRecorderInfoAdapter extends BaseAdapter {
-    private static String TAG = "WorkFlowRecorderInfoAdapter";
+    private static String TAG = "WorkFlowInfoAdapter";
     private Context context;
     private List<WorkflowApproveInfo> list;
     private WorkflowListInfo wfInfo;
@@ -251,10 +251,13 @@ public class WorkFlowRecorderInfoAdapter extends BaseAdapter {
                         for (WorkflowDetailInfo t : tables.get(tableCounts)
                                 .get(key)) {
                             if (t.form != null) {// 文本控件
+
                                 for (Cell cell : t.form) {
                                     // Log.e(TAG, "form " + cell.title + ", " +
                                     // cell.value
                                     // + ", " + cell.type);
+//                                    if(line_nos.contains())
+
                                     View view1 = (View) LayoutInflater.from(
                                             context).inflate(
                                             R.layout.textview_workflow_detail,
@@ -299,12 +302,28 @@ public class WorkFlowRecorderInfoAdapter extends BaseAdapter {
                                 }
                             } else if (t.grid != null) { // TODO 表格控件
                                 mGrid = new ArrayList<List<Cell>>();
-                                mGrid = t.grid;
+                                List<String> line_nos = new ArrayList<>();
+                                for (int i = 0; i < t.grid.size(); i++) {
+                                    boolean a = false;
+                                    for (Cell cell : t.grid.get(i)) {
+                                        String line_no = "";
+                                        if ("行号".equalsIgnoreCase(cell.title)) {
+                                            line_no = cell.value.toString();
+                                            if (line_nos.contains(line_no)) {
+                                                a = true;
+                                            } else {
+                                                a = false;
+                                                line_nos.add(line_no);
+                                            }
+                                        }
+                                    }
+                                    if (!a) {
+                                        mGrid.add(t.grid.get(i));
+                                    }
+                                }
                             }
                         }
                     }
-
-
                     if (mGrid.size() > 0 && !mGrid.get(0).isEmpty()) {
                         lines = mGrid.size();
                         if (tablecount == 0) {
