@@ -5,6 +5,8 @@
     android:background="@color/white"
     android:orientation="vertical">
 
+    <include layout="@layout/actionbar_layout" />
+
     <ScrollView
         android:layout_width="fill_parent"
         android:layout_height="0.0px"

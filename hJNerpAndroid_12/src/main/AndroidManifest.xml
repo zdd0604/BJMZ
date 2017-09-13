@@ -152,7 +152,9 @@
             android:name="com.hjnerp.activity.contact.FriendsActivity"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:launchMode="standard"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.HjNoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
 
         <!-- 发起群聊选择好友界面 -->
         <activity
@@ -182,7 +184,7 @@
             android:name="com.hjnerp.activity.contact.SearchQiXinFriendsActivity"
             android:launchMode="standard"
             android:theme="@style/Theme.HjNoActionBar"
-            android:windowSoftInputMode="stateHidden|adjustResize"/>
+            android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
             android:name="com.hjnerp.activity.contact.SearchQiXinFriendsretActivity"
             android:launchMode="standard" />

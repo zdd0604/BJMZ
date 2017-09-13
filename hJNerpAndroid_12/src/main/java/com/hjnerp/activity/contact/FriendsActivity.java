@@ -58,7 +58,10 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.UUID;
 
-public class FriendsActivity extends ActivitySupport {
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
+public class FriendsActivity extends ActivitySupport implements OnClickListener {
 
     String sFriendId;
     private FriendInfo friend;
@@ -68,7 +71,7 @@ public class FriendsActivity extends ActivitySupport {
     private ImageView email_edit, phone_edit;
     private RelativeLayout dialog_confirm_rl, dialog_cancel_rl, rl_gally,
             rl_camera;
-    private RelativeLayout rl_phone, rl_email,user_head_layout;
+    private RelativeLayout rl_phone, rl_email, user_head_layout;
     private ImageView photo, qrcode;
     private FriendPopupWindow menuSet = null;
     private Dialog noticeDialog = null;
@@ -94,6 +97,15 @@ public class FriendsActivity extends ActivitySupport {
     // TODO 检查联系人表有没有此人（自己是自己的朋友），如果不是自己的好友，按钮点击动作应为加为好友
     private boolean ifIsMyFriends = true;
 
+    @BindView(R.id.action_left_tv)
+    TextView actionLeftTv;
+    @BindView(R.id.action_center_tv)
+    TextView actionCenterTv;
+    @BindView(R.id.action_right_tv)
+    TextView actionRightTv;
+    @BindView(R.id.action_right_tv1)
+    TextView actionRightTv1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -102,10 +114,17 @@ public class FriendsActivity extends ActivitySupport {
 
         ifIsMyFriends = ContactBusiness.checkFriends(friend.getFriendid());
         setContentView(R.layout.friendinfo);
-        mActionBar = getSupportActionBar();
-        mActionBar.setDisplayHomeAsUpEnabled(true);
-        mActionBar.setHomeButtonEnabled(true);
-        mActionBar.setTitle("详细资料");// 设置左上角标题
+
+        ButterKnife.bind(this);
+
+        actionRightTv.setVisibility(View.GONE);
+        actionLeftTv.setOnClickListener(this);
+        actionCenterTv.setText("详细资料");
+
+//        mActionBar = getSupportActionBar();
+//        mActionBar.setDisplayHomeAsUpEnabled(true);
+//        mActionBar.setHomeButtonEnabled(true);
+//        mActionBar.setTitle("详细资料");// 设置左上角标题
         init();
         waitDialogRectangle = new WaitDialogRectangle(this);
 
@@ -115,6 +134,18 @@ public class FriendsActivity extends ActivitySupport {
             sendCheckUserInfo();
         }
 
+    }
+
+    @Override
+    protected void onPause() {
+        // TODO Auto-generated method stub
+        super.onPause();
+        if (noticeDialog != null) {
+            noticeDialog.dismiss();
+        }
+        if (menuSet != null) {
+            menuSet.dismiss();
+        }
     }
 
     // TODO 从通讯录进入好友详情，当对方解除好友关系后进行提示；从查看群成员信息进入时，进行同样的提示
@@ -705,18 +736,6 @@ public class FriendsActivity extends ActivitySupport {
 
     }
 
-    @Override
-    protected void onPause() {
-        // TODO Auto-generated method stub
-        super.onPause();
-        if (noticeDialog != null) {
-            noticeDialog.dismiss();
-        }
-        if (menuSet != null) {
-            menuSet.dismiss();
-        }
-    }
-
     /* 提示用户是否删除 */
     private void showNoticeDialog() {
         noticeDialog = new Dialog(this, R.style.noticeDialogStyle);
@@ -1145,4 +1164,12 @@ public class FriendsActivity extends ActivitySupport {
         super.onConfigurationChanged(newConfig);
     }
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.action_left_tv:
+                finish();
+                break;
+        }
+    }
 }
