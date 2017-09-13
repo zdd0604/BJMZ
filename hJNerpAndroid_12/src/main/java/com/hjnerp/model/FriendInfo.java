@@ -90,14 +90,19 @@ public class FriendInfo implements Serializable {
 	public void setSortLetter(char sortLetter) {
 		this.sortLetter = sortLetter;
 	}
-	
+
 	@Override
-	public String toString()
-	{
-		return "FriendInfo [friendid=" + friendid + ", friendname=" + friendname + ", friendmtel="
-				+ friendmtel + ", friendmail=" + friendmail + ", deptid=" + deptid+ ", deptname="
-				+ deptname + ", friendimage=" + friendimage + ", frienddescribe=" + frienddescribe + "]";
+	public String toString() {
+		return "FriendInfo{" +
+				"friendname='" + friendname + '\'' +
+				", friendid='" + friendid + '\'' +
+				", friendmtel='" + friendmtel + '\'' +
+				", friendmail='" + friendmail + '\'' +
+				", deptid='" + deptid + '\'' +
+				", deptname='" + deptname + '\'' +
+				", friendimage='" + friendimage + '\'' +
+				", frienddescribe='" + frienddescribe + '\'' +
+				", sortLetter=" + sortLetter +
+				'}';
 	}
-
-
 }

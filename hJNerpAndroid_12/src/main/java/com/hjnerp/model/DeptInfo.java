@@ -63,4 +63,15 @@ public class DeptInfo {
 		return deptFriendInfoList.get(index);
 	}
 
+	@Override
+	public String toString() {
+		return "DeptInfo{" +
+				"deptId='" + deptId + '\'' +
+				", deptName='" + deptName + '\'' +
+				", childCount=" + childCount +
+				", deptImage='" + deptImage + '\'' +
+				", deptFriendInfoList=" + deptFriendInfoList +
+				", location=" + location +
+				'}';
+	}
 }

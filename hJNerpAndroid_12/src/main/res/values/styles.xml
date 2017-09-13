@@ -211,6 +211,15 @@
         <item name="android:layout_marginTop">@dimen/size_1</item>
         <item name="android:orientation">horizontal</item>
     </style>
+    <!-- 水平布局 高度45 -->
+    <style name="Item_LinearLayout_HorizontalContacterStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/size_50</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_marginTop">@dimen/size_1</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
     <!-- actionbar的相对布局 -->
     <style name="Item_RelativeLayout_ActionBarStyle">
         <item name="android:layout_width">match_parent</item>
@@ -221,6 +230,12 @@
     <style name="Item_RelativeLayout_ListItemStyle">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/size_40</item>
+        <item name="android:background">@drawable/app_out_btn_style</item>
+    </style>
+    <!-- Item的相对布局高度为45 -->
+    <style name="Item_RelativeLayout_ContacterItemStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/size_45</item>
         <item name="android:background">@drawable/app_out_btn_style</item>
     </style>
     <!-- 相对布局默认-->
@@ -310,6 +325,18 @@
         <item name="android:gravity">center_vertical</item>
         <item name="android:paddingRight">@dimen/size_10</item>
         <item name="android:layout_weight">3</item>
+    </style>
+    <!-- 右侧TextView框 -->
+    <style name="Item_LinearLayout_TvRightContacterStyle">
+        <item name="android:layout_width">@dimen/size_0</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:textSize">@dimen/font_size_15</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:background">@null</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingLeft">@dimen/size_10</item>
+        <item name="android:layout_marginRight">@dimen/size_10</item>
+        <item name="android:layout_weight">1</item>
     </style>
 
     <!-- 右侧ImageView -->

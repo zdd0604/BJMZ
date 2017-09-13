@@ -5,30 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/activity_child_item_bkg"
-    android:orientation="horizontal"
-    android:paddingLeft="5dip"
-    android:paddingRight="0dp">
+    android:orientation="horizontal">
 
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true">
+        android:layout_marginLeft="@dimen/size_10">
 
-        <!--<ImageView-->
-        <!--android:id="@+id/groupImage"-->
-        <!--android:layout_width="@dimen/abc_square_image_size38"-->
-        <!--android:layout_height="@dimen/abc_square_image_size38"-->
-        <!--android:layout_gravity="center"-->
-        <!--android:layout_marginTop="5dp"-->
-        <!--android:layout_marginBottom="5dp"-->
-        <!--/>-->
         <com.hjnerp.widget.BubbleImageView
             android:id="@+id/groupImage"
             android:layout_width="@dimen/abc_square_image_size38"
             android:layout_height="@dimen/abc_square_image_size38"
             android:layout_marginBottom="5dp"
-            android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
             android:adjustViewBounds="true"
             android:gravity="center"
@@ -51,14 +39,14 @@
             android:text="10"
             android:textColor="@color/white"
             android:textSize="12sp" />
+
     </RelativeLayout>
 
     <TextView
         android:id="@+id/groupName"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="1dp"
-        android:layout_marginTop="6dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
         android:gravity="center_vertical"
         android:padding="5dip"
         android:text="groupName"

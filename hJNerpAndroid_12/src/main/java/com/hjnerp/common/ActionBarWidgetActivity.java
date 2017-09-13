@@ -13,6 +13,7 @@ import com.hjnerp.net.HttpClientManager;
 import com.hjnerp.widget.MyToast;
 import com.hjnerp.widget.MyToast2;
 import com.hjnerp.widget.WaitDialogRectangle;
+import com.hjnerpandroid.R;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.protocol.HTTP;
@@ -28,6 +29,9 @@ import java.io.IOException;
 import java.util.Calendar;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 /**
  * Created by Admin on 2017/8/31.
@@ -50,6 +54,7 @@ public class ActionBarWidgetActivity extends ActivitySupport {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.actionbar_layout);
         initView();
     }
 
