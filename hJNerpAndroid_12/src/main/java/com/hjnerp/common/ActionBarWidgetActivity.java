@@ -54,7 +54,6 @@ public class ActionBarWidgetActivity extends ActivitySupport {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.actionbar_layout);
         initView();
     }
 

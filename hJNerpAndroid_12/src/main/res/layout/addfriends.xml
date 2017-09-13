@@ -2,16 +2,18 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/chat_activity_bkg"
-    android:orientation="vertical" >
+    android:background="@color/actionbar_title_bg"
+    android:orientation="vertical">
+
+    <include layout="@layout/actionbar_layout" />
 
     <LinearLayout
         android:id="@+id/account_search"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="@dimen/size_10"
         android:background="@color/white"
-        android:orientation="horizontal" >
+        android:orientation="horizontal">
 
         <com.hjnerp.widget.ClearEditText
             android:id="@+id/input_et"
@@ -30,8 +32,7 @@
             android:paddingTop="6dp"
             android:singleLine="true"
             android:textColor="#ffc8c9c7"
-            android:textSize="18sp"
-            />
+            android:textSize="18sp" />
 
         <!--
            <Button
@@ -47,7 +48,7 @@
 	            android:textSize="18sp" 
             />
         -->
-        
+
     </LinearLayout>
 
     <LinearLayout
@@ -55,15 +56,15 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:background="@color/white"
-        android:orientation="vertical" >
-        
+        android:orientation="vertical">
+
         <RelativeLayout
             android:id="@+id/rl_saoyisao"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/l_selector"
-            android:padding="10dp"
-            android:gravity="center_vertical" >
+            android:gravity="center_vertical"
+            android:padding="10dp">
 
             <ImageView
                 android:id="@+id/saoyisao_iv"
@@ -71,8 +72,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
-                android:background="@drawable/a6s" 
-                />
+                android:background="@drawable/a6s" />
 
             <TextView
                 android:id="@+id/saoyisao_tv"
@@ -82,20 +82,18 @@
                 android:layout_toRightOf="@id/saoyisao_iv"
                 android:text="扫一扫"
                 android:textColor="@color/dimgray"
-                android:textSize="16sp" 
-                />
-            
-             <TextView
+                android:textSize="16sp" />
+
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/saoyisao_tv"
                 android:layout_marginLeft="10dp"
                 android:layout_toRightOf="@id/saoyisao_iv"
-                android:layout_below="@id/saoyisao_tv"
                 android:text="扫描二维码名片"
                 android:textColor="@color/hjgridheader"
-                android:textSize="12sp" 
-                />
-            
+                android:textSize="12sp" />
+
         </RelativeLayout>
 
         <TextView
@@ -109,9 +107,9 @@
             android:id="@+id/rl_lianxiren"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="10dp"
             android:background="@drawable/l_selector"
-            android:gravity="center_vertical" >
+            android:gravity="center_vertical"
+            android:padding="10dp">
 
             <ImageView
                 android:id="@+id/lianxiren_iv"
@@ -119,8 +117,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
-                android:background="@drawable/a6l" 
-                />
+                android:background="@drawable/a6l" />
 
             <TextView
                 android:id="@+id/lianxiren_tv"
@@ -130,22 +127,20 @@
                 android:layout_toRightOf="@id/lianxiren_iv"
                 android:text="手机联系人"
                 android:textColor="@color/dimgray"
-                android:textSize="16sp" 
-                />
-            
-              <TextView
+                android:textSize="16sp" />
+
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/lianxiren_tv"
                 android:layout_marginLeft="10dp"
                 android:layout_toRightOf="@id/lianxiren_iv"
-                android:layout_below="@id/lianxiren_tv"
                 android:text="添加或邀请通讯录中的朋友"
                 android:textColor="@color/hjgridheader"
-                android:textSize="12sp" 
-                />
-            
+                android:textSize="12sp" />
+
         </RelativeLayout>
-        
+
     </LinearLayout>
 
 </LinearLayout>
