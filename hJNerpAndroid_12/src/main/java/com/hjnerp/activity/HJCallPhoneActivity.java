@@ -11,26 +11,36 @@ import android.support.v4.app.ActivityCompat;
 import android.view.View;
 import android.widget.TextView;
 
-import com.hjnerp.common.ActivitySupport;
+import com.hjnerp.common.ActionBarWidgetActivity;
 import com.hjnerpandroid.R;
 
-public class HJCallPhoneActivity extends ActivitySupport implements View.OnClickListener {
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
+public class HJCallPhoneActivity extends ActionBarWidgetActivity implements View.OnClickListener {
     private TextView tellPhone;
     private int title;
+    @BindView(R.id.action_left_tv)
+    TextView actionLeftTv;
+    @BindView(R.id.action_center_tv)
+    TextView actionCenterTv;
+    @BindView(R.id.action_right_tv)
+    TextView actionRightTv;
+    @BindView(R.id.action_right_tv1)
+    TextView actionRightTv1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mActionBar = getSupportActionBar();
-        mActionBar.setDisplayHomeAsUpEnabled(true);
         setContentView(R.layout.activity_hjcall_phone);
-
+        ButterKnife.bind(this);
+        actionRightTv.setVisibility(View.GONE);
         Bundle bundle = this.getIntent().getExtras();
         title = bundle.getInt("title");
-        mActionBar.setTitle(title);
-
+        actionCenterTv.setText(title);
         tellPhone = (TextView) findViewById(R.id.tellPhone);
         tellPhone.setOnClickListener(this);
+        actionLeftTv.setOnClickListener(this);
     }
 
     @Override
@@ -38,6 +48,9 @@ public class HJCallPhoneActivity extends ActivitySupport implements View.OnClick
         switch (v.getId()) {
             case R.id.tellPhone:
                 ShowCallDialog();
+                break;
+            case R.id.action_left_tv:
+                finish();
                 break;
         }
     }

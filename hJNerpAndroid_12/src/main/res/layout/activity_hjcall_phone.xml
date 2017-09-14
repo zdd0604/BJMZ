@@ -1,41 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/activity_hjcall_phone"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/call_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:text=" 联系我们"
-        android:textColor="@color/black"
-        android:textSize="20sp" />
-
-    <TextView
-        android:id="@+id/call_title1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/call_title"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:text=" 地址：北京海淀区中关村大街11号e世界财富中心A座12层"
-        android:textColor="@color/black" />
+    <include layout="@layout/actionbar_layout" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/call_title1"
+        android:layout_height="match_parent"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
         android:gravity="center"
         android:orientation="vertical">
 
+        <TextView
+            android:id="@+id/call_title1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:paddingLeft="@dimen/size_10"
+            android:paddingRight="@dimen/size_10"
+            android:text=" 地址：北京海淀区中关村大街11号e世界财富中心A座12层"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_size_16" />
+
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
+            android:layout_height="@dimen/size_40"
             android:gravity="center"
             android:orientation="horizontal">
 
@@ -57,7 +50,7 @@
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
+            android:layout_height="@dimen/size_40"
             android:gravity="center"
             android:orientation="horizontal">
 
@@ -78,7 +71,7 @@
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
+            android:layout_height="@dimen/size_40"
             android:gravity="center"
             android:orientation="horizontal">
 
@@ -97,4 +90,4 @@
         </LinearLayout>
     </LinearLayout>
 
-</RelativeLayout>
+</LinearLayout>

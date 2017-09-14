@@ -355,7 +355,12 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
-        <activity android:name="com.hjnerp.activity.HJCallPhoneActivity" />
+        <!-- 联系我们 -->
+        <activity
+            android:name="com.hjnerp.activity.HJCallPhoneActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.HjNoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
             android:name="com.hjnerp.business.activity.TravelActivityNew"
             android:screenOrientation="portrait"
