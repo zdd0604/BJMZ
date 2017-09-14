@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -17,6 +16,7 @@ import com.hjnerp.common.ActionBarWidgetActivity;
 import com.hjnerp.common.Constant;
 import com.hjnerp.dao.BusinessBaseDao;
 import com.hjnerp.dao.QiXinBaseDao;
+import com.hjnerp.model.BusinessOneLine;
 import com.hjnerp.model.Ctlm1345;
 import com.hjnerp.model.Dsaordtype;
 import com.hjnerp.net.HttpClientBuilder;
@@ -46,6 +46,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 import static android.jiebao.utils.Tools.getToday;
+import static com.hjnerp.common.Constant.buss_key;
+import static com.hjnerp.common.Constant.buss_value;
+import static com.hjnerp.common.Constant.datas;
 import static com.hjnerp.common.Constant.dsaordbaseJsons_new;
 import static com.hjnerp.common.Constant.user_myid;
 
@@ -87,7 +90,7 @@ public class OrderFinding extends ActionBarWidgetActivity implements View.OnClic
     @BindView(R.id.object_name)
     TextView object_name;
     @BindView(R.id.object_person)
-    Spinner object_person;
+    TextView object_person;
     @BindView(R.id.linear_list)
     LinearLayout linear_list;
     @BindView(R.id.table_begin_time)
@@ -218,12 +221,16 @@ public class OrderFinding extends ActionBarWidgetActivity implements View.OnClic
             users_name.add(QiXinBaseDao.queryCurrentUserInfo().username);
             users_id.add(QiXinBaseDao.queryCurrentUserInfo().userID);
             Gson gson1 = new Gson();
-
+            datas = new ArrayList<>();
             for (int i = 0; i < myauthuser.size(); i++) {
                 Dsaordtype dsaordtype = gson1.fromJson(myauthuser.get(i).getVar_value(), Dsaordtype.class);
                 if (!users_id.contains(dsaordtype.getId_user())) {
+                    BusinessOneLine businessOneLine = new BusinessOneLine();
+                    businessOneLine.setKey(dsaordtype.getId_user());
+                    businessOneLine.setValue(dsaordtype.getName_user());
                     users_name.add(dsaordtype.getName_user());
                     users_id.add(dsaordtype.getId_user());
+                    datas.add(businessOneLine);
                 }
 
             }
@@ -232,7 +239,14 @@ public class OrderFinding extends ActionBarWidgetActivity implements View.OnClic
 
         adapter = new ArrayAdapter<String>(this, R.layout.spinner_item, users_name);
         adapter.setDropDownViewResource(R.layout.spinner_item_hint);
-        object_person.setAdapter(adapter);
+        object_person.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), BusinessSearchOneLine.class);
+                startActivityForResult(intent, 33);
+            }
+        });
+//        object_person.setAdapter(adapter);
     }
 
     //页面关闭时，数据清零
@@ -240,6 +254,8 @@ public class OrderFinding extends ActionBarWidgetActivity implements View.OnClic
     public void onDestroy() {
         super.onDestroy();
         user_myid = "";
+        buss_key = "";
+        buss_value = "";
         Constant.project_type = 0;
         Constant.travel = false;
         if (dsaordbaseJsons_new != null && dsaordbaseJsons_new.size() > 0) {
@@ -326,7 +342,8 @@ public class OrderFinding extends ActionBarWidgetActivity implements View.OnClic
 
         }
         String all_goneprice = all_goneprice_textview.getText().toString().trim();
-        String id_user = users_id.get(object_person.getSelectedItemPosition());
+        String id_user = buss_key;
+//        String id_user = users_id.get(object_person.getSelectedItemPosition());
         String time_begin = table_begin_time.getText().toString().isEmpty() ? "1800-00-00" : table_begin_time.getText().toString();
         String time_end = table_end_time.getText().toString().isEmpty() ? "2999-12-31" : table_end_time.getText().toString();
         // TODO validate success, do something
@@ -380,14 +397,14 @@ public class OrderFinding extends ActionBarWidgetActivity implements View.OnClic
         switch (v.getId()) {
             case R.id.object_name:
                 Intent intent = new Intent(getApplicationContext(), BusinessSearch.class);
-                if (users_id.get(object_person.getSelectedItemPosition()).equalsIgnoreCase("")) {
+                if (buss_key.equalsIgnoreCase("")) {
                     String a = "";
                     for (int i = 1; i < users_id.size(); i++) {
                         a = a + users_id.get(i) + ",";
                     }
                     user_myid = a;
                 } else {
-                    user_myid = users_id.get(object_person.getSelectedItemPosition()) + ",";
+                    user_myid = buss_key + ",";
                 }
                 Constant.project_type = 2;
                 Constant.travel = true;
@@ -415,7 +432,10 @@ public class OrderFinding extends ActionBarWidgetActivity implements View.OnClic
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 44 && resultCode == 22) {
             mHandler.sendEmptyMessage(1);
+        } else if (requestCode == 33 && resultCode == 22) {
+            mHandler.sendEmptyMessage(5);
         }
+
     }
 
     //异步任务
@@ -429,6 +449,9 @@ public class OrderFinding extends ActionBarWidgetActivity implements View.OnClic
                     break;
                 case 1:
                     setTxt();
+                    break;
+                case 5:
+                    object_person.setText(buss_value);
                     break;
                 case 2:
                     waitDialog.dismiss();
@@ -484,6 +507,8 @@ public class OrderFinding extends ActionBarWidgetActivity implements View.OnClic
                             mfristData.add("日期");
                             mfristData.add("工作类型");
                             mfristData.add("客户");
+                            mfristData.add("联系人");
+                            mfristData.add("职务");
                             mfristData.add("标题");
                             mfristData.add("内容");
                             break;
@@ -614,14 +639,16 @@ public class OrderFinding extends ActionBarWidgetActivity implements View.OnClic
                                     DsaordQueryJsonD dsaordQueryJsonD = dsaordbaseJsonsD.get(i);
 //                                    long date_task = dateFormat2.parse(dsaordbaseJson.getDate_task()).getTime();
 //                                    if (format.parse(time_begin).getTime() <= date_task && date_task <= format.parse(time_end).getTime()) {
-                                    if (!contents.contains(dsaordQueryJsonD.getName_user() + dsaordQueryJsonD.getDate_task())) {
-                                        contents.add(dsaordQueryJsonD.getName_user() + dsaordQueryJsonD.getDate_task());
+                                    if (!contents.contains(dsaordQueryJsonD.getName_user() + dsaordQueryJsonD.getDate_task() + dsaordQueryJsonD.getVar_wtitle())) {
+                                        contents.add(dsaordQueryJsonD.getName_user() + dsaordQueryJsonD.getDate_task() + dsaordQueryJsonD.getVar_wtitle());
 
                                         mRowDatas.add(dsaordQueryJsonD.getName_dept());
                                         mRowDatas.add(dsaordQueryJsonD.getName_user());
                                         mRowDatas.add(dsaordQueryJsonD.getDate_task());
                                         mRowDatas.add(dsaordQueryJsonD.getName_type());
                                         mRowDatas.add(dsaordQueryJsonD.getName_wproj());
+                                        mRowDatas.add(dsaordQueryJsonD.getVar_contact());
+                                        mRowDatas.add(dsaordQueryJsonD.getVar_contactduty());
                                         mRowDatas.add(dsaordQueryJsonD.getVar_wtitle());
                                         mRowDatas.add(dsaordQueryJsonD.getVar_remark());
                                         mTableDatas.add(mRowDatas);
@@ -705,9 +732,12 @@ public class OrderFinding extends ActionBarWidgetActivity implements View.OnClic
         }
     };
 
+
     //设置数据
     private void setTxt() {
-        object_name.setText(dsaordbaseJsons_new.get(0).getName_corr());
+        if (dsaordbaseJsons_new != null) {
+            object_name.setText(dsaordbaseJsons_new.get(0).getName_corr());
+        }
 
     }
 
@@ -715,6 +745,16 @@ public class OrderFinding extends ActionBarWidgetActivity implements View.OnClic
     private void getTab() {
         Log.d("开始形成表格。。。");
 //        linear_list.removeAllViews();
+        int max_weight;
+        int max_height;
+        if (Constant.tab_type == 2) {
+            max_weight = 200;
+            max_height = 8000;
+        } else {
+            max_weight = 100;
+            max_height = 60;
+
+        }
         DecimalFormat formatNum = new DecimalFormat(",##0.00");
         all_price_textview.setText(formatNum.format(allPrice));
         first_price_textview.setText(formatNum.format(firstPrice));
@@ -722,10 +762,10 @@ public class OrderFinding extends ActionBarWidgetActivity implements View.OnClic
         mLockTableView = new LockTableView2(this, linear_list, mTableDatas);
         mLockTableView.setLockFristColumn(true) //是否锁定第一列
                 .setLockFristRow(true) //是否锁定第一行
-                .setMaxColumnWidth(100) //列最大宽度
+                .setMaxColumnWidth(max_weight) //列最大宽度
                 .setMinColumnWidth(10) //列最小宽度
                 .setMinRowHeight(20)//行最小高度
-                .setMaxRowHeight(60)//行最大高度
+                .setMaxRowHeight(max_height)//行最大高度
                 .setTextViewSize(12) //单元格字体大小
                 .setFristRowBackGroudColor(R.color.item_table_title_color)//表头背景色
                 .setTableHeadTextColor(R.color.white)//表头字体颜色

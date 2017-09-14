@@ -56,7 +56,7 @@
 
         <TextView
             android:id="@+id/sell_order_products"
-            style="@style/Item_LinearLayout_TvRightTitleImgStyle"
+            style="@style/Item_LinearLayout_TvRightTitleImgStyle2"
             android:hint="请选择产品"
             android:textColorHint="#cacacf" />
     </LinearLayout>

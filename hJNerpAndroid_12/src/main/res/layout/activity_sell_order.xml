@@ -155,7 +155,7 @@
 
                 <TextView
                     android:id="@+id/sell_order_terminal"
-                    style="@style/Item_LinearLayout_TvRightTitleImgStyle"
+                    style="@style/Item_LinearLayout_TvRightTitleImgStyle2"
                     android:hint="请选择所属终端"
                     android:textColorHint="#cacacf" />
 
@@ -193,7 +193,7 @@
 
                 <TextView
                     android:id="@+id/sell_order_address"
-                    style="@style/Item_LinearLayout_TvRightTitleImgStyle"
+                    style="@style/Item_LinearLayout_TvRightTitleImgStyle2"
                     android:hint="请选择送货地址"
                     android:textColorHint="#cacacf" />
             </LinearLayout>
@@ -240,7 +240,7 @@
 
                 <TextView
                     android:id="@+id/sell_order_addess_send"
-                    style="@style/Item_LinearLayout_TvRightTitleImgStyle"
+                    style="@style/Item_LinearLayout_TvRightTitleImgStyle2"
                     android:hint="请选择发票地址"
                     android:textColorHint="#cacacf" />
             </LinearLayout>

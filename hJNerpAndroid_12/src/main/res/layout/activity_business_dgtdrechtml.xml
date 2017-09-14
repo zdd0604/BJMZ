@@ -34,7 +34,8 @@
 
             <LinearLayout
                 style="@style/Item_LinearLayout_HorizontalStyle"
-                android:layout_marginTop="@dimen/size_1">
+                android:layout_marginTop="@dimen/size_1"
+                android:visibility="gone">
 
                 <TextView
                     style="@style/Item_LinearLayout_TVLeftTieleStyle"
@@ -74,14 +75,15 @@
 
                 <EditText
                     android:id="@+id/log_id_wproj"
-                    style="@style/Item_LinearLayout_TvRightTitleImgStyle"
+                    style="@style/Item_LinearLayout_TvRightTitleImgStyle2"
                     android:focusable="false"
                     android:hint="@string/work_Hint_PjName" />
             </LinearLayout>
 
             <LinearLayout
                 style="@style/Item_LinearLayout_HorizontalStyle"
-                android:layout_marginTop="@dimen/size_1">
+                android:layout_marginTop="@dimen/size_1"
+                android:visibility="gone">
 
                 <TextView
                     android:id="@+id/textView7"
@@ -96,7 +98,36 @@
 
             <LinearLayout
                 style="@style/Item_LinearLayout_HorizontalStyle"
-                android:layout_marginTop="@dimen/size_8">
+                android:layout_marginTop="@dimen/size_1">
+
+                <TextView
+                    style="@style/Item_LinearLayout_TVLeftTieleStyle"
+                    android:text="@string/work_Tile_Contact" />
+
+                <com.hjnerp.widget.ClearEditText
+                    android:id="@+id/log_id_cantact"
+                    style="@style/Item_LinearLayout_EdRightTitleStyle"
+                    android:focusable="false" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/Item_LinearLayout_HorizontalStyle"
+                android:layout_marginTop="@dimen/size_1">
+
+                <TextView
+                    style="@style/Item_LinearLayout_TVLeftTieleStyle"
+                    android:text="@string/work_Tile_contactduty" />
+
+                <com.hjnerp.widget.ClearEditText
+                    android:id="@+id/log_id_duty"
+                    style="@style/Item_LinearLayout_EdRightTitleStyle"
+                    android:focusable="false" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/Item_LinearLayout_HorizontalStyle"
+                android:layout_marginTop="@dimen/size_8"
+                android:visibility="gone">
 
                 <TextView
                     style="@style/Item_LinearLayout_TVLeftTieleStyle"
@@ -111,7 +142,7 @@
 
             <LinearLayout
                 style="@style/Item_LinearLayout_HorizontalStyle"
-                android:layout_marginTop="@dimen/size_1">
+                android:layout_marginTop="@dimen/size_8">
 
                 <TextView
                     style="@style/Item_LinearLayout_TVLeftTieleStyle"
@@ -140,7 +171,6 @@
     </ScrollView>
 
     <Button
-        android:visibility="gone"
         android:id="@+id/dgtdrechtml_submit"
         android:layout_width="60dp"
         android:layout_height="60dp"
@@ -152,6 +182,7 @@
         android:layout_marginRight="9dp"
         android:background="@drawable/per_button_shape"
         android:text="提交"
-        android:textColor="@color/white" />
+        android:textColor="@color/white"
+        android:visibility="gone" />
 
 </RelativeLayout>
