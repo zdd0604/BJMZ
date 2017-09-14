@@ -69,7 +69,9 @@ public class BusinessEJBuffer {
                                           String id_wproj, String dec_wtime, String var_wtitle,
                                           String var_remark, String name_wproj,
                                           String date_opr, int fiscal_period, int fiscal_year,
-                                          String id_corr) {
+                                          String id_corr,
+                                          String var_contact,
+                                          String var_contactduty) {
         StringBuffer stringBuffer = new StringBuffer();
         stringBuffer.append("{\"tableid\":\"dgtdrec\",\"opr\":\"SS\",\"no\": \"\",\"menuid\":\"" + menuid + "\",\"dealtype\":\"save\",\"userid\":\"" + userID + "\",\"comid\":\"" + companyID + "\"," +
                 "\"data\":[{\"table\": \"dgtdrec_03\",\"oprdetail\":\"N\",\"where\": \"\", \"data\": [");
@@ -89,6 +91,8 @@ public class BusinessEJBuffer {
         stringBuffer.append("{\"column\":\"fiscal_period\",\"value\":\"" + fiscal_period + "\",\"datatype\":\"int\"},");
         stringBuffer.append("{\"column\":\"fiscal_year\",\"value\":\"" + fiscal_year + "\",\"datatype\":\"int\"},");
         stringBuffer.append("{\"column\":\"id_corr\",\"value\":\"" + id_corr + "\",\"datatype\":\"varchar\"},");
+        stringBuffer.append("{\"column\":\"var_contactduty\",\"value\":\"" + var_contactduty + "\",\"datatype\":\"varchar\"},");
+        stringBuffer.append("{\"column\":\"var_contact\",\"value\":\"" + var_contact + "\",\"datatype\":\"varchar\"},");
         stringBuffer.append("{\"column\":\"name_wproj\",\"value\":\"" + name_wproj + "\",\"datatype\":\"varchar\"}");
         stringBuffer.append("]}]}");
         String str = stringBuffer.toString().trim();

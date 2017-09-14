@@ -119,6 +119,8 @@
     <string name="work_Tile_PjName">客户名称</string>
     <string name="work_Hint_PjName">请选择客户名称</string>
     <string name="work_Tile_Address">地址</string>
+    <string name="work_Tile_Contact">联系人</string>
+    <string name="work_Tile_contactduty">职务</string>
     <string name="work_Tile_WkTime">工时</string>
     <string name="work_Tile_MyTheme">主题</string>
     <string name="work_Tile_MyContent">内容</string>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="5dp"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/id_name_bus_item"
+        style="@style/Item_Search_TvContentStyle"
+        android:paddingLeft="@dimen/size_10"
+        android:text="1111" />
+
+</LinearLayout>

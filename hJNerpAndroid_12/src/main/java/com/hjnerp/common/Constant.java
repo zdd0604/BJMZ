@@ -3,6 +3,7 @@ package com.hjnerp.common;
 import android.os.Environment;
 
 import com.hjnerp.business.activity.DsaordbaseJson2;
+import com.hjnerp.model.BusinessOneLine;
 import com.hjnerp.model.Ctlm1345;
 import com.hjnerp.model.Ctlm7161;
 import com.hjnerp.model.DdisplocatBean;
@@ -380,6 +381,10 @@ public class Constant {
     //判断表格类型
     public static int tab_type = 0;
 
+    //美正项目订单字段
+    public static List<BusinessOneLine> datas;
+    public static String buss_key = "";
+    public static String buss_value = "";
     //模板的名称
     //1、东兴堂及黄河的签到文件
     public static final String ddisplocatphohtml = "ddisplocatphohtml";

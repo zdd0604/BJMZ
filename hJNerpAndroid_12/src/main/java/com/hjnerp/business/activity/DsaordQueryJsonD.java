@@ -35,6 +35,8 @@ public class DsaordQueryJsonD implements Comparable<DsaordQueryJsonD> {
     private String name_wproj;
     private String var_wtitle;
     private String var_remark;
+    private String var_contact;
+    private String var_contactduty;
 
     @Override
     public int compareTo(DsaordQueryJsonD dsaordbaseJson) {
@@ -136,5 +138,21 @@ public class DsaordQueryJsonD implements Comparable<DsaordQueryJsonD> {
 
     public void setVar_remark(String var_remark) {
         this.var_remark = var_remark;
+    }
+
+    public String getVar_contact() {
+        return var_contact;
+    }
+
+    public void setVar_contact(String var_contact) {
+        this.var_contact = var_contact;
+    }
+
+    public String getVar_contactduty() {
+        return var_contactduty;
+    }
+
+    public void setVar_contactduty(String var_contactduty) {
+        this.var_contactduty = var_contactduty;
     }
 }

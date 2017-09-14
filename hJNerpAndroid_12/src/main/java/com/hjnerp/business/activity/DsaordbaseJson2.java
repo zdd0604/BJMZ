@@ -34,6 +34,15 @@ public class DsaordbaseJson2 {
     private String var_conplace;
     private String id_invtype;
     private String name_invtype;
+    private String var_contactduty;
+
+    public String getVar_contactduty() {
+        return var_contactduty;
+    }
+
+    public void setVar_contactduty(String var_contactduty) {
+        this.var_contactduty = var_contactduty;
+    }
 
     public String getId_terminal() {
         return id_terminal;

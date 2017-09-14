@@ -5,6 +5,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -72,6 +73,10 @@ public class BusinessDgtdrechtml extends ActionBarWidgetActivity implements View
     TextView pro_text;
     @BindView(R.id.textView7)
     TextView textView7;
+    @BindView(R.id.log_id_cantact)
+    TextView log_id_cantact;
+    @BindView(R.id.log_id_duty)
+    TextView log_id_duty;
     private List<EjWadd1345> ejWaddList;
     private List<EjWType1345> ejtpe1345List;
 
@@ -94,8 +99,10 @@ public class BusinessDgtdrechtml extends ActionBarWidgetActivity implements View
             super.handleMessage(msg);
             switch (msg.what) {
                 case Constant.HANDLERTYPE_0:
-                    log_id_wproj.setText(Constant.item_peoject);
-                    log_id_corr.setText(Constant.item_client);
+                    log_id_wproj.setText(Constant.dsaordbaseJsons_new.get(0).getName_corr());
+                    log_id_corr.setText(Constant.dsaordbaseJsons_new.get(0).getVar_conplace());
+                    log_id_cantact.setText(Constant.dsaordbaseJsons_new.get(0).getVar_contact());
+                    log_id_duty.setText(Constant.dsaordbaseJsons_new.get(0).getVar_contactduty());
                     break;
             }
         }
@@ -192,11 +199,11 @@ public class BusinessDgtdrechtml extends ActionBarWidgetActivity implements View
             waitDialog.dismiss();
             return;
         }
-        if (!StringUtil.isStrTrue(flag_wadd)) {
-            showFailToast("工作地点不能为空");
-            waitDialog.dismiss();
-            return;
-        }
+//        if (!StringUtil.isStrTrue(flag_wadd)) {
+//            showFailToast("工作地点不能为空");
+//            waitDialog.dismiss();
+//            return;
+//        }
         if (!StringUtil.isStrTrue(id_wtype)) {
             showFailToast("工作类型不能为空");
             waitDialog.dismiss();
@@ -207,11 +214,12 @@ public class BusinessDgtdrechtml extends ActionBarWidgetActivity implements View
             waitDialog.dismiss();
             return;
         }
-        if (!StringUtil.isStrTrue(dec_wtime)) {
-            showFailToast("工时不能为空");
-            waitDialog.dismiss();
-            return;
-        }
+        //美正去掉工时
+//        if (!StringUtil.isStrTrue(dec_wtime)) {
+//            showFailToast("工时不能为空");
+//            waitDialog.dismiss();
+//            return;
+//        }
         if (!StringUtil.isStrTrue(var_wtitle)) {
             showFailToast("主题不能为空");
             waitDialog.dismiss();
@@ -223,7 +231,12 @@ public class BusinessDgtdrechtml extends ActionBarWidgetActivity implements View
             Constant.item_peoject = log_id_wproj.getText().toString().trim();
             Constant.id_corr = log_id_corr.getText().toString().trim();
         }
-
+        if (TextUtils.isEmpty(dec_wtime)) {
+            dec_wtime = "8";
+        }
+        if (TextUtils.isEmpty(flag_wadd)) {
+            flag_wadd = "A";
+        }
         String data = BusinessEJBuffer.getDgtdrecBuffer(Constant.ID_MENU,
                 Constant.ej1345.getId_user(), Constant.MYUSERINFO.userID,
                 Constant.MYUSERINFO.companyID, date_task, Constant.MYUSERINFO.departmentID,
@@ -231,7 +244,7 @@ public class BusinessDgtdrechtml extends ActionBarWidgetActivity implements View
                 var_remark, Constant.item_peoject, BusinessTimeUtils.getCurrentTime(Constant.NOWTIME),
                 Integer.valueOf(BusinessTimeUtils.getCurrentTime(Constant.kpiperiod_MM)),
                 Integer.valueOf(BusinessTimeUtils.getCurrentTime(Constant.Int_year_YYYY)),
-                Constant.id_corr);
+                Constant.id_corr, log_id_cantact.getText().toString().trim(), log_id_duty.getText().toString().trim());
         getBusinessList(data);
     }
 
@@ -266,7 +279,7 @@ public class BusinessDgtdrechtml extends ActionBarWidgetActivity implements View
         if (StringUtil.isStrTrue(id_wtype)) {
             Constant.id_wtype = id_wtype;
             if (!id_wtype.equalsIgnoreCase("030")) {
-                Constant.project_type = 2;
+                Constant.project_type = 5;
                 intentActivity(BusinessSearch.class);
             }
 
@@ -359,6 +372,10 @@ public class BusinessDgtdrechtml extends ActionBarWidgetActivity implements View
         super.onDestroy();
         Constant.project_type = 0;
         Constant.travel = false;
+        Constant.dsaordbaseJsons_new = new ArrayList<>();
+        Constant.id_wproj = "";
+        Constant.item_peoject = "";
+        Constant.id_corr = "";
     }
 
     private void removeData() {
@@ -368,6 +385,8 @@ public class BusinessDgtdrechtml extends ActionBarWidgetActivity implements View
         log_dec_wtime.setText("");
         log_var_wtitle.setText("");
         log_id_corr.setText("");
+        log_id_cantact.setText("");
+        log_id_duty.setText("");
         log_var_remark.setText("");
     }
 }
