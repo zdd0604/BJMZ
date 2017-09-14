@@ -13,6 +13,7 @@ import android.widget.Adapter;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.hjnerp.fragment.ContactFragment;
@@ -68,6 +69,7 @@ public class ContactExpandableListAdapter extends BaseExpandableListAdapter {
         }
 
         LinearLayout ll_group = (LinearLayout) convertView.findViewById(R.id.ll_group);
+        RelativeLayout grouprl = (RelativeLayout) convertView.findViewById(R.id.grouprl);
         ImageView image_group = (ImageView) convertView.findViewById(R.id.groupImage);
         TextView deptname = (TextView) convertView.findViewById(R.id.groupName);
         TextView paopao = (TextView) convertView.findViewById(R.id.tv_newcontact_paopao);
@@ -87,7 +89,7 @@ public class ContactExpandableListAdapter extends BaseExpandableListAdapter {
             image_group.setVisibility(View.VISIBLE);
             image_group.setImageResource(R.drawable.default_chatroom);
         } else {
-            image_group.setVisibility(View.GONE);
+            grouprl.setVisibility(View.GONE);
         }
         if (StringUtil.isNullOrEmpty(deptBean.getDeptName())) {
             deptname.setText("");

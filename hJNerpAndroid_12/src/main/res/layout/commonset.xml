@@ -18,126 +18,178 @@
             style="@style/Item_LinearLayout_VerticalStyle"
             android:layout_marginTop="@dimen/size_10">
 
-            <LinearLayout
+            <!--<LinearLayout-->
+                <!--android:id="@+id/rel_wrapdata"-->
+                <!--style="@style/Item_LinearLayout_HorizontalStyle">-->
+
+                <!--<ImageView-->
+                    <!--android:id="@+id/icon_wrapdata"-->
+                    <!--style="@style/Item_LinearLayout_ImgRightTitleStyle"-->
+                    <!--android:background="@drawable/cspace_setting__suizhiji" />-->
+
+                <!--<TextView-->
+                    <!--style="@style/Item_LinearLayout_TvRightTitleImgStyle"-->
+                    <!--android:text="清除数据" />-->
+
+            <!--</LinearLayout>-->
+
+            <TextView
                 android:id="@+id/rel_wrapdata"
-                style="@style/Item_LinearLayout_HorizontalStyle">
+                style="@style/Item_LinearLayout_TvImgStyle"
+                android:drawableLeft="@drawable/cspace_setting__suizhiji"
+                android:text="清除数据" />
 
-                <ImageView
-                    android:id="@+id/icon_wrapdata"
-                    style="@style/Item_LinearLayout_ImgRightTitleStyle"
-                    android:background="@drawable/cspace_setting__suizhiji" />
+            <!--<LinearLayout-->
+                <!--android:id="@+id/rel_wrapcache"-->
+                <!--style="@style/Item_LinearLayout_HorizontalStyle">-->
 
-                <TextView
-                    style="@style/Item_LinearLayout_TvRightTitleImgStyle"
-                    android:text="清除数据" />
+                <!--<ImageView-->
+                    <!--android:id="@+id/icon_wrapcache"-->
+                    <!--style="@style/Item_LinearLayout_ImgRightTitleStyle"-->
+                    <!--android:background="@drawable/cspace_setting_delete_default" />-->
 
-            </LinearLayout>
+                <!--<TextView-->
+                    <!--style="@style/Item_LinearLayout_TvRightTitleImgStyle"-->
+                    <!--android:text="清除缓存" />-->
+            <!--</LinearLayout>-->
 
-            <LinearLayout
+            <TextView
                 android:id="@+id/rel_wrapcache"
-                style="@style/Item_LinearLayout_HorizontalStyle">
-
-                <ImageView
-                    android:id="@+id/icon_wrapcache"
-                    style="@style/Item_LinearLayout_ImgRightTitleStyle"
-                    android:background="@drawable/cspace_setting_delete_default" />
-
-                <TextView
-                    style="@style/Item_LinearLayout_TvRightTitleImgStyle"
-                    android:text="清除缓存" />
-            </LinearLayout>
+                style="@style/Item_LinearLayout_TvImgStyle"
+                android:drawableLeft="@drawable/cspace_setting_delete_default"
+                android:text="清除缓存" />
 
 
-            <LinearLayout
+            <!--<LinearLayout-->
+                <!--android:id="@+id/rel_updatadate"-->
+                <!--style="@style/Item_LinearLayout_HorizontalStyle"-->
+                <!--android:layout_marginTop="@dimen/size_15">-->
+
+                <!--<ImageView-->
+                    <!--android:id="@+id/icon_updatadate"-->
+                    <!--style="@style/Item_LinearLayout_ImgRightTitleStyle"-->
+                    <!--android:background="@drawable/cspace_setting_download_default" />-->
+
+                <!--<TextView-->
+                    <!--style="@style/Item_LinearLayout_TvRightTitleImgStyle"-->
+                    <!--android:text="应用数据下载" />-->
+            <!--</LinearLayout>-->
+
+            <TextView
                 android:id="@+id/rel_updatadate"
-                style="@style/Item_LinearLayout_HorizontalStyle"
-                android:layout_marginTop="@dimen/size_15">
+                style="@style/Item_LinearLayout_TvImgStyle"
+                android:layout_marginTop="@dimen/size_10"
+                android:drawableLeft="@drawable/cspace_setting_download_default"
+                android:text="应用数据下载" />
 
-                <ImageView
-                    android:id="@+id/icon_updatadate"
-                    style="@style/Item_LinearLayout_ImgRightTitleStyle"
-                    android:background="@drawable/cspace_setting_download_default" />
+            <!--<LinearLayout-->
+                <!--android:id="@+id/rel_updatabasedate"-->
+                <!--style="@style/Item_LinearLayout_HorizontalStyle">-->
 
-                <TextView
-                    style="@style/Item_LinearLayout_TvRightTitleImgStyle"
-                    android:text="应用数据下载" />
-            </LinearLayout>
+                <!--<ImageView-->
+                    <!--android:id="@+id/icon_updatabasedate"-->
+                    <!--style="@style/Item_LinearLayout_ImgRightTitleStyle"-->
+                    <!--android:background="@drawable/cspace_setting_down_data" />-->
 
-            <LinearLayout
+                <!--<TextView-->
+                    <!--style="@style/Item_LinearLayout_TvRightTitleImgStyle"-->
+                    <!--android:text="基础数据下载" />-->
+            <!--</LinearLayout>-->
+
+            <TextView
                 android:id="@+id/rel_updatabasedate"
-                style="@style/Item_LinearLayout_HorizontalStyle">
-
-                <ImageView
-                    android:id="@+id/icon_updatabasedate"
-                    style="@style/Item_LinearLayout_ImgRightTitleStyle"
-                    android:background="@drawable/cspace_setting_down_data" />
-
-                <TextView
-                    style="@style/Item_LinearLayout_TvRightTitleImgStyle"
-                    android:text="基础数据下载" />
-            </LinearLayout>
+                style="@style/Item_LinearLayout_TvImgStyle"
+                android:drawableLeft="@drawable/cspace_setting_down_data"
+                android:text="基础数据下载" />
 
 
-            <LinearLayout
+            <!--<LinearLayout-->
+                <!--android:id="@+id/rel_versioncheck"-->
+                <!--style="@style/Item_LinearLayout_HorizontalStyle"-->
+                <!--android:layout_marginTop="@dimen/size_15">-->
+
+                <!--<ImageView-->
+                    <!--android:id="@+id/icon_versioncheck"-->
+                    <!--style="@style/Item_LinearLayout_ImgRightTitleStyle"-->
+                    <!--android:background="@drawable/cspace_setting_download_app" />-->
+
+                <!--<TextView-->
+                    <!--style="@style/Item_LinearLayout_TvRightTitleImgStyle"-->
+                    <!--android:text="检查版本" />-->
+            <!--</LinearLayout>-->
+
+            <TextView
                 android:id="@+id/rel_versioncheck"
-                style="@style/Item_LinearLayout_HorizontalStyle"
-                android:layout_marginTop="@dimen/size_15">
+                style="@style/Item_LinearLayout_TvImgStyle"
+                android:layout_marginTop="@dimen/size_10"
+                android:drawableLeft="@drawable/cspace_setting_download_app"
+                android:text="检查版本" />
 
-                <ImageView
-                    android:id="@+id/icon_versioncheck"
-                    style="@style/Item_LinearLayout_ImgRightTitleStyle"
-                    android:background="@drawable/cspace_setting_download_app" />
+            <!--<LinearLayout-->
+                <!--android:id="@+id/rel_updata"-->
+                <!--style="@style/Item_LinearLayout_HorizontalStyle">-->
 
-                <TextView
-                    style="@style/Item_LinearLayout_TvRightTitleImgStyle"
-                    android:text="检查版本" />
-            </LinearLayout>
+                <!--<ImageView-->
+                    <!--android:id="@+id/icon_updata"-->
+                    <!--style="@style/Item_LinearLayout_ImgRightTitleStyle"-->
+                    <!--android:background="@drawable/cspace_setting_saveintophone_default" />-->
 
-            <LinearLayout
+                <!--<TextView-->
+                    <!--style="@style/Item_LinearLayout_TvRightTitleImgStyle"-->
+                    <!--android:text="更新应用" />-->
+
+            <!--</LinearLayout>-->
+            <TextView
                 android:id="@+id/rel_updata"
-                style="@style/Item_LinearLayout_HorizontalStyle">
+                style="@style/Item_LinearLayout_TvImgStyle"
+                android:drawableLeft="@drawable/cspace_setting_saveintophone_default"
+                android:text="更新应用" />
 
-                <ImageView
-                    android:id="@+id/icon_updata"
-                    style="@style/Item_LinearLayout_ImgRightTitleStyle"
-                    android:background="@drawable/cspace_setting_saveintophone_default" />
 
-                <TextView
-                    style="@style/Item_LinearLayout_TvRightTitleImgStyle"
-                    android:text="更新应用" />
+            <!--<LinearLayout-->
+                <!--android:id="@+id/rel_setpwd"-->
+                <!--style="@style/Item_LinearLayout_HorizontalStyle"-->
+                <!--android:layout_marginTop="@dimen/size_15">-->
 
-            </LinearLayout>
+                <!--<ImageView-->
+                    <!--android:id="@+id/icon_setpwd"-->
+                    <!--style="@style/Item_LinearLayout_ImgRightTitleStyle"-->
+                    <!--android:background="@drawable/cspace_setting__password" />-->
 
-            <LinearLayout
+                <!--<TextView-->
+                    <!--android:id="@+id/textView8"-->
+                    <!--style="@style/Item_LinearLayout_TvRightTitleImgStyle"-->
+                    <!--android:text="修改密码" />-->
+            <!--</LinearLayout>-->
+
+            <TextView
                 android:id="@+id/rel_setpwd"
-                style="@style/Item_LinearLayout_HorizontalStyle"
-                android:layout_marginTop="@dimen/size_15">
+                style="@style/Item_LinearLayout_TvImgStyle"
+                android:layout_marginTop="@dimen/size_10"
+                android:drawableLeft="@drawable/cspace_setting__password"
+                android:text="修改密码" />
 
-                <ImageView
-                    android:id="@+id/icon_setpwd"
-                    style="@style/Item_LinearLayout_ImgRightTitleStyle"
-                    android:background="@drawable/cspace_setting__password" />
+            <!--<LinearLayout-->
+                <!--android:id="@+id/rel_hjabout"-->
+                <!--style="@style/Item_LinearLayout_HorizontalStyle"-->
+                <!--android:layout_marginTop="@dimen/size_15">-->
 
-                <TextView
-                    android:id="@+id/textView8"
-                    style="@style/Item_LinearLayout_TvRightTitleImgStyle"
-                    android:text="修改密码" />
-            </LinearLayout>
+                <!--<ImageView-->
+                    <!--android:id="@+id/icon_about_sett"-->
+                    <!--style="@style/Item_LinearLayout_ImgRightTitleStyle"-->
+                    <!--android:background="@drawable/setting_about_icon" />-->
 
-            <LinearLayout
+                <!--<TextView-->
+                    <!--style="@style/Item_LinearLayout_TvRightTitleImgStyle"-->
+                    <!--android:text="关于和佳" />-->
+            <!--</LinearLayout>-->
+
+            <TextView
                 android:id="@+id/rel_hjabout"
-                style="@style/Item_LinearLayout_HorizontalStyle"
-                android:layout_marginTop="@dimen/size_15">
-
-                <ImageView
-                    android:id="@+id/icon_about_sett"
-                    style="@style/Item_LinearLayout_ImgRightTitleStyle"
-                    android:background="@drawable/setting_about_icon" />
-
-                <TextView
-                    style="@style/Item_LinearLayout_TvRightTitleImgStyle"
-                    android:text="关于和佳" />
-            </LinearLayout>
+                style="@style/Item_LinearLayout_TvImgStyle"
+                android:layout_marginTop="@dimen/size_10"
+                android:drawableLeft="@drawable/setting_about_icon"
+                android:text="关于和佳" />
 
             <Button
                 android:id="@+id/app_logout"

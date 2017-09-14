@@ -61,21 +61,21 @@ public class SetActivity extends ActionBarWidgetActivity implements OnClickListe
     @BindView(R.id.action_right_tv1)
     TextView actionRightTv1;
     @BindView(R.id.rel_wrapdata)
-    LinearLayout rel_wrapdata;
+    TextView rel_wrapdata;
     @BindView(R.id.rel_wrapcache)
-    LinearLayout rel_wrapcache;
+    TextView rel_wrapcache;
     @BindView(R.id.rel_versioncheck)
-    LinearLayout rel_versioncheck;
+    TextView rel_versioncheck;
     @BindView(R.id.rel_updata)
-    LinearLayout rel_updata;
+    TextView rel_updata;
     @BindView(R.id.rel_updatadate)
-    LinearLayout rel_updatadate;
+    TextView rel_updatadate;
     @BindView(R.id.rel_updatabasedate)
-    LinearLayout rel_updatabasedate;
+    TextView rel_updatabasedate;
     @BindView(R.id.rel_setpwd)
-    LinearLayout rel_setpwd;
+    TextView rel_setpwd;
     @BindView(R.id.rel_hjabout)
-    LinearLayout rel_hjabout;
+    TextView rel_hjabout;
     @BindView(R.id.app_logout)
     Button app_logout;
     //    @BindView(R.id.tv_with_clean)

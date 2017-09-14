@@ -355,10 +355,26 @@
         <item name="android:textSize">@dimen/font_size_15</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:background">@null</item>
+        <item name="android:paddingLeft">@dimen/size_10</item>
         <item name="android:drawableRight">@drawable/icon_right_orientation</item>
         <item name="android:gravity">center_vertical</item>
         <item name="android:paddingRight">@dimen/size_10</item>
         <item name="android:layout_weight">3</item>
+    </style>
+
+    <!-- 右侧TextView跳转页面的图片框 向右的箭头左边也有图标的-->
+    <style name="Item_LinearLayout_TvImgStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/size_40</item>
+        <item name="android:textSize">@dimen/font_size_15</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:background">@drawable/app_out_btn_style</item>
+        <item name="android:drawablePadding">@dimen/size_10</item>
+        <item name="android:paddingLeft">@dimen/size_10</item>
+        <item name="android:layout_marginTop">@dimen/size_1</item>
+        <item name="android:drawableRight">@drawable/icon_right_orientation</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingRight">@dimen/size_10</item>
     </style>
     <!-- 右侧TextView跳转页面的图片框 向右的箭头,不需要paddingLeft-->
     <style name="Item_LinearLayout_TvRightTitleImgStyle2">

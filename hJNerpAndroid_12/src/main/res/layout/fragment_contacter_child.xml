@@ -15,8 +15,10 @@
         android:layout_height="@dimen/abc_dropdownitem_icon_width"
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
+        android:layout_marginBottom="@dimen/size_5"
         android:layout_marginLeft="@dimen/size_10"
-        android:layout_marginTop="10dp"
+        android:layout_marginRight="@dimen/size_10"
+        android:layout_marginTop="@dimen/size_5"
         android:adjustViewBounds="true"
         android:gravity="center"
         android:src="@drawable/v5_0_1_profile_headphoto"
@@ -34,8 +36,10 @@
         android:layout_centerVertical="true"
         android:layout_toRightOf="@+id/fc_ct_photo"
         android:maxLength="7"
-        android:padding="5dip"
         android:text="李响"
+        android:textColor="@color/black"
+        android:layout_marginTop="@dimen/size_5"
+        android:layout_marginBottom="@dimen/size_5"
         android:textSize="16sp" />
 
 </RelativeLayout>

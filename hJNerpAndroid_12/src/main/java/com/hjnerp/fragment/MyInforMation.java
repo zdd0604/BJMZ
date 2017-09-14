@@ -28,7 +28,8 @@ import com.hjnerpandroid.R;
 import java.io.Serializable;
 
 public class MyInforMation extends Fragment implements View.OnClickListener {
-    private RelativeLayout mysettingrel, myuserinfor;
+    private TextView mysettingrel;
+    private RelativeLayout myuserinfor;
     private View view;
     private TextView myusername;
     private TextView my_company;
@@ -37,14 +38,13 @@ public class MyInforMation extends Fragment implements View.OnClickListener {
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
         view = inflater.inflate(R.layout.fragment_myinformation, container, false);
         initView();
         return view;
     }
 
     private void initView() {
-        mysettingrel = (RelativeLayout) view.findViewById(R.id.mysettingrel);
+        mysettingrel = (TextView) view.findViewById(R.id.mysettingrel);
         myuserinfor = (RelativeLayout) view.findViewById(R.id.myuserinfor);
         myImageView = (ImageView) view.findViewById(R.id.myInforphoto);
         myusername = (TextView) view.findViewById(R.id.myusername);

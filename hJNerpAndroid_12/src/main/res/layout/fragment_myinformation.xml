@@ -4,7 +4,7 @@
     android:id="@+id/activity_my_infor_mation"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/activity_background"
+    android:background="@color/actionbar_title_bg"
     android:orientation="vertical">
 
     <LinearLayout
@@ -33,7 +33,7 @@
                     android:layout_width="@dimen/LargeIconSize"
                     android:layout_height="@dimen/LargeIconSize"
                     android:layout_centerVertical="true"
-                    android:layout_marginLeft="15dp"
+                    android:layout_marginLeft="@dimen/size_10"
                     android:adjustViewBounds="true"
                     android:src="@drawable/v5_0_1_profile_headphoto"
                     android:visibility="visible"
@@ -49,11 +49,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginLeft="@dimen/size_10"
                     android:layout_toRightOf="@id/myInforphoto"
                     android:text="王五"
                     android:textColor="@color/black"
-                    android:textSize="20sp" />
+                    android:textSize="@dimen/font_size_20" />
             </LinearLayout>
 
 
@@ -67,7 +67,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:layout_marginLeft="15dp"
+                    android:layout_marginLeft="@dimen/size_10"
                     android:text="公司名称:"
                     android:textColor="#949494"
                     android:textSize="15sp" />
@@ -89,8 +89,8 @@
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:layout_marginEnd="12dp"
-                android:layout_marginRight="12dp"
+                android:layout_marginEnd="@dimen/size_10"
+                android:layout_marginRight="@dimen/size_10"
                 android:gravity="center_vertical">
 
                 <ImageView
@@ -104,44 +104,19 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:src="@drawable/yp_webview_back_pressed" />
+                    android:src="@drawable/icon_right_orientation" />
             </LinearLayout>
 
         </RelativeLayout>
 
 
-        <RelativeLayout
+        <TextView
             android:id="@+id/mysettingrel"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/app_out_btn_style">
+            style="@style/Item_LinearLayout_TvImgStyle"
+            android:layout_marginTop="@dimen/size_10"
+            android:drawablePadding="@dimen/size_5"
+            android:drawableLeft="@drawable/icon_setting_img"
+            android:text="设置" />
 
-            <ImageView
-                android:id="@+id/icon_sett"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="15dp"
-                android:background="@drawable/actbar_icon_emotion_settings" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="10dp"
-                android:layout_toRightOf="@id/icon_sett"
-                android:text="设置"
-                android:textColor="@color/black"
-                android:textSize="15sp" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="13dp"
-                android:src="@drawable/yp_webview_back_pressed" />
-        </RelativeLayout>
     </LinearLayout>
 </LinearLayout>

@@ -22,7 +22,6 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="5dp"
-                android:layout_toRightOf="@id/icon_wrapdata"
                 android:text="部门"
                 android:textColor="#949494"
                 android:textSize="12sp" />
@@ -82,7 +81,6 @@
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="15dp"
                     android:layout_marginTop="5dp"
-                    android:layout_toRightOf="@id/icon_wrapdata"
                     android:text="手机号"
                     android:textColor="#949494"
                     android:textSize="12sp" />
@@ -163,7 +161,6 @@
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="15dp"
                     android:layout_marginTop="5dp"
-                    android:layout_toRightOf="@id/icon_wrapdata"
                     android:text="邮箱"
                     android:textColor="#949494"
                     android:textSize="12sp" />
