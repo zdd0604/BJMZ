@@ -811,10 +811,10 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
                             Constant.billsNo = businessFlag.getNo();
 //                            ToastUtil.ShowShort(getApplicationContext(), content);
                             if (flag.equalsIgnoreCase("Y")) {
-                                showSuccessToast("成功!");
+                                showFailToast("保存成功!");
                                 setResult(33);
                             } else {
-                                showFailToast("失败!");
+                                showFailToast("保存失败!");
                             }
                             var_title_code.setText(Constant.billsNo);
                             Constant.JUDGE_TYPE = false;
@@ -823,11 +823,11 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
                             Constant.billsNo = businessFlag.getNo();
 //                            ToastUtil.ShowShort(getApplicationContext(), content);
                             if (flag.equalsIgnoreCase("Y")) {
-                                showSuccessToast("成功!");
+                                showFailToast("送审成功!");
                                 setResult(22);
                                 finish();
                             } else {
-                                showFailToast("失败!");
+                                showFailToast("送审失败!");
                             }
 //                            setResult(22);
 //                            finish();
@@ -918,6 +918,8 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
                     if (sell_order_space.getSelectedItemPosition() == 0) {
                         sell_order_addess_send.setText(item_peoject);
                     }
+                    var_inv_tel = id_wproj;
+                    var_inv_contact = item_client;
                     break;
                 case 3:
                     sell_order_addess_send.setText(item_peoject);

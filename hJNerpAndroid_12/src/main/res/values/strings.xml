@@ -124,7 +124,8 @@
     <string name="work_Tile_WkTime">工时</string>
     <string name="work_Tile_MyTheme">主题</string>
     <string name="work_Tile_MyContent">内容</string>
-    <string name="work_Hint_MyContent">请填写工作内容</string>
+    <string name="work_Hint_MyContent">请填写内容</string>
+    <string name="work_Hint_MyContent_main">请填写主题(必填)</string>
 
     <!-- 销售订单 -->
     <string name="sellOrder_Tile_NewActivity">新增订单</string>

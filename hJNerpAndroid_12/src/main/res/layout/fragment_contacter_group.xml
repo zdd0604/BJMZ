@@ -7,6 +7,19 @@
     android:background="@drawable/activity_child_item_bkg"
     android:orientation="vertical">
 
+    <View
+        android:id="@+id/view1"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_1"
+        android:layout_marginLeft="@dimen/size_60"
+        android:background="@color/item_table_divider" />
+
+    <View
+        android:id="@+id/view2"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_1"
+        android:background="@color/item_table_divider" />
+
     <TextView
         android:id="@+id/groupnmae"
         android:layout_width="match_parent"
@@ -63,12 +76,19 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:gravity="center_vertical"
-            android:layout_marginLeft="@dimen/size_10"
-            android:text="groupName"
-            android:layout_marginTop="@dimen/size_5"
             android:layout_marginBottom="@dimen/size_5"
+            android:layout_marginLeft="@dimen/size_10"
+            android:layout_marginTop="@dimen/size_5"
+            android:drawableRight="@drawable/icon_right_orientation"
+            android:gravity="center_vertical"
+            android:text="groupName"
             android:textColor="@color/black"
             android:textSize="16sp" />
     </LinearLayout>
+
+    <View
+        android:id="@+id/view3"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_1"
+        android:background="@color/item_table_divider" />
 </LinearLayout>

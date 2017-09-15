@@ -156,6 +156,7 @@ public class ActionBarWidgetActivity extends ActivitySupport {
                 } else {
                     if (waitDialog != null) {
                         waitDialog.dismiss();
+                        showFailToast("错误!");
                     }
                 }
             } catch (IllegalStateException e) {
@@ -241,7 +242,7 @@ public class ActionBarWidgetActivity extends ActivitySupport {
                 calendar.get(Calendar.YEAR),
                 calendar.get(Calendar.MONTH),
                 calendar.get(Calendar.DAY_OF_MONTH)).show();
-        editText.setCompoundDrawables(null, null, null, null);
+//        editText.setCompoundDrawables(null, null, null, null);
     }
 
     public interface NsyncDataConnector {

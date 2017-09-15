@@ -281,7 +281,7 @@ public class BusinessDgtdrechtml extends ActionBarWidgetActivity implements View
                     @Override
                     public void onSuccess(businessFlag businessFlag, Call call, Response response) {
                         String content = businessFlag.getMessage();
-                        showSuccessToast("上传成功");
+                        showFailToast("上传成功");
                         removeData();
                     }
 

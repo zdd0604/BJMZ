@@ -28,7 +28,7 @@
 
                 <TextView
                     android:id="@+id/log_date_task"
-                    style="@style/Item_LinearLayout_EdRightTitleStyle"
+                    style="@style/Item_LinearLayout_TvRightTitleImgStyle2"
                     android:hint="@string/work_Hint_TaskTime" />
             </LinearLayout>
 
@@ -150,7 +150,8 @@
 
                 <com.hjnerp.widget.ClearEditText
                     android:id="@+id/log_var_wtitle"
-                    style="@style/Item_LinearLayout_EdRightTitleStyle" />
+                    style="@style/Item_LinearLayout_EdRightTitleStyle"
+                    android:hint="@string/work_Hint_MyContent_main" />
             </LinearLayout>
 
             <LinearLayout
@@ -164,8 +165,8 @@
 
                 <com.hjnerp.widget.ClearEditText
                     android:id="@+id/log_var_remark"
-                    style="@style/Item_LinearLayout_EdRightTitleStyle"
-                    android:hint="@string/work_Hint_MyContent" />
+                    style="@style/Item_LinearLayout_EdRightTitleStyle" />
+                <!--android:hint="@string/work_Hint_MyContent"-->
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

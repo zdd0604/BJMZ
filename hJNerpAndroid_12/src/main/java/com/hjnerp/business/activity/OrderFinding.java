@@ -22,7 +22,6 @@ import com.hjnerp.model.Dsaordtype;
 import com.hjnerp.net.HttpClientBuilder;
 import com.hjnerp.net.HttpClientManager;
 import com.hjnerp.util.Log;
-import com.hjnerp.util.ToastUtil;
 import com.hjnerp.util.myscom.StringUtils;
 import com.hjnerpandroid.R;
 
@@ -241,6 +240,7 @@ public class OrderFinding extends ActionBarWidgetActivity implements View.OnClic
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), BusinessSearchOneLine.class);
+                datas = new ArrayList<BusinessOneLine>();
                 for (int i = 0; i < users_id.size(); i++) {
                     BusinessOneLine businessOneLine = new BusinessOneLine();
                     businessOneLine.setKey(users_id.get(i));
@@ -459,7 +459,7 @@ public class OrderFinding extends ActionBarWidgetActivity implements View.OnClic
                     break;
                 case 2:
                     waitDialog.dismiss();
-                    ToastUtil.ShowShort(getApplicationContext(), "结果为空");
+                    showFailToast("结果为空!");
                     linear_list.removeAllViews();
                     all_price_textview.setText("0.00");
                     break;
@@ -513,7 +513,7 @@ public class OrderFinding extends ActionBarWidgetActivity implements View.OnClic
                             mfristData.add("客户");
                             mfristData.add("联系人");
                             mfristData.add("职务");
-                            mfristData.add("标题");
+                            mfristData.add("主题");
                             mfristData.add("内容");
                             break;
                         case 3:
@@ -773,7 +773,7 @@ public class OrderFinding extends ActionBarWidgetActivity implements View.OnClic
                 .setTextViewSize(12) //单元格字体大小
                 .setFristRowBackGroudColor(R.color.item_table_title_color)//表头背景色
                 .setTableHeadTextColor(R.color.white)//表头字体颜色
-                .setTableHeadTextSize(14)
+                .setTableHeadTextSize(13)
                 .setTableContentTextColor(R.color.black)//单元格字体颜色
                 .setNullableString("--") //空值替换值
                 .show(); //显示表格,此方法必须调用

@@ -316,7 +316,7 @@
     <style name="Item_LinearLayout_EdRightTitleStyle">
         <item name="android:layout_width">@dimen/size_0</item>
         <item name="android:layout_height">match_parent</item>
-        <item name="android:textSize">@dimen/font_size_15</item>
+        <item name="android:textSize">@dimen/font_size_16</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:background">@null</item>
         <item name="android:gravity">center_vertical</item>
@@ -328,7 +328,7 @@
     <style name="Item_LinearLayout_TvRightTitleStyle">
         <item name="android:layout_width">@dimen/size_0</item>
         <item name="android:layout_height">match_parent</item>
-        <item name="android:textSize">@dimen/font_size_15</item>
+        <item name="android:textSize">@dimen/font_size_16</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:background">@null</item>
         <item name="android:gravity">center_vertical</item>
@@ -339,7 +339,7 @@
     <style name="Item_LinearLayout_TvRightContacterStyle">
         <item name="android:layout_width">@dimen/size_0</item>
         <item name="android:layout_height">match_parent</item>
-        <item name="android:textSize">@dimen/font_size_15</item>
+        <item name="android:textSize">@dimen/font_size_16</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:background">@null</item>
         <item name="android:gravity">center_vertical</item>
@@ -389,7 +389,7 @@
     <style name="Item_LinearLayout_TvRightTitleImgStyle2">
         <item name="android:layout_width">@dimen/size_0</item>
         <item name="android:layout_height">match_parent</item>
-        <item name="android:textSize">@dimen/font_size_15</item>
+        <item name="android:textSize">@dimen/font_size_16</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:background">@null</item>
         <item name="android:drawableRight">@drawable/icon_right_orientation</item>
@@ -416,7 +416,7 @@
     <style name="Item_LinearLayout_TvRightTitleImgDownStyle">
         <item name="android:layout_width">@dimen/size_0</item>
         <item name="android:layout_height">match_parent</item>
-        <item name="android:textSize">@dimen/font_size_15</item>
+        <item name="android:textSize">@dimen/font_size_16</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:background">@null</item>
         <item name="android:drawableRight">@drawable/icon_sp_down_bg</item>
@@ -429,7 +429,7 @@
     <style name="Item_LinearLayout_SpRightStyle">
         <item name="android:layout_width">@dimen/size_0</item>
         <item name="android:layout_height">match_parent</item>
-        <item name="android:textSize">@dimen/font_size_15</item>
+        <item name="android:textSize">@dimen/font_size_16</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:gravity">center_vertical</item>
         <item name="android:paddingRight">@dimen/size_10</item>
@@ -439,7 +439,7 @@
     <style name="Item_LinearLayout_Spinner_RightStyle">
         <item name="android:layout_width">@dimen/size_0</item>
         <item name="android:layout_height">match_parent</item>
-        <item name="android:textSize">@dimen/font_size_15</item>
+        <item name="android:textSize">@dimen/font_size_16</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:gravity">center_vertical</item>
         <item name="android:drawSelectorOnTop">false</item>
@@ -503,7 +503,7 @@
         <item name="android:paddingLeft">@dimen/size_15</item>
         <item name="android:gravity">center_vertical</item>
         <item name="android:textColor">@color/black</item>
-        <item name="android:textSize">@dimen/font_size_15</item>
+        <item name="android:textSize">@dimen/font_size_16</item>
     </style>
 
     <!-- 搜索的Item LinearLayoutHorizontal 水平布局 -->

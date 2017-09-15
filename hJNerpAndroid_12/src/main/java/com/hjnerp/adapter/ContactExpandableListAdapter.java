@@ -6,6 +6,7 @@ package com.hjnerp.adapter;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -69,15 +70,22 @@ public class ContactExpandableListAdapter extends BaseExpandableListAdapter {
         }
 
         LinearLayout ll_group = (LinearLayout) convertView.findViewById(R.id.ll_group);
+        View view1 = (View) convertView.findViewById(R.id.view1);
+        View view2 = (View) convertView.findViewById(R.id.view2);
+        View view3 = (View) convertView.findViewById(R.id.view3);
         RelativeLayout grouprl = (RelativeLayout) convertView.findViewById(R.id.grouprl);
         ImageView image_group = (ImageView) convertView.findViewById(R.id.groupImage);
         deptname = (TextView) convertView.findViewById(R.id.groupName);
         TextView paopao = (TextView) convertView.findViewById(R.id.tv_newcontact_paopao);
         paopao.setVisibility(View.GONE);
 
-        if (groupPosition == 0) {
+        if (groupPosition == 0) {//添加联系人
             image_group.setVisibility(View.VISIBLE);
             image_group.setImageResource(R.drawable.default_fmessage);
+            ll_group.setBackgroundColor(Color.parseColor("#FFFFFF"));
+            view1.setVisibility(View.GONE);
+            view2.setVisibility(View.GONE);
+            view3.setVisibility(View.GONE);
         } else if (groupPosition == 1) {//联系人申请
             if (ContactFragment.ALL_NEW_MSG_COUNTS != 0) {
                 paopao.setVisibility(View.VISIBLE);
@@ -85,11 +93,23 @@ public class ContactExpandableListAdapter extends BaseExpandableListAdapter {
             }
             image_group.setVisibility(View.VISIBLE);
             image_group.setImageResource(R.drawable.userguide_nearfirends_icon);
-        } else if (groupPosition == 2) {
+            ll_group.setBackgroundColor(Color.parseColor("#FFFFFF"));
+            view1.setVisibility(View.VISIBLE);
+            view2.setVisibility(View.GONE);
+            view3.setVisibility(View.GONE);
+        } else if (groupPosition == 2) {//选择群组
             image_group.setVisibility(View.VISIBLE);
             image_group.setImageResource(R.drawable.default_chatroom);
+            ll_group.setBackgroundColor(Color.parseColor("#FFFFFF"));
+            view1.setVisibility(View.VISIBLE);
+            view2.setVisibility(View.GONE);
+            view3.setVisibility(View.GONE);
         } else {
             grouprl.setVisibility(View.GONE);
+            deptname.setCompoundDrawables(null, null, null, null);
+            view1.setVisibility(View.GONE);
+            view2.setVisibility(View.VISIBLE);
+            view3.setVisibility(View.VISIBLE);
         }
         if (StringUtil.isNullOrEmpty(deptBean.getDeptName())) {
             deptname.setText("");
