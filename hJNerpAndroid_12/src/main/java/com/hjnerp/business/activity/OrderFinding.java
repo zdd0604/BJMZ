@@ -207,8 +207,8 @@ public class OrderFinding extends ActionBarWidgetActivity implements View.OnClic
                 break;
 
         }
-        users_id.add("");
-        users_name.add("请选择业务员");
+//        users_id.add("");
+//        users_name.add("请选择业务员");
         myauthuser = BusinessBaseDao.getCTLM1345ByIdTable("sauser");
         if (myauthuser.size() == 0) {
 //            ToastUtil.ShowShort(this, "请先下载基础数据");
@@ -225,12 +225,10 @@ public class OrderFinding extends ActionBarWidgetActivity implements View.OnClic
             for (int i = 0; i < myauthuser.size(); i++) {
                 Dsaordtype dsaordtype = gson1.fromJson(myauthuser.get(i).getVar_value(), Dsaordtype.class);
                 if (!users_id.contains(dsaordtype.getId_user())) {
-                    BusinessOneLine businessOneLine = new BusinessOneLine();
-                    businessOneLine.setKey(dsaordtype.getId_user());
-                    businessOneLine.setValue(dsaordtype.getName_user());
+
                     users_name.add(dsaordtype.getName_user());
                     users_id.add(dsaordtype.getId_user());
-                    datas.add(businessOneLine);
+
                 }
 
             }
@@ -243,6 +241,12 @@ public class OrderFinding extends ActionBarWidgetActivity implements View.OnClic
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), BusinessSearchOneLine.class);
+                for (int i = 0; i < users_id.size(); i++) {
+                    BusinessOneLine businessOneLine = new BusinessOneLine();
+                    businessOneLine.setKey(users_id.get(i));
+                    businessOneLine.setValue(users_name.get(i));
+                    datas.add(businessOneLine);
+                }
                 startActivityForResult(intent, 33);
             }
         });
@@ -267,7 +271,7 @@ public class OrderFinding extends ActionBarWidgetActivity implements View.OnClic
     public void processJsonValue(String value) {
         try {
             value = value.trim();
-            if (value.equalsIgnoreCase("[]") || value.equalsIgnoreCase(null)) {
+            if (value.equalsIgnoreCase("[]") || TextUtils.isEmpty(value)) {
                 waitDialog.dismiss();
                 mHandler.sendEmptyMessage(2);
                 return;
@@ -355,7 +359,7 @@ public class OrderFinding extends ActionBarWidgetActivity implements View.OnClic
             String condition = "";
             if (StringUtils.isEmpty(id_user)) {
                 String cons = "1=1 and var_value like '%" + id_terminal + "%' and (";
-                for (int i = 1; i < users_id.size(); i++) {
+                for (int i = 0; i < users_id.size(); i++) {
                     if (i == users_id.size() - 1) {
                         cons = cons + "id_column='" + users_id.get(i) + "')";
                     } else {
@@ -365,7 +369,7 @@ public class OrderFinding extends ActionBarWidgetActivity implements View.OnClic
                 }
                 if (Constant.tab_type == 0 || Constant.tab_type == 3 || Constant.tab_type == 2) {
                     cons = cons + " and name_column>='" + time_begin + "' and name_column<='" + time_end + "'";
-                } else if (Constant.tab_type == 4) {
+                } else if (Constant.tab_type == 4 && (!TextUtils.isEmpty(all_goneprice))) {
                     cons = cons + " and name_column>" + all_goneprice + "";
                 }
                 condition = cons;
@@ -373,7 +377,7 @@ public class OrderFinding extends ActionBarWidgetActivity implements View.OnClic
                 condition = "1=1 and id_column='" + id_user + "' and var_value like '%" + id_terminal + "%'";
                 if (Constant.tab_type == 0 || Constant.tab_type == 3 || Constant.tab_type == 2) {
                     condition = condition + " and name_column>='" + time_begin + "' and name_column<='" + time_end + "'";
-                } else if (Constant.tab_type == 4) {
+                } else if (Constant.tab_type == 4 && (!TextUtils.isEmpty(all_goneprice))) {
                     condition = condition + " and name_column>" + all_goneprice + "";
                 }
             }
@@ -399,7 +403,7 @@ public class OrderFinding extends ActionBarWidgetActivity implements View.OnClic
                 Intent intent = new Intent(getApplicationContext(), BusinessSearch.class);
                 if (buss_key.equalsIgnoreCase("")) {
                     String a = "";
-                    for (int i = 1; i < users_id.size(); i++) {
+                    for (int i = 0; i < users_id.size(); i++) {
                         a = a + users_id.get(i) + ",";
                     }
                     user_myid = a;
@@ -769,7 +773,7 @@ public class OrderFinding extends ActionBarWidgetActivity implements View.OnClic
                 .setTextViewSize(12) //单元格字体大小
                 .setFristRowBackGroudColor(R.color.item_table_title_color)//表头背景色
                 .setTableHeadTextColor(R.color.white)//表头字体颜色
-                .setTableHeadTextSize(12)
+                .setTableHeadTextSize(13)
                 .setTableContentTextColor(R.color.black)//单元格字体颜色
                 .setNullableString("--") //空值替换值
                 .show(); //显示表格,此方法必须调用

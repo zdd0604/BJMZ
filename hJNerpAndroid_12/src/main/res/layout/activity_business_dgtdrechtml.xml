@@ -59,7 +59,7 @@
 
                 <TextView
                     android:id="@+id/log_id_wtype"
-                    style="@style/Item_LinearLayout_TvRightTitleImgDownStyle"
+                    style="@style/Item_LinearLayout_TvRightTitleImgStyle2"
                     android:hint="@string/work_Hint_WkType" />
 
             </LinearLayout>

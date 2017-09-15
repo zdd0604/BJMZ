@@ -90,15 +90,15 @@ public class BusinessSearchAdapter extends RecyclerView.Adapter<BusinessSearchAd
                 holder.item_chkparm.setText(chkparm.replaceAll("\r|\n*", ""));
                 break;
             case 5:
-                holder.linearlayout_overclient.setVisibility(View.VISIBLE);
+                holder.linear_layout_chkparm.setVisibility(View.VISIBLE);
                 holder.pro_text.setText(mContext.getString(R.string.sellOrder_Tile_Client));
                 holder.text_address.setText(mContext.getString(R.string.sellOrder_Tile_Address));
-                holder.text_overclient.setText(mContext.getString(R.string.sellOrder_Tile_Relation));
-                holder.item_overclient.setText(list.get(position).getDec_acaramt());
+                holder.text_chkparm.setText(mContext.getString(R.string.sellOrder_Tile_Relation));
+                holder.item_chkparm.setText(list.get(position).getDec_acaramt());
                 holder.item_client.setTextColor(Color.parseColor("#888888"));
                 holder.pro_text.setTextColor(Color.parseColor("#000000"));
-                holder.text_overclient.setTextColor(Color.parseColor("#888888"));
-                holder.item_overclient.setTextColor(Color.parseColor("#888888"));
+                holder.text_chkparm.setTextColor(Color.parseColor("#888888"));
+                holder.item_chkparm.setTextColor(Color.parseColor("#888888"));
                 break;
         }
 

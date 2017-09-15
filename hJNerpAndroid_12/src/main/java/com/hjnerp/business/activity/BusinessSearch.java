@@ -604,15 +604,14 @@ public class BusinessSearch extends ActionBarWidgetActivity implements View.OnCl
                 break;
             case 5://查询客户+地址+联系人
                 for (int j = 0; j < dsaordbaseJsons.size(); j++) {
-//                    if (!terminal_ids.contains(dsaordbaseJsons.get(j).getId_corr())) {//客户id+地址+联系人，过滤条件
-                    terminal_ids.add(dsaordbaseJsons.get(j).getId_corr());//客户id
-                    address_ids.add(dsaordbaseJsons.get(j).getVar_conplace());//地址
-                    address_names.add(dsaordbaseJsons.get(j).getVar_conplace());//地址
-                    orderTerminal.add(dsaordbaseJsons.get(j).getName_corr());//客户名
-                    dec_acaramt.add(dsaordbaseJsons.get(j).getVar_contact());//联系人
-
-//                    }
-
+                    if (!overclient_ids.contains(dsaordbaseJsons.get(j).getId_corr() + dsaordbaseJsons.get(j).getVar_conplace() + dsaordbaseJsons.get(j).getVar_contact())) {//客户id+地址+联系人，过滤条件
+                        overclient_ids.add(dsaordbaseJsons.get(j).getId_corr() + dsaordbaseJsons.get(j).getVar_conplace() + dsaordbaseJsons.get(j).getVar_contact());
+                        terminal_ids.add(dsaordbaseJsons.get(j).getId_corr());//客户id
+                        address_ids.add(dsaordbaseJsons.get(j).getVar_conplace());//地址
+                        address_names.add(dsaordbaseJsons.get(j).getVar_conplace());//地址
+                        orderTerminal.add(dsaordbaseJsons.get(j).getName_corr());//客户名
+                        dec_acaramt.add(dsaordbaseJsons.get(j).getVar_contact());//联系人
+                    }
                 }
                 travelDatas.clear();
                 for (int i1 = 0; i1 < orderTerminal.size(); i1++) {

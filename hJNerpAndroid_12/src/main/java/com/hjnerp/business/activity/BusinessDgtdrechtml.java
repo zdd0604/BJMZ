@@ -24,6 +24,7 @@ import com.hjnerp.business.businessutils.BusinessTimeUtils;
 import com.hjnerp.common.ActionBarWidgetActivity;
 import com.hjnerp.common.Constant;
 import com.hjnerp.common.EapApplication;
+import com.hjnerp.model.BusinessOneLine;
 import com.hjnerp.model.EjWType1345;
 import com.hjnerp.model.EjWadd1345;
 import com.hjnerp.model.businessFlag;
@@ -40,6 +41,11 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import okhttp3.Call;
 import okhttp3.Response;
+
+import static com.hjnerp.common.Constant.buss_key;
+import static com.hjnerp.common.Constant.buss_value;
+import static com.hjnerp.common.Constant.datas;
+import static com.hjnerp.common.Constant.dsaordbaseJsons_new;
 
 public class BusinessDgtdrechtml extends ActionBarWidgetActivity implements View.OnClickListener {
     //界面ID
@@ -99,10 +105,14 @@ public class BusinessDgtdrechtml extends ActionBarWidgetActivity implements View
             super.handleMessage(msg);
             switch (msg.what) {
                 case Constant.HANDLERTYPE_0:
-                    log_id_wproj.setText(Constant.dsaordbaseJsons_new.get(0).getName_corr());
-                    log_id_corr.setText(Constant.dsaordbaseJsons_new.get(0).getVar_conplace());
-                    log_id_cantact.setText(Constant.dsaordbaseJsons_new.get(0).getVar_contact());
-                    log_id_duty.setText(Constant.dsaordbaseJsons_new.get(0).getVar_contactduty());
+                    log_id_wproj.setText(dsaordbaseJsons_new.get(0).getName_corr());
+                    log_id_corr.setText(dsaordbaseJsons_new.get(0).getVar_conplace());
+                    log_id_cantact.setText(dsaordbaseJsons_new.get(0).getVar_contact());
+                    log_id_duty.setText(dsaordbaseJsons_new.get(0).getVar_contactduty());
+                    break;
+                case Constant.HANDLERTYPE_1:
+                    id_wtype = buss_key;
+                    log_id_wtype.setText(buss_value);
                     break;
             }
         }
@@ -172,10 +182,19 @@ public class BusinessDgtdrechtml extends ActionBarWidgetActivity implements View
 //                submitData();
 //                break;
             case R.id.log_flag_wadd:
-                showPopupWindow(log_flag_wadd, nameSiteList, "site");
+                showPopupWindow(log_flag_wadd, nameSiteList, "site");//以前的POPUPWINDOW形式
                 break;
             case R.id.log_id_wtype:
-                showPopupWindow(log_id_wtype, nameWTypeList, "wtype");
+                datas = new ArrayList<>();
+                for (int i = 0; i < idWTypeList.size(); i++) {
+                    BusinessOneLine businessOneLine = new BusinessOneLine();
+                    businessOneLine.setKey(idWTypeList.get(i));
+                    businessOneLine.setValue(nameWTypeList.get(i));
+                    datas.add(businessOneLine);
+                }
+                Intent intent = new Intent(getContext(), BusinessSearchOneLine.class);
+                startActivityForResult(intent, 33);
+//                showPopupWindow(log_id_wtype, nameWTypeList, "wtype");//以前的POPUPWINDOW形式
                 break;
             case R.id.action_left_tv:
                 finish();
@@ -225,12 +244,12 @@ public class BusinessDgtdrechtml extends ActionBarWidgetActivity implements View
             waitDialog.dismiss();
             return;
         }
-
-        if (id_wtype.equalsIgnoreCase("030")) {
-            Constant.id_wproj = "0";
-            Constant.item_peoject = log_id_wproj.getText().toString().trim();
-            Constant.id_corr = log_id_corr.getText().toString().trim();
-        }
+//美正不需要新客户
+//        if (id_wtype.equalsIgnoreCase("030")) {
+//            Constant.id_wproj = "0";
+//            Constant.item_peoject = log_id_wproj.getText().toString().trim();
+//            Constant.id_corr = log_id_corr.getText().toString().trim();
+//        }
         if (TextUtils.isEmpty(dec_wtime)) {
             dec_wtime = "8";
         }
@@ -306,6 +325,8 @@ public class BusinessDgtdrechtml extends ActionBarWidgetActivity implements View
          */
         if (requestCode == 11 && resultCode == 22) {
             handler.sendEmptyMessage(Constant.HANDLERTYPE_0);
+        } else if (requestCode == 33 && resultCode == 22) {
+            handler.sendEmptyMessage(Constant.HANDLERTYPE_1);
         }
     }
 
@@ -372,10 +393,12 @@ public class BusinessDgtdrechtml extends ActionBarWidgetActivity implements View
         super.onDestroy();
         Constant.project_type = 0;
         Constant.travel = false;
-        Constant.dsaordbaseJsons_new = new ArrayList<>();
+        dsaordbaseJsons_new = new ArrayList<>();
         Constant.id_wproj = "";
         Constant.item_peoject = "";
         Constant.id_corr = "";
+        buss_key = "";
+        buss_value = "";
     }
 
     private void removeData() {

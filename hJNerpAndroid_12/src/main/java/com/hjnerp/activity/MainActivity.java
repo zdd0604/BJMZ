@@ -32,7 +32,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.hjnerp.activity.contact.SearchQiXinFriendsActivity;
+import com.hjnerp.activity.im.SelectGroupChatMemberDeptActivity;
 import com.hjnerp.adapter.TabPagerAdapter;
 import com.hjnerp.business.Ctlm1345Update;
 import com.hjnerp.common.ActivitySupport;
@@ -580,14 +580,14 @@ public class MainActivity extends ActivitySupport implements
             }
 
         }
-        main_find_icon.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getContext(),
-                        SearchQiXinFriendsActivity.class);
-                startActivity(intent);
-            }
-        });
+//        main_find_icon.setOnClickListener(new OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(getContext(),
+//                        SearchQiXinFriendsActivity.class);
+//                startActivity(intent);
+//            }
+//        });
 //        main_phone_icon.setOnClickListener(new OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
@@ -603,14 +603,14 @@ public class MainActivity extends ActivitySupport implements
 //                startActivity(intent);
 //            }
 //        });
-//        main_group_icon.setOnClickListener(new OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(getContext(),
-//                        SelectGroupChatMemberDeptActivity.class);
-//                startActivity(intent);
-//            }
-//        });
+        main_find_icon.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(),
+                        SelectGroupChatMemberDeptActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private boolean isAvilible(String packageName) {

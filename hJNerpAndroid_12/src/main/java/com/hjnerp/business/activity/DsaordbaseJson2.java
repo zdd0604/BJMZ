@@ -35,6 +35,7 @@ public class DsaordbaseJson2 {
     private String id_invtype;
     private String name_invtype;
     private String var_contactduty;
+    private String var_rmark;
 
     public String getVar_contactduty() {
         return var_contactduty;
@@ -138,5 +139,13 @@ public class DsaordbaseJson2 {
 
     public void setName_invtype(String name_invtype) {
         this.name_invtype = name_invtype;
+    }
+
+    public String getVar_rmark() {
+        return var_rmark;
+    }
+
+    public void setVar_rmark(String var_rmark) {
+        this.var_rmark = var_rmark;
     }
 }

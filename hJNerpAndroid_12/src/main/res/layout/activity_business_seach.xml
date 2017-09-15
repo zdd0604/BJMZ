@@ -20,6 +20,11 @@
         android:layout_centerHorizontal="true"
         android:hint="请搜索关键字" />
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_1"
+        android:background="@color/item_table_divider" />
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/project_recy"
         android:layout_width="match_parent"

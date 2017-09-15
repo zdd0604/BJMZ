@@ -137,6 +137,7 @@ public class BusinessSearchOneLine extends ActionBarWidgetActivity implements Vi
                                         String item_value) {
                     buss_key = item_key;
                     buss_value = item_value;
+                    datas.clear();
                     setResult(22);
                     finish();
                 }

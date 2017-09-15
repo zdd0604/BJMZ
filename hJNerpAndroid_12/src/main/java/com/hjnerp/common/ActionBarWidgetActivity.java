@@ -13,7 +13,6 @@ import com.hjnerp.net.HttpClientManager;
 import com.hjnerp.widget.MyToast;
 import com.hjnerp.widget.MyToast2;
 import com.hjnerp.widget.WaitDialogRectangle;
-import com.hjnerpandroid.R;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.protocol.HTTP;
@@ -29,9 +28,6 @@ import java.io.IOException;
 import java.util.Calendar;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
 
 /**
  * Created by Admin on 2017/8/31.
@@ -130,12 +126,14 @@ public class ActionBarWidgetActivity extends ActivitySupport {
     public class NsyncDataHandler extends HttpClientManager.HttpResponseHandler {
         @Override
         public void onException(Exception e) {
+
         }
 
         @Override
         public void onResponse(HttpResponse resp) {
             // TODO Auto-generated method stub
             try {
+
                 String contentType = resp.getHeaders("Content-Type")[0].getValue();
                 // if ("application/octet-stream".equals(contentType) ) {
                 if (contentType.indexOf("application/octet-stream") != -1) {
@@ -145,6 +143,7 @@ public class ActionBarWidgetActivity extends ActivitySupport {
                             .substring(contentDiscreption.indexOf("=") + 1);
                     FileOutputStream fos = new FileOutputStream(new File(
                             getExternalCacheDir(), fileName));
+
                     resp.getEntity().writeTo(fos);
                     fos.close();
                     String json = processBusinessCompress(fileName);
@@ -155,14 +154,21 @@ public class ActionBarWidgetActivity extends ActivitySupport {
                         nsyncDataConnector.processJsonValue(value);
                     }
                 } else {
+                    if (waitDialog != null) {
+                        waitDialog.dismiss();
+                    }
                 }
             } catch (IllegalStateException e) {
+                com.hjnerp.util.Log.d(e.getMessage());
                 e.printStackTrace();
             } catch (FileNotFoundException e) {
+                com.hjnerp.util.Log.d(e.getMessage());
                 e.printStackTrace();
             } catch (IOException e) {
+                com.hjnerp.util.Log.d(e.getMessage());
                 e.printStackTrace();
             } catch (JSONException e) {
+                com.hjnerp.util.Log.d(e.getMessage());
                 e.printStackTrace();
             }
         }

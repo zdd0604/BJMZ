@@ -23,7 +23,7 @@
             android:layout_weight="4"
             android:background="@drawable/input_bar_bg_active"
             android:drawableLeft="@drawable/a6w"
-            android:hint=""
+            android:hint="请输入用户id"
             android:imeOptions="actionSearch"
             android:inputType="text"
             android:maxLength="16"
@@ -56,7 +56,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:background="@color/white"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:visibility="gone">
 
         <RelativeLayout
             android:id="@+id/rl_saoyisao"

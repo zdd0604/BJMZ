@@ -932,6 +932,7 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
     private void getItem() {
         sell_order_terminal.setText(dsaordbaseJsons_new.get(0).getName_terminal());
         sell_order_send.setText(dsaordbaseJsons_new.get(0).getName_corr());
+        sell_order_more.setText(dsaordbaseJsons_new.get(0).getVar_rmark());
         DecimalFormat format = new DecimalFormat(",##0.00");
         sell_over_money.setText(format.format(Double.valueOf(dsaordbaseJsons_new.get(0).getDec_acaramt())));
         dec_acclimit = dsaordbaseJsons_new.get(0).getDec_acclimit();
