@@ -293,6 +293,7 @@
     <dimen name="font_size_16">16sp</dimen>
     <dimen name="font_size_17">17sp</dimen>
     <dimen name="font_size_18">18sp</dimen>
+    <dimen name="font_size_19">19sp</dimen>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="font_size_20">20sp</dimen>
     <dimen name="font_size_24">24sp</dimen>

@@ -773,7 +773,7 @@ public class OrderFinding extends ActionBarWidgetActivity implements View.OnClic
                 .setTextViewSize(12) //单元格字体大小
                 .setFristRowBackGroudColor(R.color.item_table_title_color)//表头背景色
                 .setTableHeadTextColor(R.color.white)//表头字体颜色
-                .setTableHeadTextSize(13)
+                .setTableHeadTextSize(14)
                 .setTableContentTextColor(R.color.black)//单元格字体颜色
                 .setNullableString("--") //空值替换值
                 .show(); //显示表格,此方法必须调用
