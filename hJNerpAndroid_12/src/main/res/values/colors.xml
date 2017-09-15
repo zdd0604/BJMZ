@@ -537,7 +537,7 @@
     <color name="actionbar_view_bg">#C3C3C3</color>
 
     <color name="item_bg_title">#F8F8F8</color>
-    <color name="item_halving_bg">#E5E5E5</color>
+    <color name="item_halving_bg">#E5E5E5</color>， 
     <color name="item_textcolor">#27a4e3</color>
     <color name="dialog_bg_color">#9d16161b</color>
     <color name="dialog_bg_color2">#cc000000</color>

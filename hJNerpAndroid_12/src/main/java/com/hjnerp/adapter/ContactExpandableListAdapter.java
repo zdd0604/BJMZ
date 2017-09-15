@@ -41,7 +41,7 @@ public class ContactExpandableListAdapter extends BaseExpandableListAdapter {
     private Context context;
     private List<DeptInfo> dept;// 传递过来的经过处理的总数据
     private Bitmap default_user_pic;
-
+    TextView deptname;
     public ContactExpandableListAdapter(Context context, List<DeptInfo> dept) {
         super();
         this.context = context;
@@ -71,7 +71,7 @@ public class ContactExpandableListAdapter extends BaseExpandableListAdapter {
         LinearLayout ll_group = (LinearLayout) convertView.findViewById(R.id.ll_group);
         RelativeLayout grouprl = (RelativeLayout) convertView.findViewById(R.id.grouprl);
         ImageView image_group = (ImageView) convertView.findViewById(R.id.groupImage);
-        TextView deptname = (TextView) convertView.findViewById(R.id.groupName);
+        deptname = (TextView) convertView.findViewById(R.id.groupName);
         TextView paopao = (TextView) convertView.findViewById(R.id.tv_newcontact_paopao);
         paopao.setVisibility(View.GONE);
 
@@ -96,6 +96,7 @@ public class ContactExpandableListAdapter extends BaseExpandableListAdapter {
         } else {
             deptname.setText(deptBean.getDeptName());// 设置大组成员名称
         }
+        android.util.Log.e("show",deptBean.toString());
         return convertView;
     }
 
@@ -128,13 +129,11 @@ public class ContactExpandableListAdapter extends BaseExpandableListAdapter {
         if (convertView == null) {
             viewHolder = new ChildViewHolder();
             LayoutInflater inflater = LayoutInflater.from(context);
-            convertView = inflater.inflate(R.layout.fragment_contacter_child,
-                    null);
+            convertView = inflater.inflate(R.layout.fragment_contacter_child,null);
 
             viewHolder.tvchildName = (TextView) convertView
                     .findViewById(R.id.fc_ct_name);// 显示用户名
-            viewHolder.photo = (ImageView) convertView
-                    .findViewById(R.id.fc_ct_photo);//
+            viewHolder.photo = (ImageView) convertView.findViewById(R.id.fc_ct_photo);//
             convertView.setTag(viewHolder);
         } else {
             viewHolder = (ChildViewHolder) convertView.getTag();
@@ -147,8 +146,8 @@ public class ContactExpandableListAdapter extends BaseExpandableListAdapter {
         } else {
             viewHolder.photo.setImageBitmap(default_user_pic);
         }
-        viewHolder.tvchildName.setText(deptBean.getFriendInfo(childPosition)
-                .getFriendname());
+        viewHolder.tvchildName.setText(deptBean.getFriendInfo(childPosition).getFriendname());
+        deptname.setText(deptBean.getFriendInfo(childPosition).getDeptname());
         return convertView;
     }
 
