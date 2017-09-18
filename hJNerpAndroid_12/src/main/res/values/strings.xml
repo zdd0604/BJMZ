@@ -176,5 +176,8 @@
     <string name="about_Title_Hjinfor">联系我们</string>
     <!-- 登陆注册 -->
     <string name="register_Title_TvActivity">企业注册</string>
->
+
+    <!-- 登陆注册 -->
+    <string name="MyInfor_Title_DepartmentName">部门：</string>
+
 </resources>

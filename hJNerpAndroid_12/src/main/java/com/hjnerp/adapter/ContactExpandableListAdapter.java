@@ -120,6 +120,7 @@ public class ContactExpandableListAdapter extends BaseExpandableListAdapter {
         return convertView;
     }
 
+
     // 得到大组成员的id
     public long getGroupId(int groupPosition) {
         return groupPosition;

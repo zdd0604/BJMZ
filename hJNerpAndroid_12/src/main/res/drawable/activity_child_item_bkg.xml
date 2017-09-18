@@ -3,5 +3,5 @@
     <item android:state_focused="true" android:drawable="@color/common_item_press" />
     <item android:state_pressed="true" android:drawable="@color/common_item_press" />
     <item android:state_selected="true" android:drawable="@color/common_item_press" />
-    <item android:drawable="@color/actionbar_bkg_stacked" />
+    <item android:drawable="@color/white" />
 </selector>

@@ -65,7 +65,7 @@ public class MyInforMation extends Fragment implements View.OnClickListener {
         }
 //        String user_name = SharePreferenceUtil.getInstance(EapApplication.getApplication().getApplicationContext()).getMyUserName();
         myusername.setText(myinfo.username);
-        my_company.setText(myinfo.companyName);
+        my_company.setText(myinfo.departmentName);
     }
 
     @Override

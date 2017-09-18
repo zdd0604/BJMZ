@@ -11,7 +11,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center_vertical"
-        android:background="#EFEFF4"
         android:orientation="vertical">
 
         <RelativeLayout
@@ -59,7 +58,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="@dimen/size_30"
                 android:layout_below="@id/userinfor"
                 android:gravity="center_vertical">
 
@@ -68,7 +67,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="@dimen/size_10"
-                    android:text="公司名称:"
+                    android:text="@string/MyInfor_Title_DepartmentName"
                     android:textColor="#949494"
                     android:textSize="15sp" />
 
@@ -80,7 +79,6 @@
                     android:text="北京和佳制药"
                     android:textColor="@color/black"
                     android:textSize="15sp" />
-
             </LinearLayout>
 
             <LinearLayout
@@ -114,9 +112,9 @@
             android:id="@+id/mysettingrel"
             style="@style/Item_LinearLayout_TvImgStyle"
             android:layout_marginTop="@dimen/size_10"
-            android:drawablePadding="@dimen/size_5"
             android:drawableLeft="@drawable/icon_setting_img"
-            android:text="设置" />
+            android:drawablePadding="@dimen/size_5"
+            android:text="@string/setting_Title_TlActivity" />
 
     </LinearLayout>
 </LinearLayout>
