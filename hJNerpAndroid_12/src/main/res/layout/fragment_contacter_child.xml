@@ -9,6 +9,9 @@
 
     <!-- LinerLayout有比较奇怪的性质：当布局中的控件可以超出布局规定的大小 ,所以这里一行的行宽改成由内部的几个控件
     控制，而LinerLayout的layout_height改成wrap_content ..  -->
+    <View
+        android:id="@+id/view_top"
+        style="@style/full_screen_line_60" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -36,20 +39,22 @@
 
         <TextView
             android:id="@+id/fc_ct_name"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginBottom="@dimen/size_5"
             android:layout_marginTop="@dimen/size_5"
             android:layout_toRightOf="@+id/fc_ct_photo"
+            android:drawableRight="@drawable/icon_right_orientation"
             android:maxLength="7"
             android:text="李响"
             android:textColor="@color/black"
             android:textSize="16sp" />
     </RelativeLayout>
 
-    <View
-        android:background="@color/actionbar_title_bg"
-        style="@style/Item_TextView_ActionBarViewDividerStyle" />
+
+    <!--<View-->
+    <!--android:background="@color/actionbar_title_bg"-->
+    <!--style="@style/Item_TextView_ActionBarViewDividerStyle" />-->
 
 </LinearLayout>

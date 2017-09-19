@@ -4,7 +4,7 @@
     android:id="@+id/activity_my_infor_mation"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/actionbar_title_bg"
+    android:background="@color/ss_back"
     android:orientation="vertical">
 
     <LinearLayout
@@ -13,11 +13,14 @@
         android:layout_gravity="center_vertical"
         android:orientation="vertical">
 
+        <View style="@style/full_screen_line10" />
+
+        <View style="@style/full_screen_line1" />
+
         <RelativeLayout
             android:id="@+id/myuserinfor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:background="@drawable/app_out_btn_style">
 
             <LinearLayout
@@ -107,14 +110,19 @@
 
         </RelativeLayout>
 
+        <View style="@style/full_screen_line1" />
+
+        <View style="@style/full_screen_line10" />
+
+        <View style="@style/full_screen_line1" />
 
         <TextView
             android:id="@+id/mysettingrel"
-            style="@style/Item_LinearLayout_TvImgStyle"
-            android:layout_marginTop="@dimen/size_10"
+            style="@style/Item_LinearLayout_TvImgStyle_no_one"
             android:drawableLeft="@drawable/icon_setting_img"
             android:drawablePadding="@dimen/size_5"
             android:text="@string/setting_Title_TlActivity" />
 
+        <View style="@style/full_screen_line1" />
     </LinearLayout>
 </LinearLayout>

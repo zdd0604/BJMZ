@@ -43,6 +43,7 @@ public class ContactExpandableListAdapter extends BaseExpandableListAdapter {
     private List<DeptInfo> dept;// 传递过来的经过处理的总数据
     private Bitmap default_user_pic;
     TextView deptname;
+
     public ContactExpandableListAdapter(Context context, List<DeptInfo> dept) {
         super();
         this.context = context;
@@ -70,9 +71,9 @@ public class ContactExpandableListAdapter extends BaseExpandableListAdapter {
         }
 
         LinearLayout ll_group = (LinearLayout) convertView.findViewById(R.id.ll_group);
-        View view1 = (View) convertView.findViewById(R.id.view1);
-        View view2 = (View) convertView.findViewById(R.id.view2);
-        View view3 = (View) convertView.findViewById(R.id.view3);
+        View view1 = convertView.findViewById(R.id.view1);
+        View view2 = convertView.findViewById(R.id.view2);
+        View view3 = convertView.findViewById(R.id.view3);
         RelativeLayout grouprl = (RelativeLayout) convertView.findViewById(R.id.grouprl);
         ImageView image_group = (ImageView) convertView.findViewById(R.id.groupImage);
         deptname = (TextView) convertView.findViewById(R.id.groupName);
@@ -116,7 +117,7 @@ public class ContactExpandableListAdapter extends BaseExpandableListAdapter {
         } else {
             deptname.setText(deptBean.getDeptName());// 设置大组成员名称
         }
-        android.util.Log.e("show",deptBean.toString());
+        android.util.Log.e("show", deptBean.toString());
         return convertView;
     }
 
@@ -150,10 +151,11 @@ public class ContactExpandableListAdapter extends BaseExpandableListAdapter {
         if (convertView == null) {
             viewHolder = new ChildViewHolder();
             LayoutInflater inflater = LayoutInflater.from(context);
-            convertView = inflater.inflate(R.layout.fragment_contacter_child,null);
+            convertView = inflater.inflate(R.layout.fragment_contacter_child, null);
 
             viewHolder.tvchildName = (TextView) convertView
                     .findViewById(R.id.fc_ct_name);// 显示用户名
+            viewHolder.view_top = convertView.findViewById(R.id.view_top);
             viewHolder.photo = (ImageView) convertView.findViewById(R.id.fc_ct_photo);//
             convertView.setTag(viewHolder);
         } else {
@@ -167,6 +169,11 @@ public class ContactExpandableListAdapter extends BaseExpandableListAdapter {
         } else {
             viewHolder.photo.setImageBitmap(default_user_pic);
         }
+        if (childPosition == 0) {
+            viewHolder.view_top.setVisibility(View.GONE);
+        } else {
+            viewHolder.view_top.setVisibility(View.VISIBLE);
+        }
         viewHolder.tvchildName.setText(deptBean.getFriendInfo(childPosition).getFriendname());
         deptname.setText(deptBean.getFriendInfo(childPosition).getDeptname());
         return convertView;
@@ -175,6 +182,7 @@ public class ContactExpandableListAdapter extends BaseExpandableListAdapter {
     final static class ChildViewHolder {
         TextView tvchildName;
         ImageView photo;
+        View view_top;
     }
 
     // 得到小组成员id
