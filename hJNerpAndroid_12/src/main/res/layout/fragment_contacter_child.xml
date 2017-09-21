@@ -39,22 +39,19 @@
 
         <TextView
             android:id="@+id/fc_ct_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/Item_LinearLayout_TvImgStyle"
             android:layout_centerVertical="true"
-            android:layout_marginBottom="@dimen/size_5"
-            android:layout_marginTop="@dimen/size_5"
             android:layout_toRightOf="@+id/fc_ct_photo"
-            android:drawableRight="@drawable/icon_right_orientation"
             android:maxLength="7"
-            android:text="李响"
-            android:textColor="@color/black"
-            android:textSize="16sp" />
+            android:text="李响" />
     </RelativeLayout>
 
+    <View
+        android:id="@+id/child_view_btom"
+        style="@style/Item_TextView_ActionBarViewDividerStyle"
+        android:layout_marginTop="@dimen/size_0"
+        android:background="@color/actionbar_title_bg"
+        android:visibility="gone"/>
 
-    <!--<View-->
-    <!--android:background="@color/actionbar_title_bg"-->
-    <!--style="@style/Item_TextView_ActionBarViewDividerStyle" />-->
 
 </LinearLayout>

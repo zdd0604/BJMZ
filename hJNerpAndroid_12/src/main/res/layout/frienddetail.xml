@@ -54,10 +54,8 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginLeft="15dip"
-        android:layout_marginRight="15dip"
         android:layout_marginTop="@dimen/GCSmallPadding"
-        android:background="#E5E5E5" />
+        android:background="@color/actionbar_title_bg" />
 
     <RelativeLayout
         android:id="@+id/rl_phone"
@@ -117,7 +115,7 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="13dp"
-            android:src="@drawable/_uidic_forms_item_arrow" />
+            android:src="@drawable/icon_right_orientation" />
 
         <Button
             android:id="@+id/ui_call_btn"
@@ -134,10 +132,8 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginLeft="15dip"
-        android:layout_marginRight="15dip"
         android:layout_marginTop="@dimen/GCSmallPadding"
-        android:background="#E5E5E5" />
+        android:background="@color/actionbar_title_bg" />
 
     <RelativeLayout
         android:id="@+id/rl_email"
@@ -195,81 +191,79 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginRight="13dp"
-            android:src="@drawable/_uidic_forms_item_arrow" />
+            android:layout_marginRight="@dimen/size_10"
+            android:src="@drawable/icon_right_orientation" />
     </RelativeLayout>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginLeft="15dip"
-        android:layout_marginRight="15dip"
         android:layout_marginTop="@dimen/GCSmallPadding"
-        android:background="#E5E5E5" />
+        android:background="@color/actionbar_title_bg" />
 
     <!--<RelativeLayout-->
-        <!--android:id="@+id/rl_remark"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_marginTop="10dp"-->
-        <!--android:background="#FFFFFF">-->
+    <!--android:id="@+id/rl_remark"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginTop="10dp"-->
+    <!--android:background="#FFFFFF">-->
 
-        <!--<LinearLayout-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:orientation="vertical">-->
+    <!--<LinearLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:orientation="vertical">-->
 
 
-            <!--<TextView-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_centerVertical="true"-->
-                <!--android:layout_marginLeft="15dp"-->
-                <!--android:layout_marginTop="5dp"-->
-                <!--android:layout_toRightOf="@id/icon_wrapdata"-->
-                <!--android:text="备注"-->
-                <!--android:textColor="#949494"-->
-                <!--android:textSize="12sp" />-->
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_centerVertical="true"-->
+    <!--android:layout_marginLeft="15dp"-->
+    <!--android:layout_marginTop="5dp"-->
+    <!--android:layout_toRightOf="@id/icon_wrapdata"-->
+    <!--android:text="备注"-->
+    <!--android:textColor="#949494"-->
+    <!--android:textSize="12sp" />-->
 
-            <!--<TextView-->
-                <!--android:id="@+id/remark"-->
-                <!--android:layout_width="fill_parent"-->
-                <!--android:layout_height="25dip"-->
-                <!--android:layout_marginLeft="15dp"-->
-                <!--android:layout_marginTop="5.0dip"-->
-                <!--android:layout_toRightOf="@+id/orgunittext"-->
-                <!--android:enabled="false"-->
-                <!--android:maxLength="16"-->
-                <!--android:maxLines="1"-->
-                <!--android:textColor="#ff333333"-->
-                <!--android:textSize="16sp" />-->
-        <!--</LinearLayout>-->
+    <!--<TextView-->
+    <!--android:id="@+id/remark"-->
+    <!--android:layout_width="fill_parent"-->
+    <!--android:layout_height="25dip"-->
+    <!--android:layout_marginLeft="15dp"-->
+    <!--android:layout_marginTop="5.0dip"-->
+    <!--android:layout_toRightOf="@+id/orgunittext"-->
+    <!--android:enabled="false"-->
+    <!--android:maxLength="16"-->
+    <!--android:maxLines="1"-->
+    <!--android:textColor="#ff333333"-->
+    <!--android:textSize="16sp" />-->
+    <!--</LinearLayout>-->
 
-        <!--&lt;!&ndash;<ImageView&ndash;&gt;-->
-        <!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
-        <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
-        <!--&lt;!&ndash;android:layout_alignParentRight="true"&ndash;&gt;-->
-        <!--&lt;!&ndash;android:layout_centerVertical="true"&ndash;&gt;-->
-        <!--&lt;!&ndash;android:layout_marginRight="13dp"&ndash;&gt;-->
-        <!--&lt;!&ndash;android:src="@drawable/_uidic_forms_item_arrow" />&ndash;&gt;-->
+    <!--&lt;!&ndash;<ImageView&ndash;&gt;-->
+    <!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:layout_alignParentRight="true"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:layout_centerVertical="true"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:layout_marginRight="13dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:src="@drawable/_uidic_forms_item_arrow" />&ndash;&gt;-->
 
     <!--</RelativeLayout>-->
 
     <!--<TextView-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="1dp"-->
-        <!--android:layout_marginLeft="15dip"-->
-        <!--android:layout_marginRight="15dip"-->
-        <!--android:layout_marginTop="@dimen/GCSmallPadding"-->
-        <!--android:background="#E5E5E5" />-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="1dp"-->
+    <!--android:layout_marginLeft="15dip"-->
+    <!--android:layout_marginRight="15dip"-->
+    <!--android:layout_marginTop="@dimen/GCSmallPadding"-->
+    <!--android:background="#E5E5E5" />-->
 
     <Button
         android:id="@+id/ui_send_btn"
         android:layout_width="fill_parent"
         android:layout_height="40dip"
-        android:layout_marginTop="40dip"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
+        android:layout_marginTop="40dip"
         android:background="@drawable/login_btn_style"
         android:text="发送信息"
         android:textColor="@color/white"

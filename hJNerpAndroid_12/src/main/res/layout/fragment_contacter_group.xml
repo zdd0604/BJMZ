@@ -71,17 +71,10 @@
 
         <TextView
             android:id="@+id/groupName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_marginBottom="@dimen/size_5"
-            android:layout_marginLeft="@dimen/size_10"
-            android:layout_marginTop="@dimen/size_5"
-            android:drawableRight="@drawable/icon_right_orientation"
             android:gravity="center_vertical"
             android:text="groupName"
-            android:textColor="@color/black"
-            android:textSize="16sp" />
+            style="@style/Item_LinearLayout_TvImgStyle" />
     </LinearLayout>
 
     <View

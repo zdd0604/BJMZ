@@ -29,7 +29,7 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="13dp"
-            android:src="@drawable/_uidic_forms_item_arrow" />
+            android:src="@drawable/icon_right_orientation" />
 
         <com.hjnerp.widget.BubbleImageView
             android:id="@+id/user_head_avatar"
@@ -55,10 +55,8 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginLeft="15dip"
-        android:layout_marginRight="15dip"
         android:layout_marginTop="@dimen/GCSmallPadding"
-        android:background="#E5E5E5" />
+        android:background="@color/actionbar_title_bg" />
 
     <RelativeLayout
         android:id="@+id/rel_wrapdata"
@@ -119,10 +117,8 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginLeft="15dip"
-        android:layout_marginRight="15dip"
         android:layout_marginTop="@dimen/GCSmallPadding"
-        android:background="#E5E5E5" />
+        android:background="@color/actionbar_title_bg" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -176,8 +172,6 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginLeft="15dip"
-        android:layout_marginRight="15dip"
         android:layout_marginTop="@dimen/GCSmallPadding"
-        android:background="#E5E5E5" />
+        android:background="@color/actionbar_title_bg" />
 </LinearLayout>

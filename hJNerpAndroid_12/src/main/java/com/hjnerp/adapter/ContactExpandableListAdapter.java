@@ -157,6 +157,7 @@ public class ContactExpandableListAdapter extends BaseExpandableListAdapter {
                     .findViewById(R.id.fc_ct_name);// 显示用户名
             viewHolder.view_top = convertView.findViewById(R.id.view_top);
             viewHolder.photo = (ImageView) convertView.findViewById(R.id.fc_ct_photo);//
+            viewHolder.child_view_btom = convertView.findViewById(R.id.child_view_btom);//
             convertView.setTag(viewHolder);
         } else {
             viewHolder = (ChildViewHolder) convertView.getTag();
@@ -171,9 +172,18 @@ public class ContactExpandableListAdapter extends BaseExpandableListAdapter {
         }
         if (childPosition == 0) {
             viewHolder.view_top.setVisibility(View.GONE);
+
         } else {
             viewHolder.view_top.setVisibility(View.VISIBLE);
+
         }
+
+        if (childPosition!=deptBean.getDeptFriendInfoList().size()-1){
+            viewHolder.child_view_btom.setVisibility(View.GONE);
+        }else{
+            viewHolder.child_view_btom.setVisibility(View.VISIBLE);
+        }
+
         viewHolder.tvchildName.setText(deptBean.getFriendInfo(childPosition).getFriendname());
         deptname.setText(deptBean.getFriendInfo(childPosition).getDeptname());
         return convertView;
@@ -183,6 +193,7 @@ public class ContactExpandableListAdapter extends BaseExpandableListAdapter {
         TextView tvchildName;
         ImageView photo;
         View view_top;
+        View child_view_btom;
     }
 
     // 得到小组成员id
@@ -232,5 +243,4 @@ public class ContactExpandableListAdapter extends BaseExpandableListAdapter {
         // TODO Auto-generated method stub
         return dept.get(groupPosition);
     }
-
 }
