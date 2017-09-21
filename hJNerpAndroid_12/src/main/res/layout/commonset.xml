@@ -103,13 +103,11 @@
 
             <View style="@style/full_screen_line15" />
 
-            <View style="@style/full_screen_line1" />
-
             <Button
                 android:id="@+id/app_logout"
                 style="@style/Item_Setting_AppOutStyle"
                 android:text="退出登录" />
-            <View style="@style/full_screen_line15" />
+
         </LinearLayout>
     </ScrollView>
 
