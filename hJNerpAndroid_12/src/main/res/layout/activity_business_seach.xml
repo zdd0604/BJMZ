@@ -18,7 +18,7 @@
         style="@style/Item_EditeText_SearchEdStyle"
         android:layout_below="@+id/actionbar_search"
         android:layout_centerHorizontal="true"
-        android:hint="请搜索关键字" />
+        android:hint="@string/search" />
 
     <View
         android:layout_width="match_parent"

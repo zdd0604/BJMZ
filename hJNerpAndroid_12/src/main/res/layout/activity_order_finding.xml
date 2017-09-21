@@ -50,7 +50,7 @@
         android:layout_marginTop="@dimen/size_8">
 
         <TextView
-            style="@style/Item_LinearLayout_TVLeftTieleStyle"
+            style="@style/Item_LinearLayout_TVLeftTieleStyle2"
             android:text="业务员" />
 
         <!--<Spinner-->
@@ -58,19 +58,19 @@
         <!--style="@style/Item_LinearLayout_Spinner_RightStyle" />-->
         <TextView
             android:id="@+id/object_person"
-            style="@style/Item_LinearLayout_TvRightTitleImgStyle2"
+            style="@style/Item_LinearLayout_TvRightTitleImgStyle3"
             android:hint="请选择业务员" />
     </LinearLayout>
 
     <LinearLayout style="@style/Item_LinearLayout_HorizontalStyle">
 
         <TextView
-            style="@style/Item_LinearLayout_TVLeftTieleStyle"
+            style="@style/Item_LinearLayout_TVLeftTieleStyle2"
             android:text="客户名称" />
 
         <TextView
             android:id="@+id/object_name"
-            style="@style/Item_LinearLayout_TvRightTitleImgStyle2"
+            style="@style/Item_LinearLayout_TvRightTitleImgStyle3"
             android:hint="请选择客户" />
     </LinearLayout>
 
@@ -80,12 +80,12 @@
         android:visibility="gone">
 
         <TextView
-            style="@style/Item_LinearLayout_TVLeftTieleStyle"
+            style="@style/Item_LinearLayout_TVLeftTieleStyle2"
             android:text="开始时间" />
 
         <TextView
             android:id="@+id/table_begin_time"
-            style="@style/Item_LinearLayout_TvRightTitleImgStyle2"
+            style="@style/Item_LinearLayout_TvRightTitleImgStyle3"
             android:hint="请选择开始日期" />
     </LinearLayout>
 
@@ -95,12 +95,12 @@
         android:visibility="gone">
 
         <TextView
-            style="@style/Item_LinearLayout_TVLeftTieleStyle"
+            style="@style/Item_LinearLayout_TVLeftTieleStyle2"
             android:text="结束时间" />
 
         <TextView
             android:id="@+id/table_end_time"
-            style="@style/Item_LinearLayout_TvRightTitleImgStyle2"
+            style="@style/Item_LinearLayout_TvRightTitleImgStyle3"
             android:hint="请选择结束日期" />
     </LinearLayout>
 
@@ -110,7 +110,7 @@
         android:visibility="gone">
 
         <TextView
-            style="@style/Item_LinearLayout_TVLeftTieleStyle"
+            style="@style/Item_LinearLayout_TVLeftTieleStyle2"
             android:text="总欠款(>)" />
 
         <EditText
@@ -128,7 +128,7 @@
         android:visibility="gone">
 
         <TextView
-            style="@style/Item_LinearLayout_TVLeftTieleStyle"
+            style="@style/Item_LinearLayout_TVLeftTieleStyle2"
             android:text="总金额" />
 
         <TextView
@@ -142,7 +142,7 @@
         android:visibility="gone">
 
         <TextView
-            style="@style/Item_LinearLayout_TVLeftTieleStyle"
+            style="@style/Item_LinearLayout_TVLeftTieleStyle2"
             android:layout_weight="3"
             android:text="180天到365天应收总额" />
 
@@ -157,7 +157,7 @@
         android:visibility="gone">
 
         <TextView
-            style="@style/Item_LinearLayout_TVLeftTieleStyle"
+            style="@style/Item_LinearLayout_TVLeftTieleStyle2"
             android:layout_weight="3"
             android:text="365天及以上应收总额" />
 

@@ -39,7 +39,7 @@
     <LinearLayout style="@style/Item_LinearLayout_HorizontalStyle">
 
         <TextView
-            style="@style/Item_LinearLayout_TVLeftTieleStyle"
+            style="@style/Item_LinearLayout_TVLeftTieleStyle2"
             android:text="销售类型" />
 
         <com.hjnerp.widget.MySpinner
@@ -51,7 +51,7 @@
     <LinearLayout style="@style/Item_LinearLayout_HorizontalStyle">
 
         <TextView
-            style="@style/Item_LinearLayout_TVLeftTieleStyle"
+            style="@style/Item_LinearLayout_TVLeftTieleStyle2"
             android:text="产品" />
 
         <TextView
@@ -64,7 +64,7 @@
     <LinearLayout style="@style/Item_LinearLayout_HorizontalStyle">
 
         <TextView
-            style="@style/Item_LinearLayout_TVLeftTieleStyle"
+            style="@style/Item_LinearLayout_TVLeftTieleStyle2"
             android:text="数量" />
 
 
@@ -83,7 +83,7 @@
     <LinearLayout style="@style/Item_LinearLayout_HorizontalStyle">
 
         <TextView
-            style="@style/Item_LinearLayout_TVLeftTieleStyle"
+            style="@style/Item_LinearLayout_TVLeftTieleStyle2"
             android:text="金额" />
 
         <TextView

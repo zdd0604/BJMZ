@@ -22,7 +22,7 @@
                 android:layout_marginTop="@dimen/size_8">
 
                 <TextView
-                    style="@style/Item_LinearLayout_TVLeftTieleStyle"
+                    style="@style/Item_LinearLayout_TVLeftTieleStyle2"
                     android:text="@string/work_Tile_TaskTime" />
 
 
@@ -38,7 +38,7 @@
                 android:visibility="gone">
 
                 <TextView
-                    style="@style/Item_LinearLayout_TVLeftTieleStyle"
+                    style="@style/Item_LinearLayout_TVLeftTieleStyle2"
                     android:text="@string/work_Tile_WkAddress" />
 
 
@@ -54,7 +54,7 @@
                 android:layout_marginTop="@dimen/size_8">
 
                 <TextView
-                    style="@style/Item_LinearLayout_TVLeftTieleStyle"
+                    style="@style/Item_LinearLayout_TVLeftTieleStyle2"
                     android:text="@string/work_Tile_WkType" />
 
                 <TextView
@@ -70,7 +70,7 @@
 
                 <TextView
                     android:id="@+id/pro_text"
-                    style="@style/Item_LinearLayout_TVLeftTieleStyle"
+                    style="@style/Item_LinearLayout_TVLeftTieleStyle2"
                     android:text="@string/work_Tile_PjName" />
 
                 <EditText
@@ -87,7 +87,7 @@
 
                 <TextView
                     android:id="@+id/textView7"
-                    style="@style/Item_LinearLayout_TVLeftTieleStyle"
+                    style="@style/Item_LinearLayout_TVLeftTieleStyle2"
                     android:text="@string/work_Tile_Address" />
 
                 <com.hjnerp.widget.ClearEditText
@@ -101,7 +101,7 @@
                 android:layout_marginTop="@dimen/size_1">
 
                 <TextView
-                    style="@style/Item_LinearLayout_TVLeftTieleStyle"
+                    style="@style/Item_LinearLayout_TVLeftTieleStyle2"
                     android:text="@string/work_Tile_Contact" />
 
                 <com.hjnerp.widget.ClearEditText
@@ -115,7 +115,7 @@
                 android:layout_marginTop="@dimen/size_1">
 
                 <TextView
-                    style="@style/Item_LinearLayout_TVLeftTieleStyle"
+                    style="@style/Item_LinearLayout_TVLeftTieleStyle2"
                     android:text="@string/work_Tile_contactduty" />
 
                 <com.hjnerp.widget.ClearEditText
@@ -130,7 +130,7 @@
                 android:visibility="gone">
 
                 <TextView
-                    style="@style/Item_LinearLayout_TVLeftTieleStyle"
+                    style="@style/Item_LinearLayout_TVLeftTieleStyle2"
                     android:text="@string/work_Tile_WkTime" />
 
                 <com.hjnerp.widget.ClearEditText
@@ -145,7 +145,7 @@
                 android:layout_marginTop="@dimen/size_8">
 
                 <TextView
-                    style="@style/Item_LinearLayout_TVLeftTieleStyle"
+                    style="@style/Item_LinearLayout_TVLeftTieleStyle2"
                     android:text="@string/work_Tile_MyTheme" />
 
                 <com.hjnerp.widget.ClearEditText
@@ -160,7 +160,7 @@
                 android:layout_marginTop="@dimen/size_1">
 
                 <TextView
-                    style="@style/Item_LinearLayout_TVLeftTieleStyle"
+                    style="@style/Item_LinearLayout_TVLeftTieleStyle2"
                     android:text="@string/work_Tile_MyContent" />
 
                 <com.hjnerp.widget.ClearEditText

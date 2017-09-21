@@ -89,7 +89,7 @@
                 style="@style/Item_LinearLayout_HorizontalStyle">
 
                 <TextView
-                    style="@style/Item_LinearLayout_TVLeftTieleStyle"
+                    style="@style/Item_LinearLayout_TVLeftTieleStyle2"
                     android:text="订单号" />
 
                 <TextView
@@ -101,7 +101,7 @@
             <LinearLayout style="@style/Item_LinearLayout_HorizontalStyle">
 
                 <TextView
-                    style="@style/Item_LinearLayout_TVLeftTieleStyle"
+                    style="@style/Item_LinearLayout_TVLeftTieleStyle2"
                     android:text="录入人" />
 
                 <TextView
@@ -113,7 +113,7 @@
             <LinearLayout style="@style/Item_LinearLayout_HorizontalStyle">
 
                 <TextView
-                    style="@style/Item_LinearLayout_TVLeftTieleStyle"
+                    style="@style/Item_LinearLayout_TVLeftTieleStyle2"
                     android:text="订单日期" />
 
 
@@ -126,7 +126,7 @@
             <LinearLayout style="@style/Item_LinearLayout_HorizontalStyle">
 
                 <TextView
-                    style="@style/Item_LinearLayout_TVLeftTieleStyle"
+                    style="@style/Item_LinearLayout_TVLeftTieleStyle2"
                     android:text="发货日期" />
 
                 <TextView
@@ -139,7 +139,7 @@
             <LinearLayout style="@style/Item_LinearLayout_HorizontalStyle">
 
                 <TextView
-                    style="@style/Item_LinearLayout_TVLeftTieleStyle"
+                    style="@style/Item_LinearLayout_TVLeftTieleStyle2"
                     android:text="订单类型" />
 
                 <Spinner
@@ -150,7 +150,7 @@
             <LinearLayout style="@style/Item_LinearLayout_HorizontalStyle">
 
                 <TextView
-                    style="@style/Item_LinearLayout_TVLeftTieleStyle"
+                    style="@style/Item_LinearLayout_TVLeftTieleStyle2"
                     android:text="所属终端" />
 
                 <TextView
@@ -164,7 +164,7 @@
             <LinearLayout style="@style/Item_LinearLayout_HorizontalStyle">
 
                 <TextView
-                    style="@style/Item_LinearLayout_TVLeftTieleStyle"
+                    style="@style/Item_LinearLayout_TVLeftTieleStyle2"
                     android:text="结算客户" />
 
                 <TextView
@@ -176,7 +176,7 @@
             <LinearLayout style="@style/Item_LinearLayout_HorizontalStyle">
 
                 <TextView
-                    style="@style/Item_LinearLayout_TVLeftTieleStyle"
+                    style="@style/Item_LinearLayout_TVLeftTieleStyle2"
                     android:text="超期金额" />
 
                 <TextView
@@ -188,7 +188,7 @@
             <LinearLayout style="@style/Item_LinearLayout_HorizontalStyle">
 
                 <TextView
-                    style="@style/Item_LinearLayout_TVLeftTieleStyle"
+                    style="@style/Item_LinearLayout_TVLeftTieleStyle2"
                     android:text="送货地址" />
 
                 <TextView
@@ -201,7 +201,7 @@
             <LinearLayout style="@style/Item_LinearLayout_HorizontalStyle">
 
                 <TextView
-                    style="@style/Item_LinearLayout_TVLeftTieleStyle"
+                    style="@style/Item_LinearLayout_TVLeftTieleStyle2"
                     android:text="快递公司" />
 
                 <Spinner
@@ -212,7 +212,7 @@
             <LinearLayout style="@style/Item_LinearLayout_HorizontalStyle">
 
                 <TextView
-                    style="@style/Item_LinearLayout_TVLeftTieleStyle"
+                    style="@style/Item_LinearLayout_TVLeftTieleStyle2"
                     android:text="发票类型" />
 
                 <Spinner
@@ -224,7 +224,7 @@
             <LinearLayout style="@style/Item_LinearLayout_HorizontalStyle">
 
                 <TextView
-                    style="@style/Item_LinearLayout_TVLeftTieleStyle"
+                    style="@style/Item_LinearLayout_TVLeftTieleStyle2"
                     android:text="票货同行" />
 
                 <Spinner
@@ -235,7 +235,7 @@
             <LinearLayout style="@style/Item_LinearLayout_HorizontalStyle">
 
                 <TextView
-                    style="@style/Item_LinearLayout_TVLeftTieleStyle"
+                    style="@style/Item_LinearLayout_TVLeftTieleStyle2"
                     android:text="发票地址" />
 
                 <TextView
@@ -249,7 +249,7 @@
 
 
                 <TextView
-                    style="@style/Item_LinearLayout_TVLeftTieleStyle"
+                    style="@style/Item_LinearLayout_TVLeftTieleStyle2"
                     android:text="发票快递" />
 
                 <Spinner
@@ -266,7 +266,7 @@
 
                 <TextView
                     android:id="@+id/textView12"
-                    style="@style/Item_LinearLayout_TVLeftTieleStyle"
+                    style="@style/Item_LinearLayout_TVLeftTieleStyle2"
                     android:text="备注" />
 
                 <EditText
