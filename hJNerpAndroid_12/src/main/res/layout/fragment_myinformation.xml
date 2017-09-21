@@ -61,7 +61,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/size_30"
+                android:layout_height="@dimen/size_40"
                 android:layout_below="@id/userinfor"
                 android:gravity="center_vertical">
 
