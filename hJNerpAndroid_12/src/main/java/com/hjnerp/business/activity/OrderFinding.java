@@ -643,20 +643,20 @@ public class OrderFinding extends ActionBarWidgetActivity implements View.OnClic
                                     DsaordQueryJsonD dsaordQueryJsonD = dsaordbaseJsonsD.get(i);
 //                                    long date_task = dateFormat2.parse(dsaordbaseJson.getDate_task()).getTime();
 //                                    if (format.parse(time_begin).getTime() <= date_task && date_task <= format.parse(time_end).getTime()) {
-                                    if (!contents.contains(dsaordQueryJsonD.getName_user() + dsaordQueryJsonD.getDate_task() + dsaordQueryJsonD.getVar_wtitle())) {
-                                        contents.add(dsaordQueryJsonD.getName_user() + dsaordQueryJsonD.getDate_task() + dsaordQueryJsonD.getVar_wtitle());
+//                                    if (!contents.contains(dsaordQueryJsonD.getName_user() + dsaordQueryJsonD.getDate_task() + dsaordQueryJsonD.getVar_wtitle())) {
+//                                        contents.add(dsaordQueryJsonD.getName_user() + dsaordQueryJsonD.getDate_task() + dsaordQueryJsonD.getVar_wtitle());
 
-                                        mRowDatas.add(dsaordQueryJsonD.getName_dept());
-                                        mRowDatas.add(dsaordQueryJsonD.getName_user());
-                                        mRowDatas.add(dsaordQueryJsonD.getDate_task());
-                                        mRowDatas.add(dsaordQueryJsonD.getName_type());
-                                        mRowDatas.add(dsaordQueryJsonD.getName_wproj());
-                                        mRowDatas.add(dsaordQueryJsonD.getVar_contact());
-                                        mRowDatas.add(dsaordQueryJsonD.getVar_contactduty());
-                                        mRowDatas.add(dsaordQueryJsonD.getVar_wtitle());
-                                        mRowDatas.add(dsaordQueryJsonD.getVar_remark());
-                                        mTableDatas.add(mRowDatas);
-                                    }
+                                    mRowDatas.add(dsaordQueryJsonD.getName_dept());
+                                    mRowDatas.add(dsaordQueryJsonD.getName_user());
+                                    mRowDatas.add(dsaordQueryJsonD.getDate_task());
+                                    mRowDatas.add(dsaordQueryJsonD.getName_type());
+                                    mRowDatas.add(dsaordQueryJsonD.getName_wproj());
+                                    mRowDatas.add(dsaordQueryJsonD.getVar_contact());
+                                    mRowDatas.add(dsaordQueryJsonD.getVar_contactduty());
+                                    mRowDatas.add(dsaordQueryJsonD.getVar_wtitle());
+                                    mRowDatas.add(dsaordQueryJsonD.getVar_remark());
+                                    mTableDatas.add(mRowDatas);
+//                                    }
 //                                    } else {
 //                                        continue;
 //                                    }
@@ -752,8 +752,8 @@ public class OrderFinding extends ActionBarWidgetActivity implements View.OnClic
         int max_weight;
         int max_height;
         if (Constant.tab_type == 2) {
-            max_weight = 200;
-            max_height = 8000;
+            max_weight = 300;
+            max_height = 10000;
         } else {
             max_weight = 100;
             max_height = 60;

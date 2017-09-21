@@ -133,12 +133,23 @@ public class LockTableView2 {
 
                 for (textView = 0; textView < rowDatas.size(); ++textView) {
                     TextView textViewParams = new TextView(this.mContext);
-                    textViewParams.setTextSize(2, (float) this.mHeadTextViewSize);
-                    textViewParams.setText((CharSequence) rowDatas.get(textView));
-                    textViewParams.setGravity(17);
-                    LayoutParams maxHeight = new LayoutParams(-2, -2);
-                    maxHeight.setMargins(margin_num, margin_num, margin_num, margin_num);
-                    textViewParams.setLayoutParams(maxHeight);
+                    if (i == 0) {
+                        textViewParams.setTextSize(2, (float) this.mHeadTextViewSize);
+                        textViewParams.setText((CharSequence) rowDatas.get(textView));
+                        textViewParams.setGravity(17);
+                        LayoutParams maxHeight = new LayoutParams(-2, -2);
+                        maxHeight.setMargins(margin_num, margin_num, margin_num, margin_num);
+                        textViewParams.setLayoutParams(maxHeight);
+                    } else {
+                        textViewParams.setTextSize(2, (float) this.mTextViewSize);
+                        textViewParams.setText((CharSequence) rowDatas.get(textView));
+                        textViewParams.setGravity(17);
+                        LayoutParams maxHeight = new LayoutParams(-2, -2);
+                        maxHeight.setMargins(margin_num, margin_num, margin_num, margin_num);
+                        textViewParams.setLayoutParams(maxHeight);
+                    }
+
+
                     if (i == 0) {
                         this.mColumnMaxWidths.add(Integer.valueOf(this.measureTextWidth(textViewParams, (String) rowDatas.get(textView))));
                         var12.append("[" + this.measureTextWidth(textViewParams, (String) rowDatas.get(textView)) + "]");
@@ -158,7 +169,12 @@ public class LockTableView2 {
                 rowDatas = (ArrayList) this.mTableDatas.get(i);
                 var12 = new StringBuffer();
                 TextView var14 = new TextView(this.mContext);
-                var14.setTextSize(2, (float) this.mHeadTextViewSize);
+                if (i == 0) {//表头字体
+                    var14.setTextSize(2, (float) this.mHeadTextViewSize);
+                } else {
+                    var14.setTextSize(2, (float) this.mTextViewSize);
+                }
+
                 var14.setGravity(17);
                 LayoutParams var15 = new LayoutParams(-2, -2);
                 var15.setMargins(margin_num, margin_num, margin_num, margin_num);

@@ -24,7 +24,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="待审批的"
+                android:text="未处理"
                 android:textSize="16sp" />
 
             <View
@@ -52,7 +52,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="已审批的"
+                android:text="已处理"
                 android:textSize="16sp" />
 
             <View

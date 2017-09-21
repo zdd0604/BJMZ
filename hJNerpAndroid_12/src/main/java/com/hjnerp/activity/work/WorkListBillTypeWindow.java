@@ -111,12 +111,12 @@ public class WorkListBillTypeWindow extends PopupWindow {
 
 	}
 
-    // 从sp中获取存储在本地的工作流类型,并手动加上“全部类型”这个选项
+    // 从sp中获取存储在本地的工作流类型,并手动加上“全部”这个选项
     private List<WorkflowBillTypeInfo> getData() {
         List<WorkflowBillTypeInfo> items = new ArrayList<WorkflowBillTypeInfo>();
         WorkflowBillTypeInfo itemFirst = new WorkflowBillTypeInfo();
         itemFirst.setId(null);
-        itemFirst.setName("全部类型");
+        itemFirst.setName("全部");
         itemFirst.setId("allType");
         String msg = sputil.getWorkListBillType();
 
