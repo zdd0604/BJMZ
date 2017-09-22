@@ -117,7 +117,6 @@ public class ContactExpandableListAdapter extends BaseExpandableListAdapter {
         } else {
             deptname.setText(deptBean.getDeptName());// 设置大组成员名称
         }
-        android.util.Log.e("show", deptBean.toString());
         return convertView;
     }
 
@@ -186,6 +185,7 @@ public class ContactExpandableListAdapter extends BaseExpandableListAdapter {
 
         viewHolder.tvchildName.setText(deptBean.getFriendInfo(childPosition).getFriendname());
         deptname.setText(deptBean.getFriendInfo(childPosition).getDeptname());
+        deptname.setBackgroundColor(context.getResources().getColor(R.color.actionbar_title_bg));
         return convertView;
     }
 

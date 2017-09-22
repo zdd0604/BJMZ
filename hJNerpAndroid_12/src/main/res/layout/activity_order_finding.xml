@@ -166,6 +166,7 @@
             style="@style/Item_LinearLayout_TvRightTitleStyle" />
     </LinearLayout>
 
+    <View style="@style/Item_TextView_ActionBarViewDividerStyle" />
 
     <LinearLayout
         android:id="@+id/linear_list"

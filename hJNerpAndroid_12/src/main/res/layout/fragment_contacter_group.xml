@@ -10,13 +10,11 @@
     <View
         android:id="@+id/view1"
         style="@style/Item_TextView_ActionBarViewDividerStyle"
-        android:layout_marginLeft="@dimen/size_60"
-        android:background="@color/actionbar_title_bg" />
+        android:layout_marginLeft="@dimen/size_60" />
 
     <View
         android:id="@+id/view2"
-        style="@style/Item_TextView_ActionBarViewDividerStyle"
-        android:background="@color/actionbar_title_bg" />
+        style="@style/Item_TextView_ActionBarViewDividerStyle"/>
 
     <TextView
         android:id="@+id/groupnmae"
@@ -71,14 +69,13 @@
 
         <TextView
             android:id="@+id/groupName"
+            style="@style/Item_Group_TvImgStyle"
             android:layout_gravity="center_vertical"
             android:gravity="center_vertical"
-            android:text="groupName"
-            style="@style/Item_LinearLayout_TvImgStyle" />
+            android:text="groupName" />
     </LinearLayout>
 
     <View
         android:id="@+id/view3"
-        style="@style/Item_TextView_ActionBarViewDividerStyle"
-        android:background="@color/actionbar_title_bg" />
+        style="@style/Item_TextView_ActionBarViewDividerStyle" />
 </LinearLayout>

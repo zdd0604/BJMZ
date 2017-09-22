@@ -553,4 +553,6 @@
     <!--行分割线-->
     <color name="item_table_divider">#E4E3E5</color>
     <color name="item_viewDivider_bg">#FFDAD8D8</color>
+    <color name="activity_bg">#F8F8F8</color>
+    <color name="item_group_bg">#f2efef</color>
 </resources>

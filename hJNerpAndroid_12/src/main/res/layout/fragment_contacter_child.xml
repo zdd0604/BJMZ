@@ -50,7 +50,7 @@
         android:id="@+id/child_view_btom"
         style="@style/Item_TextView_ActionBarViewDividerStyle"
         android:layout_marginTop="@dimen/size_0"
-        android:background="@color/actionbar_title_bg"
+        android:background="@color/item_group_bg"
         android:visibility="gone"/>
 
 

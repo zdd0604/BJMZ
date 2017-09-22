@@ -15,6 +15,7 @@
             android:id="@+id/qq_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@color/activity_bg"
             android:childDivider="@null"
             android:divider="@null" />
         <!--android:divider="@drawable/reader_item_divider"-->
