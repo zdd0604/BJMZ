@@ -556,4 +556,6 @@
     <color name="activity_bg">#F8F8F8</color>
     <color name="item_group_bg">#f2efef</color>
     <color name="acbar_view_bg">#D4D4D4</color>
+    <!-- 个人信息界面 -->
+    <color name="item_Friend_TvContentCl">#A1A1A1</color>
 </resources>

@@ -3,24 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:background="#FFFFFF"
+    android:background="@color/activity_bg"
     android:orientation="vertical">
 
     <RelativeLayout
         android:id="@+id/user_head_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:background="#FFFFFF">
+        style="@style/Item_RelativeLayout_DefaultStyle">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="15dp"
-            android:text="头像"
-            android:textColor="#949494"
-            android:textSize="15sp" />
+            style="@style/Item_RelativeLayout_TvLiftFriendStyle"
+            android:text="头像" />
 
         <ImageView
             android:id="@+id/jt"
@@ -28,13 +20,13 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginRight="13dp"
+            android:layout_marginRight="@dimen/size_10"
             android:src="@drawable/icon_right_orientation" />
 
         <com.hjnerp.widget.BubbleImageView
             android:id="@+id/user_head_avatar"
-            android:layout_width="@dimen/abc_square_image_size60"
-            android:layout_height="@dimen/abc_square_image_size60"
+            android:layout_width="@dimen/size_60"
+            android:layout_height="@dimen/size_60"
             android:layout_centerVertical="true"
             android:layout_gravity="center_horizontal"
             android:layout_marginRight="10dp"
@@ -52,126 +44,31 @@
             app:bubble_arrowWidth="0dp" />
     </RelativeLayout>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="@dimen/GCSmallPadding"
-        android:background="@color/actionbar_title_bg" />
-
     <RelativeLayout
-        android:id="@+id/rel_wrapdata"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:background="#FFFFFF">
+        style="@style/Item_RelativeLayout_ContacterItemStyle"
+        android:layout_marginTop="@dimen/size_1">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+        <TextView
+            style="@style/Item_RelativeLayout_TvLiftFriendStyle"
+            android:text="昵称" />
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:id="@+id/textView3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginTop="5dp"
-                    android:text="用户名"
-                    android:textColor="#949494"
-                    android:textSize="12sp" />
-
-                <ImageView
-                    android:id="@+id/user_head_star"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dip"
-                    android:src="@drawable/v5_0_1_icon_profile_star" />
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/user_head_name"
-                android:layout_width="wrap_content"
-                android:layout_height="25dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="5dp"
-                android:text="和佳"
-                android:textColor="#2E2F30"
-                android:textSize="16sp" />
-        </LinearLayout>
-
-        <!--<ImageView-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_alignParentRight="true"-->
-        <!--android:layout_centerVertical="true"-->
-        <!--android:layout_marginRight="13dp"-->
-        <!--android:src="@drawable/_uidic_forms_item_arrow" />-->
-
+        <TextView
+            android:id="@+id/user_head_name"
+            style="@style/Item_RelativeLayout_TvRightFriendStyle"
+            android:text="昵称" />
     </RelativeLayout>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="@dimen/GCSmallPadding"
-        android:background="@color/actionbar_title_bg" />
-
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:background="#FFFFFF">
+        style="@style/Item_RelativeLayout_ContacterItemStyle"
+        android:layout_marginTop="@dimen/size_1">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+        <TextView
+            style="@style/Item_RelativeLayout_TvLiftFriendStyle"
+            android:text="企信ID" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginTop="5dp"
-                    android:text="企信ID"
-                    android:textColor="#949494"
-                    android:textSize="12sp" />
-
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/user_head_content"
-                android:layout_width="fill_parent"
-                android:layout_height="25dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="5dip"
-                android:text="和佳制药"
-                android:textColor="#2E2F30"
-                android:textSize="16sp" />
-
-        </LinearLayout>
-
-        <!--<ImageView-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_alignParentRight="true"-->
-        <!--android:layout_centerVertical="true"-->
-        <!--android:layout_marginRight="13dp"-->
-        <!--android:src="@drawable/_uidic_forms_item_arrow" />-->
-
+        <TextView
+            android:id="@+id/user_head_content"
+            style="@style/Item_RelativeLayout_TvRightFriendStyle"
+            android:text="企信ID" />
     </RelativeLayout>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="@dimen/GCSmallPadding"
-        android:background="@color/actionbar_title_bg" />
 </LinearLayout>

@@ -704,4 +704,37 @@
         <item name="android:layout_marginLeft">@dimen/size_60</item>
         <item name="android:background">@color/item_group_bg</item>
     </style>
+
+    <!-- 个人信息中左边的标题 TextView  -->
+    <style name="Item_RelativeLayout_TvLiftFriendStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">@dimen/size_15</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">@dimen/font_size_16</item>
+        <item name="android:layout_centerVertical">true</item>
+    </style>
+
+    <!-- 个人信息中右边的标题 TextView 不带图标的 -->
+    <style name="Item_RelativeLayout_TvRightFriendStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginRight">@dimen/size_15</item>
+        <item name="android:textColor">@color/item_Friend_TvContentCl</item>
+        <item name="android:textSize">@dimen/font_size_16</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:layout_alignParentRight">true</item>
+    </style>
+    <!-- 个人信息中右边的标题 TextView 不带图标的 -->
+    <style name="Item_RelativeLayout_TvRightImgFriendStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingRight">@dimen/size_10</item>
+        <item name="android:textColor">@color/item_Friend_TvContentCl</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/font_size_16</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:drawableRight">@drawable/icon_right_orientation</item>
+    </style>
 </resources>
