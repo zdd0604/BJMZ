@@ -108,6 +108,8 @@ public class OrderFinding extends ActionBarWidgetActivity implements View.OnClic
     private LinearLayout first_price_layout;
     private TextView second_price_textview;
     private LinearLayout second_price_layout;
+    private boolean changeRow = false;//是否有需要改变列为左上对齐的，默认为没有，工作日志内容查询专用
+    private int changeRowNo;//需要改变对齐方式的列，仅限一列，如果是两列需要重新修改源码,定义为列数减2，如内容为第九列，该值为7
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -163,6 +165,7 @@ public class OrderFinding extends ActionBarWidgetActivity implements View.OnClic
         //不同表格的不同数据
         switch (Constant.tab_type) {
             case 0:
+                changeRow = false;
                 actionCenterTv.setText("订单查询");
                 tab_name = "dsaordquery";
                 table_date_from.setVisibility(View.VISIBLE);
@@ -172,6 +175,7 @@ public class OrderFinding extends ActionBarWidgetActivity implements View.OnClic
                 all_goneprice_layout.setVisibility(View.GONE);
                 break;
             case 1:
+                changeRow = false;
                 actionCenterTv.setText("应收账龄");
                 tab_name = "accountage";
                 table_date_from.setVisibility(View.GONE);
@@ -185,8 +189,11 @@ public class OrderFinding extends ActionBarWidgetActivity implements View.OnClic
                 table_date_from.setVisibility(View.VISIBLE);
                 table_date_to.setVisibility(View.VISIBLE);
                 all_goneprice_layout.setVisibility(View.GONE);
+                changeRow = true;
+                changeRowNo = 7;
                 break;
             case 3:
+                changeRow = false;
                 actionCenterTv.setText("订单明细");
                 tab_name = "dsaordquery";
                 table_date_from.setVisibility(View.VISIBLE);
@@ -196,6 +203,7 @@ public class OrderFinding extends ActionBarWidgetActivity implements View.OnClic
                 all_goneprice_layout.setVisibility(View.GONE);
                 break;
             case 4:
+                changeRow = false;
                 actionCenterTv.setText("客户应收");
                 tab_name = "accountage2";
                 table_date_from.setVisibility(View.GONE);
@@ -764,6 +772,9 @@ public class OrderFinding extends ActionBarWidgetActivity implements View.OnClic
         first_price_textview.setText(formatNum.format(firstPrice));
         second_price_textview.setText(formatNum.format(secondPrice));
         mLockTableView = new LockTableView2(this, linear_list, mTableDatas);
+        if (changeRow) {
+            mLockTableView.changeGravity(changeRowNo);
+        }
         mLockTableView.setLockFristColumn(true) //是否锁定第一列
                 .setLockFristRow(true) //是否锁定第一行
                 .setMaxColumnWidth(max_weight) //列最大宽度
@@ -777,6 +788,7 @@ public class OrderFinding extends ActionBarWidgetActivity implements View.OnClic
                 .setTableContentTextColor(R.color.black)//单元格字体颜色
                 .setNullableString("--") //空值替换值
                 .show(); //显示表格,此方法必须调用
+
         waitDialog.dismiss();
         Log.d("表格显示完毕。。。");
         mHandler.sendEmptyMessage(4);

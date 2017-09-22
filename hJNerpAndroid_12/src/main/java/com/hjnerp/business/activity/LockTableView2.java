@@ -59,6 +59,8 @@ public class LockTableView2 {
     private CustomHorizontalScrollView mUnLockScrollView;
     private ScrollView mTableScrollView;
     private int margin_num = 10;
+    private boolean changeRow = false;//是否要改变列的对齐方式
+    private int changedRow;//需要左上对齐的列（暂时用到工作日志为第9列）
 
     public LockTableView2(Context mContext, ViewGroup mContentView, ArrayList<ArrayList<String>> mTableDatas) {
         this.mContext = mContext;
@@ -373,7 +375,9 @@ public class LockTableView2 {
                 }
 
                 var23.setTextSize(2, (float) this.mTextViewSize);
-                var23.setGravity(17);
+                if (!changeRow || var22 != changedRow) {
+                    var23.setGravity(17);//居中对齐
+                }
                 var23.setText((CharSequence) var19.get(var22));
                 LayoutParams textViewParams = new LayoutParams(-2, -2);
                 textViewParams.setMargins(margin_num, margin_num, margin_num, margin_num);
@@ -667,6 +671,12 @@ public class LockTableView2 {
 
     public LockTableView2 setMinRowHeight(int minRowHeight) {
         this.minRowHeight = minRowHeight;
+        return this;
+    }
+
+    public LockTableView2 changeGravity(int changedRow) {
+        this.changedRow = changedRow;
+        changeRow = true;
         return this;
     }
 
