@@ -19,7 +19,7 @@
                 android:id="@+id/visit_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="@dimen/size_15"
                 android:orientation="vertical"
                 android:visibility="gone">
 
@@ -65,7 +65,7 @@
                 android:id="@+id/other_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="@dimen/size_15"
                 android:orientation="vertical"
                 android:visibility="gone">
 
@@ -111,7 +111,7 @@
                 android:id="@+id/find_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="@dimen/size_15"
                 android:orientation="vertical"
                 android:visibility="gone">
 
@@ -157,7 +157,7 @@
                 android:id="@+id/performance_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="@dimen/size_15"
                 android:orientation="vertical"
                 android:visibility="gone">
 

@@ -104,12 +104,13 @@ public class ContactExpandableListAdapter extends BaseExpandableListAdapter {
             ll_group.setBackgroundColor(Color.parseColor("#FFFFFF"));
             view1.setVisibility(View.VISIBLE);
             view2.setVisibility(View.GONE);
-            view3.setVisibility(View.GONE);
+            view3.setVisibility(View.VISIBLE);
         } else {
             grouprl.setVisibility(View.GONE);
             deptname.setCompoundDrawables(null, null, null, null);
+            deptname.setTextSize(14);
             view1.setVisibility(View.GONE);
-            view2.setVisibility(View.VISIBLE);
+            view2.setVisibility(View.GONE);
             view3.setVisibility(View.VISIBLE);
         }
         if (StringUtil.isNullOrEmpty(deptBean.getDeptName())) {

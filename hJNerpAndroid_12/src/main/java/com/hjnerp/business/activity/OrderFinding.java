@@ -755,7 +755,7 @@ public class OrderFinding extends ActionBarWidgetActivity implements View.OnClic
             max_weight = 280;
             max_height = 10000;
         } else {
-            max_weight = 100;
+            max_weight = 120;
             max_height = 200;
 
         }

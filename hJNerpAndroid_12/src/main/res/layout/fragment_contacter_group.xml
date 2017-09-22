@@ -14,7 +14,7 @@
 
     <View
         android:id="@+id/view2"
-        style="@style/Item_View_DividerStyle"/>
+        style="@style/Item_View_DividerStyle" />
 
     <TextView
         android:id="@+id/groupnmae"
@@ -70,6 +70,7 @@
         <TextView
             android:id="@+id/groupName"
             style="@style/Item_Group_TvImgStyle"
+            android:layout_height="@dimen/size_30"
             android:layout_gravity="center_vertical"
             android:gravity="center_vertical"
             android:text="groupName" />
