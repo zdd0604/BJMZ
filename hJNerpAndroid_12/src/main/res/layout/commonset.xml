@@ -10,16 +10,14 @@
         android:layout_width="fill_parent"
         android:layout_height="0.0px"
         android:layout_weight="1.0"
-        android:background="@color/ss_back"
         android:scrollbarThumbVertical="@drawable/scrollbar_handle_vertical"
         android:scrollbars="none">
 
-        <LinearLayout
-            style="@style/Item_LinearLayout_VerticalStyle"
-            android:layout_marginTop="@dimen/size_10"
-            android:background="@color/white">
+        <LinearLayout style="@style/Item_LinearLayout_VerticalStyle">
 
-            <View style="@style/full_screen_line1" />
+            <View
+                style="@style/Item_View_DividerStyle"
+                android:layout_marginTop="@dimen/size_10" />
 
             <TextView
                 android:id="@+id/rel_updatadate"
@@ -35,11 +33,11 @@
                 android:drawableLeft="@drawable/cspace_setting_down_data"
                 android:text="基础数据下载" />
 
-            <View style="@style/full_screen_line1" />
+            <View style="@style/Item_View_DividerStyle" />
 
-            <View style="@style/full_screen_line10" />
-
-            <View style="@style/full_screen_line1" />
+            <View
+                style="@style/full_screen_line1"
+                android:layout_marginTop="@dimen/size_10" />
 
             <TextView
                 android:id="@+id/rel_wrapdata"
@@ -57,9 +55,10 @@
 
             <View style="@style/full_screen_line1" />
 
-            <View style="@style/full_screen_line10" />
 
-            <View style="@style/full_screen_line1" />
+            <View
+                style="@style/full_screen_line1"
+                android:layout_marginTop="@dimen/size_10" />
 
             <TextView
                 android:id="@+id/rel_versioncheck"
@@ -77,9 +76,9 @@
 
             <View style="@style/full_screen_line1" />
 
-            <View style="@style/full_screen_line10" />
-
-            <View style="@style/full_screen_line1" />
+            <View
+                style="@style/full_screen_line1"
+                android:layout_marginTop="@dimen/size_10" />
 
             <TextView
                 android:id="@+id/rel_setpwd"
@@ -89,9 +88,9 @@
 
             <View style="@style/full_screen_line1" />
 
-            <View style="@style/full_screen_line10" />
-
-            <View style="@style/full_screen_line1" />
+            <View
+                style="@style/full_screen_line1"
+                android:layout_marginTop="@dimen/size_10" />
 
             <TextView
                 android:id="@+id/rel_hjabout"
@@ -101,13 +100,22 @@
 
             <View style="@style/full_screen_line1" />
 
-            <View style="@style/full_screen_line15" />
+            <View
+                style="@style/Item_View_DividerStyle"
+                android:layout_marginTop="@dimen/size_15" />
 
             <Button
                 android:id="@+id/app_logout"
-                style="@style/Item_Setting_AppOutStyle"
-                android:text="退出登录" />
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_44"
+                android:background="@drawable/app_out_btn_style"
+                android:gravity="center"
+                android:text="退出登录"
+                android:textColor="@color/black"
+                android:textSize="@dimen/font_size_18" />
 
+            <View style="@style/Item_View_DividerStyle" />
 
         </LinearLayout>
     </ScrollView>

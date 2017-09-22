@@ -39,5 +39,5 @@
             android:visibility="gone" />
     </RelativeLayout>
 
-    <View style="@style/Item_TextView_ActionBarViewDividerStyle" />
+    <View style="@style/Item_View_DividerStyle" />
 </LinearLayout>

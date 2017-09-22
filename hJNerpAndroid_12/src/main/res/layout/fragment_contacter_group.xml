@@ -9,12 +9,12 @@
 
     <View
         android:id="@+id/view1"
-        style="@style/Item_TextView_ActionBarViewDividerStyle"
+        style="@style/Item_View_DividerStyle"
         android:layout_marginLeft="@dimen/size_60" />
 
     <View
         android:id="@+id/view2"
-        style="@style/Item_TextView_ActionBarViewDividerStyle"/>
+        style="@style/Item_View_DividerStyle"/>
 
     <TextView
         android:id="@+id/groupnmae"
@@ -77,5 +77,5 @@
 
     <View
         android:id="@+id/view3"
-        style="@style/Item_TextView_ActionBarViewDividerStyle" />
+        style="@style/Item_View_DividerStyle" />
 </LinearLayout>

@@ -10,7 +10,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="#F7F7F7">
+        android:background="@color/actionbar_title_bg">
 
         <!--<LinearLayout-->
         <!--android:layout_width="wrap_content"-->
@@ -103,14 +103,10 @@
                 android:scaleType="fitCenter"
                 android:src="@drawable/icon_action_add" />
 
-
         </LinearLayout>
     </RelativeLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#d7d7d7" />
+    <View style="@style/Item_View_DividerStyle" />
 
     <LinearLayout
         android:layout_width="match_parent"
