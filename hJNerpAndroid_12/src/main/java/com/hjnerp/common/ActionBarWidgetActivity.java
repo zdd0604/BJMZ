@@ -4,6 +4,7 @@ import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextPaint;
 import android.util.Log;
 import android.widget.DatePicker;
 import android.widget.TextView;
@@ -119,6 +120,11 @@ public class ActionBarWidgetActivity extends ActivitySupport {
      */
     public void showFailToast(String content) {
         new MyToast2(mContext, content);
+    }
+
+    public static int getStringEidth(String string){
+        TextPaint newPaint = new TextPaint();
+        return (int) newPaint.measureText(string);
     }
 
 

@@ -36,8 +36,7 @@ public class BusinessSearchAdapter extends RecyclerView.Adapter<BusinessSearchAd
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        MyViewHolder holder = new MyViewHolder(LayoutInflater.from(mContext).inflate(
-                R.layout.bus_search_item, parent, false));
+        MyViewHolder holder = new MyViewHolder(LayoutInflater.from(mContext).inflate( R.layout.bus_search_item, parent, false));
         return holder;
     }
 
@@ -63,6 +62,7 @@ public class BusinessSearchAdapter extends RecyclerView.Adapter<BusinessSearchAd
                 holder.pro_text.setText(mContext.getString(R.string.sellOrder_Tile_Address));
                 holder.text_address.setText(mContext.getString(R.string.sellOrder_Tile_Relation));
                 holder.text_overclient.setText(mContext.getString(R.string.sellOrder_Tile_rcvcorr));
+
                 holder.item_overclient.setText(list.get(position).getId_corr());
                 holder.pro_text.setTextColor(Color.parseColor("#000000"));
                 holder.text_address.setTextColor(Color.parseColor("#888888"));

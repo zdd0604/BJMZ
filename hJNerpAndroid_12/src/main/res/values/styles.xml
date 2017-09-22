@@ -195,6 +195,13 @@
         <item name="android:orientation">vertical</item>
         <item name="android:background">@color/white</item>
     </style>
+    <!-- 垂直布局 自适应-->
+    <style name="Item_LinearLayout_VerticalDefaultWHStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:background">@color/white</item>
+    </style>
     <!-- 垂直布局 高宽全屏 -->
     <style name="Item_LinearLayout_VerticalStyle">
         <item name="android:layout_width">match_parent</item>
@@ -206,6 +213,15 @@
     <style name="Item_LinearLayout_HorizontalStyle">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/size_40</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_marginTop">@dimen/size_1</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+    <!-- 水平布局 高度40 -->
+    <style name="Item_LinearLayout_HorizontalDefaultHStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
         <item name="android:background">@color/white</item>
         <item name="android:gravity">center_vertical</item>
         <item name="android:layout_marginTop">@dimen/size_1</item>
@@ -301,6 +317,12 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/size_1</item>
         <item name="android:background">@color/actionbar_viewDivider_bg</item>
+    </style>
+    <!-- actionbar 分割线  -->
+    <style name="Item_View_LayoutViewDividerStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/size_1</item>
+        <item name="android:background">@color/item_viewDivider_bg</item>
     </style>
     <!-- 工作日志左侧标题  -->
     <style name="Item_LinearLayout_TVLeftTieleStyle">
@@ -415,7 +437,7 @@
 
     <!-- 工作日志左侧标题固定宽度  -->
     <style name="Item_LinearLayout_TVLeftTieleStyle2">
-        <item name="android:layout_width">@dimen/size_70</item>
+        <item name="android:layout_width">@dimen/size_65</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:textSize">@dimen/font_size_16</item>
         <item name="android:textColor">@color/black</item>
