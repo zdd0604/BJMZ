@@ -13,11 +13,16 @@
         android:scrollbarThumbVertical="@drawable/scrollbar_handle_vertical"
         android:scrollbars="none">
 
-        <LinearLayout style="@style/Item_LinearLayout_VerticalStyle">
+        <LinearLayout
+            style="@style/Item_LinearLayout_VerticalStyle"
+            android:background="@color/white">
 
             <View
-                style="@style/Item_View_DividerStyle"
-                android:layout_marginTop="@dimen/size_10" />
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_10"
+                android:background="@color/activity_bg" />
+
+            <View style="@style/Item_View_DividerStyle" />
 
             <TextView
                 android:id="@+id/rel_updatadate"
@@ -36,8 +41,11 @@
             <View style="@style/Item_View_DividerStyle" />
 
             <View
-                style="@style/full_screen_line1"
-                android:layout_marginTop="@dimen/size_10" />
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_10"
+                android:background="@color/activity_bg" />
+
+            <View style="@style/Item_View_DividerStyle" />
 
             <TextView
                 android:id="@+id/rel_wrapdata"
@@ -57,8 +65,11 @@
 
 
             <View
-                style="@style/full_screen_line1"
-                android:layout_marginTop="@dimen/size_10" />
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_10"
+                android:background="@color/activity_bg" />
+
+            <View style="@style/Item_View_DividerStyle" />
 
             <TextView
                 android:id="@+id/rel_versioncheck"
@@ -77,8 +88,11 @@
             <View style="@style/full_screen_line1" />
 
             <View
-                style="@style/full_screen_line1"
-                android:layout_marginTop="@dimen/size_10" />
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_10"
+                android:background="@color/activity_bg" />
+
+            <View style="@style/Item_View_DividerStyle" />
 
             <TextView
                 android:id="@+id/rel_setpwd"
@@ -89,8 +103,11 @@
             <View style="@style/full_screen_line1" />
 
             <View
-                style="@style/full_screen_line1"
-                android:layout_marginTop="@dimen/size_10" />
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_10"
+                android:background="@color/activity_bg" />
+
+            <View style="@style/Item_View_DividerStyle" />
 
             <TextView
                 android:id="@+id/rel_hjabout"
@@ -101,8 +118,11 @@
             <View style="@style/full_screen_line1" />
 
             <View
-                style="@style/Item_View_DividerStyle"
-                android:layout_marginTop="@dimen/size_15" />
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_10"
+                android:background="@color/activity_bg" />
+
+            <View style="@style/Item_View_DividerStyle" />
 
             <Button
                 android:id="@+id/app_logout"

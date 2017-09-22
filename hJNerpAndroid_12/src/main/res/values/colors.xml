@@ -555,4 +555,5 @@
     <color name="item_viewDivider_bg">#FFDAD8D8</color>
     <color name="activity_bg">#F8F8F8</color>
     <color name="item_group_bg">#f2efef</color>
+    <color name="acbar_view_bg">#D4D4D4</color>
 </resources>

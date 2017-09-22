@@ -106,7 +106,7 @@
         </LinearLayout>
     </RelativeLayout>
 
-    <View style="@style/Item_View_DividerStyle" />
+    <View style="@style/Item_TextView_ActionBarViewDividerStyle" />
 
     <LinearLayout
         android:layout_width="match_parent"
