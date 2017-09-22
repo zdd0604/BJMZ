@@ -156,8 +156,9 @@
 
             <LinearLayout
                 style="@style/Item_LinearLayout_HorizontalStyle"
-                android:layout_height="@dimen/size_110"
-                android:layout_marginTop="@dimen/size_1">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_1"
+                android:minHeight="@dimen/size_110">
 
                 <TextView
                     style="@style/Item_LinearLayout_TVLeftTieleStyle2"

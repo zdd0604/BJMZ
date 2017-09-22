@@ -752,11 +752,11 @@ public class OrderFinding extends ActionBarWidgetActivity implements View.OnClic
         int max_weight;
         int max_height;
         if (Constant.tab_type == 2) {
-            max_weight = 300;
+            max_weight = 280;
             max_height = 10000;
         } else {
             max_weight = 100;
-            max_height = 60;
+            max_height = 200;
 
         }
         DecimalFormat formatNum = new DecimalFormat(",##0.00");
@@ -770,10 +770,10 @@ public class OrderFinding extends ActionBarWidgetActivity implements View.OnClic
                 .setMinColumnWidth(10) //列最小宽度
                 .setMinRowHeight(20)//行最小高度
                 .setMaxRowHeight(max_height)//行最大高度
-                .setTextViewSize(12) //单元格字体大小
+                .setTextViewSize(14) //单元格字体大小
                 .setFristRowBackGroudColor(R.color.item_table_title_color)//表头背景色
                 .setTableHeadTextColor(R.color.white)//表头字体颜色
-                .setTableHeadTextSize(13)
+                .setTableHeadTextSize(15)
                 .setTableContentTextColor(R.color.black)//单元格字体颜色
                 .setNullableString("--") //空值替换值
                 .show(); //显示表格,此方法必须调用

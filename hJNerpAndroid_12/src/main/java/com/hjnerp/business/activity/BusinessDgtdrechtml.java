@@ -34,8 +34,11 @@ import com.hjnerp.widget.ClearEditText;
 import com.hjnerpandroid.R;
 import com.lzy.okgo.OkGo;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -136,7 +139,7 @@ public class BusinessDgtdrechtml extends ActionBarWidgetActivity implements View
         dgtdrechtml_submit.setOnClickListener(this);
         log_flag_wadd.setOnClickListener(this);
         log_id_wtype.setOnClickListener(this);
-
+        log_date_task.setText(new SimpleDateFormat("yyyy-MM-dd", Locale.CHINA).format(new Date()));//默认显示当前时间
         //方便后期判断进行版本设计
 //        if (QiXinBaseDao.queryCurrentUserInfo().companyID.equalsIgnoreCase("CM1101-0001")){
 //            pro_text.setText("客户名称");
