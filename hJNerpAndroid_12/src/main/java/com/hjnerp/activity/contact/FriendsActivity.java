@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.database.Cursor;
@@ -17,6 +18,7 @@ import android.os.Looper;
 import android.os.Message;
 import android.provider.MediaStore;
 import android.support.v4.content.FileProvider;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -1075,13 +1077,15 @@ public class FriendsActivity extends ActionBarWidgetActivity implements OnClickL
                     showsetNoteDialog();
                 } else {
                     if (!isPermissions(new String[]{XPermissions.CALL_PHONE})) {
-                        toastLONG("拨打电话未授权！");
+                        showFailToast("拨打电话未授权！");
                         return;
                     }
-                    String inputStr = friend.getFriendmtel();
-                    Intent phoneIntent = new Intent("android.intent.action.CALL",
-                            Uri.parse("tel:" + inputStr));
-                    startActivity(phoneIntent);
+                    String phone = friend.getFriendmtel();
+                    if (!StringUtil.isStrTrue(phone)) {
+                        showFailToast("手机号不能为空！");
+                        return;
+                    }
+                    showDialog(phone);
                 }
                 break;
             case R.id.rl_email:
@@ -1208,5 +1212,28 @@ public class FriendsActivity extends ActionBarWidgetActivity implements OnClickL
         }
     }
 
+    /**
+     * 拨打电话弹框
+     *
+     * @param phone
+     */
+    private void showDialog(final String phone) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
+        builder.setMessage(phone);
+        builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
 
+            }
+        });
+        builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Intent phoneIntent = new Intent("android.intent.action.CALL", Uri.parse("tel:" + phone));
+                startActivity(phoneIntent);
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
 }
