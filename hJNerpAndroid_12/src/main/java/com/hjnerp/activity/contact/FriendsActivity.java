@@ -1142,7 +1142,8 @@ public class FriendsActivity extends ActionBarWidgetActivity implements OnClickL
             //点击更换头像
             case R.id.user_head_layout:
 //                showSelectPicDialog();
-                popupWindow();
+                if (friend.getFriendid().equals(sputil.getMyId())) // 我自己的详情
+                    popupWindow();
                 break;
             //点击头像查看照片
             case R.id.user_head_avatar:
