@@ -415,11 +415,6 @@ public class TravelActivityNew extends ActionBarWidgetActivity implements View.O
         }
     }
 
-    private void intentActivity(Class c) {
-        Intent itent = new Intent(this, c);
-        startActivity(itent);
-    }
-
     /**
      * 获取数据
      *

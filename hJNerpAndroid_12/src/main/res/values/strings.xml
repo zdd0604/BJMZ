@@ -82,7 +82,6 @@
     <string name="viewpager_indicator">%1$d/%2$d</string>
 
 
-
     <string name="main_tab_im">消息</string>
     <string name="main_tab_contact">联系人</string>
     <string name="main_tab_business">业务</string>
@@ -179,5 +178,7 @@
 
     <!-- 登陆注册 -->
     <string name="MyInfor_Title_DepartmentName">部门：</string>
+    <!-- 个人信息中心 -->
+    <string name="MyInfor_Title_PhotoPortrait">个人头像</string>
 
 </resources>

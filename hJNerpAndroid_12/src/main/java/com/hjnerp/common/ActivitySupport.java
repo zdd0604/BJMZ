@@ -52,6 +52,8 @@ import com.hjnerp.widget.WaitDialog;
 import com.hjnerp.widget.WaitDialogRectangle;
 import com.hjnerpandroid.R;
 import com.nostra13.universalimageloader.core.ImageLoader;
+import com.sdyy.utils.XPermissionListener;
+import com.sdyy.utils.XPermissions;
 
 import java.util.List;
 import java.util.Map;
@@ -89,7 +91,8 @@ public class ActivitySupport extends ActionBarActivity implements
     private int saveMsgIndbFlag = 0; // 异步储存msg的返回值,0代表不能插入
 
     private static boolean isFromBackToFront = false;
-
+    //是否授权
+    public boolean isPsions = false;
     /**
      * @author haijian 增加变量判断键盘是否收回
      */
@@ -273,6 +276,26 @@ public class ActivitySupport extends ActionBarActivity implements
      */
     public static String getTvVaule(TextView textView) {
         return textView.getText().toString().trim();
+    }
+    /**
+     * 判断是否授权
+     *
+     * @param psions
+     * @return
+     */
+    public boolean isPermissions(String[] psions) {
+        XPermissions.getPermissions(psions, (Activity) context, new XPermissionListener() {
+            @Override
+            public void onAcceptAccredit() {
+                isPsions = true;
+            }
+
+            @Override
+            public void onRefuseAccredit(String[] results) {
+                isPsions = false;
+            }
+        });
+        return isPsions;
     }
 
 

@@ -3,7 +3,7 @@
     android:id="@+id/user_info_detail"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:background="@color/activity_bg"
+    android:background="@color/white"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -19,6 +19,8 @@
             style="@style/Item_RelativeLayout_TvRightFriendStyle"
             android:text="部门" />
     </RelativeLayout>
+
+    <View style="@style/Item_View_DividerStyle" />
 
     <RelativeLayout
         android:id="@+id/rl_phone"
@@ -38,6 +40,8 @@
             android:text="18809889099" />
 
     </RelativeLayout>
+
+    <View style="@style/Item_View_DividerStyle" />
 
     <RelativeLayout
         android:id="@+id/rl_email"

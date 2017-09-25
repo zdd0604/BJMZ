@@ -239,7 +239,6 @@
             android:name="com.hjnerp.activity.ExitAppActivity"
             android:launchMode="standard" />
 
-
         <service
             android:name="com.hjnerp.service.IMChatService"
             android:enabled="true"
@@ -332,7 +331,7 @@
             android:theme="@style/Theme.HjNoActionBar"
             android:windowSoftInputMode="stateHidden|adjustResize" />
 
-        <!-- 搜索共用类 单行-->
+        <!-- 搜索共用类 单行 -->
         <activity
             android:name="com.hjnerp.business.activity.BusinessSearchOneLine"
             android:screenOrientation="portrait"
@@ -343,7 +342,6 @@
             android:name="com.hjnerp.service.WorkService"
             android:enabled="true"
             android:exported="true" />
-
 
         <provider
             android:name="android.support.v4.content.FileProvider"
@@ -406,7 +404,12 @@
             android:screenOrientation="portrait"
             android:theme="@style/Theme.HjNoActionBar"
             android:windowSoftInputMode="stateHidden|adjustResize" />
-        <activity android:name="com.hjnerp.business.activity.OrderEdit"></activity>
+        <activity android:name="com.hjnerp.business.activity.OrderEdit" />
+        <!-- 个人头像界面 -->
+        <activity
+            android:name="com.hjnerp.activity.myinfo.ShowPortraitActivity"
+            android:theme="@style/Theme.HjNoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
     </application>
 
 </manifest>

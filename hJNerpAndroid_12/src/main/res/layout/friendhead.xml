@@ -3,12 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:background="@color/activity_bg"
+    android:background="@color/white"
     android:orientation="vertical">
 
     <RelativeLayout
         android:id="@+id/user_head_layout"
-        style="@style/Item_RelativeLayout_DefaultStyle">
+        android:layout_height="@dimen/size_55"
+        style="@style/Item_RelativeLayout_ContacterItemStyle">
 
         <TextView
             style="@style/Item_RelativeLayout_TvLiftFriendStyle"
@@ -25,8 +26,8 @@
 
         <com.hjnerp.widget.BubbleImageView
             android:id="@+id/user_head_avatar"
-            android:layout_width="@dimen/size_60"
-            android:layout_height="@dimen/size_60"
+            android:layout_width="@dimen/size_40"
+            android:layout_height="@dimen/size_40"
             android:layout_centerVertical="true"
             android:layout_gravity="center_horizontal"
             android:layout_marginRight="10dp"
@@ -36,13 +37,15 @@
             android:scaleType="centerCrop"
             android:src="@drawable/v5_0_1_profile_headphoto"
             android:visibility="visible"
-            app:bubble_angle="30dp"
+            app:bubble_angle="@dimen/size_20"
             app:bubble_arrowHeight="0dp"
             app:bubble_arrowLocation="right"
             app:bubble_arrowOffset="0dp"
             app:bubble_arrowTop="0dp"
             app:bubble_arrowWidth="0dp" />
     </RelativeLayout>
+
+    <View style="@style/Item_View_DividerStyle" />
 
     <RelativeLayout
         style="@style/Item_RelativeLayout_ContacterItemStyle"
@@ -58,6 +61,8 @@
             android:text="昵称" />
     </RelativeLayout>
 
+    <View style="@style/Item_View_DividerStyle" />
+
     <RelativeLayout
         style="@style/Item_RelativeLayout_ContacterItemStyle"
         android:layout_marginTop="@dimen/size_1">
@@ -71,4 +76,6 @@
             style="@style/Item_RelativeLayout_TvRightFriendStyle"
             android:text="企信ID" />
     </RelativeLayout>
+
+    <View style="@style/Item_View_DividerStyle" />
 </LinearLayout>

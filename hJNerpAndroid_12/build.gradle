@@ -51,20 +51,20 @@ dependencies {
     compile files('libs/BaiduLBS_Android.jar')
     compile files('libs/XPermissions.jar')
     compile project(':librarys')
-    compile 'com.lovedise:permissiongen:0.0.6'
-    compile 'com.miguelcatalan:materialsearchview:1.4.0'
     compile 'com.android.support:appcompat-v7:' + supportVersion
     compile 'com.android.support:recyclerview-v7:' + supportVersion
     compile 'com.android.support:support-v4:' + supportVersion
+    compile 'com.lovedise:permissiongen:0.0.6'
+    compile 'com.miguelcatalan:materialsearchview:1.4.0'
     compile 'com.github.bumptech.glide:glide:3.6.1'
     compile 'com.lzy.net:okgo:2.1.4'
     compile 'com.github.RmondJone:LockTableView:1.0.4'
     compile 'com.google.code.gson:gson:2.8.0'
     compile 'com.android.support.constraint:constraint-layout:1.0.0-beta3'
-    debugCompile 'com.amitshekhar.android:debug-db:1.0.1'
     compile 'com.facebook.stetho:stetho:1.5.0'
     compile 'com.baoyz.actionsheet:library:1.1.7'
     compile 'com.jakewharton:butterknife:8.8.0'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.0'
     compile 'com.github.open-android:RoundedImageView:v1.0.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.0'
+    debugCompile 'com.amitshekhar.android:debug-db:1.0.1'
 }

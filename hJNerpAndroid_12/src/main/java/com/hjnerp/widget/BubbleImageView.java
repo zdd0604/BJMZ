@@ -26,7 +26,7 @@ import android.util.TypedValue;
  * @date 2014-7-19
  * 
  */
-public class BubbleImageView extends ImageView {
+public class BubbleImageView extends android.support.v7.widget.AppCompatImageView {
 
 	private static final int LOCATION_LEFT = 0;
 	private static final Bitmap.Config BITMAP_CONFIG = Bitmap.Config.ARGB_8888;

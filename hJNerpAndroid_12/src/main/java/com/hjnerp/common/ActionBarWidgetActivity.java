@@ -95,12 +95,28 @@ public class ActionBarWidgetActivity extends ActivitySupport {
     /**
      * bundle
      *
-     * @param from
      * @param to
      */
-    public void intentActivity(Context from, Class to, Bundle bundle) {
-        Intent intent = new Intent(from, to);
+    public void intentActivity(Class to, Bundle bundle) {
+        Intent intent = new Intent(mContext, to);
         intent.putExtras(bundle);
+        startActivity(intent);
+    }
+
+    public void intentActivity(Class toClass, int ac_type, Bundle bundle) {
+        Intent intent = new Intent(this, toClass);
+        intent.putExtras(bundle);
+        startActivityForResult(intent, ac_type);
+    }
+
+
+    /**
+     * bundle
+     *
+     * @param to
+     */
+    public void intentActivity(Class to) {
+        Intent intent = new Intent(mContext, to);
         startActivity(intent);
     }
 
@@ -122,7 +138,7 @@ public class ActionBarWidgetActivity extends ActivitySupport {
         new MyToast2(mContext, content);
     }
 
-    public static int getStringEidth(String string){
+    public static int getStringEidth(String string) {
         TextPaint newPaint = new TextPaint();
         return (int) newPaint.measureText(string);
     }

@@ -260,6 +260,7 @@
     <dimen name="size_25">25dp</dimen>
     <dimen name="size_30">30dp</dimen>
     <dimen name="size_35">35dp</dimen>
+    <dimen name="size_36">36dp</dimen>
     <dimen name="size_38">38dp</dimen>
     <dimen name="size_40">40dp</dimen>
     <dimen name="size_44">44dp</dimen>

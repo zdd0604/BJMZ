@@ -311,7 +311,7 @@ public class BusinessDgtdrechtml extends ActionBarWidgetActivity implements View
         }
     }
 
-    private void intentActivity(Class c) {
+    public void intentActivity(Class c) {
         Intent intent = new Intent(this, c);
         Constant.travel = true;
         startActivityForResult(intent, 11);
