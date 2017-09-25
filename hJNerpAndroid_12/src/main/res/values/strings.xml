@@ -150,6 +150,8 @@
     <string name="dialog_Message_submitData">正在提交数据</string>
     <string name="dialog_Message_upLoadData">正在加载数据</string>
     <string name="dialog_Message_selectData">正在查询数据</string>
+    <string name="dialog_Message_saveSucc">保存成功</string>
+    <string name="dialog_Message_upSucc">上传成功</string>
 
     <!-- dialog提示语 -->
     <string name="orderFinding_Title_TlActivity">订单查询</string>
@@ -180,5 +182,12 @@
     <string name="MyInfor_Title_DepartmentName">部门：</string>
     <!-- 个人信息中心 -->
     <string name="MyInfor_Title_PhotoPortrait">个人头像</string>
+    <string name="toast_Title_PortraitFail">头像设置失败</string>
+    <string name="toast_Title_ChangeSucc">修改成功</string>
+    <string name="toast_Title_ChangeFail">修改失败</string>
+    <string name="toast_Title_ChangePhone">修改手机号</string>
+    <string name="toast_Title_ChangeRemark">修改备注</string>
+    <string name="toast_Title_ChangeEmail">修改邮箱</string>
+    <string name="toast_Title_CheckMsg">验证信息</string>
 
 </resources>

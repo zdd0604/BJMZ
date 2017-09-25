@@ -241,17 +241,13 @@ public class FriendsActivity extends ActionBarWidgetActivity implements OnClickL
     private OnClickListener setOnClick = new OnClickListener() {
         public void onClick(View v) {
             menuSet.dismiss();
-
             switch (v.getId()) {
-
                 case R.id.linear_delete:
                     // show dialog if delete friend
                     showNoticeDialog();
                     break;
-
                 default:
                     break;
-
             }
         }
     };
@@ -748,14 +744,14 @@ public class FriendsActivity extends ActionBarWidgetActivity implements OnClickL
                                         } else {
                                             com.hjnerp.util.Log.w(msg);
                                             waitDialogRectangle.dismiss();
-                                            showFailToast("头像设置失败");
+                                            showFailToast(mContext.getString(R.string.toast_Title_PortraitFail));
                                         }
                                     }
                                 });
                     } catch (Exception e) {
                         // com.hjnerp.util.Log.e(e);
                         waitDialogRectangle.dismiss();
-                        showFailToast("头像设置失败");
+                        showFailToast(mContext.getString(R.string.toast_Title_PortraitFail));
                     }
                 }
                 if (tempFile != null && tempFile.exists()) {
@@ -832,6 +828,7 @@ public class FriendsActivity extends ActionBarWidgetActivity implements OnClickL
                                                                                         content,
                                                                                         ChatConstants.iq.DATA_VALUE_RES_TYPE_ATTACH),
                                                                                 photo);
+                                                                showFailToast(mContext.getString(R.string.dialog_Message_saveSucc));
                                                             }
                                                         });
                                                     }
@@ -865,7 +862,7 @@ public class FriendsActivity extends ActionBarWidgetActivity implements OnClickL
                                     if (waitDialogRectangle != null
                                             && waitDialogRectangle.isShowing())
                                         waitDialogRectangle.dismiss();
-                                    showFailToast("头像设置失败");
+                                    showFailToast(mContext.getString(R.string.toast_Title_PortraitFail));
                                 }
 
                             }
@@ -916,26 +913,26 @@ public class FriendsActivity extends ActionBarWidgetActivity implements OnClickL
                 }
                 emailhomeEdit.setText(extra_note);
                 // 添加提示框
-                showFailToast("修改成功");
+                showFailToast(mContext.getString(R.string.toast_Title_ChangeSucc));
             }
             if ("setphone_ok".equalsIgnoreCase(mmsg)) {
                 if (waitDialogRectangle != null && waitDialogRectangle.isShowing()) {
                     waitDialogRectangle.dismiss();
                 }
                 mobileEdit.setText(extra_note);
-                showFailToast("修改成功");
+                showFailToast(mContext.getString(R.string.toast_Title_ChangeSucc));
             }
             if ("setemail_error".equalsIgnoreCase(mmsg)) {
                 if (waitDialogRectangle != null && waitDialogRectangle.isShowing()) {
                     waitDialogRectangle.dismiss();
                 }
-                showFailToast("修改失败");
+                showFailToast(mContext.getString(R.string.toast_Title_ChangeFail));
             }
             if ("setphone_error".equalsIgnoreCase(mmsg)) {
                 if (waitDialogRectangle != null && waitDialogRectangle.isShowing()) {
                     waitDialogRectangle.dismiss();
                 }
-                showFailToast("修改失败");
+                showFailToast(mContext.getString(R.string.toast_Title_ChangeFail));
             }
             if ("session_error".equalsIgnoreCase(mmsg)) {
                 if (waitDialogRectangle != null && waitDialogRectangle.isShowing()) {
@@ -943,10 +940,7 @@ public class FriendsActivity extends ActionBarWidgetActivity implements OnClickL
                 }
                 isForcedExit(ChatConstants.error_string.ERROR_STRING_SESSION_INVALID);
             }
-
         }
-
-        ;
     };
 
     /* 添加验证信息 */
@@ -964,19 +958,19 @@ public class FriendsActivity extends ActionBarWidgetActivity implements OnClickL
                 .findViewById(R.id.dialog_group_cancel_tv);
         switch (flag_setwhat) {
             case ADD_FRIEND:// 添加好友
-                title.setText("验证信息");
+                title.setText(mContext.getString(R.string.toast_Title_CheckMsg));
                 String text = "我是";
                 et_note.setText(text);
                 et_note.setSelection(text.length());
                 break;
             case SET_EMAIL:
-                title.setText("修改邮箱");
+                title.setText(mContext.getString(R.string.toast_Title_ChangeEmail));
                 break;
             case SET_PHONE:
-                title.setText("修改手机号");
+                title.setText(mContext.getString(R.string.toast_Title_ChangePhone));
                 break;
             case SET_REMARK:
-                title.setText("修改备注");
+                title.setText(mContext.getString(R.string.toast_Title_ChangeRemark));
                 break;
             default:
                 break;
@@ -1018,7 +1012,6 @@ public class FriendsActivity extends ActionBarWidgetActivity implements OnClickL
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
     }
-
 
     @Override
     public void onClick(View v) {
@@ -1157,28 +1150,6 @@ public class FriendsActivity extends ActionBarWidgetActivity implements OnClickL
     }
 
     /**
-     * 底部popupwindow弹框
-     */
-    private void popupWindow() {
-        setTheme(R.style.ActionSheetStyleiOS7);
-        ActionSheet.createBuilder(this, getSupportFragmentManager())
-                .setCancelButtonTitle("取消")
-                .setOtherButtonTitles("拍照", "从手机相册选择")
-                .setCancelableOnTouchOutside(true)
-                .setListener(this).show();
-    }
-
-    @Override
-    public void onDismiss(ActionSheet actionSheet, boolean isCancel) {
-
-    }
-
-    @Override
-    public void onOtherButtonClick(ActionSheet actionSheet, int index) {
-        dateCommit(index);
-    }
-
-    /**
      * 判断点击的是什么
      *
      * @param index
@@ -1236,5 +1207,27 @@ public class FriendsActivity extends ActionBarWidgetActivity implements OnClickL
         });
         AlertDialog dialog = builder.create();
         dialog.show();
+    }
+
+    /**
+     * 底部popupwindow弹框
+     */
+    private void popupWindow() {
+        setTheme(R.style.ActionSheetStyleiOS7);
+        ActionSheet.createBuilder(this, getSupportFragmentManager())
+                .setCancelButtonTitle("取消")
+                .setOtherButtonTitles("拍照", "从手机相册选择")
+                .setCancelableOnTouchOutside(true)
+                .setListener(this).show();
+    }
+
+    @Override
+    public void onDismiss(ActionSheet actionSheet, boolean isCancel) {
+
+    }
+
+    @Override
+    public void onOtherButtonClick(ActionSheet actionSheet, int index) {
+        dateCommit(index);
     }
 }
