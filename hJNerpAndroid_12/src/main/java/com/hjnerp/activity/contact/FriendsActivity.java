@@ -257,7 +257,7 @@ public class FriendsActivity extends ActionBarWidgetActivity implements OnClickL
      */
     private void setEmai() {
         if (!isEmail(extra_note)) {
-            showFailToast("请输入正确的邮箱！");
+            showFailToast(mContext.getString(R.string.toast_Title_EmailFail));
             return;
         }
         mThread = new Thread() {
@@ -290,7 +290,7 @@ public class FriendsActivity extends ActionBarWidgetActivity implements OnClickL
      */
     private void setPhone() {
         if (!isMobileNO(extra_note)) {
-            showFailToast("请输入正确的手机号");
+            showFailToast(mContext.getString(R.string.toast_Title_PhoneFail));
             return;
         }
         mThread = new Thread() {

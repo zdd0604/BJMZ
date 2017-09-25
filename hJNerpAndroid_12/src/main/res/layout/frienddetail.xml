@@ -73,4 +73,6 @@
         android:textColor="@color/white"
         android:textSize="18sp" />
 
+    <View style="@style/Item_View_DividerStyle" />
+
 </LinearLayout>

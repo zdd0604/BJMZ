@@ -11,13 +11,14 @@
         android:layout_width="fill_parent"
         android:layout_height="0.0px"
         android:layout_weight="1.0"
-        android:background="@color/white"
+        android:background="@color/activity_bg"
         android:scrollbarThumbVertical="@drawable/scrollbar_handle_vertical"
         android:scrollbars="none">
 
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
+            android:layout_marginTop="@dimen/size_10"
             android:isScrollContainer="true"
             android:orientation="vertical"
             android:paddingBottom="12.0dip">

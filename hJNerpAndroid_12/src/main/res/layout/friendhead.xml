@@ -6,10 +6,12 @@
     android:background="@color/white"
     android:orientation="vertical">
 
+    <View style="@style/Item_View_DividerStyle" />
+
     <RelativeLayout
         android:id="@+id/user_head_layout"
-        android:layout_height="@dimen/size_55"
-        style="@style/Item_RelativeLayout_ContacterItemStyle">
+        style="@style/Item_RelativeLayout_ContacterItemStyle"
+        android:layout_height="@dimen/size_55">
 
         <TextView
             style="@style/Item_RelativeLayout_TvLiftFriendStyle"

@@ -189,5 +189,7 @@
     <string name="toast_Title_ChangeRemark">修改备注</string>
     <string name="toast_Title_ChangeEmail">修改邮箱</string>
     <string name="toast_Title_CheckMsg">验证信息</string>
+    <string name="toast_Title_PhoneFail">请输入正确的手机号!</string>
+    <string name="toast_Title_EmailFail">请输入正确的邮箱!</string>
 
 </resources>
