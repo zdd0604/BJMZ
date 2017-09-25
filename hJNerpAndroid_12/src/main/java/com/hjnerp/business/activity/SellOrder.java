@@ -92,13 +92,12 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
     private String name_corr;
     private String id_corr;
     private String dec_acclimit;
+    private String orderTicket_id;
     private String a;
     private String b;
     private int no;
-    private int countDetail;
-    private String old_var_invaddr;
-    private String old_var_tel;
-    private String old_var_contact;
+    private int countDetail;//列表返回的明细行数
+
     private Spinner sell_order_invexpress;
     @BindView(R.id.action_left_tv)
     TextView actionLeftTv;
@@ -126,7 +125,7 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
     @BindView(R.id.sell_order_address)
     TextView sell_order_address;
     @BindView(R.id.sell_order_ticket_type)
-    Spinner sell_order_ticket_type;
+    TextView sell_order_ticket_type;
     @BindView(R.id.sell_order_ticket_time)
     TextView sell_order_ticket_time;
     @BindView(R.id.sell_order_space)
@@ -143,6 +142,11 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
     Spinner sell_order_express;
     @BindView(R.id.sellord_scroll)
     ScrollView sellord_scroll;
+    private String dec_scorramt;
+    private String id_zone;
+    private String id_area;
+    private String id_corrtype;
+    private String id_industry;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -171,7 +175,7 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
         sell_order_ticket_time.setOnClickListener(this);
         sell_order_terminal.setOnClickListener(this);
         sell_order_address.setOnClickListener(this);
-        sell_order_ticket_type = (Spinner) findViewById(R.id.sell_order_ticket_type);
+        sell_order_ticket_type = (TextView) findViewById(R.id.sell_order_ticket_type);
         sell_order_ticket_time = (TextView) findViewById(R.id.sell_order_ticket_time);
         sell_order_ticket_time.setOnClickListener(this);
         sell_order_space = (Spinner) findViewById(R.id.sell_order_space);
@@ -253,9 +257,9 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
             orderTicketType.add(dsaordtype.getName_invtype());
             orderTicketType_id.add(dsaordtype.getId_invtype());
         }
-        adapter = new ArrayAdapter<String>(this, R.layout.spinner_item, orderTicketType);
-        adapter.setDropDownViewResource(R.layout.spinner_item_hint);
-        sell_order_ticket_type.setAdapter(adapter);
+//        adapter = new ArrayAdapter<String>(this, R.layout.spinner_item, orderTicketType);
+//        adapter.setDropDownViewResource(R.layout.spinner_item_hint);
+//        sell_order_ticket_type.setAdapter(adapter);
         orderSpace.add("是");
         orderSpace.add("否");
         adapter = new ArrayAdapter<String>(this, R.layout.spinner_item, orderSpace);
@@ -273,7 +277,10 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
             Constant.billsNo = "";
             SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS");
             SimpleDateFormat f2 = new SimpleDateFormat("yyyy-MM-dd");
-            a = f.format(calendar.getTime());
+            if (TextUtils.isEmpty(a)){
+                a = f.format(calendar.getTime());
+
+            }
             b = f2.format(calendar.getTime());
             no = 0;
             SellOrderModel sellOrderModel = new SellOrderModel();
@@ -283,6 +290,7 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
             sellDetails.add(sellOrderModel);
             no++;
         } else {
+
             Constant.billsNo = performanceDatas.getMain().getDsaord_no();
             var_title_code.setText(Constant.billsNo);
 
@@ -293,17 +301,18 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
 //            sell_order_addess_send.setAdapter(adapter);
             sell_order_address.setText(performanceDatas.getMain().getVar_addr());
             sell_order_addess_send.setText(performanceDatas.getMain().getVar_invaddr());
-            old_var_invaddr = performanceDatas.getMain().getVar_invaddr();
+            id_zone = performanceDatas.getMain().getId_zone();
+            id_area = performanceDatas.getMain().getId_area();
+            id_corrtype = performanceDatas.getMain().getId_corrtype();
+            id_industry = performanceDatas.getMain().getId_industry();
             var_rcvcorr = performanceDatas.getMain().getVar_rcvcorr();
             id_terminal = performanceDatas.getMain().getId_terminal();
             name_terminal = performanceDatas.getMain().getName_terminal();
             dec_acclimit = performanceDatas.getMain().getDec_acclimit();
             var_tel = performanceDatas.getMain().getVar_tel();
-            old_var_tel = performanceDatas.getMain().getVar_invtel();
             var_inv_tel = performanceDatas.getMain().getVar_invtel();
             var_inv_contact = performanceDatas.getMain().getVar_invcontact();
             var_contact = performanceDatas.getMain().getVar_contact();
-            old_var_contact = performanceDatas.getMain().getVar_invcontact();
 //            id_seller = performanceDatas.getMain().getId_seller();
             id_corr = performanceDatas.getMain().getId_corr();
             name_corr = performanceDatas.getMain().getName_corr();
@@ -325,7 +334,8 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
             }
             for (int i = 0; i < orderTicketType_id.size(); i++) {
                 if (performanceDatas.getMain().getId_invtype().equalsIgnoreCase(orderTicketType_id.get(i))) {
-                    sell_order_ticket_type.setSelection(i);
+                    sell_order_ticket_type.setText(orderTicketType.get(i));
+                    orderTicket_id = orderTicketType_id.get(i);
                 }
             }
             for (int i = 0; i < orderExpress_id.size(); i++) {
@@ -360,6 +370,9 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
                 sellOrderModel.setPer_price(Double.valueOf(performanceDatas.getDetails().get(i).getDec_price()));
                 sellOrderModel.setId_item(performanceDatas.getDetails().get(i).getId_item());
                 sellOrderModel.setId_sell(performanceDatas.getDetails().get(i).getId_satype());
+                sellOrderModel.setId_stocktype(performanceDatas.getDetails().get(i).getId_stocktype());
+                sellOrderModel.setId_itemcate(performanceDatas.getDetails().get(i).getId_itemcate());
+                sellOrderModel.setId_stockstyle(performanceDatas.getDetails().get(i).getId_stockstyle());
                 sellDetails.add(sellOrderModel);
                 no++;
             }
@@ -563,8 +576,8 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
         stringBuffer.append("\"menuid\":\"002020\",\"dealtype\":\"" + save + "\",\"data\":[");
         //{"table_name":"dsaord_03","table_no":"SO201708000295","table_no_name":"dsaord_no","values":[{"dealtype":"U","line_no":"1","name_corr":"123456"},{"dealtype":"N","line_no":"2","name_corr":"123456"},{"dealtype":"N","line_no":"4","name_corr":"123456"},{"dealtype":"N","line_no":"3","name_corr":"123456"}]}
 //        stringBuffer2.append("")
-        int gap = 0;
-        int cycleTime = 0;
+        int gap = 0;//增加的明细，如果是正，就为新增，负数为删除个数
+        int cycleTime = 0;//提交明细的次数
         if (Constant.JUDGE_TYPE) {
             gap = 0;
             cycleTime = sellDetails.size();//总单据行数
@@ -605,6 +618,7 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
 //                continue;
             } else {
                 stringBuffer.append("{\"table\": \"dsaord_03\",\"oprdetail\":\"N\",\"where\":\" \",\"data\":[");
+                stringBuffer.append("{\"column\":\"date_opr\",\"value\":\"" + a + "\",\"datatype\":\"datetime\"}, ");
 
             }
             valuesBean.setFlag_sts("L");
@@ -617,8 +631,19 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
             valuesBean.setId_recorder(userID);
             valuesBean.setId_dept(id_dept);
             valuesBean.setDate_sign(b);
-
+/**
+ * private String dec_scorramt;
+ private String id_zone;
+ private String id_area;
+ private String id_corrtype;
+ private String id_industry;
+ */
             valuesBean.setId_flow("FBsa");
+            valuesBean.setDec_scorramt(String.valueOf(allprice));
+            valuesBean.setId_zone(id_zone);
+            valuesBean.setId_area(id_area);
+            valuesBean.setId_corrtype(id_corrtype);
+            valuesBean.setId_industry(id_industry);
             valuesBean.setLine_no((String.valueOf(i + 1)));
             valuesBean.setId_ordsource("001");
             valuesBean.setId_curr("CNY");
@@ -634,7 +659,7 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
             valuesBean.setId_terminal(id_terminal);
             valuesBean.setName_terminal(name_terminal);
             valuesBean.setId_ordtype(orderType_id.get(sell_order_type.getSelectedItemPosition()));
-            valuesBean.setId_invtype(orderTicketType_id.get(sell_order_ticket_type.getSelectedItemPosition()));
+            valuesBean.setId_invtype(orderTicket_id);
             valuesBean.setVar_remark(more);
 
             stringBuffer.append("{\"column\":\"flag_sts\",\"value\":\"L\",\"datatype\":\"varchar\"},");
@@ -666,7 +691,7 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
             stringBuffer.append("{\"column\":\"id_terminal\",\"value\":\"" + id_terminal + "\",\"datatype\":\"varchar\"}, ");
             stringBuffer.append("{\"column\":\"name_terminal\",\"value\":\"" + name_terminal + "\",\"datatype\":\"varchar\"}, ");
             stringBuffer.append("{\"column\":\"id_ordtype\",\"value\":\"" + orderType_id.get(sell_order_type.getSelectedItemPosition()) + "\",\"datatype\":\"varchar\"}, ");
-            stringBuffer.append("{\"column\":\"id_invtype\",\"value\":\"" + orderTicketType_id.get(sell_order_ticket_type.getSelectedItemPosition()) + "\",\"datatype\":\"varchar\"}, ");
+            stringBuffer.append("{\"column\":\"id_invtype\",\"value\":\"" + orderTicket_id + "\",\"datatype\":\"varchar\"}, ");
             stringBuffer.append("{\"column\":\"var_remark\",\"value\":\"" + more + "\",\"datatype\":\"varchar\"}, ");
             if (!Constant.JUDGE_TYPE && (i >= countDetail + gap)) {
                 valuesBean.setId_satype(sellDetails.get(0).getId_sell());
@@ -678,6 +703,10 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
                 valuesBean.setDec_oriamt(String.valueOf(sellDetails.get(0).getOrder_price()));
                 valuesBean.setId_tax(sellDetails.get(0).getId_tax());
                 valuesBean.setDec_taxrate(sellDetails.get(0).getDec_taxrate());
+                valuesBean.setId_stockstyle(sellDetails.get(0).getId_stockstyle());
+                valuesBean.setId_stocktype(sellDetails.get(0).getId_stocktype());
+                valuesBean.setId_itemcate(sellDetails.get(0).getId_itemcate());
+                valuesBean.setFlag_gift(sellDetails.get(0).getFlag_gift());
                 stringBuffer.append("{\"column\":\"id_satype\",\"value\":\"" + sellDetails.get(0).getId_sell() + "\",\"datatype\":\"varchar\"}, ");
                 stringBuffer.append("{\"column\":\"id_item\",\"value\":\"" + sellDetails.get(0).getId_item() + "\",\"datatype\":\"varchar\"}, ");
                 stringBuffer.append("{\"column\":\"name_item\",\"value\":\"" + sellDetails.get(0).getName_item() + "\",\"datatype\":\"varchar\"}, ");
@@ -712,6 +741,16 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
                 valuesBean.setDec_amt(String.valueOf(sellDetails.get(i).getOrder_price()));
                 valuesBean.setId_tax(sellDetails.get(i).getId_tax());
                 valuesBean.setDec_taxrate(sellDetails.get(i).getDec_taxrate());
+                valuesBean.setId_stockstyle(sellDetails.get(i).getId_stockstyle());
+                valuesBean.setId_stocktype(sellDetails.get(i).getId_stocktype());
+                valuesBean.setId_itemcate(sellDetails.get(i).getId_itemcate());
+                valuesBean.setFlag_gift(sellDetails.get(i).getFlag_gift());
+                valuesBean.setDec_discrate("1.00");
+                valuesBean.setDec_discprice(String.valueOf(sellDetails.get(i).getPer_price()));
+                valuesBean.setDec_rpprice(String.valueOf(sellDetails.get(i).getPer_price()));
+                valuesBean.setDec_corrprice(String.valueOf(sellDetails.get(i).getPer_price()));
+                valuesBean.setDec_rpamt(String.valueOf(sellDetails.get(i).getOrder_price()));
+                valuesBean.setDec_corramt(String.valueOf(sellDetails.get(i).getOrder_price()));
                 stringBuffer.append("{\"column\":\"id_tax\",\"value\":\"" + sellDetails.get(i).getId_tax() + "\",\"datatype\":\"varchar\"}, ");
                 stringBuffer.append("{\"column\":\"id_satype\",\"value\":\"" + sellDetails.get(i).getId_sell() + "\",\"datatype\":\"varchar\"}, ");
                 stringBuffer.append("{\"column\":\"id_item\",\"value\":\"" + sellDetails.get(i).getId_item() + "\",\"datatype\":\"varchar\"}, ");
@@ -938,14 +977,18 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
         DecimalFormat format = new DecimalFormat(",##0.00");
         sell_over_money.setText(format.format(Double.valueOf(dsaordbaseJsons_new.get(0).getDec_acaramt())));
         dec_acclimit = dsaordbaseJsons_new.get(0).getDec_acclimit();
-//        var_rcvcorr = dsaordbaseJsons_new.get(0).getVar_rcvcorr();
+        id_zone = dsaordbaseJsons_new.get(0).getId_zone();
+        id_area = dsaordbaseJsons_new.get(0).getId_area();
+        id_corrtype = dsaordbaseJsons_new.get(0).getId_corrtype();
+        id_industry = dsaordbaseJsons_new.get(0).getId_industry();
         id_terminal = dsaordbaseJsons_new.get(0).getId_terminal();
         id_corr = dsaordbaseJsons_new.get(0).getId_corr();
         id_terminal_for_item = id_corr;
         Constant.id_terminal_for_address = id_terminal;
         for (int i = 0; i < orderTicketType_id.size(); i++) {
             if (dsaordbaseJsons_new.get(0).getId_invtype().equalsIgnoreCase(orderTicketType_id.get(i))) {
-                sell_order_ticket_type.setSelection(i);
+                sell_order_ticket_type.setText(orderTicketType.get(i));
+                orderTicket_id = dsaordbaseJsons_new.get(0).getId_invtype();
             }
         }
         sell_order_address.setText("");
@@ -956,6 +999,8 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
             sellDetails.get(i).setOrder_num(0);
             sellDetails.get(i).setPer_price(0);
             sellDetails.get(i).setOrder_price(0);
+            sellDetails.get(i).setFlag_gift("N");
+
         }
         sellOrderAdapter.notifyDataSetChanged();
     }

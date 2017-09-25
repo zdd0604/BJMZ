@@ -182,6 +182,9 @@ public class SellOrderAdapter extends WZYBaseAdapter<SellOrderModel> {
                 sellOrderModel.setId_sell(sellTypes_id.get(position));
                 if (!(sellTypes_id.get(position).equalsIgnoreCase("10") || sellTypes_id.get(position).equalsIgnoreCase("60"))) {
                     sellOrderModel.setPer_price(0.00);
+                    sellOrderModel.setFlag_gift("Y");
+                }else {
+                    sellOrderModel.setFlag_gift("N");
                 }
             }
 
@@ -191,6 +194,7 @@ public class SellOrderAdapter extends WZYBaseAdapter<SellOrderModel> {
                 sellOrderModel.setOrder_num(0);
                 sellOrderModel.setPer_price(0);
                 sellOrderModel.setOrder_price(0);
+                sellOrderModel.setFlag_gift("N");
                 notifyDataSetChanged();
             }
 

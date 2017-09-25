@@ -79,7 +79,7 @@
             <ImageView
                 android:id="@+id/main_refresh_icon"
                 android:layout_width="@dimen/size_20"
-                android:layout_height="@dimen/size_20"
+                android:layout_height="match_parent"
                 android:layout_marginRight="@dimen/size_10"
                 android:background="@drawable/main_child_item_bkg"
                 android:scaleType="fitCenter"
@@ -88,7 +88,7 @@
             <ImageView
                 android:id="@+id/main_search_icon"
                 android:layout_width="@dimen/size_20"
-                android:layout_height="@dimen/size_20"
+                android:layout_height="match_parent"
                 android:layout_marginRight="@dimen/size_10"
                 android:background="@drawable/main_child_item_bkg"
                 android:scaleType="fitCenter"
@@ -97,7 +97,7 @@
             <ImageView
                 android:id="@+id/main_find_icon"
                 android:layout_width="@dimen/size_20"
-                android:layout_height="@dimen/size_20"
+                android:layout_height="match_parent"
                 android:layout_marginRight="@dimen/size_10"
                 android:background="@drawable/main_child_item_bkg"
                 android:scaleType="fitCenter"
@@ -132,6 +132,7 @@
             android:orientation="horizontal">
 
             <FrameLayout
+                android:id="@+id/id_frame_im"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -265,6 +266,7 @@
             </FrameLayout>
 
             <FrameLayout
+                android:id="@+id/id_frame_contact"
                 android:layout_width="0.0dip"
                 android:layout_height="fill_parent"
                 android:layout_weight="1.0"

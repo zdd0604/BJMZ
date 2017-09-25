@@ -6,6 +6,7 @@ import android.support.v4.content.ContextCompat;
 import android.text.Layout.Alignment;
 import android.text.StaticLayout;
 import android.text.TextPaint;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -376,7 +377,7 @@ public class LockTableView2 {
 
                 var23.setTextSize(2, (float) this.mTextViewSize);
                 if (!changeRow || var22 != changedRow) {
-                    var23.setGravity(17);//居中对齐
+                    var23.setGravity(Gravity.CENTER);//居中对齐
                 }
                 var23.setText((CharSequence) var19.get(var22));
                 LayoutParams textViewParams = new LayoutParams(-2, -2);
@@ -675,7 +676,7 @@ public class LockTableView2 {
     }
 
     public LockTableView2 changeGravity(int changedRow) {
-        this.changedRow = changedRow;
+        this.changedRow = changedRow - 2;
         changeRow = true;
         return this;
     }

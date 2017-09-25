@@ -156,6 +156,7 @@
     <!-- dialog提示语 -->
     <string name="orderFinding_Title_TlActivity">订单查询</string>
     <string name="orderFinding_Title_RightTvSearch">查询</string>
+    <string name="orderFinding_Title_RightTvReset">重置</string>
 
     <!-- 设置界面 -->
     <string name="setting_Title_TlActivity">设置</string>

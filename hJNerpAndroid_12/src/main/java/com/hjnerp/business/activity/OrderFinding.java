@@ -123,11 +123,14 @@ public class OrderFinding extends ActionBarWidgetActivity implements View.OnClic
     //加载页面
     private void initView() {
         actionRightTv.setText(getString(R.string.orderFinding_Title_RightTvSearch));
+        actionRightTv1.setVisibility(View.VISIBLE);
+        actionRightTv1.setText(getString(R.string.orderFinding_Title_RightTvReset));
         table_begin_time.setOnClickListener(this);
         table_end_time.setText(getToday());
         table_end_time.setOnClickListener(this);
         object_name.setOnClickListener(this);
         actionRightTv.setOnClickListener(this);
+        actionRightTv1.setOnClickListener(this);
         actionLeftTv.setOnClickListener(this);
         table_begin_time.setOnClickListener(this);
         ActionBarWidgetActivity.setNsyncDataConnector(this);
@@ -189,8 +192,8 @@ public class OrderFinding extends ActionBarWidgetActivity implements View.OnClic
                 table_date_from.setVisibility(View.VISIBLE);
                 table_date_to.setVisibility(View.VISIBLE);
                 all_goneprice_layout.setVisibility(View.GONE);
-                changeRow = true;
-                changeRowNo = 7;
+                changeRow = true;//设置左对齐
+                changeRowNo = 9;//第九行
                 break;
             case 3:
                 changeRow = false;
@@ -425,6 +428,9 @@ public class OrderFinding extends ActionBarWidgetActivity implements View.OnClic
             case R.id.action_right_tv:
                 submit();
                 break;
+            case R.id.action_right_tv1:
+                reset();
+                break;
             case R.id.table_begin_time:
                 showCalendar(table_begin_time);
                 break;
@@ -436,6 +442,47 @@ public class OrderFinding extends ActionBarWidgetActivity implements View.OnClic
                 break;
 
         }
+    }
+
+    /**
+     * 重置查询条件
+     */
+    private void reset() {
+
+        user_myid = "";
+        buss_key = "";
+        buss_value = "";
+        if (dsaordbaseJsons_new != null && dsaordbaseJsons_new.size() > 0) {
+            dsaordbaseJsons_new.clear();
+        }
+        object_name.setText("");
+        object_person.setText("");
+        //后来决定时间不再重置，如果需要重置，解开以下代码
+//        table_end_time.setText(getToday());
+//        try {
+//            Calendar cal = Calendar.getInstance();
+//            Date date = format.parse(getToday());
+//            cal.setTime(date);
+//            cal.add(Calendar.DATE, -30);//为了和ios一致，改为减30天
+////            cal.add(Calendar.MONTH, -1);
+//            Date fDate = cal.getTime();
+//            table_begin_time.setText(format.format(fDate));
+//        } catch (ParseException e) {
+//            e.printStackTrace();
+//            table_begin_time.setText(getToday());
+//        }
+////        mHandler.sendEmptyMessage(1);
+////        object_name.setText("");
+//
+//        switch (Constant.tab_type) {
+//            case 0:
+//            case 3:
+//                table_begin_time.setText(getToday());
+//                break;
+//
+//
+//        }
+        showFailToast("查询条件已重置!");
     }
 
     //选择后的返回事件
@@ -759,7 +806,7 @@ public class OrderFinding extends ActionBarWidgetActivity implements View.OnClic
 //        linear_list.removeAllViews();
         int max_weight;
         int max_height;
-        if (Constant.tab_type == 2) {
+        if (Constant.tab_type == 2) {//工作日志加高加宽
             max_weight = 280;
             max_height = 10000;
         } else {

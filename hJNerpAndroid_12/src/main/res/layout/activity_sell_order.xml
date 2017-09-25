@@ -215,9 +215,10 @@
                     style="@style/Item_LinearLayout_TVLeftTieleStyle2"
                     android:text="发票类型" />
 
-                <Spinner
+                <TextView
                     android:id="@+id/sell_order_ticket_type"
-                    style="@style/Item_LinearLayout_Spinner_RightStyle" />
+                    style="@style/Item_LinearLayout_TvRightTitleStyle"
+                    android:textColor="#CACACF" />
             </LinearLayout>
 
 

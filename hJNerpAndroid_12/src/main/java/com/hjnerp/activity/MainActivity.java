@@ -92,6 +92,8 @@ public class MainActivity extends ActivitySupport implements
     public static boolean need_fresh_businessmenu = false;
 
     private FrameLayout frameLayout_work;
+    private FrameLayout frameLayout_im;
+    private FrameLayout frameLayout_contact;
     public static int WORK_COUNT;
 
     private TextView main_title_text;
@@ -109,6 +111,7 @@ public class MainActivity extends ActivitySupport implements
     private NotificationManager nm;
     private Thread mThread;
     private Intent workServer;
+    private boolean isNotMeizheng = false;//如果不是美正,在美正项目中默认为false，为了隐藏一些菜单
     private Handler handler = new Handler() {
         public void handleMessage(Message msg) {
             switch (msg.what) {
@@ -174,10 +177,15 @@ public class MainActivity extends ActivitySupport implements
         mFragmentList = new ArrayList<Fragment>();
         mFragmentList.clear();
         // //将Fragment加入到List中，并将Tab的title传递给Fragment
+        if (isNotMeizheng) {//如果不是美正，就新建这些单据
+            // 企信
+            imFragment = new ImFragment();
+            mFragmentList.add(imFragment);
+            // 通讯录
+            contactFragment = new ContactFragment();
+            mFragmentList.add(contactFragment);
+        }
 
-        // 企信
-        imFragment = new ImFragment();
-        mFragmentList.add(imFragment);
 
         // 工作流
         if (sputil.isWorkFlow()) {
@@ -187,9 +195,6 @@ public class MainActivity extends ActivitySupport implements
         businessFragment = new BusinessFragment();
         mFragmentList.add(businessFragment);
 
-        // 通讯录
-        contactFragment = new ContactFragment();
-        mFragmentList.add(contactFragment);
 
         // 我的
         myInforMation = new MyInforMation();
@@ -203,6 +208,8 @@ public class MainActivity extends ActivitySupport implements
         // 设置预加载数为3
         mViewPager.setOffscreenPageLimit(3);
         frameLayout_work = (FrameLayout) findViewById(R.id.id_frame_workflow);
+        frameLayout_im = (FrameLayout) findViewById(R.id.id_frame_im);
+        frameLayout_contact = (FrameLayout) findViewById(R.id.id_frame_contact);
         tv_tab_qixin = (TextView) findViewById(R.id.main_tab_im_unread);
         tv_tab_work = (TextView) findViewById(R.id.main_tab_work_unread);
         tv_tab_business = (TextView) findViewById(R.id.main_tab_business_unread);
@@ -220,12 +227,16 @@ public class MainActivity extends ActivitySupport implements
 
         upload1345();
 
-        title_list.add(R.string.main_tab_im);
+        if (isNotMeizheng) {
+            title_list.add(R.string.main_tab_im);
+            title_list.add(R.string.main_tab_contact);
+        }
+
         if (sputil.isWorkFlow()) {
             title_list.add(R.string.main_tab_workflow);
         }
         title_list.add(R.string.main_tab_business);
-        title_list.add(R.string.main_tab_contact);
+
         title_list.add(R.string.main_tab_my);
 
         sharedPref2 = this.getSharedPreferences(
@@ -286,12 +297,9 @@ public class MainActivity extends ActivitySupport implements
 
     private void initTabIndicator() {
         Log.v("show", "initTabIndicator。。。。。。。。。。。。。。");
-        ChangeColorIconWithTextView im = (ChangeColorIconWithTextView) findViewById(R.id.id_indicator_im);
         ChangeColorIconWithTextView buss = (ChangeColorIconWithTextView) findViewById(R.id.id_indicator_business);
-        ChangeColorIconWithTextView contact = (ChangeColorIconWithTextView) findViewById(R.id.id_indicator_contact);
         ChangeColorIconWithTextView my = (ChangeColorIconWithTextView) findViewById(R.id.id_indicator_my);
 
-        mTabIndicator.add(im);
         if (sputil.isWorkFlow()) {
             ChangeColorIconWithTextView workflowview = (ChangeColorIconWithTextView) findViewById(R.id.id_indicator_workflow);
             mTabIndicator.add(workflowview);
@@ -299,15 +307,26 @@ public class MainActivity extends ActivitySupport implements
         } else {
             frameLayout_work.setVisibility(View.GONE);
         }
+        if (isNotMeizheng) {
+            ChangeColorIconWithTextView contact = (ChangeColorIconWithTextView) findViewById(R.id.id_indicator_contact);
+            ChangeColorIconWithTextView im = (ChangeColorIconWithTextView) findViewById(R.id.id_indicator_im);
 
+            mTabIndicator.add(im);
+            mTabIndicator.add(contact);
+            im.setOnClickListener(this);
+            contact.setOnClickListener(this);
+            im.setIconAlpha(1.0f);
+
+
+        } else {
+            frameLayout_im.setVisibility(View.GONE);
+            frameLayout_contact.setVisibility(View.GONE);
+        }
         mTabIndicator.add(buss);
-        mTabIndicator.add(contact);
         mTabIndicator.add(my);
-        im.setOnClickListener(this);
+        mViewPager.setCurrentItem(1);
         buss.setOnClickListener(this);
-        contact.setOnClickListener(this);
         my.setOnClickListener(this);
-        im.setIconAlpha(1.0f);
     }
 
 
@@ -465,37 +484,24 @@ public class MainActivity extends ActivitySupport implements
             left.setIconAlpha(1 - positionOffset);
             right.setIconAlpha(positionOffset);
         }
-//        if (position != 0) {
-            main_title_text.setText(title_list.get(position));
-//            main_title_text.setTextColor(0xff303030);
-//        }
+        main_title_text.setText(title_list.get(position));
 
-        if (position == 0) {
-//            main_emp_icon.setVisibility(View.GONE);
+        if (isNotMeizheng && position == 0) {
             main_title_text.setVisibility(View.VISIBLE);
             main_search_icon.setVisibility(View.GONE);
-//            main_phone_icon.setVisibility(View.VISIBLE);
             main_find_icon.setVisibility(View.VISIBLE);
-//            main_group_icon.setVisibility(View.VISIBLE);
             main_refresh_icon.setVisibility(View.GONE);
-//            main_title_text.setText("和佳");
-//            main_title_text.setText("美正");
-//            main_title_text.setTextColor(0xff27a4e3);
             if (mToast != null) {
                 mToast.cancel();
 
             }
 
         }
-        if (sputil.isWorkFlow() && position == 1) {
-//            main_emp_icon.setVisibility(View.GONE);
+        if ((!isNotMeizheng && position == 0) || (isNotMeizheng && sputil.isWorkFlow() && position == 1)) {
             main_title_text.setVisibility(View.VISIBLE);
             main_search_icon.setVisibility(View.VISIBLE);
-//            main_phone_icon.setVisibility(View.GONE);
             main_find_icon.setVisibility(View.GONE);
-//            main_group_icon.setVisibility(View.GONE);
             main_refresh_icon.setVisibility(View.GONE);
-//            main_title_text.setTextColor(0xff27a4e3);
             main_search_icon.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -515,7 +521,7 @@ public class MainActivity extends ActivitySupport implements
 
             }
         }
-        if ((sputil.isWorkFlow() && position == 2) || (!sputil.isWorkFlow() && position == 1)) {
+        if ((!isNotMeizheng && position == 1) || (isNotMeizheng && sputil.isWorkFlow() && position == 2) || (isNotMeizheng && !sputil.isWorkFlow() && position == 1)) {
 //            main_emp_icon.setVisibility(View.GONE);
             main_title_text.setVisibility(View.VISIBLE);
             main_search_icon.setVisibility(View.GONE);
@@ -544,7 +550,7 @@ public class MainActivity extends ActivitySupport implements
 
             }
         }
-        if ((sputil.isWorkFlow() && position == 3) || (!sputil.isWorkFlow() && position == 2)) {
+        if ((isNotMeizheng && sputil.isWorkFlow() && position == 3) || (isNotMeizheng && !sputil.isWorkFlow() && position == 2)) {
 //            main_emp_icon.setVisibility(View.GONE);
             main_title_text.setVisibility(View.VISIBLE);
             main_search_icon.setVisibility(View.GONE);
@@ -565,7 +571,7 @@ public class MainActivity extends ActivitySupport implements
             }
 
         }
-        if ((sputil.isWorkFlow() && position == 4) || (!sputil.isWorkFlow() && position == 3)) {
+        if ((!isNotMeizheng && position == 2) || (isNotMeizheng && sputil.isWorkFlow() && position == 4) || (isNotMeizheng && !sputil.isWorkFlow() && position == 3)) {
 //            main_emp_icon.setVisibility(View.GONE);
             main_title_text.setVisibility(View.VISIBLE);
             main_search_icon.setVisibility(View.GONE);
@@ -817,17 +823,34 @@ public class MainActivity extends ActivitySupport implements
                 mViewPager.setCurrentItem(0, false);
                 break;
             case R.id.id_indicator_workflow:
-                mTabIndicator.get(1).setIconAlpha(1.0f);
-                mViewPager.setCurrentItem(1, false);
-                break;
-            case R.id.id_indicator_business:
-                if (sputil.isWorkFlow()) {
-                    mTabIndicator.get(2).setIconAlpha(1.0f);
-                    mViewPager.setCurrentItem(2, false);
-                } else {
+                if (isNotMeizheng) {
                     mTabIndicator.get(1).setIconAlpha(1.0f);
                     mViewPager.setCurrentItem(1, false);
+                } else {
+                    mTabIndicator.get(0).setIconAlpha(1.0f);
+                    mViewPager.setCurrentItem(0, false);
                 }
+
+                break;
+            case R.id.id_indicator_business:
+                if (isNotMeizheng) {
+                    if (sputil.isWorkFlow()) {
+                        mTabIndicator.get(2).setIconAlpha(1.0f);
+                        mViewPager.setCurrentItem(2, false);
+                    } else {
+                        mTabIndicator.get(1).setIconAlpha(1.0f);
+                        mViewPager.setCurrentItem(1, false);
+                    }
+                } else {
+                    if (sputil.isWorkFlow()) {
+                        mTabIndicator.get(1).setIconAlpha(1.0f);
+                        mViewPager.setCurrentItem(1, false);
+                    } else {
+                        mTabIndicator.get(0).setIconAlpha(1.0f);
+                        mViewPager.setCurrentItem(0, false);
+                    }
+                }
+
 
                 break;
             case R.id.id_indicator_contact:
@@ -838,15 +861,27 @@ public class MainActivity extends ActivitySupport implements
                     mTabIndicator.get(2).setIconAlpha(1.0f);
                     mViewPager.setCurrentItem(2, false);
                 }
+
                 break;
             case R.id.id_indicator_my:
-                if (sputil.isWorkFlow()) {
-                    mTabIndicator.get(4).setIconAlpha(1.0f);
-                    mViewPager.setCurrentItem(4, false);
+                if (isNotMeizheng) {
+                    if (sputil.isWorkFlow()) {
+                        mTabIndicator.get(4).setIconAlpha(1.0f);
+                        mViewPager.setCurrentItem(4, false);
+                    } else {
+                        mTabIndicator.get(3).setIconAlpha(1.0f);
+                        mViewPager.setCurrentItem(3, false);
+                    }
                 } else {
-                    mTabIndicator.get(3).setIconAlpha(1.0f);
-                    mViewPager.setCurrentItem(3, false);
+                    if (sputil.isWorkFlow()) {
+                        mTabIndicator.get(2).setIconAlpha(1.0f);
+                        mViewPager.setCurrentItem(2, false);
+                    } else {
+                        mTabIndicator.get(1).setIconAlpha(1.0f);
+                        mViewPager.setCurrentItem(1, false);
+                    }
                 }
+
                 break;
         }
 

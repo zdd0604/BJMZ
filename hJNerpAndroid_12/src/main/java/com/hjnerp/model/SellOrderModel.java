@@ -22,6 +22,42 @@ public class SellOrderModel {
     private String id_tax;//增值税id
     private String var_chkparm;//性能参数
     private String dec_taxrate;//税率
+    private String flag_gift;
+    private String id_stocktype;
+    private String id_itemcate;
+    private String id_stockstyle;
+
+    public String getFlag_gift() {
+        return flag_gift;
+    }
+
+    public void setFlag_gift(String flag_gift) {
+        this.flag_gift = flag_gift;
+    }
+
+    public String getId_stocktype() {
+        return id_stocktype;
+    }
+
+    public void setId_stocktype(String id_stocktype) {
+        this.id_stocktype = id_stocktype;
+    }
+
+    public String getId_itemcate() {
+        return id_itemcate;
+    }
+
+    public void setId_itemcate(String id_itemcate) {
+        this.id_itemcate = id_itemcate;
+    }
+
+    public String getId_stockstyle() {
+        return id_stockstyle;
+    }
+
+    public void setId_stockstyle(String id_stockstyle) {
+        this.id_stockstyle = id_stockstyle;
+    }
 
     public String getDec_taxrate() {
         return dec_taxrate;

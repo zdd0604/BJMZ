@@ -35,6 +35,33 @@ public class DsaordbaseJson3 {
     private String id_tax;
     private String name_tax;
     private String dec_taxrate;
+    private String id_stocktype;
+    private String id_itemcate;
+    private String id_stockstyle;
+
+    public String getId_stocktype() {
+        return id_stocktype;
+    }
+
+    public void setId_stocktype(String id_stocktype) {
+        this.id_stocktype = id_stocktype;
+    }
+
+    public String getId_itemcate() {
+        return id_itemcate;
+    }
+
+    public void setId_itemcate(String id_itemcate) {
+        this.id_itemcate = id_itemcate;
+    }
+
+    public String getId_stockstyle() {
+        return id_stockstyle;
+    }
+
+    public void setId_stockstyle(String id_stockstyle) {
+        this.id_stockstyle = id_stockstyle;
+    }
 
     public String getId_corr() {
         return id_corr;

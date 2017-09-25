@@ -36,6 +36,42 @@ public class DsaordbaseJson2 {
     private String name_invtype;
     private String var_contactduty;
     private String var_rmark;
+    private String id_industry;
+    private String id_zone;
+    private String id_area;
+    private String id_corrtype;
+
+    public String getId_industry() {
+        return id_industry;
+    }
+
+    public void setId_industry(String id_industry) {
+        this.id_industry = id_industry;
+    }
+
+    public String getId_zone() {
+        return id_zone;
+    }
+
+    public void setId_zone(String id_zone) {
+        this.id_zone = id_zone;
+    }
+
+    public String getId_area() {
+        return id_area;
+    }
+
+    public void setId_area(String id_area) {
+        this.id_area = id_area;
+    }
+
+    public String getId_corrtype() {
+        return id_corrtype;
+    }
+
+    public void setId_corrtype(String id_corrtype) {
+        this.id_corrtype = id_corrtype;
+    }
 
     public String getVar_contactduty() {
         return var_contactduty;

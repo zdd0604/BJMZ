@@ -171,6 +171,51 @@ public class PerformanceDatas implements Serializable {
         private String id_invexpress;
         private String dec_acaramt;
         private String dec_acclimit;
+        private String dec_scorramt;
+        private String id_zone;
+        private String id_area;
+        private String id_corrtype;
+        private String id_industry;
+
+        public String getDec_scorramt() {
+            return dec_scorramt;
+        }
+
+        public void setDec_scorramt(String dec_scorramt) {
+            this.dec_scorramt = dec_scorramt;
+        }
+
+        public String getId_zone() {
+            return id_zone;
+        }
+
+        public void setId_zone(String id_zone) {
+            this.id_zone = id_zone;
+        }
+
+        public String getId_area() {
+            return id_area;
+        }
+
+        public void setId_area(String id_area) {
+            this.id_area = id_area;
+        }
+
+        public String getId_corrtype() {
+            return id_corrtype;
+        }
+
+        public void setId_corrtype(String id_corrtype) {
+            this.id_corrtype = id_corrtype;
+        }
+
+        public String getId_industry() {
+            return id_industry;
+        }
+
+        public void setId_industry(String id_industry) {
+            this.id_industry = id_industry;
+        }
 
         public String getId_invexpress() {
             return id_invexpress;

@@ -348,13 +348,21 @@ public class BusinessSearch extends ActionBarWidgetActivity implements View.OnCl
                         case 3:
                             break;
                         case 4:
-                            sellDetails.get(sellDetailsPosition).setId_item(id_wproj);
-                            sellDetails.get(sellDetailsPosition).setName_item(item_peoject);
-                            sellDetails.get(sellDetailsPosition).setId_uom(id_corr);
-                            sellDetails.get(sellDetailsPosition).setId_tax(dec_acaramt);
-                            sellDetails.get(sellDetailsPosition).setVar_chkparm(var_chkparm);
-                            sellDetails.get(sellDetailsPosition).setDec_taxrate(dec_taxrate);
-                            sellDetails.get(sellDetailsPosition).setPer_price(Double.valueOf(id_terminal));
+                            for (int i = 0; i < dsaordbaseJsons3.size(); i++) {
+                                if (dsaordbaseJsons3.get(i).getId_item().equalsIgnoreCase(id_wproj)) {
+                                    sellDetails.get(sellDetailsPosition).setId_item(dsaordbaseJsons3.get(i).getId_item());
+                                    sellDetails.get(sellDetailsPosition).setName_item(dsaordbaseJsons3.get(i).getVar_desc());
+                                    sellDetails.get(sellDetailsPosition).setId_uom(dsaordbaseJsons3.get(i).getId_uom());
+                                    sellDetails.get(sellDetailsPosition).setId_tax(dsaordbaseJsons3.get(i).getId_tax());
+                                    sellDetails.get(sellDetailsPosition).setVar_chkparm(dsaordbaseJsons3.get(i).getVar_chkparm());
+                                    sellDetails.get(sellDetailsPosition).setDec_taxrate(dsaordbaseJsons3.get(i).getDec_taxrate());
+                                    sellDetails.get(sellDetailsPosition).setId_stockstyle(dsaordbaseJsons3.get(i).getId_stockstyle());
+                                    sellDetails.get(sellDetailsPosition).setId_stocktype(dsaordbaseJsons3.get(i).getId_stocktype());
+                                    sellDetails.get(sellDetailsPosition).setId_itemcate(dsaordbaseJsons3.get(i).getId_itemcate());
+                                    sellDetails.get(sellDetailsPosition).setPer_price(Double.valueOf(dsaordbaseJsons3.get(i).getDec_price()));
+                                }
+                            }
+
                             break;
                         case 5:
                             dsaordbaseJsons_new = new ArrayList<DsaordbaseJson2>();

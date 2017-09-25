@@ -339,6 +339,34 @@ public class BusinessChange {
         private String ori_no;
         private String ori_line_no;
         private String dealtype;
+        private String id_industry;
+        private String id_stockstyle;
+        private String id_itemcate;
+        private String id_stocktype;
+
+        public String getId_stockstyle() {
+            return id_stockstyle;
+        }
+
+        public void setId_stockstyle(String id_stockstyle) {
+            this.id_stockstyle = id_stockstyle;
+        }
+
+        public String getId_itemcate() {
+            return id_itemcate;
+        }
+
+        public void setId_itemcate(String id_itemcate) {
+            this.id_itemcate = id_itemcate;
+        }
+
+        public String getId_stocktype() {
+            return id_stocktype;
+        }
+
+        public void setId_stocktype(String id_stocktype) {
+            this.id_stocktype = id_stocktype;
+        }
 
         public String getDealtype() {
             return dealtype;
@@ -350,6 +378,14 @@ public class BusinessChange {
 
         public String getDate_audit() {
             return date_audit;
+        }
+
+        public String getId_industry() {
+            return id_industry;
+        }
+
+        public void setId_industry(String id_industry) {
+            this.id_industry = id_industry;
         }
 
         public void setDate_audit(String date_audit) {
