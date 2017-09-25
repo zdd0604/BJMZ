@@ -288,6 +288,7 @@
     <dimen name="size_180">180dp</dimen>
 
     <dimen name="size_200">200dp</dimen>
+    <dimen name="size_280">280dp</dimen>
     <dimen name="size_300">300dp</dimen>
 
     <dimen name="font_size_10">10sp</dimen>
