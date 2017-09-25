@@ -46,13 +46,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class SelectGroupChatMemberDeptActivity extends ActivitySupport {
 	String TAG = "SelectGroupChatMemberActivity";
 	private Dialog setGroupNameDialog; 
 	public ArrayList<FriendInfo> selectedFriendInfoList = new ArrayList<FriendInfo>() ; //选中的好友
 	private RelativeLayout rl_back;
 	private Button confirm_btn;
-	private RelativeLayout rl_setgroupname_cancel, rl_setgroupname_confirm;
+//	private RelativeLayout rl_setgroupname_cancel, rl_setgroupname_confirm;
 	private EditText et_groupname;
 
 	private ExpandableListView exListView = null;
@@ -85,12 +88,17 @@ public class SelectGroupChatMemberDeptActivity extends ActivitySupport {
 //	private boolean isSelected = false;
 	private final int max_groupmembers_counts = 40;
 	private ArrayList<DeptInfo> deptInfoList;
+	@BindView(R.id.dialog_group_cancel_tv)
+	TextView dialog_group_cancel_tv;
+	@BindView(R.id.dialog_group_confirm_tv)
+	TextView dialog_group_confirm_tv;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState); 
 		groupId = getIntent().getStringExtra(EXTRA_GROUPID); 
 		setContentView(R.layout.groupchatselectmember_dpet);
+		ButterKnife.bind(this);
 		initMyActionBar();
 		initWidget();
 	}
@@ -237,8 +245,7 @@ public class SelectGroupChatMemberDeptActivity extends ActivitySupport {
 				handleClick();
 
 				break;
-			case R.id.dialog_group_confirm_rl:
-				
+			case R.id.dialog_group_confirm_tv:
 				groupName = et_groupname.getText().toString();
 				if (!StringUtil.isNullOrEmpty(groupName)) {
 					setGroupNameDialog.dismiss();
@@ -247,7 +254,7 @@ public class SelectGroupChatMemberDeptActivity extends ActivitySupport {
 				}
 
 				break;
-			case R.id.dialog_group_cancel_rl:
+			case R.id.dialog_group_cancel_tv:
 				setGroupNameDialog.dismiss();
 				break;
 			default:
@@ -427,14 +434,14 @@ public class SelectGroupChatMemberDeptActivity extends ActivitySupport {
 	private void handleAddGroupMember(){
 		List<String> templist = new ArrayList<String>();
 		for(int i = 0;i<selectedFriendInfoList.size();i++){
-			Log.e(TAG,"add groupMember " + i + " " + selectedFriendInfoList.get(i).getFriendname() + selectedFriendInfoList.get(i).getFriendid());
+//			Log.e(TAG,"add groupMember " + i + " " + selectedFriendInfoList.get(i).getFriendname() + selectedFriendInfoList.get(i).getFriendid());
 			String id = new String();
 			id = selectedFriendInfoList.get(i).getFriendid();
 			templist.add(id);
 		}
 		
 		for(int i =0;i<templist.size();i++){
-			Log.e(TAG," templist " + i + " " + templist.get(i));
+//			Log.e(TAG," templist " + i + " " + templist.get(i));
 		}
 		IQ iq = HJWebSocketManager.getInstance().doGroupOpt(groupId, templist, ChatConstants.iq.DATA_VALUE_ADD);
 		String errorMsg = ChatPacketHelper.parseErrorCode(iq);
@@ -487,7 +494,7 @@ public class SelectGroupChatMemberDeptActivity extends ActivitySupport {
 			waitDialog.dismiss();
 			Bundle b = msg.getData();
 			String mmsg = b.getString("flag");
-			Log.i(TAG, "******* handler receive mmsg is " + mmsg);
+//			Log.i(TAG, "******* handler receive mmsg is " + mmsg);
 			if (mmsg.equals(ACTION_SINGLE_CHAT)) {
 				FriendInfo friendinfo = new FriendInfo();
 
@@ -504,7 +511,7 @@ public class SelectGroupChatMemberDeptActivity extends ActivitySupport {
 				finish();
 			} else if (mmsg.equals(ACTION_GROUP_CHAT)) {
 
-				Log.i(TAG, "jump to group chat ");
+//				Log.i(TAG, "jump to group chat ");
 				Intent intent = new Intent();
 				intent.setClass(SelectGroupChatMemberDeptActivity.this,
 						ChatActivity.class);
@@ -552,18 +559,12 @@ public class SelectGroupChatMemberDeptActivity extends ActivitySupport {
 
 
 	private void showSetGroupNameDialog() {
-		Log.e(TAG,"showSetGroupNameDialog");
+//		Log.e(TAG,"showSetGroupNameDialog");
 		setGroupNameDialog = new Dialog(this, R.style.input_dialog);
 		setGroupNameDialog.setContentView(R.layout.dialog_renamegroup);
-		et_groupname = (EditText) setGroupNameDialog
-				.findViewById(R.id.dialog_goup_rename_et);
-		rl_setgroupname_confirm = (RelativeLayout) setGroupNameDialog
-				.findViewById(R.id.dialog_group_confirm_rl);
-		rl_setgroupname_cancel = (RelativeLayout) setGroupNameDialog
-				.findViewById(R.id.dialog_group_cancel_rl);
-		rl_setgroupname_confirm.setOnClickListener(onClickListener);
-		rl_setgroupname_cancel.setOnClickListener(onClickListener);
-
+		et_groupname = (EditText) setGroupNameDialog.findViewById(R.id.dialog_goup_rename_et);
+		dialog_group_confirm_tv.setOnClickListener(onClickListener);
+		dialog_group_cancel_tv.setOnClickListener(onClickListener);
 		setGroupNameDialog.show();
 	}
 	/*提示用户群已解散*/

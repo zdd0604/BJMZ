@@ -8,96 +8,48 @@
 
     <LinearLayout
         android:layout_width="@dimen/size_280"
-        android:layout_height="160dp"
+        android:layout_height="wrap_content"
         android:background="@drawable/noticedialog_bkg"
+        android:paddingBottom="@dimen/size_5"
+        android:paddingTop="@dimen/size_5"
         android:gravity="center"
         android:orientation="vertical">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1">
+        <TextView
+            android:id="@+id/et_groupname_title"
+            style="@style/Item_TextView_LiftStyleH40"
+            android:text="标题" />
 
-            <TextView
-                android:id="@+id/et_groupname_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="10dp"
-                android:paddingTop="10dp"
-                android:text="群聊名称"
-                android:textColor="@color/black"
-                android:textSize="20sp" />
-        </RelativeLayout>
-
-        <View style="@style/Item_TextView_ActionBarViewDividerStyle" />
+        <View style="@style/Item_View_DividerStyle" />
 
         <EditText
             android:id="@+id/dialog_goup_rename_et"
-            android:layout_width="fill_parent"
-            android:layout_height="50dip"
-            android:layout_marginBottom="5dp"
-            android:layout_marginLeft="@dimen/size_10"
-            android:layout_marginRight="@dimen/size_10"
-            android:background="@drawable/input_bar_bg_active"
-            android:maxLength="50"
-            android:singleLine="true"
-            android:textColor="@color/black" />
+            style="@style/Item_EditeText_ChangeInfoStyleH40"
+            android:layout_marginTop="@dimen/size_5" />
 
-        <ImageView
-            android:layout_width="fill_parent"
-            android:layout_height="1dp"
-            android:background="#d7d7d7" />
+        <View
+            style="@style/Item_View_DividerStyle"
+            android:layout_marginTop="@dimen/size_5" />
+
 
         <LinearLayout
-            android:id="@+id/invitefriend_btn_ll"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="horizontal">
+            style="@style/Item_LinearLayout_HorizontalStyle">
 
-            <RelativeLayout
-                android:id="@+id/dialog_group_cancel_rl"
-                android:layout_width="match_parent"
-                android:layout_height="fill_parent"
+            <TextView
+                android:id="@+id/dialog_group_cancel_tv"
+                style="@style/Item_TextView_ChangeInfoStyleH40"
                 android:layout_weight="1"
-                android:background="@drawable/dialog_item_bkg">
+                android:text="取消" />
 
-                <TextView
-                    android:id="@+id/dialog_group_cancel_tv"
-                    android:layout_width="match_parent"
-                    android:layout_height="fill_parent"
-                    android:layout_centerHorizontal="true"
-                    android:gravity="center"
-                    android:text="取消"
-                    android:textColor="@color/actionbar_bg_color"
-                    android:textSize="20dip" />
-            </RelativeLayout>
+            <View style="@style/Item_View_ViewDividerVerticalStyle" />
 
-            <ImageView
-                android:layout_width="1dip"
-                android:layout_height="fill_parent"
-                android:background="#d7d7d7" />
-
-            <RelativeLayout
-                android:id="@+id/dialog_group_confirm_rl"
-                android:layout_width="match_parent"
-                android:layout_height="fill_parent"
+            <TextView
+                android:id="@+id/dialog_group_confirm_tv"
+                style="@style/Item_TextView_ChangeInfoStyleH40"
                 android:layout_weight="1"
-                android:background="@drawable/dialog_item_bkg">
-
-                <TextView
-                    android:id="@+id/dialog_group_confirm_tv"
-                    android:layout_width="match_parent"
-                    android:layout_height="fill_parent"
-                    android:layout_centerHorizontal="true"
-                    android:gravity="center"
-                    android:text="确定"
-                    android:textColor="@color/actionbar_bg_color"
-                    android:textSize="20dip" />
-
-            </RelativeLayout>
+                android:text="确定" />
         </LinearLayout>
+
     </LinearLayout>
 
 </LinearLayout>
