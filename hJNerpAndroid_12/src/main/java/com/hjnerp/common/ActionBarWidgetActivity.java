@@ -1,5 +1,6 @@
 package com.hjnerp.common;
 
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -14,6 +15,8 @@ import com.hjnerp.net.HttpClientManager;
 import com.hjnerp.widget.MyToast;
 import com.hjnerp.widget.MyToast2;
 import com.hjnerp.widget.WaitDialogRectangle;
+import com.sdyy.utils.XPermissionListener;
+import com.sdyy.utils.XPermissions;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.protocol.HTTP;
@@ -43,6 +46,8 @@ public class ActionBarWidgetActivity extends ActivitySupport {
     protected WaitDialogRectangle waitDialogRectangle;
     public static NsyncDataConnector nsyncDataConnector;
     public HttpClientManager.HttpResponseHandler responseHandler = new NsyncDataHandler();
+    //是否授权
+    public boolean isPsions = false;
 
     public static void setNsyncDataConnector(NsyncDataConnector nsyncDataConnector) {
         ActionBarWidgetActivity.nsyncDataConnector = nsyncDataConnector;
@@ -61,6 +66,27 @@ public class ActionBarWidgetActivity extends ActivitySupport {
         mContext = this;
         waitDialog = new WaitDialogRectangle(mContext);
         waitDialogRectangle = new WaitDialogRectangle(mContext);
+    }
+
+    /**
+     * 判断是否授权
+     *
+     * @param psions
+     * @return
+     */
+    public boolean isPermissions(String[] psions) {
+        XPermissions.getPermissions(psions, (Activity) context, new XPermissionListener() {
+            @Override
+            public void onAcceptAccredit() {
+                isPsions = true;
+            }
+
+            @Override
+            public void onRefuseAccredit(String[] results) {
+                isPsions = false;
+            }
+        });
+        return isPsions;
     }
 
 
@@ -101,12 +127,6 @@ public class ActionBarWidgetActivity extends ActivitySupport {
         Intent intent = new Intent(mContext, to);
         intent.putExtras(bundle);
         startActivity(intent);
-    }
-
-    public void intentActivity(Class toClass, int ac_type, Bundle bundle) {
-        Intent intent = new Intent(this, toClass);
-        intent.putExtras(bundle);
-        startActivityForResult(intent, ac_type);
     }
 
 
