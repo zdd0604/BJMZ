@@ -97,6 +97,24 @@ public class PerformanceBean implements Serializable {
     private String id_stocktype;
     private String id_itemcate;
     private String id_stockstyle;
+    private String dec_oriprice;
+    private String dec_jxprice;
+
+    public String getDec_jxprice() {
+        return dec_jxprice;
+    }
+
+    public void setDec_jxprice(String dec_jxprice) {
+        this.dec_jxprice = dec_jxprice;
+    }
+
+    public String getDec_oriprice() {
+        return dec_oriprice;
+    }
+
+    public void setDec_oriprice(String dec_oriprice) {
+        this.dec_oriprice = dec_oriprice;
+    }
 
     public String getFlag_gift() {
         return flag_gift;

@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -33,7 +32,6 @@ import com.hjnerp.model.Ej1345;
 import com.hjnerp.model.PerformanceDatas;
 import com.hjnerp.util.StringUtil;
 import com.hjnerp.util.ToastUtil;
-import com.hjnerp.widget.WaitDialogRectangle;
 import com.hjnerpandroid.R;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
@@ -51,20 +49,20 @@ import okhttp3.Response;
 
 public class TravelActivityNew extends ActionBarWidgetActivity implements View.OnClickListener {
     private PullToRefreshListView refresh_travel_act;
-    private Button add_travel_act;
-    private List<PerformanceDatas> datas = new ArrayList<>();
+    private Button add_travel_act;//新增按钮
+    private List<PerformanceDatas> datas = new ArrayList<>();//获取列表数据
     private final int HTTP_SUCCESS = 0;//数据请求成功
     private final int HTTP_LOSER = 1;//数据请求成功
-    private BusinessBillsAdapter billsAdapter;
-    private int index;
-    private List<Ctlm1345> users;
-    private String userID;
-    private String id_menu = Constant.ID_MENU;
-    public static TravelActivityNew travelActivityNew = null;
-    private String id_recorder = QiXinBaseDao.queryCurrentUserInfo().userID;
-    private String table_name = "";
-    private String table_no = "";
-    private String column_name = "";
+    private BusinessBillsAdapter billsAdapter;//列表数据适配器
+    private int index;//列表行号
+    private List<Ctlm1345> users;//1345用户集合
+    private String userID;//用户名id
+    private String id_menu = Constant.ID_MENU;//菜单id，如销售订单为002020
+    public static TravelActivityNew travelActivityNew = null;//让别的类刷新列表使用
+    private String id_recorder = QiXinBaseDao.queryCurrentUserInfo().userID;//录入人，同用户id
+    private String table_name = "";//提交的单据名，删除单据使用
+    private String table_no = "";//单据号，删除单据使用
+    private String column_name = "";//单据号字段名，删除单据使用
 
     @BindView(R.id.action_left_tv)
     TextView actionLeftTv;
@@ -81,15 +79,15 @@ public class TravelActivityNew extends ActionBarWidgetActivity implements View.O
             super.handleMessage(msg);
             switch (msg.what) {
                 case 0:
-                    setViewData();
+                    setViewData();//单据展示
                     break;
-                case 1:
+                case 1://单据刷新完成
                     String content = (String) msg.obj;
                     showFailToast(content);
                     waitDialog.dismiss();
                     refresh_travel_act.onRefreshComplete();
                     break;
-                case 2:
+                case 2://单据删除
                     datas.remove(index);
                     refreshList();
                     break;
@@ -97,7 +95,7 @@ public class TravelActivityNew extends ActionBarWidgetActivity implements View.O
         }
     };
 
-    public void refresh() {
+    public void refresh() {//单据刷新，在别的方法中调用
         datas.remove(index);
 //        refresh_travel_act.onRefreshComplete();
         refreshList();
@@ -127,7 +125,9 @@ public class TravelActivityNew extends ActionBarWidgetActivity implements View.O
         actionLeftTv.setOnClickListener(this);
         refresh_travel_act = (PullToRefreshListView) findViewById(R.id.refresh_travel_act);
         add_travel_act = (Button) findViewById(R.id.add_travel_act);
-
+        /**
+         * 根据不同单据号，进行标题设置
+         */
         switch (id_menu) {
             case "002035":
 //                getSupportActionBar().setTitle("出差/外出单");
@@ -159,6 +159,7 @@ public class TravelActivityNew extends ActionBarWidgetActivity implements View.O
             finish();
             return;
         }
+        //解析1345用户信息
         String userinfos = users.get(0).getVar_value();
 //        id_clerk =
         Gson gson1 = new Gson();
@@ -190,7 +191,7 @@ public class TravelActivityNew extends ActionBarWidgetActivity implements View.O
     private void setViewData() {
         Collections.sort(datas, new Comparator<PerformanceDatas>() {
             @Override
-            public int compare(PerformanceDatas lhs, PerformanceDatas rhs) {
+            public int compare(PerformanceDatas lhs, PerformanceDatas rhs) {//对单据排序的方法，自定义重写
                 Date date1 = DateUtil.stringToDate(lhs.getMain().getDate_opr());
                 Date date2 = DateUtil.stringToDate(rhs.getMain().getDate_opr());
                 // 对日期字段进行升序，如果欲降序可采用after方法
@@ -206,6 +207,7 @@ public class TravelActivityNew extends ActionBarWidgetActivity implements View.O
                 billsAdapter = new BusinessBillsAdapter(this, datas);
                 refresh_travel_act.setAdapter(billsAdapter);
                 billsAdapter.notifyDataSetChanged();
+                //根据单据的不同，设置不同的跳转方式
                 refresh_travel_act.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -242,6 +244,7 @@ public class TravelActivityNew extends ActionBarWidgetActivity implements View.O
                         startActivityForResult(intent, 11);
                     }
                 });
+                //长按删除的方法，必须提交的是table_name，table_no，column_name
                 refresh_travel_act.getRefreshableView().setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
                     @Override
                     public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -291,6 +294,7 @@ public class TravelActivityNew extends ActionBarWidgetActivity implements View.O
         }
     }
 
+    //删除单据时先弹出对话框
     private void DeleteDialog(Context context) {
 //        mDrawerLayout.closeDrawer(Gravity.LEFT);
         final Dialog noticeDialog = new Dialog(context, R.style.noticeDialogStyle);
@@ -322,6 +326,7 @@ public class TravelActivityNew extends ActionBarWidgetActivity implements View.O
         noticeDialog.show();
     }
 
+    //网络请求删除单据，使用的新接口
     private void deleteTable() {
         OkGo.post(EapApplication.URL_SERVER_HOST_HTTP + "/servlet/DeleteOrderEdit")
                 .params("id_recorder", id_recorder)
@@ -384,6 +389,7 @@ public class TravelActivityNew extends ActionBarWidgetActivity implements View.O
         }
     }
 
+    //新增的方法，跳转具体单据，从而新建立单据
     @Override
     public void onClick(View v) {
         switch (v.getId()) {

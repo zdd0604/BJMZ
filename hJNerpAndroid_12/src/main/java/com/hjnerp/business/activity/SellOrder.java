@@ -63,39 +63,39 @@ import static com.hjnerpandroid.R.id.action_right_tv1;
 public class SellOrder extends ActionBarWidgetActivity implements View.OnClickListener,
         ActionSheet.ActionSheetListener {
 
-    private List<String> orderType = new ArrayList<String>();
-    private List<String> orderType_id = new ArrayList<String>();
-    private List<String> orderTicketType = new ArrayList<String>();
-    private List<String> orderExpress = new ArrayList<String>();
-    private List<String> orderTicketType_id = new ArrayList<String>();
-    private List<String> orderExpress_id = new ArrayList<String>();
-    private List<String> orderSpace = new ArrayList<String>();
-    private ArrayAdapter<String> adapter;
-    private ArrayAdapter<String> adapter_express;
-    private ArrayAdapter<String> adapter_grey;
-    private SellOrderAdapter sellOrderAdapter;
-    private List<Ctlm1345> users;
-    private List<Ctlm1345> sell = new ArrayList<>();
-    private List<Ctlm1345> tax = new ArrayList<>();
-    private List<Ctlm1345> express = new ArrayList<>();
-    private String username;
-    private String userID;
-    private String companyID;
-    private String id_dept;
-    private String var_rcvcorr;
-    private String id_terminal;
-    private String name_terminal;
-    private String var_tel;
-    private String var_inv_tel;
-    private String var_contact;
-    private String var_inv_contact;
-    private String name_corr;
-    private String id_corr;
-    private String dec_acclimit;
-    private String orderTicket_id;
-    private String a;
-    private String b;
-    private int no;
+    private List<String> orderType = new ArrayList<String>();//订单类型具体名称
+    private List<String> orderType_id = new ArrayList<String>();//订单类型id
+    private List<String> orderTicketType = new ArrayList<String>();//发票类型名称
+    private List<String> orderExpress = new ArrayList<String>();//邮寄方式
+    private List<String> orderTicketType_id = new ArrayList<String>();//发票类型id
+    private List<String> orderExpress_id = new ArrayList<String>();//邮寄方式的id
+    private List<String> orderSpace = new ArrayList<String>();//票货同行选项
+    private ArrayAdapter<String> adapter;//spinner的adapter
+    private ArrayAdapter<String> adapter_express;//邮寄方式的adapter(因为有的要隐藏)
+    private ArrayAdapter<String> adapter_grey;//邮寄方式的灰色adapter，当票货同行选择否的时候用到
+    private SellOrderAdapter sellOrderAdapter;//订单明细的adapter
+    private List<Ctlm1345> users;//用户信息
+    private List<Ctlm1345> sell = new ArrayList<>();//订单类型，从1345获取，下同
+    private List<Ctlm1345> tax = new ArrayList<>();//发票税种，同上
+    private List<Ctlm1345> express = new ArrayList<>();//邮寄方式，同上
+    private String username;//用户名
+    private String userID;//用户id
+    private String companyID;//公司id
+    private String id_dept;//部门id
+    private String var_rcvcorr;//结算客户
+    private String id_terminal;//终端id
+    private String name_terminal;//终端名称
+    private String var_tel;//电话
+    private String var_inv_tel;//发票邮寄电话
+    private String var_contact;//联系人
+    private String var_inv_contact;//发票邮寄联系人
+    private String name_corr;//客户名称
+    private String id_corr;//客户id
+    private String dec_acclimit;//账期
+    private String orderTicket_id;//发票类型id
+    private String a;//操作时间
+    private String b;//订单日期
+    private int no;//订单明细号
     private int countDetail;//列表返回的明细行数
 
     private Spinner sell_order_invexpress;
@@ -142,11 +142,10 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
     Spinner sell_order_express;
     @BindView(R.id.sellord_scroll)
     ScrollView sellord_scroll;
-    private String dec_scorramt;
-    private String id_zone;
-    private String id_area;
-    private String id_corrtype;
-    private String id_industry;
+    private String id_zone;//区域
+    private String id_area;//地区
+    private String id_corrtype;//客户类型
+    private String id_industry;//行业
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -157,6 +156,7 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
         initData();
     }
 
+    //开始进行界面设置
     private void initView() {
         actionCenterTv.setText(getString(R.string.sellOrder_Tile_NewActivity));
         actionRightTv.setText(getString(R.string.action_right_content_send));
@@ -164,10 +164,10 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
         actionRightTv1.setVisibility(View.VISIBLE);
         sellDetails = new ArrayList<>();
 
-        sellOrderAdapter = new SellOrderAdapter(sellDetails, this, R.layout.item_sell_order, this);
+        sellOrderAdapter = new SellOrderAdapter(sellDetails, this, R.layout.item_sell_order, this);//明细数据适配
         order_list_view.setAdapter(sellOrderAdapter);
 
-        add_sell_order_detail.setOnClickListener(this);
+        add_sell_order_detail.setOnClickListener(this);//添加明细
         actionLeftTv.setOnClickListener(this);
         actionRightTv.setOnClickListener(this);
         actionRightTv1.setOnClickListener(this);
@@ -192,8 +192,10 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
         sell_order_invexpress = (Spinner) findViewById(R.id.sell_order_invexpress);
     }
 
+    //数据的获取
     private void initData() {
         users = new ArrayList<>();
+        //从1345获取以下信息
         users = BusinessBaseDao.getCTLM1345ByIdTable("user");
         sell = BusinessBaseDao.getCTLM1345ByIdTable("dsaordtype");
         tax = BusinessBaseDao.getCTLM1345ByIdTable("invtype");
@@ -205,27 +207,27 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
         }
 
         String userinfos = users.get(0).getVar_value();
-//        id_clerk =
         Gson gson1 = new Gson();
+        //数据转换为1345
         Ej1345 ej1345 = gson1.fromJson(userinfos, Ej1345.class);
-        int selected_no = 0;
+        int selected_no = 0;//默认选择第一项
         for (int i = 0; i < sell.size(); i++) {
-            Dsaordtype dsaordtype = gson1.fromJson(sell.get(i).getVar_value(), Dsaordtype.class);
+            Dsaordtype dsaordtype = gson1.fromJson(sell.get(i).getVar_value(), Dsaordtype.class);//遍历订单类型和id
             orderType.add(dsaordtype.getName_ordtype());
             orderType_id.add(dsaordtype.getId_ordtype());
-            if (orderType_id.get(i).equalsIgnoreCase("P")) {
+            if (orderType_id.get(i).equalsIgnoreCase("P")) {//订单类型id为P时，即为正常销售，也就是默认选中的项目
                 selected_no = i;
             }
         }
-        adapter = new ArrayAdapter<String>(this, R.layout.spinner_item, orderType);
+        adapter = new ArrayAdapter<String>(this, R.layout.spinner_item, orderType);//为订单类型设置adapter
         adapter.setDropDownViewResource(R.layout.spinner_item_hint);
         sell_order_type.setAdapter(adapter);
 
-        sell_order_type.setSelection(selected_no);
+        sell_order_type.setSelection(selected_no);//设置其默认选项
         sell_order_type.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                sellOrderAdapter.SetOrderType(orderType_id.get(i));
+                sellOrderAdapter.SetOrderType(orderType_id.get(i));//当选择订单类型后，适配器去操作相应的事件，因为选择免费订单，会有一些明细变化
             }
 
             @Override
@@ -233,112 +235,99 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
 
             }
         });
-        int selected_express_no = 0;
-        int selected_invexpress_no = 0;
+        int selected_express_no = 0;//相应的邮寄方式的默认选项
+        int selected_invexpress_no = 0;//相应的邮寄方式的默认选项
         for (int i = 0; i < express.size(); i++) {
             Dsaordtype dsaordtype = gson1.fromJson(express.get(i).getVar_value(), Dsaordtype.class);
             orderExpress.add(dsaordtype.getName_express());
             orderExpress_id.add(dsaordtype.getId_express());
-            if (orderExpress_id.get(i).equalsIgnoreCase("106")) {
+            if (orderExpress_id.get(i).equalsIgnoreCase("106")) {//默认选择为顺丰快递
                 selected_express_no = i;
                 selected_invexpress_no = i;
             }
         }
-        adapter_express = new ArrayAdapter<String>(this, R.layout.spinner_item, orderExpress);
+        adapter_express = new ArrayAdapter<String>(this, R.layout.spinner_item, orderExpress);//分别设置正常adapter和灰色不可选adapter，当票货同行为是，发票邮寄类型为灰色不可选择
         adapter_grey = new ArrayAdapter<String>(this, R.layout.spinner_item_grey, orderExpress);
         adapter_express.setDropDownViewResource(R.layout.spinner_item_hint);
         adapter_grey.setDropDownViewResource(R.layout.spinner_item_hint);
         sell_order_express.setAdapter(adapter_express);
         sell_order_invexpress.setAdapter(adapter_express);
-        sell_order_express.setSelection(selected_express_no);
+        sell_order_express.setSelection(selected_express_no);//邮寄方式的默认选项
         sell_order_invexpress.setSelection(selected_invexpress_no);
-        for (int i = 0; i < tax.size(); i++) {
+        for (int i = 0; i < tax.size(); i++) {//发票类型遍历
             Dsaordtype dsaordtype = gson1.fromJson(tax.get(i).getVar_value(), Dsaordtype.class);
             orderTicketType.add(dsaordtype.getName_invtype());
             orderTicketType_id.add(dsaordtype.getId_invtype());
         }
-//        adapter = new ArrayAdapter<String>(this, R.layout.spinner_item, orderTicketType);
-//        adapter.setDropDownViewResource(R.layout.spinner_item_hint);
-//        sell_order_ticket_type.setAdapter(adapter);
-        orderSpace.add("是");
+
+        orderSpace.add("是");//票货同行选项
         orderSpace.add("否");
         adapter = new ArrayAdapter<String>(this, R.layout.spinner_item, orderSpace);
         adapter.setDropDownViewResource(R.layout.spinner_item_hint);
         sell_order_space.setAdapter(adapter);
-
+        //从1345获取的用户信息
         username = ej1345.getName_user();
         userID = ej1345.getId_user();
         companyID = ej1345.getId_com();
         id_dept = ej1345.getId_dept();
-        sell_order_recorder.setText(username);
-        sell_order_date_record.setText(getToday());
-        sell_order_ticket_time.setText(getToday());
-        if (Constant.JUDGE_TYPE) {
-            Constant.billsNo = "";
+        sell_order_recorder.setText(username);//设置录入人为本人
+        sell_order_date_record.setText(getToday());//录入时间为今天
+        sell_order_ticket_time.setText(getToday());//订单日期为今天
+        if (Constant.JUDGE_TYPE) {//如果不是列表获取数据，即新增数据
+            Constant.billsNo = "";//订单号为空
             SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             SimpleDateFormat f2 = new SimpleDateFormat("yyyy-MM-dd");
             if (TextUtils.isEmpty(a)) {
-                a = f.format(calendar.getTime());
+                a = f.format(calendar.getTime());//设置操作时间
 
             }
-            b = f2.format(calendar.getTime());
-            no = 0;
-            SellOrderModel sellOrderModel = new SellOrderModel();
-            sellOrderModel.setOrder_first(true);
-            sellOrderModel.setOrder_no(no);
-//        sellOrderModel.setOrder_delete(false);
-            sellDetails.add(sellOrderModel);
-            no++;
+            b = f2.format(calendar.getTime());//设置订单日期
+            no = 0;//设置第一行明细为0
+            SellOrderModel sellOrderModel = new SellOrderModel();//建立新的明细数据
+            sellOrderModel.setOrder_first(true);//设置为首行（不能删除）
+            sellOrderModel.setOrder_no(no);//首行行号为0，即明细（1）
+            sellDetails.add(sellOrderModel);//添加明细到集合
+            no++;//明细号加1，添加新明细使用这个区分编号
         } else {
-
-            Constant.billsNo = performanceDatas.getMain().getDsaord_no();
-            var_title_code.setText(Constant.billsNo);
-
-//            orderAddress.add(performanceDatas.getMain().getVar_addr());
-//            adapter = new ArrayAdapter<String>(this, R.layout.spinner_item, orderAddress);
-//            adapter.setDropDownViewResource(R.layout.spinner_item_hint);
-//            sell_order_address.setAdapter(adapter);
-//            sell_order_addess_send.setAdapter(adapter);
-            sell_order_address.setText(performanceDatas.getMain().getVar_addr());
-            sell_order_addess_send.setText(performanceDatas.getMain().getVar_invaddr());
-            id_zone = performanceDatas.getMain().getId_zone();
-            id_area = performanceDatas.getMain().getId_area();
-            id_corrtype = performanceDatas.getMain().getId_corrtype();
-            id_industry = performanceDatas.getMain().getId_industry();
-            var_rcvcorr = performanceDatas.getMain().getVar_rcvcorr();
-            id_terminal = performanceDatas.getMain().getId_terminal();
-            name_terminal = performanceDatas.getMain().getName_terminal();
-            dec_acclimit = performanceDatas.getMain().getDec_acclimit();
-            var_tel = performanceDatas.getMain().getVar_tel();
-            var_inv_tel = performanceDatas.getMain().getVar_invtel();
-            var_inv_contact = performanceDatas.getMain().getVar_invcontact();
-            var_contact = performanceDatas.getMain().getVar_contact();
-//            id_seller = performanceDatas.getMain().getId_seller();
-            id_corr = performanceDatas.getMain().getId_corr();
-            name_corr = performanceDatas.getMain().getName_corr();
-            sell_order_terminal.setText(name_terminal);
-            DecimalFormat format = new DecimalFormat(",##0.00");
-            sell_over_money.setText(format.format(Double.valueOf(performanceDatas.getMain().getDec_acaramt())));
-            sell_order_send.setText(name_corr);
-            id_terminal_for_item = id_corr;
-            Constant.id_terminal_for_address = id_terminal;
-//            orderAddress = new ArrayList<>();
-//            DsaordbaseJson dsaordbaseJson = new DsaordbaseJson();
-//            dsaordbaseJson.setId_corr(performanceDatas.getMain().getId_corr());
-            a = performanceDatas.getMain().getDate_opr();
-            b = performanceDatas.getMain().getDate_sign();
-            for (int i = 0; i < orderType_id.size(); i++) {
+            //从列表获取的数据
+            Constant.billsNo = performanceDatas.getMain().getDsaord_no();//订单号
+            var_title_code.setText(Constant.billsNo);//设置订单号
+            sell_order_address.setText(performanceDatas.getMain().getVar_addr());//邮寄地址
+            sell_order_addess_send.setText(performanceDatas.getMain().getVar_invaddr());//发票地址
+            id_zone = performanceDatas.getMain().getId_zone();//区域
+            id_area = performanceDatas.getMain().getId_area();//省区
+            id_corrtype = performanceDatas.getMain().getId_corrtype();//客户类型
+            id_industry = performanceDatas.getMain().getId_industry();//行业
+            var_rcvcorr = performanceDatas.getMain().getVar_rcvcorr();//结算客户
+            id_terminal = performanceDatas.getMain().getId_terminal();//终端id
+            name_terminal = performanceDatas.getMain().getName_terminal();//终端名称
+            dec_acclimit = performanceDatas.getMain().getDec_acclimit();//账期
+            var_tel = performanceDatas.getMain().getVar_tel();//电话
+            var_inv_tel = performanceDatas.getMain().getVar_invtel();//发票联系电话
+            var_inv_contact = performanceDatas.getMain().getVar_invcontact();//发票联系人
+            var_contact = performanceDatas.getMain().getVar_contact();//联系人
+            id_corr = performanceDatas.getMain().getId_corr();//客户id
+            name_corr = performanceDatas.getMain().getName_corr();//客户名称
+            sell_order_terminal.setText(name_terminal);//终端名称
+            DecimalFormat format = new DecimalFormat(",##0.00");//保留两位小数，使用千分符
+            sell_over_money.setText(format.format(Double.valueOf(performanceDatas.getMain().getDec_acaramt())));//超期金额
+            sell_order_send.setText(name_corr);//客户名称
+            id_terminal_for_item = id_corr;//客户名称保存
+            Constant.id_terminal_for_address = id_terminal;//终端id保存
+            a = performanceDatas.getMain().getDate_opr();//操作日期获取
+            b = performanceDatas.getMain().getDate_sign();//订单日期
+            for (int i = 0; i < orderType_id.size(); i++) {//订单类型遍历，看看列表使用的订单类型应该选择哪个，下同
                 if (performanceDatas.getMain().getId_ordtype().equalsIgnoreCase(orderType_id.get(i))) {
                     sell_order_type.setSelection(i);
                 }
             }
-            for (int i = 0; i < orderTicketType_id.size(); i++) {
+            for (int i = 0; i < orderTicketType_id.size(); i++) {//发票类型遍历，看看列表使用的发票类型应该选择哪个，下同
                 if (performanceDatas.getMain().getId_invtype().equalsIgnoreCase(orderTicketType_id.get(i))) {
                     sell_order_ticket_type.setText(orderTicketType.get(i));
                     orderTicket_id = orderTicketType_id.get(i);
                 }
             }
-            for (int i = 0; i < orderExpress_id.size(); i++) {
+            for (int i = 0; i < orderExpress_id.size(); i++) {//邮寄类型遍历，看看列表使用的邮寄类型应该选择哪个，下同
                 if (performanceDatas.getMain().getId_express().equalsIgnoreCase(orderExpress_id.get(i))) {
                     sell_order_express.setSelection(i);
                 }
@@ -348,46 +337,47 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
                     sell_order_invexpress.setSelection(selected_invexpress_no);
                 }
             }
-            if (performanceDatas.getMain().getFlag_itemwith().equalsIgnoreCase("Y")) {
+            if (performanceDatas.getMain().getFlag_itemwith().equalsIgnoreCase("Y")) {//票货同行类型遍历，看看列表使用的票货同行类型应该选择哪个，下同
                 sell_order_space.setSelection(0);
             } else {
                 sell_order_space.setSelection(1);
 
             }
-            sell_order_ticket_time.setText(TextUtils.isEmpty(performanceDatas.getMain().getDate_demand().trim()) ? getToday() : performanceDatas.getMain().getDate_demand().trim());
-            sell_order_more.setText(performanceDatas.getMain().getVar_remark());
-            no = 0;
-            countDetail = performanceDatas.getDetails().size();
-            for (int i = 0; i < performanceDatas.getDetails().size(); i++) {
-                SellOrderModel sellOrderModel = new SellOrderModel();
-                sellOrderModel.setOrder_first(i == 0);
-                sellOrderModel.setOrder_no(no);
-                sellOrderModel.setName_item(performanceDatas.getDetails().get(i).getName_item());
-                sellOrderModel.setId_tax(performanceDatas.getDetails().get(i).getId_tax());
-                sellOrderModel.setDec_taxrate(performanceDatas.getDetails().get(i).getDec_taxrate());
-                sellOrderModel.setOrder_num(Double.valueOf(performanceDatas.getDetails().get(i).getDec_qty()));
-                sellOrderModel.setOrder_price(Double.valueOf(performanceDatas.getDetails().get(i).getDec_oriamt()));
-                sellOrderModel.setPer_price(Double.valueOf(performanceDatas.getDetails().get(i).getDec_price()));
-                sellOrderModel.setId_item(performanceDatas.getDetails().get(i).getId_item());
-                sellOrderModel.setId_sell(performanceDatas.getDetails().get(i).getId_satype());
-                sellOrderModel.setId_stocktype(performanceDatas.getDetails().get(i).getId_stocktype());
-                sellOrderModel.setId_itemcate(performanceDatas.getDetails().get(i).getId_itemcate());
-                sellOrderModel.setId_stockstyle(performanceDatas.getDetails().get(i).getId_stockstyle());
+            sell_order_ticket_time.setText(TextUtils.isEmpty(performanceDatas.getMain().getDate_demand().trim()) ? getToday() : performanceDatas.getMain().getDate_demand().trim());//订单日期，如果列表为空，就用今天
+            sell_order_more.setText(performanceDatas.getMain().getVar_remark());//备注
+            no = 0;//订单明细从0开始
+            countDetail = performanceDatas.getDetails().size();//设置返回来的订单明细个数，提交时使用
+            for (int i = 0; i < performanceDatas.getDetails().size(); i++) {//列表返回订单明细遍历
+                SellOrderModel sellOrderModel = new SellOrderModel();//每一个明细都建立一个类装入集合
+                sellOrderModel.setOrder_first(i == 0);//是不是第一行明细，如果是就不能删除
+                sellOrderModel.setOrder_no(no);//设置明细行号
+                sellOrderModel.setName_item(performanceDatas.getDetails().get(i).getName_item());//产品名称
+                sellOrderModel.setId_tax(performanceDatas.getDetails().get(i).getId_tax());//税种
+                sellOrderModel.setDec_taxrate(performanceDatas.getDetails().get(i).getDec_taxrate());//税率
+                sellOrderModel.setOrder_num(Double.valueOf(performanceDatas.getDetails().get(i).getDec_qty()));//数量
+                sellOrderModel.setOrder_price(Double.valueOf(performanceDatas.getDetails().get(i).getDec_oriamt()));//金额
+                sellOrderModel.setPer_price(Double.valueOf(performanceDatas.getDetails().get(i).getDec_price()));//单价
+                sellOrderModel.setId_item(performanceDatas.getDetails().get(i).getId_item());//产品id
+                sellOrderModel.setId_sell(performanceDatas.getDetails().get(i).getId_satype());//销售类型
+                sellOrderModel.setId_stocktype(performanceDatas.getDetails().get(i).getId_stocktype());//库存大类
+                sellOrderModel.setId_itemcate(performanceDatas.getDetails().get(i).getId_itemcate());//物料大类
+                sellOrderModel.setId_stockstyle(performanceDatas.getDetails().get(i).getId_stockstyle());//二级分类
+                sellOrderModel.setDec_oriprice(performanceDatas.getDetails().get(i).getDec_jxprice());//原价
                 sellDetails.add(sellOrderModel);
                 no++;
             }
         }
-        final int finalSelected_invexpress_no = selected_invexpress_no;
+        final int finalSelected_invexpress_no = selected_invexpress_no;//设置选择的邮寄类型序号
         sell_order_space.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (position == 1) {
+                if (position == 1) {//票货同行选择为否，发票地址，发票邮寄类型都可以选择，颜色为黑色
                     sell_order_addess_send.setClickable(true);
                     sell_order_invexpress.setEnabled(true);
                     sell_order_invexpress.setAdapter(adapter_express);
                     sell_order_addess_send.setTextColor(mContext.getResources().getColor(R.color.black));
                     sell_order_invexpress.setSelection(finalSelected_invexpress_no);
-                } else {
+                } else {//票货同行选择为否，发票地址，发票邮寄类型都不可以选择，颜色为灰色
                     sell_order_addess_send.setClickable(false);
                     sell_order_invexpress.setAdapter(adapter_grey);
                     sell_order_addess_send.setText(sell_order_address.getText());
@@ -409,7 +399,7 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
     }
 
     @Override
-    public void onDestroy() {
+    public void onDestroy() {//退出时，需要清理数据
         super.onDestroy();
         project_type = 0;
         travel = false;
@@ -424,7 +414,7 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
     public void onClick(View v) {
         switch (v.getId()) {
             case action_right_tv1:
-                caculatePrice();
+                caculatePrice();//保存时需要计算金额
                 saveAndSend("save");
                 break;
             case R.id.action_right_tv:
@@ -437,16 +427,16 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
 //                popupWindow();
 //                break;
             case R.id.sell_order_terminal:
-
+                //终端搜索
                 Intent intent = new Intent(getApplicationContext(), BusinessSearch.class);
-                project_type = 1;
-                travel = true;
+                project_type = 1;//1为终端搜索
+                travel = true;//区别出差外出
                 startActivityForResult(intent, 33);
                 break;
             case R.id.sell_order_ticket_time:
-                showCalendar(sell_order_ticket_time);
+                showCalendar(sell_order_ticket_time);//调用日历控件
                 break;
-            case R.id.add_sell_order_detail:
+            case R.id.add_sell_order_detail://添加明细
 //                sellDetails.clear();
 //                sellDetails = sellOrderAdapter.getListDeatils();
                 Constant.JUDGE_TYPE1 = true;
@@ -739,7 +729,6 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
                 valuesBean.setDec_ordqty(String.valueOf(sellDetails.get(i).getOrder_num()));
                 valuesBean.setDec_oriprice(String.valueOf(sellDetails.get(i).getPer_price()));
                 valuesBean.setDec_price(String.valueOf(sellDetails.get(i).getPer_price()));
-                valuesBean.setDec_jxprice(String.valueOf(sellDetails.get(i).getPer_price()));
                 valuesBean.setDec_oriamt(String.valueOf(sellDetails.get(i).getOrder_price()));
                 valuesBean.setDec_amt(String.valueOf(sellDetails.get(i).getOrder_price()));
                 valuesBean.setId_tax(sellDetails.get(i).getId_tax());
@@ -755,14 +744,22 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
                 valuesBean.setId_itemcate(sellDetails.get(i).getId_itemcate());
                 valuesBean.setFlag_gift(sellDetails.get(i).getFlag_gift());
                 valuesBean.setDec_discrate("1.00");
-                valuesBean.setDec_discprice(String.valueOf(sellDetails.get(i).getPer_price()));
-                valuesBean.setDec_rpprice(String.valueOf(sellDetails.get(i).getPer_price()));
+                valuesBean.setDec_jxprice(sellDetails.get(i).getDec_oriprice());
+                valuesBean.setDec_discprice(sellDetails.get(i).getDec_oriprice());
+                valuesBean.setDec_rpprice(sellDetails.get(i).getDec_oriprice());
+                if (sellDetails.get(i).getPer_price() == 0) {//如果最终价格为0，则返利金额提交该行总金额
+                    valuesBean.setDec_rpamt(String.valueOf(Double.valueOf(sellDetails.get(i).getDec_oriprice()) * sellDetails.get(i).getOrder_num()));
+                } else {
+                    valuesBean.setDec_rpamt("0.00");
+                }
                 valuesBean.setDec_corrprice(String.valueOf(sellDetails.get(i).getPer_price()));
-                valuesBean.setDec_rpamt(String.valueOf(sellDetails.get(i).getOrder_price()));
                 valuesBean.setDec_corramt(String.valueOf(sellDetails.get(i).getOrder_price()));
                 stringBuffer.append("{\"column\":\"id_tax\",\"value\":\"" + sellDetails.get(i).getId_tax() + "\",\"datatype\":\"varchar\"}, ");
                 stringBuffer.append("{\"column\":\"id_satype\",\"value\":\"" + sellDetails.get(i).getId_sell() + "\",\"datatype\":\"varchar\"}, ");
                 stringBuffer.append("{\"column\":\"id_item\",\"value\":\"" + sellDetails.get(i).getId_item() + "\",\"datatype\":\"varchar\"}, ");
+                stringBuffer.append("{\"column\":\"dec_discrate\",\"value\":\"1.00\",\"datatype\":\"varchar\"}, ");
+                stringBuffer.append("{\"column\":\"dec_rpprice\",\"value\":\"" + sellDetails.get(i).getDec_oriprice() + "\",\"datatype\":\"varchar\"}, ");
+                stringBuffer.append("{\"column\":\"dec_jxprice\",\"value\":\"" + sellDetails.get(i).getDec_oriprice() + "\",\"datatype\":\"varchar\"}, ");
 //                stringBuffer.append("{\"column\":\"var_chkparm\",\"value\":\"" + sellDetails.get(i).getVar_chkparm() + "\",\"datatype\":\"varchar\"}, ");
                 stringBuffer.append("{\"column\":\"name_item\",\"value\":\"" + sellDetails.get(i).getName_item() + "\",\"datatype\":\"varchar\"}, ");
                 stringBuffer.append("{\"column\":\"id_uom\",\"value\":\"" + sellDetails.get(i).getId_uom() + "\",\"datatype\":\"varchar\"}, ");

@@ -37,6 +37,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.baidu.mapapi.search.core.PoiInfo;
+import com.google.gson.JsonParseException;
+import com.google.gson.JsonParser;
 import com.hjnerp.activity.LoginActivity;
 import com.hjnerp.activity.MainActivity;
 import com.hjnerp.db.SQLiteWorker;
@@ -110,7 +112,6 @@ public class ActivitySupport extends ActionBarActivity implements
         waitDialogRectangle = new WaitDialogRectangle(context);
 
     }
-
 
 
     @Override
@@ -275,7 +276,23 @@ public class ActivitySupport extends ActionBarActivity implements
         return textView.getText().toString().trim();
     }
 
-
+    /**
+     * 判断是否是json串
+     * @param json
+     * @return
+     */
+    public static boolean isGoodJson(String json) {
+        if (StringUtils.isBlank(json)) {
+            return false;
+        }
+        try {
+            new JsonParser().parse(json);
+            return true;
+        } catch (JsonParseException e) {
+            Log.e("isGoodJson", "bad json: " + json);
+            return false;
+        }
+    }
 
     /**
      * bundle
@@ -494,7 +511,7 @@ public class ActivitySupport extends ActionBarActivity implements
     public void setNotiType(int iconId, String contentTitle,
                             String contentText, Class activity, String from) {
         /*
-		 * 创建新的Intent，作为点击Notification留言条时， 会运行的Activity
+         * 创建新的Intent，作为点击Notification留言条时， 会运行的Activity
 		 */
         Intent notifyIntent = new Intent(this, activity);
         notifyIntent.putExtra("to", from);
@@ -514,7 +531,7 @@ public class ActivitySupport extends ActionBarActivity implements
 //		myNoti.tickerText = contentTitle;
 //		/* 设置notification发生时同时发出默认声音 */
 //		myNoti.defaults = Notification.DEFAULT_SOUND;
-		/* 设置Notification留言条的参数 */
+        /* 设置Notification留言条的参数 */
         Notification myNoti = new Notification.Builder(this)
                 .setAutoCancel(true)
                 .setContentTitle(contentTitle)

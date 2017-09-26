@@ -38,6 +38,15 @@ public class DsaordbaseJson3 {
     private String id_stocktype;
     private String id_itemcate;
     private String id_stockstyle;
+    private String dec_oriprice;
+
+    public String getDec_oriprice() {
+        return dec_oriprice;
+    }
+
+    public void setDec_oriprice(String dec_oriprice) {
+        this.dec_oriprice = dec_oriprice;
+    }
 
     public String getId_stocktype() {
         return id_stocktype;

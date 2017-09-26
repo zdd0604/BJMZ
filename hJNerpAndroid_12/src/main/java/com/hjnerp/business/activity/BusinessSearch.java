@@ -42,7 +42,6 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import butterknife.BindView;
@@ -130,6 +129,11 @@ public class BusinessSearch extends ActionBarWidgetActivity implements View.OnCl
                             break;
                     }
 
+                    break;
+                case 3:
+                    ToastUtil.ShowShort(context, "数据出错!");
+                    waitDialog.dismiss();
+                    mHandler.sendEmptyMessage(2);
                     break;
             }
         }
@@ -348,18 +352,26 @@ public class BusinessSearch extends ActionBarWidgetActivity implements View.OnCl
                         case 3:
                             break;
                         case 4:
+                            int sell_no = 0;//定义一个变量，看看是哪一条数据的修改，以免与删除单据冲突导致崩溃
+                            for (int i1 = 0; i1 < sellDetails.size(); i1++) {
+                                if (sellDetails.get(i1).getOrder_no() == sellDetailsPosition) {//如果no和posi一致，则为该单据
+                                    sell_no = i1;
+                                }
+                            }
                             for (int i = 0; i < dsaordbaseJsons3.size(); i++) {
+
                                 if (dsaordbaseJsons3.get(i).getId_item().equalsIgnoreCase(id_wproj)) {
-                                    sellDetails.get(sellDetailsPosition).setId_item(dsaordbaseJsons3.get(i).getId_item());
-                                    sellDetails.get(sellDetailsPosition).setName_item(dsaordbaseJsons3.get(i).getVar_desc());
-                                    sellDetails.get(sellDetailsPosition).setId_uom(dsaordbaseJsons3.get(i).getId_uom());
-                                    sellDetails.get(sellDetailsPosition).setId_tax(dsaordbaseJsons3.get(i).getId_tax());
-                                    sellDetails.get(sellDetailsPosition).setVar_chkparm(dsaordbaseJsons3.get(i).getVar_chkparm());
-                                    sellDetails.get(sellDetailsPosition).setDec_taxrate(dsaordbaseJsons3.get(i).getDec_taxrate());
-                                    sellDetails.get(sellDetailsPosition).setId_stockstyle(dsaordbaseJsons3.get(i).getId_stockstyle());
-                                    sellDetails.get(sellDetailsPosition).setId_stocktype(dsaordbaseJsons3.get(i).getId_stocktype());
-                                    sellDetails.get(sellDetailsPosition).setId_itemcate(dsaordbaseJsons3.get(i).getId_itemcate());
-                                    sellDetails.get(sellDetailsPosition).setPer_price(Double.valueOf(dsaordbaseJsons3.get(i).getDec_price()));
+                                    sellDetails.get(sell_no).setId_item(dsaordbaseJsons3.get(i).getId_item());
+                                    sellDetails.get(sell_no).setName_item(dsaordbaseJsons3.get(i).getVar_desc());
+                                    sellDetails.get(sell_no).setId_uom(dsaordbaseJsons3.get(i).getId_uom());
+                                    sellDetails.get(sell_no).setId_tax(dsaordbaseJsons3.get(i).getId_tax());
+                                    sellDetails.get(sell_no).setVar_chkparm(dsaordbaseJsons3.get(i).getVar_chkparm());
+                                    sellDetails.get(sell_no).setDec_taxrate(dsaordbaseJsons3.get(i).getDec_taxrate());
+                                    sellDetails.get(sell_no).setId_stockstyle(dsaordbaseJsons3.get(i).getId_stockstyle());
+                                    sellDetails.get(sell_no).setId_stocktype(dsaordbaseJsons3.get(i).getId_stocktype());
+                                    sellDetails.get(sell_no).setId_itemcate(dsaordbaseJsons3.get(i).getId_itemcate());
+                                    sellDetails.get(sell_no).setPer_price(Double.valueOf(dsaordbaseJsons3.get(i).getDec_price()));
+                                    sellDetails.get(sell_no).setDec_oriprice(dsaordbaseJsons3.get(i).getDec_oriprice());
                                 }
                             }
 
@@ -477,7 +489,7 @@ public class BusinessSearch extends ActionBarWidgetActivity implements View.OnCl
      * @param value 被解析的值
      * @throws JSONException 解析失败的异常
      */
-    public void processJsonValue(String value) throws JSONException {
+    public void processJsonValue(String value) {
         // TODO Auto-generated method stub
         value = value.trim();
         if (value.equalsIgnoreCase("[]") || value.equalsIgnoreCase(null)) {//如果数据为空
@@ -486,34 +498,44 @@ public class BusinessSearch extends ActionBarWidgetActivity implements View.OnCl
 
             return;
         }
-        JSONArray jsonArray = new JSONArray(value);
-        for (int i = 0; i < jsonArray.length(); i++) {
-            String temp = jsonArray.getString(i);
-            Matcher m = p.matcher(temp);
-            String subValue = temp.substring(temp.indexOf("{"),
-                    temp.indexOf("}") + 1);
-//            Log.i("subValue", subValue);
-            Gson gson = new Gson();
-            switch (Constant.project_type) {
-                case 0://出差外出的数据解析
-                    Ctlm7502Json ctlm7502Json = gson.fromJson(subValue, Ctlm7502Json.class);
-                    travelDatas.add(ctlm7502Json);
-                    break;
-                //销售订单的解析
-                case 1:
-                case 2:
-                case 3:
-                case 5:
-                    DsaordbaseJson2 dsaordbaseJson = gson.fromJson(subValue, DsaordbaseJson2.class);
-                    dsaordbaseJsons.add(dsaordbaseJson);
-                    break;
-                case 4:
-                    DsaordbaseJson3 dsaordbaseJson3 = gson.fromJson(subValue, DsaordbaseJson3.class);
-                    dsaordbaseJsons3.add(dsaordbaseJson3);
-                    break;
-            }
+        try {
+            JSONArray jsonArray = new JSONArray(value);
+            for (int i = 0; i < jsonArray.length(); i++) {
+                String temp = jsonArray.getString(i);
+//                Matcher m = p.matcher(temp);
+                String subValue = temp.substring(temp.indexOf("{"),
+                        temp.indexOf("}") + 1);
+                if (!isGoodJson(subValue)) {
+                    Log.e("subValue", subValue);
+                    mHandler.sendEmptyMessage(3);
+                    return;
+                }
+                Gson gson = new Gson();
+                switch (Constant.project_type) {
+                    case 0://出差外出的数据解析
+                        Ctlm7502Json ctlm7502Json = gson.fromJson(subValue, Ctlm7502Json.class);
+                        travelDatas.add(ctlm7502Json);
+                        break;
+                    //销售订单的解析
+                    case 1:
+                    case 2:
+                    case 3:
+                    case 5:
+                        DsaordbaseJson2 dsaordbaseJson = gson.fromJson(subValue, DsaordbaseJson2.class);
+                        dsaordbaseJsons.add(dsaordbaseJson);
+                        break;
+                    case 4:
+                        DsaordbaseJson3 dsaordbaseJson3 = gson.fromJson(subValue, DsaordbaseJson3.class);
+                        dsaordbaseJsons3.add(dsaordbaseJson3);
+                        break;
+                }
 
+            }
+        } catch (Exception e) {
+            mHandler.sendEmptyMessage(3);
+            return;
         }
+
         Log.d("seach", "开始逻辑判断");
         switch (Constant.project_type) {
             case 1://终端+客户查询，过滤相同终端与客户，过滤后的数据保存

@@ -406,7 +406,7 @@ public class BusinessDgtdrechtml extends ActionBarWidgetActivity implements View
 
     private void removeData() {
         waitDialog.dismiss();
-        log_date_task.setText("");
+        log_id_wtype.setText("");
         log_id_wproj.setText("");
         log_dec_wtime.setText("");
         log_var_wtitle.setText("");
