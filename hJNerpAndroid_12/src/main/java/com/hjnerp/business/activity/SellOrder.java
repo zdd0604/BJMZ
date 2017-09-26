@@ -275,9 +275,9 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
         sell_order_ticket_time.setText(getToday());
         if (Constant.JUDGE_TYPE) {
             Constant.billsNo = "";
-            SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS");
+            SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             SimpleDateFormat f2 = new SimpleDateFormat("yyyy-MM-dd");
-            if (TextUtils.isEmpty(a)){
+            if (TextUtils.isEmpty(a)) {
                 a = f.format(calendar.getTime());
 
             }
@@ -595,6 +595,8 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
         businessChange.setTable_no_name("dsaord_no");
         businessChange.setTable_no(Constant.billsNo);
         List<BusinessChange.ValuesBean> valuesBeen = new ArrayList<>();
+        DecimalFormat format = new DecimalFormat("#0.00");//保留两位小数
+        DecimalFormat format4 = new DecimalFormat("#0.0000");//保留四位小数
 
         for (int i = 0; i < cycleTime; i++) {
             BusinessChange.ValuesBean valuesBean = new BusinessChange.ValuesBean();
@@ -737,10 +739,17 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
                 valuesBean.setDec_ordqty(String.valueOf(sellDetails.get(i).getOrder_num()));
                 valuesBean.setDec_oriprice(String.valueOf(sellDetails.get(i).getPer_price()));
                 valuesBean.setDec_price(String.valueOf(sellDetails.get(i).getPer_price()));
+                valuesBean.setDec_jxprice(String.valueOf(sellDetails.get(i).getPer_price()));
                 valuesBean.setDec_oriamt(String.valueOf(sellDetails.get(i).getOrder_price()));
                 valuesBean.setDec_amt(String.valueOf(sellDetails.get(i).getOrder_price()));
                 valuesBean.setId_tax(sellDetails.get(i).getId_tax());
                 valuesBean.setDec_taxrate(sellDetails.get(i).getDec_taxrate());
+                double dec_noamt = sellDetails.get(i).getOrder_price() / (1 + Double.valueOf(sellDetails.get(i).getDec_taxrate()));
+                valuesBean.setDec_noamt(format.format(dec_noamt));
+                double dec_noprice = sellDetails.get(i).getPer_price() / (1 + Double.valueOf(sellDetails.get(i).getDec_taxrate()));
+                valuesBean.setDec_noprice(format4.format(dec_noprice));
+                double dec_taxamt = sellDetails.get(i).getOrder_price() - dec_noamt;
+                valuesBean.setDec_taxamt(format.format(dec_taxamt));
                 valuesBean.setId_stockstyle(sellDetails.get(i).getId_stockstyle());
                 valuesBean.setId_stocktype(sellDetails.get(i).getId_stocktype());
                 valuesBean.setId_itemcate(sellDetails.get(i).getId_itemcate());
