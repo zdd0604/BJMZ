@@ -36,6 +36,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * 联系人界面
+ */
 public class ContactFragment extends Fragment {
     private String TAG = "ContactFragment";
 

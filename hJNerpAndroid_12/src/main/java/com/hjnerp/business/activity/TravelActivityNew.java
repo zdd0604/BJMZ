@@ -223,11 +223,9 @@ public class TravelActivityNew extends ActionBarWidgetActivity implements View.O
                                 break;
                             case "002040":
                                 intent.setClass(getApplicationContext(), LeaveBusiness.class);
-
                                 break;
                             case "002090":
                                 intent.setClass(getApplicationContext(), OverBusiness.class);
-
                                 break;
                             case "002095":
                                 intent.setClass(getApplicationContext(), AbnormalBusiness.class);
@@ -235,7 +233,6 @@ public class TravelActivityNew extends ActionBarWidgetActivity implements View.O
                                 break;
                             case "002020":
                                 intent.setClass(getApplicationContext(), SellOrder.class);
-
                                 break;
                             default:
                                 break;
@@ -300,13 +297,13 @@ public class TravelActivityNew extends ActionBarWidgetActivity implements View.O
         final Dialog noticeDialog = new Dialog(context, R.style.noticeDialogStyle);
         noticeDialog.setContentView(R.layout.dialog_notice_withcancel);
 
-        RelativeLayout dialog_cancel_rl, dialog_confirm_rl;
+        TextView dialog_cancel_rl, dialog_confirm_rl;
         TextView notice = (TextView) noticeDialog.findViewById(R.id.dialog_notice_tv);
         notice.setText("确认要删除单据：" + table_no + "吗?");
-        dialog_cancel_rl = (RelativeLayout) noticeDialog
-                .findViewById(R.id.dialog_cc_cancel_rl);
-        dialog_confirm_rl = (RelativeLayout) noticeDialog
-                .findViewById(R.id.dialog_cc_confirm_rl);
+        dialog_cancel_rl = (TextView) noticeDialog
+                .findViewById(R.id.dialog_cancel_tv);
+        dialog_confirm_rl = (TextView) noticeDialog
+                .findViewById(R.id.dialog_confirm_tv);
         dialog_cancel_rl.setOnClickListener(new View.OnClickListener() {
 
             @Override

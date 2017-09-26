@@ -39,7 +39,7 @@ public class SetActivity extends ActionBarWidgetActivity implements OnClickListe
     //    private TextView tv_tologin_without_clean, tv_tologin_with_clean;
     private ArrayList<CommonSetInfo> commonSetInfoList = new ArrayList<CommonSetInfo>();
     private Thread mThread;
-    private RelativeLayout dialog_cancel_rl, dialog_confirm_rl;
+    private TextView dialog_cancel_rl, dialog_confirm_rl;
     private Dialog noticeDialog;
     private static String DOWNLOAD_XML_SUCCESS = "download_xml_success";
     private static String DOWNLOAD_XML_CONTAINS_ERROR = "download_xml_contains_error";
@@ -191,13 +191,11 @@ public class SetActivity extends ActionBarWidgetActivity implements OnClickListe
         final Dialog noticeDialog = new Dialog(context, R.style.noticeDialogStyle);
         noticeDialog.setContentView(R.layout.dialog_notice_withcancel);
 
-        RelativeLayout dialog_cancel_rl, dialog_confirm_rl;
+        TextView dialog_cancel_rl, dialog_confirm_rl;
         TextView notice = (TextView) noticeDialog.findViewById(R.id.dialog_notice_tv);
         notice.setText("确认要退出和佳ERP吗?");
-        dialog_cancel_rl = (RelativeLayout) noticeDialog
-                .findViewById(R.id.dialog_cc_cancel_rl);
-        dialog_confirm_rl = (RelativeLayout) noticeDialog
-                .findViewById(R.id.dialog_cc_confirm_rl);
+        dialog_cancel_rl = (TextView) noticeDialog .findViewById(R.id.dialog_cancel_tv);
+        dialog_confirm_rl = (TextView) noticeDialog.findViewById(R.id.dialog_confirm_tv);
         dialog_cancel_rl.setOnClickListener(new OnClickListener() {
 
             @Override
@@ -239,10 +237,10 @@ public class SetActivity extends ActionBarWidgetActivity implements OnClickListe
                 noticeDialog.dismiss();
             }
             switch (v.getId()) {
-                case R.id.dialog_cc_cancel_rl:
+                case R.id.dialog_cancel_tv:
 
                     break;
-                case R.id.dialog_cc_confirm_rl:
+                case R.id.dialog_confirm_tv:
                     int tag = (Integer) dialog_confirm_rl.getTag();
                     if (tag == 0) {
                         //清除数据
@@ -416,10 +414,10 @@ public class SetActivity extends ActionBarWidgetActivity implements OnClickListe
         TextView notice = (TextView) noticeDialog
                 .findViewById(R.id.dialog_notice_tv);
         notice.setText(text);
-        dialog_cancel_rl = (RelativeLayout) noticeDialog
-                .findViewById(R.id.dialog_cc_cancel_rl);
-        dialog_confirm_rl = (RelativeLayout) noticeDialog
-                .findViewById(R.id.dialog_cc_confirm_rl);
+        dialog_cancel_rl = (TextView) noticeDialog
+                .findViewById(R.id.dialog_cancel_tv);
+        dialog_confirm_rl = (TextView) noticeDialog
+                .findViewById(R.id.dialog_confirm_tv);
         dialog_confirm_rl.setTag(tag);
 
         dialog_cancel_rl.setOnClickListener(onClickListener);

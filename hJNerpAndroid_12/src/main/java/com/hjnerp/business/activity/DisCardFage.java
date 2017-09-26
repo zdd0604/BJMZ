@@ -655,17 +655,17 @@ public class DisCardFage extends ActivitySupport implements OnClickListener, MyO
         // TODO Auto-generated method stub
         final Dialog noticeDialog = new Dialog(this, R.style.noticeDialogStyle);
         noticeDialog.setContentView(R.layout.dialog_notice_withcancel);
-        RelativeLayout dialog_cancel_rl, dialog_confirm_rl;
+        TextView dialog_cancel_rl, dialog_confirm_rl;
         TextView notice = (TextView) noticeDialog
                 .findViewById(R.id.dialog_notice_tv);
         notice.setText("尚未检测到任何路线，请选择手动下载计划内线路，或者进入散点拜访模式");
-        dialog_cancel_rl = (RelativeLayout) noticeDialog
-                .findViewById(R.id.dialog_cc_cancel_rl);
+        dialog_cancel_rl = (TextView) noticeDialog
+                .findViewById(R.id.dialog_cancel_tv);
         TextView dialog_cancel_tv = (TextView) noticeDialog
                 .findViewById(R.id.dialog_cancel_tv);
         dialog_cancel_tv.setText("计划下载");
-        dialog_confirm_rl = (RelativeLayout) noticeDialog
-                .findViewById(R.id.dialog_cc_confirm_rl);
+        dialog_confirm_rl = (TextView) noticeDialog
+                .findViewById(R.id.dialog_confirm_tv);
         TextView dialog_confirm_tv = (TextView) noticeDialog
                 .findViewById(R.id.dialog_confirm_tv);
         dialog_confirm_tv.setText("散点模式");
@@ -929,17 +929,17 @@ public class DisCardFage extends ActivitySupport implements OnClickListener, MyO
         if (isDownload && !hasLine) {
             final Dialog noticeDialog = new Dialog(this, R.style.noticeDialogStyle);
             noticeDialog.setContentView(R.layout.dialog_notice_withcancel);
-            RelativeLayout dialog_cancel_rl, dialog_confirm_rl;
+            TextView dialog_cancel_rl, dialog_confirm_rl;
             TextView notice = (TextView) noticeDialog
                     .findViewById(R.id.dialog_notice_tv);
             notice.setText("没有检测到数据，请确保已经下载数据。要重新下载数据还是直接进入散点模式？");
-            dialog_cancel_rl = (RelativeLayout) noticeDialog
-                    .findViewById(R.id.dialog_cc_cancel_rl);
+            dialog_cancel_rl = (TextView) noticeDialog
+                    .findViewById(R.id.dialog_cancel_tv);
             TextView dialog_cancel_tv = (TextView) noticeDialog
                     .findViewById(R.id.dialog_cancel_tv);
             dialog_cancel_tv.setText("重新下载");
-            dialog_confirm_rl = (RelativeLayout) noticeDialog
-                    .findViewById(R.id.dialog_cc_confirm_rl);
+            dialog_confirm_rl = (TextView) noticeDialog
+                    .findViewById(R.id.dialog_confirm_tv);
             TextView dialog_confirm_tv = (TextView) noticeDialog
                     .findViewById(R.id.dialog_confirm_tv);
             dialog_confirm_tv.setText("散点模式");

@@ -15,7 +15,6 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -117,7 +116,6 @@ public class TravelBusiness extends ActivitySupport implements View.OnClickListe
     private void initData() {
 
 
-
         fees = new ArrayList<>();
         users = new ArrayList<>();
         users = BusinessBaseDao.getCTLM1345ByIdTable("user");
@@ -152,7 +150,6 @@ public class TravelBusiness extends ActivitySupport implements View.OnClickListe
         }
         stringArrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, feeItems);
         stringArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
 
 
     }
@@ -424,10 +421,6 @@ public class TravelBusiness extends ActivitySupport implements View.OnClickListe
 
 
     }
-
-
-
-
 
 
     private void submit() {
@@ -748,17 +741,17 @@ public class TravelBusiness extends ActivitySupport implements View.OnClickListe
 
         final Dialog noticeDialog = new Dialog(this, R.style.noticeDialogStyle);
         noticeDialog.setContentView(R.layout.dialog_notice_withcancel);
-        RelativeLayout dialog_cancel_rl, dialog_confirm_rl;
+        TextView dialog_cancel_rl, dialog_confirm_rl;
         TextView notice = (TextView) noticeDialog
                 .findViewById(R.id.dialog_notice_tv);
         notice.setText("是否要删除该行程明细？");
-        dialog_cancel_rl = (RelativeLayout) noticeDialog
-                .findViewById(R.id.dialog_cc_cancel_rl);
+        dialog_cancel_rl = (TextView) noticeDialog
+                .findViewById(R.id.dialog_cancel_tv);
         TextView dialog_cancel_tv = (TextView) noticeDialog
                 .findViewById(R.id.dialog_cancel_tv);
         dialog_cancel_tv.setText("取消");
-        dialog_confirm_rl = (RelativeLayout) noticeDialog
-                .findViewById(R.id.dialog_cc_confirm_rl);
+        dialog_confirm_rl = (TextView) noticeDialog
+                .findViewById(R.id.dialog_confirm_tv);
         TextView dialog_confirm_tv = (TextView) noticeDialog
                 .findViewById(R.id.dialog_confirm_tv);
         dialog_confirm_tv.setText("删除");

@@ -604,14 +604,14 @@ public class FriendsActivity extends ActionBarWidgetActivity implements OnClickL
         noticeDialog = new Dialog(this, R.style.noticeDialogStyle);
         noticeDialog.setContentView(R.layout.dialog_notice_withcancel);
 
-        RelativeLayout dialog_cancel_rl, dialog_confirm_rl;
+        TextView dialog_cancel_rl, dialog_confirm_rl;
         TextView notice = (TextView) noticeDialog
                 .findViewById(R.id.dialog_notice_tv);
         notice.setText("删除好友后，聊天记录和好友关系都将被删除，是否继续");
-        dialog_cancel_rl = (RelativeLayout) noticeDialog
-                .findViewById(R.id.dialog_cc_cancel_rl);
-        dialog_confirm_rl = (RelativeLayout) noticeDialog
-                .findViewById(R.id.dialog_cc_confirm_rl);
+        dialog_cancel_rl = (TextView) noticeDialog
+                .findViewById(R.id.dialog_cancel_tv);
+        dialog_confirm_rl = (TextView) noticeDialog
+                .findViewById(R.id.dialog_confirm_tv);
         dialog_cancel_rl.setOnClickListener(this);
         dialog_confirm_rl.setOnClickListener(this);
         noticeDialog.show();
@@ -1093,13 +1093,13 @@ public class FriendsActivity extends ActionBarWidgetActivity implements OnClickL
 //                    // showsetNoteDialog();
 //                    // }
 //                    break;
-            case R.id.dialog_cc_cancel_rl:
+            case R.id.dialog_cancel_tv:
                 noticeDialog.dismiss();
                 break;
             case R.id.dialog_rl_cancel:
                 noticeDialog.dismiss();
                 break;
-            case R.id.dialog_cc_confirm_rl:
+            case R.id.dialog_confirm_tv:
                 noticeDialog.dismiss();
                 removeFriend(friend.getFriendid());
                 break;
