@@ -1504,18 +1504,18 @@ public class ChatActivity extends ActivitySupport {
 		noticeDialog = new Dialog(context, R.style.noticeDialogStyle);
 		noticeDialog.setContentView(R.layout.dialog_notice_withcancel);
 
-		RelativeLayout dialog_confirm_rl;
-		RelativeLayout dialog_cc_cancel_rl;
+		TextView dialog_confirm_rl;
+		TextView dialog_cc_cancel_rl;
 		TextView notice = (TextView) noticeDialog
 				.findViewById(R.id.dialog_notice_tv);
 		notice.setText("确定重发该消息");
 
 		TextView confirm = (TextView) noticeDialog
-				.findViewById(R.id.dialog_confirm_tv);
+				.findViewById(R.id.dialog_cancel_tv);
 		confirm.setText("重发");
 
-		dialog_confirm_rl = (RelativeLayout) noticeDialog
-				.findViewById(R.id.dialog_cc_confirm_rl);
+		dialog_confirm_rl = (TextView) noticeDialog
+				.findViewById(R.id.dialog_confirm_tv);
 		dialog_confirm_rl.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -1579,8 +1579,8 @@ public class ChatActivity extends ActivitySupport {
 
 			}
 		});
-		dialog_cc_cancel_rl = (RelativeLayout) noticeDialog
-				.findViewById(R.id.dialog_cc_cancel_rl);
+		dialog_cc_cancel_rl = (TextView) noticeDialog
+				.findViewById(R.id.dialog_cancel_tv);
 		dialog_cc_cancel_rl.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {

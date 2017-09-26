@@ -19,7 +19,6 @@ import android.view.View.OnTouchListener;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -41,6 +40,7 @@ import com.hjnerp.util.ImageLoaderHelper;
 import com.hjnerp.util.StringUtil;
 import com.hjnerp.util.ToastUtil;
 import com.hjnerp.util.myscom.StringUtils;
+import com.hjnerp.widget.BubbleImageView;
 import com.hjnerp.widget.SelectPopupWindow;
 import com.hjnerp.widget.SelectText;
 import com.hjnerpandroid.R;
@@ -73,9 +73,9 @@ public class LoginActivity extends ActivitySupport {
     private List<IDComConfig> listConfig = null;// new ArrayList<IDComConfig>();
     private LoginConfig loginConfig;
     private int type;
-    Toast mToast;
-    private ImageView myImageView;
-    Handler mHandler;
+    private Toast mToast;
+    private BubbleImageView myImageView;
+    private Handler mHandler;
     private UserInfo myinfo;
 
     @Override
@@ -182,7 +182,7 @@ public class LoginActivity extends ActivitySupport {
 
         btn_login.setOnClickListener(onClickListener);
         tv_register.setOnClickListener(onClickListener);
-        myImageView = (ImageView) findViewById(R.id.myphoto);
+        myImageView = (BubbleImageView) findViewById(R.id.myphoto);
         edt_company.addTextChangedListener(textWatcher);
         edt_username.addTextChangedListener(textWatcher);
         edt_pwd.addTextChangedListener(textWatcher);
@@ -300,7 +300,7 @@ public class LoginActivity extends ActivitySupport {
                         null, null);
             }
 
-            if (companyname.length() > 0 && username.length() > 0&& password.length() > 0) {
+            if (companyname.length() > 0 && username.length() > 0 && password.length() > 0) {
                 btn_login.setEnabled(true);
             } else {
                 btn_login.setEnabled(false);
