@@ -374,7 +374,7 @@ public class Constant {
     public static List<SellOrderModel> sellDetails;
     public static int sellDetailsPosition;
     public static String id_terminal_for_item;//靠这个查询产品
-    public static String id_terminal_for_address;//靠这个查询地址
+    public static String id_terminal_for_address;//靠这个查询地址,后来改成用客户id查询
     //    public static int selectAddressPosition;//地址位置
 //    public static List<String> orderAddress;
     //    public static DsaordbaseJson dsaordbaseJson;//产品搜索

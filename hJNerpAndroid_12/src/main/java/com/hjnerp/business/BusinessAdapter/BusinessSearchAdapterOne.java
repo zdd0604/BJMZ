@@ -15,6 +15,7 @@ import java.util.List;
 
 /**
  * Created by Admin on 2017/1/17.
+ * 适用于单行的适配器,具体方法同多行的
  */
 
 public class BusinessSearchAdapterOne extends RecyclerView.Adapter<BusinessSearchAdapterOne.MyViewHolder> {

@@ -75,7 +75,7 @@ public class BusinessSearch extends ActionBarWidgetActivity implements View.OnCl
     RelativeLayout activity_business_seach;
 
     CharSequence temp;//监听前的文本
-    BusinessSearchAdapter adapter;
+    BusinessSearchAdapter adapter;//搜索
     private HttpClientManager.HttpResponseHandler responseHandler = new NsyncDataHandler();
     public static final String JSON_VALUE = "values";
     public static final Pattern p = Pattern.compile("\\s*|\t|\r|\n");
@@ -237,7 +237,7 @@ public class BusinessSearch extends ActionBarWidgetActivity implements View.OnCl
                     }
                     param.addKeyValue(Constant.BM_ACTION_TYPE, "MobileSyncDataDownload")
                             .addKeyValue("id_table", StringUtils.join("terminal"))
-                            .addKeyValue("condition", "1=1 and id_column='" + id_terminal_for_address + "' and id_recorder='" + QiXinBaseDao.queryCurrentUserInfo().userID + "'");
+                            .addKeyValue("condition", "1=1 and id_column='" + id_terminal_for_address + "' and name_column='" + id_terminal_for_item + "' and id_recorder='" + QiXinBaseDao.queryCurrentUserInfo().userID + "'");
                     break;
                 case 4:
                     if (TextUtils.isEmpty(id_terminal_for_item)) {

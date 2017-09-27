@@ -437,8 +437,6 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
                 showCalendar(sell_order_ticket_time);//调用日历控件
                 break;
             case R.id.add_sell_order_detail://添加明细
-//                sellDetails.clear();
-//                sellDetails = sellOrderAdapter.getListDeatils();
                 Constant.JUDGE_TYPE1 = true;
                 SellOrderModel sellOrderModel = new SellOrderModel();
                 sellOrderModel.setOrder_first(false);
@@ -447,24 +445,22 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
                 sellOrderAdapter.notifyDataSetChanged();
                 no++;
                 break;
-            case R.id.sell_order_addess_send:
+            case R.id.sell_order_addess_send://选择发票邮寄地址
                 Intent intent1 = new Intent(this, BusinessSearch.class);
-                Constant.project_type = 3;
+                Constant.project_type = 3;//地址类的是3
                 Constant.travel = true;
-                startActivityForResult(intent1, 66);
+                startActivityForResult(intent1, 66);//66为发票邮寄地址
                 break;
-            case R.id.sell_order_address:
+            case R.id.sell_order_address://选择发货地址
                 name_terminal = sell_order_terminal.getText().toString().trim();
                 if (TextUtils.isEmpty(name_terminal)) {
-//            Toast.makeText(this, "请先选择所属终端", Toast.LENGTH_SHORT).show();
                     new MyToast2(SellOrder.this, "请先选择所属终端!");
-
                     return;
                 }
                 Intent intent2 = new Intent(this, BusinessSearch.class);
                 Constant.project_type = 3;
                 Constant.travel = true;
-                startActivityForResult(intent2, 55);
+                startActivityForResult(intent2, 55);//55是发货地址
                 break;
         }
     }
@@ -509,20 +505,24 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
      */
     private void dateCommit(int index) {
         switch (index) {
-            case Constant.HANDLERTYPE_0:
+            case Constant.HANDLERTYPE_0://保存
                 caculatePrice();
                 saveAndSend("save");
                 break;
-            case Constant.HANDLERTYPE_1:
+            case Constant.HANDLERTYPE_1://送审
                 saveAndSend("send");
                 break;
         }
     }
 
+    /**
+     * 保存和送审方法
+     *
+     * @param save 区分保存还是送审
+     */
     private void saveAndSend(String save) {
         name_terminal = sell_order_terminal.getText().toString().trim();
         if (TextUtils.isEmpty(name_terminal)) {
-//            new MyToast2(SellOrder.this, "请先选择所属终端!");
             showFailToast("请先选择所属终端!");
             return;
         }
@@ -536,9 +536,9 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
             showFailToast("请先选择发货日期!");
             return;
         }
-        //取消预计开票时间，设置为0000-00-00
+        //预计开票时间，设置今天
         String time = getToday();
-        String more = sell_order_more.getText().toString().trim();
+        String more = sell_order_more.getText().toString().trim();//备注
         String address = sell_order_address.getText().toString().trim();
         if (TextUtils.isEmpty(address)) {
             showFailToast("请先选择送货地址!");
@@ -549,23 +549,16 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
             showFailToast("请先选择发票地址!");
             return;
         }
-//        if (TextUtils.isEmpty(dec_acclimit)) {
-//            dec_acclimit = "";
-//        }
-        double allprice = 0;
-        if (sellDetails.size() > 0)
+
+        double allprice = 0;//总价
+        if (sellDetails.size() > 0)//订单明细有行号可以计算总价
             for (int i = 0; i < sellDetails.size(); i++) {
                 allprice = allprice + sellDetails.get(i).getOrder_price();
-//            ToastUtil.ShowShort(this, String.valueOf(allprice));
             }
 
         StringBuffer stringBuffer = new StringBuffer();
-        StringBuffer stringBuffer2 = new StringBuffer();
-//        companyID = "CM1101-0002";
         stringBuffer.append("{\"tableid\":\"dsaord\",\"opr\":\"SS\",\"no\":\"" + Constant.billsNo + "\",\"userid\":\"" + userID + "\",\"comid\":\"" + companyID + "\",");
         stringBuffer.append("\"menuid\":\"002020\",\"dealtype\":\"" + save + "\",\"data\":[");
-        //{"table_name":"dsaord_03","table_no":"SO201708000295","table_no_name":"dsaord_no","values":[{"dealtype":"U","line_no":"1","name_corr":"123456"},{"dealtype":"N","line_no":"2","name_corr":"123456"},{"dealtype":"N","line_no":"4","name_corr":"123456"},{"dealtype":"N","line_no":"3","name_corr":"123456"}]}
-//        stringBuffer2.append("")
         int gap = 0;//增加的明细，如果是正，就为新增，负数为删除个数
         int cycleTime = 0;//提交明细的次数
         if (Constant.JUDGE_TYPE) {
@@ -574,13 +567,13 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
 
         } else {
             gap = sellDetails.size() - countDetail;//新增加的单据行数
-            if (gap >= 0) {
+            if (gap >= 0) {//有新增单据
                 cycleTime = sellDetails.size();
-            } else {
+            } else {//有删除单据
                 cycleTime = countDetail;
             }
         }
-        BusinessChange businessChange = new BusinessChange();
+        BusinessChange businessChange = new BusinessChange();//新接口提交,和旧接口写到了一起,这样更好的比较和赋值
         businessChange.setTable_name("dsaord_03");
         businessChange.setTable_no_name("dsaord_no");
         businessChange.setTable_no(Constant.billsNo);
@@ -589,26 +582,26 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
         DecimalFormat format4 = new DecimalFormat("#0.0000");//保留四位小数
 
         for (int i = 0; i < cycleTime; i++) {
-            BusinessChange.ValuesBean valuesBean = new BusinessChange.ValuesBean();
+            BusinessChange.ValuesBean valuesBean = new BusinessChange.ValuesBean();//新接口的明细提交
             if (!Constant.JUDGE_TYPE) {
                 valuesBean.setId_com(companyID);
-                if (i >= countDetail) {
+                if (i >= countDetail) {//新增的明细
                     valuesBean.setDealtype("N");
                     valuesBean.setDate_opr(a);
                     stringBuffer.append("{\"table\": \"dsaord_03\",\"oprdetail\":\"N\",\"where\":\" \",\"data\":[");
                     stringBuffer.append("{\"column\":\"date_opr\",\"value\":\"" + a + "\",\"datatype\":\"datetime\"}, ");
-                } else if (i >= countDetail + gap) {
+                } else if (i >= countDetail + gap) {//删除的明细
                     valuesBean.setDealtype("D");
                     stringBuffer.append("{\"table\": \"dsaord_03\",\"oprdetail\":\"D\",\"where\":\" \",\"data\":[");
 
-                } else {
+                } else {//修改的明细
                     valuesBean.setDealtype("U");
                     stringBuffer.append("{\"table\": \"dsaord_03\",\"oprdetail\":\"U\",\"where\":\" \",\"data\":[");
 
                 }
 
 //                continue;
-            } else {
+            } else {//第一次新单据
                 stringBuffer.append("{\"table\": \"dsaord_03\",\"oprdetail\":\"N\",\"where\":\" \",\"data\":[");
                 stringBuffer.append("{\"column\":\"date_opr\",\"value\":\"" + a + "\",\"datatype\":\"datetime\"}, ");
 
@@ -623,13 +616,6 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
             valuesBean.setId_recorder(userID);
             valuesBean.setId_dept(id_dept);
             valuesBean.setDate_sign(b);
-/**
- * private String dec_scorramt;
- private String id_zone;
- private String id_area;
- private String id_corrtype;
- private String id_industry;
- */
             valuesBean.setId_flow("FBsa");
             valuesBean.setDec_scorramt(String.valueOf(allprice));
             valuesBean.setId_zone(id_zone);
@@ -639,7 +625,6 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
             valuesBean.setLine_no((String.valueOf(i + 1)));
             valuesBean.setId_ordsource("001");
             valuesBean.setId_curr("CNY");
-            //dec_exchangerate
             valuesBean.setDec_exchangerate("1");
             valuesBean.setVar_contact(var_contact);
             valuesBean.setId_corr(id_corr);
@@ -712,12 +697,10 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
             } else {
                 String item = sellDetails.get(i).getName_item();
                 if (TextUtils.isEmpty(item)) {
-//                    Toast.makeText(this, "请选择产品", Toast.LENGTH_SHORT).show();
                     new MyToast2(SellOrder.this, "明细(" + (i + 1) + ")请选择产品!");
                     return;
                 }
                 if (sellDetails.get(i).getOrder_num() == 0) {
-//                    Toast.makeText(this, "请选择产品", Toast.LENGTH_SHORT).show();
                     new MyToast2(SellOrder.this, "明细(" + (i + 1) + ")数量不能为0!");
                     return;
                 }
@@ -792,10 +775,6 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
                 stringBuffer.append("{\"column\":\"var_invtel\",\"value\":\"" + var_inv_tel + "\",\"datatype\":\"varchar\"}, ");
                 stringBuffer.append("{\"column\":\"var_invcontact\",\"value\":\"" + var_inv_contact + "\",\"datatype\":\"varchar\"}, ");
                 stringBuffer.append("{\"column\":\"id_invexpress\",\"value\":\"" + orderExpress_id.get(sell_order_invexpress.getSelectedItemPosition()) + "\",\"datatype\":\"varchar\"}, ");
-//                stringBuffer.append("{\"column\":\"var_invaddr\",\"value\":\"" + old_var_invaddr + "\",\"datatype\":\"varchar\"}, ");
-//                stringBuffer.append("{\"column\":\"var_invtel\",\"value\":\"" + old_var_tel + "\",\"datatype\":\"varchar\"}, ");
-//                stringBuffer.append("{\"column\":\"var_invcontact\",\"value\":\"" + old_var_contact + "\",\"datatype\":\"varchar\"}, ");
-
             }
             valuesBean.setDec_orisamt(String.valueOf(allprice));
             valuesBean.setDec_samt(String.valueOf(allprice));
@@ -808,7 +787,6 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
             stringBuffer.append("{\"column\":\"var_rcvcorr\",\"value\":\"" + var_rcvcorr + "\",\"datatype\":\"varchar\"}, ");
             stringBuffer.append("{\"column\":\"var_addr\",\"value\":\"" + address + "\",\"datatype\":\"varchar\"}, ");
             stringBuffer.append("{\"column\":\"id_express\",\"value\":\"" + orderExpress_id.get(sell_order_express.getSelectedItemPosition()) + "\",\"datatype\":\"varchar\"}, ");
-//            stringBuffer.append("{\"column\":\"var_invaddr\",\"value\":\"" + var_invaddr + "\",\"datatype\":\"varchar\"}, ");
             stringBuffer.append("{\"column\":\"date_planinv\",\"value\":\"" + time + "\",\"datatype\":\"datetime\"}, ");
             stringBuffer.append("{\"column\":\"date_demand\",\"value\":\"" + time_p + "\",\"datatype\":\"datetime\"}]}");
             if (i != cycleTime - 1) {
@@ -823,6 +801,13 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
         getBusinessList(str, save, new Gson().toJson(businessChange));
     }
 
+    /**
+     * 提交单据
+     *
+     * @param datas        旧方法的数据
+     * @param dealtype     是保存还是送审
+     * @param businessJson 新方法的送审数据
+     */
     private void getBusinessList(String datas, final String dealtype, String businessJson) {
         if (waitDialogRectangle != null && waitDialogRectangle.isShowing()) {
             waitDialogRectangle.dismiss();
@@ -834,7 +819,7 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
         boolean isMultipart;//是否使用新接口
         String url_serv;
         String datas_add;
-        if ((!Constant.JUDGE_TYPE) && dealtype.equals(Constant.SAVE_DEALTYPE)) {
+        if ((!Constant.JUDGE_TYPE) && dealtype.equals(Constant.SAVE_DEALTYPE)) {//从列表进来并且是保存,则用新方法
             isMultipart = false;
             url_serv = "/servlet/BusinessMobileSqlUpdate";
             datas_add = businessJson;
@@ -906,27 +891,25 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
                 });
     }
 
-
+    /**
+     * 计算单行金额
+     */
     private void caculatePrice() {
-//        if (dsaordbaseJsons_new == null || dsaordbaseJsons_new.size() == 0) {
-//            ToastUtil.ShowShort(this, "请先选择所属终端");
-//            return;
-//        }
         add_sell_order_detail.requestFocusFromTouch();
         for (int i = 0; i < sellDetails.size(); i++) {
             sellDetails.get(i).setOrder_price(sellDetails.get(i).getPer_price()
                     * sellDetails.get(i).getOrder_num());
-//            for (int j = 0; j < dsaordbaseJsons_new.size(); j++) {
-//                if (sellDetails.get(i).getId_item().equalsIgnoreCase(dsaordbaseJsons_new.get(j).getId_item())) {
-//                    sellDetails.get(i).setOrder_price(Double.parseDouble(dsaordbaseJsons_new.get(j).getDec_price())
-//                            * sellDetails.get(i).getOrder_num());
-//                }
-//            }
-
         }
         sellOrderAdapter.notifyDataSetChanged();
     }
 
+    /**
+     * 点击搜索后的返回
+     *
+     * @param requestCode
+     * @param resultCode
+     * @param data
+     */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -950,12 +933,12 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
             super.handleMessage(msg);
             switch (msg.what) {
                 case 0:
-                    getItem();
+                    getItem();//终端搜索
                     break;
                 case 1:
-                    sellOrderAdapter.notifyDataSetChanged();
+                    sellOrderAdapter.notifyDataSetChanged();//产品搜索
                     break;
-                case 2:
+                case 2://地址搜索
                     sell_order_address.setText(item_peoject);
                     var_tel = id_wproj;
                     var_contact = item_client;
@@ -966,7 +949,7 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
                     var_inv_tel = id_wproj;
                     var_inv_contact = item_client;
                     break;
-                case 3:
+                case 3://发票地址搜索
                     sell_order_addess_send.setText(item_peoject);
                     var_inv_tel = id_wproj;
                     var_inv_contact = item_client;
@@ -976,6 +959,9 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
         }
     };
 
+    /**
+     * 搜索完终端后进行数据处理
+     */
     private void getItem() {
         sell_order_terminal.setText(dsaordbaseJsons_new.get(0).getName_terminal());
         sell_order_send.setText(dsaordbaseJsons_new.get(0).getName_corr());

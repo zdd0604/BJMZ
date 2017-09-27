@@ -36,10 +36,9 @@ import static com.hjnerp.common.Constant.sellDetailsPosition;
  */
 
 public class SellOrderAdapter extends WZYBaseAdapter<SellOrderModel> {
-    private List<Ctlm1345> sellType = new ArrayList<>();
-    private List<String> sellTypes = new ArrayList<String>();
-    private List<String> sellTypes_id = new ArrayList<String>();
-    private List<String> sellTypesZ = new ArrayList<String>();
+    private List<Ctlm1345> sellType = new ArrayList<>();//销售类型
+    private List<String> sellTypes_id = new ArrayList<String>();//销售类型的id
+    private List<String> sellTypesZ = new ArrayList<String>();//
     private List<String> sellTypesP = new ArrayList<String>();
     private List<String> sellTypes_idZ = new ArrayList<String>();
     private List<String> sellTypes_idP = new ArrayList<String>();
@@ -53,27 +52,6 @@ public class SellOrderAdapter extends WZYBaseAdapter<SellOrderModel> {
     private int type_no;
     private boolean typeZ = false;
 
-//    public void setProducts(List<DsaordbaseJson> dsaordbaseJsons) {
-//
-//        this.dsaordbaseJsons = dsaordbaseJsons;
-//        productTypes.clear();
-//        productTypes_id.clear();
-//        for (int i = 0; i < dsaordbaseJsons.size(); i++) {
-//            if (!productTypes_id.contains(dsaordbaseJsons.get(i).getId_item())) {
-//                productTypes.add(dsaordbaseJsons.get(i).getVar_desc() + "\n规格：" + dsaordbaseJsons.get(i).getVar_spec() + "        \t型号：" + dsaordbaseJsons.get(i).getVar_pattern());
-//                productTypes_id.add(dsaordbaseJsons.get(i).getId_item());
-//                per_price.add(dsaordbaseJsons.get(i).getDec_price());
-//                id_uom.add(dsaordbaseJsons.get(i).getId_uom());
-//
-//            }
-//        }
-//        for (int i = 0; i < data.size(); i++) {
-//            data.get(i).setOrder_product(0);
-//        }
-//        adapter2 = new ArrayAdapter<String>(context, R.layout.spinner_item, productTypes);
-//        adapter2.setDropDownViewResource(R.layout.spinner_item_hint2);
-//        notifyDataSetChanged();
-//    }
 
     public void SetOrderType(String type) {
         if (type.equalsIgnoreCase("P")) {
