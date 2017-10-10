@@ -4,10 +4,17 @@ import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.text.TextPaint;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.WindowManager;
 import android.widget.DatePicker;
+import android.widget.PopupWindow;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,6 +22,7 @@ import com.hjnerp.net.HttpClientManager;
 import com.hjnerp.widget.MyToast;
 import com.hjnerp.widget.MyToast2;
 import com.hjnerp.widget.WaitDialogRectangle;
+import com.hjnerpandroid.R;
 import com.sdyy.utils.XPermissionListener;
 import com.sdyy.utils.XPermissions;
 
@@ -48,7 +56,7 @@ public class ActionBarWidgetActivity extends ActivitySupport {
     public HttpClientManager.HttpResponseHandler responseHandler = new NsyncDataHandler();
     //是否授权
     public boolean isPsions = false;
-
+    protected PopupWindow popupWindow;
     public static void setNsyncDataConnector(NsyncDataConnector nsyncDataConnector) {
         ActionBarWidgetActivity.nsyncDataConnector = nsyncDataConnector;
     }
@@ -88,6 +96,8 @@ public class ActionBarWidgetActivity extends ActivitySupport {
         });
         return isPsions;
     }
+
+
 
 
     /**

@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -20,15 +21,20 @@ import android.provider.MediaStore;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.baoyz.actionsheet.ActionSheet;
 import com.hjnerp.activity.im.ChatActivity;
@@ -66,7 +72,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class FriendsActivity extends ActionBarWidgetActivity implements OnClickListener,
-        ActionSheet.ActionSheetListener {
+        ActionSheet.ActionSheetListener,
+        PopupWindow.OnDismissListener {
 
     String sFriendId;
     private FriendInfo friend;
@@ -1136,13 +1143,44 @@ public class FriendsActivity extends ActionBarWidgetActivity implements OnClickL
             case R.id.user_head_layout:
 //                showSelectPicDialog();
                 if (friend.getFriendid().equals(sputil.getMyId())) // 我自己的详情
-                    popupWindow();
+//                    popupWindow();
+                    openPopupWindow(v);
                 break;
             //点击头像查看照片
             case R.id.user_head_avatar:
                 Bundle bundle = new Bundle();
                 bundle.putString("photoUrl", photoUrl);
                 intentActivity(ShowPortraitActivity.class, bundle);
+                break;
+            case R.id.tv_pick_phone:
+                popupWindow.dismiss();
+                //跳转相机
+                tempFile = new File(Constant.CHAT_CACHE_DIR,
+                        "avartar-" + UUID.randomUUID()
+                                + ".photo");
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                    Uri imageUri = FileProvider.getUriForFile(context, "com.hjnerp.takephoto.fileprovider", tempFile);//通过FileProvider创建一个content类型的Uri
+                    Intent intent = new Intent();
+                    intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION); //添加这一句表示对目标应用临时授权该Uri所代表的文件
+                    intent.setAction(MediaStore.ACTION_IMAGE_CAPTURE);//设置Action为拍照
+                    intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);//将拍取的照片保存到指定URI
+                    startActivityForResult(intent, REQUEST_CODE＿IMAGE_CAPTURE);
+                } else {
+                    Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                    intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(tempFile));
+                    startActivityForResult(intent, REQUEST_CODE＿IMAGE_CAPTURE);
+                }
+                break;
+            case R.id.tv_pick_zone:
+                //跳转相册
+                Intent intent1 = new Intent(Intent.ACTION_PICK, null);
+                intent1.setDataAndType(
+                        MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
+                startActivityForResult(intent1, REQUEST_CODE_GALLY);
+                popupWindow.dismiss();
+                break;
+            case R.id.tv_cancel:
+                popupWindow.dismiss();
                 break;
             default:
                 break;
@@ -1229,5 +1267,58 @@ public class FriendsActivity extends ActionBarWidgetActivity implements OnClickL
     @Override
     public void onOtherButtonClick(ActionSheet actionSheet, int index) {
         dateCommit(index);
+    }
+
+    /**
+     * 显示popup
+     *
+     * @param v
+     */
+    private void openPopupWindow(View v) {
+        //防止重复按按钮
+        if (popupWindow != null && popupWindow.isShowing()) {
+            return;
+        }
+        //设置PopupWindow的View
+        View view = LayoutInflater.from(this).inflate(R.layout.view_popupwindow, null);
+        popupWindow = new PopupWindow(view, RelativeLayout.LayoutParams.MATCH_PARENT,
+                RelativeLayout.LayoutParams.WRAP_CONTENT);
+        //设置背景,这个没什么效果，不添加会报错
+        popupWindow.setBackgroundDrawable(new BitmapDrawable());
+        //设置点击弹窗外隐藏自身
+        popupWindow.setFocusable(true);
+        popupWindow.setOutsideTouchable(true);
+        //设置动画
+        popupWindow.setAnimationStyle(R.style.PopupWindow);
+        //设置位置
+        popupWindow.showAtLocation(v, Gravity.BOTTOM, 0, 0);
+        //设置消失监听
+        popupWindow.setOnDismissListener(this);
+        //设置PopupWindow的View点击事件
+        setOnPopupViewClick(view);
+        //设置背景色
+        setBackgroundAlpha(0.5f);
+    }
+
+    private void setOnPopupViewClick(View view) {
+        TextView tv_pick_phone, tv_pick_zone, tv_cancel;
+        tv_pick_phone = (TextView) view.findViewById(R.id.tv_pick_phone);
+        tv_pick_zone = (TextView) view.findViewById(R.id.tv_pick_zone);
+        tv_cancel = (TextView) view.findViewById(R.id.tv_cancel);
+        tv_pick_phone.setOnClickListener(this);
+        tv_pick_zone.setOnClickListener(this);
+        tv_cancel.setOnClickListener(this);
+    }
+
+    //设置屏幕背景透明效果
+    public void setBackgroundAlpha(float alpha) {
+        WindowManager.LayoutParams lp = getWindow().getAttributes();
+        lp.alpha = alpha;
+        getWindow().setAttributes(lp);
+    }
+
+    @Override
+    public void onDismiss() {
+        setBackgroundAlpha(1);
     }
 }

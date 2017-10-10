@@ -775,4 +775,10 @@
         <item name="android:layout_alignParentRight">true</item>
         <item name="android:drawableRight">@drawable/icon_right_orientation</item>
     </style>
+
+    <!--弹窗动画-->
+    <style name="PopupWindow">
+        <item name="android:windowEnterAnimation">@anim/window_in</item>
+        <item name="android:windowExitAnimation">@anim/window_out</item>
+    </style>
 </resources>
