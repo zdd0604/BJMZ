@@ -11,7 +11,7 @@
     <RelativeLayout
         android:id="@+id/user_head_layout"
         style="@style/Item_RelativeLayout_ContacterItemStyle"
-        android:layout_height="@dimen/size_55">
+        android:layout_height="wrap_content">
 
         <TextView
             style="@style/Item_RelativeLayout_TvLiftFriendStyle"
@@ -26,25 +26,22 @@
             android:layout_marginRight="@dimen/size_10"
             android:src="@drawable/icon_right_orientation" />
 
-        <com.hjnerp.widget.BubbleImageView
+        <com.itheima.roundedimageview.RoundedImageView
             android:id="@+id/user_head_avatar"
-            android:layout_width="@dimen/size_40"
-            android:layout_height="@dimen/size_40"
+            android:layout_width="@dimen/size_45"
+            android:layout_height="@dimen/size_45"
             android:layout_centerVertical="true"
             android:layout_gravity="center_horizontal"
-            android:layout_marginRight="10dp"
+            android:layout_margin="@dimen/size_10"
             android:layout_toLeftOf="@+id/jt"
             android:layout_toStartOf="@+id/jt"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
             android:src="@drawable/v5_0_1_profile_headphoto"
             android:visibility="visible"
-            app:bubble_angle="@dimen/size_20"
-            app:bubble_arrowHeight="0dp"
-            app:bubble_arrowLocation="right"
-            app:bubble_arrowOffset="0dp"
-            app:bubble_arrowTop="0dp"
-            app:bubble_arrowWidth="0dp" />
+            app:riv_border_color="#333333"
+            app:riv_corner_radius="@dimen/size_5"
+            app:riv_oval="false" />
     </RelativeLayout>
 
     <View style="@style/Item_View_DividerStyle" />
@@ -55,19 +52,20 @@
 
         <TextView
             style="@style/Item_RelativeLayout_TvLiftFriendStyle"
-            android:text="昵称" />
+            android:text="姓名" />
 
         <TextView
             android:id="@+id/user_head_name"
             style="@style/Item_RelativeLayout_TvRightFriendStyle"
-            android:text="昵称" />
+            android:text="姓名" />
     </RelativeLayout>
 
     <View style="@style/Item_View_DividerStyle" />
 
     <RelativeLayout
         style="@style/Item_RelativeLayout_ContacterItemStyle"
-        android:layout_marginTop="@dimen/size_1">
+        android:layout_marginTop="@dimen/size_1"
+        android:visibility="gone">
 
         <TextView
             style="@style/Item_RelativeLayout_TvLiftFriendStyle"
@@ -78,6 +76,4 @@
             style="@style/Item_RelativeLayout_TvRightFriendStyle"
             android:text="企信ID" />
     </RelativeLayout>
-
-    <View style="@style/Item_View_DividerStyle" />
 </LinearLayout>

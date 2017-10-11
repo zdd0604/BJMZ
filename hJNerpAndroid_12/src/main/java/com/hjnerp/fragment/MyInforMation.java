@@ -24,6 +24,7 @@ import com.hjnerp.util.ImageLoaderHelper;
 import com.hjnerp.util.SharePreferenceUtil;
 import com.hjnerp.util.StringUtil;
 import com.hjnerpandroid.R;
+import com.itheima.roundedimageview.RoundedImageView;
 
 import java.io.Serializable;
 
@@ -33,7 +34,7 @@ public class MyInforMation extends Fragment implements View.OnClickListener {
     private View view;
     private TextView myusername;
     private TextView my_company;
-    private ImageView myImageView;
+    private RoundedImageView myImageView;
     private UserInfo myinfo;
 
     @Override
@@ -46,7 +47,7 @@ public class MyInforMation extends Fragment implements View.OnClickListener {
     private void initView() {
         mysettingrel = (TextView) view.findViewById(R.id.mysettingrel);
         myuserinfor = (RelativeLayout) view.findViewById(R.id.myuserinfor);
-        myImageView = (ImageView) view.findViewById(R.id.myInforphoto);
+        myImageView = (RoundedImageView) view.findViewById(R.id.myInforphoto);
         myusername = (TextView) view.findViewById(R.id.myusername);
         my_company = (TextView) view.findViewById(R.id.my_company);
         mysettingrel.setOnClickListener(this);

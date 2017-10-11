@@ -3,12 +3,58 @@
     android:id="@+id/user_info_detail"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:background="@color/white"
+    android:background="@color/activity_bg"
     android:orientation="vertical">
 
     <RelativeLayout
-        style="@style/Item_RelativeLayout_ContacterItemStyle"
-        android:layout_marginTop="@dimen/size_1">
+        android:id="@+id/rl_phone"
+        style="@style/Item_RelativeLayout_ContacterItemStyle">
+
+        <TextView
+            style="@style/Item_RelativeLayout_TvLiftFriendStyle"
+            android:text="电话" />
+
+        <TextView
+            android:id="@+id/mobile"
+            style="@style/Item_RelativeLayout_TvRightImgFriendStyle"
+            android:enabled="false"
+            android:maxLength="16"
+            android:maxLines="1"
+            android:text="18809889099"
+            android:textColor="@color/black" />
+
+    </RelativeLayout>
+
+    <View style="@style/Item_View_DividerStyle" />
+
+    <RelativeLayout
+        android:id="@+id/rl_email"
+        style="@style/Item_RelativeLayout_ContacterItemStyle">
+
+        <TextView
+            style="@style/Item_RelativeLayout_TvLiftFriendStyle"
+            android:text="E-mail" />
+
+        <TextView
+            android:id="@+id/emailhome"
+            style="@style/Item_RelativeLayout_TvRightImgFriendStyle"
+            android:enabled="false"
+            android:maxLength="16"
+            android:maxLines="1"
+            android:text="**@qq.com"
+            android:textColor="@color/black" />
+    </RelativeLayout>
+
+    <View style="@style/Item_View_DividerStyle" />
+
+    <View
+        style="@style/Item_View_DividerStyle"
+        android:layout_height="@dimen/size_20"
+        android:background="@color/activity_bg" />
+
+    <View style="@style/Item_View_DividerStyle" />
+
+    <RelativeLayout style="@style/Item_RelativeLayout_ContacterItemStyle">
 
         <TextView
             style="@style/Item_RelativeLayout_TvLiftFriendStyle"
@@ -22,57 +68,26 @@
 
     <View style="@style/Item_View_DividerStyle" />
 
-    <RelativeLayout
-        android:id="@+id/rl_phone"
-        style="@style/Item_RelativeLayout_ContacterItemStyle"
-        android:layout_marginTop="@dimen/size_1">
+    <LinearLayout
+        android:id="@+id/ui_send_btn_Layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical">
 
-        <TextView
-            style="@style/Item_RelativeLayout_TvLiftFriendStyle"
-            android:text="手机号" />
+        <Button
+            android:id="@+id/ui_send_btn"
+            android:layout_width="fill_parent"
+            android:layout_height="40dip"
+            android:layout_margin="@dimen/size_15"
+            android:background="@drawable/login_btn_style"
+            android:text="发送信息"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
 
-        <TextView
-            android:id="@+id/mobile"
-            style="@style/Item_RelativeLayout_TvRightImgFriendStyle"
-            android:enabled="false"
-            android:maxLength="16"
-            android:maxLines="1"
-            android:text="18809889099" />
+        <View style="@style/Item_View_DividerStyle" />
 
-    </RelativeLayout>
+    </LinearLayout>
 
-    <View style="@style/Item_View_DividerStyle" />
-
-    <RelativeLayout
-        android:id="@+id/rl_email"
-        style="@style/Item_RelativeLayout_ContacterItemStyle"
-        android:layout_marginTop="@dimen/size_1">
-
-        <TextView
-            style="@style/Item_RelativeLayout_TvLiftFriendStyle"
-            android:text="邮箱" />
-
-        <TextView
-            android:id="@+id/emailhome"
-            style="@style/Item_RelativeLayout_TvRightImgFriendStyle"
-            android:enabled="false"
-            android:maxLength="16"
-            android:maxLines="1"
-            android:text="**@qq.com" />
-    </RelativeLayout>
-
-    <View style="@style/Item_View_DividerStyle" />
-
-    <Button
-        android:id="@+id/ui_send_btn"
-        android:layout_width="fill_parent"
-        android:layout_height="40dip"
-        android:layout_margin="@dimen/size_15"
-        android:background="@drawable/login_btn_style"
-        android:text="发送信息"
-        android:textColor="@color/white"
-        android:textSize="18sp" />
-
-    <View style="@style/Item_View_DividerStyle" />
 
 </LinearLayout>

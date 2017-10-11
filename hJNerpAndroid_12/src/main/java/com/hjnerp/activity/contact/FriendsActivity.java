@@ -31,6 +31,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -58,6 +59,7 @@ import com.hjnerp.util.ImageLoaderHelper;
 import com.hjnerp.util.SharePreferenceUtil;
 import com.hjnerp.util.StringUtil;
 import com.hjnerpandroid.R;
+import com.itheima.roundedimageview.RoundedImageView;
 import com.sdyy.utils.XPermissions;
 
 import java.io.BufferedOutputStream;
@@ -83,7 +85,8 @@ public class FriendsActivity extends ActionBarWidgetActivity implements OnClickL
     //    private ImageView email_edit, phone_edit;
 //    private RelativeLayout dialog_confirm_rl, dialog_cancel_rl, rl_gally, rl_camera;
     private RelativeLayout rl_phone, rl_email;
-    private ImageView photo, qrcode;
+    private RoundedImageView photo;
+    private ImageView   qrcode;
     private FriendPopupWindow menuSet = null;
     private Dialog noticeDialog = null;
     private Dialog setNoteDialog;
@@ -118,6 +121,8 @@ public class FriendsActivity extends ActionBarWidgetActivity implements OnClickL
     TextView actionRightTv1;
     @BindView(R.id.user_head_layout)
     RelativeLayout user_head_layout;
+    @BindView(R.id.ui_send_btn_Layout)
+    LinearLayout ui_send_btn_Layout;
     //判断是否是我自己的手机号
     private boolean isMyPhone = false;
 
@@ -167,12 +172,13 @@ public class FriendsActivity extends ActionBarWidgetActivity implements OnClickL
     /**
      * 初始化.
      *
+     *
      * @author 李庆义
      * @update 2012-5-16 上午9:13:01
      */
     // @SuppressLint("NewApi")
     protected void initView() {
-        photo = (ImageView) findViewById(R.id.user_head_avatar);
+        photo = (RoundedImageView) findViewById(R.id.user_head_avatar);
         firstnameEdit = (TextView) findViewById(R.id.user_head_name);
         nicknameEdit = (TextView) findViewById(R.id.user_head_content);
         orgunitEdit = (TextView) findViewById(R.id.orgunit);
@@ -583,6 +589,7 @@ public class FriendsActivity extends ActionBarWidgetActivity implements OnClickL
         // 是否显示相机团和发送消息按钮
         if (friend.getFriendid().equals(sputil.getMyId())) {// 我自己的详情
             sendBtn.setVisibility(View.GONE);
+            ui_send_btn_Layout.setVisibility(View.GONE);
 //            callBtn.setVisibility(View.INVISIBLE);
 //            user_head_layout.setOnClickListener(cameraClickListener);
 //            phone_edit.setVisibility(View.VISIBLE);
@@ -590,6 +597,7 @@ public class FriendsActivity extends ActionBarWidgetActivity implements OnClickL
             mobileEdit.setText(friend.getFriendmtel());
         } else {// 好友的详情
             sendBtn.setVisibility(View.VISIBLE);
+            ui_send_btn_Layout.setVisibility(View.VISIBLE);
             if (StringUtil.isNullOrEmpty(friend.getFriendmtel().trim())) {
 //                callBtn.setVisibility(View.INVISIBLE);
                 mobileEdit.setText(friend.getFriendmtel());

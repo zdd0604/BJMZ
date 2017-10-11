@@ -180,14 +180,6 @@ public class WorkflowListAdapter extends BaseAdapter {
             }
         }
 
-
-        if ("R".equals(info.getOptType())) {// 审阅单
-            viewHolder.type.setText("阅");
-        } else if ("Y".equals(info.getOptType())) {// 审批单
-            viewHolder.type.setText("批");
-        } else if ("A".equals(info.getOptType())) {// 会签
-            viewHolder.type.setText("签");
-        }
         viewHolder.time.setText(time);
         String aName = user.getUserName().toString().trim();
         String aTitle = title1.toString().trim();
@@ -245,7 +237,17 @@ public class WorkflowListAdapter extends BaseAdapter {
             viewHolder.type.setBackgroundResource(R.drawable.work_type_text_bkg_green);
         } else {
             viewHolder.agree.setVisibility(view.VISIBLE);
-            viewHolder.type.setBackgroundResource(R.drawable.work_type_text_bkg_red);
+//            viewHolder.type.setBackgroundResource(R.drawable.work_type_text_bkg_red);
+            if ("R".equals(info.getOptType())) {// 审阅单
+                viewHolder.type.setText("阅");
+                viewHolder.type.setBackgroundResource(R.drawable.work_type_text_bkg);
+            } else if ("Y".equals(info.getOptType())) {// 审批单
+                viewHolder.type.setText("批");
+                viewHolder.type.setBackgroundResource(R.drawable.work_type_text_bkg_red);
+            } else if ("A".equals(info.getOptType())) {// 会签
+                viewHolder.type.setText("签");
+                viewHolder.type.setBackgroundResource(R.drawable.work_type_text_bkg_red);
+            }
         }
 
 		/*

@@ -13,32 +13,24 @@
         android:id="@+id/workflow_bg"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="0dp"
-        android:layout_marginLeft="0dp"
-        android:layout_marginRight="0dp"
         android:layout_marginTop="1dp"
         android:background="@drawable/workflowlist_item"
         android:gravity="center"
         android:orientation="horizontal"
-        android:paddingBottom="10dp"
-        android:paddingEnd="14dp"
-        android:paddingLeft="8dp"
-        android:paddingRight="14dp"
-        android:paddingStart="8dp"
-        android:paddingTop="16dp">
+        android:paddingBottom="@dimen/size_12"
+        android:paddingLeft="@dimen/size_10"
+        android:paddingRight="@dimen/size_10"
+        android:paddingTop="@dimen/size_12">
 
 
         <com.hjnerp.widget.BubbleImageView
             android:id="@+id/workflow_photo_iv"
-            android:layout_width="@dimen/abc_square_image_size38"
-            android:layout_height="@dimen/abc_square_image_size38"
-            android:layout_marginBottom="5dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginStart="5dp"
+            android:layout_width="@dimen/size_50"
+            android:layout_height="@dimen/size_50"
             android:adjustViewBounds="true"
-            android:gravity="center"
+            android:gravity="center_vertical"
             android:src="@drawable/v5_0_1_profile_headphoto"
-            app:bubble_angle="19dp"
+            app:bubble_angle="@dimen/size_25"
             app:bubble_arrowHeight="0dp"
             app:bubble_arrowLocation="right"
             app:bubble_arrowOffset="0dp"
@@ -50,7 +42,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="8"
             android:orientation="vertical"
-            android:paddingLeft="8dp"
+            android:paddingLeft="@dimen/size_8"
             android:paddingRight="8dp">
 
             <LinearLayout
@@ -67,37 +59,35 @@
                     android:textStyle="bold" />
 
                 <!--<TextView-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:text="的"-->
-                    <!--android:textColor="@color/name_text_color"-->
-                    <!--android:textSize="@dimen/larger_textsize"-->
-                    <!--android:textStyle="bold" />-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="的"-->
+                <!--android:textColor="@color/name_text_color"-->
+                <!--android:textSize="@dimen/larger_textsize"-->
+                <!--android:textStyle="bold" />-->
 
                 <!--<TextView-->
-                    <!--android:id="@+id/workflow_title_tv"-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:ellipsize="end"-->
-                    <!--android:maxEms="6"-->
-                    <!--android:maxLines="1"-->
-                    <!--android:text="请假申请单"-->
-                    <!--android:textColor="@color/name_text_color"-->
-                    <!--android:textSize="@dimen/larger_textsize"-->
-                    <!--android:textStyle="bold" />-->
+                <!--android:id="@+id/workflow_title_tv"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:ellipsize="end"-->
+                <!--android:maxEms="6"-->
+                <!--android:maxLines="1"-->
+                <!--android:text="请假申请单"-->
+                <!--android:textColor="@color/name_text_color"-->
+                <!--android:textSize="@dimen/larger_textsize"-->
+                <!--android:textStyle="bold" />-->
             </LinearLayout>
 
             <TextView
                 android:id="@+id/workflow_content_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginStart="5dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="@dimen/size_7"
                 android:scrollHorizontally="false"
                 android:text="部        门:城关一区   \n终端名称:    "
                 android:textColor="@color/name_text_color"
-                android:textSize="@dimen/normal_textsize" />
+                android:textSize="@dimen/font_size_15" />
 
             <LinearLayout
                 android:id="@+id/ll_attach"
@@ -109,16 +99,17 @@
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_weight="3"
             android:layout_height="match_parent"
+            android:layout_weight="3"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/workflow_time_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
                 android:layout_gravity="right"
+                android:layout_marginLeft="8dp"
+                android:gravity="right"
                 android:maxLines="1"
                 android:text="2014-05-20 18:05"
                 android:textColor="@color/gray"
@@ -138,13 +129,13 @@
 
                 <TextView
                     android:id="@+id/workflow_type_tv"
-                    android:layout_width="20dip"
-                    android:layout_height="20dip"
+                    android:layout_width="@dimen/size_20"
+                    android:layout_height="@dimen/size_20"
                     android:background="@drawable/work_type_text_bkg"
                     android:gravity="center"
                     android:text="阅"
                     android:textColor="@color/white"
-                    android:textSize="12sp" />
+                    android:textSize="@dimen/font_size_12" />
 
                 <Button
                     android:id="@+id/work_button_agree"
@@ -153,9 +144,9 @@
                     android:layout_marginLeft="10dp"
                     android:background="@drawable/business_child_item_bkg"
                     android:focusable="false"
-                    android:text="同意"
                     android:maxLines="1"
-                    android:textColor="@color/actionbar_bg_color"/>
+                    android:text="同意"
+                    android:textColor="@color/actionbar_bg_color" />
                 <!--<LinearLayout-->
                 <!--android:id="@+id/work_gree_layout"-->
                 <!--android:layout_width="wrap_content"-->
