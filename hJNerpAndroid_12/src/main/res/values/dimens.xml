@@ -269,6 +269,7 @@
     <dimen name="size_50">50dp</dimen>
     <dimen name="size_55">55dp</dimen>
     <dimen name="size_60">60dp</dimen>
+    <dimen name="size_63">63dp</dimen>
     <dimen name="size_65">65dp</dimen>
     <dimen name="size_70">70dp</dimen>
     <dimen name="size_75">75dp</dimen>

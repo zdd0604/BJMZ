@@ -74,8 +74,7 @@ public class WorkListBillTypeWindow extends PopupWindow {
             for (int i = 0; i < billTypeList.size(); i++) {
                 RadioButton radio = new RadioButton(context);
                 radio.setText(billTypeList.get(i).getName());
-                radio.setTextColor(context.getResources().getColor(
-                        color.black));
+                radio.setTextColor(context.getResources().getColor(color.black));
                 radio.setButtonDrawable(R.drawable.hjradiobutton2); // 设置radiobutton
                 // 图标
                 radio.setTag(billTypeList.get(i).getId());

@@ -14,6 +14,7 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -148,7 +149,7 @@ public class WorkflowListAdapter extends BaseAdapter {
                     .findViewById(R.id.ll_attach);
             viewHolder.iv_attach = (ImageView) view
                     .findViewById(R.id.iv_attach_adapter);
-            viewHolder.agree = (Button) view
+            viewHolder.agree = (TextView) view
                     .findViewById(R.id.work_button_agree);
             view.setTag(viewHolder);
         } else {
@@ -352,6 +353,6 @@ public class WorkflowListAdapter extends BaseAdapter {
         /**
          * @author haijian 同意按钮
          */
-        Button agree;// 同意
+        TextView agree;// 同意
     }
 }

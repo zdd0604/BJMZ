@@ -285,8 +285,7 @@ public class WorkFragment extends Fragment {
 
     public void search(ImageView imageView) {
         getSelectedBillTypeList();
-        workTypeWindow = new WorkListBillTypeWindow(getActivity(),
-                onCheckedChangeListener);
+        workTypeWindow = new WorkListBillTypeWindow(getActivity(), onCheckedChangeListener);
         workTypeWindow.setFocusable(true);
         workTypeWindow.showAsDropDown(imageView);
     }
@@ -338,10 +337,8 @@ public class WorkFragment extends Fragment {
             int radioButtonId = group.getCheckedRadioButtonId();
 
             // 根据ID获取RadioButton的实例
-            RadioGroup radioGroup = (RadioGroup) view
-                    .findViewById(R.id.rbtn_worktype);
-            RadioButton rb = (RadioButton) radioGroup
-                    .findViewById(radioButtonId);
+            RadioGroup radioGroup = (RadioGroup) view.findViewById(R.id.rbtn_worktype);
+            RadioButton rb = (RadioButton) radioGroup.findViewById(radioButtonId);
             String typeId = rb.getTag().toString();
 
             if ("allType".equalsIgnoreCase(typeId)) {
@@ -376,7 +373,6 @@ public class WorkFragment extends Fragment {
             listYN.clear();
             listItemAdapter.notifyDataSetChanged();
             listview.setRefreshing();
-
         }
     };
 
