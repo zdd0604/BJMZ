@@ -56,7 +56,7 @@
         android:maxEms="6"
         android:maxLines="2"
         android:text="类型1"
-        android:textColor="#696969"
+        android:textColor="@color/black"
         android:textSize="14sp" />
 
 

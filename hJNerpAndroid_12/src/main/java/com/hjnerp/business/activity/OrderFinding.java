@@ -455,8 +455,8 @@ public class OrderFinding extends ActionBarWidgetActivity implements View.OnClic
         if (dsaordbaseJsons_new != null && dsaordbaseJsons_new.size() > 0) {
             dsaordbaseJsons_new.clear();
         }
-        object_name.setText("");
-        object_person.setText("");
+        object_name.setText("请选择客户");
+        object_person.setText("请选择业务员");
         //后来决定时间不再重置，如果需要重置，解开以下代码
 //        table_end_time.setText(getToday());
 //        try {

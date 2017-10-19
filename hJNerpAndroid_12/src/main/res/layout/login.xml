@@ -3,7 +3,7 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FEFEFE"
+    android:background="@color/white"
     android:gravity="center_horizontal"
     android:orientation="vertical">
 
@@ -20,16 +20,17 @@
 
     <com.hjnerp.widget.BubbleImageView
         android:id="@+id/myphoto"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="@dimen/size_80"
+        android:layout_height="@dimen/size_80"
         android:layout_centerVertical="true"
         android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="@dimen/size_40"
         android:layout_marginTop="40dp"
         android:adjustViewBounds="true"
         android:scaleType="fitCenter"
         android:src="@drawable/mzlogo72"
         android:visibility="visible"
-        app:bubble_angle="30dp"
+        app:bubble_angle="@dimen/size_30"
         app:bubble_arrowHeight="0dp"
         app:bubble_arrowLocation="right"
         app:bubble_arrowOffset="0dp"
@@ -37,26 +38,43 @@
         app:bubble_arrowWidth="0dp" />
     <!--android:src="@drawable/mzlogo72"-->
 
-    <com.hjnerp.widget.SelectText
-        android:id="@+id/ui_company_input"
-        android:layout_width="fill_parent"
-        android:layout_height="45dip"
-        android:layout_marginLeft="20dip"
-        android:layout_marginRight="20dip"
-        android:layout_marginTop="30dip"
-        android:background="@null"
-        android:digits="@string/available_chars"
-        android:drawableLeft="@drawable/enterprise_cornor_icon_for_session_fragment"
-        android:drawablePadding="10dp"
-        android:drawableRight="@drawable/select_text_drawable_right_selector"
-        android:hint="请选择公司名称"
-        android:inputType="none"
-        android:maxLength="16"
-        android:maxLines="1"
-        android:paddingBottom="6.0dip"
-        android:paddingTop="6.0dip"
-        android:textColor="#ffc8c9c7"
-        android:textSize="18.0sp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="@dimen/size_60"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/size_19"
+            android:gravity="center_vertical"
+            android:text="公司"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_size_17" />
+
+        <View
+            style="@style/Item_View_ViewDividerVerticalStyle"
+            android:layout_gravity="center_vertical" />
+
+        <com.hjnerp.widget.SelectText
+            android:id="@+id/ui_company_input"
+            android:layout_width="fill_parent"
+            android:layout_height="45dip"
+            android:layout_marginLeft="@dimen/size_10"
+            android:layout_marginRight="20dip"
+            android:background="@null"
+            android:digits="@string/available_chars"
+            android:drawableRight="@drawable/select_text_drawable_right_selector"
+            android:hint="请选择公司"
+            android:inputType="none"
+            android:maxLength="16"
+            android:maxLines="1"
+            android:paddingBottom="6.0dip"
+            android:paddingTop="6.0dip"
+            android:textColor="#ffc8c9c7"
+            android:textSize="@dimen/font_size_17" />
+    </LinearLayout>
+
 
     <View
         style="@style/Item_TextView_ActionBarViewDividerStyle"
@@ -64,25 +82,55 @@
         android:layout_marginRight="@dimen/size_20" />
 
     <!-- android:digits="@string/available_chars" android:inputType="text" -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
-    <EditText
-        android:id="@+id/ui_username_input"
-        style="@style/Item_EditText_PwordStyle"
-        android:drawableLeft="@drawable/creat_username_slt"
-        android:hint="请输入用户名或手机号" />
+        <TextView
+            android:layout_width="@dimen/size_60"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/size_20"
+            android:gravity="center_vertical"
+            android:text="用户名"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_size_17" />
+
+        <EditText
+            android:id="@+id/ui_username_input"
+            style="@style/Item_EditText_PwordStyle"
+            android:layout_gravity="center_vertical"
+            android:hint="请输入用户名" />
+
+    </LinearLayout>
 
     <View
         style="@style/Item_TextView_ActionBarViewDividerStyle"
         android:layout_marginLeft="@dimen/size_20"
         android:layout_marginRight="@dimen/size_20" />
 
-    <EditText
-        android:id="@+id/ui_password_input"
-        style="@style/Item_EditText_PwordStyle"
-        android:digits="@string/available_chars"
-        android:drawableLeft="@drawable/icon_register_password"
-        android:hint="请输入密码"
-        android:inputType="textPassword" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="@dimen/size_60"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/size_20"
+            android:gravity="center_vertical"
+            android:text="密码"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_size_17" />
+
+        <EditText
+            android:id="@+id/ui_password_input"
+            style="@style/Item_EditText_PwordStyle"
+            android:digits="@string/available_chars"
+            android:hint="请输入密码"
+            android:inputType="textPassword" />
+
+    </LinearLayout>
 
     <View
         style="@style/Item_TextView_ActionBarViewDividerStyle"
@@ -99,10 +147,14 @@
 
     <TextView
         android:id="@+id/ui_register_tv"
-        style="@style/Item_TextView_HintStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginRight="@dimen/size_20"
+        android:layout_marginTop="@dimen/size_20"
         android:gravity="right|center_vertical"
-        android:paddingRight="@dimen/size_20"
         android:text="企业注册"
-        android:textColor="@color/actionbar_title_tcolor" />
+        android:textColor="@color/actionbar_title_tcolor"
+        android:textSize="@dimen/font_size_16" />
 
 </LinearLayout>

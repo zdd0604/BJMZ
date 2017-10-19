@@ -12,40 +12,30 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
-        android:layout_marginLeft="0dp"
-        android:layout_marginRight="0dp"
         android:layout_marginTop="10dp"
         android:gravity="center_horizontal"
         android:orientation="vertical"
         android:paddingBottom="20dp"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp">
-
+        android:paddingLeft="@dimen/size_12"
+        android:paddingRight="@dimen/size_12">
 
         <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content">
 
-
-            <com.hjnerp.widget.BubbleImageView
+            <com.itheima.roundedimageview.RoundedImageView
                 android:id="@+id/approval_photo_iv"
-                android:layout_width="@dimen/abc_square_image_size38"
-                android:layout_height="@dimen/abc_square_image_size38"
+                android:layout_width="@dimen/size_40"
+                android:layout_height="@dimen/size_40"
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
-                android:layout_marginBottom="5dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
+                android:layout_marginRight="@dimen/size_10"
                 android:adjustViewBounds="true"
                 android:gravity="center"
                 android:scaleType="fitCenter"
                 android:src="@drawable/v5_0_1_profile_headphoto"
-                app:bubble_angle="19dp"
-                app:bubble_arrowHeight="0dp"
-                app:bubble_arrowLocation="right"
-                app:bubble_arrowOffset="0dp"
-                app:bubble_arrowTop="0dp"
-                app:bubble_arrowWidth="0dp" />
+                app:riv_corner_radius="@dimen/size_5"
+                app:riv_oval="false" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -60,8 +50,6 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:padding="2dip"
-                    android:singleLine="true"
                     android:text="请假申请单"
                     android:textColor="@color/name_text_color"
                     android:textSize="@dimen/larger_textsize" />
@@ -74,6 +62,9 @@
                         android:id="@+id/approval_name_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
                         android:gravity="center_horizontal"
                         android:padding="2dip"
                         android:singleLine="true"
@@ -86,6 +77,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
                         android:gravity="center_horizontal"
                         android:singleLine="true"
                         android:text="2014-05-20 18:05"
@@ -95,25 +87,21 @@
             </LinearLayout>
         </RelativeLayout>
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginLeft="0dp"
-            android:layout_marginRight="0dp"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/reader_item_divider" />
+        <View
+            style="@style/Item_TextView_ActionBarViewDividerStyle"
+            android:layout_marginTop="@dimen/size_10" />
 
         <LinearLayout
             android:id="@+id/ll_detail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="@dimen/size_10"
             android:orientation="vertical" />
 
         <RelativeLayout
+            android:id="@+id/button_relative"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/button_relative"
             android:visibility="gone">
 
             <Button
@@ -157,7 +145,7 @@
             android:id="@+id/ll_attach_approval"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="@dimen/size_10"
             android:orientation="vertical" />
     </LinearLayout>
 
@@ -176,20 +164,16 @@
             android:gravity="center"
             android:orientation="vertical">
 
-            <com.hjnerp.widget.BubbleImageView
+            <com.itheima.roundedimageview.RoundedImageView
                 android:id="@+id/iv_workdetail_photo"
-                android:layout_width="@dimen/abc_square_image_size38"
-                android:layout_height="@dimen/abc_square_image_size38"
+                android:layout_width="@dimen/size_40"
+                android:layout_height="@dimen/size_40"
                 android:layout_marginBottom="5dp"
                 android:adjustViewBounds="true"
                 android:scaleType="fitCenter"
                 android:src="@drawable/v5_0_1_profile_headphoto"
-                app:bubble_angle="19dp"
-                app:bubble_arrowHeight="0dp"
-                app:bubble_arrowLocation="right"
-                app:bubble_arrowOffset="0dp"
-                app:bubble_arrowTop="0dp"
-                app:bubble_arrowWidth="0dp" />
+                app:riv_corner_radius="@dimen/size_5"
+                app:riv_oval="false" />
 
             <RelativeLayout
                 android:layout_width="wrap_content"
@@ -208,7 +192,7 @@
                     android:padding="2dip"
                     android:singleLine="true"
                     android:text="李玟"
-                    android:textSize="14sp" />
+                    android:textSize="@dimen/font_size_15" />
 
                 <TextView
                     android:id="@+id/tv_workdetail_division"
@@ -232,7 +216,7 @@
                     android:padding="2dip"
                     android:singleLine="true"
                     android:text="同意"
-                    android:textSize="14sp" />
+                    android:textSize="@dimen/font_size_15" />
 
 
                 <!--<TextView-->
@@ -311,10 +295,9 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
                         android:text="审批时间"
                         android:textColor="#949494"
-                        android:textSize="12sp" />
+                        android:textSize="@dimen/font_size_15" />
 
                     <TextView
                         android:id="@+id/tv_workdetail_time"
@@ -324,7 +307,7 @@
                         android:layout_marginTop="5dp"
                         android:text="2014-05-20"
                         android:textColor="@color/black"
-                        android:textSize="12dp" />
+                        android:textSize="@dimen/font_size_15" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -336,10 +319,9 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
                         android:text="审批意见"
                         android:textColor="#949494"
-                        android:textSize="12sp" />
+                        android:textSize="@dimen/font_size_15" />
 
                     <TextView
                         android:id="@+id/tv_workdetail_content"
@@ -353,7 +335,8 @@
                         android:maxLines="100"
                         android:scrollHorizontally="false"
                         android:text="好"
-                        android:textColor="@color/black" />
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_size_15" />
                 </LinearLayout>
 
             </LinearLayout>

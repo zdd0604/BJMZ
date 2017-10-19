@@ -558,4 +558,5 @@
     <color name="acbar_view_bg">#D4D4D4</color>
     <!-- 个人信息界面 -->
     <color name="item_Friend_TvContentCl">#A1A1A1</color>
+    <color name="item_WorkFlow_TvContentCl">#ABABAB</color>
 </resources>

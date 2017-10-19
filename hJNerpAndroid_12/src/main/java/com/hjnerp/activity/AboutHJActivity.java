@@ -58,8 +58,8 @@ public class AboutHJActivity extends ActionBarWidgetActivity implements View.OnC
         linear_policy.setOnClickListener(this);
         linear_copyright.setOnClickListener(this);
 
-        txtViewOs.setText("系统版本：" + SharePreferenceUtil.getInstance(this.getContext()).getOsType());
-        txtViewapp.setText("和佳ERP版本：" + SharePreferenceUtil.getInstance(this.getContext()).getAppVersion());
+//        txtViewOs.setText("系统版本：" + SharePreferenceUtil.getInstance(this.getContext()).getOsType());
+        txtViewapp.setText("和佳软件：" + SharePreferenceUtil.getInstance(this.getContext()).getAppVersion());
     }
 
     @Override

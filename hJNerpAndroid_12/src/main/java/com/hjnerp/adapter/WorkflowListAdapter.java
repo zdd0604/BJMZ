@@ -6,15 +6,12 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Handler;
 import android.os.Message;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -34,9 +31,11 @@ import com.hjnerp.service.WebSocketService;
 import com.hjnerp.util.ImageLoaderHelper;
 import com.hjnerp.util.Log;
 import com.hjnerp.util.StringUtil;
-import com.hjnerp.util.ToastUtil;
+import com.hjnerp.widget.MyToast;
+import com.hjnerp.widget.MyToast2;
 import com.hjnerp.widget.WaitDialogRectangle;
 import com.hjnerpandroid.R;
+import com.itheima.roundedimageview.RoundedImageView;
 
 import org.apache.cordova.LOG;
 import org.apache.http.HttpResponse;
@@ -66,11 +65,12 @@ public class WorkflowListAdapter extends BaseAdapter {
                     MainActivity.WORK_COUNT = MainActivity.WORK_COUNT - 1;
                     intent.setAction(WebSocketService.ACTION_ON_MSG);
                     context.sendBroadcast(intent);
-                    ToastUtil.ShowShort(context, (String) msg.obj);
+//                    ToastUtil.ShowShort(context, (String) msg.obj);
+                    new MyToast2(context, (String) msg.obj);
                     break;
                 case 1:
                     waitDialog.dismiss();
-                    ToastUtil.ShowShort(context, (String) msg.obj);
+                    new MyToast2(context, (String) msg.obj);
                     break;
 
                 default:
@@ -130,27 +130,18 @@ public class WorkflowListAdapter extends BaseAdapter {
             viewHolder = new ViewHolder();
             view = LayoutInflater.from(context).inflate(
                     R.layout.fragment_workflow_list, parent, false);
-            viewHolder.pic = (ImageView) view
-                    .findViewById(R.id.workflow_photo_iv);
-            viewHolder.type = (TextView) view
-                    .findViewById(R.id.workflow_type_tv);
+            viewHolder.pic = (RoundedImageView) view.findViewById(R.id.workflow_photo_iv);
+            viewHolder.type = (TextView) view.findViewById(R.id.workflow_type_tv);
 //            viewHolder.title = (TextView) view
 //                    .findViewById(R.id.workflow_title_tv);
-            viewHolder.time = (TextView) view
-                    .findViewById(R.id.workflow_time_tv);
-            viewHolder.name = (TextView) view
-                    .findViewById(R.id.workflow_name_tv);
-            viewHolder.content = (TextView) view
-                    .findViewById(R.id.workflow_content_tv);
-
-            viewHolder.background = (LinearLayout) view
-                    .findViewById(R.id.workflow_bg);
-            viewHolder.ll_attach = (LinearLayout) view
-                    .findViewById(R.id.ll_attach);
-            viewHolder.iv_attach = (ImageView) view
-                    .findViewById(R.id.iv_attach_adapter);
-            viewHolder.agree = (TextView) view
-                    .findViewById(R.id.work_button_agree);
+            viewHolder.time = (TextView) view.findViewById(R.id.workflow_time_tv);
+            viewHolder.name = (TextView) view.findViewById(R.id.workflow_name_tv);
+            viewHolder.content = (TextView) view.findViewById(R.id.workflow_content_tv);
+            viewHolder.background = (LinearLayout) view.findViewById(R.id.workflow_bg);
+            viewHolder.ll_attach = (LinearLayout) view.findViewById(R.id.ll_attach);
+            viewHolder.iv_attach = (ImageView) view.findViewById(R.id.iv_attach_adapter);
+            viewHolder.agree = (TextView) view.findViewById(R.id.work_button_agree);
+            viewHolder.workView = view.findViewById(R.id.workView);
             view.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) view.getTag();
@@ -184,12 +175,9 @@ public class WorkflowListAdapter extends BaseAdapter {
         viewHolder.time.setText(time);
         String aName = user.getUserName().toString().trim();
         String aTitle = title1.toString().trim();
-        if (TextUtils.isEmpty(aName) || TextUtils.isEmpty(aTitle)) {
-            viewHolder.name.setText(user.getUserName() + title1);
-        } else {
-            viewHolder.name.setText(user.getUserName() + "的" + title1);
-        }
-
+        if (StringUtil.isStrTrue(aTitle))
+            viewHolder.name.setText(title1);
+//        Log.e("show",info.toString());
         String content = info.getContent();
         Log.e(TAG, "原始：" + content);
         content = content.replace("\\n", " \n");
@@ -201,7 +189,6 @@ public class WorkflowListAdapter extends BaseAdapter {
         content = content.trim();
         Log.e(TAG, "替换后  is " + content);
         viewHolder.content.setText(content);
-
 
 //        String[] a = content.split("\n");
 //        android.util.Log.d("lines", a.length + "");
@@ -235,9 +222,11 @@ public class WorkflowListAdapter extends BaseAdapter {
         }
         if (info.getFlagDeal().equals("Y")) {
             viewHolder.agree.setVisibility(view.GONE);
+            viewHolder.workView.setVisibility(view.GONE);
             viewHolder.type.setBackgroundResource(R.drawable.work_type_text_bkg_green);
         } else {
             viewHolder.agree.setVisibility(view.VISIBLE);
+            viewHolder.workView.setVisibility(view.VISIBLE);
 //            viewHolder.type.setBackgroundResource(R.drawable.work_type_text_bkg_red);
             if ("R".equals(info.getOptType())) {// 审阅单
                 viewHolder.type.setText("阅");
@@ -341,7 +330,7 @@ public class WorkflowListAdapter extends BaseAdapter {
     }
 
     public static class ViewHolder {
-        ImageView pic; // 单据申请人头像
+        RoundedImageView pic; // 单据申请人头像
         ImageView iv_attach;// 附件标志
         TextView type; // 单据类型
         TextView name; // 单据申请人名称
@@ -354,5 +343,6 @@ public class WorkflowListAdapter extends BaseAdapter {
          * @author haijian 同意按钮
          */
         TextView agree;// 同意
+        View workView;
     }
 }

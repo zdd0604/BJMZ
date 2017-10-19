@@ -14,13 +14,11 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.hjnerp.common.ActionBarWidgetActivity;
 import com.hjnerp.common.EapApplication;
 import com.hjnerp.manager.HJWebSocketManager;
 import com.hjnerp.util.SharePreferenceUtil;
-import com.hjnerp.util.ToastUtil;
 import com.hjnerp.widget.ClearEditText;
 import com.hjnerpandroid.R;
 
@@ -60,10 +58,10 @@ public class SetPassWordActivity extends ActionBarWidgetActivity implements OnCl
             String mmsg = b.getString("flag");
             if (mmsg.equals("setpwd_ok")) {
                 setResult(RESULT_OK);
-                ToastUtil.ShowShort(context, "密码修改成功。");
+                showFailToast("密码修改成功。");
                 finish();
             } else if (mmsg.equals("setpwd_error")) {
-                showNoticeDialog("密码修改失败，请稍后重试");
+                showFailToast("密码修改失败，请稍后重试");
             }
         }
 
@@ -165,7 +163,7 @@ public class SetPassWordActivity extends ActionBarWidgetActivity implements OnCl
                         .requestChangePasswd(temp.toCharArray(),
                                 temp2.toCharArray());
                 if (respond == null) {
-                    Toast.makeText(SetPassWordActivity.this, "设置失败", Toast.LENGTH_LONG).show();
+                    showFailToast("设置失败");
                     return;
                 }
                 if (respond.contains("error")) {
@@ -212,10 +210,10 @@ public class SetPassWordActivity extends ActionBarWidgetActivity implements OnCl
                     if (first_input.equals(second_input)) {
                         setPasswordThread();
                     } else {
-                        showNoticeDialog("两次输入的密码不一致");
+                        showFailToast("两次输入的密码不一致");
                     }
                 } else {
-                    ToastUtil.ShowLong(SetPassWordActivity.this, getResources()
+                    showFailToast(getResources()
                             .getString(R.string.net_connect_error));
                 }
                 break;

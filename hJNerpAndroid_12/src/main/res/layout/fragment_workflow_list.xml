@@ -13,25 +13,20 @@
         android:layout_marginTop="1dp"
         android:background="@drawable/workflowlist_item"
         android:orientation="horizontal"
-        android:paddingBottom="@dimen/size_12"
-        android:paddingLeft="@dimen/size_10"
-        android:paddingRight="@dimen/size_10"
-        android:paddingTop="@dimen/size_12">
+        android:padding="@dimen/size_10">
 
-        <com.hjnerp.widget.BubbleImageView
+        <com.itheima.roundedimageview.RoundedImageView
             android:id="@+id/workflow_photo_iv"
             android:layout_width="@dimen/size_50"
             android:layout_height="@dimen/size_50"
             android:layout_gravity="center_vertical"
-            android:layout_marginRight="@dimen/size_8"
+            android:layout_marginRight="@dimen/size_10"
             android:adjustViewBounds="true"
             android:src="@drawable/v5_0_1_profile_headphoto"
-            app:bubble_angle="@dimen/size_25"
-            app:bubble_arrowHeight="0dp"
-            app:bubble_arrowLocation="right"
-            app:bubble_arrowOffset="0dp"
-            app:bubble_arrowTop="0dp"
-            app:bubble_arrowWidth="0dp" />
+            android:visibility="visible"
+            app:riv_border_color="#333333"
+            app:riv_corner_radius="@dimen/size_5"
+            app:riv_oval="false" />
 
 
         <LinearLayout
@@ -49,7 +44,7 @@
                     android:layout_height="wrap_content"
                     android:text="李玟"
                     android:textColor="@color/name_text_color"
-                    android:textSize="@dimen/larger_textsize"
+                    android:textSize="@dimen/font_size_15"
                     android:textStyle="bold" />
 
                 <TextView
@@ -68,8 +63,7 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/size_7">
+                android:layout_height="wrap_content">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -83,8 +77,8 @@
                         android:layout_height="wrap_content"
                         android:scrollHorizontally="false"
                         android:text="部        门:城关一区   \n终端名称:    "
-                        android:textColor="@color/name_text_color"
-                        android:textSize="@dimen/font_size_15" />
+                        android:textColor="@color/item_Friend_TvContentCl"
+                        android:textSize="@dimen/font_size_14" />
 
                     <LinearLayout
                         android:id="@+id/ll_attach"
@@ -118,6 +112,7 @@
                         android:textSize="@dimen/font_size_12" />
 
                     <View
+                        android:id="@+id/workView"
                         style="@style/Item_View_ViewDividerVerticalStyle"
                         android:layout_height="@dimen/size_20"
                         android:layout_gravity="center_vertical"

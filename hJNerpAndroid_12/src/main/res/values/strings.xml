@@ -128,7 +128,7 @@
 
     <!-- 销售订单 -->
     <string name="sellOrder_Tile_NewActivity">新增订单</string>
-    <string name="sellOrder_Tile_Activity">订单列表</string>
+    <string name="sellOrder_Tile_Activity">订单录入</string>
     <string name="sellOrder_Tile_TvTitle">增加订单明细</string>
     <string name="sellOrder_Tile_Code">代码:</string>
     <string name="sellOrder_Tile_Product">产品:</string>
@@ -143,7 +143,7 @@
     <string name="sellOrder_Tile_Address">地址:</string>
 
     <!-- 考勤 -->
-    <string name="buess_Title_CenterTitle">考勤</string>
+    <string name="buess_Title_CenterTitle">考勤打卡</string>
 
     <!-- dialog提示语 -->
     <string name="dialog_Message_saveData">正在保存数据</string>
@@ -171,7 +171,7 @@
     <string name="setPWord_Title_PWordHintContent">注：可使用的特殊符号为  ^$._-@%!#$*\</string>
 
     <!-- 关于 -->
-    <string name="about_Title_TvActivity">关于</string>
+    <string name="about_Title_TvActivity">关于和佳</string>
     <string name="about_Title_Hjsever">公司简介</string>
     <string name="about_Title_Hjpolicy">发展历程</string>
     <string name="about_Title_Hjcopyright">获得荣誉</string>
@@ -186,11 +186,14 @@
     <string name="toast_Title_PortraitFail">头像设置失败</string>
     <string name="toast_Title_ChangeSucc">修改成功</string>
     <string name="toast_Title_ChangeFail">修改失败</string>
-    <string name="toast_Title_ChangePhone">修改手机号</string>
+    <string name="toast_Title_ChangePhone">修改电话号码</string>
     <string name="toast_Title_ChangeRemark">修改备注</string>
     <string name="toast_Title_ChangeEmail">修改邮箱</string>
     <string name="toast_Title_CheckMsg">验证信息</string>
     <string name="toast_Title_PhoneFail">请输入正确的手机号!</string>
     <string name="toast_Title_EmailFail">请输入正确的邮箱!</string>
+
+    <!-- 登陆注册 -->
+    <string name="oval_Title_TvActivity">审批单详情</string>
 
 </resources>

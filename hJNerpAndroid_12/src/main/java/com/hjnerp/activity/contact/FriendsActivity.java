@@ -135,7 +135,7 @@ public class FriendsActivity extends ActionBarWidgetActivity implements OnClickL
         ButterKnife.bind(this);
         actionRightTv.setVisibility(View.GONE);
         actionLeftTv.setOnClickListener(this);
-        actionCenterTv.setText("详细资料");
+        actionCenterTv.setText("我的资料");
 
         initView();
 

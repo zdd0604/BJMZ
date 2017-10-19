@@ -223,7 +223,6 @@ public class BusinessEJLocation extends ActionBarWidgetActivity implements View.
         String photoname = setPhotoName();
         date_location = BusinessTimeUtils.getCurrentTime(Constant.SGIN_FORMART);
 
-
         if (BusinessQueryDao.getUserInfo(mContext)) {
             IDComConfig idconfig = OtherBaseDao.queryReginfo(Constant.ej1345.getId_com());
             if (idconfig != null) {

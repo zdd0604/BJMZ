@@ -20,7 +20,7 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.hjnerp.activity.work.adapter.WorkFlowRecorderInfoAdapter;
-import com.hjnerp.common.ActivitySupport;
+import com.hjnerp.common.ActionBarWidgetActivity;
 import com.hjnerp.common.Constant;
 import com.hjnerp.common.EapApplication;
 import com.hjnerp.dao.QiXinBaseDao;
@@ -38,7 +38,6 @@ import com.hjnerp.net.HttpClientManager;
 import com.hjnerp.net.HttpClientManager.HttpResponseHandler;
 import com.hjnerp.util.AttachmentFileReader;
 import com.hjnerp.util.StringUtil;
-import com.hjnerp.util.ToastUtil;
 import com.hjnerp.widget.WaitDialogRectangle;
 import com.hjnerpandroid.R;
 
@@ -55,7 +54,10 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class ApprovalActivity extends ActivitySupport {
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
+public class ApprovalActivity extends ActionBarWidgetActivity implements OnClickListener {
     private String TAG = "ApprovalActivity";
 
     private ImageView photo;
@@ -92,21 +94,29 @@ public class ApprovalActivity extends ActivitySupport {
     private boolean getapproval_flag = false;
     //	private TimerThread timerThread = null;
     private Thread mThread;
+    @BindView(R.id.action_left_tv)
+    TextView actionLeftTv;
+    @BindView(R.id.action_center_tv)
+    TextView actionCenterTv;
+    @BindView(R.id.action_right_tv)
+    TextView actionRightTv;
+    @BindView(R.id.action_right_tv1)
+    TextView actionRightTv1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.approval);
-        mActionBar = this.getSupportActionBar();
-        mActionBar.setDisplayHomeAsUpEnabled(true);
+        ButterKnife.bind(this);
         /** 获得WorkflowInfo对象 */
         Intent intent = getIntent();
         Bundle mBundle = intent.getExtras();
         wfInfo = (WorkflowListInfo) mBundle.getSerializable(Constant.MY_NEWS);
-        mActionBar.setTitle("审批单详情");
-        //	Log.i(TAG,">>>>>>>>>>>>>>>>> workinfo billNo:" + wfInfo.getBillNo() + " billType:" + wfInfo.getBillType() + " optType:" + wfInfo.getOptType() );
+        actionRightTv.setVisibility(View.GONE);
+        actionLeftTv.setOnClickListener(this);
+        actionCenterTv.setText(getString(R.string.oval_Title_TvActivity));
+        LogShow(wfInfo.toString());
         myInfo = QiXinBaseDao.queryCurrentUserInfo();
-
         waitDialog = new WaitDialogRectangle(this);
         waitDialogText = new WaitDialogRectangle(this);
         findView();
@@ -143,7 +153,7 @@ public class ApprovalActivity extends ActivitySupport {
                 case R.id.btn_disagree:
                     remark = et_remark.getText().toString();
                     if (StringUtil.isNullOrEmpty(remark)) {
-                        ToastUtil.ShowShort(ApprovalActivity.this, "驳回意见不能为空");
+                        showFailToast("驳回意见不能为空");
                     } else {
                         action = Constant.WF_OP_REJEST_ONE;
                         //	Log.e(TAG, "不同意  " + remark);
@@ -333,9 +343,9 @@ public class ApprovalActivity extends ActivitySupport {
             public void onResponse(HttpResponse resp) {
                 try {
                     String msg = HttpClientManager.toStringContent(resp);
-                    Log.i(TAG, "http请求,获取工单详情.getWorkFlowDetail string is >>>>>>> " + msg);
+                    LogShow("http请求,获取工单详情.getWorkFlowDetail string is >>>>>>> " + msg);
                     if (TextUtils.isEmpty(msg) || msg.contains("error")) {
-                        Log.e(TAG, "getWorkFlowDetail error!");
+                        LogShow("getWorkFlowDetail error!");
                         errorHandle("获取审批流程失败，请重试！");
                     } else if (msg.contains("session")) {//sesson无效
                         errorForceHandle();
@@ -357,7 +367,6 @@ public class ApprovalActivity extends ActivitySupport {
                             getdetail_flag = true;
                             tables = workflowResp.data.tables;
                             sendToMyHandler(GET_DETAIL_OK);
-
                         } else {
                             errorHandle("获取审批流程失败，请重试！");
                         }
@@ -384,7 +393,7 @@ public class ApprovalActivity extends ActivitySupport {
                             waitDialog.dismiss();
                         }
 //						isForcedExit();
-                        ToastUtil.ShowShort(ApprovalActivity.this, msg);
+                        showFailToast(msg);
                         finish();
                     }
                 });
@@ -477,9 +486,7 @@ public class ApprovalActivity extends ActivitySupport {
                     String msg = HttpClientManager.toStringContent(resp);
                     Log.i(TAG, "sendBillAction response is " + msg);
                     Gson gson = new Gson();
-                    WorkflowRemarkResp workflowResp = gson.fromJson(msg,
-                            WorkflowRemarkResp.class);
-
+                    WorkflowRemarkResp workflowResp = gson.fromJson(msg, WorkflowRemarkResp.class);
                     if (workflowResp == null) {
                         ((Handler) EapApplication.getApplication().getExtra(
                                 EapApplication.EXTRA_MAIN_HANDLER))
@@ -489,7 +496,7 @@ public class ApprovalActivity extends ActivitySupport {
                                         waitDialog.dismiss();
                                     }
                                 });
-                        ToastUtil.ShowShort(ApprovalActivity.this, "网络错误，请重试！");
+                        showFailToast("网络错误，请重试！");
                         return;
                     }
                     if ("result".equalsIgnoreCase(workflowResp.type)) {
@@ -624,4 +631,12 @@ public class ApprovalActivity extends ActivitySupport {
         mThread.start();
     }
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.action_left_tv:
+                finish();
+                break;
+        }
+    }
 }

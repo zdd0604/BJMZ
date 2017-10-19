@@ -33,10 +33,7 @@ import com.hjnerp.model.BaseData;
 import com.hjnerp.model.IDComConfig;
 import com.hjnerp.model.LoginConfig;
 import com.hjnerp.model.UserInfo;
-import com.hjnerp.net.ChatConstants;
-import com.hjnerp.net.ChatPacketHelper;
 import com.hjnerp.util.DateUtil;
-import com.hjnerp.util.ImageLoaderHelper;
 import com.hjnerp.util.StringUtil;
 import com.hjnerp.util.ToastUtil;
 import com.hjnerp.util.myscom.StringUtils;
@@ -97,8 +94,8 @@ public class LoginActivity extends ActivitySupport {
                 .request();
         isReceiver = false;
         mIconEdittextClear = getResources().getDrawable(R.drawable.reader_news_fontcancel_pressed);
-        mIconUser = getResources().getDrawable(R.drawable.creat_username_slt);
-        mIconPWd = getResources().getDrawable(R.drawable.icon_register_password);
+//        mIconUser = getResources().getDrawable(R.drawable.icon_login_account);
+//        mIconPWd = getResources().getDrawable(R.drawable.icon_login_password);
         loginConfig = new LoginConfig();
         mHandler = new Handler();
         // 应用程序崩溃报告 开发测时可以关掉
@@ -195,13 +192,14 @@ public class LoginActivity extends ActivitySupport {
 
         myinfo = QiXinBaseDao.queryCurrentUserInfo();
 
-        if (myinfo != null) {
-            String url = myinfo.userImage;
-            if (!StringUtil.isNullOrEmpty(url)) {
-                ImageLoaderHelper.displayImage(ChatPacketHelper.buildImageRequestURL(url, ChatConstants.iq.DATA_VALUE_RES_TYPE_ATTACH),
-                        myImageView);
-            }
-        }
+        //登录界面个人头像加载，需要时可以解除注解
+//        if (myinfo != null) {
+//            String url = myinfo.userImage;
+//            if (!StringUtil.isNullOrEmpty(url)) {
+//                ImageLoaderHelper.displayImage(ChatPacketHelper.buildImageRequestURL(url, ChatConstants.iq.DATA_VALUE_RES_TYPE_ATTACH),
+//                        myImageView);
+//            }
+//        }
 
         prepareComData();
 
@@ -365,9 +363,7 @@ public class LoginActivity extends ActivitySupport {
                         edt_username.setCompoundDrawablesWithIntrinsicBounds(
                                 mIconUser, null, null, null);
                     }
-
                     break;
-
                 case R.id.ui_password_input:
                     String password = edt_pwd.getText().toString();
                     if (password != null && password.length() > 0 && hasFocus) {

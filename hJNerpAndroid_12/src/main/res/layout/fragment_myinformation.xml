@@ -25,8 +25,8 @@
 
             <com.itheima.roundedimageview.RoundedImageView
                 android:id="@+id/myInforphoto"
-                android:layout_width="@dimen/size_55"
-                android:layout_height="@dimen/size_55"
+                android:layout_width="@dimen/size_65"
+                android:layout_height="@dimen/size_65"
                 android:layout_centerVertical="true"
                 android:layout_marginBottom="@dimen/size_10"
                 android:layout_marginLeft="@dimen/size_15"
@@ -60,30 +60,16 @@
                     android:textSize="@dimen/font_size_18"
                     android:textStyle="normal" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/my_company"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/userinfor"
-                    android:layout_marginTop="@dimen/size_5"
-                    android:gravity="center_vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:text="@string/MyInfor_Title_DepartmentName"
-                        android:textColor="@color/item_Friend_TvContentCl"
-                        android:textSize="@dimen/font_size_16" />
-
-                    <TextView
-                        android:id="@+id/my_company"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:text="北京和佳制药"
-                        android:textColor="@color/item_Friend_TvContentCl"
-                        android:textSize="@dimen/font_size_16" />
-                </LinearLayout>
+                    android:layout_centerVertical="true"
+                    android:layout_marginTop="@dimen/size_10"
+                    android:text="北京和佳制药"
+                    android:textColor="@color/item_Friend_TvContentCl"
+                    android:textSize="@dimen/font_size_16" />
             </LinearLayout>
 
 

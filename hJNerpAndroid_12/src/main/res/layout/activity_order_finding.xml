@@ -65,6 +65,7 @@
     <LinearLayout style="@style/Item_LinearLayout_HorizontalStyle">
 
         <TextView
+            android:id="@+id/textView2"
             style="@style/Item_LinearLayout_TVLeftTieleStyle2"
             android:text="客户名称" />
 

@@ -11,8 +11,6 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.hjnerp.business.Ctlm1345Update;
@@ -23,7 +21,6 @@ import com.hjnerp.dao.BaseDao;
 import com.hjnerp.model.CommonSetInfo;
 import com.hjnerp.util.Command;
 import com.hjnerp.util.Command.OnResultListener;
-import com.hjnerp.util.ToastUtil;
 import com.hjnerp.util.VersionManager;
 import com.hjnerpandroid.R;
 
@@ -78,6 +75,7 @@ public class SetActivity extends ActionBarWidgetActivity implements OnClickListe
     TextView rel_hjabout;
     @BindView(R.id.app_logout)
     Button app_logout;
+
     //    @BindView(R.id.tv_with_clean)
 //    TextView tv_tologin_with_clean;
 //    @BindView(R.id.tv_without_clean)
@@ -147,10 +145,10 @@ public class SetActivity extends ActionBarWidgetActivity implements OnClickListe
 //                }
 //                break;
             case R.id.rel_wrapdata:
-                showNoticeDialog("确定清除数据吗？", 0);
+                showNoticeDialog("是否清除数据吗？", 0);
                 break;
             case R.id.rel_wrapcache:
-                showNoticeDialog("确定清除缓存吗？", 1);
+                showNoticeDialog("是否清除缓存吗？", 1);
                 break;
             case R.id.rel_versioncheck:
                 showNoticeDialog("检查新版本", 2);
@@ -193,8 +191,8 @@ public class SetActivity extends ActionBarWidgetActivity implements OnClickListe
 
         TextView dialog_cancel_rl, dialog_confirm_rl;
         TextView notice = (TextView) noticeDialog.findViewById(R.id.dialog_notice_tv);
-        notice.setText("确认要退出和佳ERP吗?");
-        dialog_cancel_rl = (TextView) noticeDialog .findViewById(R.id.dialog_cancel_tv);
+        notice.setText("是否退出当前用户?");
+        dialog_cancel_rl = (TextView) noticeDialog.findViewById(R.id.dialog_cancel_tv);
         dialog_confirm_rl = (TextView) noticeDialog.findViewById(R.id.dialog_confirm_tv);
         dialog_cancel_rl.setOnClickListener(new OnClickListener() {
 
@@ -245,12 +243,12 @@ public class SetActivity extends ActionBarWidgetActivity implements OnClickListe
                     if (tag == 0) {
                         //清除数据
                         BaseDao.wrapData();
-                        ToastUtil.ShowShort(SetActivity.this, "清除成功！");
+                        showFailToast("清除成功！");
                     }
                     if (tag == 1) {
                         //清楚缓存
                         BaseDao.wrapcache();
-                        ToastUtil.ShowShort(SetActivity.this, "清除成功！");
+                        showFailToast("清除成功！");
                     }
                     if (tag == 2) {
                         //检查版本
@@ -259,7 +257,7 @@ public class SetActivity extends ActionBarWidgetActivity implements OnClickListe
                             @Override
                             public void onUpgradeResult(boolean success, String msg) {
                                 if (!success) {
-                                    ToastUtil.ShowShort(SetActivity.this, msg);
+                                    showFailToast(msg);
                                 }
                             }
                         });
@@ -269,7 +267,7 @@ public class SetActivity extends ActionBarWidgetActivity implements OnClickListe
                         if (hasInternetConnected()) {
                             updateModelThread();
                         } else {
-                            ToastUtil.ShowShort(SetActivity.this, getResources().getString(R.string.check_connection));
+                            showFailToast(getResources().getString(R.string.check_connection));
                         }
                     }
                     if (tag == 4) {
@@ -277,14 +275,14 @@ public class SetActivity extends ActionBarWidgetActivity implements OnClickListe
                         if (hasInternetConnected()) {
                             updateCtlm1347Thread();
                         } else {
-                            ToastUtil.ShowShort(SetActivity.this, getResources().getString(R.string.check_connection));
+                            showFailToast(getResources().getString(R.string.check_connection));
                         }
                     }
                     if (tag == 5) {//手动下载基础数据
                         if (hasInternetConnected()) {
                             updateCtlm1345Thread();
                         } else {
-                            ToastUtil.ShowShort(SetActivity.this, getResources().getString(R.string.check_connection));
+                            showFailToast(getResources().getString(R.string.check_connection));
                         }
                     }
                     break;
@@ -359,7 +357,6 @@ public class SetActivity extends ActionBarWidgetActivity implements OnClickListe
                     @Override
                     public void onResult(boolean success) {
                         if (success) {
-
                             sendToHandler(DOWNLOAD_CTLM1347_SUCCESS);
                         } else {
                             sendToHandler(DOWNLOAD_CTLM1347_CONTAINS_ERROR);
@@ -392,14 +389,14 @@ public class SetActivity extends ActionBarWidgetActivity implements OnClickListe
             }
 
             if (DOWNLOAD_XML_CONTAINS_ERROR.equalsIgnoreCase(mmsg)) {
-                ToastUtil.ShowShort(SetActivity.this, "更新失败，请重试！");
+                showFailToast("更新失败，请重试！");
             } else if (DOWNLOAD_XML_SUCCESS.equalsIgnoreCase(mmsg)) {
-                ToastUtil.ShowShort(SetActivity.this, "更新成功！");
+                showFailToast("更新成功！");
                 MainActivity.need_fresh_businessmenu = true;
             } else if (DOWNLOAD_CTLM1347_SUCCESS.equalsIgnoreCase(mmsg)) {
-                ToastUtil.ShowShort(SetActivity.this, "下载成功！");
+                showFailToast("下载成功！");
             } else if (DOWNLOAD_CTLM1347_CONTAINS_ERROR.equalsIgnoreCase(mmsg)) {
-                ToastUtil.ShowShort(SetActivity.this, "下载失败，请重试！");
+                showFailToast("下载失败，请重试！");
             }
         }
 

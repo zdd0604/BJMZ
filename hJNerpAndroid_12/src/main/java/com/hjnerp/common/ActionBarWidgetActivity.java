@@ -4,17 +4,11 @@ import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.text.TextPaint;
 import android.util.Log;
-import android.view.Gravity;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.WindowManager;
 import android.widget.DatePicker;
 import android.widget.PopupWindow;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,7 +16,6 @@ import com.hjnerp.net.HttpClientManager;
 import com.hjnerp.widget.MyToast;
 import com.hjnerp.widget.MyToast2;
 import com.hjnerp.widget.WaitDialogRectangle;
-import com.hjnerpandroid.R;
 import com.sdyy.utils.XPermissionListener;
 import com.sdyy.utils.XPermissions;
 
@@ -46,7 +39,7 @@ import java.util.zip.ZipInputStream;
  */
 
 public class ActionBarWidgetActivity extends ActivitySupport {
-    protected Context mContext;
+    public static Context mContext;
     //弹框
     protected WaitDialogRectangle waitDialog;
     protected String JSON_VALUE = "values";
@@ -57,6 +50,7 @@ public class ActionBarWidgetActivity extends ActivitySupport {
     //是否授权
     public boolean isPsions = false;
     protected PopupWindow popupWindow;
+
     public static void setNsyncDataConnector(NsyncDataConnector nsyncDataConnector) {
         ActionBarWidgetActivity.nsyncDataConnector = nsyncDataConnector;
     }
@@ -96,8 +90,6 @@ public class ActionBarWidgetActivity extends ActivitySupport {
         });
         return isPsions;
     }
-
-
 
 
     /**
@@ -155,7 +147,7 @@ public class ActionBarWidgetActivity extends ActivitySupport {
      *
      * @param content
      */
-    public void showSuccessToast(String content) {
+    public static void showSuccessToast(String content) {
         new MyToast(mContext, content);
     }
 
@@ -164,7 +156,7 @@ public class ActionBarWidgetActivity extends ActivitySupport {
      *
      * @param content
      */
-    public void showFailToast(String content) {
+    public static void showFailToast(String content) {
         new MyToast2(mContext, content);
     }
 
@@ -174,18 +166,17 @@ public class ActionBarWidgetActivity extends ActivitySupport {
     }
 
 
-    //网络获取的方法
+    /**
+     *     网络获取的方法
+     */
     public class NsyncDataHandler extends HttpClientManager.HttpResponseHandler {
         @Override
         public void onException(Exception e) {
-
         }
-
         @Override
         public void onResponse(HttpResponse resp) {
             // TODO Auto-generated method stub
             try {
-
                 String contentType = resp.getHeaders("Content-Type")[0].getValue();
                 // if ("application/octet-stream".equals(contentType) ) {
                 if (contentType.indexOf("application/octet-stream") != -1) {
@@ -195,13 +186,12 @@ public class ActionBarWidgetActivity extends ActivitySupport {
                             .substring(contentDiscreption.indexOf("=") + 1);
                     FileOutputStream fos = new FileOutputStream(new File(
                             getExternalCacheDir(), fileName));
-
                     resp.getEntity().writeTo(fos);
                     fos.close();
                     String json = processBusinessCompress(fileName);
                     JSONObject jsonObject = new JSONObject(json);
                     String value = jsonObject.getString(JSON_VALUE);
-
+                    LogShow(value);
                     if (nsyncDataConnector != null) {
                         nsyncDataConnector.processJsonValue(value);
                     }
@@ -244,12 +234,9 @@ public class ActionBarWidgetActivity extends ActivitySupport {
             }
             String json = new String(baos.toByteArray(), HTTP.UTF_8);
             return json;
-
         } catch (FileNotFoundException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         } finally {
             try {
@@ -257,7 +244,6 @@ public class ActionBarWidgetActivity extends ActivitySupport {
                     zis.close();
                 }
             } catch (IOException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
         }
@@ -300,4 +286,5 @@ public class ActionBarWidgetActivity extends ActivitySupport {
     public interface NsyncDataConnector {
         void processJsonValue(String value);
     }
+
 }

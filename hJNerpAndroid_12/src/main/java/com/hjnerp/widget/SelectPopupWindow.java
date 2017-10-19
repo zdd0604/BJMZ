@@ -6,6 +6,7 @@ import java.util.List;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -44,7 +45,7 @@ public class SelectPopupWindow extends PopupWindow
 		// 设置SelectPicPopupWindow弹出窗体可点击
 		this.setFocusable(true);
 //		// 实例化一个ColorDrawable颜色为半透明
-		ColorDrawable dw = new ColorDrawable(color.white);
+		ColorDrawable dw = new ColorDrawable(Color.WHITE);
 		// 设置SelectPicPopupWindow弹出窗体的背景
 		this.setBackgroundDrawable(dw);
 		

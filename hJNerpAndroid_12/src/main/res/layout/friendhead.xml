@@ -28,8 +28,8 @@
 
         <com.itheima.roundedimageview.RoundedImageView
             android:id="@+id/user_head_avatar"
-            android:layout_width="@dimen/size_45"
-            android:layout_height="@dimen/size_45"
+            android:layout_width="@dimen/size_50"
+            android:layout_height="@dimen/size_50"
             android:layout_centerVertical="true"
             android:layout_gravity="center_horizontal"
             android:layout_margin="@dimen/size_10"

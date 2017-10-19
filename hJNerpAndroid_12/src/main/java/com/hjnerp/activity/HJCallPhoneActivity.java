@@ -47,7 +47,7 @@ public class HJCallPhoneActivity extends ActionBarWidgetActivity implements View
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.tellPhone:
-                ShowCallDialog();
+//                ShowCallDialog();
                 break;
             case R.id.action_left_tv:
                 finish();

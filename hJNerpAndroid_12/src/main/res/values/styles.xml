@@ -436,12 +436,12 @@
     <!-- 右侧TextView跳转页面的图片框 向右的箭头左边也有图标的，无margintop-->
     <style name="Item_LinearLayout_TvImgStyle_no_one">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">@dimen/size_40</item>
+        <item name="android:layout_height">@dimen/size_45</item>
         <item name="android:textSize">@dimen/font_size_16</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:background">@drawable/app_out_btn_style</item>
         <item name="android:drawablePadding">@dimen/size_10</item>
-        <item name="android:paddingLeft">@dimen/size_15</item>
+        <item name="android:paddingLeft">@dimen/size_10</item>
         <item name="android:drawableRight">@drawable/icon_right_orientation</item>
         <item name="android:gravity">center_vertical</item>
         <item name="android:paddingRight">@dimen/size_10</item>
@@ -621,7 +621,7 @@
         <item name="android:layout_marginTop">@dimen/size_2</item>
         <item name="android:layout_marginBottom">@dimen/size_2</item>
         <item name="android:gravity">center_vertical</item>
-        <item name="android:layout_weight">7</item>
+        <item name="android:layout_weight">6</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">@dimen/font_size_15</item>
     </style>
@@ -673,11 +673,11 @@
     <!-- 按钮的风格 -->
     <style name="Item_Button_BuleStyle">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">@dimen/size_45</item>
+        <item name="android:layout_height">@dimen/size_40</item>
         <item name="android:layout_marginTop">@dimen/size_10</item>
         <item name="android:layout_marginLeft">@dimen/size_10</item>
         <item name="android:layout_marginRight">@dimen/size_10</item>
-        <item name="android:textSize">@dimen/font_size_20</item>
+        <item name="android:textSize">@dimen/font_size_18</item>
         <item name="android:enabled">false</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:background">@drawable/login_btn_style</item>
@@ -699,10 +699,9 @@
     <style name="Item_EditText_PwordStyle">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/size_45</item>
-        <item name="android:layout_marginTop">@dimen/size_10</item>
-        <item name="android:layout_marginLeft">@dimen/size_20</item>
+        <item name="android:layout_marginLeft">@dimen/size_10</item>
         <item name="android:layout_marginRight">@dimen/size_20</item>
-        <item name="android:textSize">@dimen/font_size_18</item>
+        <item name="android:textSize">@dimen/font_size_17</item>
         <item name="android:gravity">center_vertical</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:maxLength">16</item>
@@ -759,7 +758,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginRight">@dimen/size_15</item>
         <item name="android:textColor">@color/item_Friend_TvContentCl</item>
-        <item name="android:textSize">@dimen/font_size_16</item>
+        <item name="android:textSize">@dimen/font_size_15</item>
         <item name="android:layout_centerVertical">true</item>
         <item name="android:layout_alignParentRight">true</item>
     </style>
@@ -770,7 +769,7 @@
         <item name="android:paddingRight">@dimen/size_10</item>
         <item name="android:textColor">@color/item_Friend_TvContentCl</item>
         <item name="android:gravity">center</item>
-        <item name="android:textSize">@dimen/font_size_16</item>
+        <item name="android:textSize">@dimen/font_size_15</item>
         <item name="android:layout_centerVertical">true</item>
         <item name="android:layout_alignParentRight">true</item>
         <item name="android:drawableRight">@drawable/icon_right_orientation</item>

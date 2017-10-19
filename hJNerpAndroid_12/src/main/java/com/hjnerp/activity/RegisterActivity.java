@@ -135,13 +135,13 @@ public class RegisterActivity extends ActionBarWidgetActivity implements View.On
                 String eRegCode = mRegCode.getText().toString();
                 if (TextUtils.isEmpty(eRegPhone)) {
                     mRegPhone.setShakeAnimation();
-                    showToast("手机号不能为空");
+                    showFailToast("手机号不能为空");
                     showIMF();
                     return;
                 }
                 if (TextUtils.isEmpty(eRegCode)) {
                     mRegCode.setShakeAnimation();
-                    showToast("注册码不能为空");
+                    showFailToast("注册码不能为空");
                     showIMF();
                     return;
                 }
@@ -207,16 +207,16 @@ public class RegisterActivity extends ActionBarWidgetActivity implements View.On
 //                    long current = new Date().getTime();
 //                    if (current < stopReg || current == stopReg) {
 //                        OtherBaseDao.replaceRegInfo(dataList);
-//                        showToast("注册成功");
+//                        showFailToast("注册成功");
 //                        Intent intent = new Intent(getBaseContext(),
 //                                LoginActivity.class);
 //                        setResult(RESULT_OK, intent);
 //                        finish();
 //                    } else {
-//                        showToast("企业注册已过截止日期，请联系软件供应公司");
+//                        showFailToast("企业注册已过截止日期，请联系软件供应公司");
 //                    }
 //                } else {
-//                    showToast(data.message);
+//                    showFailToast(data.message);
 //                    showIMF();
 //                }
 //            } catch (IOException e) {
@@ -227,7 +227,7 @@ public class RegisterActivity extends ActionBarWidgetActivity implements View.On
 //        @Override
 //        public void onException(Exception e) {
 //            waitDialogRectangle.cancel();
-//            showToast("连接远程注册服务器失败，请稍后再试...");
+//            showFailToast("连接远程注册服务器失败，请稍后再试...");
 //            showIMF();
 //        }
 //    }
@@ -262,13 +262,13 @@ public class RegisterActivity extends ActionBarWidgetActivity implements View.On
                         long current = new Date().getTime();
                         if (current < stopReg || current == stopReg) {
                             OtherBaseDao.replaceRegInfo(dataList);
-                            showToast("注册成功");
+                            showFailToast("注册成功");
                             Intent intent = new Intent(getBaseContext(),
                                     LoginActivity.class);
                             setResult(RESULT_OK, intent);
                             finish();
                         } else {
-                            showToast("企业注册已过截止日期，请联系软件供应公司");
+                            showFailToast("企业注册已过截止日期，请联系软件供应公司");
                         }
                     }
 
@@ -276,7 +276,7 @@ public class RegisterActivity extends ActionBarWidgetActivity implements View.On
                     public void onError(Call call, Response response, Exception e) {
                         super.onError(call, response, e);
                         waitDialogRectangle.cancel();
-                        showToast(e.getMessage());
+                        showFailToast(e.getMessage());
                         showIMF();
                     }
                 });

@@ -85,7 +85,7 @@ public class BusinessSearchOneLine extends ActionBarWidgetActivity implements Vi
     }
 
     private void initView() {
-        actionCenterTv.setText("选择搜索");//可根据传递过来的数据进行改变
+        actionCenterTv.setText("搜索");//可根据传递过来的数据进行改变
         project_recy.setLayoutManager(new LinearLayoutManager(this));
         project_search.addTextChangedListener(textWatcher);
         actionLeftTv.setOnClickListener(this);

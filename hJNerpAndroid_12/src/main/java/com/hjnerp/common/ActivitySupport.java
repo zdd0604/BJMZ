@@ -53,6 +53,7 @@ import com.hjnerp.util.myscom.StringUtils;
 import com.hjnerp.widget.WaitDialog;
 import com.hjnerp.widget.WaitDialogRectangle;
 import com.hjnerpandroid.R;
+import com.lzy.okgo.OkGo;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.util.List;
@@ -160,6 +161,10 @@ public class ActivitySupport extends ActionBarActivity implements
     public void onDestroy() {
         eapApplication.removeActivity(this);
         super.onDestroy();
+        //根据 Tag 取消请求
+        OkGo.getInstance().cancelTag(this);
+        //取消所有请求
+        OkGo.getInstance().cancelAll();
     }
 
     @Override

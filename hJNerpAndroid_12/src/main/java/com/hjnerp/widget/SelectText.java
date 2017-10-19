@@ -10,7 +10,7 @@ import android.widget.EditText;
 import android.widget.PopupWindow;
 
 
-public class SelectText extends EditText
+public class SelectText extends android.support.v7.widget.AppCompatEditText
 {
 	private final PopupWindow.OnDismissListener dismissListener = new PopupWindow.OnDismissListener()
 	{

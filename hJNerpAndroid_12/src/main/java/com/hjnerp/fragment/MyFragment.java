@@ -27,6 +27,7 @@ import com.hjnerp.net.ChatPacketHelper;
 import com.hjnerp.util.ImageLoaderHelper;
 import com.hjnerp.util.SharePreferenceUtil;
 import com.hjnerp.util.StringUtil;
+import com.hjnerp.widget.BubbleImageView;
 import com.hjnerpandroid.R;
 
 import java.io.Serializable;
@@ -37,7 +38,7 @@ public class MyFragment extends Fragment implements OnClickListener {
 	private RelativeLayout rLayout_about;
 	private RelativeLayout rLayout_logout;
 	private LinearLayout linear_myinfo;
-	private ImageView myImageView;
+	private BubbleImageView myImageView;
 	private UserInfo myinfo;
 	private TextView user_head_name;
 	private TextView user_head_content;
@@ -57,7 +58,7 @@ public class MyFragment extends Fragment implements OnClickListener {
 				.findViewById(R.id.linear_logout);
 		//
 		
-		myImageView = (ImageView) contextView
+		myImageView = (BubbleImageView) contextView
 				.findViewById(R.id.myphoto);
 		linear_myinfo = (LinearLayout) contextView
 				.findViewById(R.id.linear_myinfo);

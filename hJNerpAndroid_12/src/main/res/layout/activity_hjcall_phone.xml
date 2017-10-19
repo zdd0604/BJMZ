@@ -22,7 +22,7 @@
             android:gravity="center"
             android:paddingLeft="@dimen/size_10"
             android:paddingRight="@dimen/size_10"
-            android:text=" 地址：北京海淀区中关村大街11号e世界财富中心A座12层"
+            android:text="地址：北京市海淀区中关村大街11号e世界财富中心A座12层"
             android:textColor="@color/black"
             android:textSize="@dimen/font_size_16" />
 
@@ -36,6 +36,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="电话："
+                android:textColor="@color/black"
                 android:textSize="16sp" />
 
             <TextView
@@ -43,7 +44,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="010-82870888"
-                android:textColor="#2abff1"
+                android:textColor="@color/black"
                 android:textSize="16sp" />
 
         </LinearLayout>
@@ -58,12 +59,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="传真："
+                android:textColor="@color/black"
                 android:textSize="16sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="010-82607809"
+                android:textColor="@color/black"
                 android:textSize="16sp" />
 
         </LinearLayout>
@@ -79,12 +82,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="邮编："
+                android:textColor="@color/black"
                 android:textSize="16sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="100080            "
+                android:textColor="@color/black"
                 android:textSize="16sp" />
 
         </LinearLayout>

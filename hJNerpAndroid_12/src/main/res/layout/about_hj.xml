@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/actionbar_title_bg"
@@ -11,17 +12,19 @@
 
     <RelativeLayout
         style="@style/Item_RelativeLayout_DefaultStyle"
-        android:layout_marginTop="@dimen/size_10">
+        android:layout_marginTop="@dimen/size_10"
+        android:background="@color/actionbar_title_bg">
 
-        <ImageView
+        <com.itheima.roundedimageview.RoundedImageView
             android:id="@+id/ab_icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/size_70"
+            android:layout_height="@dimen/size_70"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="20dp"
-            android:layout_marginTop="40dp"
-            android:src="@drawable/icon2" />
-
+            android:layout_marginTop="@dimen/size_25"
+            android:src="@drawable/icon2"
+            app:riv_corner_radius="@dimen/size_5"
+            app:riv_oval="false" />
 
         <TextView
             android:id="@+id/tv_abouthj_app"
@@ -29,6 +32,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/ab_icon"
             android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/size_40"
             android:maxLength="16"
             android:maxLines="1"
             android:text="何佳ERP 3.3.1"
@@ -47,7 +51,8 @@
             android:maxLines="1"
             android:text="android版本 6.0"
             android:textColor="#ff333333"
-            android:textSize="14.0sp" />
+            android:textSize="@dimen/font_size_14"
+            android:visibility="gone" />
 
     </RelativeLayout>
 
@@ -56,7 +61,6 @@
     <TextView
         android:id="@+id/linear_sever"
         style="@style/Item_LinearLayout_TvTitleImgStyle2"
-        android:layout_marginTop="@dimen/size_10"
         android:text="@string/about_Title_Hjsever" />
 
     <View style="@style/Item_View_DividerStyle" />
@@ -64,16 +68,22 @@
     <TextView
         android:id="@+id/linear_policy"
         style="@style/Item_LinearLayout_TvTitleImgStyle2"
-        android:text="@string/about_Title_Hjpolicy" />
+        android:text="@string/about_Title_Hjpolicy"
+        android:visibility="gone" />
 
-    <View style="@style/Item_View_DividerStyle" />
+    <View
+        style="@style/Item_View_DividerStyle"
+        android:visibility="gone" />
 
     <TextView
         android:id="@+id/linear_copyright"
         style="@style/Item_LinearLayout_TvTitleImgStyle2"
-        android:text="@string/about_Title_Hjcopyright" />
+        android:text="@string/about_Title_Hjcopyright"
+        android:visibility="gone" />
 
-    <View style="@style/Item_View_DividerStyle" />
+    <View
+        style="@style/Item_View_DividerStyle"
+        android:visibility="gone" />
 
     <TextView
         android:id="@+id/linear_information"

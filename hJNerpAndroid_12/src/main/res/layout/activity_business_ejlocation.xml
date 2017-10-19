@@ -139,7 +139,7 @@
             android:drawablePadding="3dp"
             android:drawableTop="@drawable/ddisplocation_login_in_bg"
             android:gravity="center"
-            android:text="签到"
+            android:text="上班"
             android:textColor="@drawable/ddisplocation_login_textcolor" />
 
         <RadioButton
@@ -153,7 +153,7 @@
             android:drawablePadding="3dp"
             android:drawableTop="@drawable/ddisplocation_login_out_bg"
             android:gravity="center"
-            android:text="签退"
+            android:text="下班"
             android:textColor="@drawable/ddisplocation_login_textcolor" />
     </RadioGroup>
 </RelativeLayout>

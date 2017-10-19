@@ -6,6 +6,7 @@
     android:gravity="center_horizontal"
     android:orientation="vertical">
 
+    <include layout="@layout/actionbar_layout" />
 
     <!--  com.hjnerp.widget.PullRefreshListView
         android:id="@+id/plv_approval"
@@ -83,11 +84,11 @@
                 android:layout_height="30dp"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="10dp"
-                android:text="同意"
                 android:layout_marginRight="10dp"
                 android:layout_toLeftOf="@id/btn_disagree"
                 android:background="@drawable/edittext_bg_selector"
                 android:singleLine="true"
+                android:text="同意"
                 android:textSize="18sp" />
         </RelativeLayout>
 

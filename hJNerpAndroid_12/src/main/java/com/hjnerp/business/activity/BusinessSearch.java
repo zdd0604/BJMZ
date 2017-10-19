@@ -30,15 +30,9 @@ import com.hjnerp.widget.ClearEditText;
 import com.hjnerp.widget.WaitDialogRectangle;
 import com.hjnerpandroid.R;
 
-import org.apache.http.HttpResponse;
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
@@ -54,7 +48,8 @@ import static com.hjnerp.common.Constant.sellDetails;
 import static com.hjnerp.common.Constant.sellDetailsPosition;
 import static com.hjnerp.common.Constant.user_myid;
 
-public class BusinessSearch extends ActionBarWidgetActivity implements View.OnClickListener {
+public class BusinessSearch extends ActionBarWidgetActivity implements View.OnClickListener,
+        ActionBarWidgetActivity.NsyncDataConnector {
     @BindView(R.id.action_center_tv)
     TextView actionCenterTv;
     @BindView(R.id.action_right_tv)
@@ -76,7 +71,7 @@ public class BusinessSearch extends ActionBarWidgetActivity implements View.OnCl
 
     CharSequence temp;//监听前的文本
     BusinessSearchAdapter adapter;//搜索
-    private HttpClientManager.HttpResponseHandler responseHandler = new NsyncDataHandler();
+    //    private HttpClientManager.HttpResponseHandler responseHandler = new NsyncDataHandler();
     public static final String JSON_VALUE = "values";
     public static final Pattern p = Pattern.compile("\\s*|\t|\r|\n");
     private List<Ctlm7502Json> travelDatas = new ArrayList<>();
@@ -131,7 +126,7 @@ public class BusinessSearch extends ActionBarWidgetActivity implements View.OnCl
 
                     break;
                 case 3:
-                    ToastUtil.ShowShort(context, "数据出错!");
+                    showFailToast("数据出错!");
                     waitDialog.dismiss();
                     mHandler.sendEmptyMessage(2);
                     break;
@@ -148,6 +143,7 @@ public class BusinessSearch extends ActionBarWidgetActivity implements View.OnCl
     }
 
     private void initView() {
+        ActionBarWidgetActivity.setNsyncDataConnector(this);
         switch (Constant.project_type) {
             case 0://项目搜索（工作日志，出差外出）
                 actionCenterTv.setText("项目搜索");
@@ -218,7 +214,6 @@ public class BusinessSearch extends ActionBarWidgetActivity implements View.OnCl
                                 cons = cons + "id_recorder='" + users_id[i] + "')";
                             } else {
                                 cons = cons + "id_recorder='" + users_id[i] + "' or ";
-
                             }
                         }
                         condition = cons;
@@ -251,10 +246,8 @@ public class BusinessSearch extends ActionBarWidgetActivity implements View.OnCl
                             .addKeyValue("condition", "1=1 and id_column='" + id_terminal_for_item + "'");
                     break;
             }
-
             Log.d("seach", "开始提交数据");
             HttpClientManager.addTask(responseHandler, param.getHttpPost());
-
         } catch (UnsupportedEncodingException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -262,6 +255,9 @@ public class BusinessSearch extends ActionBarWidgetActivity implements View.OnCl
     }
 
 
+    /**
+     * 监听搜索框内容事件
+     */
     TextWatcher textWatcher = new TextWatcher() {
         @Override
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -432,54 +428,12 @@ public class BusinessSearch extends ActionBarWidgetActivity implements View.OnCl
         return list;
     }
 
-    private class NsyncDataHandler extends HttpClientManager.HttpResponseHandler {
-
-        @Override
-        public void onException(Exception e) {
-        }
-
-        @Override
-        public void onResponse(HttpResponse resp) {
-            // TODO Auto-generated method stub
-            try {
-                Log.d("seach", "开始返回文件");
-                String contentType = resp.getHeaders("Content-Type")[0]
-                        .getValue();
-                // if ("application/octet-stream".equals(contentType) ) {
-                if (contentType.indexOf("application/octet-stream") != -1) {
-                    String contentDiscreption = resp
-                            .getHeaders("Content-Disposition")[0].getValue();
-                    String fileName = contentDiscreption
-                            .substring(contentDiscreption.indexOf("=") + 1);
-                    FileOutputStream fos = new FileOutputStream(new File(
-                            getExternalCacheDir(), fileName));
-                    resp.getEntity().writeTo(fos);
-                    fos.close();
-                    Log.d("seach", "开始解压文件");
-                    String json = processBusinessCompress(fileName);
-                    Log.d("seach", "开始解析文件");
-                    JSONObject jsonObject = new JSONObject(json);
-                    String value = jsonObject.getString(JSON_VALUE);
-
-                    Log.d("value", "开始解析数据");
-                    processJsonValue(value);
-                } else {
-
-                }
-
-            } catch (IllegalStateException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            } catch (FileNotFoundException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            } catch (IOException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            } catch (JSONException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.action_left_tv:
+                finish();
+                break;
         }
     }
 
@@ -489,8 +443,8 @@ public class BusinessSearch extends ActionBarWidgetActivity implements View.OnCl
      * @param value 被解析的值
      * @throws JSONException 解析失败的异常
      */
+    @Override
     public void processJsonValue(String value) {
-        // TODO Auto-generated method stub
         value = value.trim();
         if (value.equalsIgnoreCase("[]") || value.equalsIgnoreCase(null)) {//如果数据为空
             waitDialog.dismiss();
@@ -661,14 +615,5 @@ public class BusinessSearch extends ActionBarWidgetActivity implements View.OnCl
 //        } else {
 //            readFrom7502();
 //        }
-    }
-
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.action_left_tv:
-                finish();
-                break;
-        }
     }
 }

@@ -34,6 +34,7 @@ import com.hjnerp.activity.work.WorkListBillTypeWindow;
 import com.hjnerp.adapter.WorkflowListAdapter;
 import com.hjnerp.common.Constant;
 import com.hjnerp.common.EapApplication;
+import com.hjnerp.common.FragmentSupport;
 import com.hjnerp.dao.OtherBaseDao;
 import com.hjnerp.model.IDComConfig;
 import com.hjnerp.model.WorkflowBillTypeData;
@@ -66,7 +67,7 @@ import java.util.List;
  * 数据接口类使用WorkflowInfo
  */
 @SuppressLint("HandlerLeak")
-public class WorkFragment extends Fragment {
+public class WorkFragment extends FragmentSupport {
     private WorkflowListAdapter listItemAdapter;
     public static PullToRefreshListView listview;
     //    private TextView tviewType;
@@ -100,13 +101,39 @@ public class WorkFragment extends Fragment {
     private List<String> bu_types = new ArrayList<>();//注册获取能使用的类型
     private boolean isAllType;//判断是否为全部类型
 
+    final Handler myHandler = new Handler() {
+        public void handleMessage(Message msg) {
+            Bundle b = msg.getData();
+            int mmsg = b.getInt("flag");
+            switch (mmsg) {
+                case 1:
+                    refreshList();
+                    break;
+                case 2:
+                    listview.onRefreshComplete();
+                    break;
+                case 999:
+                    listYN.clear();
+//                    listview.onRefreshComplete();
+                    refreshList();
+                    showFailToast("无数据");
+                    break;
+                case 4:
+                    listYN.remove(index);
+                    refreshList();
+                    break;
+                default:
+                    break;
+            }
+        }
+    };
+
     @SuppressWarnings("static-access")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         context = this.getActivity();
-        contextView = inflater.inflate(R.layout.fragment_workflow, container,
-                false);
+        contextView = inflater.inflate(R.layout.fragment_workflow, container, false);
         workFragment = this;
         sputil = SharePreferenceUtil.getInstance(getActivity());
         IDComConfig idconfig = OtherBaseDao.queryReginfo(sputil.getComid());
@@ -301,7 +328,7 @@ public class WorkFragment extends Fragment {
                     btnRight.setTextColor(new Color().rgb(39, 164, 227));
                     btnLeft.setTextColor(new Color().rgb(89, 89, 89));
                     foot_tab_number = FOOT_TAB_NUMBER_Y;
-                    listYN.clear();
+//                    listYN.clear();
                     listItemAdapter.notifyDataSetChanged();
                     // new GetDataTask().execute();
                     listview.setRefreshing();
@@ -312,11 +339,10 @@ public class WorkFragment extends Fragment {
                     btnLeft.setTextColor(new Color().rgb(39, 164, 227));
                     btnRight.setTextColor(new Color().rgb(89, 89, 89));
                     foot_tab_number = FOOT_TAB_NUMBER_N;
-                    listYN.clear();
+//                    listYN.clear();
                     listItemAdapter.notifyDataSetChanged();
                     rightview.setVisibility(View.GONE);
                     leftview.setVisibility(View.VISIBLE);
-
                     // new GetDataTask().execute();
                     listview.setRefreshing();
                     // listview.setRefreshing(true);
@@ -397,7 +423,7 @@ public class WorkFragment extends Fragment {
 //                        listYN.get(0).getDate(), integer+"");
 //            }
 //        } else {
-        listYN.clear();
+//        listYN.clear();
         // 请求10个已处理
         if (selectedBillTypeList.size() > 0) {
             for (int i = 0; i < selectedBillTypeList.size(); i++) {
@@ -405,11 +431,9 @@ public class WorkFragment extends Fragment {
                     type = selectedBillTypeList.get(i).getId();
                 }
             }
-            getWorkFlowList(MY_GET_WORKLIST_FLAG_SCROLL, null, type, "N",
-                    null, integer + "");
+            getWorkFlowList(MY_GET_WORKLIST_FLAG_SCROLL, null, type, "N", null, integer + "");
         } else {
-            getWorkFlowList(MY_GET_WORKLIST_FLAG_SCROLL, null, null, "N",
-                    null, integer + "");
+            getWorkFlowList(MY_GET_WORKLIST_FLAG_SCROLL, null, null, "N", null, integer + "");
         }
 //        }
 
@@ -475,7 +499,6 @@ public class WorkFragment extends Fragment {
                         data.items = workflowResp.data.items;
                         sputil.setWorkListBillType(new Gson().toJson(data));
                         allBillTypeList = workflowResp.data.items;
-
                     }
                 } catch (IOException e) {
                     onException(e);
@@ -506,11 +529,13 @@ public class WorkFragment extends Fragment {
                 try {
                     String msg = HttpClientManager.toStringContent(resp);
                     Gson gson = new Gson();
-
                     final WorkflowListResp workflowResp = gson.fromJson(msg, WorkflowListResp.class);
+                    if (workflowResp != null)
+                        listYN.clear();
                     if ("result".equalsIgnoreCase(workflowResp.type)
                             && workflowResp.data != null
                             && workflowResp.data.items.size() > 0) {
+
                         int iSize = workflowResp.data.items.size() - 1;
                         for (int i = iSize; i >= 0; i--)// WorkflowListInfo info
                         // :
@@ -533,22 +558,17 @@ public class WorkFragment extends Fragment {
                         } else {
                             sendToMyHandler(999);
                         }
-
                     }
-
                 } catch (IOException e) {
                     onException(e);
                     sendToMyHandler(999);
-
                 }
             }
-
             @Override
             public void onException(Exception e) {
                 e.printStackTrace();
                 // //
                 sendToMyHandler(999);
-
             }
         }, post);
     }
@@ -558,39 +578,8 @@ public class WorkFragment extends Fragment {
         Bundle b = new Bundle();
         b.putInt("flag", msg);
         Msg.setData(b);
-
         myHandler.sendMessage(Msg);
     }
-
-    final Handler myHandler = new Handler() {
-
-        public void handleMessage(Message msg) {
-            Bundle b = msg.getData();
-            int mmsg = b.getInt("flag");
-
-            switch (mmsg) {
-                case 1:
-                    refreshList();
-                    break;
-                case 2:
-                    listview.onRefreshComplete();
-                    break;
-                case 999:
-                    listview.onRefreshComplete();
-                    ToastUtil.ShowShort(context, "当前没有您需要处理的单据");
-                    break;
-                case 4:
-                    listYN.remove(index);
-                    refreshList();
-                    break;
-                default:
-                    break;
-            }
-
-        }
-
-        ;
-    };
 
     // pageSize 为null时，请求全部，dealFlag是已处理未处理Y/N dealType-审批结果 remark-附加审批意见
     public static final HttpPost postWorkflow(String type, String comID,
