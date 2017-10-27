@@ -186,12 +186,12 @@
                     android:id="@+id/tv_workdetail_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
                     android:layout_marginLeft="5dp"
                     android:gravity="center_horizontal"
                     android:padding="2dip"
                     android:singleLine="true"
                     android:text="李玟"
+                    android:textColor="@color/black"
                     android:textSize="@dimen/font_size_15" />
 
                 <TextView
@@ -203,6 +203,7 @@
                     android:padding="2dip"
                     android:singleLine="true"
                     android:text="-"
+                    android:textColor="@color/black"
                     android:textSize="15dip"
                     android:textStyle="bold" />
 
@@ -210,12 +211,12 @@
                     android:id="@+id/tv_workdetail_result"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
                     android:layout_toRightOf="@+id/tv_workdetail_division"
                     android:gravity="center_horizontal"
                     android:padding="2dip"
                     android:singleLine="true"
                     android:text="同意"
+                    android:textColor="@color/black"
                     android:textSize="@dimen/font_size_15" />
 
 

@@ -203,4 +203,32 @@ public class SellOrderModel {
     public void setOrder_price(double order_price) {
         this.order_price = order_price;
     }
+
+    @Override
+    public String toString() {
+        return "SellOrderModel{" +
+                "order_no=" + order_no +
+                ", order_first=" + order_first +
+                ", order_delete=" + order_delete +
+                ", order_type=" + order_type +
+                ", order_product=" + order_product +
+                ", order_add=" + order_add +
+                ", order_num=" + order_num +
+                ", order_tax=" + order_tax +
+                ", order_price=" + order_price +
+                ", per_price=" + per_price +
+                ", id_item='" + id_item + '\'' +
+                ", name_item='" + name_item + '\'' +
+                ", id_sell='" + id_sell + '\'' +
+                ", id_uom='" + id_uom + '\'' +
+                ", id_tax='" + id_tax + '\'' +
+                ", var_chkparm='" + var_chkparm + '\'' +
+                ", dec_taxrate='" + dec_taxrate + '\'' +
+                ", flag_gift='" + flag_gift + '\'' +
+                ", id_stocktype='" + id_stocktype + '\'' +
+                ", id_itemcate='" + id_itemcate + '\'' +
+                ", id_stockstyle='" + id_stockstyle + '\'' +
+                ", dec_oriprice='" + dec_oriprice + '\'' +
+                '}';
+    }
 }

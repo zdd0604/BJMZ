@@ -165,8 +165,8 @@ public class WorkFragment extends FragmentSupport {
         btnLeft.setOnClickListener(onClickListener);
 
         listview = (PullToRefreshListView) contextView.findViewById(R.id.pull_refresh_list);
-        listview.setMode(Mode.BOTH);//上下拉刷新
-//        listview.setMode(Mode.PULL_FROM_START);// 仅下拉刷新
+//        listview.setMode(Mode.BOTH);//上下拉刷新
+        listview.setMode(Mode.PULL_FROM_START);// 仅下拉刷新
 
         // 如果有网络加载网络数据，并在加载成功后删除之前保留的本地数据，没有网络加载本地数据
         if (((MainActivity) getActivity()).hasInternetConnected()) {
@@ -223,12 +223,13 @@ public class WorkFragment extends FragmentSupport {
             @Override
             public void onPullUpToRefresh(
                     PullToRefreshBase<ListView> refreshView) {
-                num += 10;
-                new GetDataTask().execute(num);
+//                num += 10;
+//                new GetDataTask().execute(num);
             }
 
         });
-//        listview.onRefreshComplete();
+        listview.onRefreshComplete();
+
 
         return contextView;
     }
@@ -528,8 +529,7 @@ public class WorkFragment extends FragmentSupport {
             public void onResponse(HttpResponse resp) {
                 try {
                     String msg = HttpClientManager.toStringContent(resp);
-                    Gson gson = new Gson();
-                    final WorkflowListResp workflowResp = gson.fromJson(msg, WorkflowListResp.class);
+                    final WorkflowListResp workflowResp = mGson.fromJson(msg, WorkflowListResp.class);
                     if (workflowResp != null)
                         listYN.clear();
                     if ("result".equalsIgnoreCase(workflowResp.type)

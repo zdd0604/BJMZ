@@ -91,6 +91,7 @@ public class SellOrderAdapter extends WZYBaseAdapter<SellOrderModel> {
 
     @Override
     public void bindData(ViewHolder holder, final SellOrderModel sellOrderModel, final int position) {
+        Log.e("show",sellOrderModel.toString());
         MySpinner sell_order_type = (MySpinner) holder.getView(R.id.sell_order_type);
         TextView sell_order_products = (TextView) holder.getView(R.id.sell_order_products);
         sell_order_products.setText(sellOrderModel.getName_item());
@@ -229,9 +230,6 @@ public class SellOrderAdapter extends WZYBaseAdapter<SellOrderModel> {
                 }
             }
         }
-
         mHandler.sendEmptyMessage(0);
-
     }
-
 }

@@ -21,12 +21,14 @@ import java.util.List;
 
 public class BusinessBillsAdapter extends BaseAdapter {
     private Context context;
-    private List<PerformanceDatas> datas;
-    List<Integer> list = new ArrayList<>();
+    private List<PerformanceDatas> datas = new ArrayList<>();
+    private List<Integer> list = new ArrayList<>();
 
     public BusinessBillsAdapter(Context context, List<PerformanceDatas> datas) {
-        this.context = context;
+        if (datas == null)
+            datas = new ArrayList<>();
         this.datas = datas;
+        this.context = context;
     }
 
     @Override
@@ -44,8 +46,10 @@ public class BusinessBillsAdapter extends BaseAdapter {
         return position;
     }
 
-    public void refreshList(List<PerformanceDatas> list) {
-        this.datas = list;
+    public void refreshList(List<PerformanceDatas> dataList) {
+        if (dataList == null)
+            dataList = new ArrayList<>();
+        this.datas = dataList;
         this.notifyDataSetChanged();
     }
 
@@ -59,23 +63,22 @@ public class BusinessBillsAdapter extends BaseAdapter {
             viewHolder.bs_name_user = (TextView) convertView.findViewById(R.id.bs_name_user);
             viewHolder.bs_date_opr = (TextView) convertView.findViewById(R.id.bs_date_opr);
             viewHolder.rejust_type = (TextView) convertView.findViewById(R.id.rejust_type);
-            viewHolder.bills_item_view =  convertView.findViewById(R.id.businessbills_item_view);
+            viewHolder.bills_item_view = convertView.findViewById(R.id.businessbills_item_view);
             convertView.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
         PerformanceDatas.MainBean info = datas.get(position).getMain();
-        if (StringUtil.isStrTrue(info.getDgtdot_no())){
+        if (StringUtil.isStrTrue(info.getDgtdot_no())) {
             viewHolder.bs_name_user.setText(info.getName_clerk());
-        }else {
+        } else {
             viewHolder.bs_name_user.setText(info.getName_user());
         }
 
         //添加分割线的判断
-        if (datas.size()>0&&position==0)
-        {
+        if (datas.size() > 0 && position == 0) {
             viewHolder.bills_item_view.setVisibility(View.VISIBLE);
-        }else{
+        } else {
             viewHolder.bills_item_view.setVisibility(View.GONE);
         }
 
@@ -85,8 +88,8 @@ public class BusinessBillsAdapter extends BaseAdapter {
         if (StringUtil.isStrTrue(info.getVar_rejust())) {
             list.add(position);
 
-        }else if (datas.get(position).getDetails()!=null){
-            if(StringUtil.isStrTrue(datas.get(position).getDetails().get(0).getVar_rejust())){
+        } else if (datas.get(position).getDetails() != null) {
+            if (StringUtil.isStrTrue(datas.get(position).getDetails().get(0).getVar_rejust())) {
                 list.add(position);
             }
         }
@@ -94,9 +97,9 @@ public class BusinessBillsAdapter extends BaseAdapter {
         //在结尾的时候重记录的列表中对页面效果进行处理
         if (list.indexOf(position) > -1) {
             viewHolder.rejust_type.setVisibility(View.VISIBLE);
-            Log.d("listposition",list.indexOf(position)+"");
-        }else{
-            Log.d("listposition",list.indexOf(position)+"");
+            Log.d("listposition", list.indexOf(position) + "");
+        } else {
+            Log.d("listposition", list.indexOf(position) + "");
             viewHolder.rejust_type.setVisibility(View.GONE);
         }
 

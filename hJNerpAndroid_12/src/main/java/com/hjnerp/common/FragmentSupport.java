@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.gson.Gson;
 import com.hjnerp.widget.MyToast;
 import com.hjnerp.widget.MyToast2;
 
@@ -19,11 +20,17 @@ import com.hjnerp.widget.MyToast2;
 public class FragmentSupport extends Fragment {
 
     protected Context mContext;
+    protected Gson mGson;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        init();
+    }
+
+    private void init() {
         mContext = getActivity();
+        mGson = new Gson();
     }
 
     /**

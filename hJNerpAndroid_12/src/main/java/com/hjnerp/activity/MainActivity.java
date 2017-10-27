@@ -28,7 +28,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -185,8 +184,6 @@ public class MainActivity extends ActivitySupport implements
             contactFragment = new ContactFragment();
             mFragmentList.add(contactFragment);
         }
-
-
         // 工作流
         if (sputil.isWorkFlow()) {
             mFragmentList.add(new WorkFragment());
@@ -194,7 +191,6 @@ public class MainActivity extends ActivitySupport implements
         // 功能
         businessFragment = new BusinessFragment();
         mFragmentList.add(businessFragment);
-
 
         // 我的
         myInforMation = new MyInforMation();
@@ -215,8 +211,6 @@ public class MainActivity extends ActivitySupport implements
         tv_tab_business = (TextView) findViewById(R.id.main_tab_business_unread);
         tv_tab_contact = (TextView) findViewById(R.id.main_tab_contact_unread);
         main_tab_my_unread = (TextView) findViewById(R.id.main_tab_my_unread);
-
-
 //        main_emp_icon = (ImageView) findViewById(R.id.main_emp_icon);
 //        main_group_icon = (ImageView) findViewById(R.id.main_group_icon);
 //        main_phone_icon = (ImageView) findViewById(R.id.main_phone_icon);
@@ -226,12 +220,10 @@ public class MainActivity extends ActivitySupport implements
         main_refresh_icon = (ImageView) findViewById(R.id.main_refresh_icon);
 
         upload1345();
-
         if (isNotMeizheng) {
             title_list.add(R.string.main_tab_im);
             title_list.add(R.string.main_tab_contact);
         }
-
         if (sputil.isWorkFlow()) {
             title_list.add(R.string.main_tab_workflow);
         }
@@ -239,13 +231,12 @@ public class MainActivity extends ActivitySupport implements
 
         title_list.add(R.string.main_tab_my);
 
-        sharedPref2 = this.getSharedPreferences(
-                "main", Context.MODE_PRIVATE);
+        sharedPref2 = this.getSharedPreferences("main", Context.MODE_PRIVATE);
         editor2 = sharedPref2.edit();
-        // 获取Action实例我们使用getSupportActionBar()方法
+
+        //  获取Action实例我们使用getSupportActionBar()方法
         initTabIndicator();
 //        initEvents();
-
         // 启动服务
         registerMReceiver();
         startService();
@@ -295,38 +286,48 @@ public class MainActivity extends ActivitySupport implements
         mThread.start();
     }
 
+    /**
+     * 添加底部ICON
+     */
     private void initTabIndicator() {
         Log.v("show", "initTabIndicator。。。。。。。。。。。。。。");
+        ChangeColorIconWithTextView im = (ChangeColorIconWithTextView) findViewById(R.id.id_indicator_im);
+        ChangeColorIconWithTextView workflowview = (ChangeColorIconWithTextView) findViewById(R.id.id_indicator_workflow);
         ChangeColorIconWithTextView buss = (ChangeColorIconWithTextView) findViewById(R.id.id_indicator_business);
+        ChangeColorIconWithTextView contact = (ChangeColorIconWithTextView) findViewById(R.id.id_indicator_contact);
         ChangeColorIconWithTextView my = (ChangeColorIconWithTextView) findViewById(R.id.id_indicator_my);
 
-        if (sputil.isWorkFlow()) {
-            ChangeColorIconWithTextView workflowview = (ChangeColorIconWithTextView) findViewById(R.id.id_indicator_workflow);
-            mTabIndicator.add(workflowview);
-            workflowview.setOnClickListener(this);
-        } else {
-            frameLayout_work.setVisibility(View.GONE);
-        }
         if (isNotMeizheng) {
-            ChangeColorIconWithTextView contact = (ChangeColorIconWithTextView) findViewById(R.id.id_indicator_contact);
-            ChangeColorIconWithTextView im = (ChangeColorIconWithTextView) findViewById(R.id.id_indicator_im);
-
             mTabIndicator.add(im);
+            if (sputil.isWorkFlow()) {
+                mTabIndicator.add(workflowview);
+            } else {
+                frameLayout_work.setVisibility(View.GONE);
+            }
+            mTabIndicator.add(buss);
             mTabIndicator.add(contact);
-            im.setOnClickListener(this);
-            contact.setOnClickListener(this);
-            im.setIconAlpha(1.0f);
-
-
+            mTabIndicator.add(my);
         } else {
             frameLayout_im.setVisibility(View.GONE);
             frameLayout_contact.setVisibility(View.GONE);
+
+            if (sputil.isWorkFlow()) {
+                mTabIndicator.add(workflowview);
+            } else {
+                frameLayout_work.setVisibility(View.GONE);
+            }
+            mTabIndicator.add(buss);
+            mTabIndicator.add(my);
+
+            mTabIndicator.get(1).setIconAlpha(1.0f);
+            mViewPager.setCurrentItem(1, false);
         }
-        mTabIndicator.add(buss);
-        mTabIndicator.add(my);
-        mViewPager.setCurrentItem(1);
+        workflowview.setOnClickListener(this);
         buss.setOnClickListener(this);
+        contact.setOnClickListener(this);
         my.setOnClickListener(this);
+        im.setOnClickListener(this);
+
     }
 
 
@@ -349,7 +350,6 @@ public class MainActivity extends ActivitySupport implements
         if (imFragment != null) {
             imFragment.refreshMessage();
         }
-
     }
 
     // 刷新通讯录新联系人提醒气泡
@@ -493,7 +493,6 @@ public class MainActivity extends ActivitySupport implements
             main_refresh_icon.setVisibility(View.GONE);
             if (mToast != null) {
                 mToast.cancel();
-
             }
 
         }
@@ -518,7 +517,6 @@ public class MainActivity extends ActivitySupport implements
             nm.cancelAll();
             if (mToast != null) {
                 mToast.cancel();
-
             }
         }
         if ((!isNotMeizheng && position == 1) || (isNotMeizheng && sputil.isWorkFlow() && position == 2) || (isNotMeizheng && !sputil.isWorkFlow() && position == 1)) {
@@ -816,7 +814,6 @@ public class MainActivity extends ActivitySupport implements
     public void onClick(View v) {
         // TODO Auto-generated method stub
         resetOtherTabs();
-
         switch (v.getId()) {
             case R.id.id_indicator_im:
                 mTabIndicator.get(0).setIconAlpha(1.0f);
@@ -830,7 +827,6 @@ public class MainActivity extends ActivitySupport implements
                     mTabIndicator.get(0).setIconAlpha(1.0f);
                     mViewPager.setCurrentItem(0, false);
                 }
-
                 break;
             case R.id.id_indicator_business:
                 if (isNotMeizheng) {
@@ -850,8 +846,6 @@ public class MainActivity extends ActivitySupport implements
                         mViewPager.setCurrentItem(0, false);
                     }
                 }
-
-
                 break;
             case R.id.id_indicator_contact:
                 if (sputil.isWorkFlow()) {

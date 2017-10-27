@@ -25,18 +25,19 @@
             <View style="@style/Item_View_DividerStyle" />
 
             <TextView
-                android:id="@+id/rel_updatadate"
-                style="@style/Item_LinearLayout_TvImgStyle_no_one"
-                android:drawableLeft="@drawable/setting_download_data"
-                android:text="应用数据下载" />
-
-            <View style="@style/full_screen_line_45" />
-
-            <TextView
                 android:id="@+id/rel_updatabasedate"
                 style="@style/Item_LinearLayout_TvImgStyle_no_one"
                 android:drawableLeft="@drawable/setting_download_default"
-                android:text="基础数据下载" />
+                android:text="下载基础数据" />
+
+            <View style="@style/full_screen_line_45" />
+
+
+            <TextView
+                android:id="@+id/rel_updatadate"
+                style="@style/Item_LinearLayout_TvImgStyle_no_one"
+                android:drawableLeft="@drawable/setting_download_data"
+                android:text="下载应用数据" />
 
             <View style="@style/Item_View_DividerStyle" />
 

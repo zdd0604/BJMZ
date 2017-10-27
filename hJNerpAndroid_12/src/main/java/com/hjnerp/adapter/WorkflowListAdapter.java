@@ -176,7 +176,7 @@ public class WorkflowListAdapter extends BaseAdapter {
         String aName = user.getUserName().toString().trim();
         String aTitle = title1.toString().trim();
         if (StringUtil.isStrTrue(aTitle))
-            viewHolder.name.setText(title1);
+            viewHolder.name.setText(aTitle);
 //        Log.e("show",info.toString());
         String content = info.getContent();
         Log.e(TAG, "原始：" + content);

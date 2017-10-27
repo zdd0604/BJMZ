@@ -103,11 +103,48 @@ public class ApprovalActivity extends ActionBarWidgetActivity implements OnClick
     @BindView(R.id.action_right_tv1)
     TextView actionRightTv1;
 
+    final Handler myHandler = new Handler() {
+        public void handleMessage(android.os.Message msg) {
+
+            Bundle b = msg.getData();
+            int mmsg = b.getInt("flag");
+            Log.i(TAG, " handler mmsg is " + mmsg);
+            switch (mmsg) {
+                case GET_DETAIL_OK:
+                case GET_APPROVAL_OK:
+                    if (getapproval_flag && getdetail_flag) {
+                        if (waitDialog.isShowing())
+                            waitDialog.dismiss();
+                        refreshApproval();
+                    }
+                    break;
+                case APPROVAL_DONE:
+                    waitDialogText.dismiss();
+//				timerThread = null;
+                    if (action.equals(Constant.WF_OP_REVOKE)) {
+                        setResult(33);//驳回
+                    } else {
+                        setResult(22);
+                    }
+                    finish();
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        ;
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.approval);
         ButterKnife.bind(this);
+        initView();
+    }
+
+    private void initView(){
         /** 获得WorkflowInfo对象 */
         Intent intent = getIntent();
         Bundle mBundle = intent.getExtras();
@@ -136,7 +173,6 @@ public class ApprovalActivity extends ActionBarWidgetActivity implements OnClick
         listItemAdapter = new WorkFlowRecorderInfoAdapter(this,
                 workflowApproveList, wfInfo, tables);
         listview.setAdapter(listItemAdapter);
-
     }
 
     private OnClickListener onClickListener = new OnClickListener() {
@@ -244,45 +280,8 @@ public class ApprovalActivity extends ActionBarWidgetActivity implements OnClick
         Bundle b = new Bundle();
         b.putInt("flag", msg);
         Msg.setData(b);
-
         myHandler.sendMessage(Msg);
     }
-
-    final Handler myHandler = new Handler() {
-        public void handleMessage(android.os.Message msg) {
-
-            Bundle b = msg.getData();
-            int mmsg = b.getInt("flag");
-            Log.i(TAG, " handler mmsg is " + mmsg);
-            switch (mmsg) {
-                case GET_DETAIL_OK:
-                case GET_APPROVAL_OK:
-
-                    if (getapproval_flag && getdetail_flag) {
-                        if (waitDialog.isShowing())
-                            waitDialog.dismiss();
-                        refreshApproval();
-                    }
-                    break;
-                case APPROVAL_DONE:
-                    waitDialogText.dismiss();
-//				timerThread = null;
-                    if (action.equals(Constant.WF_OP_REVOKE)) {
-                        setResult(33);//驳回
-                    } else {
-                        setResult(22);
-                    }
-                    finish();
-
-                    break;
-                default:
-                    break;
-            }
-
-        }
-
-        ;
-    };
 
     // 获取附件，召唤神兽打开
     public void getAttach(final String comID, final String billType, final String attachId, final String attachName) {

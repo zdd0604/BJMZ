@@ -39,7 +39,6 @@
             android:id="@+id/emailhome"
             style="@style/Item_RelativeLayout_TvRightImgFriendStyle"
             android:enabled="false"
-            android:maxLength="16"
             android:maxLines="1"
             android:text="**@qq.com"
             android:textColor="@color/black" />

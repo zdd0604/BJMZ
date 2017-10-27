@@ -5,6 +5,8 @@ import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.text.TextPaint;
 import android.util.Log;
 import android.widget.DatePicker;
@@ -12,6 +14,7 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.hjnerp.net.HttpClientManager;
 import com.hjnerp.widget.MyToast;
 import com.hjnerp.widget.MyToast2;
@@ -50,6 +53,28 @@ public class ActionBarWidgetActivity extends ActivitySupport {
     //是否授权
     public boolean isPsions = false;
     protected PopupWindow popupWindow;
+    private static String backJson;
+    protected Gson mGson;
+
+    private Handler abHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            switch (msg.what) {
+                case Constant.HANDLERTYPE_0:
+                    if (nsyncDataConnector != null) {
+                        nsyncDataConnector.processJsonValue(backJson);
+                    }
+                    break;
+                case Constant.HANDLERTYPE_1:
+                    break;
+                case Constant.HANDLERTYPE_2:
+                    break;
+                case Constant.HANDLERTYPE_3:
+                    break;
+            }
+        }
+    };
 
     public static void setNsyncDataConnector(NsyncDataConnector nsyncDataConnector) {
         ActionBarWidgetActivity.nsyncDataConnector = nsyncDataConnector;
@@ -66,6 +91,7 @@ public class ActionBarWidgetActivity extends ActivitySupport {
      */
     private void initView() {
         mContext = this;
+        mGson = new Gson();
         waitDialog = new WaitDialogRectangle(mContext);
         waitDialogRectangle = new WaitDialogRectangle(mContext);
     }
@@ -166,17 +192,17 @@ public class ActionBarWidgetActivity extends ActivitySupport {
     }
 
 
-    /**
-     *     网络获取的方法
-     */
+    //网络获取的方法
     public class NsyncDataHandler extends HttpClientManager.HttpResponseHandler {
         @Override
         public void onException(Exception e) {
         }
+
         @Override
         public void onResponse(HttpResponse resp) {
             // TODO Auto-generated method stub
             try {
+
                 String contentType = resp.getHeaders("Content-Type")[0].getValue();
                 // if ("application/octet-stream".equals(contentType) ) {
                 if (contentType.indexOf("application/octet-stream") != -1) {
@@ -191,7 +217,8 @@ public class ActionBarWidgetActivity extends ActivitySupport {
                     String json = processBusinessCompress(fileName);
                     JSONObject jsonObject = new JSONObject(json);
                     String value = jsonObject.getString(JSON_VALUE);
-                    LogShow(value);
+
+                    LogShow("后台返回："+value);
                     if (nsyncDataConnector != null) {
                         nsyncDataConnector.processJsonValue(value);
                     }
@@ -200,6 +227,7 @@ public class ActionBarWidgetActivity extends ActivitySupport {
                         waitDialog.dismiss();
                         showFailToast("错误!");
                     }
+                    LogShow("出错了");
                 }
             } catch (IllegalStateException e) {
                 com.hjnerp.util.Log.d(e.getMessage());
@@ -234,9 +262,12 @@ public class ActionBarWidgetActivity extends ActivitySupport {
             }
             String json = new String(baos.toByteArray(), HTTP.UTF_8);
             return json;
+
         } catch (FileNotFoundException e) {
+            // TODO Auto-generated catch block
             e.printStackTrace();
         } catch (IOException e) {
+            // TODO Auto-generated catch block
             e.printStackTrace();
         } finally {
             try {
@@ -244,6 +275,7 @@ public class ActionBarWidgetActivity extends ActivitySupport {
                     zis.close();
                 }
             } catch (IOException e) {
+                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
         }

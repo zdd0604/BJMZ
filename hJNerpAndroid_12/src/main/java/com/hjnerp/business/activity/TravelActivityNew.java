@@ -78,19 +78,24 @@ public class TravelActivityNew extends ActionBarWidgetActivity implements View.O
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             switch (msg.what) {
-                case 0:
+                case HTTP_SUCCESS:
                     setViewData();//单据展示
                     break;
-                case 1://单据刷新完成
+                case HTTP_LOSER://单据刷新完成
+                    datas.clear();
                     String content = (String) msg.obj;
                     showFailToast(content);
                     waitDialog.dismiss();
-                    refresh_travel_act.onRefreshComplete();
+                    refreshList();
                     break;
                 case 2://单据删除
                     datas.remove(index);
                     refreshList();
                     break;
+//                case Constant.HANDLERTYPE_3:
+//                    if (StringUtil.isStrTrue(id_menu) && StringUtil.isStrTrue(userID))
+//                        getBusinessList(id_menu, userID);
+//                    break;
             }
         }
     };
@@ -124,6 +129,9 @@ public class TravelActivityNew extends ActionBarWidgetActivity implements View.O
         actionRightTv.setText(getString(R.string.action_right_content_add));
         actionLeftTv.setOnClickListener(this);
         refresh_travel_act = (PullToRefreshListView) findViewById(R.id.refresh_travel_act);
+        billsAdapter = new BusinessBillsAdapter(this, datas);
+        refresh_travel_act.setAdapter(billsAdapter);
+        billsAdapter.notifyDataSetChanged();
         add_travel_act = (Button) findViewById(R.id.add_travel_act);
         /**
          * 根据不同单据号，进行标题设置
@@ -141,12 +149,10 @@ public class TravelActivityNew extends ActionBarWidgetActivity implements View.O
             case "002090":
 //                getSupportActionBar().setTitle("加班申请单");
                 actionCenterTv.setText("加班申请单");
-
                 break;
             case "002095":
 //                getSupportActionBar().setTitle("考勤异常申诉");
                 actionCenterTv.setText("考勤异常申诉");
-
                 break;
             case "002020":
                 actionCenterTv.setText(getString(R.string.sellOrder_Tile_Activity));
@@ -204,9 +210,6 @@ public class TravelActivityNew extends ActionBarWidgetActivity implements View.O
         });
         for (PerformanceDatas pd : datas) {
             if (pd.getMain() != null) {
-                billsAdapter = new BusinessBillsAdapter(this, datas);
-                refresh_travel_act.setAdapter(billsAdapter);
-                billsAdapter.notifyDataSetChanged();
                 //根据单据的不同，设置不同的跳转方式
                 refresh_travel_act.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
@@ -216,7 +219,6 @@ public class TravelActivityNew extends ActionBarWidgetActivity implements View.O
                         Constant.JUDGE_TYPE1 = false;
                         Log.e("datas", Constant.performanceDatas.toString());
                         Intent intent = new Intent();
-
                         switch (id_menu) {
                             case "002035":
                                 intent.setClass(getApplicationContext(), TravelBusiness.class);
@@ -229,7 +231,6 @@ public class TravelActivityNew extends ActionBarWidgetActivity implements View.O
                                 break;
                             case "002095":
                                 intent.setClass(getApplicationContext(), AbnormalBusiness.class);
-
                                 break;
                             case "002020":
                                 intent.setClass(getApplicationContext(), SellOrder.class);
@@ -247,7 +248,6 @@ public class TravelActivityNew extends ActionBarWidgetActivity implements View.O
                     public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
                         PerformanceDatas performanceDatas = getPerformanceDatas(i - 1);
                         Log.d("performanceDatas", performanceDatas.toString());
-
                         switch (id_menu) {
                             case "002035":
                                 table_name = "dgtdout_03";
@@ -283,8 +283,8 @@ public class TravelActivityNew extends ActionBarWidgetActivity implements View.O
                         return true;
                     }
                 });
+                refreshList();
                 waitDialog.dismiss();
-                refresh_travel_act.onRefreshComplete();
             } else {
                 sendMessage(HTTP_LOSER, "数据为空");
             }
@@ -368,7 +368,7 @@ public class TravelActivityNew extends ActionBarWidgetActivity implements View.O
             handler.sendEmptyMessage(2);
             MainActivity.WORK_COUNT = MainActivity.WORK_COUNT - 1;
         } else if (requestCode == 11 && resultCode == 33) {
-            handler.sendEmptyMessage(2);
+//                handler.sendEmptyMessage(Constant.HANDLERTYPE_3);
         }
     }
 

@@ -5,13 +5,12 @@ android {
     compileSdkVersion 24
     buildToolsVersion '25.0.0'
 
-
     defaultConfig {
         applicationId "com.hjnerpandroid"
         minSdkVersion 16
         targetSdkVersion 24
-        versionCode 72
-        versionName "3.2.72"
+        versionCode 74
+        versionName "3.2.74"
         ndk {
             moduleName "luajava"
         }

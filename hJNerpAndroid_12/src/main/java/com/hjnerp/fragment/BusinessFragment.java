@@ -48,6 +48,7 @@ import com.hjnerp.net.HttpClientManager;
 import com.hjnerp.net.HttpClientManager.HttpResponseHandler;
 import com.hjnerp.util.Command;
 import com.hjnerp.util.Log;
+import com.hjnerp.util.StringUtil;
 import com.hjnerp.util.ToastUtil;
 import com.hjnerp.widget.WaitDialogRectangle;
 import com.hjnerpandroid.R;
@@ -128,376 +129,7 @@ public class BusinessFragment<Divider> extends Fragment {
     private LinearLayout find_layout;
     private LinearLayout performance_layout;
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        View contextView = inflater.inflate(R.layout.fragment_business_ex,
-                container, false);
-        context = getActivity();
-        businessFragment = this;
-        getBusinessMenus();
-
-
-        // 从服务器获取显示菜单
-//		listView = (ExpandableListView) contextView
-//				.findViewById(R.id.listview_businessmenu_ex);
-
-        initView(contextView);
-        listCurrent = BusinessBaseDao.queryBusinessMenus();
-
-        listCurrent1 = new ArrayList<>();
-        listCurrent2 = new ArrayList<>();
-        listCurrent3 = new ArrayList<>();
-        listCurrent4 = new ArrayList<>();
-//        sortlist(listCurrent);
-//        dogridview(adapter1, listCurrent1, gridView1);
-//        dogridview(adapter2, listCurrent2, gridView2);
-//        dogridview(adapter3, listCurrent3, gridView3);
-        myHandler = new MyHandler<Divider>(this, listCurrent);
-
-        return contextView;
-    }
-
-    private void dogridview(BusinessGridViewAdapter adapter, final ArrayList<MenuContent> listCurrent, GridView gridView) {
-        adapter = new BusinessGridViewAdapter(getActivity(), listCurrent);
-        adapter.notifyDataSetChanged();
-        gridView.setAdapter(adapter);
-        final BusinessGridViewAdapter finalAdapter = adapter;
-        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                menuContent = finalAdapter.getItem(position);
-                clicked_id_model = menuContent.getVarParm();
-                Constant.ID_MENU = menuContent.getIdMenu();
-                Log.v("show", Constant.ID_MENU);
-                clicked_xml_version = listCurrent.get(position).getVarParm();
-                if (checkSigleXMLModelexit(menuContent.getVarParm() + ".xml")) {// 检查当前模板是否存在
-
-                    // TODO 1、检查xml版本，是否需要更新
-                    String serverVersion = menuContent.getModelWindow();
-                    String localVersion = BusinessBaseDao
-                            .getTemlateVersion(menuContent.getVarParm());
-
-                    if (serverVersion != null
-                            && serverVersion.equalsIgnoreCase(localVersion)) {
-                        // 不需要更新
-                        sendToHandler(CHECT_XML_OK);
-                    } else {
-                        // 2、检查网络
-                        if (hasInternetConnected(context)) {
-                            updateModelThread();
-                        } else {
-                            // 网络无连接，用老版本
-                            sendToHandler(CHECT_XML_OLD);
-                        }
-
-                    }
-
-                } else {
-//                     showNoticeDialog();
-                    updateModelThread();
-                }
-            }
-        });
-    }
-
-
-    private void sortlist(ArrayList<MenuContent> listCurrent) {
-        if (listCurrent.size() == 0) {
-            bus_error.setVisibility(View.VISIBLE);
-        } else {
-            bus_error.setVisibility(View.GONE);
-
-        }
-        for (int i = 0; i < listCurrent.size(); i++) {
-            if (listCurrent.get(i).getVarParm1().equalsIgnoreCase("001")) {
-                listCurrent1.add(listCurrent.get(i));
-            } else if (listCurrent.get(i).getVarParm1().equalsIgnoreCase("002")) {
-                listCurrent2.add(listCurrent.get(i));
-            } else if (listCurrent.get(i).getVarParm1().equalsIgnoreCase("003")) {
-                listCurrent3.add(listCurrent.get(i));
-            } else {
-                listCurrent4.add(listCurrent.get(i));
-
-            }
-        }
-        if (listCurrent1.size() > 0) {
-            visit_layout.setVisibility(View.VISIBLE);
-        } else {
-            visit_layout.setVisibility(View.GONE);
-        }
-        if (listCurrent2.size() > 0) {
-            other_layout.setVisibility(View.VISIBLE);
-        } else {
-            other_layout.setVisibility(View.GONE);
-        }
-        if (listCurrent3.size() > 0) {
-            find_layout.setVisibility(View.VISIBLE);
-        } else {
-            find_layout.setVisibility(View.GONE);
-        }
-        if (listCurrent4.size() > 0) {
-            performance_layout.setVisibility(View.VISIBLE);
-        } else {
-            performance_layout.setVisibility(View.GONE);
-        }
-        addlist(listCurrent1);
-        addlist(listCurrent2);
-        addlist(listCurrent3);
-        addlist(listCurrent4);
-
-    }
-
-    private void addlist(ArrayList<MenuContent> listCurrent) {
-        int a = listCurrent.size() % 4;
-        if (a != 0 || listCurrent.size() == 0) {
-            for (int i = 0; i < (4 - a); i++) {
-                MenuContent menuContent = new MenuContent();
-                menuContent.setPicpath("");
-                menuContent.setModelWindow("0");
-                listCurrent.add(menuContent);
-            }
-
-        }
-    }
-
-    /**
-     * 获得菜单
-     */
-    void getBusinessMenus() {
-        HttpPost post = null;
-        try {
-            post = HttpClientBuilder
-                    .createParam(Constant.BUSINESS_SERVICE_ADDRESS)
-                    .addKeyValue(Constant.BM_ACTION_TYPE,
-                            Constant.BMTYPE_BUSINESS_MENU).getHttpPost();
-        } catch (UnsupportedEncodingException e1) {
-            Log.e(e1);
-        }
-
-        HttpClientManager.addTask(new HttpResponseHandler() {
-            @Override
-            public void onResponse(HttpResponse resp) {
-                try {
-                    String msg = HttpClientManager.toStringContent(resp);
-
-                    Gson gson = new Gson();
-                    final BusinessMenuResp businessMenuResp = gson.fromJson(
-                            msg, BusinessMenuResp.class);
-                    Log.d("businessresp",
-                            businessMenuResp.data.items.toString());
-                    if ("result".equalsIgnoreCase(businessMenuResp.type)) {
-                        if (businessMenuResp.data != null) {
-
-                            SQLiteWorker.getSharedInstance().postDML(
-                                    new SQLiteWorker.AbstractSQLable() {
-                                        @Override
-                                        public void onCompleted(Object event) {
-                                            if (!(event instanceof Throwable)) {
-                                                sendToHandler("getmenusok");
-                                            }
-                                        }
-
-                                        @Override
-                                        public Object doAysncSQL() {
-                                            BusinessBaseDao
-                                                    .deleteBusinessMenus();// 插入新菜单前清除旧数据
-                                            BusinessBaseDao
-                                                    .replaceBusinessMenus(businessMenuResp.data.items);
-
-                                            return null;
-                                        }
-                                    });
-
-                        } else {
-
-                        }
-                    }
-                } catch (IOException e) {
-                    onException(e);
-                }
-            }
-
-            @Override
-            public void onException(Exception e) {
-                e.printStackTrace();
-            }
-        }, post);
-    }
-
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        /*
-         * @author haijian 检查是否显示泡泡
-		 */
-        checkPaoPao();
-
-    }
-
-    @Override
-    public void onPause() {
-
-//        refreshList(listCurrent);
-        if (waitDialogRectangle != null && waitDialogRectangle.isShowing()) {
-            waitDialogRectangle.dismiss();
-        }
-        super.onPause();
-    }
-
-    private void refreshList(ArrayList<MenuContent> list) {
-//        sortlist(list);
-        if (adapter1 == null || adapter2 == null || adapter3 == null || adapter4 == null) {
-            listCurrent1 = new ArrayList<>();
-            listCurrent2 = new ArrayList<>();
-            listCurrent3 = new ArrayList<>();
-            listCurrent4 = new ArrayList<>();
-            sortlist(listCurrent);
-            dogridview(adapter1, listCurrent1, gridView1);
-            dogridview(adapter2, listCurrent2, gridView2);
-            dogridview(adapter3, listCurrent3, gridView3);
-            dogridview(adapter4, listCurrent4, gridView4);
-
-        }
-        checkPaoPao();
-    }
-
-    public void refreshList() {
-        getBusinessMenus();
-        listCurrent = BusinessBaseDao.queryBusinessMenus();
-        refreshList(listCurrent);
-    }
-
-    private void sendToHandler(String msg) {
-        Message Msg = new Message();
-        Bundle b = new Bundle();
-        b.putString("flag", msg);
-        Msg.setData(b);
-        myHandler.sendMessage(Msg);
-    }
-
-    // 检查xml文件是否全部存在
-    boolean checkSigleXMLModelexit(String mfileName) {
-        boolean flag = false;
-        if (listCurrent == null || listCurrent.size() == 0) {
-            Log.e(TAG, " listcurrent null");
-            return false;
-        }
-        // 检查xml文件
-        File file = EapApplication.getApplication().getFilesDir();
-        if (file != null) {
-
-            File[] files = file.listFiles();
-            String[] filenames = new String[files.length];
-            for (int i = 0; i < files.length; i++) {
-                Log.i(TAG, "file name is " + files[i].getName());
-                filenames[i] = files[i].getName();
-                if (mfileName.equalsIgnoreCase(files[i].getName())) {
-                    return true;
-                }
-            }
-
-        } else {
-            Log.e(TAG, "xmlmodel 为null");
-            flag = false;
-        }
-        return flag;
-    }
-
-    // 检查xml文件是否全部存在
-//    boolean checkXMLModelexit() {
-//        boolean flag = true;
-//        if (listCurrent == null || listCurrent.size() == 0) {
-//            Log.e(TAG, " listcurrent null");
-//            return false;
-//        }
-//        // 检查xml文件
-//        File file = EapApplication.getApplication().getFilesDir();
-//        if (file != null) {
-//
-//            File[] files = file.listFiles();
-//            String[] filenames = new String[files.length];
-//            for (int i = 0; i < files.length; i++) {
-//                Log.i(TAG, "file name is " + files[i].getName());
-//                filenames[i] = files[i].getName();
-//            }
-//
-//            String[] menuids = new String[listCurrent.size()];
-//            for (int i = 0; i < listCurrent.size(); i++) {
-//                menuids[i] = listCurrent.get(i).getVarParm() + ".xml";
-//            }
-//
-//            List<String> resuleList = StringUtil.exist2(filenames, menuids);
-//            if (resuleList.size() > 0) {// xml文件不完全
-//                for (int i = 0; i < resuleList.size(); i++) {
-//                    Log.e(TAG, "缺少model " + resuleList.get(i));
-//                }
-//                flag = false;
-//            }
-//        } else {
-//            Log.e(TAG, "xmlmodel 为null");
-//            flag = false;
-//        }
-//        return flag;
-//    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        checkPaoPao();
-        refreshList(listCurrent);
-    }
-
-    //    @Override
-//    public void ons() {
-//        super.onDestroy();
-//        checkPaoPao();
-//        refreshList(listCurrent);
-//    }
-
-    public void showNoticeDialog() {
-
-        // noticeDialog = new Dialog(getActivity(), R.style.noticeDialogStyle);
-        noticeDialog = new Dialog(getActivity(), R.style.noticeDialogStyle);
-        // noticeDialog.setContentView(R.layout.dialog_notice_withcancel);
-        noticeDialog.setContentView(R.layout.dialog_notice_nocancel);
-
-        TextView notice = (TextView) noticeDialog.findViewById(R.id.nc_notice);
-        notice.setText("当前应用不存在，请到设置里更新应用");
-
-        RelativeLayout dialog_confirm_rl = (RelativeLayout) noticeDialog
-                .findViewById(R.id.dialog_nc_confirm_rl);
-
-        dialog_confirm_rl.setOnClickListener(new OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                // new Ctlm1346Update().action();//下载xml
-                noticeDialog.dismiss();
-            }
-        });
-
-        noticeDialog.show();
-
-    }
-
-    private void initView(View contextView) {
-        gridView1 = (MyGridView) contextView.findViewById(R.id.gridview_businessmenu_ex1);
-        gridView2 = (MyGridView) contextView.findViewById(R.id.gridview_businessmenu_ex2);
-        gridView3 = (MyGridView) contextView.findViewById(R.id.gridview_businessmenu_ex3);
-        gridView4 = (MyGridView) contextView.findViewById(R.id.gridview_businessmenu_ex4);
-        visit_layout = (LinearLayout) contextView.findViewById(R.id.visit_layout);
-        other_layout = (LinearLayout) contextView.findViewById(R.id.other_layout);
-        find_layout = (LinearLayout) contextView.findViewById(R.id.find_layout);
-        bus_error = (LinearLayout) contextView.findViewById(R.id.bus_error);
-        performance_layout = (LinearLayout) contextView.findViewById(R.id.performance_layout);
-
-    }
-
-    static class MyHandler<Divider> extends Handler {
+    private static class MyHandler<Divider> extends Handler {
         ArrayList<MenuContent> listCurrent;
         BusinessFragment<Divider> fragment;
 
@@ -526,7 +158,6 @@ public class BusinessFragment<Divider> extends Fragment {
             } else if (CHECT_XML_OK.equalsIgnoreCase(mmsg)
                     || CHECT_XML_OLD.equalsIgnoreCase(mmsg)
                     || DOWNLOAD_XML_OK.equalsIgnoreCase(mmsg)) {
-
                 // 不需要更新
 //                fragment.refreshList(listCurrent);
                 if (clicked_id_model == null || "".equals(clicked_id_model)) {
@@ -622,6 +253,373 @@ public class BusinessFragment<Divider> extends Fragment {
             }
             return intent;
         }
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        View contextView = inflater.inflate(R.layout.fragment_business_ex,
+                container, false);
+        context = getActivity();
+        businessFragment = this;
+
+        // 从服务器获取显示菜单
+//		listView = (ExpandableListView) contextView
+//				.findViewById(R.id.listview_businessmenu_ex);
+
+        initView(contextView);
+
+        listCurrent = BusinessBaseDao.queryBusinessMenus();
+
+//        sortlist(listCurrent);
+//        dogridview(adapter1, listCurrent1, gridView1);
+//        dogridview(adapter2, listCurrent2, gridView2);
+//        dogridview(adapter3, listCurrent3, gridView3);
+        myHandler = new MyHandler<Divider>(this, listCurrent);
+        return contextView;
+    }
+
+    private void initView(View contextView) {
+        listCurrent1 = new ArrayList<>();
+        listCurrent2 = new ArrayList<>();
+        listCurrent3 = new ArrayList<>();
+        listCurrent4 = new ArrayList<>();
+
+        gridView1 = (MyGridView) contextView.findViewById(R.id.gridview_businessmenu_ex1);
+        gridView2 = (MyGridView) contextView.findViewById(R.id.gridview_businessmenu_ex2);
+        gridView3 = (MyGridView) contextView.findViewById(R.id.gridview_businessmenu_ex3);
+        gridView4 = (MyGridView) contextView.findViewById(R.id.gridview_businessmenu_ex4);
+
+        visit_layout = (LinearLayout) contextView.findViewById(R.id.visit_layout);
+        other_layout = (LinearLayout) contextView.findViewById(R.id.other_layout);
+        find_layout = (LinearLayout) contextView.findViewById(R.id.find_layout);
+        bus_error = (LinearLayout) contextView.findViewById(R.id.bus_error);
+        performance_layout = (LinearLayout) contextView.findViewById(R.id.performance_layout);
+
+        getBusinessMenus();
+    }
+
+    private void dogridview(BusinessGridViewAdapter adapter, final ArrayList<MenuContent> listCurrent, GridView gridView) {
+        adapter = new BusinessGridViewAdapter(getActivity(), listCurrent);
+        adapter.notifyDataSetChanged();
+        gridView.setAdapter(adapter);
+        final BusinessGridViewAdapter finalAdapter = adapter;
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                menuContent = finalAdapter.getItem(position);
+                clicked_id_model = menuContent.getVarParm();
+                Constant.ID_MENU = menuContent.getIdMenu();
+                Log.v("show", Constant.ID_MENU);
+                clicked_xml_version = listCurrent.get(position).getVarParm();
+                if (checkSigleXMLModelexit(menuContent.getVarParm() + ".xml")) {// 检查当前模板是否存在
+
+                    // TODO 1、检查xml版本，是否需要更新
+                    String serverVersion = menuContent.getModelWindow();
+                    String localVersion = BusinessBaseDao
+                            .getTemlateVersion(menuContent.getVarParm());
+
+                    if (serverVersion != null
+                            && serverVersion.equalsIgnoreCase(localVersion)) {
+                        // 不需要更新
+                        sendToHandler(CHECT_XML_OK);
+                    } else {
+                        // 2、检查网络
+                        if (hasInternetConnected(context)) {
+                            updateModelThread();
+                        } else {
+                            // 网络无连接，用老版本
+                            sendToHandler(CHECT_XML_OLD);
+                        }
+
+                    }
+
+                } else {
+//                     showNoticeDialog();
+                    updateModelThread();
+                }
+            }
+        });
+    }
+
+
+    private void sortlist(ArrayList<MenuContent> listCurrent) {
+        if (listCurrent.size() == 0) {
+            bus_error.setVisibility(View.VISIBLE);
+        } else {
+            bus_error.setVisibility(View.GONE);
+
+        }
+        for (int i = 0; i < listCurrent.size(); i++) {
+            if (listCurrent.get(i).getVarParm1().equalsIgnoreCase("001")) {
+                listCurrent1.add(listCurrent.get(i));
+            } else if (listCurrent.get(i).getVarParm1().equalsIgnoreCase("002")) {
+                listCurrent2.add(listCurrent.get(i));
+            } else if (listCurrent.get(i).getVarParm1().equalsIgnoreCase("003")) {
+                listCurrent3.add(listCurrent.get(i));
+            } else {
+                listCurrent4.add(listCurrent.get(i));
+
+            }
+        }
+        if (listCurrent1.size() > 0) {
+            visit_layout.setVisibility(View.VISIBLE);
+        } else {
+            visit_layout.setVisibility(View.GONE);
+        }
+        if (listCurrent2.size() > 0) {
+            other_layout.setVisibility(View.VISIBLE);
+        } else {
+            other_layout.setVisibility(View.GONE);
+        }
+        if (listCurrent3.size() > 0) {
+            find_layout.setVisibility(View.VISIBLE);
+        } else {
+            find_layout.setVisibility(View.GONE);
+        }
+        if (listCurrent4.size() > 0) {
+            performance_layout.setVisibility(View.VISIBLE);
+        } else {
+            performance_layout.setVisibility(View.GONE);
+        }
+        addlist(listCurrent1);
+        addlist(listCurrent2);
+        addlist(listCurrent3);
+        addlist(listCurrent4);
+
+        dogridview(adapter1, listCurrent1, gridView1);
+        dogridview(adapter2, listCurrent2, gridView2);
+        dogridview(adapter3, listCurrent3, gridView3);
+        dogridview(adapter4, listCurrent4, gridView4);
+    }
+
+    private void addlist(ArrayList<MenuContent> listCurrent) {
+        int a = listCurrent.size() % 4;
+        if (a != 0 || listCurrent.size() == 0) {
+            for (int i = 0; i < (4 - a); i++) {
+                MenuContent menuContent = new MenuContent();
+                menuContent.setPicpath("");
+                menuContent.setModelWindow("0");
+                listCurrent.add(menuContent);
+            }
+
+        }
+    }
+
+    /**
+     * 获得菜单
+     */
+    private void getBusinessMenus() {
+        HttpPost post = null;
+        try {
+            post = HttpClientBuilder
+                    .createParam(Constant.BUSINESS_SERVICE_ADDRESS)
+                    .addKeyValue(Constant.BM_ACTION_TYPE,
+                            Constant.BMTYPE_BUSINESS_MENU).getHttpPost();
+        } catch (UnsupportedEncodingException e1) {
+            Log.e(e1);
+        }
+
+        HttpClientManager.addTask(new HttpResponseHandler() {
+            @Override
+            public void onResponse(HttpResponse resp) {
+                try {
+                    String msg = HttpClientManager.toStringContent(resp);
+
+                    Gson gson = new Gson();
+                    final BusinessMenuResp businessMenuResp = gson.fromJson(
+                            msg, BusinessMenuResp.class);
+                    Log.e("businessresp",businessMenuResp.data.items.toString());
+                    if ("result".equalsIgnoreCase(businessMenuResp.type)) {
+                        if (businessMenuResp.data != null) {
+                            SQLiteWorker.getSharedInstance().postDML(
+                                    new SQLiteWorker.AbstractSQLable() {
+                                        @Override
+                                        public void onCompleted(Object event) {
+                                            if (!(event instanceof Throwable)) {
+                                                sendToHandler("getmenusok");
+                                            }
+                                        }
+
+                                        @Override
+                                        public Object doAysncSQL() {
+                                            BusinessBaseDao
+                                                    .deleteBusinessMenus();// 插入新菜单前清除旧数据
+                                            BusinessBaseDao
+                                                    .replaceBusinessMenus(businessMenuResp.data.items);
+                                            return null;
+                                        }
+                                    });
+                        } else {
+                            android.util.Log.e("show","菜单获取失败");
+                        }
+                    }
+                } catch (IOException e) {
+                    onException(e);
+                }
+            }
+
+            @Override
+            public void onException(Exception e) {
+                e.printStackTrace();
+            }
+        }, post);
+    }
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        /*
+         * @author haijian 检查是否显示泡泡
+		 */
+        checkPaoPao();
+
+    }
+
+    @Override
+    public void onPause() {
+//        refreshList(listCurrent);
+        if (waitDialogRectangle != null && waitDialogRectangle.isShowing()) {
+            waitDialogRectangle.dismiss();
+        }
+        super.onPause();
+    }
+
+    private void refreshList(ArrayList<MenuContent> list) {
+//        sortlist(list);
+        if (adapter1 == null || adapter2 == null || adapter3 == null || adapter4 == null) {
+            listCurrent1 = new ArrayList<>();
+            listCurrent2 = new ArrayList<>();
+            listCurrent3 = new ArrayList<>();
+            listCurrent4 = new ArrayList<>();
+            sortlist(listCurrent);
+        }
+        checkPaoPao();
+    }
+
+    public void refreshList() {
+        if (listCurrent.size()>0){
+            listCurrent = BusinessBaseDao.queryBusinessMenus();
+            refreshList(listCurrent);
+        }else {
+            getBusinessMenus();
+        }
+    }
+
+    private void sendToHandler(String msg) {
+        Message Msg = new Message();
+        Bundle b = new Bundle();
+        b.putString("flag", msg);
+        Msg.setData(b);
+        myHandler.sendMessage(Msg);
+    }
+
+    // 检查xml文件是否全部存在
+    boolean checkSigleXMLModelexit(String mfileName) {
+        boolean flag = false;
+        if (listCurrent == null || listCurrent.size() == 0) {
+            Log.e(TAG, " listcurrent null");
+            return false;
+        }
+        // 检查xml文件
+        File file = EapApplication.getApplication().getFilesDir();
+        if (file != null) {
+
+            File[] files = file.listFiles();
+            String[] filenames = new String[files.length];
+            for (int i = 0; i < files.length; i++) {
+                Log.i(TAG, "file name is " + files[i].getName());
+                filenames[i] = files[i].getName();
+                if (mfileName.equalsIgnoreCase(files[i].getName())) {
+                    return true;
+                }
+            }
+
+        } else {
+            Log.e(TAG, "xmlmodel 为null");
+            flag = false;
+        }
+        return flag;
+    }
+
+//     检查xml文件是否全部存在
+//    boolean checkXMLModelexit() {
+//        boolean flag = true;
+//        if (listCurrent == null || listCurrent.size() == 0) {
+//            Log.e(TAG, " listcurrent null");
+//            return false;
+//        }
+//        // 检查xml文件
+//        File file = EapApplication.getApplication().getFilesDir();
+//        if (file != null) {
+//
+//            File[] files = file.listFiles();
+//            String[] filenames = new String[files.length];
+//            for (int i = 0; i < files.length; i++) {
+//                Log.i(TAG, "file name is " + files[i].getName());
+//                filenames[i] = files[i].getName();
+//            }
+//
+//            String[] menuids = new String[listCurrent.size()];
+//            for (int i = 0; i < listCurrent.size(); i++) {
+//                menuids[i] = listCurrent.get(i).getVarParm() + ".xml";
+//            }
+//
+//            List<String> resuleList = StringUtil.exist2(filenames, menuids);
+//            if (resuleList.size() > 0) {// xml文件不完全
+//                for (int i = 0; i < resuleList.size(); i++) {
+//                    Log.e(TAG, "缺少model " + resuleList.get(i));
+//                }
+//                flag = false;
+//            }
+//        } else {
+//            Log.e(TAG, "xmlmodel 为null");
+//            flag = false;
+//        }
+//        return flag;
+//    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        checkPaoPao();
+        refreshList(listCurrent);
+    }
+
+    //    @Override
+//    public void ons() {
+//        super.onDestroy();
+//        checkPaoPao();
+//        refreshList(listCurrent);
+//    }
+
+    public void showNoticeDialog() {
+
+        // noticeDialog = new Dialog(getActivity(), R.style.noticeDialogStyle);
+        noticeDialog = new Dialog(getActivity(), R.style.noticeDialogStyle);
+        // noticeDialog.setContentView(R.layout.dialog_notice_withcancel);
+        noticeDialog.setContentView(R.layout.dialog_notice_nocancel);
+
+        TextView notice = (TextView) noticeDialog.findViewById(R.id.nc_notice);
+        notice.setText("当前应用不存在，请到设置里更新应用");
+
+        RelativeLayout dialog_confirm_rl = (RelativeLayout) noticeDialog
+                .findViewById(R.id.dialog_nc_confirm_rl);
+
+        dialog_confirm_rl.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // new Ctlm1346Update().action();//下载xml
+                noticeDialog.dismiss();
+            }
+        });
+
+        noticeDialog.show();
+
     }
 
     String processBusinessCompress(String fileName) throws Exception {// 解压缩下载的同步数据

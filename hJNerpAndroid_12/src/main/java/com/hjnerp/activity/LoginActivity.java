@@ -23,6 +23,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.hjnerp.common.ActionBarWidgetActivity;
 import com.hjnerp.common.ActivitySupport;
 import com.hjnerp.common.EapApplication;
 import com.hjnerp.dao.BaseDao;
@@ -35,9 +36,9 @@ import com.hjnerp.model.LoginConfig;
 import com.hjnerp.model.UserInfo;
 import com.hjnerp.util.DateUtil;
 import com.hjnerp.util.StringUtil;
-import com.hjnerp.util.ToastUtil;
 import com.hjnerp.util.myscom.StringUtils;
 import com.hjnerp.widget.BubbleImageView;
+import com.hjnerp.widget.MyToast;
 import com.hjnerp.widget.SelectPopupWindow;
 import com.hjnerp.widget.SelectText;
 import com.hjnerpandroid.R;
@@ -58,7 +59,7 @@ import okhttp3.Response;
  * @author 李庆义 使用google官方库appcompat_v7支持Actionbar
  */
 
-public class LoginActivity extends ActivitySupport {
+public class LoginActivity extends ActionBarWidgetActivity {
 
     private EditText edt_username, edt_pwd;
     private SelectText edt_company;
@@ -70,7 +71,6 @@ public class LoginActivity extends ActivitySupport {
     private List<IDComConfig> listConfig = null;// new ArrayList<IDComConfig>();
     private LoginConfig loginConfig;
     private int type;
-    private Toast mToast;
     private BubbleImageView myImageView;
     private Handler mHandler;
     private UserInfo myinfo;
@@ -247,7 +247,7 @@ public class LoginActivity extends ActivitySupport {
                     if (validateInternet()) {
                         forwardRegister();
                     } else {
-                        ToastUtil.ShowLong(LoginActivity.this, getResources()
+                        showFailToast(getResources()
                                 .getString(R.string.net_connect_error));
                     }
                     break;
@@ -505,13 +505,13 @@ public class LoginActivity extends ActivitySupport {
                             long warn = DateUtil.StrToDate(dateWarning).getTime();
                             long current = new Date().getTime();
                             if (current > stopReg) {
-                                showToast("当前软件已过期，请联系软件提供商！");
+                                showFailToast("当前软件已过期，请联系软件提供商！");
                                 if (type == 0) {
                                     handlInit();
                                 }
                             } else {
                                 if (current > warn) {
-                                    showToast("当前软件即将过期，请及时联系软件提供商！");
+                                    showFailToast("当前软件即将过期，请及时联系软件提供商！");
                                 }
                                 if (!sputil.isForceExit()
                                         || StringUtils.isBlank(sputil.getMySessionId())) {
@@ -533,7 +533,7 @@ public class LoginActivity extends ActivitySupport {
                             if (type == 0) {
                                 handlInit();
                             }
-                            showToast(data.message);
+                            showFailToast(data.message);
                         }
                     }
 
@@ -662,19 +662,6 @@ public class LoginActivity extends ActivitySupport {
         });
     }
 
-    void showToast(final String msg) {
-        mHandler.post(new Runnable() {
-            @Override
-            public void run() {
-                if (mToast == null) {
-                    mToast = Toast.makeText(LoginActivity.this, msg, Toast.LENGTH_LONG);
-                } else {
-                    mToast.setText(msg);
-                }
-                mToast.show();
-            }
-        });
-    }
 
     @Override
     public void saveLoginConfig(LoginConfig loginConfig) {

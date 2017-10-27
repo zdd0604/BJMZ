@@ -175,4 +175,27 @@ public class DsaordbaseJson3 {
     public void setDec_taxrate(String dec_taxrate) {
         this.dec_taxrate = dec_taxrate;
     }
+
+    @Override
+    public String toString() {
+        return "DsaordbaseJson3{" +
+                "id_corr='" + id_corr + '\'' +
+                ", name_corr='" + name_corr + '\'' +
+                ", id_item='" + id_item + '\'' +
+                ", var_desc='" + var_desc + '\'' +
+                ", var_spec='" + var_spec + '\'' +
+                ", var_pattern='" + var_pattern + '\'' +
+                ", var_chkparm='" + var_chkparm + '\'' +
+                ", id_uom='" + id_uom + '\'' +
+                ", name_uom='" + name_uom + '\'' +
+                ", dec_price='" + dec_price + '\'' +
+                ", id_tax='" + id_tax + '\'' +
+                ", name_tax='" + name_tax + '\'' +
+                ", dec_taxrate='" + dec_taxrate + '\'' +
+                ", id_stocktype='" + id_stocktype + '\'' +
+                ", id_itemcate='" + id_itemcate + '\'' +
+                ", id_stockstyle='" + id_stockstyle + '\'' +
+                ", dec_oriprice='" + dec_oriprice + '\'' +
+                '}';
+    }
 }
