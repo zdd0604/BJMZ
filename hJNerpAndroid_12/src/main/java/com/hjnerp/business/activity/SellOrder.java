@@ -71,43 +71,6 @@ import static com.hjnerpandroid.R.id.action_right_tv1;
 public class SellOrder extends ActionBarWidgetActivity implements View.OnClickListener,
         ActionSheet.ActionSheetListener,
         ActionBarWidgetActivity.NsyncDataConnector {
-
-    private List<String> orderType = new ArrayList<String>();
-    private List<String> orderType_id = new ArrayList<String>();
-    private List<String> orderTicketType = new ArrayList<String>();
-    private List<String> orderExpress = new ArrayList<String>();
-    private List<String> orderTicketType_id = new ArrayList<String>();
-    private List<String> orderExpress_id = new ArrayList<String>();
-    private List<String> orderSpace = new ArrayList<String>();
-    private ArrayAdapter<String> adapter;
-    private ArrayAdapter<String> adapter_express;
-    private ArrayAdapter<String> adapter_grey;
-    private SellOrderAdapter sellOrderAdapter;
-    private List<Ctlm1345> users;
-    private List<Ctlm1345> sell = new ArrayList<>();
-    private List<Ctlm1345> tax = new ArrayList<>();
-    private List<Ctlm1345> express = new ArrayList<>();
-    private String username;
-    private String userID;
-    private String companyID;
-    private String id_dept;
-    private String var_rcvcorr;
-    private String id_terminal;
-    private String name_terminal;
-    private String var_tel;
-    private String var_inv_tel;
-    private String var_contact;
-    private String var_inv_contact;
-    private String name_corr;
-    private String id_corr;
-    private String dec_acclimit;
-    private String orderTicket_id;
-    private String a;
-    private String b;
-    private int no;
-    private int countDetail;//列表返回的明细行数
-
-    private Spinner sell_order_invexpress;
     @BindView(R.id.action_left_tv)
     TextView actionLeftTv;
     @BindView(R.id.action_center_tv)
@@ -151,6 +114,43 @@ public class SellOrder extends ActionBarWidgetActivity implements View.OnClickLi
     Spinner sell_order_express;
     @BindView(R.id.sellord_scroll)
     ScrollView sellord_scroll;
+
+    private List<String> orderType = new ArrayList<String>();
+    private List<String> orderType_id = new ArrayList<String>();
+    private List<String> orderTicketType = new ArrayList<String>();
+    private List<String> orderExpress = new ArrayList<String>();
+    private List<String> orderTicketType_id = new ArrayList<String>();
+    private List<String> orderExpress_id = new ArrayList<String>();
+    private List<String> orderSpace = new ArrayList<String>();
+    private ArrayAdapter<String> adapter;
+    private ArrayAdapter<String> adapter_express;
+    private ArrayAdapter<String> adapter_grey;
+    private SellOrderAdapter sellOrderAdapter;
+    private List<Ctlm1345> users;
+    private List<Ctlm1345> sell = new ArrayList<>();
+    private List<Ctlm1345> tax = new ArrayList<>();
+    private List<Ctlm1345> express = new ArrayList<>();
+    private String username;
+    private String userID;
+    private String companyID;
+    private String id_dept;
+    private String var_rcvcorr;
+    private String id_terminal;
+    private String name_terminal;
+    private String var_tel;
+    private String var_inv_tel;
+    private String var_contact;
+    private String var_inv_contact;
+    private String name_corr;
+    private String id_corr;
+    private String dec_acclimit;
+    private String orderTicket_id;
+    private String a;
+    private String b;
+    private int no;
+    private int countDetail;//列表返回的明细行数
+
+    private Spinner sell_order_invexpress;
     private String dec_scorramt;
     private String id_zone;
     private String id_area;

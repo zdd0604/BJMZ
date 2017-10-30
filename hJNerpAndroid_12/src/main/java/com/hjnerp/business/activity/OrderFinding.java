@@ -524,7 +524,6 @@ public class OrderFinding extends ActionBarWidgetActivity implements View.OnClic
                     //表头，不同表格不同表头
                     Log.d("开始绘制表头。。。");
                     switch (Constant.tab_type) {
-
                         case 0:
                             mfristData.add("客户名称");
                             mfristData.add("终端名称");
