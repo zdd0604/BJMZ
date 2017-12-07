@@ -37,7 +37,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/size_10">
 
-            <com.hjnerp.widget.BubbleImageView
+            <com.mznerp.widget.BubbleImageView
                 android:id="@+id/groupImage"
                 android:layout_width="@dimen/abc_square_image_size38"
                 android:layout_height="@dimen/abc_square_image_size38"

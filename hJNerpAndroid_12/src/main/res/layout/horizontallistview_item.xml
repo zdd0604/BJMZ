@@ -5,7 +5,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
 
-    <com.hjnerp.widget.BubbleImageView
+    <com.mznerp.widget.BubbleImageView
         android:id="@+id/iv_pic"
         android:layout_width="@dimen/abc_square_image_size38"
         android:layout_height="@dimen/abc_square_image_size38"

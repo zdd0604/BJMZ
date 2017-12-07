@@ -4,7 +4,7 @@
     android:id="@+id/activity_business_bills"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.hjnerp.business.activity.BusinessBillsActivity">
+    tools:context="com.mznerp.business.activity.BusinessBillsActivity">
 
     <com.handmark.pulltorefresh.library.PullToRefreshListView
         android:id="@+id/pull_refresh_bills"

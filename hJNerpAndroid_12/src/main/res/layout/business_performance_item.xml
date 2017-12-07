@@ -102,7 +102,7 @@
             android:scaleType="fitCenter"
             android:src="@drawable/need" />
 
-        <com.hjnerp.widget.ClearEditText
+        <com.mznerp.widget.ClearEditText
             android:id="@+id/item_line_target"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -144,7 +144,7 @@
             android:scaleType="fitCenter"
             android:src="@drawable/need" />
 
-        <com.hjnerp.widget.ClearEditText
+        <com.mznerp.widget.ClearEditText
             android:id="@+id/item_line_standard"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -180,7 +180,7 @@
             android:textSize="16sp" />
 
 
-        <com.hjnerp.widget.ClearEditText
+        <com.mznerp.widget.ClearEditText
             android:id="@+id/item_line_finish"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -216,7 +216,7 @@
             android:textColor="#000000"
             android:textSize="16sp" />
 
-        <com.hjnerp.widget.ClearEditText
+        <com.mznerp.widget.ClearEditText
             android:id="@+id/item_line_remark"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -249,7 +249,7 @@
             android:text="得         分"
             android:textSize="16sp" />
 
-        <com.hjnerp.widget.ClearEditText
+        <com.mznerp.widget.ClearEditText
             android:id="@+id/item_line_grade"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

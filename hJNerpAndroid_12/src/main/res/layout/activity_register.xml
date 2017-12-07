@@ -30,7 +30,7 @@
             android:textColor="@color/black"
             android:textSize="@dimen/font_size_17" />
 
-        <com.hjnerp.widget.ClearEditText
+        <com.mznerp.widget.ClearEditText
             android:id="@+id/ar_reg_phone"
             style="@style/Item_EditText_PwordStyle"
             android:hint="@string/ar_input_phone"
@@ -58,7 +58,7 @@
             android:textColor="@color/black"
             android:textSize="@dimen/font_size_17" />
 
-        <com.hjnerp.widget.ClearEditText
+        <com.mznerp.widget.ClearEditText
             android:id="@+id/ar_reg_code"
             style="@style/Item_EditText_PwordStyle"
             android:hint="@string/ar_input_code"

@@ -10,7 +10,7 @@
     android:paddingLeft="5dip"
     android:paddingRight="0dp">
 
-    <com.hjnerp.widget.BubbleImageView
+    <com.mznerp.widget.BubbleImageView
         android:id="@+id/groupImage_dept"
         android:layout_width="@dimen/abc_square_image_size38"
         android:layout_height="@dimen/abc_square_image_size38"

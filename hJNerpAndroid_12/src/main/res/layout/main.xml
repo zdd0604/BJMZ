@@ -47,7 +47,7 @@
                     android:layout_height="fill_parent"
                     android:background="@null">
 
-                    <com.hjnerp.widget.ChangeColorIconWithTextView
+                    <com.mznerp.widget.ChangeColorIconWithTextView
                         android:id="@+id/id_indicator_im"
                         android:layout_width="0dp"
                         android:layout_height="fill_parent"
@@ -92,7 +92,7 @@
                     android:layout_height="fill_parent"
                     android:background="@null">
 
-                    <com.hjnerp.widget.ChangeColorIconWithTextView
+                    <com.mznerp.widget.ChangeColorIconWithTextView
                         android:id="@+id/id_indicator_workflow"
                         android:layout_width="0dp"
                         android:layout_height="fill_parent"
@@ -136,7 +136,7 @@
                     android:layout_height="fill_parent"
                     android:background="@null">
 
-                    <com.hjnerp.widget.ChangeColorIconWithTextView
+                    <com.mznerp.widget.ChangeColorIconWithTextView
                         android:id="@+id/id_indicator_business"
                         android:layout_width="0dp"
                         android:layout_height="fill_parent"
@@ -181,7 +181,7 @@
                     android:layout_height="fill_parent"
                     android:background="@null">
 
-                    <com.hjnerp.widget.ChangeColorIconWithTextView
+                    <com.mznerp.widget.ChangeColorIconWithTextView
                         android:id="@+id/id_indicator_contact"
                         android:layout_width="0dp"
                         android:layout_height="fill_parent"
@@ -225,7 +225,7 @@
                     android:layout_height="fill_parent"
                     android:background="@null">
 
-                    <com.hjnerp.widget.ChangeColorIconWithTextView
+                    <com.mznerp.widget.ChangeColorIconWithTextView
                         android:id="@+id/id_indicator_my"
                         android:layout_width="0dp"
                         android:layout_height="fill_parent"
@@ -262,7 +262,7 @@
 
     <fragment
         android:id="@+id/id_left_menu"
-        android:name="com.hjnerp.fragment.MyFragment"
+        android:name="com.mznerp.fragment.MyFragment"
         android:layout_width="200dp"
         android:layout_height="match_parent"
         android:layout_gravity="left"

@@ -18,7 +18,7 @@
     <!--android:background="@color/actionbar_bg_color"-->
     <!--android:textSize="@dimen/abc_action_bar_title_text_size" />-->
 
-    <com.hjnerp.widget.BubbleImageView
+    <com.mznerp.widget.BubbleImageView
         android:id="@+id/myphoto"
         android:layout_width="@dimen/size_80"
         android:layout_height="@dimen/size_80"
@@ -56,7 +56,7 @@
             style="@style/Item_View_ViewDividerVerticalStyle"
             android:layout_gravity="center_vertical" />
 
-        <com.hjnerp.widget.SelectText
+        <com.mznerp.widget.SelectText
             android:id="@+id/ui_company_input"
             android:layout_width="fill_parent"
             android:layout_height="45dip"

@@ -52,7 +52,7 @@
             android:layout_height="match_parent"
             android:layout_weight="2" />
 
-        <com.hjnerp.widget.HorizontalListView
+        <com.mznerp.widget.HorizontalListView
             android:id="@+id/sgin_horizon_listview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

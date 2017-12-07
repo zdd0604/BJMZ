@@ -39,7 +39,7 @@
 
         <!-- 表头可以滑动的项目 -->
 
-        <com.hjnerp.widget.HJGridScrollView
+        <com.mznerp.widget.HJGridScrollView
             android:id="@+id/grid_scroll"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
@@ -52,10 +52,10 @@
                 android:minHeight="40dp"
                 android:orientation="horizontal" >
             </LinearLayout>
-        </com.hjnerp.widget.HJGridScrollView>
+        </com.mznerp.widget.HJGridScrollView>
     </LinearLayout>
 <!-- 表格主体 -->
-    <com.hjnerp.widget.HJGridListView
+    <com.mznerp.widget.HJGridListView
         android:id="@+id/scroll_list"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
@@ -63,7 +63,7 @@
         android:dividerHeight="1px"
         android:fadingEdge="none"
         android:footerDividersEnabled="true" >
-    </com.hjnerp.widget.HJGridListView>
+    </com.mznerp.widget.HJGridListView>
 
     <ImageView
         android:layout_width="fill_parent"
@@ -88,7 +88,7 @@
 
         <!-- 表头可以滑动的项目 -->
 
-        <com.hjnerp.widget.HJGridScrollView
+        <com.mznerp.widget.HJGridScrollView
             android:id="@+id/grid_bottom_scroll"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
@@ -101,7 +101,7 @@
                 android:minHeight="40dp"
                 android:orientation="horizontal" >
             </LinearLayout>
-        </com.hjnerp.widget.HJGridScrollView>
+        </com.mznerp.widget.HJGridScrollView>
     </LinearLayout>
 
     <ImageView

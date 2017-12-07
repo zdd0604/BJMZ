@@ -55,7 +55,7 @@
         </RelativeLayout>
     </LinearLayout>
 
-    <com.hjnerp.widget.HorizontalListView
+    <com.mznerp.widget.HorizontalListView
         android:id="@+id/hj_hjphotoview"
         android:layout_width="fill_parent"
         android:layout_height="30dp"

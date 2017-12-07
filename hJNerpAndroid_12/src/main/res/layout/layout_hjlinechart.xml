@@ -52,7 +52,7 @@
             android:orientation="horizontal" >
         </LinearLayout>
 
-        <com.hjnerp.widget.LineView
+        <com.mznerp.widget.LineView
             android:id="@+id/line"
             android:layout_width="5dp"
             android:layout_height="match_parent"
@@ -74,7 +74,7 @@
             android:background="@color/business_bkg_grey" />
         <!-- 实心圆 -->
 
-        <com.hjnerp.widget.CircleImageView
+        <com.mznerp.widget.CircleImageView
             android:id="@+id/hj_line_circle"
             android:layout_width="20dp"
             android:layout_height="20dp"

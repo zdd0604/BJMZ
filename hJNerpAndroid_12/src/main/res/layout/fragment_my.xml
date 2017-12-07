@@ -19,7 +19,7 @@
         android:orientation="horizontal"
         android:padding="8dp" >
 
-        <com.hjnerp.widget.BubbleImageView
+        <com.mznerp.widget.BubbleImageView
             android:id="@+id/myphoto"
             android:layout_width="@dimen/LargeIconSize"
             android:layout_height="@dimen/LargeIconSize"

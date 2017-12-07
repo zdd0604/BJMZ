@@ -16,7 +16,7 @@
         android:singleLine="true"
         android:text="hhhhhh" />
 
-    <com.hjnerp.widget.HJDateEditText
+    <com.mznerp.widget.HJDateEditText
         android:id="@+id/hjdatepick_et_date"
         style="@style/EditText"
         android:layout_width="fill_parent"

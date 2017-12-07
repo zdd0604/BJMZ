@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal">
 
-    <com.hjnerp.widget.BubbleImageView
+    <com.mznerp.widget.BubbleImageView
         android:id="@+id/photo_showgroup"
         android:layout_width="@dimen/abc_dropdownitem_icon_width"
         android:layout_height="@dimen/abc_dropdownitem_icon_width"

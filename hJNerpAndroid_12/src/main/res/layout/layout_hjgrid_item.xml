@@ -15,7 +15,7 @@
 
     <!-- 水平可以滑动的布局 -->
 
-    <com.hjnerp.widget.HJGridScrollView
+    <com.mznerp.widget.HJGridScrollView
         android:id="@+id/grid_scroll_item"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
@@ -30,6 +30,6 @@
             android:layout_height="fill_parent"
             android:orientation="horizontal" >
         </LinearLayout>
-    </com.hjnerp.widget.HJGridScrollView>
+    </com.mznerp.widget.HJGridScrollView>
 
 </LinearLayout>

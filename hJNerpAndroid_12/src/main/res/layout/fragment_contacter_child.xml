@@ -17,7 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <com.hjnerp.widget.BubbleImageView
+        <com.mznerp.widget.BubbleImageView
             android:id="@+id/fc_ct_photo"
             android:layout_width="@dimen/abc_dropdownitem_icon_width"
             android:layout_height="@dimen/abc_dropdownitem_icon_width"

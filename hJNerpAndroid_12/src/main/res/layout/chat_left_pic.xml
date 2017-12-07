@@ -59,7 +59,7 @@
             android:layout_below="@+id/chat_Left_item_pic_name"  
             android:gravity="center"
             android:orientation="horizontal" >     
-        <com.hjnerp.widget.BubbleImageView
+        <com.mznerp.widget.BubbleImageView
             android:id="@+id/chat_left_item_pic_leftpic"
          	android:layout_width="wrap_content"
             android:layout_height="150dp"  

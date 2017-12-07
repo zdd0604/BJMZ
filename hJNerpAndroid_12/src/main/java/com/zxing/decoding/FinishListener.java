@@ -16,7 +16,7 @@
 
 package com.zxing.decoding;
 
-import com.hjnerp.widget.HJQrcode;
+import com.mznerp.widget.HJQrcode;
 
 import android.content.DialogInterface;
 

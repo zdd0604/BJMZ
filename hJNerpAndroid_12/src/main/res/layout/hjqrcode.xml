@@ -13,7 +13,7 @@
             android:layout_height="fill_parent"
             android:layout_gravity="center" />
 
-        <com.hjnerp.qrcode.view.ViewfinderView
+        <com.mznerp.qrcode.view.ViewfinderView
             android:id="@+id/hjqred_viewfinder_view"
             android:layout_width="800dp"
             android:layout_height="800dp" 

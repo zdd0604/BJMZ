@@ -89,7 +89,7 @@
         android:layout_marginRight="15dip"
         android:layout_marginTop="15dp">
 
-        <com.hjnerp.widget.HorizontalListView
+        <com.mznerp.widget.HorizontalListView
             android:id="@+id/horizontallistview1_dept"
             android:layout_width="fill_parent"
             android:layout_height="70dp" />

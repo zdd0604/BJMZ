@@ -26,8 +26,8 @@ import android.util.Log;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.Result; 
-import com.hjnerp.widget.HJQrcode;
-import com.hjnerpandroid.R;
+import com.mznerp.widget.HJQrcode;
+import com.mznerp.R;
 import com.zxing.camera.CameraManager;
 import com.zxing.view.ViewfinderResultPointCallback;
 

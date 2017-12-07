@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <com.hjnerp.widget.ClearEditText
+    <com.mznerp.widget.ClearEditText
         android:id="@+id/project_search"
         style="@style/Item_EditeText_SearchEdStyle"
         android:layout_below="@+id/actionbar_search"

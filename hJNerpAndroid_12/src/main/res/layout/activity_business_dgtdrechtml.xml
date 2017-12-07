@@ -90,7 +90,7 @@
                     style="@style/Item_LinearLayout_TVLeftTieleStyle2"
                     android:text="@string/work_Tile_Address" />
 
-                <com.hjnerp.widget.ClearEditText
+                <com.mznerp.widget.ClearEditText
                     android:id="@+id/log_id_corr"
                     style="@style/Item_LinearLayout_EdRightTitleStyle"
                     android:focusable="false" />
@@ -104,7 +104,7 @@
                     style="@style/Item_LinearLayout_TVLeftTieleStyle2"
                     android:text="@string/work_Tile_Contact" />
 
-                <com.hjnerp.widget.ClearEditText
+                <com.mznerp.widget.ClearEditText
                     android:id="@+id/log_id_cantact"
                     style="@style/Item_LinearLayout_EdRightTitleStyle"
                     android:focusable="false" />
@@ -118,7 +118,7 @@
                     style="@style/Item_LinearLayout_TVLeftTieleStyle2"
                     android:text="@string/work_Tile_contactduty" />
 
-                <com.hjnerp.widget.ClearEditText
+                <com.mznerp.widget.ClearEditText
                     android:id="@+id/log_id_duty"
                     style="@style/Item_LinearLayout_EdRightTitleStyle"
                     android:focusable="false" />
@@ -133,7 +133,7 @@
                     style="@style/Item_LinearLayout_TVLeftTieleStyle2"
                     android:text="@string/work_Tile_WkTime" />
 
-                <com.hjnerp.widget.ClearEditText
+                <com.mznerp.widget.ClearEditText
                     android:id="@+id/log_dec_wtime"
                     style="@style/Item_LinearLayout_EdRightTitleStyle"
                     android:inputType="numberDecimal" />
@@ -148,7 +148,7 @@
                     style="@style/Item_LinearLayout_TVLeftTieleStyle2"
                     android:text="@string/work_Tile_MyTheme" />
 
-                <com.hjnerp.widget.ClearEditText
+                <com.mznerp.widget.ClearEditText
                     android:id="@+id/log_var_wtitle"
                     style="@style/Item_LinearLayout_EdRightTitleStyle"
                     android:hint="@string/work_Hint_MyContent_main" />
@@ -164,7 +164,7 @@
                     style="@style/Item_LinearLayout_TVLeftTieleStyle2"
                     android:text="@string/work_Tile_MyContent" />
 
-                <com.hjnerp.widget.ClearEditText
+                <com.mznerp.widget.ClearEditText
                     android:id="@+id/log_var_remark"
                     style="@style/Item_LinearLayout_EdRightTitleStyle" />
                 <!--android:hint="@string/work_Hint_MyContent"-->

@@ -45,13 +45,13 @@
     -->
     <!-- Deprecated plugins element. Remove in 3.0 -->
     <feature name="HjBusiness">
-        <param name="android-package" value="com.hjnerp.business.htmlutil.HjBusiness" />
+        <param name="android-package" value="com.mznerp.business.htmlutil.HjBusiness" />
     </feature>
     <feature name="PGSQLitePlugin">
-        <param name="android-package" value="com.hjnerp.business.htmlutil.PGSQLitePlugin" />
+        <param name="android-package" value="com.mznerp.business.htmlutil.PGSQLitePlugin" />
     </feature>
     <feature name="StatusBar">
-        <param name="android-package" value="com.hjnerp.business.htmlutil.StatusBar" />
+        <param name="android-package" value="com.mznerp.business.htmlutil.StatusBar" />
     </feature>
     <plugins>
     </plugins>

@@ -15,7 +15,7 @@
         android:background="@color/white"
         android:orientation="horizontal">
 
-        <com.hjnerp.widget.ClearEditText
+        <com.mznerp.widget.ClearEditText
             android:id="@+id/input_et"
             android:layout_width="1dp"
             android:layout_height="45dp"

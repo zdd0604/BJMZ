@@ -24,7 +24,7 @@
             android:layout_marginBottom="5dp"
             android:layout_marginTop="5dp">
 
-            <com.hjnerp.widget.BubbleImageView
+            <com.mznerp.widget.BubbleImageView
                 android:id="@+id/member_item_photo_iv_dept"
                 android:layout_width="@dimen/abc_square_image_size38"
                 android:layout_height="@dimen/abc_square_image_size38"

@@ -61,7 +61,7 @@
             android:background="@color/business_bkg_grey" />
         <!-- 实心圆 -->
 
-        <com.hjnerp.widget.CircleImageView
+        <com.mznerp.widget.CircleImageView
             android:id="@+id/hj_barline_circle"
             android:layout_width="20dp"
             android:layout_height="20dp"

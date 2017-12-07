@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.hjnerpandroid">
+    package="com.mznerp">
 
     <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
@@ -51,7 +51,7 @@
     <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
-        android:name="com.hjnerp.common.EapApplication"
+        android:name="com.mznerp.common.EapApplication"
         android:allowBackup="true"
         android:hardwareAccelerated="true"
         android:icon="@drawable/icon2"
@@ -82,7 +82,7 @@
             android:value="HgmGYvmr4fsOmKKVzCNO2DuRYPEBrOSk" />
 
         <activity
-            android:name="com.hjnerp.activity.LoginActivity"
+            android:name="com.mznerp.activity.LoginActivity"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:excludeFromRecents="false"
             android:exported="true"
@@ -97,38 +97,38 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.hjnerp.business.activity.SearchBussinessPicture"
+            android:name="com.mznerp.business.activity.SearchBussinessPicture"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:launchMode="standard" />
         <activity
-            android:name="com.hjnerp.business.activity.BussinessUploadActivity"
+            android:name="com.mznerp.business.activity.BussinessUploadActivity"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <!-- 主页面 -->
         <activity
-            android:name="com.hjnerp.business.activity.BusinessActivity"
+            android:name="com.mznerp.business.activity.BusinessActivity"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.HjNoActionBar" />
         <activity
-            android:name="com.hjnerp.business.activity.AttendanceInfoActivity"
+            android:name="com.mznerp.business.activity.AttendanceInfoActivity"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:launchMode="standard"
             android:screenOrientation="portrait"
             android:theme="@style/ActionbarText" />
         <activity
-            android:name="com.hjnerp.business.activity.AttendanceLocActivity"
+            android:name="com.mznerp.business.activity.AttendanceLocActivity"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:launchMode="standard"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.hjnerp.business.activity.SearchRouteActivity"
+            android:name="com.mznerp.business.activity.SearchRouteActivity"
             android:launchMode="standard"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.hjnerp.activity.MainActivity"
+            android:name="com.mznerp.activity.MainActivity"
             android:excludeFromRecents="false"
             android:exported="false"
             android:launchMode="singleTask"
@@ -136,20 +136,20 @@
             android:theme="@style/Theme.HjNoActionBar" />
         <!-- 公告界面 -->
         <activity
-            android:name="com.hjnerp.activity.im.NoticeActivity"
+            android:name="com.mznerp.activity.im.NoticeActivity"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <!-- 聊天界面 -->
         <activity
-            android:name="com.hjnerp.activity.im.ChatActivity"
+            android:name="com.mznerp.activity.im.ChatActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <!-- 朋友信息及个信息 -->
         <activity
-            android:name="com.hjnerp.activity.contact.FriendsActivity"
+            android:name="com.mznerp.activity.contact.FriendsActivity"
             android:configChanges="keyboardHidden|screenSize|orientation"
             android:launchMode="standard"
             android:screenOrientation="portrait"
@@ -158,53 +158,53 @@
 
         <!-- 发起群聊选择好友界面 -->
         <activity
-            android:name="com.hjnerp.activity.im.SelectGroupChatMemberActivity"
+            android:name="com.mznerp.activity.im.SelectGroupChatMemberActivity"
             android:launchMode="standard" />
         <!-- 发起群聊选择好友界面，按部门排序 -->
         <activity
-            android:name="com.hjnerp.activity.im.SelectGroupChatMemberDeptActivity"
+            android:name="com.mznerp.activity.im.SelectGroupChatMemberDeptActivity"
             android:launchMode="standard"
             android:theme="@style/Theme.HjNoActionBar" />
         <!-- 群聊查看组内好友界面 -->
         <activity
-            android:name="com.hjnerp.activity.im.ShowGroupChatMemberActivity"
+            android:name="com.mznerp.activity.im.ShowGroupChatMemberActivity"
             android:launchMode="standard" />
         <activity
-            android:name="com.hjnerp.activity.im.ShowGroupActivity"
+            android:name="com.mznerp.activity.im.ShowGroupActivity"
             android:launchMode="standard"
             android:theme="@style/Theme.HjNoActionBar"
             android:windowSoftInputMode="stateHidden|adjustResize" />
         <!-- 电话列表 -->
         <activity
-            android:name="com.hjnerp.activity.contact.PhoneContactListActivity"
+            android:name="com.mznerp.activity.contact.PhoneContactListActivity"
             android:exported="false"
             android:launchMode="standard" />
         <!-- 添加好友界面 -->
         <activity
-            android:name="com.hjnerp.activity.contact.SearchQiXinFriendsActivity"
+            android:name="com.mznerp.activity.contact.SearchQiXinFriendsActivity"
             android:launchMode="standard"
             android:theme="@style/Theme.HjNoActionBar"
             android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
-            android:name="com.hjnerp.activity.contact.SearchQiXinFriendsretActivity"
+            android:name="com.mznerp.activity.contact.SearchQiXinFriendsretActivity"
             android:launchMode="standard" />
 
         <!-- 审批业务界面 -->
         <activity
-            android:name="com.hjnerp.activity.work.ApprovalActivity"
+            android:name="com.mznerp.activity.work.ApprovalActivity"
             android:launchMode="standard"
             android:theme="@style/Theme.HjNoActionBar"
             android:windowSoftInputMode="stateHidden|adjustResize"/>
         <!-- 待添加好友信息页面界面 -->
         <activity
-            android:name="com.hjnerp.activity.contact.AddingFriendActivity"
+            android:name="com.mznerp.activity.contact.AddingFriendActivity"
             android:launchMode="standard" />
         <!-- 通用设置 -->
 
 
         <!-- 全部新的朋友页面 -->
         <activity
-            android:name="com.hjnerp.activity.contact.AllVerfifyFriendsActivity"
+            android:name="com.mznerp.activity.contact.AllVerfifyFriendsActivity"
             android:launchMode="standard"
             android:theme="@style/Theme.HjNoActionBar"
             android:windowSoftInputMode="stateHidden|adjustResize" />
@@ -220,7 +220,7 @@
             android:launchMode="singleInstance" />
         -->
         <activity
-            android:name="com.hjnerp.activity.qrcode.CaptureActivity"
+            android:name="com.mznerp.activity.qrcode.CaptureActivity"
             android:configChanges="orientation|keyboardHidden"
             android:launchMode="standard"
             android:screenOrientation="portrait"
@@ -232,44 +232,44 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.hjnerp.activity.im.ShowChatPictureActivity"
+            android:name="com.mznerp.activity.im.ShowChatPictureActivity"
             android:launchMode="standard" />
         <activity
-            android:name="com.hjnerp.business.activity.AddRouteActivity"
+            android:name="com.mznerp.business.activity.AddRouteActivity"
             android:launchMode="standard" />
         <activity
-            android:name="com.hjnerp.activity.ExitAppActivity"
+            android:name="com.mznerp.activity.ExitAppActivity"
             android:launchMode="standard" />
 
         <service
-            android:name="com.hjnerp.service.IMChatService"
+            android:name="com.mznerp.service.IMChatService"
             android:enabled="true"
             android:exported="true" />
 
         <activity
-            android:name="com.hjnerp.business.activity.BussinessHtmlActivity"
+            android:name="com.mznerp.business.activity.BussinessHtmlActivity"
             android:hardwareAccelerated="true"
             android:launchMode="standard"
             android:theme="@android:style/Theme.Translucent" />
         <activity
-            android:name="com.hjnerp.business.activity.DisCardFage"
+            android:name="com.mznerp.business.activity.DisCardFage"
             android:theme="@style/Theme.HjNoActionBar" />
-        <activity android:name="com.hjnerp.business.activity.OfflineMap" />
+        <activity android:name="com.mznerp.business.activity.OfflineMap" />
         <activity
-            android:name="com.hjnerp.business.activity.BusinessDdisplocathActivity"
+            android:name="com.mznerp.business.activity.BusinessDdisplocathActivity"
             android:theme="@style/registerTheme" />
         <activity
-            android:name="com.hjnerp.activity.im.LocationActivity"
+            android:name="com.mznerp.activity.im.LocationActivity"
             android:theme="@style/ActionbarText" />
         <!-- 文件列表界面 -->
         <activity
-            android:name="com.hjnerp.activity.im.FileListActivity"
+            android:name="com.mznerp.activity.im.FileListActivity"
             android:theme="@style/ActionbarText" />
         <activity
-            android:name="com.hjnerp.activity.html.HjAboutInformation"
+            android:name="com.mznerp.activity.html.HjAboutInformation"
             android:theme="@style/registerTheme" />
         <activity
-            android:name="com.hjnerp.business.activity.BusinessEJActivity"
+            android:name="com.mznerp.business.activity.BusinessEJActivity"
             android:theme="@style/registerTheme" />
         <!--
                 <service android:name="com.hjnerp.service.ReConnectService"></service>
@@ -289,65 +289,65 @@
                     </intent-filter>
                 </receiver>
         -->
-        <activity android:name="com.hjnerp.business.activity.TravelBusiness" />
-        <activity android:name="com.hjnerp.business.activity.LeaveBusiness" />
-        <activity android:name="com.hjnerp.business.activity.OverBusiness" />
-        <activity android:name="com.hjnerp.business.activity.AbnormalBusiness" />
-        <activity android:name="com.hjnerp.business.activity.AbnormalDetail" />
+        <activity android:name="com.mznerp.business.activity.TravelBusiness" />
+        <activity android:name="com.mznerp.business.activity.LeaveBusiness" />
+        <activity android:name="com.mznerp.business.activity.OverBusiness" />
+        <activity android:name="com.mznerp.business.activity.AbnormalBusiness" />
+        <activity android:name="com.mznerp.business.activity.AbnormalDetail" />
         <activity
-            android:name="com.hjnerp.business.activity.BusinessPerformanceTypeIn"
+            android:name="com.mznerp.business.activity.BusinessPerformanceTypeIn"
             android:theme="@style/Theme.HjNoActionBar"
             android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
-            android:name="com.hjnerp.business.activity.BusinessBillsActivity"
+            android:name="com.mznerp.business.activity.BusinessBillsActivity"
             android:theme="@style/registerTheme"
             android:windowSoftInputMode="stateHidden|adjustResize" />
-        <activity android:name="com.hjnerp.business.activity.BusinessPerformanceArrayList" />
+        <activity android:name="com.mznerp.business.activity.BusinessPerformanceArrayList" />
         <activity
-            android:name="com.hjnerp.business.activity.BusinessPerformanceInput"
+            android:name="com.mznerp.business.activity.BusinessPerformanceInput"
             android:theme="@style/Theme.HjNoActionBar"
             android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
-            android:name="com.hjnerp.business.activity.BusinessPerformanceAudit"
+            android:name="com.mznerp.business.activity.BusinessPerformanceAudit"
             android:theme="@style/Theme.HjNoActionBar"
             android:windowSoftInputMode="stateHidden|adjustResize" />
 
         <!-- 考勤打卡 -->
         <activity
-            android:name="com.hjnerp.business.activity.BusinessEJLocation"
+            android:name="com.mznerp.business.activity.BusinessEJLocation"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.HjNoActionBar"
             android:windowSoftInputMode="stateHidden|adjustResize" />
 
         <!-- 工作日志 -->
         <activity
-            android:name="com.hjnerp.business.activity.BusinessDgtdrechtml"
+            android:name="com.mznerp.business.activity.BusinessDgtdrechtml"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.HjNoActionBar"
             android:windowSoftInputMode="stateHidden|adjustResize" />
 
         <!-- 搜索共用类 -->
         <activity
-            android:name="com.hjnerp.business.activity.BusinessSearch"
+            android:name="com.mznerp.business.activity.BusinessSearch"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.HjNoActionBar"
             android:windowSoftInputMode="stateHidden|adjustResize" />
 
         <!-- 搜索共用类 单行 -->
         <activity
-            android:name="com.hjnerp.business.activity.BusinessSearchOneLine"
+            android:name="com.mznerp.business.activity.BusinessSearchOneLine"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.HjNoActionBar"
             android:windowSoftInputMode="stateHidden|adjustResize" />
 
         <service
-            android:name="com.hjnerp.service.WorkService"
+            android:name="com.mznerp.service.WorkService"
             android:enabled="true"
             android:exported="true" />
 
         <provider
             android:name="android.support.v4.content.FileProvider"
-            android:authorities="com.hjnerp.takephoto.fileprovider"
+            android:authorities="com.mznerp.takephoto.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
@@ -357,59 +357,59 @@
 
         <!-- 联系我们 -->
         <activity
-            android:name="com.hjnerp.activity.HJCallPhoneActivity"
+            android:name="com.mznerp.activity.HJCallPhoneActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.HjNoActionBar"
             android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
-            android:name="com.hjnerp.business.activity.TravelActivityNew"
+            android:name="com.mznerp.business.activity.TravelActivityNew"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.HjNoActionBar"
             android:windowSoftInputMode="stateHidden|adjustResize" />
         <!-- 订单搜索 -->
         <activity
-            android:name="com.hjnerp.business.activity.OrderFinding"
+            android:name="com.mznerp.business.activity.OrderFinding"
             android:theme="@style/Theme.HjNoActionBar"
             android:windowSoftInputMode="stateHidden|adjustResize" />
         <!-- 注册页面 -->
         <activity
-            android:name="com.hjnerp.activity.RegisterActivity"
+            android:name="com.mznerp.activity.RegisterActivity"
             android:exported="false"
             android:launchMode="standard"
             android:theme="@style/Theme.HjNoActionBar" />
         <!-- 通用设置 -->
         <activity
-            android:name="com.hjnerp.activity.SetActivity"
+            android:name="com.mznerp.activity.SetActivity"
             android:launchMode="standard"
             android:theme="@style/Theme.HjNoActionBar"
             android:windowSoftInputMode="stateHidden|adjustResize" />
         <!-- 修改密码 -->
         <activity
-            android:name="com.hjnerp.activity.SetPassWordActivity"
+            android:name="com.mznerp.activity.SetPassWordActivity"
             android:exported="false"
             android:launchMode="standard"
             android:theme="@style/Theme.HjNoActionBar"
             android:windowSoftInputMode="stateHidden|adjustResize" />
         <!-- 关于和佳 -->
         <activity
-            android:name="com.hjnerp.activity.AboutHJActivity"
+            android:name="com.mznerp.activity.AboutHJActivity"
             android:launchMode="standard"
             android:theme="@style/Theme.HjNoActionBar"
             android:windowSoftInputMode="stateHidden|adjustResize" />
         <!-- 关于和佳 -->
         <activity
-            android:name="com.hjnerp.activity.HJAboutInfoActivity"
+            android:name="com.mznerp.activity.HJAboutInfoActivity"
             android:theme="@style/Theme.HjNoActionBar"
             android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
-            android:name="com.hjnerp.business.activity.SellOrder"
+            android:name="com.mznerp.business.activity.SellOrder"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.HjNoActionBar"
             android:windowSoftInputMode="stateHidden|adjustResize" />
-        <activity android:name="com.hjnerp.business.activity.OrderEdit" />
+        <activity android:name="com.mznerp.business.activity.OrderEdit" />
         <!-- 个人头像界面 -->
         <activity
-            android:name="com.hjnerp.activity.myinfo.ShowPortraitActivity"
+            android:name="com.mznerp.activity.myinfo.ShowPortraitActivity"
             android:theme="@style/Theme.HjNoActionBar"
             android:windowSoftInputMode="stateHidden|adjustResize" />
     </application>

@@ -34,7 +34,7 @@
                     android:text="拜访业务"
                     android:textSize="15sp" />
 
-                <com.hjnerp.fragment.MyGridView
+                <com.mznerp.fragment.MyGridView
                     android:id="@+id/gridview_businessmenu_ex1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -65,7 +65,7 @@
                     android:text="工作业务"
                     android:textSize="15sp" />
 
-                <com.hjnerp.fragment.MyGridView
+                <com.mznerp.fragment.MyGridView
                     android:id="@+id/gridview_businessmenu_ex2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -96,7 +96,7 @@
                     android:text="查询业务"
                     android:textSize="15sp" />
 
-                <com.hjnerp.fragment.MyGridView
+                <com.mznerp.fragment.MyGridView
                     android:id="@+id/gridview_businessmenu_ex3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -127,7 +127,7 @@
                     android:text="绩效管理"
                     android:textSize="15sp" />
 
-                <com.hjnerp.fragment.MyGridView
+                <com.mznerp.fragment.MyGridView
                     android:id="@+id/gridview_businessmenu_ex4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

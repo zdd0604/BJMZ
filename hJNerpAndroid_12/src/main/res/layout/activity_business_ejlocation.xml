@@ -4,7 +4,7 @@
     android:id="@+id/activity_business_ejlocation"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.hjnerp.business.activity.BusinessEJLocation">
+    tools:context="com.mznerp.business.activity.BusinessEJLocation">
 
     <include
         android:id="@+id/action_location_bar"
@@ -109,7 +109,7 @@
                     android:textSize="18sp" />
 
 
-                <com.hjnerp.widget.HorizontalListView
+                <com.mznerp.widget.HorizontalListView
                     android:id="@+id/ej_photo_list"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"

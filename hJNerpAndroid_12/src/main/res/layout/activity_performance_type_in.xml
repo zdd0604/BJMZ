@@ -134,7 +134,7 @@
                         android:text="*"
                         android:textColor="@color/red" />
 
-                    <com.hjnerp.widget.ClearEditText
+                    <com.mznerp.widget.ClearEditText
                         android:id="@+id/in_conclude_time"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"

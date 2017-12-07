@@ -42,7 +42,7 @@
             style="@style/Item_LinearLayout_TVLeftTieleStyle2"
             android:text="销售类型" />
 
-        <com.hjnerp.widget.MySpinner
+        <com.mznerp.widget.MySpinner
             android:id="@+id/sell_order_type"
             style="@style/Item_LinearLayout_Spinner_RightStyle"
             android:drawSelectorOnTop="false" />
