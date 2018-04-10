@@ -62,6 +62,8 @@ public class LockTableView2 {
     private int margin_num = 10;
     private boolean changeRow = false;//是否要改变列的对齐方式
     private int changedRow;//需要左上对齐的列（暂时用到工作日志为第9列）
+    private boolean isChangeOneColumnWidth = false;//是否更改第一列的宽度 默认不更改（工作日志需要设置为true）
+    private int changeColumnWidth;//更改第一列宽度的值
 
     public LockTableView2(Context mContext, ViewGroup mContentView, ArrayList<ArrayList<String>> mTableDatas) {
         this.mContext = mContext;
@@ -267,7 +269,13 @@ public class LockTableView2 {
             this.mColumnTitleView.setTypeface(null, Typeface.BOLD);
             this.mColumnTitleView.setText(this.mColumnTitle);
             LayoutParams layoutParams = (LayoutParams) this.mColumnTitleView.getLayoutParams();
-            layoutParams.width = DisplayUtil.dip2px(this.mContext, (float) ((Integer) this.mColumnMaxWidths.get(0)).intValue());
+            //头的宽度
+            if (isChangeOneColumnWidth){
+                layoutParams.width = DisplayUtil.dip2px(this.mContext, changeColumnWidth);
+            }else{
+                layoutParams.width = DisplayUtil.dip2px(this.mContext, (float) ((Integer) this.mColumnMaxWidths.get(0)).intValue());
+            }
+
             layoutParams.height = DisplayUtil.dip2px(this.mContext, (float) ((Integer) this.mRowMaxHeights.get(0)).intValue());
             layoutParams.setMargins(margin_num, margin_num, margin_num, margin_num);
             this.mColumnTitleView.setLayoutParams(layoutParams);
@@ -319,7 +327,12 @@ public class LockTableView2 {
             datas.setText((CharSequence) this.mTableColumnDatas.get(scollViewItemContentView));
             datas.setGravity(17);
             android.view.ViewGroup.LayoutParams layoutParams = datas.getLayoutParams();
-            layoutParams.width = DisplayUtil.dip2px(this.mContext, (float) ((Integer) this.mColumnMaxWidths.get(0)).intValue());
+            //列的宽度
+            if (isChangeOneColumnWidth){
+                layoutParams.width = DisplayUtil.dip2px(this.mContext, changeColumnWidth);
+            }else {
+                layoutParams.width = DisplayUtil.dip2px(this.mContext, (float) ((Integer) this.mColumnMaxWidths.get(0)).intValue());
+            }
             if (this.isLockFristRow) {
                 layoutParams.height = DisplayUtil.dip2px(this.mContext, (float) ((Integer) this.mRowMaxHeights.get(scollViewItemContentView + 1)).intValue());
             } else {
@@ -627,6 +640,18 @@ public class LockTableView2 {
 
     public LockTableView2 setMaxColumnWidth(int maxColumnWidth) {
         this.maxColumnWidth = maxColumnWidth;
+        return this;
+    }
+
+    /**
+     * 单独更改i 第一列的宽度
+     * @param ischange
+     * @param maxColumnWidth
+     * @return
+     */
+    public LockTableView2 setOntColumnWidth(boolean ischange,int maxColumnWidth) {
+        this.isChangeOneColumnWidth = ischange;
+        this.changeColumnWidth = maxColumnWidth;
         return this;
     }
 

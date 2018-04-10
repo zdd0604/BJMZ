@@ -9,69 +9,6 @@
 
     <include layout="@layout/actionbar_layout" />
 
-    <!--<LinearLayout-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="48dp"-->
-    <!--android:background="#f7f7f7"-->
-    <!--android:orientation="horizontal">-->
-
-    <!--<RelativeLayout-->
-    <!--android:id="@+id/sell_actionbar_back"-->
-    <!--android:layout_width="60dp"-->
-    <!--android:layout_height="match_parent"-->
-    <!--android:background="@drawable/activity_child_item_bkg">-->
-
-    <!--<ImageView-->
-    <!--android:layout_width="30dp"-->
-    <!--android:layout_height="30dp"-->
-    <!--android:layout_centerInParent="true"-->
-    <!--android:gravity="center"-->
-    <!--android:padding="8dp"-->
-    <!--android:scaleType="fitCenter"-->
-    <!--android:src="@drawable/actionbar_home_indicator_blue" />-->
-    <!--</RelativeLayout>-->
-
-    <!--<TextView-->
-    <!--android:id="@+id/sell_tv_actionbar_title"-->
-    <!--android:layout_width="0dp"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_gravity="center"-->
-    <!--android:layout_weight="1"-->
-    <!--android:gravity="center"-->
-    <!--android:layout_marginLeft="45dp"-->
-    <!--android:text="销售订单"-->
-    <!--android:textColor="#303030"-->
-    <!--android:textSize="20sp" />-->
-
-
-    <!--<Button-->
-    <!--android:id="@+id/sell_save"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="32dp"-->
-    <!--android:layout_gravity="center"-->
-    <!--android:layout_marginRight="10dp"-->
-    <!--android:background="@null"-->
-    <!--android:gravity="center"-->
-    <!--android:minWidth="@dimen/ChattingFootSendMinWidth"-->
-    <!--android:text="保存"-->
-    <!--android:textColor="@color/actionbar_bg_color"-->
-    <!--android:textSize="14sp" />-->
-
-    <!--<Button-->
-    <!--android:id="@+id/sell_submit"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="32dp"-->
-    <!--android:layout_gravity="center"-->
-    <!--android:layout_marginRight="5dp"-->
-    <!--android:background="@null"-->
-    <!--android:gravity="center"-->
-    <!--android:minWidth="@dimen/ChattingFootSendMinWidth"-->
-    <!--android:text="送审"-->
-    <!--android:textColor="@color/actionbar_bg_color"-->
-    <!--android:textSize="14sp" />-->
-
-    <!--</LinearLayout>-->
-
     <ScrollView
         android:id="@+id/sellord_scroll"
         android:layout_width="match_parent"

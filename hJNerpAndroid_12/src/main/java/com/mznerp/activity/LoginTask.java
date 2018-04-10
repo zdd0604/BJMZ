@@ -69,21 +69,16 @@ public class LoginTask extends AsyncTask<String, Integer, Integer> {
                 new MyToast2(context, "服务器没有反馈，请查看手机网络设置。");
                 break;
             case Constant.LOGIN_SECCESS: // 登录成功
-
                 new Ctlm1347Update(null).action();
-                //
                 new Ctlm1345Update(new String[]{"ctlm1345"},
                         new String[]{"1=1"}, null).action();
                 waitDialogRectangle.dismiss();
                 context.startActivity(new Intent(context, MainActivity.class));
                 ((Activity) activitySupport).finish();
-
-                // }
                 break;
             case Constant.LOGIN_ERROR_ACCOUNT_PASS:// 账户或者密码错误
                 waitDialogRectangle.dismiss();
                 new MyToast2(context, errorText);
-                Log.v("s", errorText);
                 break;
             case Constant.SERVER_UNAVAILABLE:// 服务器连接失败
                 waitDialogRectangle.dismiss();

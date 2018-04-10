@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:orientation="vertical">
+    <!--正文内容-->
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/base_toolbar"
+        style="@style/Item_RelativeLayout_ActionBarStyle"
+        android:navigationContentDescription="back">
+
+        <TextView
+            android:id="@+id/base_leftTv"
+            style="@style/Item_TextView_ActionBarLeftStyle"
+            android:text="返回"/>
+
+        <TextView
+            android:id="@+id/base_centerTv"
+            style="@style/Item_TextView_ActionBarCenterStyle"
+            android:layout_gravity="center" />
+
+        <TextView
+            android:id="@+id/base_rightTv"
+            style="@style/Item_TextView_ActionBarRightStyle"
+            android:layout_gravity="right"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/base_rightTv1"
+            style="@style/Item_TextView_ActionBarRight1Style"
+            android:layout_gravity="right"
+            android:visibility="gone"/>
+
+
+    </android.support.v7.widget.Toolbar>
+
+    <View
+        android:id="@+id/base_views"
+        style="@style/Module_DivisionView_HzTheme"
+        android:layout_below="@id/base_toolbar" />
+
+    <!--内容容器-->
+    <FrameLayout
+        android:id="@+id/base_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/base_views" />
+
+</RelativeLayout>

@@ -354,6 +354,7 @@ public class Constant {
     public static String id_wproj;
     public static String id_corr;
     public static String dec_acaramt;
+    public static String var_tel;
 
     /**
      * 考勤签到
@@ -385,7 +386,9 @@ public class Constant {
     public static List<BusinessOneLine> datas;
     public static String buss_key = "";
     public static String buss_value = "";
+
     //模板的名称
+    public static  String ModuleName="";
     //1、东兴堂及黄河的签到文件
     public static final String ddisplocatphohtml = "ddisplocatphohtml";
     //2、绩效计划录入
@@ -424,6 +427,8 @@ public class Constant {
     public static final String dsaordquery2html = "dsaordquery2html";
     //19、客户应收
     public static final String accountage2html = "accountage2html";
+    //19、收入汇总
+    public static final String dsaordquery3html = "dsaordquery3html";
 
     /**
      * 关于

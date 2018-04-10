@@ -50,6 +50,9 @@ import static com.mznerp.common.Constant.buss_value;
 import static com.mznerp.common.Constant.datas;
 import static com.mznerp.common.Constant.dsaordbaseJsons_new;
 
+/**
+ * 工作日志
+ */
 public class BusinessDgtdrechtml extends ActionBarWidgetActivity implements View.OnClickListener {
     //界面ID
     @BindView(R.id.action_center_tv)
@@ -64,6 +67,8 @@ public class BusinessDgtdrechtml extends ActionBarWidgetActivity implements View
     TextView log_date_task;
     @BindView(R.id.log_id_wproj)
     EditText log_id_wproj;
+    @BindView(R.id.log_var_tel)
+    EditText log_var_tel;
     @BindView(R.id.log_dec_wtime)
     ClearEditText log_dec_wtime;
     @BindView(R.id.log_var_wtitle)
@@ -112,6 +117,7 @@ public class BusinessDgtdrechtml extends ActionBarWidgetActivity implements View
                     log_id_corr.setText(dsaordbaseJsons_new.get(0).getVar_conplace());
                     log_id_cantact.setText(dsaordbaseJsons_new.get(0).getVar_contact());
                     log_id_duty.setText(dsaordbaseJsons_new.get(0).getVar_contactduty());
+                    log_var_tel.setText(dsaordbaseJsons_new.get(0).getVar_tel());
                     break;
                 case Constant.HANDLERTYPE_1:
                     id_wtype = buss_key;
@@ -259,14 +265,27 @@ public class BusinessDgtdrechtml extends ActionBarWidgetActivity implements View
         if (TextUtils.isEmpty(flag_wadd)) {
             flag_wadd = "A";
         }
-        String data = BusinessEJBuffer.getDgtdrecBuffer(Constant.ID_MENU,
-                Constant.ej1345.getId_user(), Constant.MYUSERINFO.userID,
-                Constant.MYUSERINFO.companyID, date_task, Constant.MYUSERINFO.departmentID,
-                flag_wadd, id_wtype, Constant.id_wproj, dec_wtime, var_wtitle,
-                var_remark, Constant.item_peoject, BusinessTimeUtils.getCurrentTime(Constant.NOWTIME),
+        String data = BusinessEJBuffer.getDgtdrecBuffer(
+                Constant.ID_MENU,
+                Constant.ej1345.getId_user(),
+                Constant.MYUSERINFO.userID,
+                Constant.MYUSERINFO.companyID,
+                date_task,
+                Constant.MYUSERINFO.departmentID,
+                flag_wadd,
+                id_wtype,
+                Constant.id_wproj,
+                dec_wtime,
+                var_wtitle,
+                var_remark,
+                Constant.item_peoject,
+                BusinessTimeUtils.getCurrentTime(Constant.NOWTIME),
                 Integer.valueOf(BusinessTimeUtils.getCurrentTime(Constant.kpiperiod_MM)),
                 Integer.valueOf(BusinessTimeUtils.getCurrentTime(Constant.Int_year_YYYY)),
-                Constant.id_corr, log_id_cantact.getText().toString().trim(), log_id_duty.getText().toString().trim());
+                Constant.id_corr,
+                Constant.var_tel,
+                log_id_cantact.getText().toString().trim(),
+                log_id_duty.getText().toString().trim());
         getBusinessList(data);
     }
 
@@ -276,6 +295,7 @@ public class BusinessDgtdrechtml extends ActionBarWidgetActivity implements View
      * @param datas
      */
     private void getBusinessList(String datas) {
+        LogShow("工作日志："+datas);
         OkGo.post(EapApplication.URL_SERVER_HOST_HTTP + "/servlet/DataUpdateServlet")
                 .isMultipart(true)
                 .params("datas", datas)
@@ -413,6 +433,7 @@ public class BusinessDgtdrechtml extends ActionBarWidgetActivity implements View
         log_id_corr.setText("");
         log_id_cantact.setText("");
         log_id_duty.setText("");
+        log_var_tel.setText("");
         log_var_remark.setText("");
     }
 }

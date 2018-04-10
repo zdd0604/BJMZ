@@ -18,6 +18,12 @@
     <string name="app_pane_file_str">文件</string>
     <string name="app_pane_camera_str">拍照</string>
 
+    <!-- Toolbar 标签内容 -->
+    <string name="tlbar_BackUp">返回</string>
+    <string name="tlbar_commit">提交</string>
+    <string name="tlbar_add">添加</string>
+    <string name="tlbar_cancel">取消</string>
+
 
     <!-- 登录提示 -->
     <string name="message_invalid_username_password">错误的用户名或密码</string>
@@ -119,6 +125,8 @@
     <string name="work_Hint_PjName">请选择客户名称</string>
     <string name="work_Tile_Address">地址</string>
     <string name="work_Tile_Contact">联系人</string>
+    <string name="work_Tile_Tel">电话:</string>
+    <string name="work_Tile_ipsTel">电话</string>
     <string name="work_Tile_contactduty">职务</string>
     <string name="work_Tile_WkTime">工时</string>
     <string name="work_Tile_MyTheme">主题</string>
@@ -195,5 +203,8 @@
 
     <!-- 登陆注册 -->
     <string name="oval_Title_TvActivity">审批单详情</string>
+
+    <!-- 收入汇总 -->
+    <string name="module_SellActivity_Tle">收入汇总</string>
 
 </resources>

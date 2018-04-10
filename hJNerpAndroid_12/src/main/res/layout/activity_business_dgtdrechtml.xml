@@ -82,8 +82,7 @@
 
             <LinearLayout
                 style="@style/Item_LinearLayout_HorizontalStyle"
-                android:layout_marginTop="@dimen/size_1"
-                android:visibility="gone">
+                android:layout_marginTop="@dimen/size_1">
 
                 <TextView
                     android:id="@+id/textView7"
@@ -109,6 +108,21 @@
                     style="@style/Item_LinearLayout_EdRightTitleStyle"
                     android:focusable="false" />
             </LinearLayout>
+
+            <LinearLayout
+                style="@style/Item_LinearLayout_HorizontalStyle"
+                android:layout_marginTop="@dimen/size_1">
+
+                <TextView
+                    style="@style/Item_LinearLayout_TVLeftTieleStyle2"
+                    android:text="@string/work_Tile_ipsTel" />
+
+                <com.mznerp.widget.ClearEditText
+                    android:id="@+id/log_var_tel"
+                    style="@style/Item_LinearLayout_EdRightTitleStyle"
+                    android:focusable="false" />
+            </LinearLayout>
+
 
             <LinearLayout
                 style="@style/Item_LinearLayout_HorizontalStyle"

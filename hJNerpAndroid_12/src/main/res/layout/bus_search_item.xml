@@ -93,6 +93,21 @@
                 style="@style/Item_Search_TvContentStyle" />
         </LinearLayout>
 
+        <LinearLayout
+            android:id="@+id/linear_layout_varTel"
+            style="@style/Item_Search_LinearLayoutHorizontalStyle"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/text_varTel"
+                style="@style/Item_Search_TvTitleStyle"
+                android:text="@string/work_Tile_Tel" />
+
+            <TextView
+                android:id="@+id/item_varTel"
+                style="@style/Item_Search_TvContentStyle" />
+        </LinearLayout>
+
         <View style="@style/Item_TextView_ActionBarViewDividerStyle" />
     </LinearLayout>
 </LinearLayout>

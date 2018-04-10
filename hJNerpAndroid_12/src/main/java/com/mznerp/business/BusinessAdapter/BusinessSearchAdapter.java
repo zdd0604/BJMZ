@@ -90,15 +90,19 @@ public class BusinessSearchAdapter extends RecyclerView.Adapter<BusinessSearchAd
                 holder.item_chkparm.setText(chkparm.replaceAll("\r|\n*", ""));
                 break;
             case 5:
+                holder.linear_layout_varTel.setVisibility(View.VISIBLE);
                 holder.linear_layout_chkparm.setVisibility(View.VISIBLE);
                 holder.pro_text.setText(mContext.getString(R.string.sellOrder_Tile_Client));
                 holder.text_address.setText(mContext.getString(R.string.sellOrder_Tile_Address));
                 holder.text_chkparm.setText(mContext.getString(R.string.sellOrder_Tile_Relation));
+                holder.text_overclient.setText(mContext.getString(R.string.work_Tile_Tel));
                 holder.item_chkparm.setText(list.get(position).getDec_acaramt());
                 holder.item_client.setTextColor(Color.parseColor("#888888"));
                 holder.pro_text.setTextColor(Color.parseColor("#000000"));
                 holder.text_chkparm.setTextColor(Color.parseColor("#888888"));
                 holder.item_chkparm.setTextColor(Color.parseColor("#888888"));
+                holder.item_varTel.setTextColor(Color.parseColor("#888888"));
+                holder.item_varTel.setText(list.get(position).getVar_tel());
                 break;
         }
 
@@ -119,6 +123,7 @@ public class BusinessSearchAdapter extends RecyclerView.Adapter<BusinessSearchAd
                             list.get(position).getDec_acaramt(),
                             list.get(position).getVar_chkparm(),
                             list.get(position).getDec_taxrate(),
+                            list.get(position).getVar_tel(),
                             position);
                 }
             });
@@ -132,6 +137,13 @@ public class BusinessSearchAdapter extends RecyclerView.Adapter<BusinessSearchAd
 
     class MyViewHolder extends RecyclerView.ViewHolder {
 
+        LinearLayout linearlayout_overclient;
+        LinearLayout linearlayout_besearch;
+        LinearLayout linear_layout_id;
+        LinearLayout linear_layout_chkparm;
+        //电话
+        LinearLayout linear_layout_varTel;
+
         TextView item_peoject;
         TextView item_client;
         //        TextView item_line_id;
@@ -142,14 +154,16 @@ public class BusinessSearchAdapter extends RecyclerView.Adapter<BusinessSearchAd
         TextView item_id_item;
         TextView text_chkparm;
         TextView item_chkparm;
-        LinearLayout linearlayout_overclient;
-        LinearLayout linearlayout_besearch;
-        LinearLayout linear_layout_id;
-        LinearLayout linear_layout_chkparm;
+        TextView item_varTel;
         TextView item_overclient;
 
         public MyViewHolder(View itemView) {
             super(itemView);
+            linearlayout_overclient = (LinearLayout) itemView.findViewById(R.id.linearlayout_overclient);
+            linearlayout_besearch = (LinearLayout) itemView.findViewById(R.id.linearlayout_besearch);
+            linear_layout_id = (LinearLayout) itemView.findViewById(R.id.linear_layout_id);
+            linear_layout_chkparm = (LinearLayout) itemView.findViewById(R.id.linear_layout_chkparm);
+            linear_layout_varTel = (LinearLayout) itemView.findViewById(R.id.linear_layout_varTel);
             item_peoject = (TextView) itemView.findViewById(R.id.item_peoject);
             pro_text = (TextView) itemView.findViewById(R.id.pro_text);
             text_address = (TextView) itemView.findViewById(R.id.text_address);
@@ -159,12 +173,9 @@ public class BusinessSearchAdapter extends RecyclerView.Adapter<BusinessSearchAd
             item_id_item = (TextView) itemView.findViewById(R.id.item_id_item);
             text_chkparm = (TextView) itemView.findViewById(R.id.text_chkparm);
             item_chkparm = (TextView) itemView.findViewById(R.id.item_chkparm);
-            linearlayout_overclient = (LinearLayout) itemView.findViewById(R.id.linearlayout_overclient);
-            linearlayout_besearch = (LinearLayout) itemView.findViewById(R.id.linearlayout_besearch);
-            linear_layout_id = (LinearLayout) itemView.findViewById(R.id.linear_layout_id);
-            linear_layout_chkparm = (LinearLayout) itemView.findViewById(R.id.linear_layout_chkparm);
             item_overclient = (TextView) itemView.findViewById(R.id.item_overclient);
             text_overclient = (TextView) itemView.findViewById(R.id.text_overclient);
+            item_varTel = (TextView) itemView.findViewById(R.id.item_varTel);
         }
     }
 
@@ -177,6 +188,7 @@ public class BusinessSearchAdapter extends RecyclerView.Adapter<BusinessSearchAd
                          String dec_acaramt,
                          String var_chkparm,
                          String dec_taxrate,
+                         String var_tel,
                          int position);
 
         void onItemLongClick(View view, int position);

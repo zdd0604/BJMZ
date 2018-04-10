@@ -50,9 +50,9 @@ public class HjAboutInformation extends ActivitySupport {
         WebSettings setting = webView.getSettings();
         //不显示webview缩放按钮
         setting.setDisplayZoomControls(false);
-//        setting.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
-//        setting.setUseWideViewPort(true);
-//        setting.setLoadWithOverviewMode(true);
+        setting.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
+        setting.setUseWideViewPort(true);
+        setting.setLoadWithOverviewMode(true);
 
         webView.setVerticalScrollBarEnabled(false);
         webView.setHorizontalScrollBarEnabled(false);

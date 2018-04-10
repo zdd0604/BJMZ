@@ -184,4 +184,28 @@ public class DsaordbaseJson2 {
     public void setVar_rmark(String var_rmark) {
         this.var_rmark = var_rmark;
     }
+
+    @Override
+    public String toString() {
+        return "DsaordbaseJson2{" +
+                "id_terminal='" + id_terminal + '\'' +
+                ", name_terminal='" + name_terminal + '\'' +
+                ", id_corr='" + id_corr + '\'' +
+                ", name_corr='" + name_corr + '\'' +
+                ", dec_acaramt='" + dec_acaramt + '\'' +
+                ", dec_acclimit='" + dec_acclimit + '\'' +
+                ", var_contact='" + var_contact + '\'' +
+                ", var_tel='" + var_tel + '\'' +
+                ", var_rcvcorr='" + var_rcvcorr + '\'' +
+                ", var_conplace='" + var_conplace + '\'' +
+                ", id_invtype='" + id_invtype + '\'' +
+                ", name_invtype='" + name_invtype + '\'' +
+                ", var_contactduty='" + var_contactduty + '\'' +
+                ", var_rmark='" + var_rmark + '\'' +
+                ", id_industry='" + id_industry + '\'' +
+                ", id_zone='" + id_zone + '\'' +
+                ", id_area='" + id_area + '\'' +
+                ", id_corrtype='" + id_corrtype + '\'' +
+                '}';
+    }
 }
