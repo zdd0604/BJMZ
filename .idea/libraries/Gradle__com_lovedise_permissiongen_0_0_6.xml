@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: com.lovedise:permissiongen-0.0.6">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.android/build-cache/f7796897ce205753fa3bd3690632937a92a1c04c/output/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.android/build-cache/f7796897ce205753fa3bd3690632937a92a1c04c/output/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.lovedise/permissiongen/0.0.6/ab1509001fcda56be4f4ca1510ad23a5b1865f57/permissiongen-0.0.6-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

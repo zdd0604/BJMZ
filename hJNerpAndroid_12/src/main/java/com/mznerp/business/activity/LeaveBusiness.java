@@ -60,6 +60,10 @@ import java.util.List;
 import okhttp3.Call;
 import okhttp3.Response;
 
+/**
+ * 休假申请单
+ */
+
 public class LeaveBusiness extends ActivitySupport implements View.OnClickListener {
 
     private TextView nofocus_leave;
@@ -96,6 +100,7 @@ public class LeaveBusiness extends ActivitySupport implements View.OnClickListen
     private PerformanceDatas pds;
     private PerformanceDatas.MainBean mainBean;
     private int mark_type;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

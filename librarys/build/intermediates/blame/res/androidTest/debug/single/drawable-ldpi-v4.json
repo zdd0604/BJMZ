@@ -1,10 +1,14 @@
 [
     {
-        "merged": "D:\\Android\\AndroidGitWork\\bjmz\\librarys\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-ldpi-v4\\icon.png",
-        "source": "D:\\Android\\AndroidGitWork\\bjmz\\librarys\\build\\intermediates\\bundles\\debug\\res\\drawable-ldpi-v4\\icon.png"
+        "merged": "/Users/zhangdongdong/AndroidStudioProjects/BJMZ/librarys/build/intermediates/res/merged/androidTest/debug/drawable-ldpi-v4/icon.png",
+        "source": "/Users/zhangdongdong/AndroidStudioProjects/BJMZ/librarys/build/intermediates/bundles/debug/res/drawable-ldpi-v4/icon.png"
     },
     {
-        "merged": "D:\\Android\\AndroidStudioWork\\bjmz\\librarys\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-ldpi-v4\\icon.png",
-        "source": "D:\\Android\\AndroidStudioWork\\bjmz\\librarys\\build\\intermediates\\bundles\\debug\\res\\drawable-ldpi-v4\\icon.png"
+        "merged": "/Users/zhangdongdong/AndroidStudioProjects/BJMZ/D:\\Android\\AndroidGitWork\\bjmz\\librarys\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-ldpi-v4\\icon.png",
+        "source": "/Users/zhangdongdong/AndroidStudioProjects/BJMZ/D:\\Android\\AndroidGitWork\\bjmz\\librarys\\build\\intermediates\\bundles\\debug\\res\\drawable-ldpi-v4\\icon.png"
+    },
+    {
+        "merged": "/Users/zhangdongdong/AndroidStudioProjects/BJMZ/D:\\Android\\AndroidStudioWork\\bjmz\\librarys\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-ldpi-v4\\icon.png",
+        "source": "/Users/zhangdongdong/AndroidStudioProjects/BJMZ/D:\\Android\\AndroidStudioWork\\bjmz\\librarys\\build\\intermediates\\bundles\\debug\\res\\drawable-ldpi-v4\\icon.png"
     }
 ]

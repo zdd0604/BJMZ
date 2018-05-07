@@ -16,6 +16,7 @@
 package com.lidroid.xutils;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
@@ -510,4 +511,17 @@ public class BitmapUtils implements TaskHandler {
             return null;
         }
     }
+
+    /**
+     * 获取资源图片
+     *
+     * @param imgID
+     * @return
+     */
+    public static Drawable getResourcesDw(Context context, int imgID) {
+        Resources resources = context.getResources();
+        return resources.getDrawable(imgID);
+    }
+
+
 }

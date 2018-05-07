@@ -1,34 +1,50 @@
 [
     {
-        "merged": "D:\\Android\\AndroidGitWork\\bjmz\\librarys\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\dialog_wait.xml",
-        "source": "D:\\Android\\AndroidGitWork\\bjmz\\librarys\\build\\intermediates\\bundles\\debug\\res\\layout\\dialog_wait.xml"
+        "merged": "/Users/zhangdongdong/AndroidStudioProjects/BJMZ/D:\\Android\\AndroidGitWork\\bjmz\\librarys\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\dialog_wait.xml",
+        "source": "/Users/zhangdongdong/AndroidStudioProjects/BJMZ/D:\\Android\\AndroidGitWork\\bjmz\\librarys\\build\\intermediates\\bundles\\debug\\res\\layout\\dialog_wait.xml"
     },
     {
-        "merged": "D:\\Android\\AndroidStudioWork\\bjmz\\librarys\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\dialog_wait.xml",
-        "source": "D:\\Android\\AndroidStudioWork\\bjmz\\librarys\\build\\intermediates\\bundles\\debug\\res\\layout\\dialog_wait.xml"
+        "merged": "/Users/zhangdongdong/AndroidStudioProjects/BJMZ/librarys/build/intermediates/res/merged/androidTest/debug/layout/pull_to_refresh_header_horizontal.xml",
+        "source": "/Users/zhangdongdong/AndroidStudioProjects/BJMZ/librarys/build/intermediates/bundles/debug/res/layout/pull_to_refresh_header_horizontal.xml"
     },
     {
-        "merged": "D:\\Android\\AndroidStudioWork\\bjmz\\librarys\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\pull_to_refresh_header_vertical.xml",
-        "source": "D:\\Android\\AndroidStudioWork\\bjmz\\librarys\\build\\intermediates\\bundles\\debug\\res\\layout\\pull_to_refresh_header_vertical.xml"
+        "merged": "/Users/zhangdongdong/AndroidStudioProjects/BJMZ/D:\\Android\\AndroidStudioWork\\bjmz\\librarys\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\dialog_wait.xml",
+        "source": "/Users/zhangdongdong/AndroidStudioProjects/BJMZ/D:\\Android\\AndroidStudioWork\\bjmz\\librarys\\build\\intermediates\\bundles\\debug\\res\\layout\\dialog_wait.xml"
     },
     {
-        "merged": "D:\\Android\\AndroidStudioWork\\bjmz\\librarys\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\main.xml",
-        "source": "D:\\Android\\AndroidStudioWork\\bjmz\\librarys\\build\\intermediates\\bundles\\debug\\res\\layout\\main.xml"
+        "merged": "/Users/zhangdongdong/AndroidStudioProjects/BJMZ/D:\\Android\\AndroidStudioWork\\bjmz\\librarys\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\pull_to_refresh_header_vertical.xml",
+        "source": "/Users/zhangdongdong/AndroidStudioProjects/BJMZ/D:\\Android\\AndroidStudioWork\\bjmz\\librarys\\build\\intermediates\\bundles\\debug\\res\\layout\\pull_to_refresh_header_vertical.xml"
     },
     {
-        "merged": "D:\\Android\\AndroidGitWork\\bjmz\\librarys\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\main.xml",
-        "source": "D:\\Android\\AndroidGitWork\\bjmz\\librarys\\build\\intermediates\\bundles\\debug\\res\\layout\\main.xml"
+        "merged": "/Users/zhangdongdong/AndroidStudioProjects/BJMZ/D:\\Android\\AndroidStudioWork\\bjmz\\librarys\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\main.xml",
+        "source": "/Users/zhangdongdong/AndroidStudioProjects/BJMZ/D:\\Android\\AndroidStudioWork\\bjmz\\librarys\\build\\intermediates\\bundles\\debug\\res\\layout\\main.xml"
     },
     {
-        "merged": "D:\\Android\\AndroidStudioWork\\bjmz\\librarys\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\pull_to_refresh_header_horizontal.xml",
-        "source": "D:\\Android\\AndroidStudioWork\\bjmz\\librarys\\build\\intermediates\\bundles\\debug\\res\\layout\\pull_to_refresh_header_horizontal.xml"
+        "merged": "/Users/zhangdongdong/AndroidStudioProjects/BJMZ/D:\\Android\\AndroidGitWork\\bjmz\\librarys\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\main.xml",
+        "source": "/Users/zhangdongdong/AndroidStudioProjects/BJMZ/D:\\Android\\AndroidGitWork\\bjmz\\librarys\\build\\intermediates\\bundles\\debug\\res\\layout\\main.xml"
     },
     {
-        "merged": "D:\\Android\\AndroidGitWork\\bjmz\\librarys\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\pull_to_refresh_header_vertical.xml",
-        "source": "D:\\Android\\AndroidGitWork\\bjmz\\librarys\\build\\intermediates\\bundles\\debug\\res\\layout\\pull_to_refresh_header_vertical.xml"
+        "merged": "/Users/zhangdongdong/AndroidStudioProjects/BJMZ/D:\\Android\\AndroidStudioWork\\bjmz\\librarys\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\pull_to_refresh_header_horizontal.xml",
+        "source": "/Users/zhangdongdong/AndroidStudioProjects/BJMZ/D:\\Android\\AndroidStudioWork\\bjmz\\librarys\\build\\intermediates\\bundles\\debug\\res\\layout\\pull_to_refresh_header_horizontal.xml"
     },
     {
-        "merged": "D:\\Android\\AndroidGitWork\\bjmz\\librarys\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\pull_to_refresh_header_horizontal.xml",
-        "source": "D:\\Android\\AndroidGitWork\\bjmz\\librarys\\build\\intermediates\\bundles\\debug\\res\\layout\\pull_to_refresh_header_horizontal.xml"
+        "merged": "/Users/zhangdongdong/AndroidStudioProjects/BJMZ/librarys/build/intermediates/res/merged/androidTest/debug/layout/pull_to_refresh_header_vertical.xml",
+        "source": "/Users/zhangdongdong/AndroidStudioProjects/BJMZ/librarys/build/intermediates/bundles/debug/res/layout/pull_to_refresh_header_vertical.xml"
+    },
+    {
+        "merged": "/Users/zhangdongdong/AndroidStudioProjects/BJMZ/D:\\Android\\AndroidGitWork\\bjmz\\librarys\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\pull_to_refresh_header_vertical.xml",
+        "source": "/Users/zhangdongdong/AndroidStudioProjects/BJMZ/D:\\Android\\AndroidGitWork\\bjmz\\librarys\\build\\intermediates\\bundles\\debug\\res\\layout\\pull_to_refresh_header_vertical.xml"
+    },
+    {
+        "merged": "/Users/zhangdongdong/AndroidStudioProjects/BJMZ/librarys/build/intermediates/res/merged/androidTest/debug/layout/dialog_wait.xml",
+        "source": "/Users/zhangdongdong/AndroidStudioProjects/BJMZ/librarys/build/intermediates/bundles/debug/res/layout/dialog_wait.xml"
+    },
+    {
+        "merged": "/Users/zhangdongdong/AndroidStudioProjects/BJMZ/librarys/build/intermediates/res/merged/androidTest/debug/layout/main.xml",
+        "source": "/Users/zhangdongdong/AndroidStudioProjects/BJMZ/librarys/build/intermediates/bundles/debug/res/layout/main.xml"
+    },
+    {
+        "merged": "/Users/zhangdongdong/AndroidStudioProjects/BJMZ/D:\\Android\\AndroidGitWork\\bjmz\\librarys\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\pull_to_refresh_header_horizontal.xml",
+        "source": "/Users/zhangdongdong/AndroidStudioProjects/BJMZ/D:\\Android\\AndroidGitWork\\bjmz\\librarys\\build\\intermediates\\bundles\\debug\\res\\layout\\pull_to_refresh_header_horizontal.xml"
     }
 ]

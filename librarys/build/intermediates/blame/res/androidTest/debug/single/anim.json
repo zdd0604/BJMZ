@@ -1,34 +1,50 @@
 [
     {
-        "merged": "D:\\Android\\AndroidGitWork\\bjmz\\librarys\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\slide_in_from_top.xml",
-        "source": "D:\\Android\\AndroidGitWork\\bjmz\\librarys\\build\\intermediates\\bundles\\debug\\res\\anim\\slide_in_from_top.xml"
+        "merged": "/Users/zhangdongdong/AndroidStudioProjects/BJMZ/D:\\Android\\AndroidGitWork\\bjmz\\librarys\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\slide_in_from_top.xml",
+        "source": "/Users/zhangdongdong/AndroidStudioProjects/BJMZ/D:\\Android\\AndroidGitWork\\bjmz\\librarys\\build\\intermediates\\bundles\\debug\\res\\anim\\slide_in_from_top.xml"
     },
     {
-        "merged": "D:\\Android\\AndroidStudioWork\\bjmz\\librarys\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\slide_in_from_bottom.xml",
-        "source": "D:\\Android\\AndroidStudioWork\\bjmz\\librarys\\build\\intermediates\\bundles\\debug\\res\\anim\\slide_in_from_bottom.xml"
+        "merged": "/Users/zhangdongdong/AndroidStudioProjects/BJMZ/D:\\Android\\AndroidStudioWork\\bjmz\\librarys\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\slide_in_from_bottom.xml",
+        "source": "/Users/zhangdongdong/AndroidStudioProjects/BJMZ/D:\\Android\\AndroidStudioWork\\bjmz\\librarys\\build\\intermediates\\bundles\\debug\\res\\anim\\slide_in_from_bottom.xml"
     },
     {
-        "merged": "D:\\Android\\AndroidStudioWork\\bjmz\\librarys\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\slide_out_to_bottom.xml",
-        "source": "D:\\Android\\AndroidStudioWork\\bjmz\\librarys\\build\\intermediates\\bundles\\debug\\res\\anim\\slide_out_to_bottom.xml"
+        "merged": "/Users/zhangdongdong/AndroidStudioProjects/BJMZ/librarys/build/intermediates/res/merged/androidTest/debug/anim/slide_out_to_bottom.xml",
+        "source": "/Users/zhangdongdong/AndroidStudioProjects/BJMZ/librarys/build/intermediates/bundles/debug/res/anim/slide_out_to_bottom.xml"
     },
     {
-        "merged": "D:\\Android\\AndroidStudioWork\\bjmz\\librarys\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\slide_in_from_top.xml",
-        "source": "D:\\Android\\AndroidStudioWork\\bjmz\\librarys\\build\\intermediates\\bundles\\debug\\res\\anim\\slide_in_from_top.xml"
+        "merged": "/Users/zhangdongdong/AndroidStudioProjects/BJMZ/librarys/build/intermediates/res/merged/androidTest/debug/anim/slide_out_to_top.xml",
+        "source": "/Users/zhangdongdong/AndroidStudioProjects/BJMZ/librarys/build/intermediates/bundles/debug/res/anim/slide_out_to_top.xml"
     },
     {
-        "merged": "D:\\Android\\AndroidGitWork\\bjmz\\librarys\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\slide_out_to_top.xml",
-        "source": "D:\\Android\\AndroidGitWork\\bjmz\\librarys\\build\\intermediates\\bundles\\debug\\res\\anim\\slide_out_to_top.xml"
+        "merged": "/Users/zhangdongdong/AndroidStudioProjects/BJMZ/librarys/build/intermediates/res/merged/androidTest/debug/anim/slide_in_from_bottom.xml",
+        "source": "/Users/zhangdongdong/AndroidStudioProjects/BJMZ/librarys/build/intermediates/bundles/debug/res/anim/slide_in_from_bottom.xml"
     },
     {
-        "merged": "D:\\Android\\AndroidGitWork\\bjmz\\librarys\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\slide_in_from_bottom.xml",
-        "source": "D:\\Android\\AndroidGitWork\\bjmz\\librarys\\build\\intermediates\\bundles\\debug\\res\\anim\\slide_in_from_bottom.xml"
+        "merged": "/Users/zhangdongdong/AndroidStudioProjects/BJMZ/D:\\Android\\AndroidStudioWork\\bjmz\\librarys\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\slide_out_to_bottom.xml",
+        "source": "/Users/zhangdongdong/AndroidStudioProjects/BJMZ/D:\\Android\\AndroidStudioWork\\bjmz\\librarys\\build\\intermediates\\bundles\\debug\\res\\anim\\slide_out_to_bottom.xml"
     },
     {
-        "merged": "D:\\Android\\AndroidStudioWork\\bjmz\\librarys\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\slide_out_to_top.xml",
-        "source": "D:\\Android\\AndroidStudioWork\\bjmz\\librarys\\build\\intermediates\\bundles\\debug\\res\\anim\\slide_out_to_top.xml"
+        "merged": "/Users/zhangdongdong/AndroidStudioProjects/BJMZ/D:\\Android\\AndroidStudioWork\\bjmz\\librarys\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\slide_in_from_top.xml",
+        "source": "/Users/zhangdongdong/AndroidStudioProjects/BJMZ/D:\\Android\\AndroidStudioWork\\bjmz\\librarys\\build\\intermediates\\bundles\\debug\\res\\anim\\slide_in_from_top.xml"
     },
     {
-        "merged": "D:\\Android\\AndroidGitWork\\bjmz\\librarys\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\slide_out_to_bottom.xml",
-        "source": "D:\\Android\\AndroidGitWork\\bjmz\\librarys\\build\\intermediates\\bundles\\debug\\res\\anim\\slide_out_to_bottom.xml"
+        "merged": "/Users/zhangdongdong/AndroidStudioProjects/BJMZ/D:\\Android\\AndroidGitWork\\bjmz\\librarys\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\slide_out_to_top.xml",
+        "source": "/Users/zhangdongdong/AndroidStudioProjects/BJMZ/D:\\Android\\AndroidGitWork\\bjmz\\librarys\\build\\intermediates\\bundles\\debug\\res\\anim\\slide_out_to_top.xml"
+    },
+    {
+        "merged": "/Users/zhangdongdong/AndroidStudioProjects/BJMZ/D:\\Android\\AndroidGitWork\\bjmz\\librarys\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\slide_in_from_bottom.xml",
+        "source": "/Users/zhangdongdong/AndroidStudioProjects/BJMZ/D:\\Android\\AndroidGitWork\\bjmz\\librarys\\build\\intermediates\\bundles\\debug\\res\\anim\\slide_in_from_bottom.xml"
+    },
+    {
+        "merged": "/Users/zhangdongdong/AndroidStudioProjects/BJMZ/librarys/build/intermediates/res/merged/androidTest/debug/anim/slide_in_from_top.xml",
+        "source": "/Users/zhangdongdong/AndroidStudioProjects/BJMZ/librarys/build/intermediates/bundles/debug/res/anim/slide_in_from_top.xml"
+    },
+    {
+        "merged": "/Users/zhangdongdong/AndroidStudioProjects/BJMZ/D:\\Android\\AndroidStudioWork\\bjmz\\librarys\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\slide_out_to_top.xml",
+        "source": "/Users/zhangdongdong/AndroidStudioProjects/BJMZ/D:\\Android\\AndroidStudioWork\\bjmz\\librarys\\build\\intermediates\\bundles\\debug\\res\\anim\\slide_out_to_top.xml"
+    },
+    {
+        "merged": "/Users/zhangdongdong/AndroidStudioProjects/BJMZ/D:\\Android\\AndroidGitWork\\bjmz\\librarys\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\slide_out_to_bottom.xml",
+        "source": "/Users/zhangdongdong/AndroidStudioProjects/BJMZ/D:\\Android\\AndroidGitWork\\bjmz\\librarys\\build\\intermediates\\bundles\\debug\\res\\anim\\slide_out_to_bottom.xml"
     }
 ]
