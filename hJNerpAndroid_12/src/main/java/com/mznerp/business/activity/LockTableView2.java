@@ -325,7 +325,14 @@ public class LockTableView2 {
             datas.setLayoutParams(linearLayout);
             datas.setTextSize(2, (float) this.mTextViewSize);
             datas.setText((CharSequence) this.mTableColumnDatas.get(scollViewItemContentView));
-            datas.setGravity(17);
+
+            //工作日志设置左对齐
+            if (isChangeOneColumnWidth) {
+                datas.setGravity(Gravity.CENTER_VERTICAL);
+            }else{
+                datas.setGravity(17);
+            }
+
             android.view.ViewGroup.LayoutParams layoutParams = datas.getLayoutParams();
             //列的宽度
             if (isChangeOneColumnWidth){
@@ -389,9 +396,16 @@ public class LockTableView2 {
                 }
 
                 var23.setTextSize(2, (float) this.mTextViewSize);
-                if (!changeRow || var22 != changedRow) {
-                    var23.setGravity(Gravity.CENTER);//居中对齐
+
+                //工作日志设置左对齐
+                if(!isChangeOneColumnWidth) {
+                    if (!changeRow || var22 != changedRow) {
+                        var23.setGravity(Gravity.CENTER);//居中对齐
+                    }
+                }else{
+                    var23.setGravity(Gravity.CENTER_VERTICAL);
                 }
+
                 var23.setText((CharSequence) var19.get(var22));
                 LayoutParams textViewParams = new LayoutParams(-2, -2);
                 textViewParams.setMargins(margin_num, margin_num, margin_num, margin_num);

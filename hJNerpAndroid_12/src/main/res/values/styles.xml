@@ -723,7 +723,7 @@
     <style name="AppToolBarTheme" parent="Theme.AppCompat.Light.DarkActionBar">
 
         <!--状态栏颜色-->
-        <item name="colorPrimaryDark">@color/deepskyblue</item>
+        <!--<item name="colorPrimaryDark">@color/acbar_view_bg</item>-->
 
         <!--去掉系统默认的标题栏-->
         <item name="windowNoTitle">true</item>

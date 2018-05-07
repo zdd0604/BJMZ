@@ -224,8 +224,7 @@ public class LoginActivity extends ActionBarWidgetActivity {
                         /**
                          * 进行验证看时间是否过期
                          */
-                        waitDialogRectangle.show();
-                        waitDialogRectangle.setText("正在验证...");
+
 //                        regist();
                         handlLogin();
                         type = 1;
@@ -543,73 +542,6 @@ public class LoginActivity extends ActionBarWidgetActivity {
                 });
     }
 
-//    class RegisterResponseHandler extends HttpClientManager.HttpResponseHandler {
-//        @Override
-//        public void onResponse(HttpResponse resp) {
-//            try {
-//                // eRegPhone));
-//                // parameters.add(new BasicNameValuePair("valiadId", eRegCode)
-//                dialogCancel();
-//                String json = HttpClientManager.toStringContent(resp);
-//                Gson gson = new Gson();
-//                BaseData data = gson.fromJson(json, BaseData.class);
-//                if (data.isSuccess()) {
-//                    /**
-//                     * 检查当前时间是什么状态 正常 警告 停止
-//                     */
-//                    List<Map<String, Object>> dataList = data.getDataList();
-//                    // 获取停止使用时间
-//                    String dateStopUse = dataList.get(0).get("dateStopUse")
-//                            .toString();
-//                    String dateWarning = dataList.get(0).get("dateWarning")
-//                            .toString();
-//                    long stopReg = DateUtil.StrToDate(dateStopUse).getTime();
-//                    long warn = DateUtil.StrToDate(dateWarning).getTime();
-//                    long current = new Date().getTime();
-//                    if (current > stopReg) {
-//                        showToast("当前软件已过期，请联系软件提供商！");
-//                        if (type == 0) {
-//                            handlInit();
-//                        }
-//                    } else {
-//                        if (current > warn) {
-//                            showToast("当前软件即将过期，请及时联系软件提供商！");
-//                        }
-//                        // 正常登陆
-//
-//                        if (type == 0) {
-//                            // 自动登陆
-//                            handlAutoLogin();
-//                        } else {
-//                            handlLogin();
-//                        }
-//                    }
-//
-//                } else {
-//                    if (type == 0) {
-//                        handlInit();
-//                    }
-//                    showToast(data.message);
-//                }
-//            } catch (IOException e) {
-//                onException(e);
-//                if (type == 0) {
-//                    handlInit();
-//                }
-//            }
-//        }
-//
-//
-//        @Override
-//        public void onException(Exception e) {
-//            // 连接服务器失败
-////			showToast("服务器没有反馈");
-////			dialogCancel();
-//            if (type == 0) {
-//                handlInit();
-//            }
-//        }
-//    }
 
     private void handlInit() {
         mHandler.post(new Runnable() {
@@ -649,16 +581,6 @@ public class LoginActivity extends ActionBarWidgetActivity {
         });
 
     }
-
-    public void dialogCancel() {
-        mHandler.post(new Runnable() {
-            @Override
-            public void run() {
-                waitDialogRectangle.cancel();
-            }
-        });
-    }
-
 
     @Override
     public void saveLoginConfig(LoginConfig loginConfig) {

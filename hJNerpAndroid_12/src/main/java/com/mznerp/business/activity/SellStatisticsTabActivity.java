@@ -171,7 +171,7 @@ public class SellStatisticsTabActivity extends ActivityBaseHeader implements
 
         //全年汇总
         ArrayList<String> yearCount = new ArrayList<>();
-        yearCount.add("全年汇总");
+        yearCount.add("汇总");
         yearCount.add(getList(dec_amtList));
         yearCount.add(getList(dec_lastamtList));
         yearCount.add(countScale(getList(dec_amtList), getList(dec_lastamtList)));

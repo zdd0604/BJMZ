@@ -50,7 +50,6 @@ import static com.mznerp.common.Constant.buss_value;
 import static com.mznerp.common.Constant.datas;
 import static com.mznerp.common.Constant.dsaordbaseJsons_new;
 import static com.mznerp.common.Constant.user_myid;
-
 public class OrderFinding extends ActionBarWidgetActivity implements View.OnClickListener,
         ActionBarWidgetActivity.NsyncDataConnector {
     private List<Ctlm1345> myauthuser = new ArrayList<>();
@@ -278,6 +277,72 @@ public class OrderFinding extends ActionBarWidgetActivity implements View.OnClic
         }
     }
 
+    @Override
+    public void processJsonValue(String value) {
+        try {
+            value = value.trim();
+            if (value.equalsIgnoreCase("[]") || TextUtils.isEmpty(value)) {
+                waitDialog.dismiss();
+                mHandler.sendEmptyMessage(2);
+                return;
+            }
+            JSONArray jsonArray = new JSONArray(value);
+            //DsaordQueryJsonAccoutage
+            switch (Constant.tab_type) {
+
+                case 0:
+                case 3:
+                    dsaordqueryJsons.clear();
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        String temp = jsonArray.getString(i);
+                        Matcher m = p.matcher(temp);
+                        String subValue = temp.substring(temp.indexOf("{"), temp.indexOf("}") + 1);
+                        Gson gson = new Gson();
+                        DsaordQueryJson dsaordbaseJson = gson.fromJson(subValue, DsaordQueryJson.class);
+                        dsaordqueryJsons.add(dsaordbaseJson);
+                    }
+                    break;
+                case 2:
+                    dsaordbaseJsonsD.clear();
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        String temp = jsonArray.getString(i);
+                        Matcher m = p.matcher(temp);
+                        String subValue = temp.substring(temp.indexOf("{"), temp.indexOf("}") + 1);
+                        Gson gson = new Gson();
+                        DsaordQueryJsonD dsaordbaseJson = gson.fromJson(subValue, DsaordQueryJsonD.class);
+                        dsaordbaseJsonsD.add(dsaordbaseJson);
+                    }
+                    break;
+                case 1:
+                    dsaordbaseJsonsAccount.clear();
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        String temp = jsonArray.getString(i);
+                        Matcher m = p.matcher(temp);
+                        String subValue = temp.substring(temp.indexOf("{"), temp.indexOf("}") + 1);
+                        Gson gson = new Gson();
+                        DsaordQueryJsonAccoutage dsaordbaseJson = gson.fromJson(subValue, DsaordQueryJsonAccoutage.class);
+                        dsaordbaseJsonsAccount.add(dsaordbaseJson);
+                    }
+                    break;
+                case 4:
+                    dsaordbaseJsonsAccount2.clear();
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        String temp = jsonArray.getString(i);
+                        Matcher m = p.matcher(temp);
+                        String subValue = temp.substring(temp.indexOf("{"), temp.indexOf("}") + 1);
+                        Gson gson = new Gson();
+                        DsaordQueryJsonAccoutage2 dsaordbaseJson = gson.fromJson(subValue, DsaordQueryJsonAccoutage2.class);
+                        dsaordbaseJsonsAccount2.add(dsaordbaseJson);
+                    }
+                    break;
+            }
+
+            mHandler.sendEmptyMessage(3);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     //提交查询数据
     private void submit() {
@@ -326,10 +391,6 @@ public class OrderFinding extends ActionBarWidgetActivity implements View.OnClic
                     condition = condition + " and name_column>" + all_goneprice + "";
                 }
             }
-
-
-            LogShow("orderfinding:"+condition);
-
             param.addKeyValue(Constant.BM_ACTION_TYPE, "MobileSyncDataDownload")
                     .addKeyValue("id_table", StringUtils.join(tab_name))
                     .addKeyValue("condition", condition);
@@ -343,82 +404,6 @@ public class OrderFinding extends ActionBarWidgetActivity implements View.OnClic
         }
 
     }
-
-    /**
-     * 后台返回数据结果处理
-     *
-     * @param value
-     */
-    @Override
-    public void processJsonValue(String value) {
-        try {
-            value = value.trim();
-            if (value.equalsIgnoreCase("[]") || TextUtils.isEmpty(value)) {
-                waitDialog.dismiss();
-                mHandler.sendEmptyMessage(2);
-                return;
-            }
-            JSONArray jsonArray = new JSONArray(value);
-            //DsaordQueryJsonAccoutage
-            switch (Constant.tab_type) {
-
-                case 0:
-                    break;
-                case 1:
-                    dsaordbaseJsonsAccount.clear();
-                    for (int i = 0; i < jsonArray.length(); i++) {
-                        String temp = jsonArray.getString(i);
-                        Matcher m = p.matcher(temp);
-                        String subValue = temp.substring(temp.indexOf("{"), temp.indexOf("}") + 1);
-                        Gson gson = new Gson();
-                        DsaordQueryJsonAccoutage dsaordbaseJson = gson.fromJson(subValue, DsaordQueryJsonAccoutage.class);
-                        dsaordbaseJsonsAccount.add(dsaordbaseJson);
-                    }
-                    break;
-
-                case 2:
-                    dsaordbaseJsonsD.clear();
-                    for (int i = 0; i < jsonArray.length(); i++) {
-                        String temp = jsonArray.getString(i);
-                        Matcher m = p.matcher(temp);
-                        String subValue = temp.substring(temp.indexOf("{"), temp.indexOf("}") + 1);
-                        Gson gson = new Gson();
-                        DsaordQueryJsonD dsaordbaseJson = gson.fromJson(subValue, DsaordQueryJsonD.class);
-                        dsaordbaseJsonsD.add(dsaordbaseJson);
-                    }
-                    break;
-
-                case 3:
-                    dsaordqueryJsons.clear();
-                    for (int i = 0; i < jsonArray.length(); i++) {
-                        String temp = jsonArray.getString(i);
-                        Matcher m = p.matcher(temp);
-                        String subValue = temp.substring(temp.indexOf("{"), temp.indexOf("}") + 1);
-                        Gson gson = new Gson();
-                        DsaordQueryJson dsaordbaseJson = gson.fromJson(subValue, DsaordQueryJson.class);
-                        dsaordqueryJsons.add(dsaordbaseJson);
-                    }
-                    break;
-
-                case 4:
-                    dsaordbaseJsonsAccount2.clear();
-                    for (int i = 0; i < jsonArray.length(); i++) {
-                        String temp = jsonArray.getString(i);
-                        Matcher m = p.matcher(temp);
-                        String subValue = temp.substring(temp.indexOf("{"), temp.indexOf("}") + 1);
-                        Gson gson = new Gson();
-                        DsaordQueryJsonAccoutage2 dsaordbaseJson = gson.fromJson(subValue, DsaordQueryJsonAccoutage2.class);
-                        dsaordbaseJsonsAccount2.add(dsaordbaseJson);
-                    }
-                    break;
-            }
-
-            mHandler.sendEmptyMessage(3);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-    }
-
 
     //点击事件
     @Override
@@ -523,6 +508,9 @@ public class OrderFinding extends ActionBarWidgetActivity implements View.OnClic
                 case 1:
                     setTxt();
                     break;
+                case 5:
+                    object_person.setText(buss_value);
+                    break;
                 case 2:
                     waitDialog.dismiss();
                     showFailToast("结果为空!");
@@ -620,22 +608,17 @@ public class OrderFinding extends ActionBarWidgetActivity implements View.OnClic
                     switch (Constant.tab_type) {
 
                         case 0:
-                            break;
-
-                        case 1:
-                            circleValues = dsaordbaseJsonsAccount.size();
-                            break;
-
-                        case 2:
-                            Collections.sort(dsaordbaseJsonsD);
-                            circleValues = dsaordbaseJsonsD.size();
-                            break;
-
                         case 3:
                             Collections.sort(dsaordqueryJsons);
                             circleValues = dsaordqueryJsons.size();
                             break;
-
+                        case 1:
+                            circleValues = dsaordbaseJsonsAccount.size();
+                            break;
+                        case 2:
+                            Collections.sort(dsaordbaseJsonsD);
+                            circleValues = dsaordbaseJsonsD.size();
+                            break;
                         case 4:
                             circleValues = dsaordbaseJsonsAccount2.size();
                             break;
@@ -643,146 +626,161 @@ public class OrderFinding extends ActionBarWidgetActivity implements View.OnClic
                     mTableDatas.add(mfristData);
                     ArrayList<String> contents = new ArrayList<String>();
                     Log.d("开始绘制表格。。。");
+                    try {
+                        for (int i = 0; i < circleValues; i++) {
+                            ArrayList<String> mRowDatas = new ArrayList<String>();
+                            switch (Constant.tab_type) {
+                                case 0:
+                                    DsaordQueryJson dsaordbaseJson = dsaordqueryJsons.get(i);
+//                                    long date_opr = dateFormat.parse(dsaordbaseJson.getDate_opr()).getTime();
+//                                    if (format.parse(time_begin).getTime() <= date_opr && date_opr <= format.parse(time_end).getTime()) {
+                                    if (!contents.contains(dsaordbaseJson.getDsaord_no() + dsaordbaseJson.getLine_no())) {
+                                        contents.add(dsaordbaseJson.getDsaord_no() + dsaordbaseJson.getLine_no());
 
-                    for (int i = 0; i < circleValues; i++) {
-                        ArrayList<String> mRowDatas = new ArrayList<String>();
-                        switch (Constant.tab_type) {
-                            case 0:
-                                DsaordQueryJson dsaordbaseJson = dsaordqueryJsons.get(i);
-                                if (!contents.contains(dsaordbaseJson.getDsaord_no() + dsaordbaseJson.getLine_no())) {
-                                    contents.add(dsaordbaseJson.getDsaord_no() + dsaordbaseJson.getLine_no());
+                                        mRowDatas.add(dsaordbaseJson.getName_corr());
+                                        mRowDatas.add(dsaordbaseJson.getName_terminal());
+                                        mRowDatas.add(dsaordbaseJson.getName_seller());
+                                        mRowDatas.add(dsaordbaseJson.getDate_opr());
+                                        mRowDatas.add(dsaordbaseJson.getId_item());
+                                        mRowDatas.add(dsaordbaseJson.getName_item());
+                                        mRowDatas.add(dsaordbaseJson.getVar_ispec().trim());
+                                        mRowDatas.add(dsaordbaseJson.getVar_pattern().trim());
+                                        mRowDatas.add(dsaordbaseJson.getVar_chkparm().trim());
+                                        mRowDatas.add(formatNum.format(Double.valueOf(dsaordbaseJson.getDec_price())));
+                                        mRowDatas.add(formatNo.format(Double.valueOf(dsaordbaseJson.getDec_ordqty())));
+                                        double dec_amt = Double.valueOf(dsaordbaseJson.getDec_ordamt());
+                                        allPrice += dec_amt;
+                                        mRowDatas.add(formatNum.format(dec_amt));
+                                        mRowDatas.add(dsaordbaseJson.getVar_epsno().trim());
+                                        mRowDatas.add(dsaordbaseJson.getInv_epsno().trim());
+                                        mRowDatas.add(formatNum.format(Double.valueOf(TextUtils.isEmpty(dsaordbaseJson.getDec_setamt().trim()) ? "0.00" : dsaordbaseJson.getDec_setamt())));
+                                        mRowDatas.add(dsaordbaseJson.getDsaord_no());
+                                        mRowDatas.add(dsaordbaseJson.getLine_no());
+                                        mTableDatas.add(mRowDatas);
 
-                                    mRowDatas.add(dsaordbaseJson.getName_corr());
-                                    mRowDatas.add(dsaordbaseJson.getName_terminal());
-                                    mRowDatas.add(dsaordbaseJson.getName_seller());
-                                    mRowDatas.add(dsaordbaseJson.getDate_opr());
-                                    mRowDatas.add(dsaordbaseJson.getId_item());
-                                    mRowDatas.add(dsaordbaseJson.getName_item());
-                                    mRowDatas.add(dsaordbaseJson.getVar_ispec().trim());
-                                    mRowDatas.add(dsaordbaseJson.getVar_pattern().trim());
-                                    mRowDatas.add(dsaordbaseJson.getVar_chkparm().trim());
-                                    mRowDatas.add(formatNum.format(Double.valueOf(dsaordbaseJson.getDec_price())));
-                                    mRowDatas.add(formatNo.format(Double.valueOf(dsaordbaseJson.getDec_ordqty())));
-                                    double dec_amt = Double.valueOf(dsaordbaseJson.getDec_ordamt());
-                                    allPrice += dec_amt;
-                                    mRowDatas.add(formatNum.format(dec_amt));
-                                    mRowDatas.add(dsaordbaseJson.getVar_epsno().trim());
-                                    mRowDatas.add(dsaordbaseJson.getInv_epsno().trim());
-                                    mRowDatas.add(formatNum.format(Double.valueOf(TextUtils.isEmpty(dsaordbaseJson.getDec_setamt().trim()) ? "0.00" : dsaordbaseJson.getDec_setamt())));
-                                    mRowDatas.add(dsaordbaseJson.getDsaord_no());
-                                    mRowDatas.add(dsaordbaseJson.getLine_no());
+                                    }
+//                                    } else {
+//                                        continue;
+//                                    }
+                                    break;
+                                case 1:
+                                    DsaordQueryJsonAccoutage dsaordQueryJsonAccoutage = dsaordbaseJsonsAccount.get(i);
+                                    if (!contents.contains(dsaordQueryJsonAccoutage.getName_corr() + dsaordQueryJsonAccoutage.getName_seller() + dsaordQueryJsonAccoutage.getName_area() + dsaordQueryJsonAccoutage.getName_zone())) {
+                                        contents.add(dsaordQueryJsonAccoutage.getName_corr() + dsaordQueryJsonAccoutage.getName_seller() + dsaordQueryJsonAccoutage.getName_area() + dsaordQueryJsonAccoutage.getName_zone());
+
+                                        mRowDatas.add(dsaordQueryJsonAccoutage.getName_corr());
+                                        mRowDatas.add(dsaordQueryJsonAccoutage.getName_seller());
+                                        mRowDatas.add(dsaordQueryJsonAccoutage.getName_area());
+                                        mRowDatas.add(dsaordQueryJsonAccoutage.getName_zone());
+                                        double _$130 = Double.valueOf(TextUtils.isEmpty(dsaordQueryJsonAccoutage.get_$130天().trim()) ? "0.00" : dsaordQueryJsonAccoutage.get_$130天());
+                                        double _$3060 = Double.valueOf(TextUtils.isEmpty(dsaordQueryJsonAccoutage.get_$3060天().trim()) ? "0.00" : dsaordQueryJsonAccoutage.get_$3060天());
+                                        double _$6090 = Double.valueOf(TextUtils.isEmpty(dsaordQueryJsonAccoutage.get_$6090天().trim()) ? "0.00" : dsaordQueryJsonAccoutage.get_$6090天());
+                                        double _$90180 = Double.valueOf(TextUtils.isEmpty(dsaordQueryJsonAccoutage.get_$90180天().trim()) ? "0.00" : dsaordQueryJsonAccoutage.get_$90180天());
+                                        double _$180270 = Double.valueOf(TextUtils.isEmpty(dsaordQueryJsonAccoutage.get_$180270天().trim()) ? "0.00" : dsaordQueryJsonAccoutage.get_$180270天());
+                                        double _$270365 = Double.valueOf(TextUtils.isEmpty(dsaordQueryJsonAccoutage.get_$270365天().trim()) ? "0.00" : dsaordQueryJsonAccoutage.get_$270365天());
+                                        double _$365730 = Double.valueOf(TextUtils.isEmpty(dsaordQueryJsonAccoutage.get_$365730天().trim()) ? "0.00" : dsaordQueryJsonAccoutage.get_$365730天());
+                                        double _$7301095 = Double.valueOf(TextUtils.isEmpty(dsaordQueryJsonAccoutage.get_$7301095天().trim()) ? "0.00" : dsaordQueryJsonAccoutage.get_$7301095天());
+                                        double _$1095up = Double.valueOf(TextUtils.isEmpty(dsaordQueryJsonAccoutage.get_$1095天以上().trim()) ? "0.00" : dsaordQueryJsonAccoutage.get_$1095天以上());
+                                        double all_acc = _$130 + _$3060 + _$6090 + _$90180 + _$180270 + _$270365 + _$365730 + _$7301095 + _$1095up;
+                                        mRowDatas.add(formatNum.format(_$130));
+                                        mRowDatas.add(formatNum.format(_$3060));
+                                        mRowDatas.add(formatNum.format(_$6090));
+                                        mRowDatas.add(formatNum.format(_$90180));
+                                        mRowDatas.add(formatNum.format(_$180270));
+                                        mRowDatas.add(formatNum.format(_$270365));
+                                        mRowDatas.add(formatNum.format(_$365730));
+                                        mRowDatas.add(formatNum.format(_$7301095));
+                                        mRowDatas.add(formatNum.format(_$1095up));
+                                        mRowDatas.add(formatNum.format(all_acc));
+                                        allPrice += all_acc;
+                                        mTableDatas.add(mRowDatas);
+                                    }
+
+                                    break;
+                                case 2:
+                                    //日志查询
+                                    DsaordQueryJsonD dsaordQueryJsonD = dsaordbaseJsonsD.get(i);
+                                    mRowDatas.add(dsaordQueryJsonD.getName_wproj());
+                                    mRowDatas.add(dsaordQueryJsonD.getName_dept());
+                                    mRowDatas.add(dsaordQueryJsonD.getName_user());
+                                    mRowDatas.add(dsaordQueryJsonD.getDate_task());
+                                    mRowDatas.add(dsaordQueryJsonD.getName_type());
+                                    mRowDatas.add(dsaordQueryJsonD.getVar_contact());
+                                    mRowDatas.add(dsaordQueryJsonD.getVar_tel());
+                                    mRowDatas.add(dsaordQueryJsonD.getId_corr());
+                                    mRowDatas.add(dsaordQueryJsonD.getVar_contactduty());
+                                    mRowDatas.add(dsaordQueryJsonD.getVar_wtitle());
+                                    mRowDatas.add(dsaordQueryJsonD.getVar_remark());
                                     mTableDatas.add(mRowDatas);
+                                    break;
+                                case 3:
+                                    DsaordQueryJson dsaordbaseJson3 = dsaordqueryJsons.get(i);
+//                                    long date_opr2 = dateFormat.parse(dsaordbaseJson.getDate_opr()).getTime();
+//                                    if (format.parse(time_begin).getTime() <= date_opr2 && date_opr2 <= format.parse(time_end).getTime()) {
+                                    if (!contents.contains(dsaordbaseJson3.getDsaord_no() + dsaordbaseJson3.getLine_no())) {
+                                        contents.add(dsaordbaseJson3.getDsaord_no() + dsaordbaseJson3.getLine_no());
+                                        mRowDatas.add(dsaordbaseJson3.getName_corr());
+                                        mRowDatas.add(dsaordbaseJson3.getName_terminal());
+                                        mRowDatas.add(dsaordbaseJson3.getName_seller());
+                                        mRowDatas.add(dsaordbaseJson3.getDate_opr());
+                                        mRowDatas.add(dsaordbaseJson3.getName_item());
+                                        mRowDatas.add(dsaordbaseJson3.getName_samth());
+                                        mRowDatas.add(dsaordbaseJson3.getVar_ispec().trim());
+                                        mRowDatas.add(dsaordbaseJson3.getVar_pattern().trim());
+                                        mRowDatas.add(formatNo.format(Double.valueOf(dsaordbaseJson3.getDec_ordqty())));
+                                        mRowDatas.add(formatNum.format(Double.valueOf(dsaordbaseJson3.getDec_price())));
+                                        double dec_amt1 = Double.valueOf(dsaordbaseJson3.getDec_ordamt());
+                                        allPrice += dec_amt1;
+                                        mRowDatas.add(formatNum.format(dec_amt1));
+                                        mTableDatas.add(mRowDatas);
+                                    }
+//                                    } else {
+//                                        continue;
+//                                    }
+                                    break;
+                                case 4:
+                                    DsaordQueryJsonAccoutage2 dsaordQueryJsonAccoutage2 = dsaordbaseJsonsAccount2.get(i);
+                                    if (!contents.contains(dsaordQueryJsonAccoutage2.getName_corr() + dsaordQueryJsonAccoutage2.getName_seller() + dsaordQueryJsonAccoutage2.get总欠款额().trim())) {
+                                        contents.add(dsaordQueryJsonAccoutage2.getName_corr() + dsaordQueryJsonAccoutage2.getName_seller() + dsaordQueryJsonAccoutage2.get总欠款额().trim());
 
-                                }
-                                break;
-                            case 1:
-                                DsaordQueryJsonAccoutage dsaordQueryJsonAccoutage = dsaordbaseJsonsAccount.get(i);
-                                if (!contents.contains(dsaordQueryJsonAccoutage.getName_corr() + dsaordQueryJsonAccoutage.getName_seller() + dsaordQueryJsonAccoutage.getName_area() + dsaordQueryJsonAccoutage.getName_zone())) {
-                                    contents.add(dsaordQueryJsonAccoutage.getName_corr() + dsaordQueryJsonAccoutage.getName_seller() + dsaordQueryJsonAccoutage.getName_area() + dsaordQueryJsonAccoutage.getName_zone());
+                                        mRowDatas.add(dsaordQueryJsonAccoutage2.getName_corr());
+//                                    mRowDatas.add(dsaordbaseJson.getId_corr());
+                                        mRowDatas.add(dsaordQueryJsonAccoutage2.getName_seller());
+                                        double _$180365 = Double.valueOf(TextUtils.isEmpty(dsaordQueryJsonAccoutage2.get_$180365天().trim()) ? "0.00" : dsaordQueryJsonAccoutage2.get_$180365天());
+                                        double _$365up = Double.valueOf(TextUtils.isEmpty(dsaordQueryJsonAccoutage2.get_$365天以上().trim()) ? "0.00" : dsaordQueryJsonAccoutage2.get_$365天以上());
+                                        double all_acc2 = Double.valueOf(TextUtils.isEmpty(dsaordQueryJsonAccoutage2.get总欠款额().trim()) ? "0.00" : dsaordQueryJsonAccoutage2.get总欠款额());
+                                        mRowDatas.add(formatNum.format(_$180365));
+                                        mRowDatas.add(formatNum.format(_$365up));
+                                        mRowDatas.add(formatNum.format(all_acc2));
+                                        firstPrice += _$180365;
+                                        secondPrice += _$365up;
+                                        mTableDatas.add(mRowDatas);
+                                    }
+                                    break;
+                            }
 
-                                    mRowDatas.add(dsaordQueryJsonAccoutage.getName_corr());
-                                    mRowDatas.add(dsaordQueryJsonAccoutage.getName_seller());
-                                    mRowDatas.add(dsaordQueryJsonAccoutage.getName_area());
-                                    mRowDatas.add(dsaordQueryJsonAccoutage.getName_zone());
-                                    double _$130 = Double.valueOf(TextUtils.isEmpty(dsaordQueryJsonAccoutage.get_$130天().trim()) ? "0.00" : dsaordQueryJsonAccoutage.get_$130天());
-                                    double _$3060 = Double.valueOf(TextUtils.isEmpty(dsaordQueryJsonAccoutage.get_$3060天().trim()) ? "0.00" : dsaordQueryJsonAccoutage.get_$3060天());
-                                    double _$6090 = Double.valueOf(TextUtils.isEmpty(dsaordQueryJsonAccoutage.get_$6090天().trim()) ? "0.00" : dsaordQueryJsonAccoutage.get_$6090天());
-                                    double _$90180 = Double.valueOf(TextUtils.isEmpty(dsaordQueryJsonAccoutage.get_$90180天().trim()) ? "0.00" : dsaordQueryJsonAccoutage.get_$90180天());
-                                    double _$180270 = Double.valueOf(TextUtils.isEmpty(dsaordQueryJsonAccoutage.get_$180270天().trim()) ? "0.00" : dsaordQueryJsonAccoutage.get_$180270天());
-                                    double _$270365 = Double.valueOf(TextUtils.isEmpty(dsaordQueryJsonAccoutage.get_$270365天().trim()) ? "0.00" : dsaordQueryJsonAccoutage.get_$270365天());
-                                    double _$365730 = Double.valueOf(TextUtils.isEmpty(dsaordQueryJsonAccoutage.get_$365730天().trim()) ? "0.00" : dsaordQueryJsonAccoutage.get_$365730天());
-                                    double _$7301095 = Double.valueOf(TextUtils.isEmpty(dsaordQueryJsonAccoutage.get_$7301095天().trim()) ? "0.00" : dsaordQueryJsonAccoutage.get_$7301095天());
-                                    double _$1095up = Double.valueOf(TextUtils.isEmpty(dsaordQueryJsonAccoutage.get_$1095天以上().trim()) ? "0.00" : dsaordQueryJsonAccoutage.get_$1095天以上());
-                                    double all_acc = _$130 + _$3060 + _$6090 + _$90180 + _$180270 + _$270365 + _$365730 + _$7301095 + _$1095up;
-                                    mRowDatas.add(formatNum.format(_$130));
-                                    mRowDatas.add(formatNum.format(_$3060));
-                                    mRowDatas.add(formatNum.format(_$6090));
-                                    mRowDatas.add(formatNum.format(_$90180));
-                                    mRowDatas.add(formatNum.format(_$180270));
-                                    mRowDatas.add(formatNum.format(_$270365));
-                                    mRowDatas.add(formatNum.format(_$365730));
-                                    mRowDatas.add(formatNum.format(_$7301095));
-                                    mRowDatas.add(formatNum.format(_$1095up));
-                                    mRowDatas.add(formatNum.format(all_acc));
-                                    allPrice += all_acc;
-                                    mTableDatas.add(mRowDatas);
-                                }
+//                            mTableDatas.add(mRowDatas);
 
-                                break;
-                            case 2:
-                                //日志查询
-                                DsaordQueryJsonD dsaordQueryJsonD = dsaordbaseJsonsD.get(i);
-                                mRowDatas.add(dsaordQueryJsonD.getName_wproj());
-                                mRowDatas.add(dsaordQueryJsonD.getName_dept());
-                                mRowDatas.add(dsaordQueryJsonD.getName_user());
-                                mRowDatas.add(dsaordQueryJsonD.getDate_task());
-                                mRowDatas.add(dsaordQueryJsonD.getName_type());
-                                mRowDatas.add(dsaordQueryJsonD.getVar_contact());
-                                mRowDatas.add(dsaordQueryJsonD.getVar_tel());
-                                mRowDatas.add(dsaordQueryJsonD.getId_corr());
-                                mRowDatas.add(dsaordQueryJsonD.getVar_contactduty());
-                                mRowDatas.add(dsaordQueryJsonD.getVar_wtitle());
-                                mRowDatas.add(dsaordQueryJsonD.getVar_remark());
-                                mTableDatas.add(mRowDatas);
-                                break;
-                            case 3:
-                                DsaordQueryJson dsaordbaseJson3 = dsaordqueryJsons.get(i);
-                                if (!contents.contains(dsaordbaseJson3.getDsaord_no() + dsaordbaseJson3.getLine_no())) {
-                                    contents.add(dsaordbaseJson3.getDsaord_no() + dsaordbaseJson3.getLine_no());
-                                    mRowDatas.add(dsaordbaseJson3.getName_corr());
-                                    mRowDatas.add(dsaordbaseJson3.getName_terminal());
-                                    mRowDatas.add(dsaordbaseJson3.getName_seller());
-                                    mRowDatas.add(dsaordbaseJson3.getDate_opr());
-                                    mRowDatas.add(dsaordbaseJson3.getName_item());
-                                    mRowDatas.add(dsaordbaseJson3.getName_samth());
-                                    mRowDatas.add(dsaordbaseJson3.getVar_ispec().trim());
-                                    mRowDatas.add(dsaordbaseJson3.getVar_pattern().trim());
-                                    mRowDatas.add(formatNo.format(Double.valueOf(dsaordbaseJson3.getDec_ordqty())));
-                                    mRowDatas.add(formatNum.format(Double.valueOf(dsaordbaseJson3.getDec_price())));
-                                    double dec_amt1 = Double.valueOf(dsaordbaseJson3.getDec_ordamt());
-                                    allPrice += dec_amt1;
-                                    mRowDatas.add(formatNum.format(dec_amt1));
-                                    mTableDatas.add(mRowDatas);
-                                }
-                                break;
-                            case 4:
-                                DsaordQueryJsonAccoutage2 dsaordQueryJsonAccoutage2 = dsaordbaseJsonsAccount2.get(i);
-                                if (!contents.contains(dsaordQueryJsonAccoutage2.getName_corr() + dsaordQueryJsonAccoutage2.getName_seller() + dsaordQueryJsonAccoutage2.get总欠款额().trim())) {
-                                    contents.add(dsaordQueryJsonAccoutage2.getName_corr() + dsaordQueryJsonAccoutage2.getName_seller() + dsaordQueryJsonAccoutage2.get总欠款额().trim());
-
-                                    mRowDatas.add(dsaordQueryJsonAccoutage2.getName_corr());
-                                    mRowDatas.add(dsaordQueryJsonAccoutage2.getName_seller());
-                                    double _$180365 = Double.valueOf(TextUtils.isEmpty(dsaordQueryJsonAccoutage2.get_$180365天().trim()) ? "0.00" : dsaordQueryJsonAccoutage2.get_$180365天());
-                                    double _$365up = Double.valueOf(TextUtils.isEmpty(dsaordQueryJsonAccoutage2.get_$365天以上().trim()) ? "0.00" : dsaordQueryJsonAccoutage2.get_$365天以上());
-                                    double all_acc2 = Double.valueOf(TextUtils.isEmpty(dsaordQueryJsonAccoutage2.get总欠款额().trim()) ? "0.00" : dsaordQueryJsonAccoutage2.get总欠款额());
-                                    mRowDatas.add(formatNum.format(_$180365));
-                                    mRowDatas.add(formatNum.format(_$365up));
-                                    mRowDatas.add(formatNum.format(all_acc2));
-                                    firstPrice += _$180365;
-                                    secondPrice += _$365up;
-                                    mTableDatas.add(mRowDatas);
-                                }
-                                break;
                         }
+                        //计算条目数
+//                        ToastUtil.ShowShort(getApplicationContext(), String.valueOf(mTableDatas.size() - 1));
+                        if (mTableDatas.size() == 1) {//如果只有表头
+                            mHandler.sendEmptyMessage(2);
+
+                        } else {
+                            mHandler.sendEmptyMessage(0);
+
+                        }
+                        break;
+
+                    } catch (Exception e) {
 
                     }
-                    //计算条目数
-//                  ToastUtil.ShowShort(getApplicationContext(), String.valueOf(mTableDatas.size() - 1));
-                    if (mTableDatas.size() == 1) {//如果只有表头
-                        mHandler.sendEmptyMessage(2);
-                    } else {
-                        mHandler.sendEmptyMessage(0);
-                    }
-                    break;
-
                 case 4:
                     dsaordqueryJsons.clear();
                     dsaordbaseJsonsAccount.clear();
                     dsaordbaseJsonsAccount2.clear();
                     dsaordbaseJsonsD.clear();
-                    break;
-                case 5:
-                    object_person.setText(buss_value);
                     break;
             }
         }

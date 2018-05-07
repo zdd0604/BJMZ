@@ -9,8 +9,8 @@ android {
         applicationId "com.mznerp"
         minSdkVersion 16
         targetSdkVersion 24
-        versionCode 74
-        versionName "3.2.74"
+        versionCode 75
+        versionName "3.2.75"
         ndk {
             moduleName "luajava"
         }
