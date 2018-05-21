@@ -1,4 +1,4 @@
-package com.mznerp.business.activity;
+package com.mznerp.model;
 
 import com.google.gson.annotations.SerializedName;
 

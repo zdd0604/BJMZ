@@ -6,7 +6,7 @@ import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.view.View;
 
-import com.mznerp.business.activity.BusinessActivityFragment;
+import com.mznerp.common.BusinessActivityFragment;
 import com.mznerp.common.EapApplication;
 import com.mznerp.dao.BusinessBaseDao;
 import com.mznerp.model.BusinessData;

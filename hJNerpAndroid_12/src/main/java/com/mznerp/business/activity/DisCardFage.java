@@ -50,6 +50,7 @@ import com.baidu.mapapi.map.OverlayOptions;
 import com.baidu.mapapi.model.LatLng;
 import com.google.gson.Gson;
 import com.mznerp.activity.SetActivity;
+import com.mznerp.model.MapInfo;
 import com.mznerp.business.businessutils.MyOrientationListener;
 import com.mznerp.common.ActivitySupport;
 import com.mznerp.common.Constant;

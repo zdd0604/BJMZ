@@ -28,6 +28,9 @@ import static com.mznerp.common.Constant.buss_key;
 import static com.mznerp.common.Constant.buss_value;
 import static com.mznerp.common.Constant.datas;
 
+/**
+ * 搜索
+ */
 public class BusinessSearchOneLine extends ActionBarWidgetActivity implements View.OnClickListener {
     @BindView(R.id.action_center_tv)
     TextView actionCenterTv;

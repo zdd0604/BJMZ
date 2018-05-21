@@ -33,6 +33,9 @@ import java.util.List;
 import okhttp3.Call;
 import okhttp3.Response;
 
+/**
+ * 绩效列表界面（存有保存、驳回的数据）
+ */
 public class BusinessBillsActivity extends ActivitySupport implements View.OnClickListener {
     protected WaitDialogRectangle waitDialogRectangle;
     private PullToRefreshListView pull_refresh_bills;

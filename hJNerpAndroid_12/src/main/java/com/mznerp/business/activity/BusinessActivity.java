@@ -22,6 +22,7 @@ import com.mznerp.business.view.WidgetClass;
 import com.mznerp.business.view.WidgetName;
 import com.mznerp.business.view.uploadDialog;
 import com.mznerp.common.ActivitySupport;
+import com.mznerp.common.BusinessActivityFragment;
 import com.mznerp.common.Constant;
 import com.mznerp.common.EapApplication;
 import com.mznerp.dao.OtherBaseDao;
@@ -51,6 +52,9 @@ import java.util.Map;
 
 import javax.xml.parsers.ParserConfigurationException;
 
+/**
+ * 地图拜访界面与列表界面切换界面
+ */
 public class BusinessActivity extends ActivitySupport implements
 		View.OnClickListener {
 	private static String TAG = "BusinessActivity";

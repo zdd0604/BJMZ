@@ -1,4 +1,4 @@
-package com.mznerp.business.activity;
+package com.mznerp.common;
 
 import android.app.Activity;
 import android.content.Context;
@@ -23,12 +23,16 @@ import android.widget.TextView;
 
 import com.mznerp.business.BusinessTask;
 import com.mznerp.business.Ctlm1345Update;
+import com.mznerp.business.activity.AddRouteActivity;
+import com.mznerp.business.activity.BusinessActivity;
+import com.mznerp.business.activity.BussinessUploadActivity;
+import com.mznerp.business.activity.DisCardFage;
+import com.mznerp.business.activity.SearchBussinessPicture;
 import com.mznerp.business.view.StartViewInfo;
 import com.mznerp.business.view.ViewClass;
 import com.mznerp.business.view.WidgetClass;
 import com.mznerp.business.view.locationDialog;
 import com.mznerp.business.view.uploadDialog;
-import com.mznerp.common.Constant;
 import com.mznerp.dao.BusinessBaseDao;
 import com.mznerp.model.BusinessData;
 import com.mznerp.model.BusinessParam;

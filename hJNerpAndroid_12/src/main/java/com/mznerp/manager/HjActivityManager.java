@@ -5,7 +5,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 
 import com.mznerp.business.activity.BusinessActivity;
-import com.mznerp.business.activity.BusinessActivityFragment;
+import com.mznerp.common.BusinessActivityFragment;
 import com.mznerp.business.view.StartViewInfo;
 import com.mznerp.business.view.ViewClass;
 import com.mznerp.util.StringUtil;

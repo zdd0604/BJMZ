@@ -46,6 +46,9 @@ import java.util.List;
 import okhttp3.Call;
 import okhttp3.Response;
 
+/**
+ * 绩效录入列表界面进入的绩效详情界面
+ */
 public class BusinessPerformanceInput extends AppCompatActivity implements View.OnClickListener {
     protected WaitDialogRectangle waitDialog;
     private TextView input_id_clerk;

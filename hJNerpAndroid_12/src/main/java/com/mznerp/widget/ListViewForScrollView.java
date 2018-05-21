@@ -1,4 +1,4 @@
-package com.mznerp.business.activity;
+package com.mznerp.widget;
 
 import android.content.Context;
 import android.util.AttributeSet;

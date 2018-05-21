@@ -2,7 +2,7 @@ package com.mznerp.common;
 
 import android.os.Environment;
 
-import com.mznerp.business.activity.DsaordbaseJson2;
+import com.mznerp.model.DsaordbaseJson2;
 import com.mznerp.model.BusinessOneLine;
 import com.mznerp.model.Ctlm1345;
 import com.mznerp.model.Ctlm7161;

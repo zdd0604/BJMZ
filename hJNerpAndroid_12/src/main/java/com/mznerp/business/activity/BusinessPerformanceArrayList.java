@@ -35,6 +35,9 @@ import java.util.List;
 import okhttp3.Call;
 import okhttp3.Response;
 
+/**
+ * 计划录入列表界面
+ */
 public class BusinessPerformanceArrayList extends ActivitySupport implements View.OnClickListener {
     private WaitDialogRectangle waitDialog;
     private PullToRefreshListView pull_refresh_billlist;

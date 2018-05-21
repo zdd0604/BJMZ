@@ -33,7 +33,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.mznerp.business.activity.BusinessActivityFragment;
+import com.mznerp.common.BusinessActivityFragment;
 import com.mznerp.business.view.StartViewInfo;
 import com.mznerp.business.view.ViewClass;
 import com.mznerp.business.view.WidgetClass;

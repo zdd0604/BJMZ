@@ -1,4 +1,4 @@
-package com.mznerp.business.activity;
+package com.mznerp.model;
 
 /**
  * Created by zy on 2017/6/13.

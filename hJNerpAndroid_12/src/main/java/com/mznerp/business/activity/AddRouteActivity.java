@@ -19,11 +19,15 @@ import android.widget.TextView.OnEditorActionListener;
 import com.baidu.location.BDLocation;
 import com.mznerp.activity.qrcode.CaptureActivity;
 import com.mznerp.common.ActivitySupport;
+import com.mznerp.common.BusinessActivityFragment;
 import com.mznerp.util.BDLocationUtil;
 import com.mznerp.util.StringUtil;
 import com.mznerp.util.ToastUtil;
 import com.mznerp.R;
 
+/**
+ * 终端查询界面
+ */
 public class AddRouteActivity extends ActivitySupport implements
 		OnClickListener {
  
@@ -175,7 +179,7 @@ public class AddRouteActivity extends ActivitySupport implements
 				    if  (!StringUtil.isNullOrEmpty(str))
 				    {
 				    
-				    	Intent intent = new Intent(this,BusinessActivityFragment.class); 
+				    	Intent intent = new Intent(this,BusinessActivityFragment.class);
 						Bundle bundlel = new Bundle();  
 						bundlel.putString("result", str);  
 						bundlel.putString("id_table", datasource);

@@ -214,11 +214,13 @@ public class ActionBarWidgetActivity extends ActivitySupport {
                             getExternalCacheDir(), fileName));
                     resp.getEntity().writeTo(fos);
                     fos.close();
+                    LogShow( "开始解压文件");
                     String json = processBusinessCompress(fileName);
+                    LogShow( "开始解析文件");
                     JSONObject jsonObject = new JSONObject(json);
                     String value = jsonObject.getString(JSON_VALUE);
-
                     LogShow("后台返回："+value);
+
                     if (nsyncDataConnector != null) {
                         nsyncDataConnector.processJsonValue(value);
                     }
@@ -243,6 +245,8 @@ public class ActionBarWidgetActivity extends ActivitySupport {
                 e.printStackTrace();
             }
         }
+
+
     }
 
     //解压缩下载的zip包

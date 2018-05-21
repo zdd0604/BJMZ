@@ -21,6 +21,8 @@ import com.mznerp.common.ActionBarWidgetActivity;
 import com.mznerp.common.Constant;
 import com.mznerp.dao.QiXinBaseDao;
 import com.mznerp.model.Ctlm7502Json;
+import com.mznerp.model.DsaordbaseJson2;
+import com.mznerp.model.DsaordbaseJson3;
 import com.mznerp.model.EjMyWProj1345;
 import com.mznerp.net.HttpClientBuilder;
 import com.mznerp.net.HttpClientManager;
@@ -54,8 +56,11 @@ import static com.mznerp.common.Constant.sellDetails;
 import static com.mznerp.common.Constant.sellDetailsPosition;
 import static com.mznerp.common.Constant.user_myid;
 
+/**
+ * 项目搜索界面
+ */
 public class BusinessSearch extends ActionBarWidgetActivity implements View.OnClickListener,
-        ActionBarWidgetActivity.NsyncDataConnector{
+        ActionBarWidgetActivity.NsyncDataConnector {
     @BindView(R.id.action_center_tv)
     TextView actionCenterTv;
     @BindView(R.id.action_right_tv)
@@ -151,6 +156,10 @@ public class BusinessSearch extends ActionBarWidgetActivity implements View.OnCl
     }
 
     private void initView() {
+        //设置回调
+        ActionBarWidgetActivity.setNsyncDataConnector(this);
+
+        //设置标题
         switch (Constant.project_type) {
             case 0://项目搜索（工作日志，出差外出）
                 actionCenterTv.setText("项目搜索");
@@ -173,6 +182,7 @@ public class BusinessSearch extends ActionBarWidgetActivity implements View.OnCl
         project_search.addTextChangedListener(textWatcher);
         actionLeftTv.setOnClickListener(this);
         actionRightTv.setVisibility(View.GONE);
+
 //        if (Constant.project_type == 3) {//保存好的地址里拿出来
 //            if (orderAddress != null && orderAddress.size() > 0) {
 //                for (int i1 = 0; i1 < orderAddress.size(); i1++) {
@@ -186,6 +196,7 @@ public class BusinessSearch extends ActionBarWidgetActivity implements View.OnCl
 //            }
 //
 //        }
+
         if (Constant.travel) {//是不是出差外出
             if (travelDatas.size() > 0) {
                 setHandlerMsg(1, project_search.getText().toString());
@@ -194,6 +205,15 @@ public class BusinessSearch extends ActionBarWidgetActivity implements View.OnCl
             }
         } else {
             setHandlerMsg(0, project_search.getText().toString());
+        }
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.action_left_tv:
+                finish();
+                break;
         }
     }
 
@@ -255,7 +275,7 @@ public class BusinessSearch extends ActionBarWidgetActivity implements View.OnCl
                     break;
             }
 
-            Log.d("seach", "开始提交数据");
+            LogShow("开始提交数据");
             HttpClientManager.addTask(responseHandler, param.getHttpPost());
 
         } catch (UnsupportedEncodingException e) {
@@ -264,37 +284,6 @@ public class BusinessSearch extends ActionBarWidgetActivity implements View.OnCl
         }
     }
 
-
-    TextWatcher textWatcher = new TextWatcher() {
-        @Override
-        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            temp = s;
-        }
-
-        @Override
-        public void onTextChanged(CharSequence s, int start, int before, int count) {
-        }
-
-        @Override
-        public void afterTextChanged(Editable s) {
-            if (Constant.travel) {
-                if (travelDatas != null || travelDatas.size() > 0) {
-                    setHandlerMsg(1, s.toString());
-                } else {
-                    readFrom7502();
-                }
-            } else {
-                setHandlerMsg(0, s.toString());
-            }
-        }
-    };
-
-    private void setHandlerMsg(int numb, Object o) {
-        Message message = new Message();
-        message.what = numb;
-        message.obj = o;
-        mHandler.sendMessage(message);
-    }
 
     public void getWProject(final String content, int i) {
         List<EjMyWProj1345> list = null;
@@ -332,25 +321,23 @@ public class BusinessSearch extends ActionBarWidgetActivity implements View.OnCl
 
                     switch (Constant.project_type) {
                         case 0:
-
                             break;
                         case 1:
                             dsaordbaseJsons_new = new ArrayList<DsaordbaseJson2>();
                             for (int i = 0; i < dsaordbaseJsons.size(); i++) {
                                 if (dsaordbaseJsons.get(i).getId_terminal().equalsIgnoreCase(id_wproj) && dsaordbaseJsons.get(i).getId_corr().equalsIgnoreCase(id_corr)) {
                                     dsaordbaseJsons_new.add(dsaordbaseJsons.get(i));
-                                    com.mznerp.util.Log.d(dsaordbaseJsons_new.toString());
+                                    LogShow(dsaordbaseJsons_new.toString());
                                 }
                             }
                             break;
                         case 2:
-
                             //ctlm7502Json.setId_corr(address_ids.get(i1));//地址
                             dsaordbaseJsons_new = new ArrayList<DsaordbaseJson2>();
                             for (int i = 0; i < dsaordbaseJsons.size(); i++) {
                                 if (dsaordbaseJsons.get(i).getId_corr().equalsIgnoreCase(id_wproj)) {
                                     dsaordbaseJsons_new.add(dsaordbaseJsons.get(i));
-                                    com.mznerp.util.Log.d(dsaordbaseJsons_new.toString());
+                                    LogShow(dsaordbaseJsons_new.toString());
                                 }
                             }
                             break;
@@ -386,7 +373,7 @@ public class BusinessSearch extends ActionBarWidgetActivity implements View.OnCl
                             for (int i = 0; i < dsaordbaseJsons.size(); i++) {
                                 if (dsaordbaseJsons.get(i).getId_corr().equalsIgnoreCase(id_wproj) && dsaordbaseJsons.get(i).getVar_conplace().equalsIgnoreCase(id_corr) && dsaordbaseJsons.get(i).getVar_contact().equalsIgnoreCase(dec_acaramt)) {
                                     dsaordbaseJsons_new.add(dsaordbaseJsons.get(i));
-                                    com.mznerp.util.Log.d(dsaordbaseJsons_new.toString());
+                                    LogShow(dsaordbaseJsons_new.toString());
                                 }
                             }
                             break;
@@ -409,7 +396,7 @@ public class BusinessSearch extends ActionBarWidgetActivity implements View.OnCl
     }
 
     private List<EjMyWProj1345> getProject(String content) {
-        com.mznerp.util.Log.d("getProject:" + content);
+        LogShow("getProject:" + content);
         List<EjMyWProj1345> list = new ArrayList<>();
         for (int i = 0; i < travelDatas.size(); i++) {
             if (content.isEmpty() || travelDatas.get(i).getName_proj().contains(content) || travelDatas.get(i).getId_proj().contains(content) || travelDatas.get(i).getName_corr().contains(content)) {
@@ -439,88 +426,37 @@ public class BusinessSearch extends ActionBarWidgetActivity implements View.OnCl
         return list;
     }
 
-    private class NsyncDataHandler extends HttpClientManager.HttpResponseHandler {
-
-        @Override
-        public void onException(Exception e) {
-        }
-
-        @Override
-        public void onResponse(HttpResponse resp) {
-            // TODO Auto-generated method stub
-            try {
-                Log.d("seach", "开始返回文件");
-                String contentType = resp.getHeaders("Content-Type")[0]
-                        .getValue();
-                // if ("application/octet-stream".equals(contentType) ) {
-                if (contentType.indexOf("application/octet-stream") != -1) {
-                    String contentDiscreption = resp
-                            .getHeaders("Content-Disposition")[0].getValue();
-                    String fileName = contentDiscreption
-                            .substring(contentDiscreption.indexOf("=") + 1);
-                    FileOutputStream fos = new FileOutputStream(new File(
-                            getExternalCacheDir(), fileName));
-                    resp.getEntity().writeTo(fos);
-                    fos.close();
-                    Log.d("seach", "开始解压文件");
-                    String json = processBusinessCompress(fileName);
-                    Log.d("seach", "开始解析文件");
-                    JSONObject jsonObject = new JSONObject(json);
-                    String value = jsonObject.getString(JSON_VALUE);
-
-                    Log.d("value", "开始解析数据");
-                    processJsonValue(value);
-                } else {
-
-                }
-
-            } catch (IllegalStateException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            } catch (FileNotFoundException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            } catch (IOException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            } catch (JSONException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-        }
-    }
-
     /**
      * 解析数据，并进行筛选保存
      *
      * @param value 被解析的值
      * @throws JSONException 解析失败的异常
      */
+
+    @Override
     public void processJsonValue(String value) {
-        // TODO Auto-generated method stub
+        LogShow("回调数据:" + value);
         value = value.trim();
         if (value.equalsIgnoreCase("[]") || value.equalsIgnoreCase(null)) {//如果数据为空
             waitDialog.dismiss();
             mHandler.sendEmptyMessage(2);
-
             return;
         }
+
         try {
             JSONArray jsonArray = new JSONArray(value);
             for (int i = 0; i < jsonArray.length(); i++) {
                 String temp = jsonArray.getString(i);
-//                Matcher m = p.matcher(temp);
-                String subValue = temp.substring(temp.indexOf("{"),
-                        temp.indexOf("}") + 1);
+                String subValue = temp.substring(temp.indexOf("{"),temp.indexOf("}") + 1);
                 if (!isGoodJson(subValue)) {
-                    Log.e("subValue", subValue);
+                    LogShow("subValue"+ subValue);
                     mHandler.sendEmptyMessage(3);
                     return;
                 }
-                Gson gson = new Gson();
+
                 switch (Constant.project_type) {
                     case 0://出差外出的数据解析
-                        Ctlm7502Json ctlm7502Json = gson.fromJson(subValue, Ctlm7502Json.class);
+                        Ctlm7502Json ctlm7502Json = mGson.fromJson(subValue, Ctlm7502Json.class);
                         travelDatas.add(ctlm7502Json);
                         break;
                     //销售订单的解析
@@ -528,11 +464,11 @@ public class BusinessSearch extends ActionBarWidgetActivity implements View.OnCl
                     case 2:
                     case 3:
                     case 5:
-                        DsaordbaseJson2 dsaordbaseJson = gson.fromJson(subValue, DsaordbaseJson2.class);
+                        DsaordbaseJson2 dsaordbaseJson = mGson.fromJson(subValue, DsaordbaseJson2.class);
                         dsaordbaseJsons.add(dsaordbaseJson);
                         break;
                     case 4:
-                        DsaordbaseJson3 dsaordbaseJson3 = gson.fromJson(subValue, DsaordbaseJson3.class);
+                        DsaordbaseJson3 dsaordbaseJson3 = mGson.fromJson(subValue, DsaordbaseJson3.class);
                         dsaordbaseJsons3.add(dsaordbaseJson3);
                         break;
                 }
@@ -543,7 +479,7 @@ public class BusinessSearch extends ActionBarWidgetActivity implements View.OnCl
             return;
         }
 
-        Log.d("seach", "开始逻辑判断");
+        LogShow("开始逻辑判断");
         switch (Constant.project_type) {
             case 1://终端+客户查询，过滤相同终端与客户，过滤后的数据保存
                 for (int j = 0; j < dsaordbaseJsons.size(); j++) {
@@ -554,7 +490,6 @@ public class BusinessSearch extends ActionBarWidgetActivity implements View.OnCl
                         orderTerminal.add(dsaordbaseJsons.get(j).getName_terminal());//终端名
                         overclient_names.add(dsaordbaseJsons.get(j).getName_corr().trim() + dsaordbaseJsons.get(j).getName_terminal().trim());//过滤条件
                     }
-
                 }
                 travelDatas.clear();//清理数据，用来添加新数据
                 for (int i1 = 0; i1 < orderTerminal.size(); i1++) {
@@ -573,9 +508,7 @@ public class BusinessSearch extends ActionBarWidgetActivity implements View.OnCl
                         address_ids.add(dsaordbaseJsons.get(j).getVar_conplace());//地址
                         address_names.add(dsaordbaseJsons.get(j).getVar_conplace());//地址
                         orderTerminal.add(dsaordbaseJsons.get(j).getName_corr());//客户名
-
                     }
-
                 }
                 travelDatas.clear();
                 for (int i1 = 0; i1 < orderTerminal.size(); i1++) {
@@ -596,7 +529,6 @@ public class BusinessSearch extends ActionBarWidgetActivity implements View.OnCl
                     orderTerminal.add(dsaordbaseJsons.get(j).getVar_rcvcorr());//收货单位
 //                        orderTerminal.add(dsaordbaseJsons.get(j).getVar_conplace().trim() + dsaordbaseJsons.get(j).getVar_contact().trim());//过滤条件：地址+联系人
 //                    }
-
                 }
                 travelDatas.clear();
                 for (int i1 = 0; i1 < address_names.size(); i1++) {
@@ -607,7 +539,6 @@ public class BusinessSearch extends ActionBarWidgetActivity implements View.OnCl
                     ctlm7502Json.setId_corr(orderTerminal.get(i1));//收货单位
                     travelDatas.add(ctlm7502Json);
                 }
-
                 break;
             case 4://查询产品，过滤条件，产品id
                 for (int j = 0; j < dsaordbaseJsons3.size(); j++) {
@@ -622,7 +553,6 @@ public class BusinessSearch extends ActionBarWidgetActivity implements View.OnCl
                         var_chkparm.add(dsaordbaseJsons3.get(j).getVar_chkparm());//
                         dec_taxrate.add(dsaordbaseJsons3.get(j).getDec_taxrate());//
                     }
-
                 }
                 travelDatas.clear();
                 for (int i1 = 0; i1 < terminal_ids.size(); i1++) {
@@ -672,12 +602,46 @@ public class BusinessSearch extends ActionBarWidgetActivity implements View.OnCl
 //        }
     }
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.action_left_tv:
-                finish();
-                break;
+
+    /**
+     * 输入框监听
+     */
+    TextWatcher textWatcher = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            temp = s;
         }
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+            if (Constant.travel) {
+                if (travelDatas != null || travelDatas.size() > 0) {
+                    setHandlerMsg(1, s.toString());
+                } else {
+                    readFrom7502();
+                }
+            } else {
+                setHandlerMsg(0, s.toString());
+            }
+        }
+    };
+
+
+    /**
+     * 发送消息
+     *
+     * @param numb
+     * @param o
+     */
+    private void setHandlerMsg(int numb, Object o) {
+        Message message = new Message();
+        message.what = numb;
+        message.obj = o;
+        mHandler.sendMessage(message);
     }
+
 }

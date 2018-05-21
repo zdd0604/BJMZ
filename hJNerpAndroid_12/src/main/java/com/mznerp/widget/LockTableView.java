@@ -3,7 +3,7 @@
 // (powered by Fernflower decompiler)
 //
 
-package com.mznerp.business.activity;
+package com.mznerp.widget;
 
 import android.content.Context;
 import android.support.v4.content.ContextCompat;

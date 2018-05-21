@@ -26,6 +26,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * 考勤异常记录列表
+ */
 public class AbnormalDetail extends ActivitySupport implements View.OnClickListener {
 
     private CheckBox checkbox_all;

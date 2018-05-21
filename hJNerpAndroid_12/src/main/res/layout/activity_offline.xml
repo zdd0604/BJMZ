@@ -67,7 +67,7 @@
             android:background="#E7F8FF"
             android:text="已下载城市" />
 
-        <com.mznerp.business.activity.ListViewForScrollView
+        <com.mznerp.widget.ListViewForScrollView
             android:id="@+id/downloadedCityList"
             android:listSelector="@android:color/transparent"
             android:layout_width="match_parent"
@@ -79,7 +79,7 @@
             android:background="#E7F8FF"
             android:text="所有省份列表 " />
 
-        <com.mznerp.business.activity.ListViewForScrollView
+        <com.mznerp.widget.ListViewForScrollView
             android:id="@+id/undownloadedCityList"
             android:listSelector="@android:color/transparent"
             android:layout_width="match_parent"

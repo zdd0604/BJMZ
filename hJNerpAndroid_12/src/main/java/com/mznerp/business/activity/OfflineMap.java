@@ -18,6 +18,7 @@ import com.baidu.mapapi.map.offline.MKOfflineMapListener;
 import com.mznerp.common.ActivitySupport;
 import com.mznerp.R;
 import com.mznerp.R.layout;
+import com.mznerp.widget.ListViewForScrollView;
 
 import java.util.ArrayList;
 

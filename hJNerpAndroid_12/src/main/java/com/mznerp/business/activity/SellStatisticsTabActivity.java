@@ -1,14 +1,11 @@
 package com.mznerp.business.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
-import android.view.View;
 import android.widget.LinearLayout;
 
-import com.google.gson.Gson;
 import com.mznerp.R;
 import com.mznerp.common.ActionBarWidgetActivity;
 import com.mznerp.common.ActivityBaseHeader;
@@ -16,17 +13,15 @@ import com.mznerp.common.Constant;
 import com.mznerp.model.SellStatisticsModule;
 import com.mznerp.net.HttpClientBuilder;
 import com.mznerp.net.HttpClientManager;
-import com.mznerp.util.Log;
 import com.mznerp.util.StringUtil;
 import com.mznerp.util.myscom.StringUtils;
 import com.mznerp.widget.CountUtils;
-import com.mznerp.widget.WaitDialogRectangle;
+import com.mznerp.widget.LockTableView2;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 
 import java.io.UnsupportedEncodingException;
-import java.math.BigDecimal;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 
