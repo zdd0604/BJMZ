@@ -437,14 +437,12 @@ public class LoginActivity extends ActionBarWidgetActivity {
     public static final void setServerURL(String comID) {
         IDComConfig idconfig = OtherBaseDao.queryReginfo(comID);
         if (idconfig != null) {
+            //正常登录地址
             EapApplication.URL_SERVER_HOST_HTTP = idconfig.getUrl_http();
-//            EapApplication.URL_SERVER_HOST_HTTP = "http://172.16.12.243:8080/hjmerp";
-            // 测试地址
-            // EapApplication.URL_SERVER_HOST_HTTP =
-            // "http://192.168.0.114:8080/hjmerp";
+
+            //测试地址
+//            EapApplication.URL_SERVER_HOST_HTTP ="http://192.168.199.189:8071/hjmerp";
             Log.i("info", "LoginActivity登陆地址：" + EapApplication.URL_SERVER_HOST_HTTP);
-            // EapApplication.URL_SERVER_HOST_HTTP =
-            // "http://pda.hqbeer.com:1013/hjmerp";
 
             // EapApplication.URL_SERVER_HOST_HTTP =
             // "http://192.168.0.54:8080/hjmerp";

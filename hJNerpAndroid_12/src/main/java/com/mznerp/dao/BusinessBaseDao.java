@@ -288,7 +288,10 @@ public class BusinessBaseDao extends BaseDao {
 				database.execSQL(model.deleteSql);
 			}
 			if (StringUtils.isNotBlank(model.insertSqls)) {
-				database.execSQL(model.insertSqls);
+//				database.execSQL(model.insertSqls);
+				for (int i = 0; i < model.sqls.size(); i++) {
+					database.execSQL(model.sqls.get(i));
+				}
 			}
 		} finally {
 			endDMLOffTransaction(database);
@@ -398,6 +401,11 @@ public class BusinessBaseDao extends BaseDao {
 		}
 	}
 
+	/**
+	 * 查询1345表根据idtable查询所有数据
+	 * @param idtable
+	 * @return
+	 */
 	public static final List<Ctlm1345> getCTLM1345ByIdTable(String idtable) {
 
 		StringBuffer buf = new StringBuffer();

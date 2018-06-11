@@ -8,13 +8,11 @@ import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.google.gson.Gson;
 import com.mznerp.business.BusinessAdapter.BusinessSearchAdapter;
 import com.mznerp.business.BusinessQueryDao.BusinessQueryDao;
 import com.mznerp.common.ActionBarWidgetActivity;
@@ -32,15 +30,8 @@ import com.mznerp.widget.ClearEditText;
 import com.mznerp.widget.WaitDialogRectangle;
 import com.mznerp.R;
 
-import org.apache.http.HttpResponse;
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
@@ -156,6 +147,7 @@ public class BusinessSearch extends ActionBarWidgetActivity implements View.OnCl
     }
 
     private void initView() {
+
         //设置回调
         ActionBarWidgetActivity.setNsyncDataConnector(this);
 
@@ -279,7 +271,7 @@ public class BusinessSearch extends ActionBarWidgetActivity implements View.OnCl
             HttpClientManager.addTask(responseHandler, param.getHttpPost());
 
         } catch (UnsupportedEncodingException e) {
-            // TODO Auto-generated catch block
+            LogShow("获取网络数据异常");
             e.printStackTrace();
         }
     }
@@ -317,7 +309,7 @@ public class BusinessSearch extends ActionBarWidgetActivity implements View.OnCl
                     Constant.id_corr = id_corr;
                     Constant.dec_acaramt = dec_acaramt;
                     Constant.var_tel = var_tel;
-                    Log.e("show", "Constant.dec_acaramt:" + Constant.dec_acaramt);
+                    LogShow("Constant.id_corr:" + id_corr);
 
                     switch (Constant.project_type) {
                         case 0:
@@ -371,7 +363,9 @@ public class BusinessSearch extends ActionBarWidgetActivity implements View.OnCl
                         case 5:
                             dsaordbaseJsons_new = new ArrayList<DsaordbaseJson2>();
                             for (int i = 0; i < dsaordbaseJsons.size(); i++) {
-                                if (dsaordbaseJsons.get(i).getId_corr().equalsIgnoreCase(id_wproj) && dsaordbaseJsons.get(i).getVar_conplace().equalsIgnoreCase(id_corr) && dsaordbaseJsons.get(i).getVar_contact().equalsIgnoreCase(dec_acaramt)) {
+                                if (dsaordbaseJsons.get(i).getId_corr().equalsIgnoreCase(id_wproj)
+                                        && dsaordbaseJsons.get(i).getVar_conplace().equalsIgnoreCase(id_corr)
+                                        && dsaordbaseJsons.get(i).getVar_contact().equalsIgnoreCase(dec_acaramt)) {
                                     dsaordbaseJsons_new.add(dsaordbaseJsons.get(i));
                                     LogShow(dsaordbaseJsons_new.toString());
                                 }
@@ -396,10 +390,14 @@ public class BusinessSearch extends ActionBarWidgetActivity implements View.OnCl
     }
 
     private List<EjMyWProj1345> getProject(String content) {
-        LogShow("getProject:" + content);
+        LogShow(content);
         List<EjMyWProj1345> list = new ArrayList<>();
         for (int i = 0; i < travelDatas.size(); i++) {
-            if (content.isEmpty() || travelDatas.get(i).getName_proj().contains(content) || travelDatas.get(i).getId_proj().contains(content) || travelDatas.get(i).getName_corr().contains(content)) {
+            if (content.isEmpty()
+                    || travelDatas.get(i).getName_proj().contains(content)
+                    || travelDatas.get(i).getId_proj().contains(content)
+                    || travelDatas.get(i).getName_corr().contains(content)) {
+
                 EjMyWProj1345 ejMyWProj1345 = new EjMyWProj1345();
                 ejMyWProj1345.setName_wproj(travelDatas.get(i).getName_proj().trim());
                 ejMyWProj1345.setId_wproj(travelDatas.get(i).getId_proj().trim());
@@ -435,7 +433,7 @@ public class BusinessSearch extends ActionBarWidgetActivity implements View.OnCl
 
     @Override
     public void processJsonValue(String value) {
-        LogShow("回调数据:" + value);
+        LogShow("回调数据:" +value);
         value = value.trim();
         if (value.equalsIgnoreCase("[]") || value.equalsIgnoreCase(null)) {//如果数据为空
             waitDialog.dismiss();
@@ -449,11 +447,10 @@ public class BusinessSearch extends ActionBarWidgetActivity implements View.OnCl
                 String temp = jsonArray.getString(i);
                 String subValue = temp.substring(temp.indexOf("{"),temp.indexOf("}") + 1);
                 if (!isGoodJson(subValue)) {
-                    LogShow("subValue"+ subValue);
                     mHandler.sendEmptyMessage(3);
                     return;
                 }
-
+                LogShow("subValue:"+ subValue);
                 switch (Constant.project_type) {
                     case 0://出差外出的数据解析
                         Ctlm7502Json ctlm7502Json = mGson.fromJson(subValue, Ctlm7502Json.class);
@@ -571,8 +568,14 @@ public class BusinessSearch extends ActionBarWidgetActivity implements View.OnCl
                 break;
             case 5://查询客户+地址+联系人
                 for (int j = 0; j < dsaordbaseJsons.size(); j++) {
-                    if (!overclient_ids.contains(dsaordbaseJsons.get(j).getId_corr() + dsaordbaseJsons.get(j).getVar_conplace() + dsaordbaseJsons.get(j).getVar_contact())) {//客户id+地址+联系人，过滤条件
-                        overclient_ids.add(dsaordbaseJsons.get(j).getId_corr() + dsaordbaseJsons.get(j).getVar_conplace() + dsaordbaseJsons.get(j).getVar_contact());
+                    if (!overclient_ids.contains(dsaordbaseJsons.get(j).getId_corr()
+                            + dsaordbaseJsons.get(j).getVar_conplace()
+                            + dsaordbaseJsons.get(j).getVar_contact()))
+                    {//客户id+地址+联系人，过滤条件
+                        overclient_ids.add(
+                                dsaordbaseJsons.get(j).getId_corr()
+                                        + dsaordbaseJsons.get(j).getVar_conplace()
+                                        + dsaordbaseJsons.get(j).getVar_contact());
                         terminal_ids.add(dsaordbaseJsons.get(j).getId_corr());//客户id
                         address_ids.add(dsaordbaseJsons.get(j).getVar_conplace());//地址
                         address_names.add(dsaordbaseJsons.get(j).getVar_conplace());//地址

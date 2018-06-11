@@ -343,4 +343,14 @@ public class 	StringUtil {
 		return false;
 	}
 
+	/**
+	 * 去除转译自负
+	 * @param json
+	 * @return
+	 */
+	public static String buildJson(String json) {
+
+		return json;
+	}
+
 }

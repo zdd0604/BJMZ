@@ -36,7 +36,7 @@ import com.baidu.mapapi.map.MyLocationData;
 import com.baidu.mapapi.model.LatLng;
 import com.baidu.mapapi.utils.DistanceUtil;
 import com.mznerp.activity.SetActivity;
-import com.mznerp.adapter.BusinessSginImageViewAdapter;
+import com.mznerp.business.adapter.BusinessSginImageViewAdapter;
 import com.mznerp.business.BusinessQueryDao.BusinessQueryDao;
 import com.mznerp.business.BusinessStringBuffer.BusinessEJBuffer;
 import com.mznerp.business.businessutils.BuinessImgUtils;

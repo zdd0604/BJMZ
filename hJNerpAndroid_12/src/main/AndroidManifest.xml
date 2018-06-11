@@ -428,6 +428,12 @@
             android:name=".business.activity.SellStatisticsTabActivity"
             android:theme="@style/AppToolBarTheme"
             android:windowSoftInputMode="stateHidden|adjustResize" />
+
+        <!-- 项目搜索 -->
+        <activity
+            android:name=".business.activity.ProductSearch"
+            android:theme="@style/AppToolBarTheme"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
     </application>
 
 </manifest>

@@ -1,4 +1,4 @@
-package com.mznerp.adapter;
+package com.mznerp.business.adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;

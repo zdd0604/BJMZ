@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.mznerp.widget.ClearEditText
+        android:id="@+id/pdSh_Ed"
+        style="@style/Item_EditeText_SearchEdStyle"
+        android:layout_below="@+id/actionbar_search"
+        android:layout_centerHorizontal="true"
+        android:hint="@string/search" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_1"
+        android:background="@color/item_table_divider" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/pdSh_Rl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/pdSh_Ed"
+        android:background="@color/white"
+        tools:listitem="@layout/bus_search_item" />
+
+    <LinearLayout
+        android:id="@+id/pdSh_error"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/bujige" />
+
+        <TextView
+            android:id="@+id/pdSh_corr"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:text="找不到相关的项目"
+            android:textSize="16sp" />
+    </LinearLayout>
+</LinearLayout>

@@ -158,7 +158,7 @@ public class BusinessSearchOneLine extends ActionBarWidgetActivity implements Vi
     }
 
     private List<BusinessOneLine> getProject(String content) {
-        com.mznerp.util.Log.d("getProject:" + content);
+        LogShow(content);
         List<BusinessOneLine> list = new ArrayList<>();
         for (int i = 0; i < datas.size(); i++) {
             if (content.isEmpty() || datas.get(i).getKey().contains(content) || datas.get(i).getValue().contains(content)) {

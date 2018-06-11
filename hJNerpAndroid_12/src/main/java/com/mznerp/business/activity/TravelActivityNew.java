@@ -18,7 +18,7 @@ import com.google.gson.Gson;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.mznerp.activity.MainActivity;
-import com.mznerp.adapter.BusinessBillsAdapter;
+import com.mznerp.business.adapter.BusinessBillsAdapter;
 import com.mznerp.business.BusinessJsonCallBack.BJsonCallBack;
 import com.mznerp.business.businessutils.DateUtil;
 import com.mznerp.common.ActionBarWidgetActivity;

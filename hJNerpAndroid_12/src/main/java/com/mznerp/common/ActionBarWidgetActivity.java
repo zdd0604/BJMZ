@@ -142,7 +142,7 @@ public class ActionBarWidgetActivity extends ActivitySupport {
      * @param content
      */
     public void LogShow(String content) {
-        Log.e("MZ", content);
+        Log.e("MZ", getClass().getSimpleName() + "---" + content);
     }
 
 
@@ -192,7 +192,9 @@ public class ActionBarWidgetActivity extends ActivitySupport {
     }
 
 
-    //网络获取的方法
+    /**
+     * 网络获取的方法
+     */
     public class NsyncDataHandler extends HttpClientManager.HttpResponseHandler {
         @Override
         public void onException(Exception e) {
@@ -214,15 +216,17 @@ public class ActionBarWidgetActivity extends ActivitySupport {
                             getExternalCacheDir(), fileName));
                     resp.getEntity().writeTo(fos);
                     fos.close();
-                    LogShow( "开始解压文件");
+                    LogShow("开始解压文件");
                     String json = processBusinessCompress(fileName);
-                    LogShow( "开始解析文件");
+                    LogShow("开始解析文件");
                     JSONObject jsonObject = new JSONObject(json);
                     String value = jsonObject.getString(JSON_VALUE);
-                    LogShow("后台返回："+value);
+                    LogShow("后台返回：" + value);
 
                     if (nsyncDataConnector != null) {
                         nsyncDataConnector.processJsonValue(value);
+                    }else{
+                        LogShow("回调设置失败！" );
                     }
                 } else {
                     if (waitDialog != null) {
@@ -249,9 +253,10 @@ public class ActionBarWidgetActivity extends ActivitySupport {
 
     }
 
-    //解压缩下载的zip包
+    /**
+     *  解压缩下载的zip包
+     */
     public String processBusinessCompress(String fileName) {
-        // TODO Auto-generated method stub
         ZipInputStream zis = null;
         try {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -268,10 +273,8 @@ public class ActionBarWidgetActivity extends ActivitySupport {
             return json;
 
         } catch (FileNotFoundException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         } finally {
             try {
@@ -279,7 +282,6 @@ public class ActionBarWidgetActivity extends ActivitySupport {
                     zis.close();
                 }
             } catch (IOException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
         }
@@ -319,8 +321,33 @@ public class ActionBarWidgetActivity extends ActivitySupport {
 //        editText.setCompoundDrawables(null, null, null, null);
     }
 
+
+    /**
+     * 网络数据回调接口
+     */
     public interface NsyncDataConnector {
         void processJsonValue(String value);
     }
 
+    /**
+     * 发送消息
+     *
+     * @param mHandler
+     * @param numb
+     * @param o
+     */
+    public void setHandlerMsg(Handler mHandler, int numb, Object o) {
+        Message message = new Message();
+        message.what = numb;
+        message.obj = o;
+        mHandler.sendMessage(message);
+    }
+
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        waitDialog.dismiss();
+        waitDialogRectangle.dismiss();
+    }
 }

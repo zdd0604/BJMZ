@@ -23,7 +23,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.mznerp.adapter.BussnessPhotoAdapter;
+import com.mznerp.business.adapter.BussnessPhotoAdapter;
 import com.mznerp.business.view.WidgetName;
 import com.mznerp.business.view.uploadDialog;
 import com.mznerp.common.ActivitySupport;

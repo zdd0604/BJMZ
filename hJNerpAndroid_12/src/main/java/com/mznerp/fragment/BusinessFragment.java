@@ -23,7 +23,7 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.mznerp.activity.SetActivity;
-import com.mznerp.adapter.BusinessGridViewAdapter;
+import com.mznerp.business.adapter.BusinessGridViewAdapter;
 import com.mznerp.business.BusinessQueryDao.BusinessQueryDao;
 import com.mznerp.business.Ctlm1346Update;
 import com.mznerp.business.activity.BusinessActivity;

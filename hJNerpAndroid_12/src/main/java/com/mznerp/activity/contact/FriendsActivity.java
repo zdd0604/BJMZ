@@ -756,7 +756,7 @@ public class FriendsActivity extends ActionBarWidgetActivity implements OnClickL
                                         if (success) {
                                             sendChangePhoto(msg);
                                         } else {
-                                            com.mznerp.util.Log.w(msg);
+                                           LogShow(msg);
                                             waitDialogRectangle.dismiss();
                                             showFailToast(mContext.getString(R.string.toast_Title_PortraitFail));
                                         }

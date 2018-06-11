@@ -24,6 +24,11 @@
     <string name="tlbar_add">添加</string>
     <string name="tlbar_cancel">取消</string>
 
+    <!-- Toolbar 标题 -->
+    <string name="tlbar_Title_productSearch">客户搜索</string>
+
+    <!-- 数据查找失败提示 -->
+    <string name="pdSearch_ErrorTitle1">找不到相关客户</string>
 
     <!-- 登录提示 -->
     <string name="message_invalid_username_password">错误的用户名或密码</string>

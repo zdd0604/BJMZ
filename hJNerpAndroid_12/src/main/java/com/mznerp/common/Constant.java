@@ -386,6 +386,10 @@ public class Constant {
     public static List<BusinessOneLine> datas;
     public static String buss_key = "";
     public static String buss_value = "";
+    //客户搜索
+    public static String id_searCorr = "";
+    public static String name_searCorr = "";
+
 
     //模板的名称
     public static  String ModuleName="";

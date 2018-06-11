@@ -4,20 +4,32 @@ import android.content.Context;
 import android.util.Log;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 import com.mznerp.common.Constant;
 import com.mznerp.dao.BusinessBaseDao;
 import com.mznerp.dao.QiXinBaseDao;
+import com.mznerp.model.Ctlm1345;
 import com.mznerp.model.Ctlm7161;
 import com.mznerp.model.DdisplocatBean;
 import com.mznerp.model.Ej1345;
 import com.mznerp.model.EjMyWProj1345;
 import com.mznerp.model.EjWType1345;
 import com.mznerp.model.EjWadd1345;
+import com.mznerp.model.ProductDetail;
 import com.mznerp.util.ToastUtil;
+import com.nostra13.universalimageloader.utils.L;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 /**
  * Created by zdd on 2017/1/16.
@@ -25,6 +37,8 @@ import java.util.List;
  */
 
 public class BusinessQueryDao {
+
+    public static final Gson gson =new Gson();
 
     /**
      * @param context
@@ -116,7 +130,7 @@ public class BusinessQueryDao {
                 String json = Constant.ctlm1345List.get(i).getVar_value();
                 Constant.mDdisplocatBean = new Gson().fromJson(json, new TypeToken<DdisplocatBean>() {
                 }.getType());
-                Log.v("show",Constant.mDdisplocatBean.toString());
+                Log.v("show", Constant.mDdisplocatBean.toString());
             }
         }
     }
@@ -133,8 +147,78 @@ public class BusinessQueryDao {
                 }.getType());
             }
             Constant.ctlm7161Is = true;
-        }else{
+        } else {
             Constant.ctlm7161Is = false;
         }
     }
+
+    /**
+     * 获取1345表中的客户信息列表
+     *
+     * @param idTable
+     */
+    public static List<ProductDetail> get1345Corr(String idTable) {
+
+        List<ProductDetail> list = new ArrayList<>();
+        Constant.ctlm1345List = BusinessBaseDao.getCTLM1345ByIdTable(idTable);
+
+        int allSize = Constant.ctlm1345List.size();
+        int size = (int) (Math.random()*4+4);
+        Log.e("mz",""+size);
+        ExecutorService pool = Executors.newFixedThreadPool(size);
+        List<Future<List<ProductDetail>>> futures = new ArrayList();
+        int avg = allSize/size;
+        for (int i = 0; i < size; i++) {
+            int start = i*avg;
+            int end = (i==size-1)?allSize:(i+1)*avg;
+            Callable<List<ProductDetail>> callable  = new MyCallable(start,end);
+            futures.add(pool.submit(callable));
+        }
+        boolean flag = true;
+        while (flag){
+            flag = false ;
+            for (Future future : futures) {
+                if(!future.isDone()){
+                    flag = true ;
+                }
+            }
+        }
+        for (Future future : futures) {
+            try {
+                list.addAll((List<ProductDetail>) future.get());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        pool.shutdown();
+//        if (Constant.ctlm1345List.size() > 0)
+//            for (int i = 0; i < Constant.ctlm1345List.size(); i++) {
+//                String json = Constant.ctlm1345List.get(i).getVar_value();
+//                ProductDetail productDetail = gson.fromJson(json, ProductDetail.class);
+//                list.add(productDetail);
+//            }
+        return list;
+    }
+
+
+    static class MyCallable implements Callable<List<ProductDetail>> {
+        private int start;
+        private int end;
+
+        public MyCallable(int start, int end) {
+            this.start = start;
+            this.end = end;
+        }
+
+        @Override
+        public List<ProductDetail> call() throws Exception {
+            List list = new ArrayList<ProductDetail>();
+            for (int i = start; i < end; i++) {
+                String json = Constant.ctlm1345List.get(i).getVar_value();
+                list.add(gson.fromJson(json, ProductDetail.class));
+            }
+            return list;
+        }
+    }
+
 }
