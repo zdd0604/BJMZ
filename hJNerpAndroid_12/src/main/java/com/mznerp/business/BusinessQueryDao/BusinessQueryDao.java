@@ -215,7 +215,12 @@ public class BusinessQueryDao {
             List list = new ArrayList<ProductDetail>();
             for (int i = start; i < end; i++) {
                 String json = Constant.ctlm1345List.get(i).getVar_value();
-                list.add(gson.fromJson(json, ProductDetail.class));
+                try {
+                    list.add(gson.fromJson(json, ProductDetail.class));
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+
             }
             return list;
         }

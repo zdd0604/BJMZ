@@ -382,7 +382,7 @@ public class OrderFinding extends ActionBarWidgetActivity implements View.OnClic
 //        String id_user = users_id.get(object_person.getSelectedItemPosition());
         String time_begin = table_begin_time.getText().toString().isEmpty() ? "1800-00-00" : table_begin_time.getText().toString();
         String time_end = table_end_time.getText().toString().isEmpty() ? "2999-12-31" : table_end_time.getText().toString();
-        // TODO validate success, do something
+
         waitDialog.show();
         try {
             LogShow("开始获取数据。。。");
@@ -390,7 +390,7 @@ public class OrderFinding extends ActionBarWidgetActivity implements View.OnClic
                     .createParam(Constant.NBUSINESS_SERVICE_ADDRESS);
             String condition = "";
             if (StringUtils.isEmpty(id_user)) {
-                String cons = "1=1 and var_value like '%" + Constant.id_corr + "%' and (";
+                String cons = "1=1 and var_value like '%" + Constant.id_searCorr + "%' and (";
                 for (int i = 0; i < users_id.size(); i++) {
                     if (i == users_id.size() - 1) {
                         cons = cons + "id_column='" + users_id.get(i) + "')";
@@ -406,7 +406,7 @@ public class OrderFinding extends ActionBarWidgetActivity implements View.OnClic
                 }
                 condition = cons;
             } else {
-                condition = "1=1 and id_column='" + id_user + "' and var_value like '%" + Constant.id_corr + "%'";
+                condition = "1=1 and id_column='" + id_user + "' and var_value like '%" + Constant.id_searCorr + "%'";
                 if (Constant.tab_type == 0 || Constant.tab_type == 3 || Constant.tab_type == 2) {
                     condition = condition + " and name_column>='" + time_begin + "' and name_column<='" + time_end + "'";
                 } else if (Constant.tab_type == 4 && (!TextUtils.isEmpty(all_goneprice))) {

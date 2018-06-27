@@ -227,7 +227,7 @@ public class SellStatisticsTabActivity extends ActivityBaseHeader implements
     private String countScale(String dec_amt, String dec_lastamt) {
         double d1 = Double.parseDouble(dec_amt);
         double d2 = Double.parseDouble(dec_lastamt);
-        double number = (d1 - d2) / d1;
+        double number = (d1 - d2) / d2;
         return CountUtils.countNumberPercentage(number, 2);
     }
 

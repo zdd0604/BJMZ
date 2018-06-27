@@ -236,8 +236,8 @@ public class ProductSearch extends ActivityBaseHeader{
             if (pDetails.size() > 0)
                 for (int i = 0; i < pDetails.size(); i++) {
                     if (repetition.size() > 0) {
-                        if (!repetition.get(pDetails.get(i).getName_corr())
-                                .equals(pDetails.get(i).getName_corr())) {
+                        if (!repetition.get(pDetails.get(i).getId_corr()+pDetails.get(i).getName_corr())
+                                .equals(pDetails.get(i).getId_corr()+pDetails.get(i).getName_corr())) {
                             repList.add(pDetails.get(i));
                         }
                     } else {
