@@ -144,17 +144,6 @@ public class LoginActivity extends ActionBarWidgetActivity {
         // }
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        // 校验SD卡
-        checkMemoryCard();
-        // 检测网络和版本
-        validateInternet();
-        // registerReceiver();
-
-    }
-
     /**
      * 初始化.
      *
@@ -208,6 +197,10 @@ public class LoginActivity extends ActionBarWidgetActivity {
         closeInput();
     }
 
+
+    /**
+     * 按钮点击事件
+     */
     private OnClickListener onClickListener = new OnClickListener() {
 
         @Override
@@ -224,7 +217,6 @@ public class LoginActivity extends ActionBarWidgetActivity {
                         /**
                          * 进行验证看时间是否过期
                          */
-
 //                        regist();
                         handlLogin();
                         type = 1;
@@ -376,6 +368,19 @@ public class LoginActivity extends ActionBarWidgetActivity {
         }
     };
 
+    public static final void setServerURL(String comID) {
+        IDComConfig idconfig = OtherBaseDao.queryReginfo(comID);
+        if (idconfig != null) {
+            //正常登录地址
+            EapApplication.URL_SERVER_HOST_HTTP = idconfig.getUrl_http();
+
+            //测试地址
+//            EapApplication.URL_SERVER_HOST_HTTP ="http://192.168.199.189:8071/hjmerp";
+            Log.i("info", "LoginActivity登陆地址：" + EapApplication.URL_SERVER_HOST_HTTP);
+        }
+    }
+
+
     // 判断登陆前是否清除数据，如果用户重新登陆的账号和上次的账号一样，则不删除
     private void handleData() {
         UserInfo mInfo = QiXinBaseDao.queryCurrentUserInfo();
@@ -383,7 +388,6 @@ public class LoginActivity extends ActionBarWidgetActivity {
             // Log.i(TAG,"不删除数据*****************8");
         } else {
             // Log.i(TAG,"删除数据******************");
-
             QiXinBaseDao.updateUserInfo(sputil.getMyUserId(),
                     Tables.UserTable.COL_VAR_SESSION, "");
             // 清楚除用户表以外的db数据
@@ -395,7 +399,10 @@ public class LoginActivity extends ActionBarWidgetActivity {
 
     }
 
-    void forwardRegister() {
+    /**
+     * 跳转注册
+     */
+    private void forwardRegister() {
         Intent intent = new Intent(this, RegisterActivity.class);
         startActivityForResult(intent, 0);
     }
@@ -434,20 +441,6 @@ public class LoginActivity extends ActionBarWidgetActivity {
         }
     }
 
-    public static final void setServerURL(String comID) {
-        IDComConfig idconfig = OtherBaseDao.queryReginfo(comID);
-        if (idconfig != null) {
-            //正常登录地址
-            EapApplication.URL_SERVER_HOST_HTTP = idconfig.getUrl_http();
-
-            //测试地址
-//            EapApplication.URL_SERVER_HOST_HTTP ="http://192.168.199.189:8071/hjmerp";
-            Log.i("info", "LoginActivity登陆地址：" + EapApplication.URL_SERVER_HOST_HTTP);
-
-            // EapApplication.URL_SERVER_HOST_HTTP =
-            // "http://192.168.0.54:8080/hjmerp";
-        }
-    }
 
     /**
      * 时间验证
@@ -456,33 +449,15 @@ public class LoginActivity extends ActionBarWidgetActivity {
      * @author haijian
      */
     private void regist() {
-//        ArrayList<BasicNameValuePair> parameters = new ArrayList<BasicNameValuePair>();
-//        parameters.add(new BasicNameValuePair("phoneId", sputil.getRegistId()));
-//        parameters
-//                .add(new BasicNameValuePair("valiadId", sputil.getRegistNub()));
-//        parameters.add(new BasicNameValuePair("actionType", "mobileInit"));
-//        HttpPost request = new
-//                HttpPost("http://register.hejia.cn:8090/nerp/hjMobile");
-////        Log.i("regist", "phoneId：" + sputil.getRegistId()+"valiadId：" + sputil.getRegistNub());
-////		HttpPost request = new HttpPost(
-////				"http://172.16.12.26:8095/nerp/hjMobile");
-//        try {
-//            request.setEntity(new UrlEncodedFormEntity(parameters));
-//        } catch (UnsupportedEncodingException e) {
-//            Log.e(null, "", e);
-//        }
-//        HttpClientManager.open();
-//        HttpClientManager.addTask(new RegisterResponseHandler(), request);
         OkGo.getInstance().setConnectTimeout(5000).setRetryCount(0);
         OkGo.post("http://register.hejia.cn:8090/nerp/hjMobile")
-//        OkGo.post("http://172.16.12.27:8090/nerp/hjMobile")
                 .params("phoneId", sputil.getRegistId())
                 .params("valiadId", sputil.getRegistNub())
                 .params("actionType", "mobileInit")
                 .execute(new StringCallback() {
                     @Override
                     public void onSuccess(String s, Call call, Response response) {
-                        Log.d("okgo", "s:" + s + ",response:" + response);
+                        LogShow( "s:" + s + ",response:" + response);
                         Gson gson = new Gson();
                         BaseData data = gson.fromJson(s, BaseData.class);
                         if (data.isSuccess()) {
@@ -548,9 +523,12 @@ public class LoginActivity extends ActionBarWidgetActivity {
                 init();
             }
         });
-
     }
 
+
+    /**
+     * 自动登录
+     */
     private void handlAutoLogin() {
         mHandler.post(new Runnable() {
             @Override
@@ -562,6 +540,10 @@ public class LoginActivity extends ActionBarWidgetActivity {
         });
     }
 
+
+    /**
+     * 登录
+     */
     private void handlLogin() {
         mHandler.post(new Runnable() {
             @Override
@@ -587,4 +569,15 @@ public class LoginActivity extends ActionBarWidgetActivity {
         sputil.setComid(loginConfig.getComid());
         sputil.setForceExit(false);
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // 校验SD卡
+        checkMemoryCard();
+        // 检测网络和版本
+        validateInternet();
+        // registerReceiver();
+    }
+
 }

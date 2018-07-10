@@ -42,39 +42,24 @@ import java.util.zip.ZipInputStream;
  */
 
 public class ActionBarWidgetActivity extends ActivitySupport {
+
     public static Context mContext;
-    //弹框
-    protected WaitDialogRectangle waitDialog;
-    protected String JSON_VALUE = "values";
-    protected Calendar calendar = Calendar.getInstance();
-    protected WaitDialogRectangle waitDialogRectangle;
-    public static NsyncDataConnector nsyncDataConnector;
-    public HttpClientManager.HttpResponseHandler responseHandler = new NsyncDataHandler();
+    //是否显示LOG 打包是可以设置false
+    private boolean isShowLog = true;
     //是否授权
     public boolean isPsions = false;
-    protected PopupWindow popupWindow;
-    private static String backJson;
-    protected Gson mGson;
+    //弹框
+    protected WaitDialogRectangle waitDialog;
 
-    private Handler abHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            switch (msg.what) {
-                case Constant.HANDLERTYPE_0:
-                    if (nsyncDataConnector != null) {
-                        nsyncDataConnector.processJsonValue(backJson);
-                    }
-                    break;
-                case Constant.HANDLERTYPE_1:
-                    break;
-                case Constant.HANDLERTYPE_2:
-                    break;
-                case Constant.HANDLERTYPE_3:
-                    break;
-            }
-        }
-    };
+    protected String JSON_VALUE = "values";
+
+    protected Gson mGson;
+    protected PopupWindow popupWindow;
+    protected Calendar calendar = Calendar.getInstance();
+
+    //数据请求成功后的回调事件
+    public static NsyncDataConnector nsyncDataConnector;
+    public HttpClientManager.HttpResponseHandler responseHandler = new NsyncDataHandler();
 
     public static void setNsyncDataConnector(NsyncDataConnector nsyncDataConnector) {
         ActionBarWidgetActivity.nsyncDataConnector = nsyncDataConnector;
@@ -93,7 +78,6 @@ public class ActionBarWidgetActivity extends ActivitySupport {
         mContext = this;
         mGson = new Gson();
         waitDialog = new WaitDialogRectangle(mContext);
-        waitDialogRectangle = new WaitDialogRectangle(mContext);
     }
 
     /**
@@ -137,19 +121,22 @@ public class ActionBarWidgetActivity extends ActivitySupport {
     }
 
     /**
-     * 短toast
+     * 打印日志
      *
      * @param content
      */
     public void LogShow(String content) {
-        Log.e("MZ", getClass().getSimpleName() + "---" + content);
+        StackTraceElement ste = new Throwable().getStackTrace()[1];
+        if (isShowLog)
+            Log.e("MZ", "文件名称："+getClass().getSimpleName()
+                    + "，行号：" + ste.getLineNumber()
+                    + "，内容：" + content);
     }
 
-
     /**
-     * bundle
-     *
+     * 带数据跳转
      * @param to
+     * @param bundle
      */
     public void intentActivity(Class to, Bundle bundle) {
         Intent intent = new Intent(mContext, to);
@@ -157,9 +144,7 @@ public class ActionBarWidgetActivity extends ActivitySupport {
         startActivity(intent);
     }
 
-
     /**
-     * bundle
      *
      * @param to
      */
@@ -190,7 +175,6 @@ public class ActionBarWidgetActivity extends ActivitySupport {
         TextPaint newPaint = new TextPaint();
         return (int) newPaint.measureText(string);
     }
-
 
     /**
      * 网络获取的方法
@@ -225,8 +209,8 @@ public class ActionBarWidgetActivity extends ActivitySupport {
 
                     if (nsyncDataConnector != null) {
                         nsyncDataConnector.processJsonValue(value);
-                    }else{
-                        LogShow("回调设置失败！" );
+                    } else {
+                        LogShow("回调设置失败！");
                     }
                 } else {
                     if (waitDialog != null) {
@@ -254,7 +238,7 @@ public class ActionBarWidgetActivity extends ActivitySupport {
     }
 
     /**
-     *  解压缩下载的zip包
+     * 解压缩下载的zip包
      */
     public String processBusinessCompress(String fileName) {
         ZipInputStream zis = null;
@@ -318,7 +302,6 @@ public class ActionBarWidgetActivity extends ActivitySupport {
                 calendar.get(Calendar.YEAR),
                 calendar.get(Calendar.MONTH),
                 calendar.get(Calendar.DAY_OF_MONTH)).show();
-//        editText.setCompoundDrawables(null, null, null, null);
     }
 
 
@@ -348,6 +331,5 @@ public class ActionBarWidgetActivity extends ActivitySupport {
     public void onDestroy() {
         super.onDestroy();
         waitDialog.dismiss();
-        waitDialogRectangle.dismiss();
     }
 }
